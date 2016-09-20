@@ -2,8 +2,7 @@
 	<GlobalProduct>TOTVS|EAI</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
 	<GlobalDocumentFunctionCode>SGPEC001</GlobalDocumentFunctionCode>
-	<GlobalDocumentFunctionDescription>FUNCIONARIOS
-	</GlobalDocumentFunctionDescription>
+	<GlobalDocumentFunctionDescription>FUNCIONARIOS</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
 	<DocDateTime>2016-09-15T12:00:00Z</DocDateTime>
 	<DocIdentifier>43E50AE9-1C25-4A56-86FB-F80F03636D4E</DocIdentifier>
@@ -19,11 +18,7 @@
 			<FunctionCode>U_SGPEC001</FunctionCode>
 			<Content>
 				<SGPEC001 Operation="1" version="1.000">
-					<SGPEC001_SRA modeltype="FIELDS">
-						<RA_MAT order="1">
-							<value>000001</value>
-						</RA_MAT>
-					</SGPEC001_SRA>
+					<FIELD name="RA_MAT">000001</FIELD>
 				</SGPEC001>
 			</Content>
 		</Layouts>
