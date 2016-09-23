@@ -1,6 +1,6 @@
 #include 'totvs.ch'
 
-user function IMSP020F()
+user function EAIENVIO()
 
 	Local oFwEai := Nil
 	Local cXml   := ''

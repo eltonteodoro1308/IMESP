@@ -1,6 +1,6 @@
 #include 'totvs.ch'
 
-user function IMSP020( cXML )
+user function EAIRECTO( cXML )
 
 	Local cRet    := ''
 	Local oMod    := FWLoadModel( 'MATA020' )
