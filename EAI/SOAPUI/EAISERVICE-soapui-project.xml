@@ -58,11 +58,11 @@
 <TOTVSIntegrator>
 	<GlobalProduct>TOTVS|EAI</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
-	<GlobalDocumentFunctionCode>SGPEC001</GlobalDocumentFunctionCode>
-	<GlobalDocumentFunctionDescription>FUNCIONARIOS</GlobalDocumentFunctionDescription>
+	<GlobalDocumentFunctionCode>EAIDIVISAO</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>DIVISAO</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2016-09-15T12:00:00Z</DocDateTime>
-	<DocIdentifier>43E50AE9-1C25-4A56-86FB-F80F03636D4E</DocIdentifier>
+	<DocDateTime>2016-09-30T12:00:00Z</DocDateTime>
+	<DocIdentifier>58099206-80CB-4E39-873D-E48FC1D4236C</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -71,12 +71,13 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier>SGPEC001</Identifier>
-			<FunctionCode>U_SGPEC001</FunctionCode>
+			<Identifier>EAIDIVISAO</Identifier>
+			<FunctionCode>U_EAIDIVISAO</FunctionCode>
 			<Content>
-				<SGPEC001 Operation="1" version="1.000">
-					<FIELD name="RA_MAT">000001</FIELD>
-				</SGPEC001>
+				<DIVISAO>
+				<DIVIDENDO>13</DIVIDENDO>
+				<DIVISOR>3</DIVISOR>
+				</DIVISAO>
 			</Content>
 		</Layouts>
 	</Message>
