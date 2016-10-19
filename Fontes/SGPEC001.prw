@@ -2,36 +2,33 @@
 
 User Function SGPEC001( cXml )
 
-	//Local cXml := '<SGPEC001 Operation="1" version="1.000"><FIELD name="RA_MAT">000001</FIELD></SGPEC001>'
 	Local cRet      := ''
 	Local oModel    := FWLoadModel( 'SGPEC001' )
-	Local aArea     := GetArea()
 	Local oXml      := TXmlManager():New()
-	Local nResult   := oXml:Parse( cXML )
-	Local cFldName  := AllTrim( oXML:XPathGetAtt( "/SGPEC001/FIELD", "name" ) )
-	Local cFldValue := AllTrim( PadR( oXML:XPathGetNodeValue( "/SGPEC001/FIELD" ), TAMSX3( cFldName )[ 1 ] ) )
-	Local lEmpty    := .T. // Indica se gera xml com campos nao obrigatorios vaziosadmin
-	Local aFields   := { 'RA_MAT', 'RA_NOME'}
-	Local aOrder    := { 1, 3 }
-	Local nOrder    := aOrder [ aScan( aFields, cFldName ) ]
+	Local aArea     := GetArea()
+	Local lEmpty    := .T. // Indica se gera xml com campos nao obrigatorios vazios
 
-	DbSelectArea( 'SRA' )
-	DbSetOrder( nOrder )
-	If DbSeek( xFilial( 'SRA' ) + cFldValue )
+	If oXml:Parse( cXML )
 
-		cRet := '<?xml version="1.0" encoding="UTF-8"?>'
+		DbSelectArea( 'SRA' )
+		DbSetOrder( nOrder )
+		If DbSeek( xFilial( 'SRA' ) + cFldValue )
 
-		Do While ! EOF() .Or. SRA->RA_FILIAL + SRA->&cFldName == xFilial( 'SRA' ) + cFldValue 
+			cRet := '<?xml version="1.0" encoding="UTF-8"?>'
 
-			oModel:Activate()
+			Do While ! EOF() .Or. SRA->RA_FILIAL + SRA->&cFldName == xFilial( 'SRA' ) + cFldValue 
 
-			cRet += StrTran( oModel:GetXMLData(,,,,,lEmpty), '<?xml version="1.0" encoding="UTF-8"?>', '' )
+				oModel:Activate()
 
-			oModel:DeActivate()
-			
-			DbSkip()
+				cRet += StrTran( oModel:GetXMLData(,,,,,lEmpty), '<?xml version="1.0" encoding="UTF-8"?>', '' )
 
-		End Do
+				oModel:DeActivate()
+
+				DbSkip()
+
+			End Do
+
+		End If
 
 	End If
 

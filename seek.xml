@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seek>
+	<condition field="" type="equal">
+		<value>str</value>
+	</condition>
+	<condition field="" type="notequal">
+		<value>str</value>
+	</condition>
+	<condition field="" type="beginswith">
+		<value>str</value>
+	</condition>
+	<condition field="" type="notbeginswith">
+		<value>str</value>
+	</condition>
+	<condition field="" type="contains">
+		<value>str</value>
+	</condition>
+	<condition field="" type="notcontains">
+		<value>str</value>
+	</condition>
+	<condition field="" type="endwith">
+		<value>str</value>
+	</condition>
+	<condition field="" type="notendwith">
+		<value>str</value>
+	</condition>
+	<condition field="" type="between">
+		<value type="greater">str</value>
+		<value type="less">str</value>
+	</condition>
+	<condition field="" type="notbetween">
+		<value type="greater">str</value>
+		<value type="less">str</value>
+	</condition>
+</seek>
