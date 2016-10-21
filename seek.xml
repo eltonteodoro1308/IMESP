@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<seek>
-	<condition field="" type="equal">
+<load>
+	<filter>
+		<expression>( RA_MAT >= '000500' .AND. RA_NOME = 'JOSE' ) .OR. RA_VALOR > 0</expression>
+	</filter>
+	<filter field="RA_MAT">
 		<value>str</value>
-	</condition>
-	<condition field="" type="notequal">
+	</filter>
+	<filter field="RA_MAT" relation="EQUAL">
 		<value>str</value>
-	</condition>
-	<condition field="" type="beginswith">
+	</filter>
+	<filter field="RA_MAT" relation="EQUAL" operator="AND">
 		<value>str</value>
-	</condition>
-	<condition field="" type="notbeginswith">
+	</filter>
+	<filter field="RA_MAT" relation="NOT_EQUAL" operator="AND">
 		<value>str</value>
-	</condition>
-	<condition field="" type="contains">
+	</filter>
+	<filter field="RA_MAT" relation="LESS" operator="OR">
 		<value>str</value>
-	</condition>
-	<condition field="" type="notcontains">
+	</filter>
+	<filter field="RA_MAT" relation="LESS_EQUAL" operator="AND">
 		<value>str</value>
-	</condition>
-	<condition field="" type="endwith">
+	</filter>
+	<filter field="RA_MAT" relation="GREATER" operator="OR">
 		<value>str</value>
-	</condition>
-	<condition field="" type="notendwith">
+	</filter>
+	<filter field="RA_MAT" relation="GREATER_EQUAL" operator="OR">
 		<value>str</value>
-	</condition>
-	<condition field="" type="between">
-		<value type="greater">str</value>
-		<value type="less">str</value>
-	</condition>
-	<condition field="" type="notbetween">
-		<value type="greater">str</value>
-		<value type="less">str</value>
-	</condition>
-</seek>
+	</filter>
+	<filter field="RA_MAT" relation="CONTAINS" operator="AND">
+		<value>str</value>
+	</filter>
+	<filter field="RA_MAT" relation="NOT_CONTAINS" operator="OR">
+		<value>str</value>
+	</filter>
+	<filter field="RA_MAT" relation="IS_CONTAINED">
+		<value>str</value>
+		<value>str</value>
+		<value>str</value>
+		<value>str</value>
+		<value>str</value>
+	</filter>
+	<filter field="RA_MAT" relation="IS_NOT_CONTAINED" operator="OR">
+		<value>str</value>
+		<value>str</value>
+		<value>str</value>
+		<value>str</value>
+		<value>str</value>
+	</filter>
+</load>

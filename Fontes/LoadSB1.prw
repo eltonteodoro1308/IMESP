@@ -44,7 +44,7 @@ Return
 Static Function ModelDef()
 
 	Local oModel    := MpFormModel():New( 'SB1_MODEL' )
-	Local oStrSB1CB := FWFormStruct( 1, 'SB1')
+	Local oStrSB1CB := FWFormStruct( 1, 'SB1' )
 	Local oStrSB1IT := FWFormStruct( 1, 'SB1' )
 
 	oModel:SetDescription( 'Produtos da Filial Corrente' )
