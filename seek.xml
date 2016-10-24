@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<load>
-	<filter>
-		<expression>( RA_MAT >= '000500' .AND. RA_NOME = 'JOSE' ) .OR. RA_VALOR > 0</expression>
-	</filter>
+<loadfilter>
 	<filter field="RA_MAT">
 		<value>str</value>
 	</filter>
@@ -34,17 +31,9 @@
 		<value>str</value>
 	</filter>
 	<filter field="RA_MAT" relation="IS_CONTAINED">
-		<value>str</value>
-		<value>str</value>
-		<value>str</value>
-		<value>str</value>
-		<value>str</value>
+		<value>str,str,str,str,str,str,str,str,str</value>
 	</filter>
 	<filter field="RA_MAT" relation="IS_NOT_CONTAINED" operator="OR">
-		<value>str</value>
-		<value>str</value>
-		<value>str</value>
-		<value>str</value>
-		<value>str</value>
+		<value>str,str,str,str,str,str,str,str,str</value>
 	</filter>
-</load>
+</loadfilter>

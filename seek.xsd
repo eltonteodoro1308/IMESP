@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="loadfilter">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filter" maxOccurs="unbounded"	minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="value" maxOccurs="1" minOccurs="1" default="string">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="field" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="[A-Z0-9]{2}_[A-Z0-9]{1,7}|[A-Z0-9]{3}_[A-Z0-9]{1,6}"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="relation" use="optional" default="EQUAL">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="EQUAL" />
+									<xs:enumeration value="NOT_EQUAL" />
+									<xs:enumeration value="LESS" />
+									<xs:enumeration value="LESS_EQUAL" />
+									<xs:enumeration value="GREATER" />
+									<xs:enumeration value="GREATER_EQUAL" />
+									<xs:enumeration value="CONTAINS" />
+									<xs:enumeration value="NOT_CONTAINS" />
+									<xs:enumeration value="IS_CONTAINED" />
+									<xs:enumeration value="IS_NOT_CONTAINED" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="operator" use="optional" default="AND">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="AND" />
+									<xs:enumeration value="OR" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

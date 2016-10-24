@@ -1,146 +1,156 @@
+#DEFINE ENTER Chr(13) + Chr(10)
 #INCLUDE 'TOTVS.CH'
 
 User Function SGPEC001( cXml )
 
 	Local cRet       := ''
-	Local oModel     := MpFormModel():New( 'SGPEM001' )
 	Local oXml       := TXmlManager():New()
 	Local aArea      := GetArea()
-	Local lEmpty     := .T. // Indica se gera xml com campos nao obrigatorios vazios
-	Local oStrSRAFld := FWFormStruct( 1, 'SRA' )
-	Local oStrSRAGrd := Nil
-	Local aFields    := {}
-	Local nX         := 1
 	Local aAttNode   := {}
 	Local aChildNode := {}
+	Local nX         := 0
 	Local cStr       := MemoRead( "C:\TOTVS\Developer Studio\Workspace-11.3\IMESP\seek.xml", .F. )
+	Local cQuery     := "SELECT * FROM " + RetSqlName( "SRA" ) + " SRA WHERE "
+	Local nPos       := 0
+	Local nChild     := 0
+	Local cfield     := ''
+	Local cRelation  := ''
+	Local cOperator  := ''
+	Local cValue     := ''
+	Local cTmp       := GetNextAlias()
 
 	Default cXml := cStr
 
-	aAdd( aFields, 'RA_MAT'     )
-	aAdd( aFields, 'RA_NOME'    )
-	aAdd( aFields, 'RA_NOMECMP' )
-	aAdd( aFields, 'RA_APELIDO' )
-	aAdd( aFields, 'RA_CARGO'   )
-	aAdd( aFields, 'M0_NOME'    )
-	aAdd( aFields, 'RA_XRAMAL'  )
-	aAdd( aFields, 'RA_XRAMAL2' )
-	aAdd( aFields, 'RA_XRAMAL3' )
-	aAdd( aFields, 'RA8_DEPTO'  )
-	aAdd( aFields, 'RA_XNCARGO' )
-	aAdd( aFields, 'RA_NASC'    )
-	aAdd( aFields, 'RA_FILIAL'  )
-	aAdd( aFields, 'RA_SITFOLH' )
-	aAdd( aFields, 'RA_EMAIL'   )
-	aAdd( aFields, 'RA_CIC'     )
-	aAdd( aFields, 'RA_FILIAL'  )
-	aAdd( aFields, 'RA_XSIGLA'  )
-	aAdd( aFields, 'RA_XLOGIN'  )
-	aAdd( aFields, 'RA_XRAMAL'  )
-	aAdd( aFields, 'RA_XRAMAL2' )
-	aAdd( aFields, 'RA_XRAMAL3' )
-	aAdd( aFields, 'RA_SIGLA'   )
-	aAdd( aFields, 'RA_XLOGIN'  )
+	If oXml:Parse( cXML ) .And. oXml:ParseSchemaFile('\schemas\seek.xsd')
 
-	oStrSRAGrd := FWFormStruct( 1, 'SRA', { | X | aScan( aFields, AllTrim( X ) ) # 0 } )
+		nChild := oXml:DOMChildCount() 
 
-	oModel:SetDescription( 'Funcionarios da Filial Corrente' )
+		For nX := 1 To nChild
 
-	oModel:AddFields( 'SRA_FIELD', , oStrSRAFld )
-	oModel:GetModel( 'SRA_FIELD' ):SetDescription( 'Filial Corrente' )
+			If nX == 1
 
-	oModel:AddGrid( 'SRA_GRID', 'SRA_FIELD', oStrSRAGrd )
-	oModel:GetModel( 'SRA_GRID' ):SetDescription( 'Funcionarios' )
+				oXml:DOMChildNode()
 
-	oModel:SetRelation( 'SRA_GRID', { { 'RA_FILIAL', 'xFilial( "SRA" )' } }, SRA->( IndexKey( 1 ) ) )
+			End If
 
-	If oXml:Parse( cXML )
+			aAttNode   := oXML:DOMGetAttArray()
+			aChildNode := oXML:DOMGetChildArray()
 
-		If oXml:cPath == '/load' .And. oXml:DOMHasChildNode()
+			nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'field' } )
+			cfield    := aAttNode[ nPos, 2 ]
 
-			oXml:DOMChildNode()
+			nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'relation' } )
+			cRelation := If( nPos == 0, 'EQUAL', aAttNode[ nPos, 2 ] )
 
-			Do While AllwaysTrue()
+			If cRelation == "EQUAL"
 
-				If oXml:cPath == '/load/filter['+ AllTrim( cValToChar( nX ) ) + ']'
+				cRelation := '='
 
-					aAttNode   := oXML:DOMGetAttArray()
-					aChildNode := oXML:DOMGetChildArray()
+			ElseIf cRelation == "NOT_EQUAL"
 
-					If Len( aAttNode ) == 0 .And.; // 001
-					Len( aChildNode ) == 1 .And.;
-					aScan( aChildNode, { | X | X[ 1 ] == 'expression' .And. .Not. Empty( X[ 2 ] ) } ) # 0
+				cRelation := '<>'
 
-						ConOut( oXml:cPath + ' 001')
+			ElseIf cRelation == "LESS"
 
-					ElseIf Len( aAttNode ) == 1 .And.; //002
-					aScan( aAttNode, { | X | X[ 1 ] == 'field' .And. AllTrim( GetSx3Cache( X[ 2 ], 'X3_CAMPO' ) ) == X[ 2 ] } ) # 0 .And.;
-					Len( aChildNode ) == 1 .And.;
-					aScan( aChildNode, { | X | X[ 1 ] == 'value' .And. .Not. Empty( X[ 2 ] ) } ) # 0
+				cRelation := '<'
 
-						ConOut( oXml:cPath + ' 002')
+			ElseIf cRelation == "LESS_EQUAL"
 
-					ElseIf Len( aAttNode ) == 2 .And.; //003
-					aScan( aAttNode, { | X | X[ 1 ] == 'field' .And. AllTrim( GetSx3Cache( X[ 2 ], 'X3_CAMPO' ) ) == X[ 2 ] } ) # 0 .And.;
-					aScan( aAttNode, { | X | X[ 1 ] == 'relation' .And. AllTrim( X[ 2 ] ) $ 'EQUAL/NOT_EQUAL/LESS/LESS_EQUAL/GREATER/GREATER_EQUAL/CONTAINS/NOT_CONTAINS' } ) # 0 .And.;
-					Len( aChildNode ) == 1 .And.;
-					aScan( aChildNode, { | X | X[ 1 ] == 'value' .And. .Not. Empty( X[ 2 ] ) } ) # 0
+				cRelation := '<='
 
-						ConOut( oXml:cPath + ' 003')
+			ElseIf cRelation == "GREATER"
 
-					ElseIf 	Len( aAttNode ) == 3 .And.; //004
-					aScan( aAttNode, { | X | X[ 1 ] == 'field' .And. AllTrim( GetSx3Cache( X[ 2 ], 'X3_CAMPO' ) ) == X[ 2 ] } ) # 0 .And.;
-					aScan( aAttNode, { | X | X[ 1 ] == 'relation' .And. AllTrim( X[ 2 ] ) $ 'EQUAL/NOT_EQUAL/LESS/LESS_EQUAL/GREATER/GREATER_EQUAL/CONTAINS/NOT_CONTAINS' } ) # 0 .And.;
-					aScan( aAttNode, { | X | X[ 1 ] == 'operator' .And. AllTrim( X[ 2 ] ) $ 'AND/OR' } ) # 0 .And.;
-					Len( aChildNode ) == 1 .And.;
-					aScan( aChildNode, { | X | X[ 1 ] == 'value' .And. .Not. Empty( X[ 2 ] ) } ) # 0
+				cRelation := '>'
 
-						ConOut( oXml:cPath + ' 004')
+			ElseIf cRelation == "GREATER_EQUAL"
 
-					ElseIf Len( aAttNode ) == 2 .And.; //005
-					aScan( aAttNode, { | X | X[ 1 ] == 'field' .And. AllTrim( GetSx3Cache( X[ 2 ], 'X3_CAMPO' ) ) == X[ 2 ] } ) # 0 .And.;
-					aScan( aAttNode, { | X | X[ 1 ] == 'relation' .And. AllTrim( X[ 2 ] ) $ 'IS_CONTAINED/IS_NOT_CONTAINED' } ) # 0 .And.;
-					Len( aChildNode ) >= 1 .And.;
-					.Not. aScan( aChildNode, { | X | X[ 1 ] != 'value' .Or. Empty( X[ 2 ] ) } ) # 0
+				cRelation := '>='
 
-						ConOut( oXml:cPath + ' 005')
+			ElseIf cRelation == "CONTAINS"
 
-					ElseIf 	Len( aAttNode ) == 3 .And.; //006
-					aScan( aAttNode, { | X | X[ 1 ] == 'field' .And. AllTrim( GetSx3Cache( X[ 2 ], 'X3_CAMPO' ) ) == X[ 2 ] } ) # 0 .And.;
-					aScan( aAttNode, { | X | X[ 1 ] == 'relation' .And. AllTrim( X[ 2 ] ) $ 'IS_CONTAINED/IS_NOT_CONTAINED' } ) # 0 .And.;
-					aScan( aAttNode, { | X | X[ 1 ] == 'operator' .And. AllTrim( X[ 2 ] ) $ 'AND/OR' } ) # 0 .And.;
-					Len( aChildNode ) >= 1 .And.;
-					.Not. aScan( aChildNode, { | X | X[ 1 ] != 'value' .Or. Empty( X[ 2 ] ) } ) # 0
+				cRelation := 'LIKE'
 
-						ConOut( oXml:cPath + ' 006')
+			ElseIf cRelation == "NOT_CONTAINS"
 
-					Else
+				cRelation := 'NOT LIKE'
 
-						ConOut( oXml:cPath + ' ???')
+			ElseIf cRelation == "IS_CONTAINED"
 
-					End If
+				cRelation := 'IN'
 
-					//oModel:GetModel( 'SRA_GRID' ):SetLoadFilter()
+			ElseIf cRelation == "IS_NOT_CONTAINED"
 
-					VarInfo( 'aAttNode'  , aAttNode  , ,.F.)
-					VarInfo( 'aChildNode', aChildNode, ,.F.)
+				cRelation := 'NOT IN'
 
-					oXml:DOMNextNode()
+			End If
 
-					nX++
+			nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'operator' } )
+			cOperator := If( nPos == 0, 'AND', aAttNode[ nPos, 2 ] )
 
-				Else
+			cValue    := aChildNode[ 1, 2 ]
 
-					Exit
+			If cRelation $ "LIKE/NOT LIKE"
 
-				End IF
+				cValue := "'%" + cValue + "%'"
 
-			End Do
+			ElseIf cRelation $ "IN/NOT IN"
+
+				cValue := "(" + StrList( StrTokArr2( cValue, ",", .T. ) ) + ")"
+
+			Else
+
+				cValue    := "'" + cValue + "'"
+
+			EndIf
+
+			cQuery += cfield + " " + cRelation + " " + cValue + ENTER
+
+			If nX < nChild  
+
+				cQuery += cOperator + " " + ENTER
+
+			End If
+
+			oXml:DOMNextNode()
+
+		Next nX
+
+		cQuery := ChangeQuery( cQuery )
+
+		If TcSqlExec( cQuery ) < 0
+
+			cRet := TcSqlError()
+
+		Else
+
+			dbUseArea( .T., "TOPCONN", TcGenQry( ,, cQuery ) , cTmp, .F., .T. )
+
+			cTmp->( DbCloseArea() )
 
 		End If
 
 	End If
 
 	RestArea( aArea )
+
+Return cRet
+//------------------------------------------------------------------
+Static Function StrList( aList )
+
+	Local cRet := ""
+	Local nX   := 0
+	Local nLen := Len( aList )
+
+	For nX := 1 To nLen
+
+		cRet += "'" + AllTrim( aList[ nX ] ) + "'"
+
+		If nX < nLen
+
+			cRet += ','
+
+		End If
+
+	Next nX
 
 Return cRet
