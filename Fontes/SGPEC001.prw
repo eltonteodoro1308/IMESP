@@ -9,7 +9,6 @@ User Function SGPEC001( cXml )
 	Local aAttNode   := {}
 	Local aChildNode := {}
 	Local nX         := 0
-	Local cStr       := MemoRead( "C:\TOTVS\Developer Studio\Workspace-11.3\IMESP\seek.xml", .F. )
 	Local cQuery     := "SELECT * FROM " + RetSqlName( "SRA" ) + " SRA WHERE "
 	Local nPos       := 0
 	Local nChild     := 0
@@ -19,6 +18,7 @@ User Function SGPEC001( cXml )
 	Local cValue     := ''
 	Local cTmp       := GetNextAlias()
 
+	Local cStr       := MemoRead( "C:\TOTVS\Developer Studio\Workspace-11.3\IMESP\seek.xml", .F. )
 	Default cXml := cStr
 
 	If oXml:Parse( cXML ) .And. oXml:ParseSchemaFile('\schemas\seek.xsd')
