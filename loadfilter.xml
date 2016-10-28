@@ -1,39 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <loadfilter>
 	<filter field="RA_MAT">
-		<value>str</value>
+		<value>string</value>
 	</filter>
 	<filter field="RA_MAT" relation="EQUAL">
-		<value>str</value>
+		<value>string</value>
 	</filter>
 	<filter field="RA_MAT" relation="EQUAL" operator="AND">
-		<value>str</value>
+		<value>string</value>
 	</filter>
 	<filter field="RA_MAT" relation="NOT_EQUAL" operator="AND">
-		<value>str</value>
+		<value>string</value>
 	</filter>
 	<filter field="RA_MAT" relation="LESS" operator="OR">
-		<value>str</value>
+		<value>string</value>
 	</filter>
 	<filter field="RA_MAT" relation="LESS_EQUAL" operator="AND">
-		<value>str</value>
+		<value>string</value>
 	</filter>
 	<filter field="RA_MAT" relation="GREATER" operator="OR">
-		<value>str</value>
+		<value>string</value>
 	</filter>
 	<filter field="RA_MAT" relation="GREATER_EQUAL" operator="OR">
-		<value>str</value>
+		<value>string</value>
 	</filter>
 	<filter field="RA_MAT" relation="CONTAINS" operator="AND">
-		<value>str</value>
+		<value>string</value>
 	</filter>
 	<filter field="RA_MAT" relation="NOT_CONTAINS" operator="OR">
-		<value>str</value>
+		<value>string</value>
 	</filter>
 	<filter field="RA_MAT" relation="IS_CONTAINED">
-		<value>str,str,str,str,str,str,str,str,str</value>
+		<value>string,string,string,string,string,string,string,string,string</value>
 	</filter>
 	<filter field="RA_MAT" relation="IS_NOT_CONTAINED" operator="OR">
-		<value>str,str,str,str,str,str,str,str,str</value>
+		<value>string,string,string,string,string,string,string,string,string</value>
 	</filter>
 </loadfilter>

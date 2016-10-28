@@ -58,11 +58,11 @@
 <TOTVSIntegrator>
 	<GlobalProduct>TOTVS|EAI</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
-	<GlobalDocumentFunctionCode>EAIDIVISAO</GlobalDocumentFunctionCode>
-	<GlobalDocumentFunctionDescription>DIVISAO</GlobalDocumentFunctionDescription>
+	<GlobalDocumentFunctionCode>SGPEC001</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>FUNCIONARIOS</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2016-09-30T12:00:00Z</DocDateTime>
-	<DocIdentifier>58099206-80CB-4E39-873D-E48FC1D4236C</DocIdentifier>
+	<DocDateTime>2016-10-26T00:00:00Z</DocDateTime>
+	<DocIdentifier>15EAE2D4-1BF4-4B6D-9BC4-EC2DF862838B</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -71,13 +71,17 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier>EAIDIVISAO</Identifier>
-			<FunctionCode>U_EAIDIVISAO</FunctionCode>
+			<Identifier>FUNCIONARIOS</Identifier>
+			<FunctionCode>U_SGPEC001</FunctionCode>
 			<Content>
-				<DIVISAO>
-				<DIVIDENDO>13</DIVIDENDO>
-				<DIVISOR>3</DIVISOR>
-				</DIVISAO>
+				<loadfilter>
+					<filter field="RA_NOME" relation="CONTAINS" operator="OR">
+						<value>neve</value>
+					</filter>
+					<filter field="RA_NOME" relation="CONTAINS">
+						<value>mouse</value>
+					</filter>
+				</loadfilter>
 			</Content>
 		</Layouts>
 	</Message>

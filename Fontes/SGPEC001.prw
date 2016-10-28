@@ -1,4 +1,3 @@
-#DEFINE ENTER Chr(13) + Chr(10)
 #INCLUDE 'TOTVS.CH'
 
 User Function SGPEC001( cXml )
@@ -6,10 +5,13 @@ User Function SGPEC001( cXml )
 	Local cRet       := ''
 	Local oXml       := TXmlManager():New()
 	Local aArea      := GetArea()
+	Local aAreaSM0   := SM0->( GetArea() )
 	Local aAttNode   := {}
 	Local aChildNode := {}
 	Local nX         := 0
-	Local cQuery     := "SELECT * FROM " + RetSqlName( "SRA" ) + " SRA WHERE "
+	Local nY         := 1
+	Local cQuery     := ''
+	Local cCase      := ''
 	Local nPos       := 0
 	Local nChild     := 0
 	Local cfield     := ''
@@ -18,12 +20,53 @@ User Function SGPEC001( cXml )
 	Local cValue     := ''
 	Local cTmp       := GetNextAlias()
 
-	Local cStr       := MemoRead( "C:\TOTVS\Developer Studio\Workspace-11.3\IMESP\seek.xml", .F. )
-	Default cXml := cStr
+	SM0->( DbSetOrder( 1 ) )
+	SM0->( DbSeek( cEmpAnt ) )
 
-	If oXml:Parse( cXML ) .And. oXml:ParseSchemaFile('\schemas\seek.xsd')
+	cCase += "CASE "
 
-		nChild := oXml:DOMChildCount() 
+	Do While SM0->( .Not. Eof() ) .And. SM0->M0_CODIGO == cEmpAnt
+
+		cCase += "WHEN SRA.RA_FILIAL = '" + SM0->M0_CODFIL + "' THEN '" + AllTrim( SM0->M0_FILIAL ) + "' "
+
+		SM0->( DbSkip() )
+
+	End Do
+
+	cCase += "ELSE '' "
+	cCase += "END SM0_NOME,"
+
+	SM0->( RestArea( aAreaSM0 ) )
+
+	cQuery += "SELECT           "
+	cQuery += "RA_MAT          ,"
+	cQuery += "RA_NOME         ,"
+	cQuery += "RA_NOMECMP      ,"
+	cQuery += "RA_APELIDO      ,"
+	cQuery += "RA_CARGO        ,"
+	cQuery +=  cCase //M0_FILIAL
+	cQuery += "RA_XRAMAL  = '' ,"
+	cQuery += "RA_XRAMAL2 = '' ,"
+	cQuery += "RA_XRAMAL3 = '' ,"
+	cQuery += "RA8_DEPTO  = '' ,"
+	cQuery += "RA_XNCARGO = '' ,"
+	cQuery += "RA_NASC         ,"
+	cQuery += "RA_FILIAL       ,"
+	cQuery += "RA_SITFOLH      ,"
+	cQuery += "RA_EMAIL        ,"
+	cQuery += "RA_CIC          ,"
+	cQuery += "SIGAORG    = '' ,"
+	cQuery += "RA_FILIAL       ,"
+	cQuery += "RA_XSIGLA  = '' ,"
+	cQuery += "RA_XLOGIN  = ''  "
+	cQuery += " FROM "
+	cQuery += RetSqlName( "SRA" ) + " SRA WHERE "
+
+	If oXml:Parse( cXML ) .And.;
+	oXml:ParseSchemaFile('\schemas\loadfilter.xsd') .And.;
+	oXml:SchemaValidate()
+
+		nChild := oXml:DOMChildCount()
 
 		For nX := 1 To nChild
 
@@ -87,7 +130,7 @@ User Function SGPEC001( cXml )
 			nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'operator' } )
 			cOperator := If( nPos == 0, 'AND', aAttNode[ nPos, 2 ] )
 
-			cValue    := aChildNode[ 1, 2 ]
+			cValue    := Upper( aChildNode[ 1, 2 ] )
 
 			If cRelation $ "LIKE/NOT LIKE"
 
@@ -103,11 +146,11 @@ User Function SGPEC001( cXml )
 
 			EndIf
 
-			cQuery += cfield + " " + cRelation + " " + cValue + ENTER
+			cQuery += "UPPER(" + cfield + ") " + cRelation + " " + cValue
 
-			If nX < nChild  
+			If nX < nChild
 
-				cQuery += cOperator + " " + ENTER
+				cQuery += " " + cOperator + " "
 
 			End If
 
@@ -116,7 +159,7 @@ User Function SGPEC001( cXml )
 		Next nX
 
 		cQuery := ChangeQuery( cQuery )
-
+		ConOut( cQuery )
 		If TcSqlExec( cQuery ) < 0
 
 			cRet := TcSqlError()
@@ -125,9 +168,50 @@ User Function SGPEC001( cXml )
 
 			dbUseArea( .T., "TOPCONN", TcGenQry( ,, cQuery ) , cTmp, .F., .T. )
 
-			cTmp->( DbCloseArea() )
+			( cTmp )->( DbGoTop() )
+
+			If ( cTmp )->( .Not. Eof() )
+
+				cRet += '<?xml version="1.0" encoding="UTF-8"?>'
+				cRet += '<SGPEC001 Operation="1">'
+
+				Do While ( cTmp )->( .Not. Eof() )
+
+					cRet += '<SGPEC001_SRA record="' + cValToChar(nY) + '">'
+
+					For nX := 1 To ( cTmp )->( FCount() )
+
+						cField := AllTrim( ( cTmp )->( FieldName( nX ) ) )
+
+						cRet += '<' + cField + ' order="'+ cValToChar( nX ) +'"><value>'
+						cRet += AllTrim( ( cTmp )->( FieldGet( nX ) ) )
+						cRet += '</value></' + cField + '>'
+
+					Next nX
+
+					nY++
+
+					( cTmp )->( DbSkip() )
+
+					cRet += '</SGPEC001_SRA>'
+
+				End Do
+
+				cRet += '</SGPEC001>'
+
+			Else
+
+				cRet := 'Nao ha registros para esta consulta'
+
+			EndIf
+
+			( cTmp )->( DbCloseArea() )
 
 		End If
+
+	Else
+
+		cRet := oXml:LastError()
 
 	End If
 
