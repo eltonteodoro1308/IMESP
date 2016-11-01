@@ -159,7 +159,7 @@ User Function SGPEC001( cXml )
 		Next nX
 
 		cQuery := ChangeQuery( cQuery )
-		ConOut( cQuery )
+
 		If TcSqlExec( cQuery ) < 0
 
 			cRet := TcSqlError()
