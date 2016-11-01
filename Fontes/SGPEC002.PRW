@@ -1,6 +1,6 @@
 #include 'totvs.ch'
 
-User Function GetFoto(__aCookies,__aPostParms,__nProcID,__aProcParms,__cHTTPPage)
+User Function SGPEC002(__aCookies,__aPostParms,__nProcID,__aProcParms,__cHTTPPage)
 
 	Local cHTML       := ''
 
