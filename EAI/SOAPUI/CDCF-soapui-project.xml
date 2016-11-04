@@ -1,0 +1,2566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="324e8646-8410-4f9c-968a-5d68b0e507b6" activeEnvironment="Default" name="CDCF" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="2bb7c47a-cb40-4d6c-b280-abaa03ca6aa0" wsaVersion="NONE" name="CentralClientesSoap12" type="wsdl" bindingName="{http://servicos.imprensaoficial.com.br/Clientes/}CentralClientesSoap12" soapVersion="1_2" anonymous="optional" definition="file:/C:/Users/elton.alves/Desktop/cdcf.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/C:/Users/elton.alves/Desktop/cdcf.wsdl"><con:part><con:url>file:/C:/Users/elton.alves/Desktop/cdcf.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://servicos.imprensaoficial.com.br/Clientes/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://servicos.imprensaoficial.com.br/Clientes/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>&lt;h2>Imprensa Oficial do Estado S.A.&lt;BR/> IO|Central de Clientes e Fornecedores&lt;/h2></wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://servicos.imprensaoficial.com.br/Clientes/">
+      <s:element name="PreConsultaClientesParaIntegrar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsulta"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParametrosConsulta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSistema" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdConsulta" nillable="true" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParametrosIntegracao">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ParametrosConsulta">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="ClientesIntegracao" type="tns:ClientesIntegracao"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClientesIntegracao">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraAlteracao" type="s:dateTime"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParametrosConsultaContatos">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ParametrosConsulta">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="IdContato" type="s:int"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ParametroConsultaPalavraChave">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ParametrosConsulta">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NomeCliente" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="DocumentoCliente" type="s:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="ClienteAtivo" nillable="true" type="s:boolean"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="TipoPesquisa" nillable="true" type="tns:TipoPesquisa"/>
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="IdCliente" nillable="true" type="s:int"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="TipoPesquisa">
+        <s:restriction base="s:string">
+          <s:enumeration value="Contem"/>
+          <s:enumeration value="IniciaCom"/>
+          <s:enumeration value="TerminaCom"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ParametroConsultaPalavraChaveContato">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ParametrosConsulta">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="IdClienteContato" type="s:int"/>
+              <s:element minOccurs="0" maxOccurs="1" name="NomeContato" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="DocumentoContato" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="ClienteContatoAtivo" nillable="true" type="s:boolean"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="TipoPesquisa" nillable="true" type="tns:TipoPesquisa"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ParametrosConsultaClientes">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ParametrosConsulta">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="IdCliente" type="s:int"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PreConsultaClientesParaIntegrarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PreConsultaClientesParaIntegrarResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="RegistroConsulta" type="tns:RegistroConsulta"/>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="IntegracaoClientes" type="tns:IntegracaoClientes"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="ErroConsulta" type="tns:ErroWebService"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RegistroConsulta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdConsulta" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRetorno" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IntegracaoClientes">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoERP" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentoCliente" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoEsfera" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraAlteracao" type="s:dateTime"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ErroWebService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MensagemExcecao" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SolicitaClientesParaIntegrar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsulta"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitaClientesParaIntegrarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SolicitaClientesParaIntegrarResult" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Clientes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cliente" type="tns:Cliente"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistroConsulta" type="tns:RegistroConsulta"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErroConsulta" type="tns:ErroWebService"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IntegracaoClientes" type="tns:IntegracaoClientes"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeCliente" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentoCliente" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoERP" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteAtivo" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EnvioCobrancaEmail" nillable="true" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoEsfera" type="s:unsignedByte"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Observacao" nillable="true" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClienteContato" nillable="true" type="tns:ClienteContato"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MeioComunicacao" nillable="true" type="tns:MeioComunicacao"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ControleRegistro" nillable="true" type="tns:ControleRegistro"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Endereco" nillable="true" type="tns:Endereco"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PessoaFisica" nillable="true" type="tns:PessoaFisica"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PessoaJuridica" nillable="true" type="tns:PessoaJuridica"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OrgaoPublico" nillable="true" type="tns:OrgaoPublico"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataCadastro" type="s:dateTime"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClienteContato">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdClienteContato" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPessoaFisica" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeContato" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Funcao" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DonoConta" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CotacaoCompras" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="FaturaPublicacao" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Financeiro" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NotaFiscalEletronica" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ServicosGraficos" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteContatoAtivo" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PerfilClienteContato" type="tns:PerfilClienteContato"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CPF" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataNascimento" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MeioComunicacao" type="tns:MeioComunicacao"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PessoaFisica" type="tns:PessoaFisica"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataCadastro" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="BoletinsEletronicos" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClienteContatoAutenticacao" type="tns:AutenticacaoClienteContato"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTemp" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PerfilClienteContato">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoClienteContato" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ControleRegistro">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSistemaCriacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSistemaAlteracao" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuarioCriacao" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuarioAlteracao" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraCriacao" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraAlteracao" nillable="true" type="s:dateTime"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MeioComunicacao">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMeioComunicacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoContato" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DDI" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DDD" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Telefone" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Ramal" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Email" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AceitaComunicacaoEmail" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AceitaComunicacaoSms" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ApelidoContato" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EmailHtml" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PessoaFisica">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPessoaFisica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoSexo" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoSituacaoCadastral" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPais" nillable="true" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CPF" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="RG" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OrgaoEmissorRg" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UfEmissaoRg" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataEmissaoRG" nillable="true" type="s:date"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataNascimento" nillable="true" type="s:date"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataAtualizacaoReceita" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Estrangeiro" nillable="true" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AnoObito" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeMae" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PaisResidencia" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoPaisResidencia" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TituloEleitor" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UnidadeAdministrativa" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ExercicioOcupacao" nillable="true" type="s:short"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NaturezaOcupacao" nillable="true" type="s:unsignedByte"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OcupacaoPrincipal" nillable="true" type="s:unsignedByte"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataCadastro" type="s:date"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AutenticacaoClienteContato">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IDClienteContatoAutenticacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IDClienteContato" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SenhaHash" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Matricula" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeComum" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ChavePublica" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Acessos" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteContatoAutenticacaoAtivo" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraUltimaAutenticacao" type="s:dateTime"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IDCliente" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Endereco">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdEndereco" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdOrigemEnderecoCriacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdOrigemEnderecoAlteracao" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPais" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoEndereco" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="TipoLogradouro" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Logradouro" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LogradouroNumero" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LogradouroComplemento" nillable="true" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Bairro" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CEP" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Municipio" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoMunicipio" nillable="true" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SiglaUnidadeFederativa" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ApelidoEndereco" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AceitaComunicacaoCorrespondendia" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomePais" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PessoaJuridica">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPessoaJuridica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoPessoaJuridica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoPortePessoaJuridica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSituacaoPessoaJuridica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPais" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IsOrgaoPublico" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CNPJ" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NaturezaJuridica" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="InscricaoEstadual" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="InscricaoMunicipal" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentoEstrangeiro" nillable="true" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RazaoSocial" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeFantasia" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataAbertura" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataSituacaoCadastral" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CidadeExterior" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PaisDomicilio" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoPaisDomicilio" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraConsultaRFB" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ConferidoBEC" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ConferidoSintegra" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ValidacaoPresencial" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrgaoPublico">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdOrgaoPublico" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeOrgaoPublico" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UnidadeAdministrativa" nillable="true" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SiglaUnidadeFederativa" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UnidadeOrganizadora" nillable="true" type="tns:UnidadeOrcamentaria"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PessoaJuridica" type="tns:PessoaJuridica"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OrgaoPublicoVinculado" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="UnidadeGestoraOrcamentaria" type="tns:UnidadeOrcamentaria"/>
+          <s:element minOccurs="0" maxOccurs="1" name="UnidadeGestoraExecutora" type="tns:UnidadeOrcamentaria"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UnidadeOrcamentaria">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUnidadeOrcamentaria" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUnidadeOrcamentariaOrigem" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoUnidadeOrcamentaria" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeUnidadeOrcamentaria" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UnidadeOrcamentariaAtiva" nillable="true" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsultaClientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaClienteResult" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaClientePalavraChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametroConsultaPalavraChave"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaClientePalavraChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaClientePalavraChaveResult" type="tns:RetornoPesquisaCliente"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetornoPesquisaCliente">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cliente" type="tns:PesquisaCliente"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistroConsulta" type="tns:RegistroConsulta"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErroConsulta" type="tns:ErroWebService"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PesquisaCliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeCliente" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentoCliente" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoERP" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteAtivo" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EnvioCobrancaEmail" nillable="true" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoEsfera" type="s:unsignedByte"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeFantasia" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMeioComunicacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoContato" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DDI" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DDD" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Telefone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Ramal" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EmailHtml" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaClienteContatoPalavraChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametroConsultaPalavraChaveContato"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaClienteContatoPalavraChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaClienteContatoPalavraChaveResult" type="tns:RetornoPesquisaClienteContato"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetornoPesquisaClienteContato">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClienteContato" type="tns:PesquisaClienteContato"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistroConsulta" type="tns:RegistroConsulta"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErroConsulta" type="tns:ErroWebService"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PesquisaClienteContato">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeCliente" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentoCliente" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdClienteContato" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPessoaFisica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeContato" nillable="true" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Funcao" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DonoConta" nillable="true" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMeioComunicacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoContato" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DDI" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DDD" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Telefone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Ramal" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EmailHtml" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteContatoAtivo" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoSexo" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Cpf" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Rg" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AceitaComunicacaoEmail" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AceitaComunicacaoSms" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataCadastro" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteAtivo" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GeraCodigoErp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosGeraCodigoErp"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParametrosGeraCodigoErp">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IDSistema" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IDCliente" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GeraCodigoErpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeraCodigoErpResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RelacionaClienteSistema">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosRelacionaClienteSistema"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParametrosRelacionaClienteSistema">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IDSistema" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IDCliente" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteSistemaAtivo" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EnvioCobrancaEmail" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RelacionaClienteSistemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RelacionaClienteSistemaResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaEnderecos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsultaClientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaEnderecosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaEnderecosResult" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaContatos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsultaClientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaContatosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaContatosResult" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaAutenticacoesContato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsultaClienteContato"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParametrosConsultaClienteContato">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSistema" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdClienteContato" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdConsulta" nillable="true" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaAutenticacoesContatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaAutenticacoesContatoResult" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmaIntegracao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosIntegracao"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmaIntegracaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmaIntegracaoResult" type="tns:ArrayOfIntegracaoConfirmacao"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIntegracaoConfirmacao">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IntegracaoConfirmacao" nillable="true" type="tns:IntegracaoConfirmacao"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IntegracaoConfirmacao">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Resultado" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ErroConfirmacao" nillable="true" type="tns:ErroWebService"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConfirmaIntegracaoCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idSistema" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="idConsulta" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="dataHoraAlteracao" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmaIntegracaoClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmaIntegracaoClienteResult" type="tns:ArrayOfIntegracaoConfirmacao"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaTabelasAuxiliares">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ConsultaTabelasAuxiliaresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaTabelasAuxiliaresResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Erro" type="tns:ErroTabelaAuxiliares"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ErroTabelaAuxiliares">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MensagemExcecao" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfIntegracaoConfirmacao" nillable="true" type="tns:ArrayOfIntegracaoConfirmacao"/>
+      <s:element name="TabelasAuxiliares">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Erro" type="tns:ErroTabelaAuxiliares"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PreConsultaClientesParaIntegrarSoapIn">
+    <wsdl:part name="parameters" element="tns:PreConsultaClientesParaIntegrar"/>
+  </wsdl:message>
+  <wsdl:message name="PreConsultaClientesParaIntegrarSoapOut">
+    <wsdl:part name="parameters" element="tns:PreConsultaClientesParaIntegrarResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SolicitaClientesParaIntegrarSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitaClientesParaIntegrar"/>
+  </wsdl:message>
+  <wsdl:message name="SolicitaClientesParaIntegrarSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitaClientesParaIntegrarResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaCliente"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaClienteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClientePalavraChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaClientePalavraChave"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClientePalavraChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaClientePalavraChaveResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClienteContatoPalavraChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaClienteContatoPalavraChave"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClienteContatoPalavraChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaClienteContatoPalavraChaveResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GeraCodigoErpSoapIn">
+    <wsdl:part name="parameters" element="tns:GeraCodigoErp"/>
+  </wsdl:message>
+  <wsdl:message name="GeraCodigoErpSoapOut">
+    <wsdl:part name="parameters" element="tns:GeraCodigoErpResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RelacionaClienteSistemaSoapIn">
+    <wsdl:part name="parameters" element="tns:RelacionaClienteSistema"/>
+  </wsdl:message>
+  <wsdl:message name="RelacionaClienteSistemaSoapOut">
+    <wsdl:part name="parameters" element="tns:RelacionaClienteSistemaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaEnderecosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaEnderecos"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaEnderecosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaEnderecosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaContatosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaContatos"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaContatosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaContatosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaAutenticacoesContatoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaAutenticacoesContato"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaAutenticacoesContatoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaAutenticacoesContatoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmaIntegracao"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmaIntegracaoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmaIntegracaoCliente"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmaIntegracaoClienteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTabelasAuxiliaresSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaTabelasAuxiliares"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTabelasAuxiliaresSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaTabelasAuxiliaresResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteHttpGetIn">
+    <wsdl:part name="idSistema" type="s:string"/>
+    <wsdl:part name="idConsulta" type="s:string"/>
+    <wsdl:part name="idCliente" type="s:string"/>
+    <wsdl:part name="dataHoraAlteracao" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfIntegracaoConfirmacao"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTabelasAuxiliaresHttpGetIn"/>
+  <wsdl:message name="ConsultaTabelasAuxiliaresHttpGetOut">
+    <wsdl:part name="Body" element="tns:TabelasAuxiliares"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteHttpPostIn">
+    <wsdl:part name="idSistema" type="s:string"/>
+    <wsdl:part name="idConsulta" type="s:string"/>
+    <wsdl:part name="idCliente" type="s:string"/>
+    <wsdl:part name="dataHoraAlteracao" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfIntegracaoConfirmacao"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTabelasAuxiliaresHttpPostIn"/>
+  <wsdl:message name="ConsultaTabelasAuxiliaresHttpPostOut">
+    <wsdl:part name="Body" element="tns:TabelasAuxiliares"/>
+  </wsdl:message>
+  <wsdl:portType name="CentralClientesSoap">
+    <wsdl:operation name="PreConsultaClientesParaIntegrar">
+      <wsdl:documentation>Retorna a pré-consulta com a lista com informações resumidas de Clientes que precisam ser integrados. Se informar um IdConsulta o sistema trará os mesmos dados que foram retornados pela consulta informada.</wsdl:documentation>
+      <wsdl:input message="tns:PreConsultaClientesParaIntegrarSoapIn"/>
+      <wsdl:output message="tns:PreConsultaClientesParaIntegrarSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitaClientesParaIntegrar">
+      <wsdl:documentation>Lista os clientes a serem integrados.&lt;br />Se passar 0 (zero) no parametro de IdConsulta será enviado os clientes a serem integrados. Se enviar o Id de Consulta de Consulta já efetuada, retorna os clientes listados por aquela pesquisa.</wsdl:documentation>
+      <wsdl:input message="tns:SolicitaClientesParaIntegrarSoapIn"/>
+      <wsdl:output message="tns:SolicitaClientesParaIntegrarSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCliente">
+      <wsdl:documentation>Consulta um ou mais clientes.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaClienteSoapIn"/>
+      <wsdl:output message="tns:ConsultaClienteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClientePalavraChave">
+      <wsdl:documentation>Pesquisa clientes por palavra chave. &lt;br />
+            PageIndex é a página atual da Grid, e PageSize é a quantidade de registros por página, ou seja o tamanho da página.&lt;br />
+            TipoPesquisa, como será a busca por palavra-chave = 1)Contem  2)IniciaCom 3)TerminaCom&lt;br /></wsdl:documentation>
+      <wsdl:input message="tns:ConsultaClientePalavraChaveSoapIn"/>
+      <wsdl:output message="tns:ConsultaClientePalavraChaveSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClienteContatoPalavraChave">
+      <wsdl:documentation>Pesquisa Contatos de Clientes por palavra chave.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaClienteContatoPalavraChaveSoapIn"/>
+      <wsdl:output message="tns:ConsultaClienteContatoPalavraChaveSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GeraCodigoErp">
+      <wsdl:documentation>Gera ou consulta código ERP do cliente.</wsdl:documentation>
+      <wsdl:input message="tns:GeraCodigoErpSoapIn"/>
+      <wsdl:output message="tns:GeraCodigoErpSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RelacionaClienteSistema">
+      <wsdl:documentation>Relaciona o cliente ao sistema.</wsdl:documentation>
+      <wsdl:input message="tns:RelacionaClienteSistemaSoapIn"/>
+      <wsdl:output message="tns:RelacionaClienteSistemaSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEnderecos">
+      <wsdl:documentation>Consulta os endereços de um ou mais clientes.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaEnderecosSoapIn"/>
+      <wsdl:output message="tns:ConsultaEnderecosSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaContatos">
+      <wsdl:documentation>Consulta os contatos de um ou mais clientes.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaContatosSoapIn"/>
+      <wsdl:output message="tns:ConsultaContatosSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaAutenticacoesContato">
+      <wsdl:documentation>Consulta as autenticações de um contato do clientes.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaAutenticacoesContatoSoapIn"/>
+      <wsdl:output message="tns:ConsultaAutenticacoesContatoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracao">
+      <wsdl:documentation>Confirma a integração e Comita a integração. Retorna true se confirmado, ou false se não foi possível confirmar.</wsdl:documentation>
+      <wsdl:input message="tns:ConfirmaIntegracaoSoapIn"/>
+      <wsdl:output message="tns:ConfirmaIntegracaoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <wsdl:documentation>Confirma a integração de um único cliente.</wsdl:documentation>
+      <wsdl:input message="tns:ConfirmaIntegracaoClienteSoapIn"/>
+      <wsdl:output message="tns:ConfirmaIntegracaoClienteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <wsdl:documentation>Retorna as tabelas auxiliares, com a descrição dos tipos retornados.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaTabelasAuxiliaresSoapIn"/>
+      <wsdl:output message="tns:ConsultaTabelasAuxiliaresSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CentralClientesHttpGet">
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <wsdl:documentation>Confirma a integração de um único cliente.</wsdl:documentation>
+      <wsdl:input message="tns:ConfirmaIntegracaoClienteHttpGetIn"/>
+      <wsdl:output message="tns:ConfirmaIntegracaoClienteHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <wsdl:documentation>Retorna as tabelas auxiliares, com a descrição dos tipos retornados.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaTabelasAuxiliaresHttpGetIn"/>
+      <wsdl:output message="tns:ConsultaTabelasAuxiliaresHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CentralClientesHttpPost">
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <wsdl:documentation>Confirma a integração de um único cliente.</wsdl:documentation>
+      <wsdl:input message="tns:ConfirmaIntegracaoClienteHttpPostIn"/>
+      <wsdl:output message="tns:ConfirmaIntegracaoClienteHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <wsdl:documentation>Retorna as tabelas auxiliares, com a descrição dos tipos retornados.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaTabelasAuxiliaresHttpPostIn"/>
+      <wsdl:output message="tns:ConsultaTabelasAuxiliaresHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CentralClientesSoap" type="tns:CentralClientesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PreConsultaClientesParaIntegrar">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/PreConsultaClientesParaIntegrar" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitaClientesParaIntegrar">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/SolicitaClientesParaIntegrar" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCliente">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaCliente" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClientePalavraChave">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClientePalavraChave" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClienteContatoPalavraChave">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClienteContatoPalavraChave" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeraCodigoErp">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/GeraCodigoErp" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelacionaClienteSistema">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/RelacionaClienteSistema" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEnderecos">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaEnderecos" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaContatos">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaContatos" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaAutenticacoesContato">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaAutenticacoesContato" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracao">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracao" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracaoCliente" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaTabelasAuxiliares" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CentralClientesSoap12" type="tns:CentralClientesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PreConsultaClientesParaIntegrar">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/PreConsultaClientesParaIntegrar" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitaClientesParaIntegrar">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/SolicitaClientesParaIntegrar" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCliente">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaCliente" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClientePalavraChave">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClientePalavraChave" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClienteContatoPalavraChave">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClienteContatoPalavraChave" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeraCodigoErp">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/GeraCodigoErp" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelacionaClienteSistema">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/RelacionaClienteSistema" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEnderecos">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaEnderecos" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaContatos">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaContatos" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaAutenticacoesContato">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaAutenticacoesContato" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracao">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracao" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracaoCliente" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaTabelasAuxiliares" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CentralClientesHttpGet" type="tns:CentralClientesHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <http:operation location="/ConfirmaIntegracaoCliente"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <http:operation location="/ConsultaTabelasAuxiliares"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CentralClientesHttpPost" type="tns:CentralClientesHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <http:operation location="/ConfirmaIntegracaoCliente"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <http:operation location="/ConsultaTabelasAuxiliares"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CentralClientes">
+    <wsdl:documentation>&lt;h2>Imprensa Oficial do Estado S.A.&lt;BR/> IO|Central de Clientes e Fornecedores&lt;/h2></wsdl:documentation>
+    <wsdl:port name="CentralClientesSoap" binding="tns:CentralClientesSoap">
+      <soap:address location="http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CentralClientesSoap12" binding="tns:CentralClientesSoap12">
+      <soap12:address location="http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CentralClientesHttpGet" binding="tns:CentralClientesHttpGet">
+      <http:address location="http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CentralClientesHttpPost" binding="tns:CentralClientesHttpPost">
+      <http:address location="http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint></con:endpoints><con:operation id="bd4918e3-f282-4b85-a2f2-f157d9419a0b" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracao" name="ConfirmaIntegracao" bindingOperationName="ConfirmaIntegracao" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0bee33cb-a749-411c-bfa1-359f1246b0c7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:ConfirmaIntegracao>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <!--Zero or more repetitions:-->\r
+            <cli:ClientesIntegracao>\r
+               <cli:IdCliente>?</cli:IdCliente>\r
+               <cli:DataHoraAlteracao>?</cli:DataHoraAlteracao>\r
+            </cli:ClientesIntegracao>\r
+         </cli:parametros>\r
+      </cli:ConfirmaIntegracao>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConfirmaIntegracaoRequest"/></con:call></con:operation><con:operation id="92b6a4b9-0a21-43d8-906d-45a9292ea2c3" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracaoCliente" name="ConfirmaIntegracaoCliente" bindingOperationName="ConfirmaIntegracaoCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5472217d-ce86-4b02-ba38-6b73095cd99d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:ConfirmaIntegracaoCliente>\r
+         <cli:idSistema>?</cli:idSistema>\r
+         <cli:idConsulta>?</cli:idConsulta>\r
+         <cli:idCliente>?</cli:idCliente>\r
+         <cli:dataHoraAlteracao>?</cli:dataHoraAlteracao>\r
+      </cli:ConfirmaIntegracaoCliente>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConfirmaIntegracaoClienteRequest"/></con:call></con:operation><con:operation id="8167e969-3aa1-4bbe-9d6b-15753dd92fd9" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaAutenticacoesContato" name="ConsultaAutenticacoesContato" bindingOperationName="ConsultaAutenticacoesContato" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="98e46eb8-599b-4adf-9310-941d31a7bbd7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:ConsultaAutenticacoesContato>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+            <cli:IdClienteContato>?</cli:IdClienteContato>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+         </cli:parametros>\r
+      </cli:ConsultaAutenticacoesContato>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaAutenticacoesContatoRequest"/></con:call></con:operation><con:operation id="fe66e0e9-5afe-41e7-8517-c278bf0ecc86" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaCliente" name="ConsultaCliente" bindingOperationName="ConsultaCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8ead4ce0-b40c-4d29-9a98-335eed80a296" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:ConsultaCliente>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <!--Zero or more repetitions:-->\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+         </cli:parametros>\r
+      </cli:ConsultaCliente>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaClienteRequest"/></con:call></con:operation><con:operation id="f89d50d0-4491-4153-97a1-2e177fcc097b" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClienteContatoPalavraChave" name="ConsultaClienteContatoPalavraChave" bindingOperationName="ConsultaClienteContatoPalavraChave" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="50dc1d20-2e28-4ab3-accd-b6f5e7d08335" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:ConsultaClienteContatoPalavraChave>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+            <cli:IdClienteContato>?</cli:IdClienteContato>\r
+            <!--Optional:-->\r
+            <cli:NomeContato>?</cli:NomeContato>\r
+            <!--Optional:-->\r
+            <cli:DocumentoContato>?</cli:DocumentoContato>\r
+            <!--Optional:-->\r
+            <cli:Email>?</cli:Email>\r
+            <cli:ClienteContatoAtivo>?</cli:ClienteContatoAtivo>\r
+            <cli:PageIndex>?</cli:PageIndex>\r
+            <cli:PageSize>?</cli:PageSize>\r
+            <cli:TipoPesquisa>?</cli:TipoPesquisa>\r
+         </cli:parametros>\r
+      </cli:ConsultaClienteContatoPalavraChave>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaClienteContatoPalavraChaveRequest"/></con:call></con:operation><con:operation id="1a6226e3-8677-4920-a682-89d2eed26244" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClientePalavraChave" name="ConsultaClientePalavraChave" bindingOperationName="ConsultaClientePalavraChave" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8665be93-2320-4a26-b533-3c6501c3a2e7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:ConsultaClientePalavraChave>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <!--Optional:-->\r
+            <cli:NomeCliente>?</cli:NomeCliente>\r
+            <!--Optional:-->\r
+            <cli:DocumentoCliente>?</cli:DocumentoCliente>\r
+            <cli:ClienteAtivo>?</cli:ClienteAtivo>\r
+            <cli:PageIndex>?</cli:PageIndex>\r
+            <cli:PageSize>?</cli:PageSize>\r
+            <cli:TipoPesquisa>?</cli:TipoPesquisa>\r
+            <!--Optional:-->\r
+            <cli:Email>?</cli:Email>\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+         </cli:parametros>\r
+      </cli:ConsultaClientePalavraChave>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaClientePalavraChaveRequest"/></con:call></con:operation><con:operation id="2cea5502-e65b-4d15-94ee-442e36be6317" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaContatos" name="ConsultaContatos" bindingOperationName="ConsultaContatos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1fbade8b-790b-49fa-bc6d-aa6a129fcc55" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:ConsultaContatos>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <!--Zero or more repetitions:-->\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+         </cli:parametros>\r
+      </cli:ConsultaContatos>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaContatosRequest"/></con:call></con:operation><con:operation id="a2c6ffce-a8d4-4cbb-b67c-e46ecc0d197b" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaEnderecos" name="ConsultaEnderecos" bindingOperationName="ConsultaEnderecos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="52f914c2-8a3f-4766-a982-adaa478b728a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:ConsultaEnderecos>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <!--Zero or more repetitions:-->\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+         </cli:parametros>\r
+      </cli:ConsultaEnderecos>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaEnderecosRequest"/></con:call></con:operation><con:operation id="e8cd469a-ee61-4f5d-84d0-780c99994bb8" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaTabelasAuxiliares" name="ConsultaTabelasAuxiliares" bindingOperationName="ConsultaTabelasAuxiliares" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f74bd2a2-781a-498f-944f-7fd75ca602af" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:ConsultaTabelasAuxiliares/>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaTabelasAuxiliaresRequest"/></con:call></con:operation><con:operation id="b36524a6-284a-4c0e-9a19-b97b7a2be46d" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/GeraCodigoErp" name="GeraCodigoErp" bindingOperationName="GeraCodigoErp" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="69d7996e-76f6-4293-a999-5951350676f4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:GeraCodigoErp>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IDSistema>?</cli:IDSistema>\r
+            <cli:IDCliente>?</cli:IDCliente>\r
+         </cli:parametros>\r
+      </cli:GeraCodigoErp>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/GeraCodigoErpRequest"/></con:call></con:operation><con:operation id="088fae1b-f26b-4f46-9c4e-59f8e394d6b7" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/PreConsultaClientesParaIntegrar" name="PreConsultaClientesParaIntegrar" bindingOperationName="PreConsultaClientesParaIntegrar" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f7796eee-e9cf-411b-af9b-fd0790db2dcb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:PreConsultaClientesParaIntegrar>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+         </cli:parametros>\r
+      </cli:PreConsultaClientesParaIntegrar>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/PreConsultaClientesParaIntegrarRequest"/></con:call></con:operation><con:operation id="f8027f2f-b3ba-43da-a8af-4fc4740cc58c" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/RelacionaClienteSistema" name="RelacionaClienteSistema" bindingOperationName="RelacionaClienteSistema" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="94605223-4048-45aa-9507-fa1af26b538d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:RelacionaClienteSistema>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IDSistema>?</cli:IDSistema>\r
+            <cli:IDCliente>?</cli:IDCliente>\r
+            <cli:ClienteSistemaAtivo>?</cli:ClienteSistemaAtivo>\r
+            <cli:EnvioCobrancaEmail>?</cli:EnvioCobrancaEmail>\r
+         </cli:parametros>\r
+      </cli:RelacionaClienteSistema>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/RelacionaClienteSistemaRequest"/></con:call></con:operation><con:operation id="f1b4e11c-a2c6-4dce-9bd9-38bfe5cdb00a" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/SolicitaClientesParaIntegrar" name="SolicitaClientesParaIntegrar" bindingOperationName="SolicitaClientesParaIntegrar" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fa25a1be-8697-4342-b95f-9b4a084aef09" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <cli:SolicitaClientesParaIntegrar>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+         </cli:parametros>\r
+      </cli:SolicitaClientesParaIntegrar>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/SolicitaClientesParaIntegrarRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="c7e7b819-1f8a-4af3-a0d0-9bd5d4868dae" wsaVersion="NONE" name="CentralClientesSoap" type="wsdl" bindingName="{http://servicos.imprensaoficial.com.br/Clientes/}CentralClientesSoap" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/elton.alves/Desktop/cdcf.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\elton.alves\Desktop\cdcf.wsdl"><con:part><con:url>file:\C:\Users\elton.alves\Desktop\cdcf.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://servicos.imprensaoficial.com.br/Clientes/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://servicos.imprensaoficial.com.br/Clientes/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>&lt;h2>Imprensa Oficial do Estado S.A.&lt;BR/> IO|Central de Clientes e Fornecedores&lt;/h2></wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://servicos.imprensaoficial.com.br/Clientes/">
+      <s:element name="PreConsultaClientesParaIntegrar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsulta"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParametrosConsulta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSistema" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdConsulta" nillable="true" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParametrosIntegracao">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ParametrosConsulta">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="ClientesIntegracao" type="tns:ClientesIntegracao"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ClientesIntegracao">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraAlteracao" type="s:dateTime"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParametrosConsultaContatos">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ParametrosConsulta">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="IdContato" type="s:int"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ParametroConsultaPalavraChave">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ParametrosConsulta">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NomeCliente" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="DocumentoCliente" type="s:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="ClienteAtivo" nillable="true" type="s:boolean"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="TipoPesquisa" nillable="true" type="tns:TipoPesquisa"/>
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="IdCliente" nillable="true" type="s:int"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="TipoPesquisa">
+        <s:restriction base="s:string">
+          <s:enumeration value="Contem"/>
+          <s:enumeration value="IniciaCom"/>
+          <s:enumeration value="TerminaCom"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ParametroConsultaPalavraChaveContato">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ParametrosConsulta">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="IdClienteContato" type="s:int"/>
+              <s:element minOccurs="0" maxOccurs="1" name="NomeContato" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="DocumentoContato" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="ClienteContatoAtivo" nillable="true" type="s:boolean"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="TipoPesquisa" nillable="true" type="tns:TipoPesquisa"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ParametrosConsultaClientes">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ParametrosConsulta">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="IdCliente" type="s:int"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PreConsultaClientesParaIntegrarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PreConsultaClientesParaIntegrarResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="RegistroConsulta" type="tns:RegistroConsulta"/>
+                  <s:element minOccurs="0" maxOccurs="unbounded" name="IntegracaoClientes" type="tns:IntegracaoClientes"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="ErroConsulta" type="tns:ErroWebService"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RegistroConsulta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdConsulta" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRetorno" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IntegracaoClientes">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoERP" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentoCliente" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoEsfera" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraAlteracao" type="s:dateTime"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ErroWebService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MensagemExcecao" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SolicitaClientesParaIntegrar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsulta"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SolicitaClientesParaIntegrarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SolicitaClientesParaIntegrarResult" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Clientes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cliente" type="tns:Cliente"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistroConsulta" type="tns:RegistroConsulta"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErroConsulta" type="tns:ErroWebService"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IntegracaoClientes" type="tns:IntegracaoClientes"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeCliente" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentoCliente" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoERP" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteAtivo" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EnvioCobrancaEmail" nillable="true" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoEsfera" type="s:unsignedByte"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Observacao" nillable="true" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClienteContato" nillable="true" type="tns:ClienteContato"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MeioComunicacao" nillable="true" type="tns:MeioComunicacao"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ControleRegistro" nillable="true" type="tns:ControleRegistro"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Endereco" nillable="true" type="tns:Endereco"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PessoaFisica" nillable="true" type="tns:PessoaFisica"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PessoaJuridica" nillable="true" type="tns:PessoaJuridica"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OrgaoPublico" nillable="true" type="tns:OrgaoPublico"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataCadastro" type="s:dateTime"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClienteContato">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdClienteContato" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPessoaFisica" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeContato" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Funcao" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DonoConta" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CotacaoCompras" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="FaturaPublicacao" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Financeiro" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NotaFiscalEletronica" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ServicosGraficos" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteContatoAtivo" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PerfilClienteContato" type="tns:PerfilClienteContato"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CPF" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataNascimento" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MeioComunicacao" type="tns:MeioComunicacao"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PessoaFisica" type="tns:PessoaFisica"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataCadastro" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="BoletinsEletronicos" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClienteContatoAutenticacao" type="tns:AutenticacaoClienteContato"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTemp" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PerfilClienteContato">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoClienteContato" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ControleRegistro">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSistemaCriacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSistemaAlteracao" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuarioCriacao" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuarioAlteracao" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraCriacao" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraAlteracao" nillable="true" type="s:dateTime"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MeioComunicacao">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMeioComunicacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoContato" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DDI" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DDD" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Telefone" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Ramal" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Email" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AceitaComunicacaoEmail" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AceitaComunicacaoSms" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ApelidoContato" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EmailHtml" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PessoaFisica">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPessoaFisica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoSexo" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoSituacaoCadastral" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPais" nillable="true" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CPF" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="RG" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OrgaoEmissorRg" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UfEmissaoRg" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataEmissaoRG" nillable="true" type="s:date"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataNascimento" nillable="true" type="s:date"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataAtualizacaoReceita" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Estrangeiro" nillable="true" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AnoObito" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeMae" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PaisResidencia" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoPaisResidencia" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="TituloEleitor" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UnidadeAdministrativa" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ExercicioOcupacao" nillable="true" type="s:short"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NaturezaOcupacao" nillable="true" type="s:unsignedByte"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OcupacaoPrincipal" nillable="true" type="s:unsignedByte"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataCadastro" type="s:date"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AutenticacaoClienteContato">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IDClienteContatoAutenticacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IDClienteContato" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SenhaHash" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Matricula" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeComum" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ChavePublica" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Acessos" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteContatoAutenticacaoAtivo" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraUltimaAutenticacao" type="s:dateTime"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IDCliente" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Endereco">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdEndereco" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdOrigemEnderecoCriacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdOrigemEnderecoAlteracao" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPais" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoEndereco" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="TipoLogradouro" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Logradouro" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="LogradouroNumero" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="LogradouroComplemento" nillable="true" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Bairro" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CEP" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Municipio" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoMunicipio" nillable="true" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SiglaUnidadeFederativa" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ApelidoEndereco" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AceitaComunicacaoCorrespondendia" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomePais" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PessoaJuridica">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPessoaJuridica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoPessoaJuridica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoPortePessoaJuridica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSituacaoPessoaJuridica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPais" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IsOrgaoPublico" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CNPJ" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NaturezaJuridica" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="InscricaoEstadual" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="InscricaoMunicipal" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentoEstrangeiro" nillable="true" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RazaoSocial" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeFantasia" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataAbertura" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataSituacaoCadastral" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CidadeExterior" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PaisDomicilio" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoPaisDomicilio" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataHoraConsultaRFB" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ConferidoBEC" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ConferidoSintegra" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ValidacaoPresencial" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrgaoPublico">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdOrgaoPublico" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeOrgaoPublico" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UnidadeAdministrativa" nillable="true" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SiglaUnidadeFederativa" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UnidadeOrganizadora" nillable="true" type="tns:UnidadeOrcamentaria"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PessoaJuridica" type="tns:PessoaJuridica"/>
+          <s:element minOccurs="1" maxOccurs="1" name="OrgaoPublicoVinculado" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="UnidadeGestoraOrcamentaria" type="tns:UnidadeOrcamentaria"/>
+          <s:element minOccurs="0" maxOccurs="1" name="UnidadeGestoraExecutora" type="tns:UnidadeOrcamentaria"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UnidadeOrcamentaria">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUnidadeOrcamentaria" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUnidadeOrcamentariaOrigem" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoUnidadeOrcamentaria" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeUnidadeOrcamentaria" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="UnidadeOrcamentariaAtiva" nillable="true" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsultaClientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaClienteResult" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaClientePalavraChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametroConsultaPalavraChave"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaClientePalavraChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaClientePalavraChaveResult" type="tns:RetornoPesquisaCliente"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetornoPesquisaCliente">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cliente" type="tns:PesquisaCliente"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistroConsulta" type="tns:RegistroConsulta"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErroConsulta" type="tns:ErroWebService"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PesquisaCliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeCliente" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentoCliente" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoERP" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteAtivo" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EnvioCobrancaEmail" nillable="true" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoEsfera" type="s:unsignedByte"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeFantasia" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMeioComunicacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoContato" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DDI" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DDD" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Telefone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Ramal" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EmailHtml" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaClienteContatoPalavraChave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametroConsultaPalavraChaveContato"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaClienteContatoPalavraChaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaClienteContatoPalavraChaveResult" type="tns:RetornoPesquisaClienteContato"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetornoPesquisaClienteContato">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClienteContato" type="tns:PesquisaClienteContato"/>
+          <s:element minOccurs="0" maxOccurs="1" name="RegistroConsulta" type="tns:RegistroConsulta"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ErroConsulta" type="tns:ErroWebService"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PesquisaClienteContato">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="NomeCliente" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentoCliente" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdClienteContato" nillable="true" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPessoaFisica" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NomeContato" nillable="true" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Funcao" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DonoConta" nillable="true" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMeioComunicacao" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoContato" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DDI" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="DDD" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Telefone" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Ramal" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EmailHtml" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteContatoAtivo" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoSexo" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Cpf" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Rg" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ControleRegistro" type="tns:ControleRegistro"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AceitaComunicacaoEmail" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="AceitaComunicacaoSms" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DataCadastro" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteAtivo" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GeraCodigoErp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosGeraCodigoErp"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParametrosGeraCodigoErp">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IDSistema" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IDCliente" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GeraCodigoErpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeraCodigoErpResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RelacionaClienteSistema">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosRelacionaClienteSistema"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParametrosRelacionaClienteSistema">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IDSistema" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IDCliente" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ClienteSistemaAtivo" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="EnvioCobrancaEmail" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RelacionaClienteSistemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RelacionaClienteSistemaResult" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaEnderecos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsultaClientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaEnderecosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaEnderecosResult" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaContatos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsultaClientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaContatosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaContatosResult" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaAutenticacoesContato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosConsultaClienteContato"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParametrosConsultaClienteContato">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSistema" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdClienteContato" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="IdConsulta" nillable="true" type="s:int"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsultaAutenticacoesContatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaAutenticacoesContatoResult" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmaIntegracao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ParametrosIntegracao"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmaIntegracaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmaIntegracaoResult" type="tns:ArrayOfIntegracaoConfirmacao"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIntegracaoConfirmacao">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IntegracaoConfirmacao" nillable="true" type="tns:IntegracaoConfirmacao"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IntegracaoConfirmacao">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Resultado" nillable="true" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ErroConfirmacao" nillable="true" type="tns:ErroWebService"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConfirmaIntegracaoCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idSistema" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="idConsulta" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="dataHoraAlteracao" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmaIntegracaoClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmaIntegracaoClienteResult" type="tns:ArrayOfIntegracaoConfirmacao"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaTabelasAuxiliares">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ConsultaTabelasAuxiliaresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaTabelasAuxiliaresResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="0" maxOccurs="1" name="Erro" type="tns:ErroTabelaAuxiliares"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ErroTabelaAuxiliares">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MensagemExcecao" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfIntegracaoConfirmacao" nillable="true" type="tns:ArrayOfIntegracaoConfirmacao"/>
+      <s:element name="TabelasAuxiliares">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Erro" type="tns:ErroTabelaAuxiliares"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PreConsultaClientesParaIntegrarSoapIn">
+    <wsdl:part name="parameters" element="tns:PreConsultaClientesParaIntegrar"/>
+  </wsdl:message>
+  <wsdl:message name="PreConsultaClientesParaIntegrarSoapOut">
+    <wsdl:part name="parameters" element="tns:PreConsultaClientesParaIntegrarResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SolicitaClientesParaIntegrarSoapIn">
+    <wsdl:part name="parameters" element="tns:SolicitaClientesParaIntegrar"/>
+  </wsdl:message>
+  <wsdl:message name="SolicitaClientesParaIntegrarSoapOut">
+    <wsdl:part name="parameters" element="tns:SolicitaClientesParaIntegrarResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaCliente"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaClienteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClientePalavraChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaClientePalavraChave"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClientePalavraChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaClientePalavraChaveResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClienteContatoPalavraChaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaClienteContatoPalavraChave"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaClienteContatoPalavraChaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaClienteContatoPalavraChaveResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GeraCodigoErpSoapIn">
+    <wsdl:part name="parameters" element="tns:GeraCodigoErp"/>
+  </wsdl:message>
+  <wsdl:message name="GeraCodigoErpSoapOut">
+    <wsdl:part name="parameters" element="tns:GeraCodigoErpResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RelacionaClienteSistemaSoapIn">
+    <wsdl:part name="parameters" element="tns:RelacionaClienteSistema"/>
+  </wsdl:message>
+  <wsdl:message name="RelacionaClienteSistemaSoapOut">
+    <wsdl:part name="parameters" element="tns:RelacionaClienteSistemaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaEnderecosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaEnderecos"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaEnderecosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaEnderecosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaContatosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaContatos"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaContatosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaContatosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaAutenticacoesContatoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaAutenticacoesContato"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaAutenticacoesContatoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaAutenticacoesContatoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmaIntegracao"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmaIntegracaoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmaIntegracaoCliente"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmaIntegracaoClienteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTabelasAuxiliaresSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaTabelasAuxiliares"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTabelasAuxiliaresSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaTabelasAuxiliaresResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteHttpGetIn">
+    <wsdl:part name="idSistema" type="s:string"/>
+    <wsdl:part name="idConsulta" type="s:string"/>
+    <wsdl:part name="idCliente" type="s:string"/>
+    <wsdl:part name="dataHoraAlteracao" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfIntegracaoConfirmacao"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTabelasAuxiliaresHttpGetIn"/>
+  <wsdl:message name="ConsultaTabelasAuxiliaresHttpGetOut">
+    <wsdl:part name="Body" element="tns:TabelasAuxiliares"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteHttpPostIn">
+    <wsdl:part name="idSistema" type="s:string"/>
+    <wsdl:part name="idConsulta" type="s:string"/>
+    <wsdl:part name="idCliente" type="s:string"/>
+    <wsdl:part name="dataHoraAlteracao" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ConfirmaIntegracaoClienteHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfIntegracaoConfirmacao"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaTabelasAuxiliaresHttpPostIn"/>
+  <wsdl:message name="ConsultaTabelasAuxiliaresHttpPostOut">
+    <wsdl:part name="Body" element="tns:TabelasAuxiliares"/>
+  </wsdl:message>
+  <wsdl:portType name="CentralClientesSoap">
+    <wsdl:operation name="PreConsultaClientesParaIntegrar">
+      <wsdl:documentation>Retorna a pré-consulta com a lista com informações resumidas de Clientes que precisam ser integrados. Se informar um IdConsulta o sistema trará os mesmos dados que foram retornados pela consulta informada.</wsdl:documentation>
+      <wsdl:input message="tns:PreConsultaClientesParaIntegrarSoapIn"/>
+      <wsdl:output message="tns:PreConsultaClientesParaIntegrarSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitaClientesParaIntegrar">
+      <wsdl:documentation>Lista os clientes a serem integrados.&lt;br />Se passar 0 (zero) no parametro de IdConsulta será enviado os clientes a serem integrados. Se enviar o Id de Consulta de Consulta já efetuada, retorna os clientes listados por aquela pesquisa.</wsdl:documentation>
+      <wsdl:input message="tns:SolicitaClientesParaIntegrarSoapIn"/>
+      <wsdl:output message="tns:SolicitaClientesParaIntegrarSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCliente">
+      <wsdl:documentation>Consulta um ou mais clientes.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaClienteSoapIn"/>
+      <wsdl:output message="tns:ConsultaClienteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClientePalavraChave">
+      <wsdl:documentation>Pesquisa clientes por palavra chave. &lt;br />
+            PageIndex é a página atual da Grid, e PageSize é a quantidade de registros por página, ou seja o tamanho da página.&lt;br />
+            TipoPesquisa, como será a busca por palavra-chave = 1)Contem  2)IniciaCom 3)TerminaCom&lt;br /></wsdl:documentation>
+      <wsdl:input message="tns:ConsultaClientePalavraChaveSoapIn"/>
+      <wsdl:output message="tns:ConsultaClientePalavraChaveSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClienteContatoPalavraChave">
+      <wsdl:documentation>Pesquisa Contatos de Clientes por palavra chave.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaClienteContatoPalavraChaveSoapIn"/>
+      <wsdl:output message="tns:ConsultaClienteContatoPalavraChaveSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GeraCodigoErp">
+      <wsdl:documentation>Gera ou consulta código ERP do cliente.</wsdl:documentation>
+      <wsdl:input message="tns:GeraCodigoErpSoapIn"/>
+      <wsdl:output message="tns:GeraCodigoErpSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RelacionaClienteSistema">
+      <wsdl:documentation>Relaciona o cliente ao sistema.</wsdl:documentation>
+      <wsdl:input message="tns:RelacionaClienteSistemaSoapIn"/>
+      <wsdl:output message="tns:RelacionaClienteSistemaSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEnderecos">
+      <wsdl:documentation>Consulta os endereços de um ou mais clientes.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaEnderecosSoapIn"/>
+      <wsdl:output message="tns:ConsultaEnderecosSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaContatos">
+      <wsdl:documentation>Consulta os contatos de um ou mais clientes.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaContatosSoapIn"/>
+      <wsdl:output message="tns:ConsultaContatosSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaAutenticacoesContato">
+      <wsdl:documentation>Consulta as autenticações de um contato do clientes.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaAutenticacoesContatoSoapIn"/>
+      <wsdl:output message="tns:ConsultaAutenticacoesContatoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracao">
+      <wsdl:documentation>Confirma a integração e Comita a integração. Retorna true se confirmado, ou false se não foi possível confirmar.</wsdl:documentation>
+      <wsdl:input message="tns:ConfirmaIntegracaoSoapIn"/>
+      <wsdl:output message="tns:ConfirmaIntegracaoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <wsdl:documentation>Confirma a integração de um único cliente.</wsdl:documentation>
+      <wsdl:input message="tns:ConfirmaIntegracaoClienteSoapIn"/>
+      <wsdl:output message="tns:ConfirmaIntegracaoClienteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <wsdl:documentation>Retorna as tabelas auxiliares, com a descrição dos tipos retornados.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaTabelasAuxiliaresSoapIn"/>
+      <wsdl:output message="tns:ConsultaTabelasAuxiliaresSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CentralClientesHttpGet">
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <wsdl:documentation>Confirma a integração de um único cliente.</wsdl:documentation>
+      <wsdl:input message="tns:ConfirmaIntegracaoClienteHttpGetIn"/>
+      <wsdl:output message="tns:ConfirmaIntegracaoClienteHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <wsdl:documentation>Retorna as tabelas auxiliares, com a descrição dos tipos retornados.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaTabelasAuxiliaresHttpGetIn"/>
+      <wsdl:output message="tns:ConsultaTabelasAuxiliaresHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CentralClientesHttpPost">
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <wsdl:documentation>Confirma a integração de um único cliente.</wsdl:documentation>
+      <wsdl:input message="tns:ConfirmaIntegracaoClienteHttpPostIn"/>
+      <wsdl:output message="tns:ConfirmaIntegracaoClienteHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <wsdl:documentation>Retorna as tabelas auxiliares, com a descrição dos tipos retornados.</wsdl:documentation>
+      <wsdl:input message="tns:ConsultaTabelasAuxiliaresHttpPostIn"/>
+      <wsdl:output message="tns:ConsultaTabelasAuxiliaresHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CentralClientesSoap" type="tns:CentralClientesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PreConsultaClientesParaIntegrar">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/PreConsultaClientesParaIntegrar" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitaClientesParaIntegrar">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/SolicitaClientesParaIntegrar" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCliente">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaCliente" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClientePalavraChave">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClientePalavraChave" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClienteContatoPalavraChave">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClienteContatoPalavraChave" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeraCodigoErp">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/GeraCodigoErp" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelacionaClienteSistema">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/RelacionaClienteSistema" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEnderecos">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaEnderecos" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaContatos">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaContatos" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaAutenticacoesContato">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaAutenticacoesContato" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracao">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracao" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracaoCliente" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaTabelasAuxiliares" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CentralClientesSoap12" type="tns:CentralClientesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PreConsultaClientesParaIntegrar">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/PreConsultaClientesParaIntegrar" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SolicitaClientesParaIntegrar">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/SolicitaClientesParaIntegrar" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCliente">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaCliente" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClientePalavraChave">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClientePalavraChave" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaClienteContatoPalavraChave">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClienteContatoPalavraChave" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeraCodigoErp">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/GeraCodigoErp" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelacionaClienteSistema">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/RelacionaClienteSistema" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaEnderecos">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaEnderecos" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaContatos">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaContatos" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaAutenticacoesContato">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaAutenticacoesContato" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracao">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracao" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracaoCliente" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <soap12:operation soapAction="http://servicos.imprensaoficial.com.br/Clientes/ConsultaTabelasAuxiliares" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CentralClientesHttpGet" type="tns:CentralClientesHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <http:operation location="/ConfirmaIntegracaoCliente"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <http:operation location="/ConsultaTabelasAuxiliares"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CentralClientesHttpPost" type="tns:CentralClientesHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="ConfirmaIntegracaoCliente">
+      <http:operation location="/ConfirmaIntegracaoCliente"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaTabelasAuxiliares">
+      <http:operation location="/ConsultaTabelasAuxiliares"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CentralClientes">
+    <wsdl:documentation>&lt;h2>Imprensa Oficial do Estado S.A.&lt;BR/> IO|Central de Clientes e Fornecedores&lt;/h2></wsdl:documentation>
+    <wsdl:port name="CentralClientesSoap" binding="tns:CentralClientesSoap">
+      <soap:address location="http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CentralClientesSoap12" binding="tns:CentralClientesSoap12">
+      <soap12:address location="http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CentralClientesHttpGet" binding="tns:CentralClientesHttpGet">
+      <http:address location="http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="CentralClientesHttpPost" binding="tns:CentralClientesHttpPost">
+      <http:address location="http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint></con:endpoints><con:operation id="9a925392-c369-42bc-9cde-a62902016887" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracao" name="ConfirmaIntegracao" bindingOperationName="ConfirmaIntegracao" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0aaf3cd4-34bf-4eb5-aeab-5c96c0cd50f4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:ConfirmaIntegracao>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <!--Zero or more repetitions:-->\r
+            <cli:ClientesIntegracao>\r
+               <cli:IdCliente>?</cli:IdCliente>\r
+               <cli:DataHoraAlteracao>?</cli:DataHoraAlteracao>\r
+            </cli:ClientesIntegracao>\r
+         </cli:parametros>\r
+      </cli:ConfirmaIntegracao>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracao"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="171edca4-3ec7-418e-a06e-9e9030731583" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracaoCliente" name="ConfirmaIntegracaoCliente" bindingOperationName="ConfirmaIntegracaoCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8d867b70-3a4b-407f-96c0-416969814f8c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:ConfirmaIntegracaoCliente>\r
+         <cli:idSistema>?</cli:idSistema>\r
+         <cli:idConsulta>?</cli:idConsulta>\r
+         <cli:idCliente>?</cli:idCliente>\r
+         <cli:dataHoraAlteracao>?</cli:dataHoraAlteracao>\r
+      </cli:ConfirmaIntegracaoCliente>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracaoCliente"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="62b568df-b5cc-4077-bfc2-ffebc1b0cb03" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaAutenticacoesContato" name="ConsultaAutenticacoesContato" bindingOperationName="ConsultaAutenticacoesContato" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9a18b3c0-9c8b-4f2b-861e-25b55d16d8c3" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:ConsultaAutenticacoesContato>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+            <cli:IdClienteContato>?</cli:IdClienteContato>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+         </cli:parametros>\r
+      </cli:ConsultaAutenticacoesContato>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaAutenticacoesContato"/></con:call></con:operation><con:operation id="6f83228b-d5de-45bf-80eb-6195da29a78d" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaCliente" name="ConsultaCliente" bindingOperationName="ConsultaCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5f50f447-c927-4ad0-960e-602eb37a298a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:ConsultaCliente>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>4</cli:IdSistema>\r
+            <cli:IdConsulta>0</cli:IdConsulta>\r
+            <!--Zero or more repetitions:-->\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+         </cli:parametros>\r
+      </cli:ConsultaCliente>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaCliente"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8f28b7f6-aeb0-429d-ab79-7601723de24e" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClienteContatoPalavraChave" name="ConsultaClienteContatoPalavraChave" bindingOperationName="ConsultaClienteContatoPalavraChave" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="265d7708-a725-4955-b9e5-34117f34c570" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:ConsultaClienteContatoPalavraChave>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+            <cli:IdClienteContato>?</cli:IdClienteContato>\r
+            <!--Optional:-->\r
+            <cli:NomeContato>?</cli:NomeContato>\r
+            <!--Optional:-->\r
+            <cli:DocumentoContato>?</cli:DocumentoContato>\r
+            <!--Optional:-->\r
+            <cli:Email>?</cli:Email>\r
+            <cli:ClienteContatoAtivo>?</cli:ClienteContatoAtivo>\r
+            <cli:PageIndex>?</cli:PageIndex>\r
+            <cli:PageSize>?</cli:PageSize>\r
+            <cli:TipoPesquisa>?</cli:TipoPesquisa>\r
+         </cli:parametros>\r
+      </cli:ConsultaClienteContatoPalavraChave>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClienteContatoPalavraChave"/></con:call></con:operation><con:operation id="86a0d66e-b8cd-4858-a112-124cefe8a68b" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClientePalavraChave" name="ConsultaClientePalavraChave" bindingOperationName="ConsultaClientePalavraChave" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5c6546a6-9a93-43f8-aeeb-057c2950afd6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:ConsultaClientePalavraChave>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <!--Optional:-->\r
+            <cli:NomeCliente>?</cli:NomeCliente>\r
+            <!--Optional:-->\r
+            <cli:DocumentoCliente>?</cli:DocumentoCliente>\r
+            <cli:ClienteAtivo>?</cli:ClienteAtivo>\r
+            <cli:PageIndex>?</cli:PageIndex>\r
+            <cli:PageSize>?</cli:PageSize>\r
+            <cli:TipoPesquisa>?</cli:TipoPesquisa>\r
+            <!--Optional:-->\r
+            <cli:Email>?</cli:Email>\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+         </cli:parametros>\r
+      </cli:ConsultaClientePalavraChave>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClientePalavraChave"/></con:call></con:operation><con:operation id="d84c5586-1eaa-4857-93ed-0dfa799b2d41" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaContatos" name="ConsultaContatos" bindingOperationName="ConsultaContatos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="eba60a3c-b587-43df-b74c-121697eb7237" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:ConsultaContatos>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <!--Zero or more repetitions:-->\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+         </cli:parametros>\r
+      </cli:ConsultaContatos>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaContatos"/></con:call></con:operation><con:operation id="0c9f5b4f-1994-4927-9e3a-01b2a814395e" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaEnderecos" name="ConsultaEnderecos" bindingOperationName="ConsultaEnderecos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dc40dece-928f-419b-99a6-707c2c443754" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:ConsultaEnderecos>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>?</cli:IdSistema>\r
+            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <!--Zero or more repetitions:-->\r
+            <cli:IdCliente>?</cli:IdCliente>\r
+         </cli:parametros>\r
+      </cli:ConsultaEnderecos>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaEnderecos"/></con:call></con:operation><con:operation id="5c89c182-f350-48b4-97f1-2bc083a6f940" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaTabelasAuxiliares" name="ConsultaTabelasAuxiliares" bindingOperationName="ConsultaTabelasAuxiliares" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5a0132f4-6e33-4898-804e-cd124413d003" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:ConsultaTabelasAuxiliares/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaTabelasAuxiliares"/></con:call></con:operation><con:operation id="04e13007-5120-499f-bdb0-11ee0e42aa1c" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/GeraCodigoErp" name="GeraCodigoErp" bindingOperationName="GeraCodigoErp" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6fe46daa-9a31-4b73-a89d-d07aae02a620" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:GeraCodigoErp>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IDSistema>?</cli:IDSistema>\r
+            <cli:IDCliente>?</cli:IDCliente>\r
+         </cli:parametros>\r
+      </cli:GeraCodigoErp>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/GeraCodigoErp"/></con:call></con:operation><con:operation id="982e6028-ae9d-4286-9f25-bae76d84a359" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/PreConsultaClientesParaIntegrar" name="PreConsultaClientesParaIntegrar" bindingOperationName="PreConsultaClientesParaIntegrar" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3bae9c63-f3ca-40c7-834a-dac5129a07d3" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:PreConsultaClientesParaIntegrar>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>4</cli:IdSistema>\r
+            <cli:IdConsulta>0</cli:IdConsulta>\r
+         </cli:parametros>\r
+      </cli:PreConsultaClientesParaIntegrar>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/PreConsultaClientesParaIntegrar"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e4a1f2ef-d746-4aff-950f-d82ef911b5c9" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/RelacionaClienteSistema" name="RelacionaClienteSistema" bindingOperationName="RelacionaClienteSistema" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1ead87d2-14e0-4865-b9b8-278903c78855" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:RelacionaClienteSistema>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IDSistema>?</cli:IDSistema>\r
+            <cli:IDCliente>?</cli:IDCliente>\r
+            <cli:ClienteSistemaAtivo>?</cli:ClienteSistemaAtivo>\r
+            <cli:EnvioCobrancaEmail>?</cli:EnvioCobrancaEmail>\r
+         </cli:parametros>\r
+      </cli:RelacionaClienteSistema>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/RelacionaClienteSistema"/></con:call></con:operation><con:operation id="20937f07-5cf4-40bc-91f8-871e8df0c295" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/SolicitaClientesParaIntegrar" name="SolicitaClientesParaIntegrar" bindingOperationName="SolicitaClientesParaIntegrar" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3098723d-2a43-413e-9a3b-57396d22e620" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:SolicitaClientesParaIntegrar>\r
+         <!--Optional:-->\r
+         <cli:parametros>\r
+            <cli:IdSistema>4</cli:IdSistema>\r
+            <cli:IdConsulta>0</cli:IdConsulta>\r
+         </cli:parametros>\r
+      </cli:SolicitaClientesParaIntegrar>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/SolicitaClientesParaIntegrar"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

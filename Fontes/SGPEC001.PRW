@@ -1,5 +1,13 @@
 #INCLUDE 'TOTVS.CH'
-
+/*/{Protheus.doc} SGPEC001
+User Function que através de XML recebido conforme schema faz busca do cadastro de funcionários
+e retorna outro xml com resultado da consulta.
+@author Elton Teodoro Alves
+@since 01/11/2016
+@version Protheus 12.1.7
+@param cXml, characters, XML enviado com dados da consulta
+@return cRet, characters
+/*/
 User Function SGPEC001( cXml )
 
 	Local cRet       := ''
@@ -71,7 +79,6 @@ User Function SGPEC001( cXml )
 		For nX := 1 To nChild
 
 			If nX == 1
-
 				oXml:DOMChildNode()
 
 			End If
@@ -158,7 +165,7 @@ User Function SGPEC001( cXml )
 
 		Next nX
 
-		cQuery := ChangeQuery( cQuery )
+		cQuery := ChangeQuery( cQuery + ' ORDER BY RA_NOMECMP')
 
 		If TcSqlExec( cQuery ) < 0
 
@@ -218,7 +225,14 @@ User Function SGPEC001( cXml )
 	RestArea( aArea )
 
 Return cRet
-//------------------------------------------------------------------
+/*/{Protheus.doc} StrList
+Static Function que monta a lista de valores para os operadores IN e NOT IN.
+@author Elton Teodoro Alves
+@since 01/11/2016
+@version Protheus 12.1.7
+@param aList, array, Array com a lista de valores para montar a string retorno
+@return cRet, characters
+/*/
 Static Function StrList( aList )
 
 	Local cRet := ""

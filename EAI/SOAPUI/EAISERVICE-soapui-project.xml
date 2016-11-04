@@ -75,11 +75,8 @@
 			<FunctionCode>U_SGPEC001</FunctionCode>
 			<Content>
 				<loadfilter>
-					<filter field="RA_NOME" relation="CONTAINS" operator="OR">
-						<value>neve</value>
-					</filter>
-					<filter field="RA_NOME" relation="CONTAINS">
-						<value>mouse</value>
+					<filter field="RA_MAT" relation="NOT_EQUAL">
+						<value></value>
 					</filter>
 				</loadfilter>
 			</Content>
