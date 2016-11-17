@@ -7,7 +7,7 @@ WSSTRUCT RETORNO
 
 ENDWSSTRUCT
 
-WSSERVICE MYEAI DESCRIPTION 'Web Service EAIC Teste' 
+WSSERVICE MYEAI DESCRIPTION 'Web Service EAIC Teste'
 
 	WSDATA INMSG AS STRING
 	WSDATA RESPOSTA AS RETORNO
@@ -25,11 +25,14 @@ RETURN .T.
 Static Function Gravar( cXml )
 
 	Local cRet  := ''
-	Local aArea := Nil 
+	Local aArea := Nil
+	Local cDia  := PadL( cValToChar( Day  ( Date() ) ), 2, '0' )
+	Local cMes  := PadL( cValToChar( Month( Date() ) ), 2, '0' )
+	Local cAno  := cValToChar( Year( Date() ) )
 
 	RpcSetEnv( "99","01" )
-	
-	aArea := GetArea() 
+
+	aArea := GetArea()
 
 	ChkFile( 'ZZZ' )
 
@@ -37,12 +40,12 @@ Static Function Gravar( cXml )
 
 	If RecLock('ZZZ',.T.)
 
-		ZZZ->ZZZ_DTTIME := Dtos( Date() ) + ' / ' + Time() 
+		ZZZ->ZZZ_DTTIME := cDia + '/' + cMes + '/' + cAno + ' - ' + Time()
 		ZZZ->ZZZ_XML    := cXml
 
 		MsUnlock()
 
-		cRet := '<?xml version="1.0" encoding="UTF-8"?><MENSAGEM><CONTEUDO>FUNCIONOU</CONTEUDO></MENSAGEM>' 
+		cRet := '<?xml version="1.0" encoding="UTF-8"?><MENSAGEM><CONTEUDO>FUNCIONOU</CONTEUDO></MENSAGEM>'
 
 	Else
 
@@ -51,7 +54,7 @@ Static Function Gravar( cXml )
 	End If
 
 	RestArea( aArea )
-	
+
 	RpcClearEnv()
 
 Return cRet

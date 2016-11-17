@@ -20,17 +20,19 @@ user function EAIENVIO()
 	cXml += '</MATA020_SA2>'
 	cXml += '</MATA020>'
 
-	oFwEai:AddLayout( 'MATA020', '1.000', 'U_IMSP020', cXml )
+    oFwEai:AddLayout( 'MATA020', '1.000', 'U_IMSP020', cXml )
 
 	oFwEai:SetDocType( '1' )
 
 	oFwEai:SetFuncCode( 'U_IMSP020' )
 
 	oFwEai:SetFuncDescription( 'FORNECEDORES' )
-	
+
 	oFwEai:SetSendChannel( '2' )
 
 	oFwEai:Activate()
+
+	oFwEai:BuildBusiness()
 
 	ConOut( oFwEai:Save() )
 

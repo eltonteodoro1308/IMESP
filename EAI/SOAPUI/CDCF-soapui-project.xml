@@ -1123,7 +1123,7 @@
          </cli:parametros>\r
       </cli:ConfirmaIntegracao>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConfirmaIntegracaoRequest"/></con:call></con:operation><con:operation id="92b6a4b9-0a21-43d8-906d-45a9292ea2c3" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracaoCliente" name="ConfirmaIntegracaoCliente" bindingOperationName="ConfirmaIntegracaoCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5472217d-ce86-4b02-ba38-6b73095cd99d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConfirmaIntegracaoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="92b6a4b9-0a21-43d8-906d-45a9292ea2c3" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracaoCliente" name="ConfirmaIntegracaoCliente" bindingOperationName="ConfirmaIntegracaoCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5472217d-ce86-4b02-ba38-6b73095cd99d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
    <soap:Header/>\r
    <soap:Body>\r
       <cli:ConfirmaIntegracaoCliente>\r
@@ -1133,7 +1133,7 @@
          <cli:dataHoraAlteracao>?</cli:dataHoraAlteracao>\r
       </cli:ConfirmaIntegracaoCliente>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConfirmaIntegracaoClienteRequest"/></con:call></con:operation><con:operation id="8167e969-3aa1-4bbe-9d6b-15753dd92fd9" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaAutenticacoesContato" name="ConsultaAutenticacoesContato" bindingOperationName="ConsultaAutenticacoesContato" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="98e46eb8-599b-4adf-9310-941d31a7bbd7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConfirmaIntegracaoClienteRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8167e969-3aa1-4bbe-9d6b-15753dd92fd9" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaAutenticacoesContato" name="ConsultaAutenticacoesContato" bindingOperationName="ConsultaAutenticacoesContato" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="98e46eb8-599b-4adf-9310-941d31a7bbd7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
    <soap:Header/>\r
    <soap:Body>\r
       <cli:ConsultaAutenticacoesContato>\r
@@ -1146,20 +1146,20 @@
          </cli:parametros>\r
       </cli:ConsultaAutenticacoesContato>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaAutenticacoesContatoRequest"/></con:call></con:operation><con:operation id="fe66e0e9-5afe-41e7-8517-c278bf0ecc86" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaCliente" name="ConsultaCliente" bindingOperationName="ConsultaCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8ead4ce0-b40c-4d29-9a98-335eed80a296" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaAutenticacoesContatoRequest"/></con:call></con:operation><con:operation id="fe66e0e9-5afe-41e7-8517-c278bf0ecc86" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaCliente" name="ConsultaCliente" bindingOperationName="ConsultaCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8ead4ce0-b40c-4d29-9a98-335eed80a296" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
    <soap:Header/>\r
    <soap:Body>\r
       <cli:ConsultaCliente>\r
          <!--Optional:-->\r
          <cli:parametros>\r
-            <cli:IdSistema>?</cli:IdSistema>\r
-            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <cli:IdSistema>11</cli:IdSistema>\r
+            <cli:IdConsulta>0</cli:IdConsulta>\r
             <!--Zero or more repetitions:-->\r
-            <cli:IdCliente>?</cli:IdCliente>\r
+            <cli:IdCliente>33042</cli:IdCliente>\r
          </cli:parametros>\r
       </cli:ConsultaCliente>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaClienteRequest"/></con:call></con:operation><con:operation id="f89d50d0-4491-4153-97a1-2e177fcc097b" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClienteContatoPalavraChave" name="ConsultaClienteContatoPalavraChave" bindingOperationName="ConsultaClienteContatoPalavraChave" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="50dc1d20-2e28-4ab3-accd-b6f5e7d08335" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaClienteRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="f89d50d0-4491-4153-97a1-2e177fcc097b" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaClienteContatoPalavraChave" name="ConsultaClienteContatoPalavraChave" bindingOperationName="ConsultaClienteContatoPalavraChave" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="50dc1d20-2e28-4ab3-accd-b6f5e7d08335" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
    <soap:Header/>\r
    <soap:Body>\r
       <cli:ConsultaClienteContatoPalavraChave>\r
@@ -1204,7 +1204,7 @@
          </cli:parametros>\r
       </cli:ConsultaClientePalavraChave>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaClientePalavraChaveRequest"/></con:call></con:operation><con:operation id="2cea5502-e65b-4d15-94ee-442e36be6317" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaContatos" name="ConsultaContatos" bindingOperationName="ConsultaContatos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1fbade8b-790b-49fa-bc6d-aa6a129fcc55" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaClientePalavraChaveRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2cea5502-e65b-4d15-94ee-442e36be6317" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaContatos" name="ConsultaContatos" bindingOperationName="ConsultaContatos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1fbade8b-790b-49fa-bc6d-aa6a129fcc55" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
    <soap:Header/>\r
    <soap:Body>\r
       <cli:ConsultaContatos>\r
@@ -1217,20 +1217,20 @@
          </cli:parametros>\r
       </cli:ConsultaContatos>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaContatosRequest"/></con:call></con:operation><con:operation id="a2c6ffce-a8d4-4cbb-b67c-e46ecc0d197b" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaEnderecos" name="ConsultaEnderecos" bindingOperationName="ConsultaEnderecos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="52f914c2-8a3f-4766-a982-adaa478b728a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaContatosRequest"/></con:call></con:operation><con:operation id="a2c6ffce-a8d4-4cbb-b67c-e46ecc0d197b" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaEnderecos" name="ConsultaEnderecos" bindingOperationName="ConsultaEnderecos" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="52f914c2-8a3f-4766-a982-adaa478b728a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
    <soap:Header/>\r
    <soap:Body>\r
       <cli:ConsultaEnderecos>\r
          <!--Optional:-->\r
          <cli:parametros>\r
-            <cli:IdSistema>?</cli:IdSistema>\r
-            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <cli:IdSistema>11</cli:IdSistema>\r
+            <cli:IdConsulta>0</cli:IdConsulta>\r
             <!--Zero or more repetitions:-->\r
-            <cli:IdCliente>?</cli:IdCliente>\r
+            <cli:IdCliente>279780</cli:IdCliente>\r
          </cli:parametros>\r
       </cli:ConsultaEnderecos>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaEnderecosRequest"/></con:call></con:operation><con:operation id="e8cd469a-ee61-4f5d-84d0-780c99994bb8" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaTabelasAuxiliares" name="ConsultaTabelasAuxiliares" bindingOperationName="ConsultaTabelasAuxiliares" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f74bd2a2-781a-498f-944f-7fd75ca602af" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/ConsultaEnderecosRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e8cd469a-ee61-4f5d-84d0-780c99994bb8" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConsultaTabelasAuxiliares" name="ConsultaTabelasAuxiliares" bindingOperationName="ConsultaTabelasAuxiliares" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f74bd2a2-781a-498f-944f-7fd75ca602af" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
    <soap:Header/>\r
    <soap:Body>\r
       <cli:ConsultaTabelasAuxiliares/>\r
@@ -1246,18 +1246,18 @@
          </cli:parametros>\r
       </cli:GeraCodigoErp>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/GeraCodigoErpRequest"/></con:call></con:operation><con:operation id="088fae1b-f26b-4f46-9c4e-59f8e394d6b7" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/PreConsultaClientesParaIntegrar" name="PreConsultaClientesParaIntegrar" bindingOperationName="PreConsultaClientesParaIntegrar" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f7796eee-e9cf-411b-af9b-fd0790db2dcb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/GeraCodigoErpRequest"/></con:call></con:operation><con:operation id="088fae1b-f26b-4f46-9c4e-59f8e394d6b7" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/PreConsultaClientesParaIntegrar" name="PreConsultaClientesParaIntegrar" bindingOperationName="PreConsultaClientesParaIntegrar" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f7796eee-e9cf-411b-af9b-fd0790db2dcb" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
    <soap:Header/>\r
    <soap:Body>\r
       <cli:PreConsultaClientesParaIntegrar>\r
          <!--Optional:-->\r
          <cli:parametros>\r
-            <cli:IdSistema>?</cli:IdSistema>\r
-            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <cli:IdSistema>11</cli:IdSistema>\r
+            <cli:IdConsulta>0</cli:IdConsulta>\r
          </cli:parametros>\r
       </cli:PreConsultaClientesParaIntegrar>\r
    </soap:Body>\r
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/PreConsultaClientesParaIntegrarRequest"/></con:call></con:operation><con:operation id="f8027f2f-b3ba-43da-a8af-4fc4740cc58c" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/RelacionaClienteSistema" name="RelacionaClienteSistema" bindingOperationName="RelacionaClienteSistema" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="94605223-4048-45aa-9507-fa1af26b538d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Clientes/CentralClientesSoap/PreConsultaClientesParaIntegrarRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="f8027f2f-b3ba-43da-a8af-4fc4740cc58c" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/RelacionaClienteSistema" name="RelacionaClienteSistema" bindingOperationName="RelacionaClienteSistema" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="94605223-4048-45aa-9507-fa1af26b538d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
    <soap:Header/>\r
    <soap:Body>\r
       <cli:RelacionaClienteSistema>\r
@@ -1276,8 +1276,8 @@
       <cli:SolicitaClientesParaIntegrar>\r
          <!--Optional:-->\r
          <cli:parametros>\r
-            <cli:IdSistema>?</cli:IdSistema>\r
-            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <cli:IdSistema>11</cli:IdSistema>\r
+            <cli:IdConsulta>0</cli:IdConsulta>\r
          </cli:parametros>\r
       </cli:SolicitaClientesParaIntegrar>\r
    </soap:Body>\r
