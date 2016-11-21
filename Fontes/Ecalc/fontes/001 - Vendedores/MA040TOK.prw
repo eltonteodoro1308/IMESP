@@ -45,7 +45,7 @@ return .T.
 Static Function ModelDef()
 
 	Local oStruSA3 := FWFormStruct( 1, 'SA3')
-	Local oModel   := MPFormModel():New( 'MA040MOD' )
+	Local oModel   := MPFormModel():New( 'SELLER' )
 
 	oModel:AddFields( 'SA3_MODEL',, oStruSA3 )
 	oModel:SetDescription( 'Cadastro de Vendedores' )
@@ -74,9 +74,9 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 		cXmlRet += '</Identification>'
 		cXmlRet += '</BusinessEvent>'
 		cXmlRet += '<BusinessContent>'
-		cXmlRet += oModel:GetXmlData(,,,,,.F.)
+		cXmlRet += oModel:GetXmlData(.T.,,,,,.T.)
 		cXmlRet += '</BusinessContent>'
 
 	End If
 
-Return { lRet, cXmlRet, 'MA040MOD' }
+Return { lRet, cXmlRet, 'SELLER' }
