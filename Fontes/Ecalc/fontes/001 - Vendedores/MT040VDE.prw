@@ -2,6 +2,6 @@
 
 User Function MT040VDE()
 
-	ApMsgStop ( 'Atenção !!!', 'Não é Permitido Excluir Vendedores !!!' )
+	ApMsgStop ( 'Não é Permitido Excluir Vendedores !!!', 'Atenção !!!' )
 
 Return .F.

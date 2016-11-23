@@ -2,6 +2,6 @@
 
 user function MT360DEL()
 
-	ApMsgStop ( 'Atenção !!!', 'Não é Permitido Excluir Condição de Pagamento !!!' )
+	ApMsgStop ( 'Não é Permitido Excluir Condição de Pagamento !!!', 'Atenção !!!' )
 
 return .F.

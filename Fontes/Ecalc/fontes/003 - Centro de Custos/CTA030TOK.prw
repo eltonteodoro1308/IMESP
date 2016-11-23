@@ -37,10 +37,10 @@ Return .F.
 
 Static Function ModelDef()
 
-	Local oStruSA3 := FWFormStruct( 1, 'CTT')
-	Local oModel   := MPFormModel():New( 'COSTCENTER' )
+	Local oStru  := FWFormStruct( 1, 'CTT')
+	Local oModel := MPFormModel():New( 'COSTCENTER' )
 
-	oModel:AddFields( 'CTT_MODEL',, oStruSA3 )
+	oModel:AddFields( 'CTT_MODEL',, oStru )
 	oModel:SetDescription( 'Centros de Custos' )
 	oModel:GetModel( 'CTT_MODEL' ):SetDescription( 'Centros de Custos' )
 	oModel:GetModel( 'CTT_MODEL' ):SetOnlyQuery ( .T. )

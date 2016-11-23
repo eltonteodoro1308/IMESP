@@ -3,10 +3,10 @@
 #INCLUDE 'FWEDITPANEL.CH'
 #INCLUDE 'FWADAPTEREAI.CH'
 
-user function MA040TOK()
+user function A010TOK()
 
 	Local oModel  := ModelDef()
-	Local aFields := oModel:GetModel('SA3_MODEL'):GetStruct():GetFields()
+	Local aFields := oModel:GetModel('SB1_MODEL'):GetStruct():GetFields()
 	Local aValues := {}
 	Local nX      := 0
 
@@ -30,7 +30,7 @@ user function MA040TOK()
 
 	For nX := 1 To Len( aValues )
 
-		oModel:Setvalue( 'SA3_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
+		oModel:SetValue( 'SB1_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
 
 	Next nX
 
@@ -44,13 +44,13 @@ return .T.
 
 Static Function ModelDef()
 
-	Local oStru  := FWFormStruct( 1, 'SA3')
-	Local oModel := MPFormModel():New( 'SELLER' )
+	Local oStru  := FWFormStruct( 1, 'SB1', /*{ | cCampo | ! AllTrim( cCampo ) $ 'B1_QTDSER' }*/ )
+	Local oModel := MPFormModel():New( 'ITEM' )
 
-	oModel:AddFields( 'SA3_MODEL',, oStru )
-	oModel:SetDescription( 'Cadastro de Vendedores' )
-	oModel:GetModel( 'SA3_MODEL' ):SetDescription( 'Cadastro de Vendedores' )
-	oModel:GetModel( 'SA3_MODEL' ):SetOnlyQuery ( .T. )
+	oModel:AddFields( 'SB1_MODEL',, oStru )
+	oModel:SetDescription( 'Cadastro de Produtos' )
+	oModel:GetModel( 'SB1_MODEL' ):SetDescription( 'Cadastro de Produtos' )
+	oModel:GetModel( 'SB1_MODEL' ):SetOnlyQuery ( .T. )
 
 Return oModel
 
@@ -65,11 +65,11 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 		oModel := FwModelActive()
 
 		cXmlRet += '<BusinessEvent>'
-		cXmlRet += '<Entity>SELLER</Entity>'
+		cXmlRet += '<Entity>ITEM</Entity>'
 		cXmlRet += '<Event>upsert</Event>'
 		cXmlRet += '<Identification>'
 		cXmlRet += '<key name="Code">'
-		cXmlRet += AllTrim( oModel:GetModel( 'SA3_MODEL' ):GetValue( 'A3_COD' ) )
+		cXmlRet += AllTrim( oModel:GetModel( 'SB1_MODEL' ):GetValue( 'B1_COD' ) )
 		cXmlRet += '</key>'
 		cXmlRet += '</Identification>'
 		cXmlRet += '</BusinessEvent>'
@@ -79,4 +79,4 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 
 	End If
 
-Return { lRet, cXmlRet, 'SELLER' }
+Return { lRet, cXmlRet, 'ITEM' }

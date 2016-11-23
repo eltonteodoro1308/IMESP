@@ -4,6 +4,6 @@ user function CT030ADEL()
 
 	Local nOpc    := PARAMIXB
 
-	ApMsgStop ( 'Atenção !!!', 'Não é Permitido Excluir Centro de Custo !!!' )
+	ApMsgStop ( 'Não é Permitido Excluir Centro de Custo !!!', 'Atenção !!!' )
 
 return .F.
