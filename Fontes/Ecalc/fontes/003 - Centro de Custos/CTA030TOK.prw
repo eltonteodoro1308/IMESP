@@ -52,7 +52,7 @@ Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 	Local oModel  := FwModelActive()
 	Local cXmlRet := ''
 
-	If cTypeMsg != EAI_MESSAGE_WHOIS
+	If cTypeMsg == EAI_MESSAGE_BUSINESS
 
 		cXmlRet += '<BusinessEvent>'
 		cXmlRet += '<Entity>COSTCENTER</Entity>'

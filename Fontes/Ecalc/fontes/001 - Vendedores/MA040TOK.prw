@@ -60,7 +60,7 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 	Local oModel  := Nil
 	Local cXmlRet := ''
 
-	If cTypeMsg != EAI_MESSAGE_WHOIS
+	If cTypeMsg == EAI_MESSAGE_BUSINESS
 
 		oModel := FwModelActive()
 

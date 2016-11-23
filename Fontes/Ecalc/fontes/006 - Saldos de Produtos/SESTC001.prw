@@ -13,7 +13,7 @@ User Function SESTC001( aParam )
 
 	SetRotInteg( 'STOCKBALANCE' )
 
-	FWIntegDef( 'SESTC001', '20', '1', '', 'STOCKBALANCE', .F., '1.000' )
+	FWIntegDef( 'SESTC001', EAI_MESSAGE_BUSINESS, TRANS_SEND, '', 'STOCKBALANCE', .F., '1.000' )
 
 	SetRotInteg( cRotInteg )
 
@@ -29,25 +29,23 @@ Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 	Local aArea   := GetArea()
 	Local nX      := 0
 
-
 	BeginSQL Alias cTrab
 
-	SELECT SB2.B2_COD, SUM(SB2.B2_QATU) B2_QATU
+	SELECT SB2.B2_COD,SUM( SB2.B2_QATU ) B2_QATU
 	FROM %Table:SB2% SB2
-	WHERE SB2.B2_QATU <> 0
-	AND SB2.FILIAL = %XFilial:SB2%
-	AND SB2.%NotDel%
+	WHERE SB2.B2_FILIAL = %xFilial:SB2%
+	AND SB2.%NotDel% 
 	GROUP BY SB2.B2_COD
 
 	EndSQL
 
-	VarInfo( 'GetLastQuery', GetLastQuery(),,.F. )
+	VarInfo( 'GetLastQuery', GetLastQuery(),,.F.,.T. )
 
-	cSldPrd += '<STOCKBALANCE Operation="1" version="1.01">'
+	cSldPrd += '<STOCKBALANCE Operation="1" version="1.00">'
 
 	Do While ( cTrab )->( ! EOF() )
 
-		cSldPrd += '<SB2_MODEL modeltype="GRID" order="' + ++nX + '">'
+		cSldPrd += '<SB2_MODEL order="' + cValTochar( ++nX ) + '">'
 
 		cSldPrd += '<B2_COD order="1" >
 		cSldPrd += '<value>
@@ -63,6 +61,8 @@ Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 
 		cSldPrd += '</SB2_MODEL>'
 
+		( cTrab )->( DbSkip() )
+
 	End Do
 
 	cSldPrd += '</STOCKBALANCE>'
@@ -71,14 +71,14 @@ Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 
 	RestArea( aArea )
 
-	If cTypeMsg != EAI_MESSAGE_WHOIS
+	If cTypeMsg == EAI_MESSAGE_BUSINESS
 
 		cXmlRet += '<BusinessEvent>'
 		cXmlRet += '<Entity>STOCKBALANCE</Entity>'
 		cXmlRet += '<Event>upsert</Event>'
 		cXmlRet += '<Identification>'
 		cXmlRet += '<key name="Code">'
-		cXmlRet += ''//AllTrim( oModel:GetModel( '' ):GetValue( '' ) )
+		cXmlRet += cNumEmp
 		cXmlRet += '</key>'
 		cXmlRet += '</Identification>'
 		cXmlRet += '</BusinessEvent>'

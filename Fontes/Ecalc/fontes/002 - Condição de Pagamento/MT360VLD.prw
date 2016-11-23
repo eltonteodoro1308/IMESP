@@ -9,7 +9,7 @@ User Function MT360VLD()
 
 	SetRotInteg( 'PAYMENTCONDITION' )
 
-	FWIntegDef( 'MT360VLD', '20', '1', '', 'PAYMENTCONDITION', .F., '1.000' )
+	FWIntegDef( 'MT360VLD', EAI_MESSAGE_BUSINESS, TRANS_SEND, '', 'PAYMENTCONDITION', .F., '1.000' )
 
 	SetRotInteg( cRotInteg )
 
@@ -20,7 +20,7 @@ Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 	Local oModel  := FwModelActive()
 	Local cXmlRet := ''
 
-	If cTypeMsg != EAI_MESSAGE_WHOIS
+	If cTypeMsg == EAI_MESSAGE_BUSINESS
 
 		cXmlRet += '<BusinessEvent>'
 		cXmlRet += '<Entity>PAYMENTCONDITION</Entity>'
