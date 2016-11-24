@@ -41,7 +41,6 @@ User Function PNA020GRV()
 
 	oModel:DeActivate()
 
-
 Return
 
 Static Function ModelDef()
