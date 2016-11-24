@@ -1,0 +1,10 @@
+#INCLUDE 'TOTVS.CH'
+#INCLUDE 'FWMVCDEF.CH'
+#INCLUDE 'FWEDITPANEL.CH'
+#INCLUDE 'FWADAPTEREAI.CH'
+
+user function MTA050E()
+
+	Local lRet := .T.
+
+Return lRet
