@@ -48,7 +48,6 @@ Static Function ModelDef()
 	Local oStru  := FWFormStruct( 1, 'SP3' )
 	Local oModel := MPFormModel():New( 'HOLIDAY' )
 
-	oStru:SetProperty( '*' , MODEL_FIELD_VALID  , {||.T.} )
 	oStru:SetProperty( '*' , MODEL_FIELD_VALUES , {} )
 
 	oModel:AddFields( 'SP3_MODEL',, oStru )

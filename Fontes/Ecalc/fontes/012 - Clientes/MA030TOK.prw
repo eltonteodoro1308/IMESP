@@ -3,10 +3,10 @@
 #INCLUDE 'FWEDITPANEL.CH'
 #INCLUDE 'FWADAPTEREAI.CH'
 
-User Function M050TOK()
+user function MA030TOK()
 
 	Local oModel  := ModelDef()
-	Local aFields := oModel:GetModel('SA4_MODEL'):GetStruct():GetFields()
+	Local aFields := oModel:GetModel('SA1_MODEL'):GetStruct():GetFields()
 	Local aValues := {}
 	Local nX      := 0
 
@@ -29,8 +29,8 @@ User Function M050TOK()
 	oModel:Activate()
 
 	For nX := 1 To Len( aValues )
-
-		oModel:Setvalue( 'SA4_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
+		ConOut( aValues[ nX, 1 ] )
+		oModel:Setvalue( 'SA1_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
 
 	Next nX
 
@@ -44,13 +44,13 @@ return .T.
 
 Static Function ModelDef()
 
-	Local oStru  := FWFormStruct( 1, 'SA4')
-	Local oModel := MPFormModel():New( 'CARRIER' )
+	Local oStru  := FWFormStruct( 1, 'SA1',{ | cCampo | GetSx3Cache( AllTrim( cCampo ), 'X3_CONTEXT' ) != 'V' } )
+	Local oModel := MPFormModel():New( 'CUSTOMERVENDOR' )
 
-	oModel:AddFields( 'SA4_MODEL',, oStru )
-	oModel:SetDescription( 'Cadastro de Transportadoras' )
-	oModel:GetModel( 'SA4_MODEL' ):SetDescription( 'Cadastro de Transportadoras' )
-	oModel:GetModel( 'SA4_MODEL' ):SetOnlyQuery ( .T. )
+	oModel:AddFields( 'SA1_MODEL',, oStru )
+	oModel:SetDescription( 'Cadastro de Clientes' )
+	oModel:GetModel( 'SA1_MODEL' ):SetDescription( 'Cadastro de Clientes' )
+	oModel:GetModel( 'SA1_MODEL' ):SetOnlyQuery ( .T. )
 
 Return oModel
 
@@ -65,11 +65,11 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 		oModel := FwModelActive()
 
 		cXmlRet += '<BusinessEvent>'
-		cXmlRet += '<Entity>CARRIER</Entity>'
+		cXmlRet += '<Entity>CUSTOMERVENDOR</Entity>'
 		cXmlRet += '<Event>upsert</Event>'
 		cXmlRet += '<Identification>'
 		cXmlRet += '<key name="Code">'
-		cXmlRet += AllTrim( oModel:GetModel( 'SA4_MODEL' ):GetValue( 'A4_COD' ) )
+		cXmlRet += AllTrim( oModel:GetModel( 'SA1_MODEL' ):GetValue( 'A1_COD' ) )
 		cXmlRet += '</key>'
 		cXmlRet += '</Identification>'
 		cXmlRet += '</BusinessEvent>'
@@ -79,4 +79,4 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 
 	End If
 
-Return { lRet, cXmlRet, 'CARRIER' }
+Return { lRet, cXmlRet, 'CUSTOMERVENDOR' }

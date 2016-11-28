@@ -5,6 +5,6 @@
 
 user function MTA050E()
 
-	Local lRet := .T.
+	ApMsgStop ( 'Não é Permitido Excluir Transportadoras !!!', 'Atenção !!!' )
 
-Return lRet
+Return .F.

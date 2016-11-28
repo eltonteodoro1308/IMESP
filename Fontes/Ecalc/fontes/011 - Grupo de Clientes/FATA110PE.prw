@@ -3,15 +3,15 @@
 #INCLUDE 'FWEDITPANEL.CH'
 #INCLUDE 'FWADAPTEREAI.CH'
 
-User Function QE030VLD()
+User Function FATA110()
 
-	Local cRotInteg := GetRotInteg()
+	If PARAMIXB[ 2 ] == 'MODELPOS' .And. PARAMIXB[ 1 ]:nOperation == MODEL_OPERATION_DELETE
 
-	SetRotInteg( 'UNITOFMEASURE' )
+		Help(,, 'Help',, 'Não é Permitido Excluir Grupo de Clientes !!!', 1, 0 )
 
-	FWIntegDef( 'QE030VLD', EAI_MESSAGE_BUSINESS, TRANS_SEND, '', 'UNITOFMEASURE', .F., '1.000' )
+		Return .F.
 
-	SetRotInteg( cRotInteg )
+	End If
 
 Return .T.
 
@@ -23,11 +23,11 @@ Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 	If cTypeMsg == EAI_MESSAGE_BUSINESS
 
 		cXmlRet += '<BusinessEvent>'
-		cXmlRet += '<Entity>UNITOFMEASURE</Entity>'
+		cXmlRet += '<Entity>GROUPOFCLIENTS</Entity>'
 		cXmlRet += '<Event>upsert</Event>'
 		cXmlRet += '<Identification>'
 		cXmlRet += '<key name="Code">'
-		cXmlRet += AllTrim( oModel:GetModel( 'SAHMASTER' ):GetValue( 'AH_UNIMED' ) )
+		cXmlRet += AllTrim( oModel:GetModel( 'ACYMASTER' ):GetValue( 'ACY_GRPVEN' ) )
 		cXmlRet += '</key>'
 		cXmlRet += '</Identification>'
 		cXmlRet += '</BusinessEvent>'
@@ -37,4 +37,4 @@ Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 
 	End If
 
-Return { .T., cXmlRet, 'UNITOFMEASURE' }
+Return { .T., cXmlRet, 'GROUPOFCLIENTS' }
