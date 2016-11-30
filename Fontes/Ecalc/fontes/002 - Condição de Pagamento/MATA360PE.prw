@@ -3,17 +3,17 @@
 #INCLUDE 'FWEDITPANEL.CH'
 #INCLUDE 'FWADAPTEREAI.CH'
 
-User Function MT360VLD()
+user function MATA360()
 
-	Local cRotInteg := GetRotInteg()
+	If PARAMIXB[ 2 ] == 'MODELPOS' .And. PARAMIXB[ 1 ]:nOperation == MODEL_OPERATION_DELETE
 
-	SetRotInteg( 'PAYMENTCONDITION' )
+		Help(,, 'Help',, 'Não é Permitido Excluir Condiçao de Pagamento !!!', 1, 0 )
 
-	FWIntegDef( 'MT360VLD', EAI_MESSAGE_BUSINESS, TRANS_SEND, '', 'PAYMENTCONDITION', .F., '1.000' )
+		Return .F.
 
-	SetRotInteg( cRotInteg )
+	End If
 
-Return .T.
+return .T.
 
 Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 
@@ -38,4 +38,3 @@ Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 	End If
 
 Return { .T., cXmlRet, 'PAYMENTCONDITION' }
-

@@ -29,7 +29,7 @@ user function MA030TOK()
 	oModel:Activate()
 
 	For nX := 1 To Len( aValues )
-		ConOut( aValues[ nX, 1 ] )
+
 		oModel:Setvalue( 'SA1_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
 
 	Next nX
