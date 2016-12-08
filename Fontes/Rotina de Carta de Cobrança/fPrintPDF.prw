@@ -12,9 +12,10 @@ User Function fPrintPDF()
 	Local lViewPDF        := .F.
 	Local oPrinter        := FWMSPrinter():New( cFilePrint, IMP_PDF, lAdjustToLegacy, cSpool, lDisableSetup,,,,,, lRaw, lViewPDF )
 	Local nNumTit         := 100
-	Local nLinhas         := 45
-	Local nPaginas        := Int( nNumTit/nLinhas )
-	Local nResto          := Mod( nNumTit, nLinhas )
+	//Local nLinhas         := 45
+	//Local nPaginas        := Int( nNumTit/nLinhas )
+	//Local nResto          := Mod( nNumTit, nLinhas )
+	Local nCount          := 0
 	Local oFont08         := TFont():New('Arial',,-08,,.F.)
 	Local oFont18N        := TFont():New('Arial',,-18,,.T.)
 	Local oFont12         := TFont():New('Arial',,-12,,.F.)
@@ -83,8 +84,43 @@ User Function fPrintPDF()
 
 	oPrinter:EndPage()
 
+
+	/*
+
 	oPrinter:StartPage()
 
+	ImprimeCabecalho()
+
+	For nX := 1 To nNumTit
+
+		ImprimeTitulo()
+
+		If ++nCount == 45 .And. nX != nNumTit
+
+			ImprimeSubTotal()
+
+			oPrinter:EndPage()
+
+			oPrinter:StartPage()
+
+			ImprimeCabecalho()
+
+			nCount := 0
+
+		ElseIf nX == nNumTit
+
+			ImprimeTotal()
+
+		End If
+
+	Next nX
+
+
+	*/
+
+	oPrinter:StartPage()
+
+	// Imprime Cabecalho
 	oPrinter:Say( 050, 030, 'Cliente: ' + Upper( 'Cliente Nome Fulano de Tal Ltda' ), oFont12 )
 	oPrinter:Say( 050, 450, 'Referência: ' + cDia + '/' +  aMes[1] + '/' + cAno, oFont12 )
 	oPrinter:Say( 065, 030, 'Tipo:      ' + Upper( '99 - Tipo do Cliente' ), oFont12 )
@@ -116,6 +152,7 @@ User Function fPrintPDF()
 	oPrinter:Box( 080, 500, 100, 585, '-4' )
 	oPrinter:SayAlign( 080, 500, 'Valor Atualizado à Pagar', oFont08, 070, 020,, 2, 0 )
 
+	// Imprime Títulos
 	For nX := 1 To nLinhas
 
 		oPrinter:SayAlign( 095 + (15 * nX ), 030, '123456789/01', oFont08, 070, 005,, 0, 0 )
@@ -130,6 +167,7 @@ User Function fPrintPDF()
 
 	Next nX
 
+	// Imprime Rodapé
 	oPrinter:Box( 100 + (15 * nX + 1 ), 025, 135 + (15 * nX + 1 ) , 585, '-4' )
 
 	oPrinter:Say( 125 + (15 * nX + 1 ), 045, 'TOTAL GERAL :', oFont18N )
