@@ -2,6 +2,19 @@
 #INCLUDE 'TOTVS.CH'
 #INCLUDE 'FWPRINTSETUP.CH'
 
+Static oPrinter := Nil
+Static oFont08  := TFont():New('Arial',,-08,,.F.)
+Static oFont18N := TFont():New('Arial',,-18,,.T.)
+Static oFont12  := TFont():New('Arial',,-12,,.F.)
+Static oFont12N := TFont():New('Arial',,-12,,.T.)
+Static dDate    := Date()
+Static cDia     := PadL( cValTochar( Day( dDate ) ), 2, '0' )
+Static aMes     := Nil
+Static cAno     := cValTochar( Year( dDate ) )
+Static nNumTit  := 150
+Static nPaginas := Int( nNumTit/045 ) + If( Mod( nNumTit, 045 ) # 0, 1, 0 ) + 001
+Static nPagina  := 1
+
 User Function fPrintPDF()
 
 	Local cFilePrint      := 'DPPR' + StrTran(Time(),':','') + '.PD_'
@@ -10,22 +23,11 @@ User Function fPrintPDF()
 	Local lDisableSetup   := .T.
 	Local lRaw            := .F.
 	Local lViewPDF        := .F.
-	Local oPrinter        := FWMSPrinter():New( cFilePrint, IMP_PDF, lAdjustToLegacy, cSpool, lDisableSetup,,,,,, lRaw, lViewPDF )
-	Local nNumTit         := 100
-	//Local nLinhas         := 45
-	//Local nPaginas        := Int( nNumTit/nLinhas )
-	//Local nResto          := Mod( nNumTit, nLinhas )
 	Local nCount          := 0
-	Local oFont08         := TFont():New('Arial',,-08,,.F.)
-	Local oFont18N        := TFont():New('Arial',,-18,,.T.)
-	Local oFont12         := TFont():New('Arial',,-12,,.F.)
-	Local oFont12N        := TFont():New('Arial',,-12,,.T.)
-	Local dDate           := Date()
-	Local cDia            := PadL( cValTochar( Day( dDate ) ), 2, '0' )
-	Local aMes            := Nil
-	Local cAno            := cValTochar( Year( dDate ) )
 	Local aMeses          := {}
 	Local nX              := 0
+
+	oPrinter := FWMSPrinter():New( cFilePrint, IMP_PDF, lAdjustToLegacy, cSpool, lDisableSetup,,,,,, lRaw, lViewPDF )
 
 	aAdd( aMeses, 'Janeiro' )
 	aAdd( aMeses, 'Fevereiro' )
@@ -82,45 +84,46 @@ User Function fPrintPDF()
 	oPrinter:Say( 685, 055, 'IMPRENSA OFICIAL DO ESTADO S/A', oFont12N )
 	oPrinter:Say( 700, 055, '48.066.047/0001-84', oFont12N )
 
+	oPrinter:Say( 830, 250, 'Página ' + PadL( nPagina, 3, '0' ) + '/' + PadL( nPaginas, 3, '0' ), oFont08 )
+
 	oPrinter:EndPage()
-
-
-	/*
 
 	oPrinter:StartPage()
 
-	ImprimeCabecalho()
+	ImpCabec()
 
 	For nX := 1 To nNumTit
 
-		ImprimeTitulo()
+		ImpTitulo( ++nCount )
 
-		If ++nCount == 45 .And. nX != nNumTit
+		If nCount == 45 .And. nX != nNumTit
 
-			ImprimeSubTotal()
+			ImpRodaPe( nCount, 'Sub-Total:' )
 
 			oPrinter:EndPage()
 
 			oPrinter:StartPage()
 
-			ImprimeCabecalho()
+			ImpCabec()
 
 			nCount := 0
 
 		ElseIf nX == nNumTit
 
-			ImprimeTotal()
+			ImpRodaPe( nCount, 'Total Geral:' )
 
 		End If
 
 	Next nX
 
+	File2Printer( cFilePrint, 'PDF' )
+	oPrinter:cPathPDF:= cSpool
+	oPrinter:Preview()
 
-	*/
+Return
 
-	oPrinter:StartPage()
+Static Function ImpCabec()
 
-	// Imprime Cabecalho
 	oPrinter:Say( 050, 030, 'Cliente: ' + Upper( 'Cliente Nome Fulano de Tal Ltda' ), oFont12 )
 	oPrinter:Say( 050, 450, 'Referência: ' + cDia + '/' +  aMes[1] + '/' + cAno, oFont12 )
 	oPrinter:Say( 065, 030, 'Tipo:      ' + Upper( '99 - Tipo do Cliente' ), oFont12 )
@@ -152,33 +155,33 @@ User Function fPrintPDF()
 	oPrinter:Box( 080, 500, 100, 585, '-4' )
 	oPrinter:SayAlign( 080, 500, 'Valor Atualizado à Pagar', oFont08, 070, 020,, 2, 0 )
 
-	// Imprime Títulos
-	For nX := 1 To nLinhas
+Return
 
-		oPrinter:SayAlign( 095 + (15 * nX ), 030, '123456789/01', oFont08, 070, 005,, 0, 0 )
-		oPrinter:SayAlign( 095 + (15 * nX ), 085, '123456789012345', oFont08, 070, 005,, 0, 0 )
-		oPrinter:SayAlign( 095 + (15 * nX ), 155, cDia + '/' +  aMes[1] + '/' + cAno, oFont08, 070, 005,, 0, 0 )
-		oPrinter:SayAlign( 095 + (15 * nX ), 200, cDia + '/' +  aMes[1] + '/' + cAno, oFont08, 070, 005,, 0, 0  )
-		oPrinter:SayAlign( 095 + (15 * nX ), 240, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 005,, 1, 0 )
-		oPrinter:SayAlign( 095 + (15 * nX ), 265, PadL( cValToChar( nX ), 4, '0' ), oFont08, 075, 005,, 1, 0 )
-		oPrinter:SayAlign( 095 + (15 * nX ), 345, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 005,, 1, 0 )
-		oPrinter:SayAlign( 095 + (15 * nX ), 420, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 005,, 1, 0 )
-		oPrinter:SayAlign( 095 + (15 * nX ), 500, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 005,, 1, 0 )
+Static Function ImpTitulo( nCount )
 
-	Next nX
+	oPrinter:SayAlign( 095 + (15 * nCount ), 030, '123456789/01', oFont08, 070, 005,, 0, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 085, '123456789012345', oFont08, 070, 005,, 0, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 155, cDia + '/' +  aMes[1] + '/' + cAno, oFont08, 070, 005,, 0, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 200, cDia + '/' +  aMes[1] + '/' + cAno, oFont08, 070, 005,, 0, 0  )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 240, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 005,, 1, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 265, PadL( cValToChar( nCount ), 4, '0' ), oFont08, 075, 005,, 1, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 345, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 005,, 1, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 420, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 005,, 1, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 500, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 005,, 1, 0 )
 
-	// Imprime Rodapé
-	oPrinter:Box( 100 + (15 * nX + 1 ), 025, 135 + (15 * nX + 1 ) , 585, '-4' )
+Return
 
-	oPrinter:Say( 125 + (15 * nX + 1 ), 045, 'TOTAL GERAL :', oFont18N )
+Static Function ImpRodaPe( nCount, cTotal )
 
-	oPrinter:SayAlign( 115 + (15 * nX + 1 ), 240, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 020,, 1, 0 )
-	oPrinter:SayAlign( 115 + (15 * nX + 1 ), 345, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 020,, 1, 0 )
-	oPrinter:SayAlign( 115 + (15 * nX + 1 ), 420, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 020,, 1, 0 )
-	oPrinter:SayAlign( 115 + (15 * nX + 1 ), 500, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 020,, 1, 0 )
+	oPrinter:Box( 110 + (15 * nCount + 1 ), 025, 135 + (15 * nCount + 1 ) , 585, '-4' )
 
-	File2Printer( cFilePrint, 'PDF' )
-	oPrinter:cPathPDF:= cSpool
-	oPrinter:Preview()
+	oPrinter:Say( 127 + (15 * nCount + 1 ), 045, cTotal, oFont18N )
+
+	oPrinter:SayAlign( 117 + (15 * nCount + 1 ), 240, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 020,, 1, 0 )
+	oPrinter:SayAlign( 117 + (15 * nCount + 1 ), 345, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 020,, 1, 0 )
+	oPrinter:SayAlign( 117 + (15 * nCount + 1 ), 420, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 020,, 1, 0 )
+	oPrinter:SayAlign( 117 + (15 * nCount + 1 ), 500, Transform( 9999999999999.99, '@E 9,999,999,999,999.99'), oFont08, 075, 020,, 1, 0 )
+
+	oPrinter:Say( 830, 250, 'Página ' + PadL( ++nPagina, 3, '0' ) + '/' + PadL( nPaginas, 3, '0' ), oFont08 )
 
 Return
