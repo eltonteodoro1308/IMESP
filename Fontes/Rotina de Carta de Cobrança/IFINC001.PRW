@@ -1,105 +1,155 @@
 #INCLUDE 'TOTVS.CH'
 #INCLUDE 'FWMVCDEF.CH'
 
-User Function SFINC001()
+User Function IFINC001()
 
-	Local aCoors      := FWGetDialogSize( oMainWnd )
-	Local oPanelUp    := Nil
-	Local oPanelDown  := Nil
-	Local oFWLayer    := Nil
-	Local oBrowseUp   := Nil
-	Local oBrowseDown := Nil
-	Local oRelacSE1   := Nil
-	Local oDlgPrinc   := Nil
-	Local aFldsDown   := {}
-	Private aRotina   := { { 'Enviar', 'Alert("Enviado !!!")', 0, 6, 0, Nil, Nil, Nil } }
+	Local   oBrowse := FWMBrowse():New()
+	Private aRotina := { { 'Selecionar Títulos', 'U_SE1IFX01( SA1->A1_COD, SA1->A1_LOJA )', 0, 6, 0, Nil, Nil, Nil } }
 
-	Define MsDialog oDlgPrinc Title 'Carta de Cobrança' From aCoors[1], aCoors[2] To aCoors[3], aCoors[4] Pixel
-
-	oFWLayer := FWLayer():New()
-	oFWLayer:Init( oDlgPrinc, .F. )
-	oFWLayer:AddLine( 'UP', 50, .F. )
-	oFWLayer:AddCollumn( 'UP', 100, .T., 'UP' )
-
-	oPanelUp := oFWLayer:GetColPanel( 'UP', 'UP' )
-
-	oBrowseUp := FwMarkBrowse():New()
-	oBrowseUp:DisableReport()
-	oBrowseUp:SetCustomMarkRec( {|| U_Exec( oBrowseUp:Data() ) } )
-	oBrowseUp:SetOnlyFields( { 'A1_COD', 'A1_LOJA', 'A1_NOME', 'A1_EMAIL' } )
-	oBrowseUp:SetFilterDefault('u_Verifica()')
-	oBrowseUp:SetOwner( oPanelUp )
-	oBrowseUp:SetDescription( "Clientes" )
-	oBrowseUp:SetAlias( 'SA1' )
-	oBrowseUp:SetProfileID( '1' )
-	oBrowseUp:ForceQuitButton()
-	oBrowseUp:Activate()
-
-	oFWLayer:AddLine( 'DOWN', 100, .F. )
-	oFWLayer:AddCollumn( 'DOWN', 100, .T., 'DOWN' )
-
-	oPanelDown := oFWLayer:GetColPanel( 'DOWN' , 'DOWN' )
-	oBrowseDown:= FwMarkBrowse():New()
-	oBrowseDown:DisableReport()
-	oBrowseDown:SetOnlyFields( {''} )
-
-	// [n][01] Título da coluna
-	// [n][02] Code-Block de carga dos dados
-	// [n][03] Tipo de dados
-	// [n][04] Máscara
-	// [n][05] Alinhamento (0=Centralizado, 1=Esquerda ou 2=Direita)
-	// [n][06] Tamanho
-	// [n][07] Decimal
-	// [n][08] Indica se permite a edição
-	// [n][09] Code-Block de validação da coluna após a edição
-	// [n][10] Indica se exibe imagem
-	// [n][11] Code-Block de execução do duplo clique
-	// [n][12] Variável a ser utilizada na edição (ReadVar)
-	// [n][13] Code-Block de execução do clique no header
-	// [n][14] Indica se a coluna está deletada
-	// [n][15] Indica se a coluna será exibida nos detalhes do Browse
-	// [n][16] Opções de carga dos dados (Ex: 1=Sim, 2=Não)
-
-	aAdd(aFldsDown,{GetSx3Cache('E1_PREFIXO','X3_TITULO'),{||SE1->E1_PREFIXO},'C','@!','1',GetSx3Cache('E1_PREFIXO','X3_TAMANHO')})
-	aAdd(aFldsDown,{GetSx3Cache('E1_NUM','X3_TITULO'),{||SE1->E1_NUM},'C','@!','1',GetSx3Cache('E1_NUM','X3_TAMANHO')})
-	aAdd(aFldsDown,{GetSx3Cache('E1_PARCELA','X3_TITULO'),{||SE1->E1_PARCELA},'C','@!','1',GetSx3Cache('E1_PARCELA','X3_TAMANHO')})
-	aAdd(aFldsDown,{GetSx3Cache('E1_NUMBCO','X3_TITULO'),{||SE1->E1_NUMBCO},'C','@!','1',GetSx3Cache('E1_NUMBCO','X3_TAMANHO')})
-	aAdd(aFldsDown,{GetSx3Cache('E1_EMISSAO','X3_TITULO'),{||SE1->E1_EMISSAO},'D',,'1',GetSx3Cache('E1_EMISSAO','X3_TAMANHO')})
-	aAdd(aFldsDown,{GetSx3Cache('E1_VENCREA','X3_TITULO'),{||SE1->E1_VENCREA},'D',,'1',GetSx3Cache('E1_VENCREA','X3_TAMANHO')})
-	aAdd(aFldsDown,{'Dias de Atraso',{||Date()-SE1->E1_VENCREA},'N','9999','2', 004})
-	aAdd(aFldsDown,{GetSx3Cache('E1_VLCRUZ','X3_TITULO'),{||SE1->E1_VLCRUZ},'N',GetSx3Cache('E1_VLCRUZ','X3_PICTURE'),'2',;
-	GetSx3Cache('E1_VLCRUZ','X3_TAMANHO'),GetSx3Cache('E1_VLCRUZ','X3_DECIMAL')})
-	aAdd(aFldsDown,{'Juros',{||SE1->E1_PORCJUR*(Date()-SE1->E1_VENCREA)},'N',GetSx3Cache('E1_VLCRUZ','X3_PICTURE'),'2',;
-	GetSx3Cache('E1_VLCRUZ','X3_TAMANHO'),GetSx3Cache('E1_VLCRUZ','X3_DECIMAL')})
-	aAdd(aFldsDown,{'Multa',{||(SE1->E1_VALJUR*(Date()-SE1->E1_VENCREA))},'N',GetSx3Cache('E1_VLCRUZ','X3_PICTURE'),'2',;
-	GetSx3Cache('E1_VLCRUZ','X3_TAMANHO'),GetSx3Cache('E1_VLCRUZ','X3_DECIMAL')})
-
-	oBrowseDown:SetFields( aFldsDown )
-	oBrowseDown:SetOwner( oPanelDown )
-	oBrowseDown:SetDescription( 'Títulos' )
-	oBrowseDown:SetIgnoreARotina( .T. )
-	oBrowseDown:SetMenuDef( 'SFINM001' )
-	oBrowseDown:SetFieldMark( 'E1_OK' )
-	oBrowseDown:DisableDetails()
-	oBrowseDown:SetAlias( 'SE1' )
-	oBrowseDown:SetProfileID( '2' )
-	oBrowseDown:Activate()
-
-	oRelacSE1:= FWBrwRelation():New()
-	oRelacSE1:AddRelation( oBrowseUp , oBrowseDown ,;
-	{ { 'E1_CLIENTE' , 'A1_COD' }, { 'E1_LOJA' , 'A1_LOJA' } } )
-	oRelacSE1:Activate()
-
-	Activate MsDialog oDlgPrinc Center
-
-Return NIL
-
-User Function Exec( oData )
-
-	Alert( oData:IsLast() )
+	oBrowse:SetAlias('SA1')
+	oBrowse:SetFilterDefault( 'U_SA1IFC01()' )
+	oBrowse:SetDescription('Clientes com Títulos em Atraso')
+	oBrowse:SetOnlyFields( { 'A1_COD', 'A1_LOJA', 'A1_NOME', 'A1_EMAIL' } )
+	oBrowse:DisableReport()
+	oBrowse:DisableDetails()
+	oBrowse:SetExecuteDef(1)
+	oBrowse:Activate()
 
 Return
 
-User Function Verifica()
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Return A1_COD = 'C001'
+User Function SE1IFX01( cCliente, cLoja)
+
+	Local cAliasTRB := GetNextAlias()
+	Local aArea     := GetArea()
+	Local cDate     := DtoS( Date() )
+	Local oSize     := FwDefSize():New(.T.)
+	Local oDlg      := Nil
+	Local oList     := Nil
+	Local aList     := {}
+	Local oNO       := LoadBitmap( GetResources(),'LBNO')
+	Local oOK       := LoadBitmap( GetResources(),'LBOK')
+	Local aAcoes    := {}
+
+	BeginSql Alias cAliasTRB
+
+	SELECT E1_FILIAL, E1_PREFIXO,E1_NUM,E1_PARCELA,E1_NUMBCO,E1_EMISSAO,E1_VENCTO,E1_VLCRUZ,
+	DATEDIFF( DAY, CONVERT( DATETIME, E1_VENCTO ), CONVERT( DATETIME, '20161212' ) ) E1_ATRASO,
+	E1_PORCJUR, E1_VALJUR
+	FROM %Table:SE1% SE1
+	WHERE DATEDIFF( DAY, CONVERT( DATETIME, SE1.E1_XULTCBR ), CONVERT( DATETIME, %Exp:cDate% ) ) >= 3
+	AND SE1.E1_FILIAL = %xFilial:SN1%
+	AND SE1.E1_VENCTO < %Exp:cDate%
+	AND SE1.E1_CLIENTE = %Exp:cCliente%
+	AND SE1.E1_LOJA = %Exp:cLoja%
+	AND SE1.E1_SALDO > 0
+	AND SE1.%NotDel%
+
+	EndSql
+
+	(cAliasTRB)->(DbGoTop())
+
+	Do While (cAliasTRB)->(!EOF())
+
+		aAdd( aList, (cAliasTRB)->( { .F., E1_FILIAL, E1_PREFIXO, E1_NUM, E1_PARCELA, E1_NUMBCO, E1_EMISSAO,;
+		E1_VENCTO, E1_VLCRUZ, E1_ATRASO, E1_PORCJUR, E1_VALJUR, ( E1_VLCRUZ + E1_PORCJUR + E1_VALJUR ) } ) )
+
+		(cAliasTRB)->( DbSkip() )
+
+	End Do
+
+	oSize:AddObject( "LISTA", 000, 000, .T., .T. )
+
+	oSize:Process()
+
+	DEFINE DIALOG oDlg TITLE 'Títulos em Atraso' FROM;
+	oSize:aWindSize[1],oSize:aWindSize[2] TO oSize:aWindSize[3],oSize:aWindSize[4] PIXEL
+
+	@oSize:GetDimension("LISTA","LININI"), oSize:GetDimension("LISTA","COLINI");
+	LISTBOX oList Fields HEADER '';
+	SIZE oSize:GetDimension("LISTA","COLEND"), oSize:GetDimension("LISTA","LINEND") OF oDlg PIXEL
+
+	oList:aHeaders := { '', 'Filial', 'Prefixo', 'Título', 'Parcela', 'Nosso Numero', 'Data da Emissão', 'Data do Vencimento','Valor',;
+	'Dias em Atraso', 'Juros Diários 0,0333%', 'Multa Após o Vencimento 2,0%','Valor Atualizado a Pagar', }
+
+	oList:SetArray( aList )
+
+	oList:bLine := {|| {;
+	If( aList[oList:nAt,01], oOK, oNO ),;
+	aList[oList:nAt,02],;
+	aList[oList:nAt,03],;
+	aList[oList:nAt,04],;
+	aList[oList:nAt,05],;
+	aList[oList:nAt,06],;
+	aList[oList:nAt,07],;
+	aList[oList:nAt,08],;
+	aList[oList:nAt,09],;
+	aList[oList:nAt,10],;
+	aList[oList:nAt,11],;
+	aList[oList:nAt,12],;
+	aList[oList:nAt,13]}}
+
+	oList:bLDblClick   := { || aList[oList:nAt,01] := !aList[oList:nAt,01], oList:DrawSelect() }
+	oList:bHeaderClick := { |oList, nCol| InvertSel( oList, nCol, @aList ) }
+
+	EnchoiceBar( oDlg, {||ApMsgInfo('Botão OK !!!','Atençao !!!')}, {||oDlg:End()},,,,,.F.,.F.,.F.,.T.,.F. )
+
+	ACTIVATE DIALOG oDlg CENTERED
+
+	(cAliasTRB)->(DbCloseArea())
+
+	RestArea( aArea )
+
+Return
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+User Function SA1IFC01()
+
+	Local lRet     := .F.
+	Local cDate    := DtoS( Date() )
+	Local aArea    := GetArea()
+	Local cAliasTRB   := GetNextAlias()
+	Local cCliente := A1_COD
+	Local cLoja    := A1_LOJA
+
+	BeginSql Alias cAliasTRB
+
+	SELECT Count(*) Count
+	FROM %Table:SE1% SE1
+	WHERE DATEDIFF( DAY, CONVERT( DATETIME, SE1.E1_XULTCBR ), CONVERT( DATETIME, %Exp:cDate% ) ) >= 3
+	AND SE1.E1_FILIAL = %xFilial:SN1%
+	AND SE1.E1_VENCTO < %Exp:cDate%
+	AND SE1.E1_CLIENTE = %Exp:cCliente%
+	AND SE1.E1_LOJA = %Exp:cLoja%
+	AND SE1.E1_SALDO > 0
+	AND SE1.%NotDel%
+
+	EndSql
+
+	lRet := ( cAliasTRB )->Count > 0
+
+	(cAliasTRB)->(DbCloseArea())
+
+	RestArea( aArea )
+
+Return lRet
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Static Function InvertSel( oList, nCol, aList )
+
+	If nCol == 1
+
+		aEval( aList, {|X| X[1] := ! X[1] } )
+
+		oList:Refresh()
+
+	End IF
+
+Return
