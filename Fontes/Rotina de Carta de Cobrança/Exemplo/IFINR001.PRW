@@ -15,7 +15,7 @@ Static nNumTit  := 150
 Static nPaginas := Int( nNumTit/045 ) + If( Mod( nNumTit, 045 ) # 0, 1, 0 ) + 001
 Static nPagina  := 1
 
-User Function fPrintPDF()
+User Function IFINR001( aDados )
 
 	Local cFilePrint      := 'DPPR' + StrTran(Time(),':','') + '.PD_'
 	Local lAdjustToLegacy := .F.
