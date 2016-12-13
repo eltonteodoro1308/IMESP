@@ -57,15 +57,25 @@ User Function SE1IFC01( cCliente, cLoja, cNome, cEnd, cBairro, cCep, cMun, cEst,
 	aAdd( aCliente, cEmail   ) // 07
 	aAdd( aCliente, cCliente ) // 08
 	aAdd( aCliente, AllTrim( cGrpVen ) + ' - ' + AllTrim( Posicione( 'ACY', 1, xFilial('CYA') + cGrpVen, 'ACY_DESCRI') ) ) // 09
+	aAdd( aCliente, cLoja    ) // 10
 
 	RestArea( aArea )
 
 	BeginSql Alias cAliasTRB
 
-	SELECT E1_FILIAL, E1_PREFIXO,E1_NUM,E1_PARCELA,E1_NUMBCO,E1_EMISSAO,E1_VENCTO,E1_SALDO,
-	DATEDIFF( DAY, CONVERT( DATETIME, E1_VENCTO ), CONVERT( DATETIME, %Exp:cDate% ) ) E1_ATRASO, R_E_C_N_O_
+	SELECT E1_FILIAL, E1_PREFIXO,E1_NUM,E1_PARCELA,E1_TIPO,E1_NUMBCO,E1_EMISSAO,E1_VENCTO,E1_SALDO,
+	DATEDIFF( DAY, CONVERT( DATETIME, E1_VENCTO ), CONVERT( DATETIME, %Exp:cDate% ) ) E1_ATRASO
 	FROM %Table:SE1% SE1
-	WHERE DATEDIFF( DAY, CONVERT( DATETIME, SE1.E1_XULTCBR ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
+	WHERE //DATEDIFF( DAY, CONVERT( DATETIME, SE1.E1_XULTCBR ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
+	(
+	SELECT COUNT(*) FROM SZA990 SZA
+	WHERE SZA.ZA_FILIAL  = SE1.E1_FILIAL
+	AND   SZA.ZA_PREFIXO = SE1.E1_PREFIXO
+	AND   SZA.ZA_NUM     = SE1.E1_NUM
+	AND   SZA.ZA_PARCELA = SE1.E1_PARCELA
+	AND   SZA.ZA_TIPO    = SE1.E1_TIPO
+	AND   DATEDIFF( DAY, CONVERT( DATETIME, SZA.ZA_DATA ), CONVERT( DATETIME, %Exp:cDate% ) ) <= %Exp:nDCRTCBR%
+	) = 0
 	AND SE1.E1_FILIAL = %xFilial:SN1%
 	AND SE1.E1_VENCTO < %Exp:cDate%
 	AND SE1.E1_CLIENTE = %Exp:cCliente%
@@ -97,7 +107,7 @@ User Function SE1IFC01( cCliente, cLoja, cNome, cEnd, cBairro, cCep, cMun, cEst,
 		/*11*/ nJuros,;
 		/*12*/ nMulta,;
 		/*13*/ E1_SALDO + nJuros + nMulta,;
-		/*14*/ R_E_C_N_O_;
+		/*14*/ E1_TIPO;
 		} ) )
 
 		(cAliasTRB)->( DbSkip() )
@@ -165,7 +175,16 @@ User Function SA1IFC01()
 
 	SELECT Count(*) Count
 	FROM %Table:SE1% SE1
-	WHERE DATEDIFF( DAY, CONVERT( DATETIME, SE1.E1_XULTCBR ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
+	WHERE //DATEDIFF( DAY, CONVERT( DATETIME, SE1.E1_XULTCBR ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
+	(
+	SELECT COUNT(*) FROM SZA990 SZA
+	WHERE SZA.ZA_FILIAL  = SE1.E1_FILIAL
+	AND   SZA.ZA_PREFIXO = SE1.E1_PREFIXO
+	AND   SZA.ZA_NUM     = SE1.E1_NUM
+	AND   SZA.ZA_PARCELA = SE1.E1_PARCELA
+	AND   SZA.ZA_TIPO    = SE1.E1_TIPO
+	AND   DATEDIFF( DAY, CONVERT( DATETIME, SZA.ZA_DATA ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
+	) = 0
 	AND SE1.E1_FILIAL = %xFilial:SN1%
 	AND SE1.E1_VENCTO < %Exp:cDate%
 	AND SE1.E1_CLIENTE = %Exp:cCliente%

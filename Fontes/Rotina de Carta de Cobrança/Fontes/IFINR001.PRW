@@ -101,7 +101,7 @@ User Function IFINR001( aCliente, aTitulos )
 
 	For nX := 1 To nNumTit
 
-		ImpTitulo( ++nCount, aTitulos )
+		ImpTitulo( ++nCount, aCliente, aTitulos )
 
 		If nCount == 45 .And. nX != nNumTit
 
@@ -166,7 +166,9 @@ Static Function ImpCabec( aCliente )
 
 Return
 
-Static Function ImpTitulo( nCount, aTitulos )
+Static Function ImpTitulo( nCount, aCliente, aTitulos )
+
+	Local aArea := GetArea()
 
 	oPrinter:SayAlign( 095 + (15 * nCount ), 030, AllTrim( aTitulos[ nPosTitulo, 004 ] ) + '/' + AllTrim( aTitulos[ nPosTitulo, 005 ] ), oFont08, 070, 005,, 0, 0 )
 	oPrinter:SayAlign( 095 + (15 * nCount ), 085, AllTrim( aTitulos[ nPosTitulo, 006 ] ), oFont08, 070, 005,, 0, 0 )
@@ -177,6 +179,28 @@ Static Function ImpTitulo( nCount, aTitulos )
 	oPrinter:SayAlign( 095 + (15 * nCount ), 345, TransForm( aTitulos[ nPosTitulo, 011 ], cPicture ), oFont08, 075, 005,, 1, 0 )
 	oPrinter:SayAlign( 095 + (15 * nCount ), 420, TransForm( aTitulos[ nPosTitulo, 012 ], cPicture ), oFont08, 075, 005,, 1, 0 )
 	oPrinter:SayAlign( 095 + (15 * nCount ), 500, TransForm( aTitulos[ nPosTitulo, 013 ], cPicture ), oFont08, 075, 005,, 1, 0 )
+
+	DbSelectArea( 'SZA' )
+
+	RecLock( 'SZA', .T. )
+
+	SZA->ZA_FILIAL  := xFilial( 'SZA' )
+	SZA->ZA_CLIENTE := aCliente[008]
+	SZA->ZA_LOJA    := aCliente[010]
+	SZA->ZA_NOME    := aCliente[001]
+	SZA->ZA_PREFIXO := aTitulos[ nPosTitulo, 003 ]
+	SZA->ZA_NUM     := aTitulos[ nPosTitulo, 004 ]
+	SZA->ZA_PARCELA := aTitulos[ nPosTitulo, 005 ]
+	SZA->ZA_TIPO    := aTitulos[ nPosTitulo, 014 ]
+	SZA->ZA_EMISSAO := aTitulos[ nPosTitulo, 007 ]
+	SZA->ZA_VENCTO  := aTitulos[ nPosTitulo, 008 ]
+	SZA->ZA_VALOR   := aTitulos[ nPosTitulo, 009 ]
+	SZA->ZA_DATA    := dDate
+	SZA->ZA_EMAIL   := ''
+
+	MsUnlock()
+
+	RestArea( aArea )
 
 	nSumTitulo += aTitulos[ nPosTitulo, 009 ]
 	nSumMulta  += aTitulos[ nPosTitulo, 011 ]
