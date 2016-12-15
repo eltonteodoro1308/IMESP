@@ -15,22 +15,27 @@ User Function IFINR001( aCliente, aTitulos )
 	Local aMeses          := {}
 	Local nX              := 0
 
-	Private oPrinter      := Nil
-	Private oFont08       := TFont():New('Arial',,-08,,.F.)
-	Private oFont18N      := TFont():New('Arial',,-18,,.T.)
-	Private oFont12       := TFont():New('Arial',,-12,,.F.)
-	Private oFont12N      := TFont():New('Arial',,-12,,.T.)
-	Private dDate         := Date()
-	Private cDia          := PadL( cValTochar( Day( dDate ) ), 2, '0' )
-	Private cAno          := cValTochar( Year( dDate ) )
-	Private nNumTit       := Len( aTitulos )
-	Private nPaginas      := Int( nNumTit/045 ) + If( Mod( nNumTit, 045 ) # 0, 1, 0 ) + 001
-	Private nPagina       := 1
-	Private nSumTitulo    := 0
-	Private nSumMulta     := 0
-	Private nSumJuros     := 0
-	Private nSumTotal     := 0
-	Private nPosTitulo    := 1
+	Private oPrinter   := Nil
+	Private oFont08    := TFont():New('Arial',,-08,,.F.)
+	Private oFont18N   := TFont():New('Arial',,-18,,.T.)
+	Private oFont12    := TFont():New('Arial',,-12,,.F.)
+	Private oFont12N   := TFont():New('Arial',,-12,,.T.)
+	Private cDia       := PadL( cValTochar( Day( dDate ) ), 2, '0' )
+	Private cAno       := cValTochar( Year( dDate ) )
+	Private nNumTit    := Len( aTitulos )
+	Private nPaginas   := Int( nNumTit/045 ) + If( Mod( nNumTit, 045 ) # 0, 1, 0 ) + 001
+	Private nPagina    := 1
+	Private nSumTitulo := 0
+	Private nSumMulta  := 0
+	Private nSumJuros  := 0
+	Private nSumTotal  := 0
+	Private nPosTitulo := 1
+
+	If ! ExistDir( cSpool )
+
+		MakeDir( cSpool )
+
+	End If
 
 	oPrinter := FWMSPrinter():New( cFilePrint, IMP_PDF, lAdjustToLegacy, cSpool, lDisableSetup,,,,,, lRaw, lViewPDF )
 
@@ -60,13 +65,13 @@ User Function IFINR001( aCliente, aTitulos )
 	oPrinter:Box( 130, 100, 230, 455, '-4' )
 
 	oPrinter:Say( 145, 105, 'A(o)' )
-	oPrinter:Say( 160, 105, Upper( AllTrim( aCliente[01] ) ), oFont12 )
-	oPrinter:Say( 175, 105, AllTrim( aCliente[02] ), oFont12 )
-	oPrinter:Say( 190, 105, AllTrim( aCliente[03] ), oFont12 )
-	oPrinter:Say( 205, 105, 'CEP.: ' + AllTrim( aCliente[04] ) , oFont12 )
-	oPrinter:Say( 220, 105, AllTrim( aCliente[05] ) + ' - ' + AllTrim( aCliente[06] ), oFont12 )
+	oPrinter:Say( 160, 105, Upper( AllTrim( aCliente[03] ) ), oFont12 )
+	oPrinter:Say( 175, 105, AllTrim( aCliente[04] ), oFont12 )
+	oPrinter:Say( 190, 105, AllTrim( aCliente[05] ), oFont12 )
+	oPrinter:Say( 205, 105, 'CEP.: ' + AllTrim( aCliente[05] ) , oFont12 )
+	oPrinter:Say( 220, 105, AllTrim( aCliente[07] ) + ' - ' + AllTrim( aCliente[08] ), oFont12 )
 
-	oPrinter:Say( 245, 400, AllTrim( aCliente[08] ), oFont12 )
+	oPrinter:Say( 245, 400, AllTrim( aCliente[01] ), oFont12 )
 	oPrinter:Say( 285, 050, 'DPPR..: ' + cNUMCOBR, oFont12 )
 
 	PUTMV( 'MV_NUMCOBR',  If( AllTrim( cNUMCOBR ) == '999999', '000001', PadL( Val(cNUMCOBR) + 1, 6, '0' ) ) )
@@ -97,8 +102,6 @@ User Function IFINR001( aCliente, aTitulos )
 
 	ImpCabec( aCliente )
 
-	BeginTran()
-
 	For nX := 1 To nNumTit
 
 		ImpTitulo( ++nCount, aCliente, aTitulos )
@@ -123,19 +126,17 @@ User Function IFINR001( aCliente, aTitulos )
 
 	Next nX
 
-	EndTran()
-
 	File2Printer( cFilePrint, 'PDF' )
 	oPrinter:cPathPDF:= cSpool
 	oPrinter:Preview()
 
-Return
+Return cSpool + cFilePrint
 
 Static Function ImpCabec( aCliente )
 
-	oPrinter:Say( 050, 030, 'Cliente: ' + Upper( AllTrim( aCliente[01] ) ), oFont12 )
+	oPrinter:Say( 050, 030, 'Cliente: ' + Upper( AllTrim( aCliente[03] ) ), oFont12 )
 	oPrinter:Say( 050, 450, 'Referência: ' + DtoC( dDate ), oFont12 )
-	oPrinter:Say( 065, 030, 'Tipo:      ' + Upper( aCliente[09] ), oFont12 )
+	oPrinter:Say( 065, 030, 'Tipo:      ' + Upper( aCliente[10] + ' - ' + aCliente[11] ), oFont12 )
 
 	oPrinter:Box( 080, 025, 100, 080, '-4' )
 	oPrinter:SayAlign( 080, 025, 'Título', oFont08, 055, 020,, 2, 0 )
@@ -170,42 +171,62 @@ Static Function ImpTitulo( nCount, aCliente, aTitulos )
 
 	Local aArea := GetArea()
 
-	oPrinter:SayAlign( 095 + (15 * nCount ), 030, AllTrim( aTitulos[ nPosTitulo, 004 ] ) + '/' + AllTrim( aTitulos[ nPosTitulo, 005 ] ), oFont08, 070, 005,, 0, 0 )
-	oPrinter:SayAlign( 095 + (15 * nCount ), 085, AllTrim( aTitulos[ nPosTitulo, 006 ] ), oFont08, 070, 005,, 0, 0 )
-	oPrinter:SayAlign( 095 + (15 * nCount ), 155, DtoC( aTitulos[ nPosTitulo, 007 ] ), oFont08, 070, 005,, 0, 0 )
-	oPrinter:SayAlign( 095 + (15 * nCount ), 200, DtoC( aTitulos[ nPosTitulo, 008 ] ), oFont08, 070, 005,, 0, 0  )
-	oPrinter:SayAlign( 095 + (15 * nCount ), 240, TransForm( aTitulos[ nPosTitulo, 009 ], cPicture ), oFont08, 075, 005,, 1, 0 )
-	oPrinter:SayAlign( 095 + (15 * nCount ), 265, PadL( cValToChar( aTitulos[ nPosTitulo, 010 ] ), 4, '0' ), oFont08, 075, 005,, 1, 0 )
-	oPrinter:SayAlign( 095 + (15 * nCount ), 345, TransForm( aTitulos[ nPosTitulo, 011 ], cPicture ), oFont08, 075, 005,, 1, 0 )
-	oPrinter:SayAlign( 095 + (15 * nCount ), 420, TransForm( aTitulos[ nPosTitulo, 012 ], cPicture ), oFont08, 075, 005,, 1, 0 )
-	oPrinter:SayAlign( 095 + (15 * nCount ), 500, TransForm( aTitulos[ nPosTitulo, 013 ], cPicture ), oFont08, 075, 005,, 1, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 030, AllTrim( aTitulos[ nPosTitulo, 015 ] ) + '/' + AllTrim( aTitulos[ nPosTitulo, 016 ] ), oFont08, 070, 005,, 0, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 085, AllTrim( aTitulos[ nPosTitulo, 018 ] ), oFont08, 070, 005,, 0, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 155, DtoC( Stod( aTitulos[ nPosTitulo, 019 ] ) ), oFont08, 070, 005,, 0, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 200, DtoC( Stod( aTitulos[ nPosTitulo, 020 ] ) ), oFont08, 070, 005,, 0, 0  )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 240, TransForm( aTitulos[ nPosTitulo, 021 ], cPicture ), oFont08, 075, 005,, 1, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 265, PadL( cValToChar( aTitulos[ nPosTitulo, 022 ] ), 4, '0' ), oFont08, 075, 005,, 1, 0 )
+	//TODO Verificar Cálculo Multa e Juros
+	oPrinter:SayAlign( 095 + (15 * nCount ), 345, TransForm( 0, cPicture ), oFont08, 075, 005,, 1, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 420, TransForm( 0, cPicture ), oFont08, 075, 005,, 1, 0 )
+	oPrinter:SayAlign( 095 + (15 * nCount ), 500, TransForm( aTitulos[ nPosTitulo, 021 ], cPicture ), oFont08, 075, 005,, 1, 0 )
 
-	DbSelectArea( 'SZA' )
+	If ChkFile( 'SZA' )
 
-	RecLock( 'SZA', .T. )
+		DbSelectArea( 'SZA' )
 
-	SZA->ZA_FILIAL  := xFilial( 'SZA' )
-	SZA->ZA_CLIENTE := aCliente[001]
-	SZA->ZA_LOJA    := aCliente[002]
-	SZA->ZA_NOME    := aCliente[003]
-	SZA->ZA_PREFIXO := aTitulos[ nPosTitulo, 003 ]
-	SZA->ZA_NUM     := aTitulos[ nPosTitulo, 004 ]
-	SZA->ZA_PARCELA := aTitulos[ nPosTitulo, 005 ]
-	SZA->ZA_TIPO    := aTitulos[ nPosTitulo, 014 ]
-	SZA->ZA_EMISSAO := aTitulos[ nPosTitulo, 007 ]
-	SZA->ZA_VENCTO  := aTitulos[ nPosTitulo, 008 ]
-	SZA->ZA_VALOR   := aTitulos[ nPosTitulo, 009 ]
-	SZA->ZA_DATA    := dDate
-	SZA->ZA_EMAIL   := ''
+		If RecLock( 'SZA', .T. )
 
-	MsUnlock()
+			SZA->ZA_FILIAL  := xFilial( 'SZA' )
+			SZA->ZA_CLIENTE := aCliente[001]
+			SZA->ZA_LOJA    := aCliente[002]
+			SZA->ZA_NOME    := aCliente[003]
+			SZA->ZA_PREFIXO := aTitulos[ nPosTitulo, 014 ]
+			SZA->ZA_NUM     := aTitulos[ nPosTitulo, 015 ]
+			SZA->ZA_PARCELA := aTitulos[ nPosTitulo, 016 ]
+			SZA->ZA_TIPO    := aTitulos[ nPosTitulo, 017 ]
+			SZA->ZA_EMISSAO := StoD( aTitulos[ nPosTitulo, 019 ] )
+			SZA->ZA_VENCTO  := StoD( aTitulos[ nPosTitulo, 020 ] )
+			SZA->ZA_VALOR   := aTitulos[ nPosTitulo, 021 ]
+			SZA->ZA_DATA    := dDate
+			SZA->ZA_EMAIL   := ''
+
+			MsUnlock()
+
+		End If
+
+	End If
+
+	DbSelectArea( 'SE1' )
+
+	DbGoto( aTitulos[ nPosTitulo, 023 ] )
+
+	If RecLock( 'SE1', .F. )
+
+		SE1->E1_XDTUCBR := dDate
+
+		MsUnlock()
+
+	End If
 
 	RestArea( aArea )
 
-	nSumTitulo += aTitulos[ nPosTitulo, 009 ]
-	nSumMulta  += aTitulos[ nPosTitulo, 011 ]
-	nSumJuros  += aTitulos[ nPosTitulo, 012 ]
-	nSumTotal  += aTitulos[ nPosTitulo, 013 ]
+	//TODO Verificar Cálculo Multa e Juros
+	nSumTitulo += aTitulos[ nPosTitulo, 021 ]
+	nSumMulta  += 0
+	nSumJuros  += 0
+	nSumTotal  += aTitulos[ nPosTitulo, 021 ]
 
 	nPosTitulo++
 
