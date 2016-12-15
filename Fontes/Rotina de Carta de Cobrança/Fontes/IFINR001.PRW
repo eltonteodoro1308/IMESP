@@ -185,9 +185,9 @@ Static Function ImpTitulo( nCount, aCliente, aTitulos )
 	RecLock( 'SZA', .T. )
 
 	SZA->ZA_FILIAL  := xFilial( 'SZA' )
-	SZA->ZA_CLIENTE := aCliente[008]
-	SZA->ZA_LOJA    := aCliente[010]
-	SZA->ZA_NOME    := aCliente[001]
+	SZA->ZA_CLIENTE := aCliente[001]
+	SZA->ZA_LOJA    := aCliente[002]
+	SZA->ZA_NOME    := aCliente[003]
 	SZA->ZA_PREFIXO := aTitulos[ nPosTitulo, 003 ]
 	SZA->ZA_NUM     := aTitulos[ nPosTitulo, 004 ]
 	SZA->ZA_PARCELA := aTitulos[ nPosTitulo, 005 ]

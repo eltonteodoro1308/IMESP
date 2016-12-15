@@ -5,26 +5,121 @@
 
 User Function IFINC001()
 
-	Local   oBrowse := FWMBrowse():New()
+	Local oDlg       := Nil
+	Local oList      := Nil
+	Local aList      := {}
+	Local oSize      := FwDefSize():New(.T.)
+	Local aArea      := GetArea()
+	Local cAliasTRB  := GetNextAlias()
+	Local oTMultiBtn := Nil
 
-	Private aRotina := { { 'Enviar Carta de Cobrança',;
-	'U_SE1IFC01( SA1->A1_COD, SA1->A1_LOJA, SA1->A1_NOME, SA1->A1_END, SA1->A1_BAIRRO,'+;
-	' SA1->A1_CEP, SA1->A1_MUN, SA1->A1_EST, SA1->A1_EMAIL, SA1->A1_GRPVEN )',;
-	0, 6, 0, Nil, Nil, Nil } }
-
-	Private cCadastro := ''
+	Private cDate     := DtoS( Date() )
+	Private cCadastro := 'Carta de Cobrança'
 	Private nDCRTCBR  := GetMv( 'MV_DCRTCBR' ) // Dias Carta de Cobrança
 	Private cMSGCOBR  := GetMv( 'MV_MSGCOBR' ) // Mensagem Email de Cobrança
 	Private cPicture  := GetSx3Cache( 'E1_SALDO', 'X3_PICTURE' )
 
-	oBrowse:SetAlias('SA1')
-	oBrowse:SetFilterDefault( 'U_SA1IFC01()' )
-	oBrowse:SetDescription('Clientes com Títulos em Atraso')
-	oBrowse:SetOnlyFields( { 'A1_COD', 'A1_LOJA', 'A1_NOME', 'A1_EMAIL' } )
-	oBrowse:DisableReport()
-	oBrowse:DisableDetails()
-	oBrowse:SetExecuteDef(1)
-	oBrowse:Activate()
+	BeginSql Alias cAliasTRB
+
+	SELECT
+	SA1.A1_COD, SA1.A1_LOJA, SA1.A1_NOME, SA1.A1_END, SA1.A1_BAIRRO,
+	SA1.A1_CEP, SA1.A1_MUN, SA1.A1_EST, SA1.A1_EMAIL, SA1.A1_GRPVEN,
+	(SELECT TOP 1 ACY.ACY_DESCRI FROM ACY990 ACY WHERE ACY.ACY_GRPVEN = SA1.A1_GRPVEN) ACY_DESCRI
+	FROM %Table:SA1% SA1
+	WHERE SA1.%NotDel%
+	AND
+		(
+			SELECT COUNT(*) COUNT FROM %Table:SE1% SE1 WHERE
+				(
+					SELECT COUNT(*) FROM %Table:SZA% SZA
+					WHERE SZA.ZA_FILIAL  = SE1.E1_FILIAL
+					AND   SZA.ZA_PREFIXO = SE1.E1_PREFIXO
+					AND   SZA.ZA_NUM     = SE1.E1_NUM
+					AND   SZA.ZA_PARCELA = SE1.E1_PARCELA
+					AND   SZA.ZA_TIPO    = SE1.E1_TIPO
+					AND   SZA.ZA_CLIENTE = SA1.A1_COD
+					AND   SZA.ZA_LOJA    = SA1.A1_LOJA
+					AND   DATEDIFF( DAY, CONVERT( DATETIME, SZA.ZA_DATA ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
+					AND   SZA.%NotDel%
+				) > 0
+			AND SE1.E1_FILIAL  = %xFilial:SE1%
+			AND SE1.E1_VENCTO  < %Exp:cDate%
+			AND SE1.E1_SALDO   > 0
+			AND SE1.E1_CLIENTE = SA1.A1_COD
+			AND SE1.E1_LOJA    = SA1.A1_LOJA
+			AND SE1.%NotDel%
+		) > 0
+	ORDER BY SA1.A1_COD, SA1.A1_LOJA
+
+	EndSql
+
+	(cAliasTRB)->(DbGoTop())
+
+	If (cAliasTRB)->( Eof() )
+
+		ApMsgAlert( 'Não há Títulos para Seleção.', 'Atenção !!!' )
+
+		Return
+
+	End If
+
+	Do While (cAliasTRB)->(! Eof())
+
+		aAdd( aList, (cAliasTRB)->( {;
+		/*01*/ A1_COD,;
+		/*02*/ A1_LOJA,;
+		/*03*/ A1_NOME,;
+		/*04*/ A1_END,;
+		/*05*/ A1_BAIRRO,;
+		/*06*/ A1_CEP,;
+		/*07*/ A1_MUN,;
+		/*08*/ A1_EST,;
+		/*09*/ A1_EMAIL,;
+		/*10*/ AllTrim( A1_GRPVEN ) + ' - ' + AllTrim( ACY_DESCRI );
+		} ) )
+
+		(cAliasTRB)->(DbSkip())
+
+	End Do
+
+	oSize:AddObject( "LISTA", 000, 000, .T., .T. )
+
+	oSize:Process()
+
+	DEFINE DIALOG oDlg TITLE cCadastro FROM;
+	oSize:aWindSize[1],oSize:aWindSize[2] TO oSize:aWindSize[3],oSize:aWindSize[4] PIXEL
+
+	oTMultiBtn := TMultiBtn():New( 01, 01, 'Clientes com Títulos em Atraso', oDlg,,200,150, 'NGBIOALERTA_01',0,'',3 )
+	otMultiBtn:SetFonts( ,16,,11)
+	oTMultiBtn:AddButton('Selecionar Títulos')
+	oTMultiBtn:AddButton('Sair')
+	oTMultiBtn:bAction := { |X,Y| If( Y == 1, SelTitulo( aList[ oList:nAt ], @aList, oList, oDlg ), oDlg:End() ) }
+
+	@oSize:GetDimension("LISTA","LININI")+010, oSize:GetDimension("LISTA","COLINI");
+	LISTBOX oList Fields HEADER '';
+	SIZE oSize:GetDimension("LISTA","COLEND"), oSize:GetDimension("LISTA","LINEND")-030 OF oDlg PIXEL
+
+	oList:aHeaders := { ;
+	GetSx3Cache( 'A1_COD'  , 'X3_TITULO' ),;
+	GetSx3Cache( 'A1_LOJA' , 'X3_TITULO' ),;
+	GetSx3Cache( 'A1_NOME' , 'X3_TITULO' ),;
+	GetSx3Cache( 'A1_EMAIL', 'X3_TITULO' ) }
+
+	oList:SetArray( aList )
+
+	oList:bLine := { || {;
+	aList[ oList:nAt, 01 ],;
+	aList[ oList:nAt, 02 ],;
+	aList[ oList:nAt, 03 ],;
+	aList[ oList:nAt, 09 ] } }
+
+	oList:bLDblClick   := { || SelTitulo( aList[ oList:nAt ] ) }
+
+	ACTIVATE DIALOG oDlg CENTERED
+
+	(cAliasTRB)->(DbCloseArea())
+
+	RestArea( aArea )
 
 Return
 
@@ -32,32 +127,22 @@ Return
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
-User Function SE1IFC01( cCliente, cLoja, cNome, cEnd, cBairro, cCep, cMun, cEst, cEmail, cGrpVen )
+Static Function SelTitulo( aCliente, aListMain, oListMain, oDlgMain )
 
-	Local cAliasTRB := GetNextAlias()
-	Local aArea     := GetArea()
-	Local cDate     := DtoS( Date() )
-	Local oSize     := FwDefSize():New(.T.)
-	Local oDlg      := Nil
-	Local oList     := Nil
-	Local aList     := {}
-	Local oNO       := LoadBitmap( GetResources(),'LBNO')
-	Local oOK       := LoadBitmap( GetResources(),'LBOK')
-	Local aAcoes    := {}
-	Local nMulta    := 0
-	Local nJuros    := 0
-	Local aCliente  := {}
-
-	aAdd( aCliente, cNome    ) // 01
-	aAdd( aCliente, cEnd     ) // 02
-	aAdd( aCliente, cBairro  ) // 03
-	aAdd( aCliente, cCep     ) // 04
-	aAdd( aCliente, cMun     ) // 05
-	aAdd( aCliente, cEst     ) // 06
-	aAdd( aCliente, cEmail   ) // 07
-	aAdd( aCliente, cCliente ) // 08
-	aAdd( aCliente, AllTrim( cGrpVen ) + ' - ' + AllTrim( Posicione( 'ACY', 1, xFilial('CYA') + cGrpVen, 'ACY_DESCRI') ) ) // 09
-	aAdd( aCliente, cLoja    ) // 10
+	Local cAliasTRB  := GetNextAlias()
+	Local aArea      := GetArea()
+	Local oSize      := FwDefSize():New(.T.)
+	Local oDlg       := Nil
+	Local oList      := Nil
+	Local aList      := {}
+	Local oNO        := LoadBitmap( GetResources(),'LBNO')
+	Local oOK        := LoadBitmap( GetResources(),'LBOK')
+	Local nMulta     := 0
+	Local nJuros     := 0
+	Local oTMultiBtn := Nil
+	Local lRefresh   := .F.
+	Local aBuffer    := Nil
+	Local nX         := 0
 
 	RestArea( aArea )
 
@@ -67,7 +152,7 @@ User Function SE1IFC01( cCliente, cLoja, cNome, cEnd, cBairro, cCep, cMun, cEst,
 	SE1.E1_NUMBCO, SE1.E1_EMISSAO, SE1.E1_VENCTO, SE1.E1_SALDO,
 	DATEDIFF( DAY, CONVERT( DATETIME, E1_VENCTO ), CONVERT( DATETIME, %Exp:cDate% ) ) E1_ATRASO
 	FROM %Table:SE1% SE1
-	WHERE //DATEDIFF( DAY, CONVERT( DATETIME, SE1.E1_XULTCBR ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
+	WHERE
 	(
 	SELECT COUNT(*) FROM %Table:SZA% SZA
 	WHERE SZA.ZA_FILIAL  = SE1.E1_FILIAL
@@ -75,13 +160,13 @@ User Function SE1IFC01( cCliente, cLoja, cNome, cEnd, cBairro, cCep, cMun, cEst,
 	AND   SZA.ZA_NUM     = SE1.E1_NUM
 	AND   SZA.ZA_PARCELA = SE1.E1_PARCELA
 	AND   SZA.ZA_TIPO    = SE1.E1_TIPO
-	AND   DATEDIFF( DAY, CONVERT( DATETIME, SZA.ZA_DATA ), CONVERT( DATETIME, %Exp:cDate% ) ) <= %Exp:nDCRTCBR%
+	AND   DATEDIFF( DAY, CONVERT( DATETIME, SZA.ZA_DATA ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
 	AND   SZA.%NotDel%
 	) = 0
-	AND SE1.E1_FILIAL  = %xFilial:SN1%
+	AND SE1.E1_FILIAL  = %xFilial:SE1%
 	AND SE1.E1_VENCTO  < %Exp:cDate%
-	AND SE1.E1_CLIENTE = %Exp:cCliente%
-	AND SE1.E1_LOJA    = %Exp:cLoja%
+	AND SE1.E1_CLIENTE = %Exp:aCliente[01]%
+	AND SE1.E1_LOJA    = %Exp:aCliente[02]%
 	AND SE1.E1_SALDO   > 0
 	AND SE1.%NotDel%
 
@@ -120,10 +205,16 @@ User Function SE1IFC01( cCliente, cLoja, cNome, cEnd, cBairro, cCep, cMun, cEst,
 
 	oSize:Process()
 
-	DEFINE DIALOG oDlg TITLE 'Títulos em Atraso' FROM;
+	DEFINE DIALOG oDlg TITLE cCadastro FROM;
 	oSize:aWindSize[1],oSize:aWindSize[2] TO oSize:aWindSize[3],oSize:aWindSize[4] PIXEL
 
-	@oSize:GetDimension("LISTA","LININI"), oSize:GetDimension("LISTA","COLINI");
+	oTMultiBtn := TMultiBtn():New( 01, 01, aCliente[03], oDlg,,200,150, 'CLIENTE',0,'',3 )
+	otMultiBtn:SetFonts( ,16,,11)
+	oTMultiBtn:AddButton('Enviar Carta de Cobrança')
+	oTMultiBtn:AddButton('Sair')
+	oTMultiBtn:bAction := { |X,Y| If(Y == 1, If( lRefresh := Envia( aCliente, aList ), oDlg:End(), Nil ), oDlg:End() ) }
+
+	@oSize:GetDimension("LISTA","LININI")+010, oSize:GetDimension("LISTA","COLINI");
 	LISTBOX oList Fields HEADER '';
 	SIZE oSize:GetDimension("LISTA","COLEND"), oSize:GetDimension("LISTA","LINEND")-030 OF oDlg PIXEL
 
@@ -151,59 +242,34 @@ User Function SE1IFC01( cCliente, cLoja, cNome, cEnd, cBairro, cCep, cMun, cEst,
 	oList:bLDblClick   := { || aList[oList:nAt,01] := !aList[oList:nAt,01], oList:DrawSelect() }
 	oList:bHeaderClick := { |oList, nCol| InvertSel( oList, nCol, @aList ) }
 
-	EnchoiceBar( oDlg, {|| Envia( aCliente, aList )}, {||oDlg:End()},,,,,.F.,.F.,.F.,.T.,.F. )
-
 	ACTIVATE DIALOG oDlg CENTERED
 
 	(cAliasTRB)->(DbCloseArea())
 
 	RestArea( aArea )
 
+	If lRefresh
+
+		aBuffer := aClone( aListMain )
+
+		aSize( aListMain, 0 )
+
+		For nX := 1 To Len( aBuffer )
+
+			If aBuffer[nX] # oListMain:nAt
+
+				aAdd( aListMain, aBuffer[nX] )
+
+			End If
+
+		Next nX
+
+		If( Len( aListMain ) == 0, oDlgMain:End(), Nil )
+
+	End If
+
 Return
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------------------------------------------------
 
-User Function SA1IFC01()
-
-	Local lRet     := .F.
-	Local cDate    := DtoS( Date() )
-	Local aArea    := GetArea()
-	Local cAliasTRB   := GetNextAlias()
-	Local cCliente := A1_COD
-	Local cLoja    := A1_LOJA
-
-	BeginSql Alias cAliasTRB
-
-	SELECT Count(*) Count
-	FROM %Table:SE1% SE1
-	WHERE //DATEDIFF( DAY, CONVERT( DATETIME, SE1.E1_XULTCBR ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
-	(
-	SELECT COUNT(*) FROM SZA990 SZA
-	WHERE SZA.ZA_FILIAL  = SE1.E1_FILIAL
-	AND   SZA.ZA_PREFIXO = SE1.E1_PREFIXO
-	AND   SZA.ZA_NUM     = SE1.E1_NUM
-	AND   SZA.ZA_PARCELA = SE1.E1_PARCELA
-	AND   SZA.ZA_TIPO    = SE1.E1_TIPO
-	AND   DATEDIFF( DAY, CONVERT( DATETIME, SZA.ZA_DATA ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
-	AND   SZA.%NotDel%
-	) = 0
-	AND SE1.E1_FILIAL  = %xFilial:SN1%
-	AND SE1.E1_VENCTO  < %Exp:cDate%
-	AND SE1.E1_CLIENTE = %Exp:cCliente%
-	AND SE1.E1_LOJA    = %Exp:cLoja%
-	AND SE1.E1_SALDO   > 0
-	AND SE1.%NotDel%
-
-	EndSql
-
-	lRet := ( cAliasTRB )->Count > 0
-
-	(cAliasTRB)->(DbCloseArea())
-
-	RestArea( aArea )
-
-Return lRet
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -225,6 +291,7 @@ Static Function Envia( aCliente, aList )
 
 	Local aTitulos := {}
 	Local nX       := 0
+	Local lRet     := .T.
 
 	For nX := 1 To Len( aList )
 
@@ -240,10 +307,12 @@ Static Function Envia( aCliente, aList )
 
 		ApMsgAlert( 'Nenhum Título Selecionado !!!', 'Atenção !!!' )
 
+		lRet := .F.
+
 	Else
 
 		MsgRun( CapitalAce("Gerando Relatório ..."), CapitalAce("Aguarde ..."), { || U_IFINR001( aCliente, aTitulos ) } )
 
 	End IF
 
-Return
+Return lRet
