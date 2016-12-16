@@ -1,7 +1,4 @@
-#INCLUDE 'RPTDEF.CH'
 #INCLUDE 'TOTVS.CH'
-#INCLUDE 'FWPRINTSETUP.CH'
-#INCLUDE 'FWMVCDEF.CH'
 
 User Function IFINC001()
 
@@ -23,7 +20,7 @@ User Function IFINC001()
 	Private cDate     := DtoS( dDate )
 	Private cCadastro := 'Carta de Cobrança'
 	Private nDCRTCBR  := GetMv( 'MV_DCRTCBR' ) // Dias Carta de Cobrança
-	Private cMSGCOBR  := GetMv( 'MV_MSGCOBR' ) // Mensagem Email de Cobrança
+
 	Private cPicture  := AllTrim( GetSx3Cache( 'E1_SALDO', 'X3_PICTURE' ) )
 
 	BeginSql Alias cAliasTRB
@@ -216,7 +213,11 @@ Static Function Envia( aList )
 
 		cFile := U_IFINR001( aCartas[ nX, 1 ], aCartas[ nX, 2 ] )
 
-		FErase( StrTokArr2( cFile, '.', .T. )[ 1 ] + '.pdf' )
+		cFile := StrTokArr2( cFile, '.', .T. )[ 1 ] + '.pdf'
+
+		U_IFINM001( cFile, aCartas[ nX, 1, 9 ] )
+
+		FErase( cFile )
 
 	Next nX
 

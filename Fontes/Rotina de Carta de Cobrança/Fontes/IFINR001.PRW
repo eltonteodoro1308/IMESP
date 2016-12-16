@@ -1,6 +1,5 @@
 #INCLUDE 'RPTDEF.CH'
 #INCLUDE 'TOTVS.CH'
-#INCLUDE 'FWPRINTSETUP.CH'
 
 User Function IFINR001( aCliente, aTitulos )
 
@@ -200,7 +199,7 @@ Static Function ImpTitulo( nCount, aCliente, aTitulos )
 			SZA->ZA_VENCTO  := StoD( aTitulos[ nPosTitulo, 020 ] )
 			SZA->ZA_VALOR   := aTitulos[ nPosTitulo, 021 ]
 			SZA->ZA_DATA    := dDate
-			SZA->ZA_EMAIL   := ''
+			SZA->ZA_EMAIL   := aCliente[009]
 
 			MsUnlock()
 
