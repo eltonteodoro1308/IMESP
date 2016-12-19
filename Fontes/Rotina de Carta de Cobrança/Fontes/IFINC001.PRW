@@ -1,5 +1,10 @@
 #INCLUDE 'TOTVS.CH'
-
+/*/{Protheus.doc} IFINC001
+User Function da Rotina de Cartas de cobrança para clientes com títulos em atraso.
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+/*/
 User Function IFINC001()
 
 	Local oDlg       := Nil
@@ -15,6 +20,7 @@ User Function IFINC001()
 	Local nX         := 0
 	Local cBcode     := ''
 	Local aBcode     := {}
+	Local cPerg     := 'IFINR002'
 
 	Private dDate     := Date()
 	Private cDate     := DtoS( dDate )
@@ -22,6 +28,8 @@ User Function IFINC001()
 	Private nDCRTCBR  := GetMv( 'MV_DCRTCBR' ) // Dias Carta de Cobrança
 
 	Private cPicture  := AllTrim( GetSx3Cache( 'E1_SALDO', 'X3_PICTURE' ) )
+
+	Pergunte( cPerg, .T. )
 
 	BeginSql Alias cAliasTRB
 
@@ -34,7 +42,7 @@ User Function IFINC001()
 	SE1.E1_FILIAL, SE1.E1_PREFIXO, SE1.E1_NUM, SE1.E1_PARCELA, SE1.E1_TIPO,
 	SE1.E1_NUMBCO, SE1.E1_EMISSAO, SE1.E1_VENCTO, SE1.E1_SALDO,
 	DATEDIFF( DAY, CONVERT( DATETIME, SE1.E1_VENCTO ), CONVERT( DATETIME, %Exp:cDate% ) ) E1_ATRASO,
-	SE1.R_E_C_N_O_
+	SE1.R_E_C_N_O_, SE1.E1_XDTUCBR
 
 	FROM %Table:SE1% SE1
 
@@ -43,10 +51,15 @@ User Function IFINC001()
 	AND SA1.A1_LOJA = SE1.E1_LOJA
 	AND SA1.%NotDel%
 
-	WHERE SE1.%NotDel%
-	AND SE1.E1_VENCTO < %Exp:cDate%
-	AND SE1.E1_SALDO  > 0
-	AND DATEDIFF( DAY, CONVERT( DATETIME, COALESCE( SE1.E1_XDTUCBR, '') ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR%
+	WHERE
+
+	SE1.%NotDel% AND
+	SE1.E1_VENCTO < %Exp:cDate%	AND
+	SE1.E1_SALDO  > 0 AND
+	DATEDIFF( DAY, CONVERT( DATETIME, COALESCE( SE1.E1_XDTUCBR, '') ), CONVERT( DATETIME, %Exp:cDate% ) ) >= %Exp:nDCRTCBR% AND
+	SE1.E1_FILIAL  BETWEEN %Exp:MV_PAR01% AND %Exp:MV_PAR02% AND
+	SE1.E1_CLIENTE BETWEEN %Exp:MV_PAR03% AND %Exp:MV_PAR05% AND
+	SE1.E1_LOJA    BETWEEN %Exp:MV_PAR04% AND %Exp:MV_PAR06%
 
 	ORDER BY
 	SA1.A1_COD, SA1.A1_LOJA, SE1.E1_FILIAL, SE1.E1_PREFIXO,
@@ -122,7 +135,8 @@ User Function IFINC001()
 	'Dias em Atraso',;
 	'Juros Diários',;
 	'Multa Após o Vencimento',;
-	'Valor Atualizado a Pagar' }
+	'Valor Atualizado a Pagar',;
+	'Data Ult. Carta de Cobrança' }
 
 	oList:SetArray( aList )
 
@@ -142,7 +156,8 @@ User Function IFINC001()
 	aList[ oList:nAt, 022 ],;
 	Transform( 0, cPicture ),; // Juros
 	Transform( 0, cPicture ),; // Multa
-	Transform( aList[ oList:nAt, 021 ], cPicture ) } }
+	Transform( aList[ oList:nAt, 021 ], cPicture ),;
+	StoD( aList[ oList:nAt, 024 ] ) } }
 
 	oList:bLDblClick   := { || aList[ oList:nAt, 01 ] := ! aList[ oList:nAt,01 ], oList:DrawSelect() }
 	oList:bHeaderClick := { |oList, nCol| InvertSel( oList, nCol, @aList ) }
@@ -150,13 +165,15 @@ User Function IFINC001()
 	ACTIVATE DIALOG oDlg CENTERED
 
 Return
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
+/*/{Protheus.doc} InvertSel
+Static Function e inverte a seleção dos títulos da lista na tela de cartas de cobrança
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+@param oList, object, Objeto que corresponde a lista de títulos
+@param nCol, numeric, Posição do cabeçalho da coluna que foi clicada
+@param aList, array, Array que corresponde a lista de títulos
+/*/
 Static Function InvertSel( oList, nCol, aList )
 
 	If nCol == 1
@@ -168,14 +185,22 @@ Static Function InvertSel( oList, nCol, aList )
 	End IF
 
 Return
-
-
+/*/{Protheus.doc} Envia
+Static Function que gera o PDF das Cartas de Cobrança e envia por Email para o cliente.
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+@param aList, array, Array com lista de títulos em atraso
+/*/
 Static Function Envia( aList )
 
 	Local aCartas  := {}
 	Local nX       := 0
 	Local nPos     := 0
 	Local cFile    := ''
+	Local oDlg     := Nil
+	Local oList    := Nil
+	Local oSButton := Nil
 
 	For nX := 1 To Len( aList )
 
@@ -207,6 +232,35 @@ Static Function Envia( aList )
 
 	Next nX
 
+	If Len( aCartas ) = 0
+
+		ApMsgStop( 'Nenhum Título Selecionado, nenhuma Carta de Cobrança será enviada.', 'Atenção !!!' )
+
+		Return
+
+	Else
+
+		DEFINE DIALOG oDlg TITLE 'Confirma as contas de e-mail a seguir ?' FROM	000, 000 TO 500, 750 PIXEL
+
+		@002,005 LISTBOX oList Fields HEADER '' SIZE 365, 225 OF oDlg PIXEL
+
+		oList:aHeaders := { 'Código', 'Loja', 'Nome', 'Email'  }
+		oList:SetArray( aCartas )
+
+		oList:bLine := { || {;
+		aCartas[ oList:nAt, 001, 001 ],;
+		aCartas[ oList:nAt, 001, 002 ],;
+		aCartas[ oList:nAt, 001, 003 ],;
+		aCartas[ oList:nAt, 001, 009 ] } }
+
+		oList:bLDblClick   := { || aCartas[ oList:nAt, 001, 009 ] := SetMail( aCartas[ oList:nAt, 001, 009 ] ), oList:DrawSelect() }
+
+		DEFINE SBUTTON oSButton FROM 232, 342 TYPE 01 OF oDlg ENABLE ACTION oDlg:End()
+
+		ACTIVATE DIALOG oDlg CENTERED
+
+	End If
+
 	BeginTran()
 
 	For nX := 1 To Len(aCartas)
@@ -224,3 +278,39 @@ Static Function Envia( aList )
 	EndTran()
 
 Return
+/*/{Protheus.doc} SetMail
+Static Function que exibe tela para modificar e-mail de envio
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+@param cEmail, characters, E-mail atual do cadastro do cliente
+@return return, Se for informado um e-mail válido retorna o mesmo, senão retorna o email do cadastro do cliente
+/*/
+Static Function SetMail( cEmail )
+
+	Local oGet     := Nil
+	Local cGet     := PadR( cEmail, GetSx3Cache( 'A1_EMAIL', 'X3_TAMANHO' ) )
+	Local cRet
+	Local oSButton := Nil
+	Local oDlg     := Nil
+
+	DEFINE MSDIALOG oDlg TITLE 'Informe o e-mail para envio.' FROM 000, 000  TO 070, 500 COLORS 0, 16777215 PIXEL
+
+	@ 002, 002 MSGET oGet VAR cGet SIZE 245, 010 OF oDlg COLORS 0, 16777215 PIXEL
+	DEFINE SBUTTON oSButton FROM 018, 220 TYPE 01 OF oDlg ENABLE ACTION oDlg:End()
+
+	ACTIVATE MSDIALOG oDlg CENTERED
+
+	If IsEmail( cGet )
+
+		cRet := cGet
+
+	Else
+
+		ApMsgStop( 'Digite um e-mail válido.', 'Atenção !!!' )
+
+		cRet := cEmail
+
+	End If
+
+Return cRet

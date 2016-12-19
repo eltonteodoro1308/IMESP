@@ -1,22 +1,35 @@
 #INCLUDE 'TOTVS.CH'
-
+/*/{Protheus.doc} IFINR002
+Relatório com dados das cartas de cobrança
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+/*/
 User Function IFINR002()
 
 	local oReport := Nil
-	//local cPerg   := PadR('IFINR002',10)
 
 	oReport := ReportDef()
 	oReport:printDialog()
 
 Return
-
+/*/{Protheus.doc} ReportDef
+Função que monta o objeto correspondente ao relatório
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+@return return, Objeto correspondente ao relatório
+/*/
 Static Function ReportDef()
 
 	Local oReport   := Nil
 	Local oSection  := Nil
-	Local cTitulo   := '[IFINR002] - Impressão de Produtos'
+	Local cTitulo   := 'Cartas de Cobrança'
 	Local cAliasTRB := GetNextAlias()
+	Local cPerg     := 'IFINR002'
 	Local nP        := 7
+
+	Pergunte( cPerg, .F. )
 
 	BeginSQL Alias cAliasTRB
 
@@ -40,16 +53,18 @@ Static Function ReportDef()
 
 	WHERE
 
-	SZA.ZA_FILIAL = %XFILIAL:SZA%	AND
+	SZA.ZA_FILIAL  BETWEEN %Exp:MV_PAR01% AND %Exp:MV_PAR02% AND
+	SZA.ZA_CLIENTE BETWEEN %Exp:MV_PAR03% AND %Exp:MV_PAR05% AND
+	SZA.ZA_LOJA    BETWEEN %Exp:MV_PAR04% AND %Exp:MV_PAR06% AND
+	SZA.ZA_DATA    BETWEEN %Exp:MV_PAR07% AND %Exp:MV_PAR08% AND
 	SZA.%NotDel%
 
 	EndSQL
 
-	oReport := TReport():New('IFINR002', cTitulo, , { |oReport| PrintReport( oReport, cAliasTRB ) },;
+	oReport := TReport():New('IFINR002', cTitulo, cPerg, { |oReport| PrintReport( oReport, cAliasTRB ) },;
 	'Este relatorio ira imprimir a relacao de Cartas de Cobrança.' )
 
 	oReport:SetPortrait()
-	oReport:SetTotalInLine(.F.)
 	oReport:ShowHeader()
 
 	oSection := TRSection():New( oReport, 'Cartas de Cobrança', cAliasTRB )
@@ -70,13 +85,19 @@ Static Function ReportDef()
 	TRCell():New(oSection, 'ZA_EMAIL'   , cAliasTRB, GetSx3Cache( 'ZA_EMAIL'  , 'X3_TITULO'  ), X3Picture( 'ZA_EMAIL'   ), TamSx3( 'ZA_EMAIL'   )[1] * nP )
 
 Return oReport
-
+/*/{Protheus.doc} PrintReport
+Função gera o relatório
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+@param oReport, object, Objeto correspondente ao relatório
+@param cAliasTRB, characters, Nome da tabela temporária
+/*/
 Static Function PrintReport( oReport, cAliasTRB )
 
 	Local oSection := oReport:Section(1)
 
 	oSection:Init()
-	oSection:SetHeaderSection(.T.)
 
 	(cAliasTRB)->( dbGoTop() )
 

@@ -1,5 +1,12 @@
 #INCLUDE 'TOTVS.CH'
-
+/*/{Protheus.doc} IFINM001
+User Function que envia e-mail com a carta de cobrança anexa para o e-mail do cliente
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+@param cAnexo, characters, caminho o onde o PDF da carta de cobrança foi salvo
+@param cTo, characters, e-mail para envio do email
+/*/
 User Function IFINM001( cAnexo, cTo )
 
 	Local oServer  := TMailManager():New()

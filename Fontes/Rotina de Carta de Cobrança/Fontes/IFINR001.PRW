@@ -1,6 +1,14 @@
 #INCLUDE 'RPTDEF.CH'
 #INCLUDE 'TOTVS.CH'
-
+/*/{Protheus.doc} IFINR001
+User Function que gera em pdf a carta de cobrança
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+@param aCliente, array, Array com dados do cliente
+@param aTitulos, array, Array com dados dos títulos
+@return return, Nome e caminho do arquivo gerado
+/*/
 User Function IFINR001( aCliente, aTitulos )
 
 	Local cNUMCOBR        := GetMv( 'MV_NUMCOBR' ) // Numeração DPPR
@@ -130,7 +138,13 @@ User Function IFINR001( aCliente, aTitulos )
 	oPrinter:Preview()
 
 Return cSpool + cFilePrint
-
+/*/{Protheus.doc} ImpCabec
+Static Function que imprime o cabeçalho da página com os dados dos títulos
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+@param aCliente, array, Array com os dados do cliente
+/*/
 Static Function ImpCabec( aCliente )
 
 	oPrinter:Say( 050, 030, 'Cliente: ' + Upper( AllTrim( aCliente[03] ) ), oFont12 )
@@ -165,7 +179,15 @@ Static Function ImpCabec( aCliente )
 	oPrinter:SayAlign( 080, 500, 'Valor Atualizado à Pagar', oFont08, 070, 020,, 2, 0 )
 
 Return
-
+/*/{Protheus.doc} ImpTitulo
+Static Functions que imprime os dados do título em uma linha no relatório
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+@param nCount, numeric, Contador do título na página para incremento de página
+@param aCliente, array, Array com os dados do cliente
+@param aTitulos, array, Array com os dados do título
+/*/
 Static Function ImpTitulo( nCount, aCliente, aTitulos )
 
 	Local aArea := GetArea()
@@ -230,7 +252,14 @@ Static Function ImpTitulo( nCount, aCliente, aTitulos )
 	nPosTitulo++
 
 Return
-
+/*/{Protheus.doc} ImpRodaPe
+Static Function que imprime o rodapé do relatório com os totais
+@author Elton Teodoro Alves
+@since 19/12/2016
+@version 12.1.007
+@param nCount, numeric, Contador para indicar a posição do rodapé
+@param cTotal, characters, Indica de imprime "Total" ou "Sub-Total"
+/*/
 Static Function ImpRodaPe( nCount, cTotal )
 
 	oPrinter:Box( 110 + (15 * nCount + 1 ), 025, 135 + (15 * nCount + 1 ) , 585, '-4' )
