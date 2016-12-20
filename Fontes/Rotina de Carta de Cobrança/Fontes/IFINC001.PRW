@@ -20,7 +20,7 @@ User Function IFINC001()
 	Local nX         := 0
 	Local cBcode     := ''
 	Local aBcode     := {}
-	Local cPerg     := 'IFINR002'
+	Local cPerg     := 'IFINC001'
 
 	Private dDate     := Date()
 	Private cDate     := DtoS( dDate )
