@@ -29,7 +29,11 @@ User Function IFINC001()
 
 	Private cPicture  := AllTrim( GetSx3Cache( 'E1_SALDO', 'X3_PICTURE' ) )
 
-	Pergunte( cPerg, .T. )
+	IF ! Pergunte( cPerg, .T. )
+
+		Return
+
+	End If
 
 	BeginSql Alias cAliasTRB
 
