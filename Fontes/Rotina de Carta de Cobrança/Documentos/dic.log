@@ -1,0 +1,123 @@
+--------------------------------------------------------------------------------------------------------------------------------
+                                                                                                                                
+LOG DA ATUALIZAÇÃO DOS DICIONÁRIOS
+                                                                                                                                
+--------------------------------------------------------------------------------------------------------------------------------
+ 
+ Dados Ambiente
+ --------------------
+ Empresa / Filial...: 99/01
+ Nome Empresa.......:  
+ Nome Filial........: Matriz
+ DataBase...........: 22/12/16
+ Data / Hora Ínicio.: 22/12/16 / 15:18:01
+ Environment........: ENVIRONMENT
+ StartPath..........: \system\
+ RootPath...........: C:\TOTVS\Microsiga\Protheus12\MSSQL\Protheus_Data\
+ Versão.............: TOTVS Série T  MSSQL Environment
+ Usuário TOTVS .....:  
+ Computer Name......: SPON4944
+ 
+ Dados Thread
+ --------------------
+ Usuário da Rede....: elton.alves
+ Estação............: SPON4944
+ Programa Inicial...: U_UPDEXP
+ Environment........: ENVIRONMENT
+ Conexão............: Thu Dec 22 15:17:08 2016
+--------------------------------------------------------------------------------------------------------------------------------
+ 
+--------------------------------------------------------------------------------------------------------------------------------
+Empresa : 99/TESTE                                   
+
+Ínicio da Atualização SX2
+
+Foi incluída a tabela SZA
+
+Final da Atualização SX2
+--------------------------------------------------------------------------------------------------------------------------------
+
+Ínicio da Atualização SX3
+
+Criado campo E1_XDTUCBR
+Criado campo ZA_FILIAL
+Criado campo ZA_CLIENTE
+Criado campo ZA_LOJA
+Criado campo ZA_NOME
+Criado campo ZA_PREFIXO
+Criado campo ZA_NUM
+Criado campo ZA_PARCELA
+Criado campo ZA_TIPO
+Criado campo ZA_EMISSAO
+Criado campo ZA_VENCTO
+Criado campo ZA_VALOR
+Criado campo ZA_DATA
+Criado campo ZA_EMAIL
+
+Final da Atualização SX3
+--------------------------------------------------------------------------------------------------------------------------------
+
+Ínicio da Atualização SIX
+
+Índice criado SZA/1 - ZA_FILIAL+ZA_PREFIXO+ZA_NUM+ZA_PARCELA+ZA_TIPO
+
+Final da Atualização SIX
+--------------------------------------------------------------------------------------------------------------------------------
+
+Ínicio da Atualização SX6
+
+Foi incluído o parâmetro   MV_DCRTCBR Conteúdo [3]
+Foi incluído o parâmetro   MV_MSGCOBR Conteúdo [Cobranca de Títulos em Aberto]
+Foi incluído o parâmetro   MV_NUMCOBR Conteúdo [000079]
+
+Final da Atualização SX6
+--------------------------------------------------------------------------------------------------------------------------------
+
+Ínicio da Atualização 
+
+Pergunta Criada. Grupo/Ordem IFINC001/01
+Pergunta Criada. Grupo/Ordem IFINC001/02
+Pergunta Criada. Grupo/Ordem IFINC001/03
+Pergunta Criada. Grupo/Ordem IFINC001/04
+Pergunta Criada. Grupo/Ordem IFINC001/05
+Pergunta Criada. Grupo/Ordem IFINC001/06
+Pergunta Criada. Grupo/Ordem IFINR002/01
+Pergunta Criada. Grupo/Ordem IFINR002/02
+Pergunta Criada. Grupo/Ordem IFINR002/03
+Pergunta Criada. Grupo/Ordem IFINR002/04
+Pergunta Criada. Grupo/Ordem IFINR002/05
+Pergunta Criada. Grupo/Ordem IFINR002/06
+Pergunta Criada. Grupo/Ordem IFINR002/07
+Pergunta Criada. Grupo/Ordem IFINR002/08
+
+Final da Atualização SX1
+--------------------------------------------------------------------------------------------------------------------------------
+
+Ínicio da Atualização Helps de Campos
+
+Atualizado o Help do campo E1_XDTUCBR
+Atualizado o Help do campo ZA_CLIENTE
+Atualizado o Help do campo ZA_LOJA
+Atualizado o Help do campo ZA_NOME
+Atualizado o Help do campo ZA_PREFIXO
+Atualizado o Help do campo ZA_NUM
+Atualizado o Help do campo ZA_PARCELA
+Atualizado o Help do campo ZA_TIPO
+Atualizado o Help do campo ZA_EMISSAO
+Atualizado o Help do campo ZA_VENCTO
+Atualizado o Help do campo ZA_VALOR
+Atualizado o Help do campo ZA_DATA
+Atualizado o Help do campo ZA_EMAIL
+
+Final da Atualização Helps de Campos
+--------------------------------------------------------------------------------------------------------------------------------
+
+Ínicio da Atualização Helps de Perguntas
+
+
+Final da Atualização Helps de Perguntas
+--------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------
+ Data / Hora Final.: 22/12/16 / 15:18:06
+--------------------------------------------------------------------------------------------------------------------------------
