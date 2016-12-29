@@ -527,7 +527,7 @@ Static Function ParamToIn( cParam )
 
 		If nX # Len( aParam )
 
-			cRet += "'"
+			cRet += ","
 
 		End If
 
