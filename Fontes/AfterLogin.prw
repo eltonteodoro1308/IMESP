@@ -12,7 +12,7 @@ User Function AfterLogin()
 
 	//	SetKey( K_CTRL_D,  {|| U_DicAdvpl() } )
 	//	SetKey( K_CTRL_P,  {|| U_PrmBxTst() } )
-	//	SetKey( K_CTRL_V,  {|| U_DrpTbl()   } )
-	//SetKey( K_CTRL_I,  {|| U_fPrintPDF()})
+	//SetKey( K_CTRL_V,  {|| U_TSTBREAK()()   } )
+	//SetKey( K_CTRL_I,  {|| U_IOATFR02()})
 
 Return
