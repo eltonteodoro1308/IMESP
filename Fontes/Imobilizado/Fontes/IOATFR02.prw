@@ -111,8 +111,8 @@ Static Function ReportDef()
 
 	oSection3 := TRSection():New( oReport, 'Section3', '' )
 
-	TRCell():New( oSection3, 'TOTAL_AMORTIZACAO_CONTAS_DO_DIFERIDO', '', '', '@!', 40,,,,, 'LEFT' )
-	oSection3:Cell('TOTAL_AMORTIZACAO_CONTAS_DO_DIFERIDO'):SetBorder( 'LEFT')
+	TRCell():New( oSection3, 'TOTAL_LIQUIDO_DO_DIFERIDO', '', '', '@!', 40,,,,, 'LEFT' )
+	oSection3:Cell('TOTAL_LIQUIDO_DO_DIFERIDO'):SetBorder( 'LEFT')
 
 	TRCell():New( oSection3, 'SALDO_DE_BALANCO', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
 	oSection3:Cell('SALDO_DE_BALANCO'):SetBorder( 'LEFT')
@@ -232,8 +232,8 @@ Return oReport
 
 Static Function PrintReport( oReport, cAliasTRB1, cAliasTRB2, aCtasCusto, aCtasAmort )
 
-	Local Total1    := 0
-	Local Total2    := 0
+	Local aTotal1    := { 0, 0, 0, 0, 0, 0 }
+	Local aTotal2    := { 0, 0, 0, 0, 0, 0 }
 	Local aArea     := GetArea()
 	Local oSection1 := oReport:Section( 'Section1' )
 	Local oSection2 := oReport:Section( 'Section2' )
@@ -255,25 +255,49 @@ Static Function PrintReport( oReport, cAliasTRB1, cAliasTRB2, aCtasCusto, aCtasA
 
 	Do While ( cAliasTRB1 )->( ! Eof() )
 
-		oSection1:Cell('CUSTO_CONTAS_DO_DIFERIDO'):SetValue( ( cAliasTRB1 )->DESCRICAO )
-		oSection1:Cell('SALDO_DE_BALANCO'):SetValue( ( cAliasTRB1 )->SALDO_DE_BALANCO )
-		oSection1:Cell('ADICAO'):SetValue( ( cAliasTRB1 )->ADICAO )
-		oSection1:Cell('ENTRADAS'):SetValue( ( cAliasTRB1 )->ENTRADAS )
-		oSection1:Cell('SAIDAS'):SetValue( ( cAliasTRB1 )->SAIDAS )
-		oSection1:Cell('BAIXAS'):SetValue( ( cAliasTRB1 )->BAIXAS )
-		oSection1:Cell('SALDO_ATUAL'):SetValue( ( cAliasTRB1 )->( SALDO_DE_BALANCO + ADICAO + ENTRADAS - SAIDAS - BAIXAS ) )
+		If AllTrim( ( cAliasTRB1 )->CONTA ) == aCtasCusto[1]
 
-		oSection1:PrintLine()
+			oSection1:Cell('CUSTO_CONTAS_DO_DIFERIDO'):SetValue( ( cAliasTRB1 )->DESCRICAO )
+			oSection1:Cell('SALDO_DE_BALANCO'):SetValue( aTotal1[1] += ( cAliasTRB1 )->SALDO_DE_BALANCO )
+			oSection1:Cell('ADICAO'):SetValue( aTotal1[2] += ( cAliasTRB1 )->ADICAO )
+			oSection1:Cell('ENTRADAS'):SetValue( aTotal1[3] += ( cAliasTRB1 )->ENTRADAS )
+			oSection1:Cell('SAIDAS'):SetValue( aTotal1[4] += ( cAliasTRB1 )->SAIDAS )
+			oSection1:Cell('BAIXAS'):SetValue( aTotal1[5] += ( cAliasTRB1 )->BAIXAS )
+			oSection1:Cell('SALDO_ATUAL'):SetValue( aTotal1[6] += ( cAliasTRB1 )->( SALDO_DE_BALANCO + ADICAO + ENTRADAS - SAIDAS - BAIXAS ) )
+
+			oSection1:PrintLine()
+
+		End If
 
 		( cAliasTRB1 )->( DbSkip() )
 
-	End If
+	End Do
 
 	oSection1:Finish()
 
 	// Section 002
 
 	oSection2:Init()
+
+	Do While ( cAliasTRB2 )->( ! Eof() )
+
+		If AllTrim( ( cAliasTRB2 )->CONTA ) == aCtasAmort[1]
+
+			oSection2:Cell('AMORTIZACAO_CONTAS_DO_DIFERIDO'):SetValue( ( cAliasTRB2 )->DESCRICAO )
+			oSection2:Cell('SALDO_DE_BALANCO'):SetValue( aTotal1[1] -= ( cAliasTRB2 )->SALDO_DE_BALANCO )
+			oSection2:Cell('ADICAO'):SetValue( aTotal1[2] -= ( cAliasTRB2 )->ADICAO )
+			oSection2:Cell('ENTRADAS'):SetValue( aTotal1[3] -= ( cAliasTRB2 )->ENTRADAS )
+			oSection2:Cell('SAIDAS'):SetValue( aTotal1[4] -= ( cAliasTRB2 )->SAIDAS )
+			oSection2:Cell('BAIXAS'):SetValue( aTotal1[5] -= ( cAliasTRB2 )->BAIXAS )
+			oSection2:Cell('SALDO_ATUAL'):SetValue( aTotal1[6] -= ( cAliasTRB2 )->( SALDO_DE_BALANCO + ADICAO + ENTRADAS - SAIDAS - BAIXAS ) )
+
+			oSection2:PrintLine()
+
+		End If
+
+		( cAliasTRB2 )->( DbSkip() )
+
+	End If
 
 
 	oSection2:Finish()
@@ -282,13 +306,44 @@ Static Function PrintReport( oReport, cAliasTRB1, cAliasTRB2, aCtasCusto, aCtasA
 
 	oSection3:Init()
 
+	oSection3:Cell('TOTAL_LIQUIDO_DO_DIFERIDO'):SetValue( 'TOTAL LIQUIDO DO DIFERIDO')
+	oSection3:Cell('SALDO_DE_BALANCO'):SetValue( aTotal1[1] )
+	oSection3:Cell('ADICAO'):SetValue( aTotal1[2] )
+	oSection3:Cell('ENTRADAS'):SetValue( aTotal1[3] )
+	oSection3:Cell('SAIDAS'):SetValue( aTotal1[4] )
+	oSection3:Cell('BAIXAS'):SetValue( aTotal1[5] )
+	oSection3:Cell('SALDO_ATUAL'):SetValue( aTotal1[6] )
+
+	oSection3:PrintLine()
 
 	oSection3:Finish()
+
+	( cAliasTRB1 )->( DbGoTop() )
+	( cAliasTRB2 )->( DbGoTop() )
 
 	// Section 004
 
 	oSection4:Init()
 
+	Do While ( cAliasTRB1 )->( ! Eof() )
+
+		If AllTrim( ( cAliasTRB1 )->CONTA ) # aCtasCusto[1]
+
+			oSection4:Cell('CUSTO_CONTAS_DO_INTANGIVEL'):SetValue( ( cAliasTRB1 )->DESCRICAO )
+			oSection4:Cell('SALDO_DE_BALANCO'):SetValue( aTotal2[1] += ( cAliasTRB1 )->SALDO_DE_BALANCO )
+			oSection4:Cell('ADICAO'):SetValue( aTotal2[2] += ( cAliasTRB1 )->ADICAO )
+			oSection4:Cell('ENTRADAS'):SetValue( aTotal2[3] += ( cAliasTRB1 )->ENTRADAS )
+			oSection4:Cell('SAIDAS'):SetValue( aTotal2[4] += ( cAliasTRB1 )->SAIDAS )
+			oSection4:Cell('BAIXAS'):SetValue( aTotal2[5] += ( cAliasTRB1 )->BAIXAS )
+			oSection4:Cell('SALDO_ATUAL'):SetValue( aTotal2[6] += ( cAliasTRB1 )->( SALDO_DE_BALANCO + ADICAO + ENTRADAS - SAIDAS - BAIXAS ) )
+
+			oSection4:PrintLine()
+
+		End If
+
+		( cAliasTRB1 )->( DbSkip() )
+
+	End Do
 
 	oSection4:Finish()
 
@@ -296,12 +351,41 @@ Static Function PrintReport( oReport, cAliasTRB1, cAliasTRB2, aCtasCusto, aCtasA
 
 	oSection5:Init()
 
+	Do While ( cAliasTRB2 )->( ! Eof() )
+
+		If AllTrim( ( cAliasTRB2 )->CONTA ) # aCtasAmort[1]
+
+			oSection5:Cell('AMORTIZACAO_CONTAS_DO_INTANGIVEL'):SetValue( ( cAliasTRB2 )->DESCRICAO )
+			oSection5:Cell('SALDO_DE_BALANCO'):SetValue( aTotal2[1] -= ( cAliasTRB2 )->SALDO_DE_BALANCO )
+			oSection5:Cell('ADICAO'):SetValue( aTotal2[2] -= ( cAliasTRB2 )->ADICAO )
+			oSection5:Cell('ENTRADAS'):SetValue( aTotal2[3] -= ( cAliasTRB2 )->ENTRADAS )
+			oSection5:Cell('SAIDAS'):SetValue( aTotal2[4] -= ( cAliasTRB2 )->SAIDAS )
+			oSection5:Cell('BAIXAS'):SetValue( aTotal2[5] -= ( cAliasTRB2 )->BAIXAS )
+			oSection5:Cell('SALDO_ATUAL'):SetValue( aTotal2[6] -= ( cAliasTRB2 )->( SALDO_DE_BALANCO + ADICAO + ENTRADAS - SAIDAS - BAIXAS ) )
+
+			oSection5:PrintLine()
+
+		End If
+
+		( cAliasTRB2 )->( DbSkip() )
+
+	End If
 
 	oSection5:Finish()
 
 	// Section 006
 
 	oSection6:Init()
+
+	oSection6:Cell('TOTAL_AMORTIZACAO_CONTAS_DO_INTANGIVEL'):SetValue( 'TOTAL LIQUIDO DO DIFERIDO')
+	oSection6:Cell('SALDO_DE_BALANCO'):SetValue( aTotal2[1] )
+	oSection6:Cell('ADICAO'):SetValue( aTotal2[2] )
+	oSection6:Cell('ENTRADAS'):SetValue( aTotal2[3] )
+	oSection6:Cell('SAIDAS'):SetValue( aTotal2[4] )
+	oSection6:Cell('BAIXAS'):SetValue( aTotal2[5] )
+	oSection6:Cell('SALDO_ATUAL'):SetValue( aTotal2[6] )
+
+	oSection6:PrintLine()
 
 
 	oSection6:Finish()
