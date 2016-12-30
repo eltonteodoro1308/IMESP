@@ -3,7 +3,7 @@ Static nSaldo := 0
 /*/{Protheus.doc} IOATFR01
 Relatório com saldos de aquisição, entrada e saída por transfência
 e baixas da conta de ativo imobilizado e sua conta de deprecição correspondente
-e tembém os grupos de bens vinculadas a conta de Ativo imobilizado.
+e também os grupos de bens vinculadas a conta de Ativo imobilizado.
 Seção 1 - Saldo de Balanço da conta de Ativo Imobilizado.
 Seção 2 - Grupos de Bens que compõem a conta de Ativo Imobilizado.
 Seção 3 - Saldos de Aquisição, Entrada, Saída e Baixas da Conta de Ativo Imobilizado.

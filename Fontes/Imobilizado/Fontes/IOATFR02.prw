@@ -1,5 +1,17 @@
 #INCLUDE 'TOTVS.CH'
-
+/*/{Protheus.doc} IOATFR01
+Relatório com resumo do saldos de aquisição, entrada e saída por transfência
+e baixas da conta de ativo imobilizado intangível, diferido e amortização.
+Seção 1 - Custo Contas Ativo Diferido
+Seção 2 - Amortização Contas Ativo Diferido
+Seção 3 - Total líquido do Diferido
+Seção 4 - Custo Contas do Intangível
+Seção 5 - Amortizaçao Contas do Intangível
+Seção 6 - Total líquido Intangível
+@author Elton Teodoro Alves
+@since 27/12/2016
+@version 12.1.7
+/*/
 User Function IOATFR02()
 
 	local oReport := ReportDef()
@@ -7,20 +19,29 @@ User Function IOATFR02()
 	oReport:printDialog()
 
 Return
-
+/*/{Protheus.doc} ReportDef
+Função que monta o objeto TReport
+@author Elton Teodoro Alves
+@since 27/12/2016
+@version 12.1.007
+@return Objeto, Objeto do Relatório
+/*/
 Static Function ReportDef()
 
-	Local oReport    := Nil
-	Local oSection1  := Nil
-	Local oSection2  := Nil
-	Local oSection3  := Nil
-	Local oSection4  := Nil
-	Local oSection5  := Nil
-	Local oSection6  := Nil
-	Local aCtasCusto := {}
-	Local aCtasAmort := {}
+	Local oReport     := Nil
+	Local oSection1   := Nil
+	Local oSection2   := Nil
+	Local oSection3   := Nil
+	Local oSection4   := Nil
+	Local oSection5   := Nil
+	Local oSection6   := Nil
+	Local aCtasCusto  := {}
+	Local aCtasAmort  := {}
 	Local cAliasTRB1  := GetNextAlias()
 	Local cAliasTRB2  := GetNextAlias()
+	Local cPerg       := 'IOATFR02'
+
+	Pergunte( cPerg, .F. )
 
 	aAdd( aCtasCusto, GetMv( 'IO_XGRDI1' ) ) // Custo Ativo Diferido
 	aAdd( aCtasCusto, GetMv( 'IO_XGRCU1' ) ) // Custo Ativo Intangível
@@ -35,7 +56,7 @@ Static Function ReportDef()
 	aAdd( aCtasAmort, GetMv( 'IO_XGRCA2' ) ) // Depreciação Ativo Intangível
 	aAdd( aCtasAmort, GetMv( 'IO_XGRCA3' ) ) // Depreciação Ativo Intangível
 
-	oReport := TReport():New( 'IOATFR02', 'Deprecição Por Conta', /*cPerg*/,;
+	oReport := TReport():New( 'IOATFR02', 'Deprecição Por Conta', cPerg,;
 	{ |oReport| PrintReport( oReport, cAliasTRB1, cAliasTRB2, aCtasCusto, aCtasAmort ) },;
 	'Imprime a Depreciação Por Conta de Ativo Imobilizado e sua Conta de Depreciação correspondente' )
 
@@ -229,7 +250,17 @@ Static Function ReportDef()
 
 
 Return oReport
-
+/*/{Protheus.doc} PrintReport
+Função Executada na impressão do Relatório
+@author Elton Teodoro Alves
+@since 27/12/2016
+@version 12.1.007
+@param oReport, object, Obejeto do Relatório
+@param cAliasTRB1, Caracter, Alias da tabela da utilizada pelas secoes 1 e 4
+@param cAliasTRB2, Caracter, Alias da tabela da utilizada pelas secoes 2 e 5
+@param aCtasCusto, Array, Array com as contas de custo de ativo definido no parâmetros
+@param aCtasAmort, Array, Array com as contas de amortizacao de ativo definido no parâmetros
+/*/
 Static Function PrintReport( oReport, cAliasTRB1, cAliasTRB2, aCtasCusto, aCtasAmort )
 
 	Local aTotal1    := { 0, 0, 0, 0, 0, 0 }
@@ -396,7 +427,14 @@ Static Function PrintReport( oReport, cAliasTRB1, cAliasTRB2, aCtasCusto, aCtasA
 	RestArea( aArea )
 
 Return
-
+/*/{Protheus.doc} QuerySld1
+Query com dados da Seção 1 e 4
+@author Elton Teodoro Alves
+@since 27/12/2016
+@version 12.1.007
+@param aCtasCusto, Array, Array com as contas de custo de ativo definido no parâmetros
+@param cAliasTRB, Caracter, Nome do Alias para o resultado da Query
+/*/
 Static Function QuerySld1( aCtasCusto, cAliasTRB )
 
 	Local cQuery    := ''
@@ -477,7 +515,14 @@ Static Function QuerySld1( aCtasCusto, cAliasTRB )
 	dbUseArea( .T., "TOPCONN", TcGenQry(,,cQuery), cAliasTRB, .T., .T. )
 
 Return
-
+/*/{Protheus.doc} QuerySld1
+Query com dados da Seção 2 e 5
+@author Elton Teodoro Alves
+@since 27/12/2016
+@version 12.1.007
+@param aCtasAmort, Array, Array com as contas de amortizacao de ativo definido no parâmetros
+@param cAliasTRB, Caracter, Nome do Alias para o resultado da Query
+/*/
 Static Function QuerySld2( aCtasAmort, cAliasTRB )
 
 	Local cQuery    := ''
@@ -559,8 +604,14 @@ Static Function QuerySld2( aCtasAmort, cAliasTRB )
 	dbUseArea( .T., "TOPCONN", TcGenQry(,,cQuery), cAliasTRB, .T., .T. )
 
 Return
-
-
+/*/{Protheus.doc} ParamToIn
+Função que monta a string para ser usada na clausula IN da query
+@author Elton Teodoro Alves
+@since 27/12/2016
+@version 12.1.007
+@param cParam, Caractere, Nome do Parâmetro
+@return Caractere, Clausula IN da query
+/*/
 Static Function ParamToIn( cParam )
 
 	Local cRet   := ''
