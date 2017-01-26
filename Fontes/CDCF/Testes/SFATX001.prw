@@ -14,7 +14,8 @@ user function SFATX001()
 
 	oWsdl:lProcResp := .F.
 
-	If ! oWsdl:ParseFile( "\wsdl\cdcf.wsdl" )
+	//If ! oWsdl:ParseFile( "\wsdl\cdcf.wsdl" )
+	If ! oWsdl:ParseUrl('http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx?WSDL')
 
 		Return oWsdl:cError
 
@@ -80,7 +81,7 @@ user function SFATX001()
 
 	If ! oXml:Parse( cResponse )
 
-		Return oXml:LastError() 
+		Return oXml:LastError()
 
 	End If
 

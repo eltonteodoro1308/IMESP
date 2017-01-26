@@ -1023,7 +1023,7 @@ aAdd( aSX1, { ;
 	0																		, ; //X1_DECIMAL
 	0																		, ; //X1_PRESEL
 	'G'																		, ; //X1_GSC
-	'ExistCpo('CT1', MV_PAR02)'												, ; //X1_VALID
+	'ExistCpo("CT1", MV_PAR02)'												, ; //X1_VALID
 	'MV_PAR02'																, ; //X1_VAR01
 	''																		, ; //X1_DEF01
 	''																		, ; //X1_DEFSPA1
