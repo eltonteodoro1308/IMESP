@@ -1,0 +1,932 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<soap:Body>
+		<ConsultaClienteResponse xmlns="http://servicos.imprensaoficial.com.br/Clientes/">
+			<ConsultaClienteResult>
+				<Cliente>
+					<IdCliente>279191</IdCliente>
+					<NomeCliente>PREFEITURA MUNICIPAL DE NAZARÉ PAULISTA</NomeCliente>
+					<DocumentoCliente>45279643000154</DocumentoCliente>
+					<CodigoERP>96.03.055.00</CodigoERP>
+					<ClienteAtivo>true</ClienteAtivo>
+					<EnvioCobrancaEmail>false</EnvioCobrancaEmail>
+					<IdTipoEsfera>3</IdTipoEsfera>
+					<Observacao>Carga de Dados - RM</Observacao>
+					<ClienteContato>
+						<IdClienteContato>186539</IdClienteContato>
+						<IdPessoaFisica>185847</IdPessoaFisica>
+						<IdCliente>279191</IdCliente>
+						<NomeContato>Carlos Roberto Marques Junior</NomeContato>
+						<Funcao />
+						<DonoConta>true</DonoConta>
+						<CotacaoCompras>false</CotacaoCompras>
+						<FaturaPublicacao>true</FaturaPublicacao>
+						<Financeiro>true</Financeiro>
+						<NotaFiscalEletronica>true</NotaFiscalEletronica>
+						<ServicosGraficos>false</ServicosGraficos>
+						<ClienteContatoAtivo>true</ClienteContatoAtivo>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>2</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>3</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>4</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>6</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>7</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<ControleRegistro>
+							<IdSistemaCriacao>6</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-01-07T00:39:32.803</DataHoraCriacao>
+							<DataHoraAlteracao>2012-12-20T12:20:42.457</DataHoraAlteracao>
+						</ControleRegistro>
+						<CPF>27744891805</CPF>
+						<DataNascimento xsi:nil="true" />
+						<MeioComunicacao>
+							<IdMeioComunicacao>612729</IdMeioComunicacao>
+							<IdTipoContato>6</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD xsi:nil="true" />
+							<Telefone xsi:nil="true" />
+							<Ramal xsi:nil="true" />
+							<Email>pregao@nazarepaulista.sp.gov.br</Email>
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2012-12-20T12:20:42.457</DataHoraCriacao>
+								<DataHoraAlteracao>2012-12-20T12:20:42.457</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<DataCadastro>2012-01-07T00:40:00</DataCadastro>
+						<BoletinsEletronicos>false</BoletinsEletronicos>
+						<IdTemp>0</IdTemp>
+					</ClienteContato>
+					<ClienteContato>
+						<IdClienteContato>186540</IdClienteContato>
+						<IdPessoaFisica>185848</IdPessoaFisica>
+						<IdCliente>279191</IdCliente>
+						<NomeContato>Jose Carlos Avoni</NomeContato>
+						<Funcao xsi:nil="true" />
+						<DonoConta>false</DonoConta>
+						<CotacaoCompras>false</CotacaoCompras>
+						<FaturaPublicacao>true</FaturaPublicacao>
+						<Financeiro>true</Financeiro>
+						<NotaFiscalEletronica>true</NotaFiscalEletronica>
+						<ServicosGraficos>false</ServicosGraficos>
+						<ClienteContatoAtivo>true</ClienteContatoAtivo>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>2</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>3</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>4</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>6</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<ControleRegistro>
+							<IdSistemaCriacao>6</IdSistemaCriacao>
+							<IdSistemaAlteracao xsi:nil="true" />
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-01-07T00:39:32.803</DataHoraCriacao>
+							<DataHoraAlteracao xsi:nil="true" />
+						</ControleRegistro>
+						<CPF>06679898897</CPF>
+						<DataNascimento xsi:nil="true" />
+						<MeioComunicacao>
+							<IdMeioComunicacao>612730</IdMeioComunicacao>
+							<IdTipoContato>6</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD xsi:nil="true" />
+							<Telefone xsi:nil="true" />
+							<Ramal xsi:nil="true" />
+							<Email>inovajc@yahoo.com.br</Email>
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>6</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2012-01-07T00:39:32.803</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>true</EmailHtml>
+						</MeioComunicacao>
+						<DataCadastro>2012-01-07T00:40:00</DataCadastro>
+						<BoletinsEletronicos>false</BoletinsEletronicos>
+						<IdTemp>0</IdTemp>
+					</ClienteContato>
+					<ClienteContato>
+						<IdClienteContato>238180</IdClienteContato>
+						<IdPessoaFisica>0</IdPessoaFisica>
+						<IdCliente>279191</IdCliente>
+						<NomeContato>PREF MUNIC NAZARE PAULISTA</NomeContato>
+						<Funcao xsi:nil="true" />
+						<DonoConta>true</DonoConta>
+						<CotacaoCompras>false</CotacaoCompras>
+						<FaturaPublicacao>false</FaturaPublicacao>
+						<Financeiro>true</Financeiro>
+						<NotaFiscalEletronica>true</NotaFiscalEletronica>
+						<ServicosGraficos>false</ServicosGraficos>
+						<ClienteContatoAtivo>true</ClienteContatoAtivo>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>3</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>4</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<ControleRegistro>
+							<IdSistemaCriacao>1</IdSistemaCriacao>
+							<IdSistemaAlteracao xsi:nil="true" />
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-01-07T13:50:05.817</DataHoraCriacao>
+							<DataHoraAlteracao xsi:nil="true" />
+						</ControleRegistro>
+						<CPF xsi:nil="true" />
+						<DataNascimento xsi:nil="true" />
+						<MeioComunicacao>
+							<IdMeioComunicacao>906935</IdMeioComunicacao>
+							<IdTipoContato>2</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>4597152</Telefone>
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>true</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>1</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2012-01-07T13:50:05.817</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>906936</IdMeioComunicacao>
+							<IdTipoContato>6</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD xsi:nil="true" />
+							<Telefone xsi:nil="true" />
+							<Ramal xsi:nil="true" />
+							<Email>pregao@nazarepaulista.sp.gov.br</Email>
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>true</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>1</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2012-01-07T13:50:05.817</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<DataCadastro>2006-09-27T20:28:00</DataCadastro>
+						<BoletinsEletronicos>false</BoletinsEletronicos>
+						<IdTemp>0</IdTemp>
+					</ClienteContato>
+					<MeioComunicacao>
+						<IdMeioComunicacao>594972</IdMeioComunicacao>
+						<IdTipoContato>1</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD />
+						<Telefone>45971526</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.507</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.507</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>594973</IdMeioComunicacao>
+						<IdTipoContato>12</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>45971483</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.507</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.507</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>594974</IdMeioComunicacao>
+						<IdTipoContato>12</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>4597152</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.507</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.507</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>594975</IdMeioComunicacao>
+						<IdTipoContato>4</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>45971526</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.52</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.52</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>594976</IdMeioComunicacao>
+						<IdTipoContato>10</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>45971612</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.52</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.52</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>594977</IdMeioComunicacao>
+						<IdTipoContato>6</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD xsi:nil="true" />
+						<Telefone xsi:nil="true" />
+						<Ramal xsi:nil="true" />
+						<Email>pregao@nazarepaulista.sp.gov.br</Email>
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.52</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.52</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1269883</IdMeioComunicacao>
+						<IdTipoContato>3</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD />
+						<Telefone />
+						<Ramal />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.52</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.52</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<ControleRegistro>
+						<IdSistemaCriacao>4</IdSistemaCriacao>
+						<IdSistemaAlteracao>8</IdSistemaAlteracao>
+						<IdUsuarioCriacao xsi:nil="true" />
+						<IdUsuarioAlteracao xsi:nil="true" />
+						<DataHoraCriacao>2012-01-07T00:37:45.347</DataHoraCriacao>
+						<DataHoraAlteracao>2016-11-04T18:00:28.913</DataHoraAlteracao>
+					</ControleRegistro>
+					<Endereco>
+						<IdEndereco>424094</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>4</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>PCA CEL ANTONIO R.SANTOS</Logradouro>
+						<LogradouroNumero>16</LogradouroNumero>
+						<LogradouroComplemento xsi:nil="true" />
+						<Bairro>CENTRO</Bairro>
+						<CEP>12960000</CEP>
+						<Municipio>Nazaré Paulista</Municipio>
+						<CodigoMunicipio>32405</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.507</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.507</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco xsi:nil="true" />
+						<AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
+						<IdCliente>279191</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>424095</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>3</IdTipoEndereco>
+						<TipoLogradouro>RUA</TipoLogradouro>
+						<Logradouro>CEL. ANTONIO DOS SANTOS</Logradouro>
+						<LogradouroNumero>16</LogradouroNumero>
+						<LogradouroComplemento xsi:nil="true" />
+						<Bairro>CENTRO</Bairro>
+						<CEP>12960000</CEP>
+						<Municipio>Nazaré Paulista</Municipio>
+						<CodigoMunicipio>32405</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.507</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.507</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco xsi:nil="true" />
+						<AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
+						<IdCliente>279191</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>424096</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>2</IdTipoEndereco>
+						<TipoLogradouro>Praça</TipoLogradouro>
+						<Logradouro>CEL. ANTONIO DOS SANTOS</Logradouro>
+						<LogradouroNumero>16</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>CENTRO</Bairro>
+						<CEP>12960000</CEP>
+						<Municipio>Nazaré Paulista</Municipio>
+						<CodigoMunicipio>32405</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.507</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.507</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
+						<IdCliente>279191</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>424097</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>1</IdTipoEndereco>
+						<TipoLogradouro>Praça</TipoLogradouro>
+						<Logradouro>CEL. ANTONIO DOS SANTOS</Logradouro>
+						<LogradouroNumero>16</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>CENTRO</Bairro>
+						<CEP>12960000</CEP>
+						<Municipio>Nazaré Paulista</Municipio>
+						<CodigoMunicipio>32405</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-04-15T14:37:22.49</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.49</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
+						<IdCliente>279191</IdCliente>
+					</Endereco>
+					<PessoaFisica xsi:nil="true" />
+					<PessoaJuridica xsi:nil="true" />
+					<OrgaoPublico>
+						<IdOrgaoPublico>151</IdOrgaoPublico>
+						<NomeOrgaoPublico>PREFEITURA MUNICIPAL DE NAZARÉ PAULISTA</NomeOrgaoPublico>
+						<UnidadeAdministrativa xsi:nil="true" />
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<UnidadeOrganizadora xsi:nil="true" />
+						<ControleRegistro>
+							<IdSistemaCriacao>4</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-01-07T00:37:45.347</DataHoraCriacao>
+							<DataHoraAlteracao>2016-04-15T14:37:22.49</DataHoraAlteracao>
+						</ControleRegistro>
+						<PessoaJuridica>
+							<IdPessoaJuridica>92961</IdPessoaJuridica>
+							<IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
+							<IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
+							<IdSituacaoPessoaJuridica>0</IdSituacaoPessoaJuridica>
+							<IdPais xsi:nil="true" />
+							<IsOrgaoPublico>false</IsOrgaoPublico>
+							<CNPJ>45279643000154</CNPJ>
+							<NaturezaJuridica xsi:nil="true" />
+							<InscricaoEstadual xsi:nil="true" />
+							<InscricaoMunicipal xsi:nil="true" />
+							<DocumentoEstrangeiro xsi:nil="true" />
+							<RazaoSocial>PREFEITURA MUNICIPAL DE NAZARÉ PAULISTA</RazaoSocial>
+							<NomeFantasia>PREFEITURA MUNICIPAL DE NAZARÉ PAULISTA</NomeFantasia>
+							<DataAbertura xsi:nil="true" />
+							<DataSituacaoCadastral xsi:nil="true" />
+							<CidadeExterior xsi:nil="true" />
+							<PaisDomicilio xsi:nil="true" />
+							<CodigoPaisDomicilio xsi:nil="true" />
+							<DataHoraConsultaRFB xsi:nil="true" />
+							<ConferidoBEC>false</ConferidoBEC>
+							<ConferidoSintegra>false</ConferidoSintegra>
+							<ValidacaoPresencial>false</ValidacaoPresencial>
+						</PessoaJuridica>
+						<OrgaoPublicoVinculado>false</OrgaoPublicoVinculado>
+					</OrgaoPublico>
+					<DataCadastro>2012-01-07T00:00:00</DataCadastro>
+				</Cliente>
+				<Cliente>
+					<IdCliente>253425</IdCliente>
+					<NomeCliente>EEPSG MARECHAL DEODORO</NomeCliente>
+					<DocumentoCliente>46384111004056</DocumentoCliente>
+					<CodigoERP>80.00.566.00</CodigoERP>
+					<ClienteAtivo>true</ClienteAtivo>
+					<EnvioCobrancaEmail>false</EnvioCobrancaEmail>
+					<IdTipoEsfera>2</IdTipoEsfera>
+					<Observacao>Carga de Dados - RM</Observacao>
+					<ClienteContato>
+						<IdClienteContato>256792</IdClienteContato>
+						<IdPessoaFisica>0</IdPessoaFisica>
+						<IdCliente>253425</IdCliente>
+						<NomeContato>ELIARA</NomeContato>
+						<Funcao xsi:nil="true" />
+						<DonoConta>true</DonoConta>
+						<CotacaoCompras>false</CotacaoCompras>
+						<FaturaPublicacao>true</FaturaPublicacao>
+						<Financeiro>true</Financeiro>
+						<NotaFiscalEletronica>true</NotaFiscalEletronica>
+						<ServicosGraficos>false</ServicosGraficos>
+						<ClienteContatoAtivo>true</ClienteContatoAtivo>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>2</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>3</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>4</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<ControleRegistro>
+							<IdSistemaCriacao>1</IdSistemaCriacao>
+							<IdSistemaAlteracao xsi:nil="true" />
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-01-07T15:00:11.71</DataHoraCriacao>
+							<DataHoraAlteracao>2016-11-04T17:57:47.177</DataHoraAlteracao>
+						</ControleRegistro>
+						<CPF xsi:nil="true" />
+						<DataNascimento xsi:nil="true" />
+						<MeioComunicacao>
+							<IdMeioComunicacao>1049987</IdMeioComunicacao>
+							<IdTipoContato>2</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>37439399</Telefone>
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>true</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>true</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>1</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2012-01-07T15:00:11.71</DataHoraCriacao>
+								<DataHoraAlteracao>2016-11-04T17:57:47.177</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1049988</IdMeioComunicacao>
+							<IdTipoContato>6</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD xsi:nil="true" />
+							<Telefone xsi:nil="true" />
+							<Ramal xsi:nil="true" />
+							<Email>e.e.montoro@terra.com.br</Email>
+							<AceitaComunicacaoEmail>true</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>true</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>1</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2012-01-07T15:00:11.71</DataHoraCriacao>
+								<DataHoraAlteracao>2016-11-04T17:57:47.177</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<DataCadastro>2006-11-28T09:55:00</DataCadastro>
+						<BoletinsEletronicos>false</BoletinsEletronicos>
+						<IdTemp>0</IdTemp>
+					</ClienteContato>
+					<MeioComunicacao>
+						<IdMeioComunicacao>548625</IdMeioComunicacao>
+						<IdTipoContato>1</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD />
+						<Telefone>55134058</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-11-04T17:57:50.427</DataHoraCriacao>
+							<DataHoraAlteracao>2016-11-04T17:57:50.427</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285469</IdMeioComunicacao>
+						<IdTipoContato>3</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD />
+						<Telefone />
+						<Ramal />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-11-04T17:57:50.443</DataHoraCriacao>
+							<DataHoraAlteracao>2016-11-04T17:57:50.443</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<ControleRegistro>
+						<IdSistemaCriacao>4</IdSistemaCriacao>
+						<IdSistemaAlteracao>8</IdSistemaAlteracao>
+						<IdUsuarioCriacao xsi:nil="true" />
+						<IdUsuarioAlteracao xsi:nil="true" />
+						<DataHoraCriacao>2012-01-07T00:30:45.863</DataHoraCriacao>
+						<DataHoraAlteracao>2016-11-04T17:57:50.413</DataHoraAlteracao>
+					</ControleRegistro>
+					<Endereco>
+						<IdEndereco>393393</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>3</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>R DOS ITALIANOS</Logradouro>
+						<LogradouroNumero>405</LogradouroNumero>
+						<LogradouroComplemento xsi:nil="true" />
+						<Bairro />
+						<CEP>01131000</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-11-04T17:57:50.427</DataHoraCriacao>
+							<DataHoraAlteracao>2016-11-04T17:57:50.427</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco xsi:nil="true" />
+						<AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
+						<IdCliente>253425</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>393394</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>2</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>dos Italianos</Logradouro>
+						<LogradouroNumero>405</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Bom Retiro</Bairro>
+						<CEP>01131000</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-11-04T17:57:50.427</DataHoraCriacao>
+							<DataHoraAlteracao>2016-11-04T17:57:50.427</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
+						<IdCliente>253425</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>393395</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>1</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>dos Italianos</Logradouro>
+						<LogradouroNumero>405</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Bom Retiro</Bairro>
+						<CEP>01131000</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2016-11-04T17:57:50.427</DataHoraCriacao>
+							<DataHoraAlteracao>2016-11-04T17:57:50.427</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
+						<IdCliente>253425</IdCliente>
+					</Endereco>
+					<PessoaFisica xsi:nil="true" />
+					<PessoaJuridica xsi:nil="true" />
+					<OrgaoPublico>
+						<IdOrgaoPublico>6790</IdOrgaoPublico>
+						<NomeOrgaoPublico>EEPSG MARECHAL DEODORO</NomeOrgaoPublico>
+						<UnidadeAdministrativa xsi:nil="true" />
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<UnidadeOrganizadora xsi:nil="true" />
+						<ControleRegistro>
+							<IdSistemaCriacao>4</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-01-07T00:30:45.863</DataHoraCriacao>
+							<DataHoraAlteracao>2016-11-04T17:57:50.413</DataHoraAlteracao>
+						</ControleRegistro>
+						<PessoaJuridica>
+							<IdPessoaJuridica>68622</IdPessoaJuridica>
+							<IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
+							<IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
+							<IdSituacaoPessoaJuridica>0</IdSituacaoPessoaJuridica>
+							<IdPais xsi:nil="true" />
+							<IsOrgaoPublico>false</IsOrgaoPublico>
+							<CNPJ>46384111004056</CNPJ>
+							<NaturezaJuridica xsi:nil="true" />
+							<InscricaoEstadual xsi:nil="true" />
+							<InscricaoMunicipal xsi:nil="true" />
+							<DocumentoEstrangeiro xsi:nil="true" />
+							<RazaoSocial>SAO PAULO SECRETARIA DA EDUCACAO</RazaoSocial>
+							<NomeFantasia>DIRETORIA DE ENSINO REGIAO CENTRO OESTE</NomeFantasia>
+							<DataAbertura xsi:nil="true" />
+							<DataSituacaoCadastral xsi:nil="true" />
+							<CidadeExterior xsi:nil="true" />
+							<PaisDomicilio xsi:nil="true" />
+							<CodigoPaisDomicilio xsi:nil="true" />
+							<DataHoraConsultaRFB xsi:nil="true" />
+							<ConferidoBEC>false</ConferidoBEC>
+							<ConferidoSintegra>false</ConferidoSintegra>
+							<ValidacaoPresencial>false</ValidacaoPresencial>
+						</PessoaJuridica>
+						<OrgaoPublicoVinculado>false</OrgaoPublicoVinculado>
+					</OrgaoPublico>
+					<DataCadastro>2012-01-07T00:00:00</DataCadastro>
+				</Cliente>
+				<Cliente>
+					<IdCliente>253383</IdCliente>
+					<NomeCliente>EEPSG PROF HOMERO RUBENS DE SA</NomeCliente>
+					<DocumentoCliente>46384111004994</DocumentoCliente>
+					<CodigoERP>80.00.426.00</CodigoERP>
+					<ClienteAtivo>false</ClienteAtivo>
+					<EnvioCobrancaEmail>false</EnvioCobrancaEmail>
+					<IdTipoEsfera>2</IdTipoEsfera>
+					<Observacao>Carga de Dados - RM</Observacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>548586</IdMeioComunicacao>
+						<IdTipoContato>1</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD xsi:nil="true" />
+						<Telefone>64516100</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao xsi:nil="true" />
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-12-28T15:07:02.187</DataHoraCriacao>
+							<DataHoraAlteracao xsi:nil="true" />
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<ControleRegistro>
+						<IdSistemaCriacao>4</IdSistemaCriacao>
+						<IdSistemaAlteracao>8</IdSistemaAlteracao>
+						<IdUsuarioCriacao xsi:nil="true" />
+						<IdUsuarioAlteracao xsi:nil="true" />
+						<DataHoraCriacao>2012-01-07T00:30:45.243</DataHoraCriacao>
+						<DataHoraAlteracao>2016-11-04T18:00:58.663</DataHoraAlteracao>
+					</ControleRegistro>
+					<Endereco>
+						<IdEndereco>393264</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>3</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>R CEARA</Logradouro>
+						<LogradouroNumero>50</LogradouroNumero>
+						<LogradouroComplemento xsi:nil="true" />
+						<Bairro />
+						<CEP>07070080</CEP>
+						<Municipio>Guarulhos</Municipio>
+						<CodigoMunicipio>18800</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao xsi:nil="true" />
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-12-28T15:07:02.233</DataHoraCriacao>
+							<DataHoraAlteracao xsi:nil="true" />
+						</ControleRegistro>
+						<ApelidoEndereco xsi:nil="true" />
+						<AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
+						<IdCliente>253383</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>393265</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>2</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>R CEARA</Logradouro>
+						<LogradouroNumero>50</LogradouroNumero>
+						<LogradouroComplemento xsi:nil="true" />
+						<Bairro />
+						<CEP>07070080</CEP>
+						<Municipio>Guarulhos</Municipio>
+						<CodigoMunicipio>18800</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao xsi:nil="true" />
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-12-28T15:07:02.233</DataHoraCriacao>
+							<DataHoraAlteracao xsi:nil="true" />
+						</ControleRegistro>
+						<ApelidoEndereco xsi:nil="true" />
+						<AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
+						<IdCliente>253383</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>393266</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>1</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>R CEARA</Logradouro>
+						<LogradouroNumero>50</LogradouroNumero>
+						<LogradouroComplemento xsi:nil="true" />
+						<Bairro />
+						<CEP>07070080</CEP>
+						<Municipio>Guarulhos</Municipio>
+						<CodigoMunicipio>18800</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao xsi:nil="true" />
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-12-28T15:07:02.233</DataHoraCriacao>
+							<DataHoraAlteracao xsi:nil="true" />
+						</ControleRegistro>
+						<ApelidoEndereco xsi:nil="true" />
+						<AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
+						<IdCliente>253383</IdCliente>
+					</Endereco>
+					<PessoaFisica xsi:nil="true" />
+					<PessoaJuridica xsi:nil="true" />
+					<OrgaoPublico>
+						<IdOrgaoPublico>6834</IdOrgaoPublico>
+						<NomeOrgaoPublico>EEPSG PROF HOMERO RUBENS DE SA</NomeOrgaoPublico>
+						<UnidadeAdministrativa xsi:nil="true" />
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<UnidadeOrganizadora xsi:nil="true" />
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>0</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-12-28T15:07:02.397</DataHoraCriacao>
+							<DataHoraAlteracao xsi:nil="true" />
+						</ControleRegistro>
+						<PessoaJuridica>
+							<IdPessoaJuridica>68581</IdPessoaJuridica>
+							<IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
+							<IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
+							<IdSituacaoPessoaJuridica>0</IdSituacaoPessoaJuridica>
+							<IdPais xsi:nil="true" />
+							<IsOrgaoPublico>false</IsOrgaoPublico>
+							<CNPJ>46384111004994</CNPJ>
+							<NaturezaJuridica xsi:nil="true" />
+							<InscricaoEstadual xsi:nil="true" />
+							<InscricaoMunicipal xsi:nil="true" />
+							<DocumentoEstrangeiro xsi:nil="true" />
+							<RazaoSocial>SAO PAULO SECRETARIA DA EDUCACAO</RazaoSocial>
+							<NomeFantasia>DIRETORIA DE ENSINO REGIAO DE GUARULHOS SUL</NomeFantasia>
+							<DataAbertura xsi:nil="true" />
+							<DataSituacaoCadastral xsi:nil="true" />
+							<CidadeExterior xsi:nil="true" />
+							<PaisDomicilio xsi:nil="true" />
+							<CodigoPaisDomicilio xsi:nil="true" />
+							<DataHoraConsultaRFB xsi:nil="true" />
+							<ConferidoBEC>false</ConferidoBEC>
+							<ConferidoSintegra>false</ConferidoSintegra>
+							<ValidacaoPresencial>false</ValidacaoPresencial>
+						</PessoaJuridica>
+						<OrgaoPublicoVinculado>false</OrgaoPublicoVinculado>
+					</OrgaoPublico>
+					<DataCadastro>1996-12-09T00:00:00</DataCadastro>
+				</Cliente>
+			</ConsultaClienteResult>
+		</ConsultaClienteResponse>
+	</soap:Body>
+</soap:Envelope>

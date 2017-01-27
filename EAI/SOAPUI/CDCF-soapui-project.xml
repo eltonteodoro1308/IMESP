@@ -1155,7 +1155,8 @@
             <cli:IdSistema>11</cli:IdSistema>\r
             <cli:IdConsulta>0</cli:IdConsulta>\r
             <!--Zero or more repetitions:-->\r
-            <cli:IdCliente>33042</cli:IdCliente>\r
+           
+            <cli:IdCliente>999999</cli:IdCliente>
          </cli:parametros>\r
       </cli:ConsultaCliente>\r
    </soap:Body>\r
@@ -1252,7 +1253,7 @@
       <cli:PreConsultaClientesParaIntegrar>\r
          <!--Optional:-->\r
          <cli:parametros>\r
-            <cli:IdSistema>11</cli:IdSistema>\r
+            <cli:IdSistema>4</cli:IdSistema>\r
             <cli:IdConsulta>0</cli:IdConsulta>\r
          </cli:parametros>\r
       </cli:PreConsultaClientesParaIntegrar>\r
@@ -1276,7 +1277,7 @@
       <cli:SolicitaClientesParaIntegrar>\r
          <!--Optional:-->\r
          <cli:parametros>\r
-            <cli:IdSistema>11</cli:IdSistema>\r
+            <cli:IdSistema>4</cli:IdSistema>\r
             <cli:IdConsulta>0</cli:IdConsulta>\r
          </cli:parametros>\r
       </cli:SolicitaClientesParaIntegrar>\r

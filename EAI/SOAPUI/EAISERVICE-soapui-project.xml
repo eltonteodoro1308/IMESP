@@ -58,11 +58,11 @@
 <TOTVSIntegrator>
 	<GlobalProduct>TOTVS|EAI</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
-	<GlobalDocumentFunctionCode>SGPEC001</GlobalDocumentFunctionCode>
-	<GlobalDocumentFunctionDescription>FUNCIONARIOS</GlobalDocumentFunctionDescription>
+	<GlobalDocumentFunctionCode>IOMATA01</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>CDCF</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2016-10-26T00:00:00Z</DocDateTime>
-	<DocIdentifier>15EAE2D4-1BF4-4B6D-9BC4-EC2DF862838B</DocIdentifier>
+	<DocDateTime>2017-01-26T00:00:00Z</DocDateTime>
+	<DocIdentifier>F7E9A6A3-668D-42FF-ACBE-9B7B634C6CFE</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -71,14 +71,14 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier>FUNCIONARIOS</Identifier>
-			<FunctionCode>U_SGPEC001</FunctionCode>
+			<Identifier>IOMATA01</Identifier>
+			<FunctionCode>U_IOMATA01.279191.253425.253383</FunctionCode>
 			<Content>
-				<loadfilter>
-					<filter field="RA_MAT" relation="EQUAL">
-						<value>3536</value>
-					</filter>
-				</loadfilter>
+				<IOMATA01>
+					<CLIENTE>
+						<VALUE>999999</VALUE>
+					</CLIENTE>
+				</IOMATA01>
 			</Content>
 		</Layouts>
 	</Message>
