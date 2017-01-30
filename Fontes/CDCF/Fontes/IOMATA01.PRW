@@ -1,6 +1,6 @@
 #INCLUDE 'TOTVS.CH'
 /*/{Protheus.doc} IOMATA01
-//User Function chamada via EAI para executar a importação do cadastro de clientes incluir e alterados do CDCF.
+User Function chamada via EAI para executar a importação do cadastro de clientes incluir e alterados do CDCF.
 @author Elton Teodoro Alves
 @since 27/01/2017
 @version 12.1.014
@@ -23,29 +23,34 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 	Local aSimple   := {}
 	Local cResponse := ''
 	Local cWSDLUrl  := GetMv( 'IO_CDCFWSD' )
-	Local cIDSist   := GetMv( 'IO_CDCFIDS'  )
+	Local cIDSist   := '4'//GetMv( 'IO_CDCFIDS'  )
 	Local cIdCons   := GetMv( 'IO_CDCFIDC' )
 	Local oWSDL     := TWsdlManager():New()
 	Local oXml      := TXmlManager():New()
 	Local aClientes := {}
 	Local aCliente  := {}
-	Local cID       := ''
+	Local aID       := {}
+	Local aDtHrAlt  := {}
 	Local cEsfera   := ''
 	Local cEndereco := ''
+
+	Private	lMsErroAuto		:=	.F.
+	Private	lMsHelpAuto		:=	.T.
+	Private	lAutoErrNoFile	:=	.T.
 
 	Default cParams := '279191,253425,253383'
 
 	oWsdl:lProcResp := .F.
 
-	If cParams == ProcName() .Or. Empty( cParams )
+	//If cParams == ProcName() .Or. Empty( cParams )
 
-		cMetodo := 'SolicitaClientesParaIntegrar'
+	cMetodo := 'SolicitaClientesParaIntegrar'
 
-	Else
+	//Else
 
-		cMetodo := 'ConsultaCliente'
+	//cMetodo := 'ConsultaCliente'
 
-	End If
+	//End If
 
 	If ! oWsdl:ParseUrl( cWSDLUrl )
 
@@ -121,11 +126,11 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 
 	If ! oXml:Parse( cResponse )
 
-		Return 'Erro no Parse do XML de retorno do CDCF.'
+		Return 'Erro no Parse do XML de retorno do CDCF - ' + oXml:LastError()
 
 	End If
 
-	Do While oXml:cName # 'Cliente'
+	Do While ! oXml:cName $ 'Cliente/RegistroConsulta/IntegracaoClientes'
 
 		oXml:DOMChildNode()
 
@@ -133,122 +138,173 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 
 	Do While AllWaysTrue()
 
-		cEsfera := oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdTipoEsfera' } ) ] [2]
-		cID     := oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdCliente' } ) ] [2]
+		If oXml:cName == 'Cliente'
 
-		aAdd( aCliente, { 'A1_COD'   , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CodigoERP' } ) ] [2], Nil } )
-		aAdd( aCliente, { 'A1_LOJA'  , '00', Nil } )
-		aAdd( aCliente, { 'A1_PESSOA', If( cEsfera $ '1235', 'J', 'F' ), Nil } )
+			cEsfera := oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdTipoEsfera' } ) ] [2]
+			aAdd( aID, oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdCliente' } ) ] [2] )
 
-		/*
-		aAdd( aCliente, { 'A1_CONTAT', , Nil } )
+			aAdd( aCliente, { 'A1_COD'   , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CodigoERP' } ) ] [2], Nil } )
+			aAdd( aCliente, { 'A1_LOJA'  , '00', Nil } )
+			aAdd( aCliente, { 'A1_PESSOA', If( cEsfera $ '1235', 'J', 'F' ), Nil } )
+			aAdd( aCliente, { 'A1_TIPO', 'R', Nil } )
 
-		aAdd( aCliente, { 'A1_DDI'   , , Nil } )
-		aAdd( aCliente, { 'A1_DDD'   , , Nil } )
-		aAdd( aCliente, { 'A1_TEL'   , , Nil } )
-		aAdd( aCliente, { 'A1_FAX'   , , Nil } )
+			If cEsfera $ '1235'
 
-		*/
+				oXml:DOMChildNode()
 
-		If cEsfera $ '1235'
+				If cEsfera $ '123'
 
-			oXml:DOMChildNode()
+					Do While oXml:cName # 'OrgaoPublico'
 
-			If cEsfera $ '123'
+						oXml:DOMNextNode()
 
-				Do While oXml:cName # 'OrgaoPublico'
+					End Do
+
+					oXml:DOMChildNode()
+
+				End If
+
+				Do While oXml:cName # 'PessoaJuridica'
 
 					oXml:DOMNextNode()
 
 				End Do
 
+				aAdd( aCliente, { 'A1_NOME'  , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'RazaoSocial' } ) ] [2], Nil } )
+				aAdd( aCliente, { 'A1_NREDUZ', oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'NomeFantasia' } ) ] [2], Nil } )
+				aAdd( aCliente, { 'A1_CGC'   , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CNPJ' } ) ] [2], Nil } )
+				aAdd( aCliente, { 'A1_INSCR' , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'InscricaoEstadual' } ) ] [2], Nil } )
+				aAdd( aCliente, { 'A1_INSCRM', oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'InscricaoMunicipal' } ) ] [2], Nil } )
+
+			ElseIf cEsfera $ '4'
+
 				oXml:DOMChildNode()
+
+				Do While oXml:cName # 'PessoaFisica'
+
+					oXml:DOMNextNode()
+
+				End Do
+
+				aAdd( aCliente, { 'A1_NOME'  , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'Nome' } ) ] [2], Nil } )
+				aAdd( aCliente, { 'A1_NREDUZ', oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'Nome' } ) ] [2], Nil } )
+				aAdd( aCliente, { 'A1_CGC'   , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CPF' } ) ] [2], Nil } )
+				aAdd( aCliente, { 'A1_PFISIC', oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'RG' } ) ] [2], Nil } )
 
 			End If
 
-			Do While oXml:cName # 'PessoaJuridica'
+			Do While oXml:cName # 'Cliente'
 
-				oXml:DOMNextNode()
-
-			End Do
-
-			aAdd( aCliente, { 'A1_NOME'  , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'RazaoSocial' } ) ] [2], Nil } )
-			aAdd( aCliente, { 'A1_NREDUZ', oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'NomeFantasia' } ) ] [2], Nil } )
-			aAdd( aCliente, { 'A1_CGC'   , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CNPJ' } ) ] [2], Nil } )
-			aAdd( aCliente, { 'A1_INSCR' , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'InscricaoEstadual' } ) ] [2], Nil } )
-			aAdd( aCliente, { 'A1_INSCRM', oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'InscricaoMunicipal' } ) ] [2], Nil } )
-
-		ElseIf cEsfera $ '4'
-
-			Do While oXml:cName # 'PessoaFisica'
-
-				oXml:DOMNextNode()
+				oXml:DOMParentNode()
 
 			End Do
 
-			aAdd( aCliente, { 'A1_NOME'  , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'NOME' } ) ] [2], Nil } )
-			aAdd( aCliente, { 'A1_NREDUZ', oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'NOME' } ) ] [2], Nil } )
-			aAdd( aCliente, { 'A1_CGC'   , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CPF' } ) ] [2], Nil } )
-			aAdd( aCliente, { 'A1_PFISIC', oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'RG' } ) ] [2], Nil } )
+			oXml:DOMChildNode()
 
-		End If
+			Do While AllWaysTrue()
 
-		Do While oXml:cName # 'Cliente'
+				If oXml:cName == 'Endereco'
 
-			oXml:DOMParentNode()
+					cEndereco := oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'TipoLogradouro' } ) ] [2] + ' '
+					cEndereco += oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'Logradouro' } ) ] [2] + ' '
+					cEndereco += oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'LogradouroNumero' } ) ] [2]
 
-		End Do
+					If oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdTipoEndereco' } ) ] [2] == '1'
 
-		oXml:DOMChildNode()
+						aAdd( aCliente, { 'A1_END'     , cEndereco, Nil } )
+						aAdd( aCliente, { 'A1_COMPLEM' , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'LogradouroComplemento' } ) ] [2], Nil } )
+						aAdd( aCliente, { 'A1_BAIRRO'  , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'Bairro' } ) ] [2], Nil } )
+						aAdd( aCliente, { 'A1_EST'     , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'SiglaUnidadeFederativa' } ) ] [2], Nil } )
+						aAdd( aCliente, { 'A1_CEP'     , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CEP' } ) ] [2], Nil } )
+						aAdd( aCliente, { 'A1_COD_MUN' , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CodigoMunicipio' } ) ] [2], Nil } )
+						aAdd( aCliente, { 'A1_MUN'     , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'Municipio' } ) ] [2], Nil } )
 
-		Do While AllWaysTrue()
+					ElseIF oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdTipoEndereco' } ) ] [2] == '2'
 
-			If oXml:cName == 'Endereco'
-
-				cEndereco := oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'TipoLogradouro' } ) ] [2] + ' '
-				cEndereco += oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'Logradouro' } ) ] [2] + ' '
-				cEndereco += oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'LogradouroNumero' } ) ] [2]
-
-				If oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdTipoEndereco' } ) ] [2] == '1'
-
-					aAdd( aCliente, { 'A1_END'    , cEndereco, Nil } )
-					aAdd( aCliente, { 'A1_COMPLEM', oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'LogradouroComplemento' } ) ] [2], Nil } )
-					aAdd( aCliente, { 'A1_BAIRRO' , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'Bairro' } ) ] [2], Nil } )
-					aAdd( aCliente, { 'A1_EST'    , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'SiglaUnidadeFederativa' } ) ] [2], Nil } )
-					aAdd( aCliente, { 'A1_CEP'    , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CEP' } ) ] [2], Nil } )
-					aAdd( aCliente, { 'A1_COD_MU' , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CodigoMunicipio' } ) ] [2], Nil } )
-					aAdd( aCliente, { 'A1_MUN'    , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'Municipio' } ) ] [2], Nil } )
-
-				ElseIF oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdTipoEndereco' } ) ] [2] == '2'
-
-					aAdd( aCliente, { 'A1_ENDCOB', cEndereco, Nil } )
+						aAdd( aCliente, { 'A1_ENDCOB', cEndereco, Nil } )
 
 
-				ElseIf oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdTipoEndereco' } ) ] [2] == '3'
+					ElseIf oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdTipoEndereco' } ) ] [2] == '3'
 
-					aAdd( aCliente, { 'A1_ENDENT', cEndereco, Nil } )
+						aAdd( aCliente, { 'A1_ENDENT', cEndereco, Nil } )
+
+					End If
 
 				End If
 
-			End If
+				If ! oXml:DOMNextNode()
 
-			If ! oXml:DOMNextNode()
+					Exit
 
-				Exit
+				End If
 
-			End If
+			End Do
 
-		End Do
+			Do While oXml:cName # 'Cliente'
 
-		Do While oXml:cName # 'Cliente'
+				oXml:DOMParentNode()
+
+			End Do
+
+			oXml:DOMChildNode()
+
+			Do While AllWaysTrue()
+
+				If oXml:cName == 'ClienteContato' .And.;
+				oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'NotaFiscalEletronica' } ) ] [2] == 'true'
+
+					oXml:DOMChildNode()
+
+					Do While AllWaysTrue()
+
+						If oXml:cName == 'MeioComunicacao' .And.;
+						oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdTipoContato' } ) ] [2] == '6'
+
+							If aScan( aCliente, { |X| X[1] == 'A1_EMAIL' } ) == 0
+
+								aAdd( aCliente, { 'A1_EMAIL',;
+								oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'Email' } ) ] [2], Nil } )
+
+							Else
+
+								aCliente[aScan( aCliente, { |X| X[1] == 'A1_EMAIL' } )][2] +=;
+								';' + oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'Email' } ) ] [2]
+
+							End If
+
+						End If
+
+						If ! oXml:DOMNextNode()
+
+							Exit
+
+						End If
+
+					End Do
+
+					oXml:DOMParentNode()
+
+				End If
+
+				If ! oXml:DOMNextNode()
+
+					Exit
+
+				End If
+
+			End Do
 
 			oXml:DOMParentNode()
 
-		End Do
+			aAdd( aClientes, aClone( aCliente ) )
 
-		aAdd( aClientes, aClone( aCliente ) )
+			aSize( aCliente, 0 )
 
-		aSize( aCliente, 0 )
+		ElseIf oXml:cName == 'IntegracaoClientes'
+
+			aAdd( aDtHrAlt, oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'DataHoraAlteracao' } ) ] [2] )
+
+		End If
 
 		If ! oXml:DOMNextNode()
 
@@ -257,6 +313,28 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 		End If
 
 	End Do
+
+	For nX := 1 To Len(aClientes)
+
+		BeginTran()
+
+		MSExecAuto( { | X, Y | MATA030( X, y ) }, aClientes[nX], 3 )
+
+		If lMsErroAuto
+
+			VarInfo( 'GetAutoGRLog()', GetAutoGRLog(), , .F., .T.)
+			DisarmTransaction()
+			lMsErroAuto := .F.
+
+		Else
+
+			ConOut('OK')
+
+		End If
+
+		EndTran()
+
+	Next nX
 
 	cRet := DecodeUTF8( cResponse )
 
