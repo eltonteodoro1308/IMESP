@@ -21,7 +21,7 @@
 Função de update de dicionários para compatibilização
 
 @author TOTVS Protheus
-@since  30/12/2016
+@since  06/02/2017
 @obs    Gerado por EXPORDIC - V.5.2.1.0 EFS / Upd. V.4.20.15 EFS
 @version 1.0
 /*/
@@ -120,7 +120,7 @@ Return NIL
 Função de processamento da gravação dos arquivos
 
 @author TOTVS Protheus
-@since  30/12/2016
+@since  06/02/2017
 @obs    Gerado por EXPORDIC - V.5.2.1.0 EFS / Upd. V.4.20.15 EFS
 @version 1.0
 /*/
@@ -277,6 +277,12 @@ If ( lOpen := MyOpenSm0(.T.) )
 			oProcess:IncRegua1( "Dicionário de perguntas" + " - " + SM0->M0_CODIGO + " " + SM0->M0_NOME + " ..." )
 			FSAtuSX1()
 
+			//------------------------------------
+			// Atualiza os helps
+			//------------------------------------
+			oProcess:IncRegua1( "Helps de Campo" + " - " + SM0->M0_CODIGO + " " + SM0->M0_NOME + " ..." )
+			FSAtuHlpX1()
+
 			AutoGrLog( Replicate( "-", 128 ) )
 			AutoGrLog( " Data / Hora Final.: " + DtoC( Date() ) + " / " + Time() )
 			AutoGrLog( Replicate( "-", 128 ) )
@@ -321,7 +327,7 @@ Return lRet
 Função de processamento da gravação do SIX - Indices
 
 @author TOTVS Protheus
-@since  30/12/2016
+@since  06/02/2017
 @obs    Gerado por EXPORDIC - V.5.2.1.0 EFS / Upd. V.4.20.15 EFS
 @version 1.0
 /*/
@@ -407,7 +413,7 @@ Return NIL
 Função de processamento da gravação do SX6 - Parâmetros
 
 @author TOTVS Protheus
-@since  30/12/2016
+@since  06/02/2017
 @obs    Gerado por EXPORDIC - V.5.2.1.0 EFS / Upd. V.4.20.15 EFS
 @version 1.0
 /*/
@@ -433,198 +439,6 @@ aEstrut := { "X6_FIL"    , "X6_VAR"    , "X6_TIPO"   , "X6_DESCRIC", "X6_DSCSPA"
              "X6_DSCSPA1", "X6_DSCENG1", "X6_DESC2"  , "X6_DSCSPA2", "X6_DSCENG2", "X6_CONTEUD", "X6_CONTSPA", ;
              "X6_CONTENG", "X6_PROPRI" , "X6_VALID"  , "X6_INIT"   , "X6_DEFPOR" , "X6_DEFSPA" , "X6_DEFENG" , ;
              "X6_PYME"   }
-
-aAdd( aSX6, { ;
-	'  '																	, ; //X6_FIL
-	'IO_ATFR011'															, ; //X6_VAR
-	'C'																		, ; //X6_TIPO
-	'LP´s que indicam adicao de ativo imobilizado.'							, ; //X6_DESCRIC
-	'LP´s que indicam adicao de ativo imobilizado.'							, ; //X6_DSCSPA
-	'LP´s que indicam adicao de ativo imobilizado.'							, ; //X6_DSCENG
-	''																		, ; //X6_DESC1
-	''																		, ; //X6_DSCSPA1
-	''																		, ; //X6_DSCENG1
-	''																		, ; //X6_DESC2
-	''																		, ; //X6_DSCSPA2
-	''																		, ; //X6_DSCENG2
-	'001'																	, ; //X6_CONTEUD
-	'001'																	, ; //X6_CONTSPA
-	'001'																	, ; //X6_CONTENG
-	'U'																		, ; //X6_PROPRI
-	''																		, ; //X6_VALID
-	''																		, ; //X6_INIT
-	''																		, ; //X6_DEFPOR
-	''																		, ; //X6_DEFSPA
-	''																		, ; //X6_DEFENG
-	''																		} ) //X6_PYME
-
-aAdd( aSX6, { ;
-	'  '																	, ; //X6_FIL
-	'IO_ATFR012'															, ; //X6_VAR
-	'C'																		, ; //X6_TIPO
-	'LP´s que indicam entradas de ativo imobilizado.'						, ; //X6_DESCRIC
-	'LP´s que indicam entradas de ativo imobilizado.'						, ; //X6_DSCSPA
-	'LP´s que indicam entradas de ativo imobilizado.'						, ; //X6_DSCENG
-	''																		, ; //X6_DESC1
-	''																		, ; //X6_DSCSPA1
-	''																		, ; //X6_DSCENG1
-	''																		, ; //X6_DESC2
-	''																		, ; //X6_DSCSPA2
-	''																		, ; //X6_DSCENG2
-	'002'																	, ; //X6_CONTEUD
-	'002'																	, ; //X6_CONTSPA
-	'002'																	, ; //X6_CONTENG
-	'U'																		, ; //X6_PROPRI
-	''																		, ; //X6_VALID
-	''																		, ; //X6_INIT
-	''																		, ; //X6_DEFPOR
-	''																		, ; //X6_DEFSPA
-	''																		, ; //X6_DEFENG
-	''																		} ) //X6_PYME
-
-aAdd( aSX6, { ;
-	'  '																	, ; //X6_FIL
-	'IO_ATFR013'															, ; //X6_VAR
-	'C'																		, ; //X6_TIPO
-	'LP´s que indicam saidas de ativo imobilizado.'							, ; //X6_DESCRIC
-	'LP´s que indicam saidas de ativo imobilizado.'							, ; //X6_DSCSPA
-	'LP´s que indicam saidas de ativo imobilizado.'							, ; //X6_DSCENG
-	''																		, ; //X6_DESC1
-	''																		, ; //X6_DSCSPA1
-	''																		, ; //X6_DSCENG1
-	''																		, ; //X6_DESC2
-	''																		, ; //X6_DSCSPA2
-	''																		, ; //X6_DSCENG2
-	'002'																	, ; //X6_CONTEUD
-	'002'																	, ; //X6_CONTSPA
-	'002'																	, ; //X6_CONTENG
-	'U'																		, ; //X6_PROPRI
-	''																		, ; //X6_VALID
-	''																		, ; //X6_INIT
-	''																		, ; //X6_DEFPOR
-	''																		, ; //X6_DEFSPA
-	''																		, ; //X6_DEFENG
-	''																		} ) //X6_PYME
-
-aAdd( aSX6, { ;
-	'  '																	, ; //X6_FIL
-	'IO_ATFR014'															, ; //X6_VAR
-	'C'																		, ; //X6_TIPO
-	'LP´s que indicam baixas de ativo imobilizado.'							, ; //X6_DESCRIC
-	'LP´s que indicam baixas de ativo imobilizado.'							, ; //X6_DSCSPA
-	'LP´s que indicam baixas de ativo imobilizado.'							, ; //X6_DSCENG
-	''																		, ; //X6_DESC1
-	''																		, ; //X6_DSCSPA1
-	''																		, ; //X6_DSCENG1
-	''																		, ; //X6_DESC2
-	''																		, ; //X6_DSCSPA2
-	''																		, ; //X6_DSCENG2
-	'003'																	, ; //X6_CONTEUD
-	'003'																	, ; //X6_CONTSPA
-	'003'																	, ; //X6_CONTENG
-	'U'																		, ; //X6_PROPRI
-	''																		, ; //X6_VALID
-	''																		, ; //X6_INIT
-	''																		, ; //X6_DEFPOR
-	''																		, ; //X6_DEFSPA
-	''																		, ; //X6_DEFENG
-	''																		} ) //X6_PYME
-
-aAdd( aSX6, { ;
-	'  '																	, ; //X6_FIL
-	'IO_ATFR015'															, ; //X6_VAR
-	'C'																		, ; //X6_TIPO
-	'LP´s que indicam adicao de depreciacao.'								, ; //X6_DESCRIC
-	'LP´s que indicam adicao de depreciacao.'								, ; //X6_DSCSPA
-	'LP´s que indicam adicao de depreciacao.'								, ; //X6_DSCENG
-	''																		, ; //X6_DESC1
-	''																		, ; //X6_DSCSPA1
-	''																		, ; //X6_DSCENG1
-	''																		, ; //X6_DESC2
-	''																		, ; //X6_DSCSPA2
-	''																		, ; //X6_DSCENG2
-	'001'																	, ; //X6_CONTEUD
-	'001'																	, ; //X6_CONTSPA
-	'001'																	, ; //X6_CONTENG
-	'U'																		, ; //X6_PROPRI
-	''																		, ; //X6_VALID
-	''																		, ; //X6_INIT
-	''																		, ; //X6_DEFPOR
-	''																		, ; //X6_DEFSPA
-	''																		, ; //X6_DEFENG
-	''																		} ) //X6_PYME
-
-aAdd( aSX6, { ;
-	'  '																	, ; //X6_FIL
-	'IO_ATFR016'															, ; //X6_VAR
-	'C'																		, ; //X6_TIPO
-	'LP´s que indicam entradas de depreciacao.'								, ; //X6_DESCRIC
-	'LP´s que indicam entradas de depreciacao.'								, ; //X6_DSCSPA
-	'LP´s que indicam entradas de depreciacao.'								, ; //X6_DSCENG
-	''																		, ; //X6_DESC1
-	''																		, ; //X6_DSCSPA1
-	''																		, ; //X6_DSCENG1
-	''																		, ; //X6_DESC2
-	''																		, ; //X6_DSCSPA2
-	''																		, ; //X6_DSCENG2
-	'002'																	, ; //X6_CONTEUD
-	'002'																	, ; //X6_CONTSPA
-	'002'																	, ; //X6_CONTENG
-	'U'																		, ; //X6_PROPRI
-	''																		, ; //X6_VALID
-	''																		, ; //X6_INIT
-	''																		, ; //X6_DEFPOR
-	''																		, ; //X6_DEFSPA
-	''																		, ; //X6_DEFENG
-	''																		} ) //X6_PYME
-
-aAdd( aSX6, { ;
-	'  '																	, ; //X6_FIL
-	'IO_ATFR017'															, ; //X6_VAR
-	'C'																		, ; //X6_TIPO
-	'LP´s que indicam saidas de ativo depreciacao.'							, ; //X6_DESCRIC
-	'LP´s que indicam saidas de ativo depreciacao.'							, ; //X6_DSCSPA
-	'LP´s que indicam saidas de ativo depreciacao.'							, ; //X6_DSCENG
-	''																		, ; //X6_DESC1
-	''																		, ; //X6_DSCSPA1
-	''																		, ; //X6_DSCENG1
-	''																		, ; //X6_DESC2
-	''																		, ; //X6_DSCSPA2
-	''																		, ; //X6_DSCENG2
-	'002'																	, ; //X6_CONTEUD
-	'002'																	, ; //X6_CONTSPA
-	'002'																	, ; //X6_CONTENG
-	'U'																		, ; //X6_PROPRI
-	''																		, ; //X6_VALID
-	''																		, ; //X6_INIT
-	''																		, ; //X6_DEFPOR
-	''																		, ; //X6_DEFSPA
-	''																		, ; //X6_DEFENG
-	''																		} ) //X6_PYME
-
-aAdd( aSX6, { ;
-	'  '																	, ; //X6_FIL
-	'IO_ATFR018'															, ; //X6_VAR
-	'C'																		, ; //X6_TIPO
-	'LP´s que indicam baixas de depreciacao.'								, ; //X6_DESCRIC
-	'LP´s que indicam baixas de depreciacao.'								, ; //X6_DSCSPA
-	'LP´s que indicam baixas de depreciacao.'								, ; //X6_DSCENG
-	''																		, ; //X6_DESC1
-	''																		, ; //X6_DSCSPA1
-	''																		, ; //X6_DSCENG1
-	''																		, ; //X6_DESC2
-	''																		, ; //X6_DSCSPA2
-	''																		, ; //X6_DSCENG2
-	'003'																	, ; //X6_CONTEUD
-	'003'																	, ; //X6_CONTSPA
-	'003'																	, ; //X6_CONTENG
-	'U'																		, ; //X6_PROPRI
-	''																		, ; //X6_VALID
-	''																		, ; //X6_INIT
-	''																		, ; //X6_DEFPOR
-	''																		, ; //X6_DEFSPA
-	''																		, ; //X6_DEFENG
-	''																		} ) //X6_PYME
 
 aAdd( aSX6, { ;
 	'  '																	, ; //X6_FIL
@@ -937,7 +751,7 @@ Return NIL
 Função de processamento da gravação do SX1 - Perguntas
 
 @author TOTVS Protheus
-@since  30/12/2016
+@since  06/02/2017
 @obs    Gerado por EXPORDIC - V.5.2.1.0 EFS / Upd. V.4.20.15 EFS
 @version 1.0
 /*/
@@ -1056,24 +870,28 @@ aAdd( aSX1, { ;
 	'@!'																	, ; //X1_PICTURE
 	''																		} ) //X1_IDFIL
 
+//
+// Perguntas IOATFR02
+//
+
 aAdd( aSX1, { ;
-	'IOATFR01'																, ; //X1_GRUPO
-	'03'																	, ; //X1_ORDEM
-	'Mascara'																, ; //X1_PERGUNT
-	'Mascara'																, ; //X1_PERSPA
-	'Mascara'																, ; //X1_PERENG
+	'IOATFR02'																, ; //X1_GRUPO
+	'01'																	, ; //X1_ORDEM
+	'Mes'																	, ; //X1_PERGUNT
+	'Mes'																	, ; //X1_PERSPA
+	'Mes'																	, ; //X1_PERENG
 	'MV_CH0'																, ; //X1_VARIAVL
 	'C'																		, ; //X1_TIPO
-	99																		, ; //X1_TAMANHO
+	2																		, ; //X1_TAMANHO
 	0																		, ; //X1_DECIMAL
 	0																		, ; //X1_PRESEL
 	'G'																		, ; //X1_GSC
 	''																		, ; //X1_VALID
-	'MV_PAR03'																, ; //X1_VAR01
+	'MV_PAR01'																, ; //X1_VAR01
 	''																		, ; //X1_DEF01
 	''																		, ; //X1_DEFSPA1
 	''																		, ; //X1_DEFENG1
-	'9.9.9.9.9.99'															, ; //X1_CNT01
+	'12'																	, ; //X1_CNT01
 	''																		, ; //X1_VAR02
 	''																		, ; //X1_DEF02
 	''																		, ; //X1_DEFSPA2
@@ -1101,28 +919,24 @@ aAdd( aSX1, { ;
 	'@!'																	, ; //X1_PICTURE
 	''																		} ) //X1_IDFIL
 
-//
-// Perguntas IOATFR02
-//
-
 aAdd( aSX1, { ;
 	'IOATFR02'																, ; //X1_GRUPO
-	'01'																	, ; //X1_ORDEM
-	'Ano/Mes'																, ; //X1_PERGUNT
-	'Ano/Mes'																, ; //X1_PERSPA
-	'Ano/Mes'																, ; //X1_PERENG
+	'02'																	, ; //X1_ORDEM
+	'Ano'																	, ; //X1_PERGUNT
+	'Ano'																	, ; //X1_PERSPA
+	'Ano'																	, ; //X1_PERENG
 	'MV_CH0'																, ; //X1_VARIAVL
 	'C'																		, ; //X1_TIPO
-	6																		, ; //X1_TAMANHO
+	4																		, ; //X1_TAMANHO
 	0																		, ; //X1_DECIMAL
 	0																		, ; //X1_PRESEL
 	'G'																		, ; //X1_GSC
 	''																		, ; //X1_VALID
-	'MV_PAR01'																, ; //X1_VAR01
+	'MV_PAR02'																, ; //X1_VAR01
 	''																		, ; //X1_DEF01
 	''																		, ; //X1_DEFSPA1
 	''																		, ; //X1_DEFENG1
-	'201612'																, ; //X1_CNT01
+	'2016'																	, ; //X1_CNT01
 	''																		, ; //X1_VAR02
 	''																		, ; //X1_DEF02
 	''																		, ; //X1_DEFSPA2
@@ -1205,6 +1019,37 @@ Next nI
 AutoGrLog( CRLF + "Final da Atualização" + " SX1" + CRLF + Replicate( "-", 128 ) + CRLF )
 
 Return NIL
+
+
+//--------------------------------------------------------------------
+/*/{Protheus.doc} FSAtuHlpX1
+Função de processamento da gravação dos Helps de Perguntas
+
+@author TOTVS Protheus
+@since  06/02/2017
+@obs    Gerado por EXPORDIC - V.5.2.1.0 EFS / Upd. V.4.20.15 EFS
+@version 1.0
+/*/
+//--------------------------------------------------------------------
+Static Function FSAtuHlpX1()
+Local aHlpPor   := {}
+Local aHlpEng   := {}
+Local aHlpSpa   := {}
+
+AutoGrLog( "Ínicio da Atualização" + " " + "Helps de Perguntas" + CRLF )
+
+
+oProcess:IncRegua2( "Atualizando Helps de Perguntas ..." )
+
+//
+// Helps Perguntas IOATFR01
+//
+//
+// Helps Perguntas IOATFR02
+//
+AutoGrLog( CRLF + "Final da Atualização" + " " + "Helps de Perguntas" + CRLF + Replicate( "-", 128 ) + CRLF )
+
+Return {}
 
 
 //--------------------------------------------------------------------
@@ -1460,7 +1305,7 @@ Return NIL
 Função de processamento abertura do SM0 modo exclusivo
 
 @author TOTVS Protheus
-@since  30/12/2016
+@since  06/02/2017
 @obs    Gerado por EXPORDIC - V.5.2.1.0 EFS / Upd. V.4.20.15 EFS
 @version 1.0
 /*/
@@ -1496,7 +1341,7 @@ Return lOpen
 Função de leitura do LOG gerado com limitacao de string
 
 @author TOTVS Protheus
-@since  30/12/2016
+@since  06/02/2017
 @obs    Gerado por EXPORDIC - V.5.2.1.0 EFS / Upd. V.4.20.15 EFS
 @version 1.0
 /*/

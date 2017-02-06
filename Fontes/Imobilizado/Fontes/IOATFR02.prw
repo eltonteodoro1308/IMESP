@@ -69,30 +69,30 @@ Static Function ReportDef()
 	TRCell():New( oSection1, 'CUSTO_CONTAS_DO_DIFERIDO', cAliasTRB1, 'CUSTO CONTAS DO DIFERIDO', '@!', 40,,,,, 'LEFT' )
 	oSection1:Cell('CUSTO_CONTAS_DO_DIFERIDO'):SetBorder( 'LEFT')
 
-	TRCell():New( oSection1, 'SALDO_DE_BALANCO', cAliasTRB1, 'SALDO DE BALANCO', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection1, 'SALDO_DE_BALANCO', cAliasTRB1, 'SALDO DE BALANCO', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection1:Cell('SALDO_DE_BALANCO'):SetBorder( 'LEFT')
-	TRFunction():New( oSection1:Cell('SALDO_DE_BALANCO'), '', 'SUM',, '', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection1:Cell('SALDO_DE_BALANCO'), '', 'SUM',, '', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection1, 'ADICAO', cAliasTRB1, 'ADICAO', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection1, 'ADICAO', cAliasTRB1, 'ADICAO', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection1:Cell('ADICAO'):SetBorder( 'LEFT' )
-	TRFunction():New( oSection1:Cell('ADICAO'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),,.T.,.F.,.F. )
+	TRFunction():New( oSection1:Cell('ADICAO'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),,.T.,.F.,.F. )
 
-	TRCell():New( oSection1, 'ENTRADAS', cAliasTRB1, 'ENTRADAS', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection1, 'ENTRADAS', cAliasTRB1, 'ENTRADAS', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection1:Cell('ENTRADAS'):SetBorder( 'LEFT' )
-	TRFunction():New( oSection1:Cell('ENTRADAS'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),,.T.,.F.,.F. )
+	TRFunction():New( oSection1:Cell('ENTRADAS'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),,.T.,.F.,.F. )
 
-	TRCell():New( oSection1, 'SAIDAS', cAliasTRB1, 'SAÍDAS', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection1, 'SAIDAS', cAliasTRB1, 'SAÍDAS', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection1:Cell('SAIDAS'):SetBorder( 'LEFT')
-	TRFunction():New( oSection1:Cell('SAIDAS'), '', 'SUM',, '', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection1:Cell('SAIDAS'), '', 'SUM',, '', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection1, 'BAIXAS', cAliasTRB1, 'BAIXAS', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection1, 'BAIXAS', cAliasTRB1, 'BAIXAS', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection1:Cell('BAIXAS'):SetBorder( 'LEFT')
 	oSection1:Cell('BAIXAS'):SetBorder( 'RIGHT')
-	TRFunction():New( oSection1:Cell('BAIXAS'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection1:Cell('BAIXAS'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection1, 'SALDO_ATUAL', cAliasTRB1, 'SALDO ATUAL', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection1, 'SALDO_ATUAL', cAliasTRB1, 'SALDO ATUAL', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection1:Cell('SALDO_ATUAL'):SetBorder( 'RIGHT')
-	TRFunction():New( oSection1:Cell('SALDO_ATUAL'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection1:Cell('SALDO_ATUAL'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
 	// Section 002
 
@@ -103,30 +103,30 @@ Static Function ReportDef()
 	TRCell():New( oSection2, 'AMORTIZACAO_CONTAS_DO_DIFERIDO', cAliasTRB2, 'AMORTIZACAO CONTAS DO DIFERIDO', '@!', 40,,,,, 'LEFT' )
 	oSection2:Cell('AMORTIZACAO_CONTAS_DO_DIFERIDO'):SetBorder( 'LEFT')
 
-	TRCell():New( oSection2, 'SALDO_DE_BALANCO', cAliasTRB2, 'SALDO DE BALANCO', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection2, 'SALDO_DE_BALANCO', cAliasTRB2, 'SALDO DE BALANCO', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection2:Cell('SALDO_DE_BALANCO'):SetBorder( 'LEFT')
-	TRFunction():New( oSection2:Cell('SALDO_DE_BALANCO'), '', 'SUM',, '', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection2:Cell('SALDO_DE_BALANCO'), '', 'SUM',, '', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection2, 'ADICAO', cAliasTRB2, 'ADICAO', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection2, 'ADICAO', cAliasTRB2, 'ADICAO', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection2:Cell('ADICAO'):SetBorder( 'LEFT' )
-	TRFunction():New( oSection2:Cell('ADICAO'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),,.T.,.F.,.F. )
+	TRFunction():New( oSection2:Cell('ADICAO'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),,.T.,.F.,.F. )
 
-	TRCell():New( oSection2, 'ENTRADAS', cAliasTRB2, 'ENTRADAS', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection2, 'ENTRADAS', cAliasTRB2, 'ENTRADAS', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection2:Cell('ENTRADAS'):SetBorder( 'LEFT' )
-	TRFunction():New( oSection2:Cell('ENTRADAS'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),,.T.,.F.,.F. )
+	TRFunction():New( oSection2:Cell('ENTRADAS'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),,.T.,.F.,.F. )
 
-	TRCell():New( oSection2, 'SAIDAS', cAliasTRB2, 'SAÍDAS', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection2, 'SAIDAS', cAliasTRB2, 'SAÍDAS', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection2:Cell('SAIDAS'):SetBorder( 'LEFT')
-	TRFunction():New( oSection2:Cell('SAIDAS'), '', 'SUM',, '', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection2:Cell('SAIDAS'), '', 'SUM',, '', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection2, 'BAIXAS', cAliasTRB2, 'BAIXAS', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection2, 'BAIXAS', cAliasTRB2, 'BAIXAS', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection2:Cell('BAIXAS'):SetBorder( 'LEFT')
 	oSection2:Cell('BAIXAS'):SetBorder( 'RIGHT')
-	TRFunction():New( oSection2:Cell('BAIXAS'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection2:Cell('BAIXAS'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection2, 'SALDO_ATUAL', cAliasTRB2, 'SALDO ATUAL', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection2, 'SALDO_ATUAL', cAliasTRB2, 'SALDO ATUAL', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection2:Cell('SALDO_ATUAL'):SetBorder( 'RIGHT')
-	TRFunction():New( oSection2:Cell('SALDO_ATUAL'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection2:Cell('SALDO_ATUAL'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
 	// Section 003
 
@@ -135,23 +135,23 @@ Static Function ReportDef()
 	TRCell():New( oSection3, 'TOTAL_LIQUIDO_DO_DIFERIDO', '', '', '@!', 40,,,,, 'LEFT' )
 	oSection3:Cell('TOTAL_LIQUIDO_DO_DIFERIDO'):SetBorder( 'LEFT')
 
-	TRCell():New( oSection3, 'SALDO_DE_BALANCO', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection3, 'SALDO_DE_BALANCO', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection3:Cell('SALDO_DE_BALANCO'):SetBorder( 'LEFT')
 
-	TRCell():New( oSection3, 'ADICAO', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection3, 'ADICAO', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection3:Cell('ADICAO'):SetBorder( 'LEFT' )
 
-	TRCell():New( oSection3, 'ENTRADAS', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection3, 'ENTRADAS', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection3:Cell('ENTRADAS'):SetBorder( 'LEFT' )
 
-	TRCell():New( oSection3, 'SAIDAS', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection3, 'SAIDAS', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection3:Cell('SAIDAS'):SetBorder( 'LEFT')
 
-	TRCell():New( oSection3, 'BAIXAS', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection3, 'BAIXAS', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection3:Cell('BAIXAS'):SetBorder( 'LEFT')
 	oSection3:Cell('BAIXAS'):SetBorder( 'RIGHT')
 
-	TRCell():New( oSection3, 'SALDO_ATUAL', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection3, 'SALDO_ATUAL', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection3:Cell('SALDO_ATUAL'):SetBorder( 'RIGHT')
 
 	// Section 004
@@ -163,30 +163,30 @@ Static Function ReportDef()
 	TRCell():New( oSection4, 'CUSTO_CONTAS_DO_INTANGIVEL', cAliasTRB1, 'CUSTO CONTAS DO INTANGIVEL', '@!', 40,,,,, 'LEFT' )
 	oSection4:Cell('CUSTO_CONTAS_DO_INTANGIVEL'):SetBorder( 'LEFT')
 
-	TRCell():New( oSection4, 'SALDO_DE_BALANCO', cAliasTRB1, 'SALDO DE BALANCO', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection4, 'SALDO_DE_BALANCO', cAliasTRB1, 'SALDO DE BALANCO', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection4:Cell('SALDO_DE_BALANCO'):SetBorder( 'LEFT')
-	TRFunction():New( oSection4:Cell('SALDO_DE_BALANCO'), '', 'SUM',, '', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection4:Cell('SALDO_DE_BALANCO'), '', 'SUM',, '', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection4, 'ADICAO', cAliasTRB1, 'ADICAO', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection4, 'ADICAO', cAliasTRB1, 'ADICAO', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection4:Cell('ADICAO'):SetBorder( 'LEFT' )
-	TRFunction():New( oSection4:Cell('ADICAO'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),,.T.,.F.,.F. )
+	TRFunction():New( oSection4:Cell('ADICAO'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),,.T.,.F.,.F. )
 
-	TRCell():New( oSection4, 'ENTRADAS', cAliasTRB1, 'ENTRADAS', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection4, 'ENTRADAS', cAliasTRB1, 'ENTRADAS', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection4:Cell('ENTRADAS'):SetBorder( 'LEFT' )
-	TRFunction():New( oSection4:Cell('ENTRADAS'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),,.T.,.F.,.F. )
+	TRFunction():New( oSection4:Cell('ENTRADAS'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),,.T.,.F.,.F. )
 
-	TRCell():New( oSection4, 'SAIDAS', cAliasTRB1, 'SAÍDAS', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection4, 'SAIDAS', cAliasTRB1, 'SAÍDAS', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection4:Cell('SAIDAS'):SetBorder( 'LEFT')
-	TRFunction():New( oSection4:Cell('SAIDAS'), '', 'SUM',, '', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection4:Cell('SAIDAS'), '', 'SUM',, '', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection4, 'BAIXAS', cAliasTRB1, 'BAIXAS', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection4, 'BAIXAS', cAliasTRB1, 'BAIXAS', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection4:Cell('BAIXAS'):SetBorder( 'LEFT')
 	oSection4:Cell('BAIXAS'):SetBorder( 'RIGHT')
-	TRFunction():New( oSection4:Cell('BAIXAS'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection4:Cell('BAIXAS'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection4, 'SALDO_ATUAL', cAliasTRB1, 'SALDO ATUAL', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection4, 'SALDO_ATUAL', cAliasTRB1, 'SALDO ATUAL', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection4:Cell('SALDO_ATUAL'):SetBorder( 'RIGHT')
-	TRFunction():New( oSection4:Cell('SALDO_ATUAL'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection4:Cell('SALDO_ATUAL'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
 	// Section 005
 
@@ -197,30 +197,30 @@ Static Function ReportDef()
 	TRCell():New( oSection5, 'AMORTIZACAO_CONTAS_DO_INTANGIVEL', cAliasTRB2, 'AMORTIZACAO CONTAS DO INTANGIVEL', '@!', 40,,,,, 'LEFT' )
 	oSection5:Cell('AMORTIZACAO_CONTAS_DO_INTANGIVEL'):SetBorder( 'LEFT')
 
-	TRCell():New( oSection5, 'SALDO_DE_BALANCO', cAliasTRB2, 'SALDO DE BALANCO', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection5, 'SALDO_DE_BALANCO', cAliasTRB2, 'SALDO DE BALANCO', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection5:Cell('SALDO_DE_BALANCO'):SetBorder( 'LEFT')
-	TRFunction():New( oSection5:Cell('SALDO_DE_BALANCO'), '', 'SUM',, '', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection5:Cell('SALDO_DE_BALANCO'), '', 'SUM',, '', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection5, 'ADICAO', cAliasTRB2, 'ADICAO', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection5, 'ADICAO', cAliasTRB2, 'ADICAO', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection5:Cell('ADICAO'):SetBorder( 'LEFT' )
-	TRFunction():New( oSection5:Cell('ADICAO'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),,.T.,.F.,.F. )
+	TRFunction():New( oSection5:Cell('ADICAO'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),,.T.,.F.,.F. )
 
-	TRCell():New( oSection5, 'ENTRADAS', cAliasTRB2, 'ENTRADAS', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection5, 'ENTRADAS', cAliasTRB2, 'ENTRADAS', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection5:Cell('ENTRADAS'):SetBorder( 'LEFT' )
-	TRFunction():New( oSection5:Cell('ENTRADAS'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),,.T.,.F.,.F. )
+	TRFunction():New( oSection5:Cell('ENTRADAS'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),,.T.,.F.,.F. )
 
-	TRCell():New( oSection5, 'SAIDAS', cAliasTRB2, 'SAÍDAS', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection5, 'SAIDAS', cAliasTRB2, 'SAÍDAS', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection5:Cell('SAIDAS'):SetBorder( 'LEFT')
-	TRFunction():New( oSection5:Cell('SAIDAS'), '', 'SUM',, '', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection5:Cell('SAIDAS'), '', 'SUM',, '', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection5, 'BAIXAS', cAliasTRB2, 'BAIXAS', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection5, 'BAIXAS', cAliasTRB2, 'BAIXAS', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection5:Cell('BAIXAS'):SetBorder( 'LEFT')
 	oSection5:Cell('BAIXAS'):SetBorder( 'RIGHT')
-	TRFunction():New( oSection5:Cell('BAIXAS'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection5:Cell('BAIXAS'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
-	TRCell():New( oSection5, 'SALDO_ATUAL', cAliasTRB2, 'SALDO ATUAL', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection5, 'SALDO_ATUAL', cAliasTRB2, 'SALDO ATUAL', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection5:Cell('SALDO_ATUAL'):SetBorder( 'RIGHT')
-	TRFunction():New( oSection5:Cell('SALDO_ATUAL'),'','SUM',,'', X3Picture( 'CT2_VALOR'  ),, .T., .F., .F. )
+	TRFunction():New( oSection5:Cell('SALDO_ATUAL'),'','SUM',,'', X3Picture( 'N5_VALOR1'  ),, .T., .F., .F. )
 
 	// Section 006
 
@@ -229,23 +229,23 @@ Static Function ReportDef()
 	TRCell():New( oSection6, 'TOTAL_AMORTIZACAO_CONTAS_DO_INTANGIVEL', '', '', '@!', 40,,,,, 'LEFT' )
 	oSection6:Cell('TOTAL_AMORTIZACAO_CONTAS_DO_INTANGIVEL'):SetBorder( 'LEFT')
 
-	TRCell():New( oSection6, 'SALDO_DE_BALANCO', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection6, 'SALDO_DE_BALANCO', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection6:Cell('SALDO_DE_BALANCO'):SetBorder( 'LEFT')
 
-	TRCell():New( oSection6, 'ADICAO', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection6, 'ADICAO', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection6:Cell('ADICAO'):SetBorder( 'LEFT' )
 
-	TRCell():New( oSection6, 'ENTRADAS', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,, 'RIGHT' )
+	TRCell():New( oSection6, 'ENTRADAS', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,, 'RIGHT' )
 	oSection6:Cell('ENTRADAS'):SetBorder( 'LEFT' )
 
-	TRCell():New( oSection6, 'SAIDAS', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection6, 'SAIDAS', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection6:Cell('SAIDAS'):SetBorder( 'LEFT')
 
-	TRCell():New( oSection6, 'BAIXAS', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection6, 'BAIXAS', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection6:Cell('BAIXAS'):SetBorder( 'LEFT')
 	oSection6:Cell('BAIXAS'):SetBorder( 'RIGHT')
 
-	TRCell():New( oSection6, 'SALDO_ATUAL', '', '', X3Picture( 'CT2_VALOR'  ), 40,,,,,'RIGHT' )
+	TRCell():New( oSection6, 'SALDO_ATUAL', '', '', X3Picture( 'N5_VALOR1'  ), 40,,,,,'RIGHT' )
 	oSection6:Cell('SALDO_ATUAL'):SetBorder( 'RIGHT')
 
 
@@ -442,67 +442,60 @@ Static Function QuerySld1( aCtasCusto, cAliasTRB )
 
 	For nX := 1 To Len( aCtasCusto )
 
-		cQuery += "SELECT TOP 1 CT1.CT1_CONTA CONTA, CT1.CT1_DESC01 DESCRICAO, "
+		cQuery += "SELECT CT1.CT1_CONTA CONTA, CT1.CT1_DESC01 DESCRICAO, "
 
-		cQuery += "(SELECT SUM(VALOR) SALDO FROM( "
+		cQuery += "SALDO_DE_BALANCO = ( SELECT COALESCE( SUM( "
+		cQuery += "CASE "
+		cQuery += "WHEN SN5.N5_TIPO IN( '0', '1', '4', '9', 'Q', 'T' ) THEN  SN5.N5_VALOR1 "
+		cQuery += "WHEN SN5.N5_TIPO IN( '5', '8', 'R', 'S' ) THEN -SN5.N5_VALOR1 "
+		cQuery += "ELSE 0 "
+		cQuery += "END), 0 ) "
+		cQuery += "FROM " + RetSqlName( "SN5" ) + " SN5 "
+		cQuery += "WHERE SN5.D_E_L_E_T_ = ' ' "
+		cQuery += "AND SN5.N5_FILIAL = '" + xFilial( "SN5" ) + "' "
+		cQuery += "AND SN5.N5_CONTA = CT1.CT1_CONTA "
+		cQuery += "AND SUBSTRING( SN5.N5_DATA, 1, 6 ) < '" + cValToChar(MV_PAR02) + cValToChar(MV_PAR01) + "' ), "
 
-		cQuery += "SELECT COALESCE(SUM(CT2_DEB.CT2_VALOR), 0) VALOR FROM " + RetSqlName( "CT2" ) + " CT2_DEB "
-		cQuery += "WHERE CT2_DEB.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2_DEB.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2_DEB.CT2_DEBITO = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2_DEB.CT2_DATA, 1, 6) < '" + AllTrim( MV_PAR01 ) + "' "
+		cQuery += "ADICAO = ("
+		cQuery += "SELECT COALESCE( SUM( SN5.N5_VALOR1 ), 0 ) "
+		cQuery += "FROM " + RetSqlName( "SN5" ) + " SN5 "
+		cQuery += "WHERE SN5.D_E_L_E_T_ = ' ' "
+		cQuery += "AND SN5.N5_FILIAL = '" + xFilial("SN5") + "' "
+		cQuery += "AND SN5.N5_CONTA = CT1.CT1_CONTA "
+		cQuery += "AND SUBSTRING(SN5.N5_DATA, 1, 6) = '" + cValToChar( MV_PAR02 ) + cValToChar(MV_PAR01) +"' "
+		cQuery += "AND SN5.N5_TIPO IN( '1', '4' ) ), "
 
-		cQuery += "UNION ALL "
+		cQuery += "ENTRADAS = ("
+		cQuery += "SELECT COALESCE( SUM( SN5.N5_VALOR1 ), 0 ) "
+		cQuery += "FROM " + RetSqlName( "SN5" ) + " SN5 "
+		cQuery += "WHERE SN5.D_E_L_E_T_ = ' ' "
+		cQuery += "AND SN5.N5_FILIAL = '" + xFilial("SN5") + "' "
+		cQuery += "AND SN5.N5_CONTA = CT1.CT1_CONTA "
+		cQuery += "AND SUBSTRING(SN5.N5_DATA, 1, 6) = '" + cValToChar( MV_PAR02 ) + cValToChar(MV_PAR01) +"' "
+		cQuery += "AND SN5.N5_TIPO IN( '9', 'Q', 'T' ) ), "
 
-		cQuery += "SELECT -COALESCE(SUM(CT2_CRED.CT2_VALOR), 0) VALOR FROM " + RetSqlName( "CT2" ) + " CT2_CRED "
-		cQuery += "WHERE CT2_CRED.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2_CRED.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2_CRED.CT2_CREDIT = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2_CRED.CT2_DATA, 1, 6) < '" + AllTrim( MV_PAR01 ) + "' "
+		cQuery += "SAIDAS = ("
+		cQuery += "SELECT COALESCE( SUM( SN5.N5_VALOR1 ), 0 ) "
+		cQuery += "FROM " + RetSqlName( "SN5" ) + " SN5 "
+		cQuery += "WHERE SN5.D_E_L_E_T_ = ' ' "
+		cQuery += "AND SN5.N5_FILIAL = '" + xFilial("SN5") + "' "
+		cQuery += "AND SN5.N5_CONTA = CT1.CT1_CONTA "
+		cQuery += "AND SUBSTRING(SN5.N5_DATA, 1, 6) = '" + cValToChar( MV_PAR02 ) + cValToChar(MV_PAR01) +"' "
+		cQuery += "AND SN5.N5_TIPO IN( '8', 'R', 'S' ) ), "
 
-		cQuery += ") CT2_SALDO "
-
-		cQuery += ") SALDO_DE_BALANCO, "
-
-		cQuery += "(SELECT "
-		cQuery += "COALESCE(SUM(CT2.CT2_VALOR), 0) "
-		cQuery += "FROM " + RetSqlName( "CT2" ) + " CT2 "
-		cQuery += "WHERE CT2.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2.CT2_DEBITO = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2.CT2_DATA, 1, 6 ) = '" + cValToChar( MV_PAR01 ) + "' "
-		cQuery += "AND CT2.CT2_LP IN (" + ParamToIn( "IO_ATFR011" ) + ")) ADICAO, "
-
-		cQuery += "(SELECT "
-		cQuery += "COALESCE(SUM(CT2.CT2_VALOR), 0)  "
-		cQuery += "FROM " + RetSqlName( "CT2" ) + " CT2 "
-		cQuery += "WHERE CT2.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2.CT2_DEBITO = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2.CT2_DATA, 1, 6 ) = '" + cValToChar( MV_PAR01 ) + "' "
-		cQuery += "AND CT2.CT2_LP IN (" + ParamToIn( "IO_ATFR012" ) + ")) ENTRADAS,"
-
-		cQuery += "(SELECT "
-		cQuery += "COALESCE(SUM(CT2.CT2_VALOR), 0) "
-		cQuery += "FROM " + RetSqlName( "CT2" ) + " CT2 "
-		cQuery += "WHERE CT2.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2.CT2_CREDIT = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2.CT2_DATA, 1, 6 ) = '" + cValToChar( MV_PAR01 ) + "' "
-		cQuery += "AND CT2.CT2_LP IN (" + ParamToIn( "IO_ATFR013" ) + ")) SAIDAS, "
-
-		cQuery += "(SELECT "
-		cQuery += "COALESCE(SUM(CT2.CT2_VALOR), 0) "
-		cQuery += "FROM " + RetSqlName( "CT2" ) + " CT2 "
-		cQuery += "WHERE CT2.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2.CT2_CREDIT = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2.CT2_DATA, 1, 6 ) = '" + cValToChar( MV_PAR01 ) + "' "
-		cQuery += "AND CT2.CT2_LP IN (" + ParamToIn( "IO_ATFR014" ) + ")) BAIXAS "
+		cQuery += "BAIXAS = ("
+		cQuery += "SELECT COALESCE( SUM( SN5.N5_VALOR1 ), 0 ) "
+		cQuery += "FROM " + RetSqlName( "SN5" ) + " SN5 "
+		cQuery += "WHERE SN5.D_E_L_E_T_ = ' ' "
+		cQuery += "AND SN5.N5_FILIAL = '" + xFilial("SN5") + "' "
+		cQuery += "AND SN5.N5_CONTA = CT1.CT1_CONTA "
+		cQuery += "AND SUBSTRING(SN5.N5_DATA, 1, 6) = '" + cValToChar( MV_PAR02 ) + cValToChar(MV_PAR01) +"' "
+		cQuery += "AND SN5.N5_TIPO IN( '5' ) ) "
 
 		cQuery += "FROM " + RetSqlName( "CT1" ) + " CT1 "
-		cQuery += "WHERE CT1.CT1_CONTA = '" + aCtasCusto[nX] + "' "
-		cQuery += "AND CT1.D_E_L_E_T_ = ' '"
+		cQuery += "WHERE CT1.D_E_L_E_T_ = ' ' "
+		cQuery += "AND CT1.CT1_FILIAL = '" + xFilial( "CT1" ) + "' "
+		cQuery += "AND CT1.CT1_CONTA = '" + aCtasCusto[nX] + "' "
 
 		If nX # Len( aCtasCusto )
 
@@ -515,7 +508,7 @@ Static Function QuerySld1( aCtasCusto, cAliasTRB )
 	dbUseArea( .T., "TOPCONN", TcGenQry(,,cQuery), cAliasTRB, .T., .T. )
 
 Return
-/*/{Protheus.doc} QuerySld1
+/*/{Protheus.doc} QuerySld2
 Query com dados da Seção 2 e 5
 @author Elton Teodoro Alves
 @since 27/12/2016
@@ -530,68 +523,60 @@ Static Function QuerySld2( aCtasAmort, cAliasTRB )
 
 	For nX := 1 To Len( aCtasAmort )
 
-		cQuery += "SELECT TOP 1 CT1.CT1_CONTA CONTA, CT1.CT1_DESC01 DESCRICAO, "
+		cQuery += "SELECT CT1.CT1_CONTA CONTA, CT1.CT1_DESC01 DESCRICAO, "
 
-		cQuery += "(SELECT SUM(VALOR) SALDO FROM( "
+		cQuery += "SALDO_DE_BALANCO = ( SELECT COALESCE( SUM( "
+		cQuery += "CASE "
+		cQuery += "WHEN SN5.N5_TIPO IN( '0', '1', '4', '9', 'Q', 'T' ) THEN  SN5.N5_VALOR1 "
+		cQuery += "WHEN SN5.N5_TIPO IN( '5', '8', 'R', 'S' ) THEN -SN5.N5_VALOR1 "
+		cQuery += "ELSE 0 "
+		cQuery += "END), 0 ) "
+		cQuery += "FROM " + RetSqlName( "SN5" ) + " SN5 "
+		cQuery += "WHERE SN5.D_E_L_E_T_ = ' ' "
+		cQuery += "AND SN5.N5_FILIAL = '" + xFilial( "SN5" ) + "' "
+		cQuery += "AND SN5.N5_CONTA = CT1.CT1_CONTA "
+		cQuery += "AND SUBSTRING( SN5.N5_DATA, 1, 6 ) < '" + cValToChar(MV_PAR02) + cValToChar(MV_PAR01) + "' ), "
 
-		cQuery += "SELECT -COALESCE(SUM(CT2_DEB.CT2_VALOR), 0) VALOR FROM " + RetSqlName( "CT2" ) + " CT2_DEB "
-		cQuery += "WHERE CT2_DEB.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2_DEB.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2_DEB.CT2_DEBITO = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2_DEB.CT2_DATA, 1, 6) < '" + AllTrim( MV_PAR01 ) + "' "
+		cQuery += "ADICAO = ("
+		cQuery += "SELECT COALESCE( SUM( SN5.N5_VALOR1 ), 0 ) "
+		cQuery += "FROM " + RetSqlName( "SN5" ) + " SN5 "
+		cQuery += "WHERE SN5.D_E_L_E_T_ = ' ' "
+		cQuery += "AND SN5.N5_FILIAL = '" + xFilial("SN5") + "' "
+		cQuery += "AND SN5.N5_CONTA = CT1.CT1_CONTA "
+		cQuery += "AND SUBSTRING(SN5.N5_DATA, 1, 6) = '" + cValToChar( MV_PAR02 ) + cValToChar(MV_PAR01) +"' "
+		cQuery += "AND SN5.N5_TIPO IN( '1', '4' ) ), "
 
-		cQuery += "UNION ALL "
+		cQuery += "ENTRADAS = ("
+		cQuery += "SELECT COALESCE( SUM( SN5.N5_VALOR1 ), 0 ) "
+		cQuery += "FROM " + RetSqlName( "SN5" ) + " SN5 "
+		cQuery += "WHERE SN5.D_E_L_E_T_ = ' ' "
+		cQuery += "AND SN5.N5_FILIAL = '" + xFilial("SN5") + "' "
+		cQuery += "AND SN5.N5_CONTA = CT1.CT1_CONTA "
+		cQuery += "AND SUBSTRING(SN5.N5_DATA, 1, 6) = '" + cValToChar( MV_PAR02 ) + cValToChar(MV_PAR01) +"' "
+		cQuery += "AND SN5.N5_TIPO IN( '9', 'Q', 'T' ) ), "
 
-		cQuery += "SELECT COALESCE(SUM(CT2_CRED.CT2_VALOR), 0) VALOR FROM " + RetSqlName( "CT2" ) + " CT2_CRED "
-		cQuery += "WHERE CT2_CRED.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2_CRED.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2_CRED.CT2_CREDIT = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2_CRED.CT2_DATA, 1, 6) < '" + AllTrim( MV_PAR01 ) + "' "
+		cQuery += "SAIDAS = ("
+		cQuery += "SELECT COALESCE( SUM( SN5.N5_VALOR1 ), 0 ) "
+		cQuery += "FROM " + RetSqlName( "SN5" ) + " SN5 "
+		cQuery += "WHERE SN5.D_E_L_E_T_ = ' ' "
+		cQuery += "AND SN5.N5_FILIAL = '" + xFilial("SN5") + "' "
+		cQuery += "AND SN5.N5_CONTA = CT1.CT1_CONTA "
+		cQuery += "AND SUBSTRING(SN5.N5_DATA, 1, 6) = '" + cValToChar( MV_PAR02 ) + cValToChar(MV_PAR01) +"' "
+		cQuery += "AND SN5.N5_TIPO IN( '8', 'R', 'S' ) ), "
 
-		cQuery += ") CT2_SALDO "
-
-		cQuery += ") SALDO_DE_BALANCO, "
-
-
-		cQuery += "(SELECT "
-		cQuery += "COALESCE(SUM(CT2.CT2_VALOR), 0) "
-		cQuery += "FROM " + RetSqlName( "CT2" ) + " CT2 "
-		cQuery += "WHERE CT2.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2.CT2_CREDIT = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2.CT2_DATA, 1, 6 ) = '" + cValToChar( MV_PAR01 ) + "' "
-		cQuery += "AND CT2.CT2_LP IN (" + ParamToIn( "IO_ATFR015" ) + ")) ADICAO, "
-
-		cQuery += "(SELECT "
-		cQuery += "COALESCE(SUM(CT2.CT2_VALOR), 0) "
-		cQuery += "FROM " + RetSqlName( "CT2" ) + " CT2 "
-		cQuery += "WHERE CT2.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2.CT2_CREDIT = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2.CT2_DATA, 1, 6 ) = '" + cValToChar( MV_PAR01 ) + "' "
-		cQuery += "AND CT2.CT2_LP IN (" + ParamToIn( "IO_ATFR016" ) + ")) ENTRADAS, "
-
-		cQuery += "(SELECT "
-		cQuery += "COALESCE(SUM(CT2.CT2_VALOR), 0) "
-		cQuery += "FROM " + RetSqlName( "CT2" ) + " CT2 "
-		cQuery += "WHERE CT2.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2.CT2_DEBITO = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2.CT2_DATA, 1, 6 ) = '" + cValToChar( MV_PAR01 ) + "' "
-		cQuery += "AND CT2.CT2_LP IN (" + ParamToIn( "IO_ATFR017" ) + ")) SAIDAS, "
-
-		cQuery += "(SELECT "
-		cQuery += "COALESCE(SUM(CT2.CT2_VALOR), 0)  "
-		cQuery += "FROM " + RetSqlName( "CT2" ) + " CT2 "
-		cQuery += "WHERE CT2.D_E_L_E_T_ = ' ' "
-		cQuery += "AND CT2.CT2_FILIAL = '" + xFilial( "CT2" ) + "' "
-		cQuery += "AND CT2.CT2_DEBITO = CT1.CT1_CONTA "
-		cQuery += "AND SUBSTRING(CT2.CT2_DATA, 1, 6 ) = '" + cValToChar( MV_PAR01 ) + "' "
-		cQuery += "AND CT2.CT2_LP IN (" + ParamToIn( "IO_ATFR017" ) + ")) BAIXAS "
+		cQuery += "BAIXAS = ("
+		cQuery += "SELECT COALESCE( SUM( SN5.N5_VALOR1 ), 0 ) "
+		cQuery += "FROM " + RetSqlName( "SN5" ) + " SN5 "
+		cQuery += "WHERE SN5.D_E_L_E_T_ = ' ' "
+		cQuery += "AND SN5.N5_FILIAL = '" + xFilial("SN5") + "' "
+		cQuery += "AND SN5.N5_CONTA = CT1.CT1_CONTA "
+		cQuery += "AND SUBSTRING(SN5.N5_DATA, 1, 6) = '" + cValToChar( MV_PAR02 ) + cValToChar(MV_PAR01) +"' "
+		cQuery += "AND SN5.N5_TIPO IN( '5' ) ) "
 
 		cQuery += "FROM " + RetSqlName( "CT1" ) + " CT1 "
-		cQuery += "WHERE CT1.CT1_CONTA = '" + aCtasAmort[nX] + "' "
-		cQuery += "AND CT1.D_E_L_E_T_ = ' '"
+		cQuery += "WHERE CT1.D_E_L_E_T_ = ' ' "
+		cQuery += "AND CT1.CT1_FILIAL = '" + xFilial( "CT1" ) + "' "
+		cQuery += "AND CT1.CT1_CONTA = '" + aCtasAmort[nX] + "' "
 
 		If nX # Len( aCtasAmort )
 
@@ -604,30 +589,3 @@ Static Function QuerySld2( aCtasAmort, cAliasTRB )
 	dbUseArea( .T., "TOPCONN", TcGenQry(,,cQuery), cAliasTRB, .T., .T. )
 
 Return
-/*/{Protheus.doc} ParamToIn
-Função que monta a string para ser usada na clausula IN da query
-@author Elton Teodoro Alves
-@since 27/12/2016
-@version 12.1.007
-@param cParam, Caractere, Nome do Parâmetro
-@return Caractere, Clausula IN da query
-/*/
-Static Function ParamToIn( cParam )
-
-	Local cRet   := ''
-	Local nX     := 0
-	Local aParam := StrTokArr2( GetMv( cParam ), ',', .T. )
-
-	For nX := 1 To Len( aParam )
-
-		cRet += "'" + aParam[nX] + "'"
-
-		If nX # Len( aParam )
-
-			cRet += ","
-
-		End If
-
-	Next nX
-
-Return cRet

@@ -1,0 +1,75 @@
+--------------------------------------------------------------------------------------------------------------------------------
+                                                                                                                                
+LOG DA ATUALIZAÇÃO DOS DICIONÁRIOS
+                                                                                                                                
+--------------------------------------------------------------------------------------------------------------------------------
+ 
+ Dados Ambiente
+ --------------------
+ Empresa / Filial...: 99/01
+ Nome Empresa.......:  
+ Nome Filial........: Matriz
+ DataBase...........: 06/02/17
+ Data / Hora Ínicio.: 06/02/17 / 17:54:49
+ Environment........: ENVIRONMENT
+ StartPath..........: \system\
+ RootPath...........: C:\TOTVS\Microsiga\Protheus12\MSSQL\Protheus_Data\
+ Versão.............: TOTVS Série T  MSSQL Environment
+ Usuário TOTVS .....:  
+ Computer Name......: SPON4944
+ 
+ Dados Thread
+ --------------------
+ Usuário da Rede....: elton.alves
+ Estação............: SPON4944
+ Programa Inicial...: U_UPDEXP
+ Environment........: ENVIRONMENT
+ Conexão............: Mon Feb 06 17:54:07 2017
+--------------------------------------------------------------------------------------------------------------------------------
+ 
+--------------------------------------------------------------------------------------------------------------------------------
+Empresa : 99/TESTE                                   
+
+Ínicio da Atualização SIX
+
+Índice criado SNG/3 - NG_FILIAL+NG_CCONTAB
+
+Final da Atualização SIX
+--------------------------------------------------------------------------------------------------------------------------------
+
+Ínicio da Atualização SX6
+
+Foi incluído o parâmetro   IO_XGRAM1 Conteúdo [1551901]
+Foi incluído o parâmetro   IO_XGRCA1 Conteúdo [1542101]
+Foi incluído o parâmetro   IO_XGRCA2 Conteúdo [1542102]
+Foi incluído o parâmetro   IO_XGRCA3 Conteúdo [1542103]
+Foi incluído o parâmetro   IO_XGRCU1 Conteúdo [1541101]
+Foi incluído o parâmetro   IO_XGRCU2 Conteúdo [1541201]
+Foi incluído o parâmetro   IO_XGRCU3 Conteúdo [1541301]
+Foi incluído o parâmetro   IO_XGRCU4 Conteúdo [1541302]
+Foi incluído o parâmetro   IO_XGRCU5 Conteúdo [1541303]
+Foi incluído o parâmetro   IO_XGRCU6 Conteúdo [1541401]
+Foi incluído o parâmetro   IO_XGRDI1 Conteúdo [1551201]
+
+Final da Atualização SX6
+--------------------------------------------------------------------------------------------------------------------------------
+
+Ínicio da Atualização 
+
+Pergunta Criada. Grupo/Ordem IOATFR01/01
+Pergunta Criada. Grupo/Ordem IOATFR01/02
+Pergunta Criada. Grupo/Ordem IOATFR02/01
+Pergunta Criada. Grupo/Ordem IOATFR02/02
+
+Final da Atualização SX1
+--------------------------------------------------------------------------------------------------------------------------------
+
+Ínicio da Atualização Helps de Perguntas
+
+
+Final da Atualização Helps de Perguntas
+--------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------
+ Data / Hora Final.: 06/02/17 / 17:54:50
+--------------------------------------------------------------------------------------------------------------------------------
