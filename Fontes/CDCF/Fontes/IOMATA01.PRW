@@ -22,11 +22,17 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 	Local aComplex  := {}
 	Local aSimple   := {}
 	Local cResponse := ''
-	Local cWSDLUrl  := GetMv( 'IO_CDCFWSD' )
-	Local cIDSist   := '4'//GetMv( 'IO_CDCFIDS'  )
-	Local cIdCons   := GetMv( 'IO_CDCFIDC' )
+
+	// --------------------------------------------------------------------
+	// Atribui a Variáveis correspondentes os valores dos parametros
+	// necessários para acesso ao CDCF
+	// --------------------------------------------------------------------
+	Local cWSDLUrl  := GetMv( 'IO_CDCFWSD' ) // URL do WSDL do WebService do CDCF
+	Local cIDSist   := '4'//GetMv( 'IO_CDCFIDS' ) // ID do Sistema Protheus no CDCF
+	Local cIdCons   := GetMv( 'IO_CDCFIDC' ) // ID da Consulta no CDCF
+	// --------------------------------------------------------------------
+
 	Local oWSDL     := TWsdlManager():New()
-	Local oXml      := TXmlManager():New()
 	Local aClientes := {}
 	Local aCliente  := {}
 	Local aID       := {}
@@ -34,30 +40,35 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 	Local cEsfera   := ''
 	Local cEndereco := ''
 
-	Private	lMsErroAuto		:=	.F.
-	Private	lMsHelpAuto		:=	.T.
-	Private	lAutoErrNoFile	:=	.T.
+	Private oXml            := TXmlManager():New()
+	Private cErro           := ''
+	Private	lMsErroAuto		:= .F.
+	Private	lMsHelpAuto		:= .T.
+	Private	lAutoErrNoFile	:= .T.
 
-	Default cParams := '279191,253425,253383'
 
+	// Define que a validacao da resposta do WebService do CDCF nao sera processada
 	oWsdl:lProcResp := .F.
 
-	//If cParams == ProcName() .Or. Empty( cParams )
+	// Verifica se foram enviados clientes e define o metodo a ser executado
+	If cParams == ProcName() .Or. Empty( cParams )
 
-	cMetodo := 'SolicitaClientesParaIntegrar'
+		cMetodo := 'SolicitaClientesParaIntegrar'
 
-	//Else
+	Else
 
-	//cMetodo := 'ConsultaCliente'
+		cMetodo := 'ConsultaCliente'
 
-	//End If
+	End If
 
+	// Efetua o parse do WSDL do WebService
 	If ! oWsdl:ParseUrl( cWSDLUrl )
 
 		Return oWsdl:cError
 
 	End If
 
+	// Atribui a variavel array com as operacoes do WebService
 	aOps := aClone( oWsdl:ListOperations() )
 
 	If Len( aOps ) == 0
@@ -66,12 +77,14 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 
 	End If
 
+	// Seta a operacao a ser executada
 	If ! oWsdl:SetOperation( aOps[ aScan( aOps, { | X | X[ 1 ] == cMetodo} ), 1 ] )
 
 		Return oWsdl:cError
 
 	End If
 
+	// Atribui a variavel os tipos complexos da operacao
 	aComplex := oWsdl:NextComplex()
 
 	If Len( aComplex ) == 0
@@ -80,6 +93,7 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 
 	End If
 
+	// Atribui a variavel os tipos simples da operacao
 	aSimple  := oWsdl:SimpleInput()
 
 	If Len( aSimple ) == 0
@@ -88,24 +102,28 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 
 	End If
 
+	// Define o numero de ocorrencias do tipo complexo
 	If ! oWsdl:SetComplexOccurs( aComplex[ 1 ], 1 )
 
 		Return oWsdl:cError
 
 	End IF
 
+	// Seta o valor do tipo simples correspondente ao ID do Sistema Protheus no CDCF
 	If ! oWsdl:SetValue( aSimple[1][1], cIDSist )
 
 		Return oWsdl:cError
 
 	End If
 
+	// Seta o valor do tipo simples correspondente ao ID da Consulta no CDCF
 	If  ! oWsdl:SetValue( aSimple[2][1], cIdCons  )
 
 		Return oWsdl:cError
 
 	End If
 
+	// Se operacao for ConsultaCliente Seta o codigo dos clientes a serem consultados
 	If cMetodo == 'ConsultaCliente'
 
 		If  ! oWsdl:SetValues( aSimple[3][1], StrTokArr2( cParams, ',', .T. )  )
@@ -116,25 +134,35 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 
 	End If
 
+	// Efetua comunicacao com WebService do CDCF
 	If ! oWsdl:SendSoapMsg()
 
 		Return oWsdl:cError
 
 	End If
 
+	// Atribui a Variável o retorno do WebService
 	cResponse := oWsdl:GetSoapResponse()
 
+	// Parse do XML retornado
 	If ! oXml:Parse( cResponse )
 
 		Return 'Erro no Parse do XML de retorno do CDCF - ' + oXml:LastError()
 
 	End If
 
-	Do While ! oXml:cName $ 'Cliente/RegistroConsulta/IntegracaoClientes'
+	// Desce o nivel do XML ate encontrar as Tags desejadas
+	Do While ! oXml:cName $ 'Cliente/RegistroConsulta/IntegracaoClientes/ErroConsulta'
 
 		oXml:DOMChildNode()
 
 	End Do
+
+	If oXml:cName = 'ErroConsulta'
+
+		Return 'Erro no Retorno no CDCF: ' + oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'MensagemExcecao' } ) ] [2]
+
+	End If
 
 	Do While AllWaysTrue()
 
@@ -302,7 +330,9 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 
 		ElseIf oXml:cName == 'IntegracaoClientes'
 
-			aAdd( aDtHrAlt, oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'DataHoraAlteracao' } ) ] [2] )
+			aAdd( aDtHrAlt, {;
+			oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'DataHoraAlteracao' } ) ] [2],;
+			oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdCliente' } ) ] [2] } )
 
 		End If
 
@@ -313,6 +343,23 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 		End If
 
 	End Do
+
+	oJson := TJsonParser():New()
+	cJson := FWJsonSerialize(aClientes)
+	nLen  := Len( cJson )
+	aJson := {}
+	nRet  := 0
+
+	If oJson:Json_Parser( cJson, nLen, @aJson , nRet )
+
+		Return
+
+	Else
+
+		Return
+
+	End If
+
 
 	For nX := 1 To Len(aClientes)
 
@@ -339,3 +386,22 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 	cRet := DecodeUTF8( cResponse )
 
 Return cRet
+
+/*/{Protheus.doc} GetVal
+Retorna o valor da Tag descendente solicitada correspondenente a Tag posicionada.
+@author Elton Teodoro Alves
+@since 07/02/2017
+@version 12.1.014
+@param cTag, characters, Nome da Tag
+@return characters, Valor da Tag
+/*/
+Static Function GetVal( cTag )
+
+	cRet := oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = cTag } ) ] [2]
+
+Return cRet
+
+
+Static Function RegLog( cMsg )
+
+Return
