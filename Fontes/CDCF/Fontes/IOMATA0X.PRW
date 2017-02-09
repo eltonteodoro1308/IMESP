@@ -22,13 +22,9 @@ User Function chamada via EAI para executar a importação do cadastro de clientes
 User Function IOMATA0X( cXml, cError, cWarning, cParams, oFwEai )
 
 	Local cRet      := ''
-	Local aOps      := {}
-	Local aComplex  := {}
-	Local aSimple   := {}
-	Local cWSDLUrl  := GetMv( 'IO_CDCFWSD' ) // URL do WSDL do WebService do CDCF
-	Local cIDSist   := GetMv( 'IO_CDCFIDS' ) // ID do Sistema Protheus no CDCF
-	Local cIdCons   := GetMv( 'IO_CDCFIDC' ) // ID da Consulta no CDCF
-	Local oWSDL     := TWsdlManager():New()
+
+
+
 	Local aClientes := {}
 	Local aCliente  := {}
 	Local aID       := {}
@@ -48,122 +44,6 @@ User Function IOMATA0X( cXml, cError, cWarning, cParams, oFwEai )
 	Private	lMsHelpAuto    := .T.
 	Private	lAutoErrNoFile := .T.
 
-	// Define que a validacao da resposta do WebService do CDCF nao sera processada
-	oWsdl:lProcResp := .F.
-
-	// Verifica se foram enviados clientes e define o metodo a ser executado
-	If cParams == ProcName() .Or. Empty( cParams )
-
-		cMetodo := 'SolicitaClientesParaIntegrar'
-
-	Else
-
-		cMetodo := 'ConsultaCliente'
-
-	End If
-
-	// Efetua o parse do WSDL do WebService
-	If ! oWsdl:ParseUrl( cWSDLUrl )
-
-		RegLogCDCF( ERRO_COMUNICACAO_CDCF, 'Erro no Parse da URL do WSDL do WebService: ' + cEnter + oWsdl:cError )
-
-		Return oWsdl:cError
-
-	End If
-
-	// Atribui a variavel array com as operacoes do WebService
-	aOps := aClone( oWsdl:ListOperations() )
-
-	If Len( aOps ) == 0
-
-		RegLogCDCF( ERRO_COMUNICACAO_CDCF, 'Não foi disponibilizada nenhuma operação pelo WebService através do documento WSDL: ' + cEnter + oWsdl:cError )
-
-		Return oWsdl:cError
-
-	End If
-
-	// Seta a operacao a ser executada
-	If ! oWsdl:SetOperation( aOps[ aScan( aOps, { | X | X[ 1 ] == cMetodo} ), 1 ] )
-
-		RegLogCDCF( ERRO_COMUNICACAO_CDCF, 'Não foi possível definir o método ' + cMetodo + ' como a operação a ser realizada: ' + cEnter + oWsdl:cError )
-
-		Return oWsdl:cError
-
-	End If
-
-	// Atribui a variavel os tipos complexos da operacao
-	aComplex := oWsdl:NextComplex()
-
-	If Len( aComplex ) == 0
-
-		RegLogCDCF( ERRO_COMUNICACAO_CDCF, 'Nenhum Elemeto do Tipo Complexo foi Localizado: ' + cEnter + oWsdl:cError )
-
-		Return oWsdl:cError
-
-	End If
-
-	// Atribui a variavel os tipos simples da operacao
-	aSimple  := oWsdl:SimpleInput()
-
-	If Len( aSimple ) == 0
-
-		RegLogCDCF( ERRO_COMUNICACAO_CDCF, 'Nenhum Elemeto do Tipo Simples foi Localizado: ' + cEnter + oWsdl:cError )
-
-		Return oWsdl:cError
-
-	End If
-
-	// Define o numero de ocorrencias do tipo complexo
-	If ! oWsdl:SetComplexOccurs( aComplex[ 1 ], 1 )
-
-		RegLogCDCF( ERRO_COMUNICACAO_CDCF, 'Não foi possível definir o número de vezes do Tipo Complexo: ' + cEnter + oWsdl:cError )
-
-		Return oWsdl:cError
-
-	End IF
-
-	// Seta o valor do tipo simples correspondente ao ID do Sistema Protheus no CDCF
-	If ! oWsdl:SetValue( aSimple[1][1], cIDSist )
-
-		RegLogCDCF( ERRO_COMUNICACAO_CDCF, 'Não foi possível definir o valor da variável ' + aSimple[1][2] + ': ' + cEnter + oWsdl:cError )
-
-		Return oWsdl:cError
-
-	End If
-
-	// Seta o valor do tipo simples correspondente ao ID da Consulta no CDCF
-	If  ! oWsdl:SetValue( aSimple[2][1], cIdCons  )
-
-		RegLogCDCF( ERRO_COMUNICACAO_CDCF, 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + cEnter + oWsdl:cError )
-
-		Return oWsdl:cError
-
-	End If
-
-	// Se operacao for ConsultaCliente Seta o codigo dos clientes a serem consultados
-	If cMetodo == 'ConsultaCliente'
-
-		If  ! oWsdl:SetValues( aSimple[3][1], StrTokArr2( cParams, ',', .T. )  )
-
-			RegLogCDCF( ERRO_COMUNICACAO_CDCF, 'Não foi possível definir os valores da variável ' + aSimple[3][2] + ': ' + cEnter + oWsdl:cError )
-
-			Return oWsdl:cError
-
-		End If
-
-	End If
-
-	// Efetua comunicacao com WebService do CDCF
-	If ! oWsdl:SendSoapMsg()
-
-		RegLogCDCF( ERRO_COMUNICACAO_CDCF, 'Não foi possível o envio do documento SOAP gerado ao endereço definido: ' + cEnter + oWsdl:cError )
-
-		Return oWsdl:cError
-
-	End If
-
-	// Atribui a Variável o retorno do WebService
-	cResponse := oWsdl:GetSoapResponse()
 
 	// Parse do XML retornado
 	If ! oXml:Parse( cResponse )
