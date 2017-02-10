@@ -35,7 +35,7 @@ User Function IFINM001( cAnexo, cTo )
 
 	If oServer:SetSMTPTimeout( 10 ) != 0
 
-		ConOut( 'Não foi possível definir tempo de espera.' )
+		Alert( 'Não foi possível definir tempo de espera.' )
 
 		Return
 
@@ -43,7 +43,7 @@ User Function IFINM001( cAnexo, cTo )
 
 	If oServer:smtpConnect() != 0
 
-		ConOut( 'Não foi possível conectar ao servidor SMTP.' )
+		Alert( 'Não foi possível conectar ao servidor SMTP.' )
 
 		oServer:smtpDisconnect()
 
@@ -53,7 +53,7 @@ User Function IFINM001( cAnexo, cTo )
 
 	If oServer:smtpAuth( cRELACNT, cRELPSW ) # 0
 
-		ConOut( 'Não foi possível autenticar o servidor SMTP.' )
+		Alert( 'Não foi possível autenticar o servidor SMTP.' )
 
 		oServer:smtpDisconnect()
 
@@ -70,7 +70,7 @@ User Function IFINM001( cAnexo, cTo )
 
 	If oMessage:AttachFile( cAnexo ) == -1
 
-		ConOut( 'Não foi possível autenticar o servidor SMTP.' )
+		Alert( 'Não foi possível autenticar o servidor SMTP.' )
 
 		oServer:smtpDisconnect()
 
@@ -80,7 +80,7 @@ User Function IFINM001( cAnexo, cTo )
 
 	If oMessage:send(oServer) # 0
 
-		ConOut( 'Não foi possível autenticar o servidor SMTP.' )
+		Alert( 'Não foi possível autenticar a mensagem de e-mail para o servidor SMTP.'  )
 
 		oServer:smtpDisconnect()
 
