@@ -39,47 +39,21 @@ User Function IOMATA0X( cXml, cError, cWarning, cParams, oFwEai )
 	Private dDataRec       := oFwEai:dTrialDate
 	Private cHoraRec       := oFwEai:cTrialTime
 	Private cXmlRec        := ''
-	Private oXml           := TXmlManager():New()
+
 	Private	lMsErroAuto    := .F.
 	Private	lMsHelpAuto    := .T.
 	Private	lAutoErrNoFile := .T.
 
 
-	// Parse do XML retornado
-	If ! oXml:Parse( cResponse )
 
-		RegLogCDCF( ERRO_PROCESSAMENTO_XML, 'Erro no Parse do XML de retorno do CDCF: ' + cEnter + oXml:LastError() )
 
-		Return oXml:LastError()
 
-	End If
-
-	// Desce o nivel do XML ate encontrar as Tags desejadas para processamento
-	Do While ! oXml:cName $ 'Cliente/RegistroConsulta/IntegracaoClientes/ErroConsulta'
-
-		oXml:DOMChildNode()
-
-	End Do
-
-	If oXml:cName = 'ErroConsulta'
-
-		RegLogCDCF( ERRO_PROCESSAMENTO_XML, 'Erro no Retorno no CDCF: ' + cEnter + GetVal( 'MensagemExcecao' ) )
-
-		Return GetVal( 'MensagemExcecao' )
-
-	End If
 
 	Do While AllWaysTrue()
 
 		If oXml:cName == 'Cliente'
 
-			cEsfera := oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdTipoEsfera' } ) ] [2]
-			aAdd( aID, oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'IdCliente' } ) ] [2] )
 
-			aAdd( aCliente, { 'A1_COD'   , oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = 'CodigoERP' } ) ] [2], Nil } )
-			aAdd( aCliente, { 'A1_LOJA'  , '00', Nil } )
-			aAdd( aCliente, { 'A1_PESSOA', If( cEsfera $ '1235', 'J', 'F' ), Nil } )
-			aAdd( aCliente, { 'A1_TIPO', 'R', Nil } )
 
 			If cEsfera $ '1235'
 
@@ -229,9 +203,7 @@ User Function IOMATA0X( cXml, cError, cWarning, cParams, oFwEai )
 
 			oXml:DOMParentNode()
 
-			aAdd( aClientes, aClone( aCliente ) )
 
-			aSize( aCliente, 0 )
 
 		ElseIf oXml:cName == 'IntegracaoClientes'
 

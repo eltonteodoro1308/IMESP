@@ -61,8 +61,8 @@
 	<GlobalDocumentFunctionCode>IOMATA01</GlobalDocumentFunctionCode>
 	<GlobalDocumentFunctionDescription>CDCF</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2017-01-26T00:00:00Z</DocDateTime>
-	<DocIdentifier>F7E9A6A3-668D-42FF-ACBE-9B7B634C6CFE</DocIdentifier>
+	<DocDateTime>2017-02-09T00:00:00Z</DocDateTime>
+	<DocIdentifier>22331A5D-476D-4397-AB63-0505934FB98D</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -74,11 +74,6 @@
 			<Identifier>IOMATA01</Identifier>
 			<FunctionCode>U_IOMATA01.279191.253425.253383</FunctionCode>
 			<Content>
-				<IOMATA01>
-					<CLIENTE>
-						<VALUE>999999</VALUE>
-					</CLIENTE>
-				</IOMATA01>
 			</Content>
 		</Layouts>
 	</Message>

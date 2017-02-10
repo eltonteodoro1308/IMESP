@@ -1152,7 +1152,7 @@
       <cli:ConsultaCliente>\r
          <!--Optional:-->\r
          <cli:parametros>\r
-            <cli:IdSistema>11</cli:IdSistema>\r
+            <cli:IdSistema>4</cli:IdSistema>\r
             <cli:IdConsulta>0</cli:IdConsulta>\r
             <!--Zero or more repetitions:-->\r
            

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<soap:Body>
+		<ConsultaClienteResponse xmlns="http://servicos.imprensaoficial.com.br/Clientes/">
+			<ConsultaClienteResult>
+				<ErroConsulta>
+					<MensagemExcecao>Ocorreu um erro ao listar os dados genÃ©rico dos Clientes. Linha do Erro: 117 - Detalhes do Erro: O Sistema 4, deve informar o ID da Consulta para utilizar este mÃ©todo.</MensagemExcecao>
+				</ErroConsulta>
+			</ConsultaClienteResult>
+		</ConsultaClienteResponse>
+	</soap:Body>
+</soap:Envelope>

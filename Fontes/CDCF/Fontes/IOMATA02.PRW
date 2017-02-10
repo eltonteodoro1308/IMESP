@@ -1,6 +1,5 @@
 #INCLUDE 'TOTVS.CH'
 #INCLUDE 'FWMVCDEF.CH'
-#DEFINE cEnter Chr( 13 ) + Chr( 10 )
 
 /*/{Protheus.doc} IOMATA02
 Rotina de Controle de Log de Recebimento e Processamento de Rquisições do CDCF
@@ -82,7 +81,8 @@ Static Function ViewDef()
 Return oView
 
 /*/{Protheus.doc} IOMT2LOG
-Registra o Log da Requisição de integração com o CDCF
+Registra o Log da Requisição de integração com o CDCF e envia e-mail com erro no processamento
+para as contas definidas na tabela genéria ZX caso o ZX1_STATUS seja definido como 1, 2 ou 3
 @author Elton Teodoro Alves
 @since 08/02/2017
 @version 12.1.014
@@ -145,6 +145,13 @@ User Function IOMT2LOG( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, cConfir, cXml
 
 		oModel:CommitData()
 
+		// Caso tenho ocorre erro no processamento envia email
+		If cStatus $ '123'
+
+			IOMT2MAIL( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, dDataPr, cHoraPr, cObserv )
+
+		End If
+
 	Else
 
 		VarInfo( 'oModel:GetErrorMessage()', oModel:GetErrorMessage(),, .F., .T. )
@@ -156,6 +163,176 @@ User Function IOMT2LOG( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, cConfir, cXml
 	RestArea( aArea )
 
 Return lRet
+
+/*/{Protheus.doc} IOMT2MAIL
+Funcao que envia e-mail com Log de erro durante processamento do
+documento de requisição de integração com o CDCF para as contas
+definidas na tabela genérica ZX
+@author Elton Teodoro Alves
+@since 10/02/2017
+@version 12.1.014
+@param cUUID, characters, UUID Documento Recebido
+@param dDataRe, date, Data do Recebimento do Documento
+@param cHoraRe, characters, Hora do Recebimento do Documento
+@param cMetodo, characters, Metodo CDCF Invocado no WebSercice
+@param cStatus, characters, Status Do Processamento, Lista de Opções:
+1=Erro Comunicação CDCF
+2=Erro Processamento XML
+3=Falha durante Importação
+@param dDataPr, date, Data do Processamento do XML retornado pelo método do CDCF
+@param cHoraPr, characters, Hora do Processamento do XML retornado pelo método do CDCF
+@param cObserv, characters, Observações do Processamento. Registro de erros e alertas durante todo o processo de integração
+/*/
+Static Function IOMT2MAIL( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, dDataPr, cHoraPr, cObserv )
+
+	Local oServer  := TMailManager():New()
+	Local oMessage := TMailMessage():new()
+	Local aStatus  := { '1=Erro Comunicação CDCF', '2=Erro Processamento XML', '3=Falha durante Importação' }
+	Local cTo      := ''
+	Local aArea    := GetArea()
+	Local aAreaSX5 := SX5->( GetArea() )
+
+	Local cMSGMAIL := ''
+
+	Local cRELSERV := GetMv( 'MV_RELSERV' ) // Nome do Servidor de Envio de E-mail utilizado nos relatorios
+	Local nPORSMTP := GetMv( 'MV_PORSMTP' ) // Porta Servidor SMTP
+	Local cRELAUTH := GetMv( 'MV_RELAUTH' ) // Servidor de EMAIL necessita de Autenticacão? Determina se o Servidor necessita de Autenticacão.
+
+	Local cRELAUSR := GetMv( 'MV_RELAUSR' ) // Usuario para Autenticacao no Servidor de Email
+	Local cRELAPSW := GetMv( 'MV_RELAPSW' ) // Senha para autenticacäo no servidor de e-mail
+
+	Local lRELTLS  := GetMv( 'MV_RELTLS'  ) // Informe se o servidor de SMTP possui conexão do tipo segura ( SSL/TLS ).
+	Local lRELSSL  := GetMv( 'MV_RELSSL'  ) // Define se o envio e recebimento de e-mails na rotina SPED utilizará conexão segura (SSL).
+
+	Local cRELACNT := GetMv( 'MV_RELACNT' ) // Conta a ser utilizada no envio de E-Mail para os relatorios
+	Local cRELPSW  := GetMv( 'MV_RELPSW'  ) // Senha da Conta de E-Mail para envio de relatorios
+
+	// Montagem da mensagem de e-mail em HTML
+	cMSGMAIL += '<!DOCTYPE html>'
+	cMSGMAIL += '<html>'
+	cMSGMAIL += '<head>'
+	cMSGMAIL += '<style>'
+	cMSGMAIL += 'table, th, td'
+	cMSGMAIL += '{ border: 1px solid black;'
+	cMSGMAIL += 'border-collapse: collapse;'
+	cMSGMAIL += 'font-family:verdana;}'
+	cMSGMAIL += 'th, td'
+	cMSGMAIL += '{ padding: 5px;'
+	cMSGMAIL += 'text-align: left;}'
+	cMSGMAIL += 'th.title{'
+	cMSGMAIL += 'color: white;'
+	cMSGMAIL += 'background-color: black;,
+	cMSGMAIL += 'text-align: center;}'
+	cMSGMAIL += '</style>'
+	cMSGMAIL += '</head>'
+	cMSGMAIL += '<body>'
+	cMSGMAIL += '<table>'
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<th class="title" colspan="2">Dados do Documento de Requisição'
+	cMSGMAIL += '</th>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '<tr>
+	cMSGMAIL += '<td>UUID Documento Recebido</td>
+	cMSGMAIL += '<td>' + cUUID + '</td>
+	cMSGMAIL += '</tr>
+	cMSGMAIL += '<tr>
+	cMSGMAIL += '<td>Data do Recebimento</td>
+	cMSGMAIL += '<td>' + dtoc( dDataRe ) + '</td>
+	cMSGMAIL += '</tr>
+	cMSGMAIL += '<tr>
+	cMSGMAIL += '<td>Hora do Recebimento</td>
+	cMSGMAIL += '<td>' + cHoraRe + '</td>
+	cMSGMAIL += '</tr>
+	cMSGMAIL += '<tr>
+	cMSGMAIL += '<td>Metodo CDCF</td>
+	cMSGMAIL += '<td>' + cMetodo + '</td>
+	cMSGMAIL += '</tr>
+	cMSGMAIL += '<tr>
+	cMSGMAIL += '<td>Status</td>
+	cMSGMAIL += '<td>' + aStatus[ Val( cStatus ) ] + '</td>
+	cMSGMAIL += '</tr>
+	cMSGMAIL += '<tr>
+	cMSGMAIL += '<td>Data do Processamento</td>
+	cMSGMAIL += '<td>' + dtoc( dDataPr ) + '</td>
+	cMSGMAIL += '</tr>
+	cMSGMAIL += '<tr>
+	cMSGMAIL += '<td>Hora do Processamento</td>
+	cMSGMAIL += '<td>' + cHoraPr + '</td>
+	cMSGMAIL += '</tr>
+	cMSGMAIL += '<tr>
+	cMSGMAIL += '<td>Observações</td>
+	cMSGMAIL += '<td>' + cObserv + '</td>
+	cMSGMAIL += '</tr>
+	cMSGMAIL += '</table>
+	cMSGMAIL += '</body>
+	cMSGMAIL += '</html>
+
+	DbSelectArea( 'SX5' )
+	DbSetOrder( 1 )
+	DbSeek( xFilial( 'SX5' ) + 'ZX')
+
+	Do While ! SX5->( Eof() ) .And. SX5->X5_TABELA == 'ZX'
+
+		cTo += AllTrim( Lower(SX5->X5_DESCRI) ) + ';'
+
+		SX5->( DbSkip() )
+
+	End Do
+
+	RestArea( aAreaSX5 )
+	RestArea( aArea    )
+
+	oServer:setUseSSL( lRELSSL )
+	oServer:setUseTLS( lRELTLS )
+
+	oServer:init( '', cRELSERV, cRELAUSR, cRELAPSW,, nPORSMTP )
+
+	If oServer:SetSMTPTimeout( 10 ) != 0
+
+		ConOut( 'Não foi possível definir tempo de espera.' )
+
+		Return
+
+	End If
+
+	If oServer:smtpConnect() != 0
+
+		ConOut( 'Não foi possível conectar ao servidor SMTP.' )
+
+		oServer:smtpDisconnect()
+
+		Return
+
+	End If
+
+	If oServer:smtpAuth( cRELACNT, cRELPSW ) # 0
+
+		ConOut( 'Não foi possível autenticar o servidor SMTP.' )
+
+		oServer:smtpDisconnect()
+
+		Return
+
+	End If
+
+	oMessage:clear()
+
+	oMessage:cFrom		:=	cRELACNT
+	oMessage:cTo		:=	cTo
+	oMessage:cSubject	:=	'Erro na Integração CDCF x PROTHEUS'
+	oMessage:cBody		:=	cMSGMAIL
+
+	If oMessage:send( oServer ) # 0
+
+		ConOut( 'Não foi possível autenticar a mensagem de e-mail para o servidor SMTP.' )
+
+		oServer:smtpDisconnect()
+
+		Return
+
+	End If
+
+Return
 
 /*/{Protheus.doc} IOMT02EX
 Funcao informada no aRotina do Browse, que executa uma ação conforme o Codigo recebido por parametro
