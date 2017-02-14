@@ -1,0 +1,7 @@
+#INCLUDE 'TOTVS.CH'
+#INCLUDE 'FWMVCDEF.CH'
+
+User Function IOMATA03()
+
+Return
+

@@ -282,10 +282,14 @@ das rotinas de cadastro de clientes e contatos
 /*/
 Static Function GerArrExec( cUUID, cXmlPrc )
 
-	Local aRet     := {}
-	Local aCliente := {}
+	Local aRet      := {}
+	Local aCliente  := {}
+	Local aContatos := {}
+	Local aClientes := {}
+	Local aDtHrAlt  := {}
 	Local cEsfera   := ''
-	Local oXml := TXmlManager():New()
+	Local nX        := 0
+	Local oXml      := TXmlManager():New()
 
 	// Parse do XML retornado
 	If ! oXml:Parse( cXmlPrc )
@@ -331,16 +335,21 @@ Static Function GerArrExec( cUUID, cXmlPrc )
 			aAdd( aCliente, { 'A1_PESSOA' , If( cEsfera $ '1235', 'J', 'F' ), Nil } )
 			aAdd( aCliente, { 'A1_TIPO'   , 'R'                             , Nil } )
 
-			InfEsfera ( oXml, cEsfera, @aCliente )
-			InfEnderec( oXml, @aCliente )
+			InfoEsfera  ( oXml, cEsfera, @aCliente )
+			InfoEndereco( oXml, @aCliente )
+			InfoEmailNFe( oXml, @aCliente )
+			InfoContatos( oXml, @aContatos )
+
+			aAdd( aClientes, { aClone( aCliente ), aClone( aContatos ) } )
+
+			aSize( aCliente , 0 )
+			aSize( aContatos, 0 )
 
 		ElseIf oXml:cName == 'IntegracaoClientes'
 
+			aAdd( aDtHrAlt, { GetValTag( oXml, 'IdCliente'), GetValTag( oXml, 'DataHoraAlteracao' ) } )
+
 		End If
-
-		aAdd( aRet, aClone( aCliente ) )
-
-		aSize( aCliente, 0 )
 
 		If ! oXml:DOMNextNode()
 
@@ -349,6 +358,12 @@ Static Function GerArrExec( cUUID, cXmlPrc )
 		End If
 
 	End Do
+
+	For nX := 1 To Len( aClientes )
+
+		ConOut('')
+
+	Next nX
 
 Return aRet
 
@@ -366,8 +381,8 @@ Static Function GetValTag( oXml, cTag )
 
 Return cRet
 
-/*/{Protheus.doc} InfEsfera
-Restagata do XML as informação correspondentes a esfera do cliente
+/*/{Protheus.doc} InfoEsfera
+Resgata do XML as informação correspondentes a esfera do cliente
 @author Elton Teodoro Alves
 @since 10/02/2017
 @version 12.1.014
@@ -380,7 +395,7 @@ Restagata do XML as informação correspondentes a esfera do cliente
 5 - Pessoa Juridica
 @param aCliente, Array, Array com dados do cliente para o ExecAuto
 /*/
-Static Function InfEsfera( oXml, cEsfera, aCliente )
+Static Function InfoEsfera( oXml, cEsfera, aCliente )
 
 	oXml:DOMChildNode()
 
@@ -431,21 +446,21 @@ Static Function InfEsfera( oXml, cEsfera, aCliente )
 
 	End Do
 
-	oXml:DOMChildNode()
-
 Return
 
-/*/{Protheus.doc} InfEsfera
-Restagata do XML as informação correspondentes a esfera do cliente
+/*/{Protheus.doc} InfoEndereco
+Resgata do XML as informação correspondentes aos enderecos do cliente
 @author Elton Teodoro Alves
 @since 10/02/2017
 @version 12.1.014
 @param oXml, object, Obejeto do Parser do XML retornado pelo XML
 @param aCliente, Array, Array com dados do cliente para o ExecAuto
 /*/
-Static Function InfEnderec( oXml, aCliente )
+Static Function InfoEndereco( oXml, aCliente )
 
 	Local cEndereco := ""
+
+	oXml:DOMChildNode()
 
 	Do While AllWaysTrue()
 
@@ -492,6 +507,189 @@ Static Function InfEnderec( oXml, aCliente )
 
 	End Do
 
+Return
+
+/*/{Protheus.doc} InfoEndereco
+Resgata do XML as informação correspondentes aos E-Mail´s do cliente para envio da NF-e
+@author Elton Teodoro Alves
+@since 10/02/2017
+@version 12.1.014
+@param oXml, object, Obejeto do Parser do XML retornado pelo XML
+@param aCliente, Array, Array com dados do cliente para o ExecAuto
+/*/
+Static Function InfoEmailNFe( oXml, aCliente )
+
 	oXml:DOMChildNode()
+
+	Do While AllWaysTrue()
+
+		If oXml:cName == 'ClienteContato' .And. GetValTag( oXml, 'NotaFiscalEletronica' ) == 'true'
+
+			oXml:DOMChildNode()
+
+			Do While AllWaysTrue()
+
+				If oXml:cName == 'MeioComunicacao' .And. GetValTag( oXml, 'IdTipoContato' ) == '6'
+
+					If aScan( aCliente, { |X| X[1] == 'A1_EMAIL' } ) == 0
+
+						aAdd( aCliente, { 'A1_EMAIL', GetValTag( oXml, 'Email' ), Nil } )
+
+					Else
+
+						aCliente[aScan( aCliente, { |X| X[1] == 'A1_EMAIL' } )][2] += ';' + GetValTag( oXml, 'Email' )
+
+					End If
+
+				End If
+
+				If ! oXml:DOMNextNode()
+
+					Exit
+
+				End If
+
+			End Do
+
+			oXml:DOMParentNode()
+
+		End If
+
+		If ! oXml:DOMNextNode()
+
+			Exit
+
+		End If
+
+	End Do
+
+	oXml:DOMParentNode()
+
+Return
+
+/*/{Protheus.doc} InfoEndereco
+Resgata do XML as informação correspondentes aos Conatatos do cliente
+@author Elton Teodoro Alves
+@since 10/02/2017
+@version 12.1.014
+@param oXml, object, Obejeto do Parser do XML retornado pelo XML
+@param aContatos, Array, Array com dados dos contatos do cliente para o ExecAuto
+/*/
+Static Function InfoContatos( oXml, aContatos )
+
+	Local aContato   := {}
+	Local aMeioComun := {}
+	Local aEmails    := {}
+	Local cPerfis    := ''
+
+	oXml:DOMChildNode()
+
+	Do While AllWaysTrue()
+
+		If oXml:cName == 'ClienteContato'
+
+			cPerfis := InfoPerfCont( oXml )
+
+			aAdd( aContato, { 'U5_CODCONT', GetValTag( oXml, 'IdPessoaFisica' ), Nil } )
+			aAdd( aContato, { 'U5_CONTAT' , GetValTag( oXml, 'NomeContato'    ), Nil } )
+			aAdd( aContato, { 'U5_CPF'    , GetValTag( oXml, 'CPF'            ), Nil } )
+			aAdd( aContato, { 'U5_XCOTCOM', If( '1' $ cPerfis, '1', '2'       ), Nil } )
+			aAdd( aContato, { 'U5_XFATPUB', If( '2' $ cPerfis, '1', '2'       ), Nil } )
+			aAdd( aContato, { 'U5_XFINANC', If( '3' $ cPerfis, '1', '2'       ), Nil } )
+			aAdd( aContato, { 'U5_XNF_E'  , If( '4' $ cPerfis, '1', '2'       ), Nil } )
+			aAdd( aContato, { 'U5_XSRVGRF', If( '5' $ cPerfis, '1', '2'       ), Nil } )
+			aAdd( aContato, { 'U5_XPUBLIC', If( '6' $ cPerfis, '1', '2'       ), Nil } )
+			aAdd( aContato, { 'U5_XBOLELE', If( '7' $ cPerfis, '1', '2'       ), Nil } )
+
+			InfoMeioComun( oXml, @aMeioComun )
+
+			aAdd( aContatos, { aClone( aContato ), aClone( aMeioComun ) } )
+
+			cPerfis := ''
+			aSize( aContato, 0 )
+			aSize( aMeioComun, 0 )
+
+		End If
+
+		If ! oXml:DOMNextNode()
+
+			Exit
+
+		End If
+
+	End Do
+
+	oXml:DOMParentNode()
+
+Return
+
+/*/{Protheus.doc} InfoPerfCont
+Resgata co XML as informações correspondentes ao perfil do contato
+@author Elton Teodoro Alves
+@since 10/02/2017
+@version 12.1.014
+@param oXml, object, Obejeto do Parser do XML retornado pelo XML
+@return characteres, String concatenada com os perfis do contato
+/*/
+Static Function InfoPerfCont( oXml )
+
+	Local cRet := ''
+
+	oXml:DOMChildNode()
+
+	Do While AllWaysTrue()
+
+		If oXml:cName == 'PerfilClienteContato'
+
+			cRet += GetValTag( oXml, 'IdTipoClienteContato' )
+
+		End If
+
+		If ! oXml:DOMNextNode()
+
+			Exit
+
+		End If
+
+	End Do
+
+	oXml:DOMParentNode()
+
+Return cRet
+/*/{Protheus.doc} InfoMeioComun
+Resgata do XML as informação correspondentes aos meios de comunicação do Contato do cliente
+@author Elton Teodoro Alves
+@since 10/02/2017
+@version 12.1.014
+@param oXml, object, Obejeto do Parser do XML retornado pelo XML
+@param aMeioComun, Array, Array com dados dos meios de comunicação do contato do cliente
+/*/
+Static Function InfoMeioComun( oXml, aMeioComun )
+
+	oXml:DOMChildNode()
+
+	Do While AllWaysTrue()
+
+		If oXml:cName == 'MeioComunicacao'
+
+			aAdd( aMeioComun,{;
+			GetValTag( oXml, 'IdTipoContato' ),;
+			GetValTag( oXml, 'Email' ),;
+			GetValTag( oXml, 'DDI' ),;
+			GetValTag( oXml, 'DDD' ),;
+			GetValTag( oXml, 'Telefone' ),;
+			GetValTag( oXml, 'Ramal' ) } )
+
+		End If
+
+		If ! oXml:DOMNextNode()
+
+			Exit
+
+		End If
+
+	End Do
+
+	oXml:DOMParentNode()
 
 Return

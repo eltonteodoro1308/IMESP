@@ -203,7 +203,9 @@ User Function IOMATA0X( cXml, cError, cWarning, cParams, oFwEai )
 
 			oXml:DOMParentNode()
 
+			aAdd( aClientes, aClone( aCliente ) )
 
+			aSize( aCliente, 0 )
 
 		ElseIf oXml:cName == 'IntegracaoClientes'
 
