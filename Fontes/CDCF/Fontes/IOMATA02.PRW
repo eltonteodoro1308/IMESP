@@ -11,6 +11,9 @@ User Function IOMATA02()
 
 	Local oBrowse := FwMBrowse():New()
 
+	oBrowse:DisableReport()
+	oBrowse:DisableDetails()
+
 	oBrowse:SetAlias( 'ZX1' )
 	oBrowse:SetDescription( 'LOG de Integração com CDCF' )
 
@@ -38,7 +41,7 @@ Static Function MenuDef()
 	aAdd( aRotina, { 'Visualizar'              , 'VIEWDEF.IOMATA02', 0, 2, 0, Nil } )
 	aAdd( aRotina, { 'XML Requisição'          , 'U_IOMT02EX("1")'  , 0, 6, 0, Nil } )
 	aAdd( aRotina, { 'XML CDCF'                , 'U_IOMT02EX("2")'  , 0, 6, 0, Nil } )
-	aAdd( aRotina, { 'Array ExecAuto'          , 'U_IOMT02EX("3")'  , 0, 6, 0, Nil } )
+	//aAdd( aRotina, { 'Array ExecAuto'          , 'U_IOMT02EX("3")'  , 0, 6, 0, Nil } )
 	aAdd( aRotina, { 'Enviar p/ Fila Novamente', 'U_IOMT02EX("4")'  , 0, 6, 0, Nil } )
 
 Return aRotina
@@ -106,7 +109,7 @@ para as contas definidas na tabela genéria ZX caso o ZX1_STATUS seja definido co
 @param cObserv, characters, Observações do Processamento. Registro de erros e alertas durante todo o processo de integração
 @return logical, Indica se a gravação do registro ocorreu sem erros.
 /*/
-User Function IOMT2LOG( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, cConfir, cXmlRec, cParams, dDataPr, cHoraPr, cXmlPrc, cArrExec, cObserv )
+User Function IOMT2LOG( cUUID, cEmpPrc, cFilPrc, dDataRe, cHoraRe, cMetodo, cStatus, cXmlRec, cParams, dDataPr, cHoraPr, cXmlPrc, cArrExec, cObserv )
 
 	Local lRet   := .T.
 	Local oModel := FwLoadModel( 'IOMATA02' )
@@ -128,18 +131,19 @@ User Function IOMT2LOG( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, cConfir, cXml
 	oModel:Activate()
 
 	oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_UUID'  , cUUID   )
-	If ( ValType( dDataRe ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_DATARE', dDataRe ), Nil )
-	If ( ValType( cHoraRe ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_HORARE', cHoraRe ), Nil )
-	If ( ValType( cMetodo ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_METODO', cMetodo ), Nil )
+	If ( ValType( cEmpPrc  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_EMPPRC', cEmpPrc  ), Nil )
+	If ( ValType( cFilPrc  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_FILPRC', cFilPrc  ), Nil )
+	If ( ValType( dDataRe  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_DATARE', dDataRe  ), Nil )
+	If ( ValType( cHoraRe  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_HORARE', cHoraRe  ), Nil )
+	If ( ValType( cMetodo  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_METODO', cMetodo  ), Nil )
 	oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_STATUS', cStatus )
-	oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_CONFIR', cConfir )
-	If ( ValType( cXmlRec ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_XMLREC', cXmlRec ), Nil )
-	If ( ValType( cParams ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_PARAMS', cParams ), Nil )
-	oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_DATAPR', dDataPr )
-	oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_HORAPR', cHoraPr )
-	oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_XMLPRC', cXmlPrc )
-	oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_ARREXE', cArrExec   )
-	oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_OBSERV', cObserv )
+	If ( ValType( cXmlRec  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_XMLREC', cXmlRec  ), Nil )
+	If ( ValType( cParams  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_PARAMS', cParams  ), Nil )
+	If ( ValType( dDataPr  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_DATAPR', dDataPr  ), Nil )
+	If ( ValType( cHoraPr  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_HORAPR', cHoraPr  ), Nil )
+	If ( ValType( cXmlPrc  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_XMLPRC', cXmlPrc  ), Nil )
+	If ( ValType( cArrExec ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_ARREXE', cArrExec ), Nil )
+	If ( ValType( cObserv  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_OBSERV', cObserv  ), Nil )
 
 	If lRet := oModel:VldData()
 
@@ -148,7 +152,7 @@ User Function IOMT2LOG( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, cConfir, cXml
 		// Caso tenho ocorre erro no processamento envia email
 		If cStatus $ '123'
 
-			IOMT2MAIL( cUUID, ZX1->ZX1_DATARE, ZX1->ZX1_HORARE, ZX1->ZX1_METODO, cStatus, dDataPr, cHoraPr, cObserv )
+			IOMT2MAIL( cUUID, ZX1->ZX1_EMPPRC, ZX1->ZX1_FILPRC,ZX1->ZX1_DATARE, ZX1->ZX1_HORARE, ZX1->ZX1_METODO, cStatus, dDataPr, cHoraPr, cObserv )
 
 		End If
 
@@ -183,7 +187,7 @@ definidas na tabela genérica ZX
 @param cHoraPr, characters, Hora do Processamento do XML retornado pelo método do CDCF
 @param cObserv, characters, Observações do Processamento. Registro de erros e alertas durante todo o processo de integração
 /*/
-Static Function IOMT2MAIL( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, dDataPr, cHoraPr, cObserv )
+Static Function IOMT2MAIL( cUUID, cEmpPrc, cFilPrc, dDataRe, cHoraRe, cMetodo, cStatus, dDataPr, cHoraPr, cObserv )
 
 	Local oServer  := TMailManager():New()
 	Local oMessage := TMailMessage():new()
@@ -191,6 +195,7 @@ Static Function IOMT2MAIL( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, dDataPr, c
 	Local cTo      := ''
 	Local aArea    := GetArea()
 	Local aAreaSX5 := SX5->( GetArea() )
+	Local aAreaSM0 := SM0->( GetArea() )
 
 	Local cMSGMAIL := ''
 
@@ -236,6 +241,14 @@ Static Function IOMT2MAIL( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, dDataPr, c
 	cMSGMAIL += '<td>' + cUUID + '</td>
 	cMSGMAIL += '</tr>
 	cMSGMAIL += '<tr>
+	cMSGMAIL += '<td>Empresa de Processamento</td>
+	cMSGMAIL += '<td>' + cEmpPrc + ' - ' + Posicione( 'SM0', 1, cEmpPrc + cFilPrc, 'M0_NOME' ) + '</td>
+	cMSGMAIL += '</tr>
+	cMSGMAIL += '<tr>
+	cMSGMAIL += '<td>Filial de Processamento</td>
+	cMSGMAIL += '<td>' + cFilPrc + ' - ' + Posicione( 'SM0', 1, cEmpPrc + cFilPrc, 'M0_FILIAL' ) + '</td>
+	cMSGMAIL += '</tr>
+	cMSGMAIL += '<tr>
 	cMSGMAIL += '<td>Data do Recebimento</td>
 	cMSGMAIL += '<td>' + dtoc( dDataRe ) + '</td>
 	cMSGMAIL += '</tr>
@@ -279,6 +292,7 @@ Static Function IOMT2MAIL( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, dDataPr, c
 
 	End Do
 
+	RestArea( aAreaSM0 )
 	RestArea( aAreaSX5 )
 	RestArea( aArea    )
 
@@ -362,13 +376,13 @@ User Function IOMT02EX( cCod )
 
 		MemoWrite( cFile, ZX1->ZX1_XMLPRC )
 
-	ElseIf cCod == '3' .And. ! Empty( ZX1->ZX1_XMLPRC )
-
-		cFile += '.html'
-
-		FWJsonDeserialize( ZX1->ZX1_ARREXE, @aArrExec )
-
-		MemoWrite( cFile, VarInfo( 'ZX1_ARREXE', aArrExec,, .T., .F. ) )
+		//	ElseIf cCod == '3' .And. ! Empty( ZX1->ZX1_ARREXE )
+		//
+		//		cFile += '.html'
+		//
+		//		FWJsonDeserialize( ZX1->ZX1_ARREXE, @aArrExec )
+		//
+		//		MemoWrite( cFile, VarInfo( 'ZX1_ARREXE', aArrExec,, .T., .F. ) )
 
 	ElseIf cCod == '4'
 
@@ -376,7 +390,10 @@ User Function IOMT02EX( cCod )
 
 			RecLock( 'ZX1', .F.)
 
-			ZX1->ZX1_STATUS = '0'
+			ZX1->ZX1_STATUS := '0'
+			ZX1->ZX1_DATAPR := CtoD('')
+			ZX1->ZX1_HORAPR := ''
+			ZX1->ZX1_OBSERV := ''
 
 			MsUnLock()
 

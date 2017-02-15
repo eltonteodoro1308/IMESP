@@ -43,8 +43,8 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 
 	End If
 
-	If U_IOMT2LOG( oFwEai:cUUID, oFwEai:dTrialDate, oFwEai:cTrialTime, cMetodo, AGUARDANDO_IMPORTACAO,;
-	CONF_NAO, oFwEai:CXML, cParJson, CtoD(''), '', '', '', '' )
+	If U_IOMT2LOG( oFwEai:cUUID, oFwEai:cDocCompany, oFwEai:cDocBranch, oFwEai:dTrialDate, oFwEai:cTrialTime, cMetodo, AGUARDANDO_IMPORTACAO,;
+	oFwEai:CXML, cParJson )
 
 		cRet := 'Documento Recebido: ' + oFwEai:cUUID
 
@@ -60,15 +60,17 @@ User Função que busca na Tabela ZX1 registros com ZX1_STATUS = 0 - Aguardando Im
 /*/
 User Function IOMT1INT()
 
-	Local cAlias := GetNextAlias()
-	Local aUUID  := {}
-	Local aArea  := GetArea()
-	Local nX     := 0
+	Local cAlias  := GetNextAlias()
+	Local aReq    := {}
+	Local aArea   := GetArea()
+	Local nX      := 0
+	Local cEmpPrc := ''
+	Local cFilPrc := ''
 
 	// Busca na Tabela ZX1 os registros com ZX1_STATUS = 0 - Aguardando Importação e Grava em Array os código ZX1_UUID
 	BeginSQL Alias cAlias
 
-	SELECT ZX1.ZX1_UUID	FROM %Table:ZX1% ZX1
+	SELECT ZX1.ZX1_UUID, ZX1.ZX1_EMPPRC, ZX1.ZX1_FILPRC FROM %Table:ZX1% ZX1
 	WHERE ZX1.ZX1_STATUS = '0' AND ZX1.%NotDel%
 
 	EndSQL
@@ -77,7 +79,7 @@ User Function IOMT1INT()
 
 	Do While ! ( cAlias )->( Eof() )
 
-		aAdd( aUUID, ( cAlias )->ZX1_UUID )
+		aAdd( aReq, { ( cAlias )->ZX1_UUID, ( cAlias )->ZX1_EMPPRC, ( cAlias )->ZX1_FILPRC } )
 
 		( cAlias )->( DbSkip() )
 
@@ -86,9 +88,9 @@ User Function IOMT1INT()
 	( cAlias )->( DbCloseArea() )
 
 	// Percorre array com códigos de requisições de integração com Status 0 - Aguardando Importação
-	For nX := 1 To Len( aUUID )
+	For nX := 1 To Len( aReq )
 
-		ExecInteg( aUUID[ nX ] )
+		ExecInteg( aReq[ nX, 1 ], aReq[ nX, 2 ], aReq[ nX, 3 ] )
 
 	Next nX
 
@@ -103,7 +105,7 @@ Função que acessa uma requisição pelo seu UUID e executa a integração com o CDCF
 @version 12.1.014
 @param cUUID, characters, UUID da requisição
 /*/
-Static Function ExecInteg( cUUID )
+Static Function ExecInteg( cUUID, cEmpPrc, cFilPrc )
 
 	Local aArea    := GetArea()
 	Local aParams  := {}
@@ -156,10 +158,10 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	oWsdl:lProcResp := .F.
 
 	// Efetua o parse do WSDL do WebService
-	If ! oWsdl:ParseUrl( cWSDLUrl )
+	If ! oWsdl:ParseUrl( 'cWSDLUrl' )
 
-		U_IOMT2LOG( cUUID,,,, ERRO_COMUNICACAO_CDCF, CONF_NAO,,, Date(), Time(),;
-		'', '', 'Erro no Parse da URL do WSDL do WebService: ' + oWsdl:cError )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
+		,, 'Erro no Parse da URL do WSDL do WebService: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -170,8 +172,8 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 
 	If Len( aOps ) == 0
 
-		U_IOMT2LOG( cUUID,,,, ERRO_COMUNICACAO_CDCF, CONF_NAO,,, Date(), Time(),;
-		'', '', 'Não foi disponibilizada nenhuma operação pelo WebService através do documento WSDL: ' + oWsdl:cError )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
+		,, 'Não foi disponibilizada nenhuma operação pelo WebService através do documento WSDL: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -180,8 +182,8 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	// Seta a operacao a ser executada
 	If ! oWsdl:SetOperation( aOps[ aScan( aOps, { | X | X[ 1 ] == cMetodo} ), 1 ] )
 
-		U_IOMT2LOG( cUUID,,,, ERRO_COMUNICACAO_CDCF, CONF_NAO,,, Date(), Time(),;
-		'', '', 'Não foi possível definir o método ' + cMetodo + ' como a operação a ser realizada: ' + oWsdl:cError )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
+		,, 'Não foi possível definir o método ' + cMetodo + ' como a operação a ser realizada: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -192,8 +194,8 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 
 	If Len( aComplex ) == 0
 
-		U_IOMT2LOG( cUUID,,,, ERRO_COMUNICACAO_CDCF, CONF_NAO,,, Date(), Time(),;
-		'', '', 'Nenhum Elemeto do Tipo Complexo foi Localizado: ' + oWsdl:cError )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
+		,, 'Nenhum Elemeto do Tipo Complexo foi Localizado: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -204,8 +206,8 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 
 	If Len( aSimple ) == 0
 
-		U_IOMT2LOG( cUUID,,,, ERRO_COMUNICACAO_CDCF, CONF_NAO,,, Date(), Time(),;
-		'', '', 'Nenhum Elemeto do Tipo Simples foi Localizado: ' + oWsdl:cError )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
+		,, 'Nenhum Elemeto do Tipo Simples foi Localizado: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -214,8 +216,8 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	// Define o numero de ocorrencias do tipo complexo
 	If ! oWsdl:SetComplexOccurs( aComplex[ 1 ], 1 )
 
-		U_IOMT2LOG( cUUID,,,, ERRO_COMUNICACAO_CDCF, CONF_NAO,,, Date(), Time(),;
-		'', '', 'Não foi possível definir o número de vezes do Tipo Complexo: ' + oWsdl:cError )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
+		,, 'Não foi possível definir o número de vezes do Tipo Complexo: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -224,8 +226,8 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	// Seta o valor do tipo simples correspondente ao ID do Sistema Protheus no CDCF
 	If ! oWsdl:SetValue( aSimple[1][1], cIDSist )
 
-		U_IOMT2LOG( cUUID,,,, ERRO_COMUNICACAO_CDCF, CONF_NAO,,, Date(), Time(),;
-		'', '', 'Não foi possível definir o valor da variável ' + aSimple[1][2] + ': ' + oWsdl:cError )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
+		,, 'Não foi possível definir o valor da variável ' + aSimple[1][2] + ': ' + oWsdl:cError )
 
 		Return cXml
 
@@ -234,8 +236,8 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	// Seta o valor do tipo simples correspondente ao ID da Consulta no CDCF
 	If  ! oWsdl:SetValue( aSimple[2][1], cIdCons  )
 
-		U_IOMT2LOG( cUUID,,,, ERRO_COMUNICACAO_CDCF, CONF_NAO,,, Date(), Time(),;
-		'', '', 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
+		,, 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
 
 		Return cXml
 
@@ -246,8 +248,8 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 
 		If  ! oWsdl:SetValues( aSimple[3][1], aParams  )
 
-			U_IOMT2LOG( cUUID,,,, ERRO_COMUNICACAO_CDCF, CONF_NAO,,, Date(), Time(),;
-			'', '', 'Não foi possível definir os valores da variável ' + aSimple[3][2] + ': ' + oWsdl:cError )
+			U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
+			,, 'Não foi possível definir os valores da variável ' + aSimple[3][2] + ': ' + oWsdl:cError )
 
 			Return cXml
 
@@ -258,8 +260,8 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	// Efetua comunicacao com WebService do CDCF
 	If ! oWsdl:SendSoapMsg()
 
-		U_IOMT2LOG( cUUID,,,, ERRO_COMUNICACAO_CDCF, CONF_NAO,,, Date(), Time(),;
-		'', '', 'Não foi possível o envio do documento SOAP gerado ao endereço definido: ' + oWsdl:cError )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
+		,, 'Não foi possível o envio do documento SOAP gerado ao endereço definido: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -282,7 +284,6 @@ das rotinas de cadastro de clientes e contatos
 /*/
 Static Function GerArrExec( cUUID, cXmlPrc )
 
-	Local aRet      := {}
 	Local aCliente  := {}
 	Local aContatos := {}
 	Local aClientes := {}
@@ -294,10 +295,10 @@ Static Function GerArrExec( cUUID, cXmlPrc )
 	// Parse do XML retornado
 	If ! oXml:Parse( cXmlPrc )
 
-		U_IOMT2LOG( cUUID,,,, ERRO_PROCESSAMENTO_XML, CONF_NAO,,, Date(), Time(),;
-		cXmlPrc, '', 'Erro no Parse do XML de retorno do CDCF: ' + oXml:LastError() )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_PROCESSAMENTO_XML,,, Date(), Time(),;
+		cXmlPrc,, 'Erro no Parse do XML de retorno do CDCF: ' + oXml:LastError() )
 
-		Return aRet
+		Return aClientes
 
 	End If
 
@@ -315,10 +316,10 @@ Static Function GerArrExec( cUUID, cXmlPrc )
 	// Erro retornado pela consulta ao CDCF
 	If oXml:cName = 'ErroConsulta'
 
-		U_IOMT2LOG( cUUID,,,, ERRO_PROCESSAMENTO_XML, CONF_NAO,,, Date(), Time(),;
-		cXmlPrc, '', 'Erro Retornado na Consulta ao CDCF: ' + GetValTag( oXml, 'MensagemExcecao' ) )
+		U_IOMT2LOG( cUUID,,,,,, ERRO_PROCESSAMENTO_XML,,, Date(), Time(),;
+		cXmlPrc,, 'Erro Retornado na Consulta ao CDCF: ' + GetValTag( oXml, 'MensagemExcecao' ) )
 
-		Return aRet
+		Return aClientes
 
 	End If
 
@@ -329,11 +330,11 @@ Static Function GerArrExec( cUUID, cXmlPrc )
 
 			cEsfera := GetValTag( oXml, 'IdTipoEsfera' )
 
-			aAdd( aCliente, { 'A1_XCD_CDC', GetValTag( oXml, 'IdCliente' )  , Nil } )
 			aAdd( aCliente, { 'A1_COD'    , GetValTag( oXml, 'CodigoERP' )  , Nil } )
 			aAdd( aCliente, { 'A1_LOJA'   , '01'                            , Nil } )
 			aAdd( aCliente, { 'A1_PESSOA' , If( cEsfera $ '1235', 'J', 'F' ), Nil } )
 			aAdd( aCliente, { 'A1_TIPO'   , 'R'                             , Nil } )
+			aAdd( aCliente, { 'A1_XCD_CDC', GetValTag( oXml, 'IdCliente' )  , Nil } )
 
 			InfoEsfera  ( oXml, cEsfera, @aCliente )
 			InfoEndereco( oXml, @aCliente )
@@ -361,11 +362,19 @@ Static Function GerArrExec( cUUID, cXmlPrc )
 
 	For nX := 1 To Len( aClientes )
 
-		ConOut('')
+		cIdCDCF := aClientes[ nX, 1 , aScan( aClientes[ nX, 1 ], { | X | X[ 1 ] == "A1_XCD_CDC" } ), 2]
+
+		nPos := aScan( aDtHrAlt, {|X| X[1] == cIdCDCF } )
+
+		If nPos > 0
+
+			aAdd( aClientes[ nX, 1 ], { 'A1_XDH_CDC', aDtHrAlt[ nPos, 2 ], 1  } )
+
+		End If
 
 	Next nX
 
-Return aRet
+Return aClientes
 
 /*/{Protheus.doc} GetValTag
 Retorna o valor da Tag descendente solicitada correspondenente a Tag posicionada no XML.
