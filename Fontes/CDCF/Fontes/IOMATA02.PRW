@@ -148,7 +148,7 @@ User Function IOMT2LOG( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, cConfir, cXml
 		// Caso tenho ocorre erro no processamento envia email
 		If cStatus $ '123'
 
-			IOMT2MAIL( cUUID, dDataRe, cHoraRe, cMetodo, cStatus, dDataPr, cHoraPr, cObserv )
+			IOMT2MAIL( cUUID, ZX1->ZX1_DATARE, ZX1->ZX1_HORARE, ZX1->ZX1_METODO, cStatus, dDataPr, cHoraPr, cObserv )
 
 		End If
 
