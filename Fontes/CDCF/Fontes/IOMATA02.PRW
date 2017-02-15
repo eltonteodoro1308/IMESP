@@ -9,21 +9,62 @@ Rotina de Controle de Log de Recebimento e Processamento de Rquisições do CDCF
 /*/
 User Function IOMATA02()
 
-	Local oBrowse := FwMBrowse():New()
+	Local aCoors      := FWGetDialogSize( oMainWnd )
+	Local oFWLayer    := FWLayer():New()
+	Local oDlgPrinc   := Nil
+	Local oBrowseTop  := FwMBrowse():New()
+	Local oBrowseDown := FwMBrowse():New()
+	Local oPanelTop   := Nil
+	Local oPanelDown  := Nil
+	Local oRelacion   := FWBrwRelation():New()
 
-	oBrowse:DisableReport()
-	oBrowse:DisableDetails()
+	Define MsDialog oDlgPrinc Title 'LOG de Integração com CDCF' From aCoors[1], aCoors[2] To aCoors[3], aCoors[4] Pixel
 
-	oBrowse:SetAlias( 'ZX1' )
-	oBrowse:SetDescription( 'LOG de Integração com CDCF' )
 
-	oBrowse:AddLegend( 'ZX1_STATUS = "0"', 'GREEN' ,'Aguardando Importação'    )
-	oBrowse:AddLegend( 'ZX1_STATUS = "1"', 'BLACK' ,'Erro Comunicação CDCF'    )
-	oBrowse:AddLegend( 'ZX1_STATUS = "2"', 'RED'   ,'Erro Processamento XML'   )
-	oBrowse:AddLegend( 'ZX1_STATUS = "3"', 'YELLOW','Falha durante Importacao' )
-	oBrowse:AddLegend( 'ZX1_STATUS = "4"', 'WHITE' ,'Importado'                )
+	oFWLayer:Init( oDlgPrinc, .F. )
 
-	oBrowse:Activate()
+	// Definindo Browser Top
+	oFWLayer:AddLine( 'UP', 50, .F. )
+	oFWLayer:AddCollumn( 'ALL_UP', 100, .T., 'UP' )
+
+	oPanelTop := oFWLayer:GetColPanel( 'ALL_UP', 'UP' )
+
+	oBrowseTop:SetOwner( oPanelTop )
+
+	oBrowseTop:DisableReport()
+	oBrowseTop:DisableDetails()
+	oBrowseTop:ForceQuitButton()
+
+	oBrowseTop:SetAlias( 'ZX1' )
+	oBrowseTop:SetDescription( 'LOG de Integração com CDCF' )
+
+	oBrowseTop:AddLegend( 'ZX1_STATUS = "0"', 'GREEN' ,'Aguardando Importação'    )
+	oBrowseTop:AddLegend( 'ZX1_STATUS = "1"', 'BLACK' ,'Erro Comunicação CDCF'    )
+	oBrowseTop:AddLegend( 'ZX1_STATUS = "2"', 'RED'   ,'Erro Processamento XML'   )
+	oBrowseTop:AddLegend( 'ZX1_STATUS = "3"', 'YELLOW','Falha durante Importacao' )
+	oBrowseTop:AddLegend( 'ZX1_STATUS = "4"', 'WHITE' ,'Importado'                )
+
+	oBrowseTop:Activate()
+
+	// Definindo Browser Down
+	oFWLayer:AddLine( 'DOWN', 50, .F. )
+	oFWLayer:AddCollumn( 'ALL_DOWN' , 100, .T., 'DOWN' )
+	oPanelDown := oFWLayer:GetColPanel( 'ALL_DOWN' , 'DOWN' )
+
+	oBrowseDown:SetOwner( oPanelDown )
+
+	oBrowseDown:DisableReport()
+	oBrowseDown:DisableDetails()
+
+	oBrowseDown:SetAlias( 'ZX2' )
+	oBrowseDown::SetMenuDef( '' )
+
+	oBrowseDown:Activate()
+
+	oRelacion:AddRelation( oBrowseTop , oBrowseDown , { { 'ZX2_FILIAL', 'ZX1_FILIAL' }, { 'ZX2_CODIGO' , 'ZX1_CODIGO' } } )
+	oRelacion:Activate()
+
+	Activate MsDialog oDlgPrinc Center
 
 Return
 
