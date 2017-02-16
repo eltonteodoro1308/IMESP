@@ -57,7 +57,11 @@ User Function IOMATA02()
 	oBrowseDown:DisableDetails()
 
 	oBrowseDown:SetAlias( 'ZX2' )
-	oBrowseDown::SetMenuDef( '' )
+	oBrowseDown::SetMenuDef( 'IOMATA03' )
+
+	oBrowseDown:AddLegend( 'ZX2_STATUS = "0"', 'QMT_OK'   , 'Confirmado'     )
+	oBrowseDown:AddLegend( 'ZX2_STATUS = "1"', 'QMT_COND' , 'Parcial'        )
+	oBrowseDown:AddLegend( 'ZX2_STATUS = "2"', 'QMT_NO'   , 'Não Confirmado' )
 
 	oBrowseDown:Activate()
 
@@ -83,11 +87,10 @@ Static Function MenuDef()
 	aAdd( aRotina, { 'XML Requisição'          , 'U_IOMT02EX("1")'  , 0, 6, 0, Nil } )
 	aAdd( aRotina, { 'XML CDCF'                , 'U_IOMT02EX("2")'  , 0, 6, 0, Nil } )
 	//aAdd( aRotina, { 'Array ExecAuto'          , 'U_IOMT02EX("3")'  , 0, 6, 0, Nil } )
-	aAdd( aRotina, { 'Enviar p/ Fila Novamente', 'U_IOMT02EX("4")'  , 0, 6, 0, Nil } )
 
 Return aRotina
 
-/*/{Protheus.doc} function_method_class_name
+/*/{Protheus.doc} ModelDef
 Função de Retorno Modelo de dados da Tabela ZX1.
 @author Elton Teodoro Alves
 @since 08/02/2017
@@ -97,10 +100,17 @@ Função de Retorno Modelo de dados da Tabela ZX1.
 Static Function ModelDef()
 
 	Local oModel  := MPFormModel():New( 'ZX1_MODEL' )
-	Local oStruct := FWFormStruct( 1, 'ZX1' )
+	Local oStrZX1 := FWFormStruct( 1, 'ZX1' )
+	Local oStrZX2 := FWFormStruct( 1, 'ZX2' )
 
 	oModel:SetDescription( 'LOG DE INTEGRAÇÃO CDCF' )
-	oModel:addFields( 'ZX1_FIELD_MODEL', , oStruct )
+
+	oModel:addFields( 'ZX1_FIELD_MODEL', , oStrZX1 )
+	oModel:AddGrid( 'ZX2_GRID_MODEL', 'ZX1_FIELD_MODEL', oStrZX2 )
+
+	oModel:GetModel( 'ZX2_GRID_MODEL' ):SetOptional( .T. )
+
+	oModel:SetRelation( 'ZX2_GRID_MODEL', { { 'ZX2_FILIAL', 'ZX1_FILIAL' }, { 'ZX2_CODIGO', 'ZX1_CODIGO' } }, ZX2->(IndexKey(1)) )
 
 Return oModel
 
@@ -257,69 +267,56 @@ Static Function IOMT2MAIL( cUUID, cEmpPrc, cFilPrc, dDataRe, cHoraRe, cMetodo, c
 	cMSGMAIL += '<!DOCTYPE html>'
 	cMSGMAIL += '<html>'
 	cMSGMAIL += '<head>'
-	cMSGMAIL += '<style>'
-	cMSGMAIL += 'table, th, td'
-	cMSGMAIL += '{ border: 1px solid black;'
-	cMSGMAIL += 'border-collapse: collapse;'
-	cMSGMAIL += 'font-family:verdana;}'
-	cMSGMAIL += 'th, td'
-	cMSGMAIL += '{ padding: 5px;'
-	cMSGMAIL += 'text-align: left;}'
-	cMSGMAIL += 'th.title{'
-	cMSGMAIL += 'color: white;'
-	cMSGMAIL += 'background-color: black;,
-	cMSGMAIL += 'text-align: center;}'
-	cMSGMAIL += '</style>'
 	cMSGMAIL += '</head>'
 	cMSGMAIL += '<body>'
-	cMSGMAIL += '<table>'
-	cMSGMAIL += '<tr>'
-	cMSGMAIL += '<th class="title" colspan="2">Dados do Documento de Requisição'
+	cMSGMAIL += '<table  cellspacing="0" cellpadding="10" border="1">'
+	cMSGMAIL += '<tr bgcolor="#000000">'
+	cMSGMAIL += '<th class="title" colspan="2"><font color="#FFFFFF" face="verdana">Dados do Documento de Requisição</font>'
 	cMSGMAIL += '</th>'
 	cMSGMAIL += '</tr>'
-	cMSGMAIL += '<tr>
-	cMSGMAIL += '<td>UUID Documento Recebido</td>
-	cMSGMAIL += '<td>' + cUUID + '</td>
-	cMSGMAIL += '</tr>
-	cMSGMAIL += '<tr>
-	cMSGMAIL += '<td>Empresa de Processamento</td>
-	cMSGMAIL += '<td>' + cEmpPrc + ' - ' + Posicione( 'SM0', 1, cEmpPrc + cFilPrc, 'M0_NOME' ) + '</td>
-	cMSGMAIL += '</tr>
-	cMSGMAIL += '<tr>
-	cMSGMAIL += '<td>Filial de Processamento</td>
-	cMSGMAIL += '<td>' + cFilPrc + ' - ' + Posicione( 'SM0', 1, cEmpPrc + cFilPrc, 'M0_FILIAL' ) + '</td>
-	cMSGMAIL += '</tr>
-	cMSGMAIL += '<tr>
-	cMSGMAIL += '<td>Data do Recebimento</td>
-	cMSGMAIL += '<td>' + dtoc( dDataRe ) + '</td>
-	cMSGMAIL += '</tr>
-	cMSGMAIL += '<tr>
-	cMSGMAIL += '<td>Hora do Recebimento</td>
-	cMSGMAIL += '<td>' + cHoraRe + '</td>
-	cMSGMAIL += '</tr>
-	cMSGMAIL += '<tr>
-	cMSGMAIL += '<td>Metodo CDCF</td>
-	cMSGMAIL += '<td>' + cMetodo + '</td>
-	cMSGMAIL += '</tr>
-	cMSGMAIL += '<tr>
-	cMSGMAIL += '<td>Status</td>
-	cMSGMAIL += '<td>' + aStatus[ Val( cStatus ) ] + '</td>
-	cMSGMAIL += '</tr>
-	cMSGMAIL += '<tr>
-	cMSGMAIL += '<td>Data do Processamento</td>
-	cMSGMAIL += '<td>' + dtoc( dDataPr ) + '</td>
-	cMSGMAIL += '</tr>
-	cMSGMAIL += '<tr>
-	cMSGMAIL += '<td>Hora do Processamento</td>
-	cMSGMAIL += '<td>' + cHoraPr + '</td>
-	cMSGMAIL += '</tr>
-	cMSGMAIL += '<tr>
-	cMSGMAIL += '<td>Observações</td>
-	cMSGMAIL += '<td>' + cObserv + '</td>
-	cMSGMAIL += '</tr>
-	cMSGMAIL += '</table>
-	cMSGMAIL += '</body>
-	cMSGMAIL += '</html>
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<td><font face="verdana">UUID Documento Recebido</font></td>'
+	cMSGMAIL += '<td><font face="verdana">' + cUUID + '</font></td>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<td><font face="verdana">Empresa de Processamento</font></td>'
+	cMSGMAIL += '<td><font face="verdana">' + cEmpPrc + ' - ' + Posicione( 'SM0', 1, cEmpPrc + cFilPrc, 'M0_NOME' ) + '</font></td>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<td><font face="verdana">Filial de Processamento</font></td>'
+	cMSGMAIL += '<td><font face="verdana">' + cFilPrc + ' - ' + Posicione( 'SM0', 1, cEmpPrc + cFilPrc, 'M0_FILIAL' ) + '</font></td>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<td><font face="verdana">Data do Recebimento</font></td>'
+	cMSGMAIL += '<td><font face="verdana">' + dtoc( dDataRe ) + '</font></td>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<td><font face="verdana">Hora do Recebimento</font></td>'
+	cMSGMAIL += '<td><font face="verdana">' + cHoraRe + '</font></td>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<td><font face="verdana">Metodo CDCF</font></td>'
+	cMSGMAIL += '<td><font face="verdana">' + cMetodo + '</font></td>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<td><font face="verdana">Status</font></td>'
+	cMSGMAIL += '<td><font face="verdana">' + aStatus[ Val( cStatus ) ] + '</font></td>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<td><font face="verdana">Data do Processamento</font></td>'
+	cMSGMAIL += '<td><font face="verdana">' + dtoc( dDataPr ) + '</font></td>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<td><font face="verdana">Hora do Processamento</font></td>'
+	cMSGMAIL += '<td><font face="verdana">' + cHoraPr + '</font></td>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '<tr>'
+	cMSGMAIL += '<td><font face="verdana">Observações</font></td>'
+	cMSGMAIL += '<td><font face="verdana">' + cObserv + '</font></td>'
+	cMSGMAIL += '</tr>'
+	cMSGMAIL += '</table>'
+	cMSGMAIL += '</body>'
+	cMSGMAIL += '</html>'
 
 	DbSelectArea( 'SX5' )
 	DbSetOrder( 1 )
@@ -397,8 +394,6 @@ Funcao informada no aRotina do Browse, que executa uma ação conforme o Codigo re
 @param cCod, characters, Código a ação a ser executada:
 1 - Exibe o XML da Requisição
 2 - Exibe o XML do CDCF
-3 - Exibe o Array do ExecAuto
-4 - Envia a requisição para Fila Novamente
 /*/
 User Function IOMT02EX( cCod )
 
@@ -416,37 +411,6 @@ User Function IOMT02EX( cCod )
 		cFile += '.xml'
 
 		MemoWrite( cFile, ZX1->ZX1_XMLPRC )
-
-		//	ElseIf cCod == '3' .And. ! Empty( ZX1->ZX1_ARREXE )
-		//
-		//		cFile += '.html'
-		//
-		//		FWJsonDeserialize( ZX1->ZX1_ARREXE, @aArrExec )
-		//
-		//		MemoWrite( cFile, VarInfo( 'ZX1_ARREXE', aArrExec,, .T., .F. ) )
-
-	ElseIf cCod == '4'
-
-		If ZX1->ZX1_STATUS # '4'
-
-			RecLock( 'ZX1', .F.)
-
-			ZX1->ZX1_STATUS := '0'
-			ZX1->ZX1_DATAPR := CtoD('')
-			ZX1->ZX1_HORAPR := ''
-			ZX1->ZX1_OBSERV := ''
-
-			MsUnLock()
-
-			Return
-
-		Else
-
-			ApMsgInfo( 'Esta Requisição não pode voltar para fila, pois já foi importada.', 'Atenção !!!' )
-
-			Return
-
-		End If
 
 	Else
 

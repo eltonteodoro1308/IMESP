@@ -58,7 +58,7 @@ User Função que busca na Tabela ZX1 registros com ZX1_STATUS = 0 - Aguardando Im
 @since 09/02/2017
 @version 12.1.014
 /*/
-User Function IOMT1INT()
+User Function IOMT1INT( aParam )
 
 	Local cAlias  := GetNextAlias()
 	Local aReq    := {}
@@ -66,6 +66,8 @@ User Function IOMT1INT()
 	Local nX      := 0
 	Local cEmpPrc := ''
 	Local cFilPrc := ''
+	Default aParam := { '99', '01' }
+	RpcSetEnv( aParam[1], aParam[2] )
 
 	// Busca na Tabela ZX1 os registros com ZX1_STATUS = 0 - Aguardando Importação e Grava em Array os código ZX1_UUID
 	BeginSQL Alias cAlias
@@ -95,6 +97,8 @@ User Function IOMT1INT()
 	Next nX
 
 	RestArea( aArea )
+
+	RpcClearEnv()
 
 return
 
@@ -131,6 +135,17 @@ Static Function ExecInteg( cUUID, cEmpPrc, cFilPrc )
 
 	RestArea( aArea )
 
+	If Empty( aArrExec )
+
+		U_IOMT2LOG( cUUID,,,,,, ERRO_PROCESSAMENTO_XML,,, Date(), Time(),;
+		cXml,, 'XML CDCF não retornou nenhum cliente para ser processado.' )
+
+	Else
+
+		RunExecAuto( aArrExec )
+
+	End If
+
 return
 
 /*/{Protheus.doc} GetXmlCDCF
@@ -158,7 +173,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	oWsdl:lProcResp := .F.
 
 	// Efetua o parse do WSDL do WebService
-	If ! oWsdl:ParseUrl( 'cWSDLUrl' )
+	If ! oWsdl:ParseUrl( cWSDLUrl )
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
 		,, 'Erro no Parse da URL do WSDL do WebService: ' + oWsdl:cError )
@@ -368,7 +383,7 @@ Static Function GerArrExec( cUUID, cXmlPrc )
 
 		If nPos > 0
 
-			aAdd( aClientes[ nX, 1 ], { 'A1_XDH_CDC', aDtHrAlt[ nPos, 2 ], 1  } )
+			aAdd( aClientes[ nX, 1 ], { 'A1_XDH_CDC', aDtHrAlt[ nPos, 2 ], Nil  } )
 
 		End If
 
@@ -599,6 +614,7 @@ Static Function InfoContatos( oXml, aContatos )
 
 			cPerfis := InfoPerfCont( oXml )
 
+			aAdd( aContato, { 'U5_FILIAL' , xFilial( 'SU5' )                   , Nil } )
 			aAdd( aContato, { 'U5_CODCONT', GetValTag( oXml, 'IdPessoaFisica' ), Nil } )
 			aAdd( aContato, { 'U5_CONTAT' , GetValTag( oXml, 'NomeContato'    ), Nil } )
 			aAdd( aContato, { 'U5_CPF'    , GetValTag( oXml, 'CPF'            ), Nil } )
@@ -700,5 +716,89 @@ Static Function InfoMeioComun( oXml, aMeioComun )
 	End Do
 
 	oXml:DOMParentNode()
+
+Return
+
+/*/{Protheus.doc} RunExecAuto
+Executa o processamento do Array com os dados do cliente e seus contatos
+@author Elton Teodoro Alves
+@since 16/02/2017
+@version 12.1.014
+@param aClientes, array, Array com os dados dos clinetes e seus contatos
+/*/
+Static Function RunExecAuto( aClientes )
+
+	Local nX      := 0
+	Local nY      := 0
+	Local aArea   := GetArea()
+	Local cCodigo := ''
+	Local nOpc    := 0
+	// TODO  Incluir validacao de que vinculo de cliente x contato não seja repetido
+	//AC8_ENTIDA, AC8_FILENT, AC8_CODENT, AC8_CODCON
+
+	Private	lMsErroAuto    := .F.
+	Private	lMsHelpAuto    := .T.
+	Private	lAutoErrNoFile := .T.
+
+	For nX := 1 To Len( aClientes )
+
+		cCodigo := aClientes[ nX, 1 , aScan( aClientes[ nX, 1 ], { | X | X[ 1 ] == 'A1_COD' } ), 2]
+
+		nOpc := If( Empty( Posicione( 'SA1', 1, xFilial( 'SA1' ) + cCodigo + '01', 'A1_COD' ) ), 3, 4 )
+
+		BeginTran()
+
+		MSExecAuto( { | X, Y | MATA030( X, Y ) }, aClientes[ nX, 1 ], nOpc )
+
+		If lMsErroAuto
+
+			VarInfo( 'GetAutoGRLog()', GetAutoGRLog(), , .F., .T.)
+			DisarmTransaction()
+			lMsErroAuto := .F.
+
+		Else
+
+			lMsErroAuto := .F.
+
+			For nY := 1 To Len( aClientes[ NX,2 ] )
+
+				cCodigo := aClientes[ nX, 2, nY, 1, aScan( aClientes[ nX, 2, nY, 1 ], { | X | X[ 1 ] == 'U5_CPF' } ), 2 ]
+
+				nOpc := If( Empty( Posicione( 'SU5', 8, xFilial( 'SU5' ) + cCodigo, 'U5_CODCONT' ) ), 3, 4 )
+
+				MSExecAuto( { | X, Y, Z, A, B | TMKA070( X, Y, Z, A, B ) }, aClientes[ nX, 2, nY, 1 ], nOpc, {}, {}, .F. )
+
+				// TODO  Incluir validacao de que vinculo de cliente x contato não seja repetido
+
+				If Posicione( 'AC8', )
+
+					RecLock( 'AC8', .T. )
+
+					AC8->AC8_ENTIDA := 'SA1'
+					AC8->AC8_CODENT := aClientes[ nX, 1 , aScan( aClientes[ nX, 1 ], { | X | X[ 1 ] == 'A1_COD' } ), 2] + '01'
+					AC8->AC8_CODCON := aClientes[ nX, 2, nY, 1, aScan( aClientes[ nX, 2, nY, 1 ], { | X | X[ 1 ] == 'U5_CODCONT' } ), 2 ]
+
+					MsUnlock()
+
+				End If
+
+				If lMsErroAuto
+
+					VarInfo( 'GetAutoGRLog()', GetAutoGRLog(), , .F., .T.)
+					VarInfo( 'aClientes[ nX, 2, nY, 1 ]', aClientes[ nX, 2, nY, 1 ],, .F., .T. )
+					DisarmTransaction()
+					lMsErroAuto := .F.
+
+				Else
+
+				End If
+
+			Next nY
+
+		End If
+
+		EndTran()
+
+	Next nX
 
 Return
