@@ -73,7 +73,7 @@ User Function IOMT1INT( aParam )
 	BeginSQL Alias cAlias
 
 	SELECT ZX1.ZX1_UUID, ZX1.ZX1_EMPPRC, ZX1.ZX1_FILPRC FROM %Table:ZX1% ZX1
-	WHERE ZX1.ZX1_STATUS = '0' AND ZX1.%NotDel%
+	WHERE ZX1.ZX1_STATUS = '0' AND ZX1.%NotDel% AND ZX1.ZX1_FILIAL = %Exp:xFilial( 'ZX1' )%
 
 	EndSQL
 
@@ -122,8 +122,8 @@ Static Function ExecInteg( cUUID, cEmpPrc, cFilPrc )
 	If DbSeek( xFilial( 'ZX1' ) + cUUID )
 
 		FWJsonDeserialize( ZX1->ZX1_PARAMS, @aParams )
-
-		cXml := GetXmlCDCF( cUUID, AllTrim( ZX1->ZX1_METODO ), aParams )
+		// TODO Voltar a buscar XML no Web Sercice do CDCF
+		cXml := Eval( {|| oXml:= TXmlManager():New(), oXml:ParseFile( '\xml\cdcf.xml' ), oXml:Save2String() } )//GetXmlCDCF( cUUID, AllTrim( ZX1->ZX1_METODO ), aParams )
 
 		If ! Empty( cXml )
 
@@ -733,8 +733,8 @@ Static Function RunExecAuto( aClientes )
 	Local aArea   := GetArea()
 	Local cCodigo := ''
 	Local nOpc    := 0
-	// TODO  Incluir validacao de que vinculo de cliente x contato não seja repetido
-	//AC8_ENTIDA, AC8_FILENT, AC8_CODENT, AC8_CODCON
+	Local cCodEnt := ''
+	Local cCodCon := ''
 
 	Private	lMsErroAuto    := .F.
 	Private	lMsHelpAuto    := .T.
@@ -769,8 +769,13 @@ Static Function RunExecAuto( aClientes )
 				MSExecAuto( { | X, Y, Z, A, B | TMKA070( X, Y, Z, A, B ) }, aClientes[ nX, 2, nY, 1 ], nOpc, {}, {}, .F. )
 
 				// TODO  Incluir validacao de que vinculo de cliente x contato não seja repetido
+				// AC8_ENTIDA, AC8_FILENT, AC8_CODENT, AC8_CODCON
 
-				If Posicione( 'AC8', )
+				cCodEnt := aClientes[ nX, 1 , aScan( aClientes[ nX, 1 ], { | X | X[ 1 ] == 'A1_COD' } ), 2] + '01'
+				cCodCon := aClientes[ nX, 2, nY, 1, aScan( aClientes[ nX, 2, nY, 1 ], { | X | X[ 1 ] == 'U5_CODCONT' } ), 2 ]
+
+				If Empty( Posicione( 'AC8', 2, Xfilial( 'AC8' ) + 'SA1' + xFilial( 'SA1' ) +;
+				PadR( cCodEnt, GetSx3Cache( 'AC8_CODENT', 'X3_TAMANHO' ) ) + cCodCon ,'AC8_CODENT' ) )
 
 					RecLock( 'AC8', .T. )
 
