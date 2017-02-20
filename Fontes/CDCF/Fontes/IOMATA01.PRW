@@ -68,7 +68,7 @@ User Function IOMT1INT( aParam )
 	Local cFilPrc := ''
 	Default aParam := { '99', '01' }
 	RpcSetEnv( aParam[1], aParam[2] )
-
+	//TODO Tirar opção default da variável aParam
 	// Busca na Tabela ZX1 os registros com ZX1_STATUS = 0 - Aguardando Importação e Grava em Array os código ZX1_UUID
 	BeginSQL Alias cAlias
 
@@ -123,7 +123,8 @@ Static Function ExecInteg( cUUID, cEmpPrc, cFilPrc )
 
 		FWJsonDeserialize( ZX1->ZX1_PARAMS, @aParams )
 		// TODO Voltar a buscar XML no Web Sercice do CDCF
-		cXml := Eval( {|| oXml:= TXmlManager():New(), oXml:ParseFile( '\xml\cdcf.xml' ), oXml:Save2String() } )//GetXmlCDCF( cUUID, AllTrim( ZX1->ZX1_METODO ), aParams )
+		Eval( {|| oXml:= TXmlManager():New(), oXml:ParseFile( '\xml\cdcf.xml' ), cXml := oXml:Save2String() } )
+		//cXml := GetXmlCDCF( cUUID, AllTrim( ZX1->ZX1_METODO ), aParams )
 
 		If ! Empty( cXml )
 
@@ -617,7 +618,6 @@ Static Function InfoContatos( oXml, aContatos )
 			aAdd( aContato, { 'U5_FILIAL' , xFilial( 'SU5' )                   , Nil } )
 			aAdd( aContato, { 'U5_CODCONT', GetValTag( oXml, 'IdPessoaFisica' ), Nil } )
 			aAdd( aContato, { 'U5_CONTAT' , GetValTag( oXml, 'NomeContato'    ), Nil } )
-			aAdd( aContato, { 'U5_CPF'    , GetValTag( oXml, 'CPF'            ), Nil } )
 			aAdd( aContato, { 'U5_XCOTCOM', If( '1' $ cPerfis, '1', '2'       ), Nil } )
 			aAdd( aContato, { 'U5_XFATPUB', If( '2' $ cPerfis, '1', '2'       ), Nil } )
 			aAdd( aContato, { 'U5_XFINANC', If( '3' $ cPerfis, '1', '2'       ), Nil } )
@@ -691,19 +691,30 @@ Resgata do XML as informação correspondentes aos meios de comunicação do Contato
 /*/
 Static Function InfoMeioComun( oXml, aMeioComun )
 
+	Local aAux := {}
+	Local cDDD := ''
+	Local cTel := ''
+
 	oXml:DOMChildNode()
 
 	Do While AllWaysTrue()
 
 		If oXml:cName == 'MeioComunicacao'
 
-			aAdd( aMeioComun,{;
-			GetValTag( oXml, 'IdTipoContato' ),;
-			GetValTag( oXml, 'Email' ),;
-			GetValTag( oXml, 'DDI' ),;
-			GetValTag( oXml, 'DDD' ),;
-			GetValTag( oXml, 'Telefone' ),;
-			GetValTag( oXml, 'Ramal' ) } )
+			cDDD := GetValTag( oXml, 'DDD'      )
+			cTel := GetValTag( oXml, 'Telefone' )
+
+			aAdd( aAux,{ 'AGB_CODIGO', GetValTag( oXml, 'IdMeioComunicacao' ), Nil } )
+			aAdd( aAux,{ 'AGB_XTIPO' , GetValTag( oXml, 'IdTipoContato'     ), Nil } )
+			aAdd( aAux,{ 'AGB_XEMAIL', GetValTag( oXml, 'Email'             ), Nil } )
+			aAdd( aAux,{ 'AGB_DDI'   , GetValTag( oXml, 'DDI'               ), Nil } )
+			aAdd( aAux,{ 'AGB_DDD'   , If( Empty( cDDD ), '0', cDDD                  ), Nil } )
+			aAdd( aAux,{ 'AGB_TELEFO', If( Empty( cTel ), '0', cTel                  ), Nil } )
+			aAdd( aAux,{ 'AGB_COMP'  , GetValTag( oXml, 'Ramal'             ), Nil } )
+
+			aAdd( aMeioComun, aClone( aAux ) )
+
+			aSize( aAux, 0 )
 
 		End If
 
@@ -733,7 +744,6 @@ Static Function RunExecAuto( aClientes )
 	Local aArea   := GetArea()
 	Local cCodigo := ''
 	Local nOpc    := 0
-	Local cCodEnt := ''
 	Local cCodCon := ''
 
 	Private	lMsErroAuto    := .F.
@@ -760,37 +770,27 @@ Static Function RunExecAuto( aClientes )
 
 			lMsErroAuto := .F.
 
-			For nY := 1 To Len( aClientes[ NX,2 ] )
+			For nY := 1 To Len( aClientes[ NX, 2 ] )
 
-				cCodigo := aClientes[ nX, 2, nY, 1, aScan( aClientes[ nX, 2, nY, 1 ], { | X | X[ 1 ] == 'U5_CPF' } ), 2 ]
-
-				nOpc := If( Empty( Posicione( 'SU5', 8, xFilial( 'SU5' ) + cCodigo, 'U5_CODCONT' ) ), 3, 4 )
-
-				MSExecAuto( { | X, Y, Z, A, B | TMKA070( X, Y, Z, A, B ) }, aClientes[ nX, 2, nY, 1 ], nOpc, {}, {}, .F. )
-
-				// TODO  Incluir validacao de que vinculo de cliente x contato não seja repetido
-				// AC8_ENTIDA, AC8_FILENT, AC8_CODENT, AC8_CODCON
-
-				cCodEnt := aClientes[ nX, 1 , aScan( aClientes[ nX, 1 ], { | X | X[ 1 ] == 'A1_COD' } ), 2] + '01'
 				cCodCon := aClientes[ nX, 2, nY, 1, aScan( aClientes[ nX, 2, nY, 1 ], { | X | X[ 1 ] == 'U5_CODCONT' } ), 2 ]
 
-				If Empty( Posicione( 'AC8', 2, Xfilial( 'AC8' ) + 'SA1' + xFilial( 'SA1' ) +;
-				PadR( cCodEnt, GetSx3Cache( 'AC8_CODENT', 'X3_TAMANHO' ) ) + cCodCon ,'AC8_CODENT' ) )
+				DeleteCont( cCodCon, cCodigo )
 
-					RecLock( 'AC8', .T. )
+				MSExecAuto( { | X, Y, Z, A, B | TMKA070( X, Y, Z, A, B ) }, aClientes[ nX, 2, nY, 1 ], 3, {}, aClientes[ nX, 2, nY, 2 ], .F. )
 
-					AC8->AC8_ENTIDA := 'SA1'
-					AC8->AC8_CODENT := aClientes[ nX, 1 , aScan( aClientes[ nX, 1 ], { | X | X[ 1 ] == 'A1_COD' } ), 2] + '01'
-					AC8->AC8_CODCON := aClientes[ nX, 2, nY, 1, aScan( aClientes[ nX, 2, nY, 1 ], { | X | X[ 1 ] == 'U5_CODCONT' } ), 2 ]
+				RecLock( 'AC8', .T. )
 
-					MsUnlock()
+				AC8->AC8_ENTIDA := 'SA1'
+				AC8->AC8_CODENT := aClientes[ nX, 1 , aScan( aClientes[ nX, 1 ], { | X | X[ 1 ] == 'A1_COD' } ), 2] + '01'
+				AC8->AC8_CODCON := aClientes[ nX, 2, nY, 1, aScan( aClientes[ nX, 2, nY, 1 ], { | X | X[ 1 ] == 'U5_CODCONT' } ), 2 ]
 
-				End If
+				MsUnlock()
 
 				If lMsErroAuto
 
-					VarInfo( 'GetAutoGRLog()', GetAutoGRLog(), , .F., .T.)
+					VarInfo( 'GetAutoGRLog()', GetAutoGRLog(), , .F., .T. )
 					VarInfo( 'aClientes[ nX, 2, nY, 1 ]', aClientes[ nX, 2, nY, 1 ],, .F., .T. )
+					VarInfo( 'aClientes[ nX, 2, nY, 2 ]', aClientes[ nX, 2, nY, 2 ],, .F., .T. )
 					DisarmTransaction()
 					lMsErroAuto := .F.
 
@@ -805,5 +805,50 @@ Static Function RunExecAuto( aClientes )
 		EndTran()
 
 	Next nX
+
+Return
+
+/*/{Protheus.doc} DeleteCont
+Deleta os dados do contato e seu vínculo com o cliente para ser incluido novamente
+@author Elton Teodoro Alves
+@since 20/02/2017
+@version 12.1.014
+@param cCodCon, characters, Código do Contato
+@param cCodCon, characters, Código do Cliente
+/*/
+Static Function DeleteCont( cCodCon, cCodigo )
+
+	Local cQuery  := ''
+	Local lRet    := .T.
+
+	cQuery := "DELETE " + RetSqlName( 'AGA' ) + " WHERE AGA_ENTIDA = 'SU5' AND AGA_CODENT = '" + cCodCon + "' AND AGA_FILIAL = '" + xFilial( 'AGA' ) + "'"
+
+	TCSqlExec( cQuery )
+
+	cQuery := ''
+
+	cQuery := "DELETE " + RetSqlName( 'AGB' ) + " WHERE AGB_ENTIDA = 'SU5' AND AGB_CODENT = '" + cCodCon + "' AND AGB_FILIAL = '" + xFilial( 'AGB' ) + "'"
+
+	TCSqlExec( cQuery )
+
+	cQuery := ''
+
+	cQuery := "DELETE " + RetSqlName( 'AO4' ) + " WHERE AO4_ENTIDA = 'SU5' AND AO4_CHVREG = '" + xFilial( 'SU5' ) + cCodCon + "' AND AO4_FILIAL = '" + xFilial( 'AO4' ) + "'"
+
+	TCSqlExec( cQuery )
+
+	cQuery := ''
+
+	cQuery := "DELETE " + RetSqlName( 'SU5' ) + " WHERE U5_CODCONT = '" + cCodCon + "' AND U5_FILIAL = '" + xFilial( 'SU5' ) + "'"
+
+	TCSqlExec( cQuery )
+
+	cQuery := ''
+
+	cQuery := "DELETE " + RetSqlName( 'AC8' ) + " WHERE AC8_FILENT = '" + xFilial( 'SA1' ) +;
+	"' AND AC8_ENTIDA = 'SA1' AND AC8_CODENT = '" + cCodigo + "01' AND AC8_CODCON = '" +;
+	cCodCon + "' AND AC8_FILIAL = '" + xFilial( 'AC8' ) + "'"
+
+	TCSqlExec( cQuery )
 
 Return
