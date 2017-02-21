@@ -1,10 +1,10 @@
 #INCLUDE 'TOTVS.CH'
 
-#DEFINE AGUARDANDO_IMPORTACAO    '0'
-#DEFINE ERRO_COMUNICACAO_CDCF    '1'
-#DEFINE ERRO_PROCESSAMENTO_XML   '2'
-#DEFINE FALHA_DURANTE_IMPORTACAO '3'
-#DEFINE IMPORTADO                '4'
+#DEFINE AGUARDANDO_IMPORTACAO  '0'
+#DEFINE ERRO_COMUNICACAO_CDCF  '1'
+#DEFINE ERRO_PROCESSAMENTO_XML '2'
+#DEFINE IMPORTADO_COM_FALHAS   '3'
+#DEFINE IMPORTADO              '4'
 
 #DEFINE CONF_SIM '1'
 #DEFINE CONF_NAO '2'
@@ -64,16 +64,15 @@ User Function IOMT1INT( aParam )
 	Local aReq    := {}
 	Local aArea   := GetArea()
 	Local nX      := 0
-	Local cEmpPrc := ''
-	Local cFilPrc := ''
 	Default aParam := { '99', '01' }
 	RpcSetEnv( aParam[1], aParam[2] )
 	//TODO Tirar opção default da variável aParam
 	// Busca na Tabela ZX1 os registros com ZX1_STATUS = 0 - Aguardando Importação e Grava em Array os código ZX1_UUID
 	BeginSQL Alias cAlias
 
-	SELECT ZX1.ZX1_UUID, ZX1.ZX1_EMPPRC, ZX1.ZX1_FILPRC FROM %Table:ZX1% ZX1
+	SELECT ZX1.ZX1_UUID FROM %Table:ZX1% ZX1
 	WHERE ZX1.ZX1_STATUS = '0' AND ZX1.%NotDel% AND ZX1.ZX1_FILIAL = %Exp:xFilial( 'ZX1' )%
+	AND ZX1_EMPPRC = %Exp:cEmpAnt% AND ZX1_FILPRC = %Exp:cFilAnt%
 
 	EndSQL
 
@@ -81,7 +80,7 @@ User Function IOMT1INT( aParam )
 
 	Do While ! ( cAlias )->( Eof() )
 
-		aAdd( aReq, { ( cAlias )->ZX1_UUID, ( cAlias )->ZX1_EMPPRC, ( cAlias )->ZX1_FILPRC } )
+		aAdd( aReq, ( cAlias )->ZX1_UUID )
 
 		( cAlias )->( DbSkip() )
 
@@ -92,7 +91,7 @@ User Function IOMT1INT( aParam )
 	// Percorre array com códigos de requisições de integração com Status 0 - Aguardando Importação
 	For nX := 1 To Len( aReq )
 
-		ExecInteg( aReq[ nX, 1 ], aReq[ nX, 2 ], aReq[ nX, 3 ] )
+		ExecInteg( aReq[ nX ] )
 
 	Next nX
 
@@ -109,7 +108,7 @@ Função que acessa uma requisição pelo seu UUID e executa a integração com o CDCF
 @version 12.1.014
 @param cUUID, characters, UUID da requisição
 /*/
-Static Function ExecInteg( cUUID, cEmpPrc, cFilPrc )
+Static Function ExecInteg( cUUID )
 
 	Local aArea    := GetArea()
 	Local aParams  := {}
@@ -139,11 +138,11 @@ Static Function ExecInteg( cUUID, cEmpPrc, cFilPrc )
 	If Empty( aArrExec )
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_PROCESSAMENTO_XML,,, Date(), Time(),;
-		cXml,, 'XML CDCF não retornou nenhum cliente para ser processado.' )
+		cXml, 'XML CDCF não retornou nenhum cliente para ser processado.' )
 
 	Else
 
-		RunExecAuto( aArrExec )
+		RunExecAuto( cUUID, cXml, aArrExec )
 
 	End If
 
@@ -177,7 +176,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	If ! oWsdl:ParseUrl( cWSDLUrl )
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
-		,, 'Erro no Parse da URL do WSDL do WebService: ' + oWsdl:cError )
+		, 'Erro no Parse da URL do WSDL do WebService: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -189,7 +188,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	If Len( aOps ) == 0
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
-		,, 'Não foi disponibilizada nenhuma operação pelo WebService através do documento WSDL: ' + oWsdl:cError )
+		, 'Não foi disponibilizada nenhuma operação pelo WebService através do documento WSDL: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -199,7 +198,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	If ! oWsdl:SetOperation( aOps[ aScan( aOps, { | X | X[ 1 ] == cMetodo} ), 1 ] )
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
-		,, 'Não foi possível definir o método ' + cMetodo + ' como a operação a ser realizada: ' + oWsdl:cError )
+		, 'Não foi possível definir o método ' + cMetodo + ' como a operação a ser realizada: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -211,7 +210,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	If Len( aComplex ) == 0
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
-		,, 'Nenhum Elemeto do Tipo Complexo foi Localizado: ' + oWsdl:cError )
+		, 'Nenhum Elemeto do Tipo Complexo foi Localizado: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -223,7 +222,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	If Len( aSimple ) == 0
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
-		,, 'Nenhum Elemeto do Tipo Simples foi Localizado: ' + oWsdl:cError )
+		, 'Nenhum Elemeto do Tipo Simples foi Localizado: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -233,7 +232,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	If ! oWsdl:SetComplexOccurs( aComplex[ 1 ], 1 )
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
-		,, 'Não foi possível definir o número de vezes do Tipo Complexo: ' + oWsdl:cError )
+		, 'Não foi possível definir o número de vezes do Tipo Complexo: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -243,7 +242,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	If ! oWsdl:SetValue( aSimple[1][1], cIDSist )
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
-		,, 'Não foi possível definir o valor da variável ' + aSimple[1][2] + ': ' + oWsdl:cError )
+		, 'Não foi possível definir o valor da variável ' + aSimple[1][2] + ': ' + oWsdl:cError )
 
 		Return cXml
 
@@ -253,7 +252,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	If  ! oWsdl:SetValue( aSimple[2][1], cIdCons  )
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
-		,, 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
+		, 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
 
 		Return cXml
 
@@ -265,7 +264,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 		If  ! oWsdl:SetValues( aSimple[3][1], aParams  )
 
 			U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
-			,, 'Não foi possível definir os valores da variável ' + aSimple[3][2] + ': ' + oWsdl:cError )
+			, 'Não foi possível definir os valores da variável ' + aSimple[3][2] + ': ' + oWsdl:cError )
 
 			Return cXml
 
@@ -277,7 +276,7 @@ Static Function GetXmlCDCF( cUUID, cMetodo, aParams )
 	If ! oWsdl:SendSoapMsg()
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_COMUNICACAO_CDCF,,, Date(), Time(),;
-		,, 'Não foi possível o envio do documento SOAP gerado ao endereço definido: ' + oWsdl:cError )
+		, 'Não foi possível o envio do documento SOAP gerado ao endereço definido: ' + oWsdl:cError )
 
 		Return cXml
 
@@ -312,7 +311,7 @@ Static Function GerArrExec( cUUID, cXmlPrc )
 	If ! oXml:Parse( cXmlPrc )
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_PROCESSAMENTO_XML,,, Date(), Time(),;
-		cXmlPrc,, 'Erro no Parse do XML de retorno do CDCF: ' + oXml:LastError() )
+		cXmlPrc, 'Erro no Parse do XML de retorno do CDCF: ' + oXml:LastError() )
 
 		Return aClientes
 
@@ -333,7 +332,7 @@ Static Function GerArrExec( cUUID, cXmlPrc )
 	If oXml:cName = 'ErroConsulta'
 
 		U_IOMT2LOG( cUUID,,,,,, ERRO_PROCESSAMENTO_XML,,, Date(), Time(),;
-		cXmlPrc,, 'Erro Retornado na Consulta ao CDCF: ' + GetValTag( oXml, 'MensagemExcecao' ) )
+		cXmlPrc, 'Erro Retornado na Consulta ao CDCF: ' + GetValTag( oXml, 'MensagemExcecao' ) )
 
 		Return aClientes
 
@@ -737,7 +736,7 @@ Executa o processamento do Array com os dados do cliente e seus contatos
 @version 12.1.014
 @param aClientes, array, Array com os dados dos clinetes e seus contatos
 /*/
-Static Function RunExecAuto( aClientes )
+Static Function RunExecAuto( cUUID, cXmlPrc, aClientes )
 
 	Local nX      := 0
 	Local nY      := 0
@@ -745,12 +744,15 @@ Static Function RunExecAuto( aClientes )
 	Local cCodigo := ''
 	Local nOpc    := 0
 	Local cCodCon := ''
+	Local aLog    := {}
 
 	Private	lMsErroAuto    := .F.
 	Private	lMsHelpAuto    := .T.
 	Private	lAutoErrNoFile := .T.
 
 	For nX := 1 To Len( aClientes )
+
+		lMsErroAuto := .F.
 
 		cCodigo := aClientes[ nX, 1 , aScan( aClientes[ nX, 1 ], { | X | X[ 1 ] == 'A1_COD' } ), 2]
 
@@ -762,13 +764,17 @@ Static Function RunExecAuto( aClientes )
 
 		If lMsErroAuto
 
-			VarInfo( 'GetAutoGRLog()', GetAutoGRLog(), , .F., .T.)
 			DisarmTransaction()
-			lMsErroAuto := .F.
 
-		Else
+		End If
 
-			lMsErroAuto := .F.
+
+
+		EndTran()
+
+		If ! lMsErroAuto
+
+			BeginTran()
 
 			For nY := 1 To Len( aClientes[ NX, 2 ] )
 
@@ -800,11 +806,14 @@ Static Function RunExecAuto( aClientes )
 
 			Next nY
 
+			EndTran()
+
 		End If
 
-		EndTran()
-
 	Next nX
+	//TODO Tratat Registro de Log
+	//U_IOMT2LOG( cUUID,,,,,, /*IMPORTADO_COM_FALHAS*/,,, Date(), Time(),;
+	//cXmlPrc,, /*'Observação'*/ )
 
 Return
 
@@ -852,3 +861,29 @@ Static Function DeleteCont( cCodCon, cCodigo )
 	TCSqlExec( cQuery )
 
 Return
+
+/*/{Protheus.doc} IOMT1CMB
+Retorna os opções da combox do Campo AGB_XTIPO
+@author Elton Teodoro Alves
+@since 21/02/2017
+@version 12.1.014
+@return Character, String com as opções
+/*/
+User Function IOMT1CMB()
+
+	Local cRet := ''
+
+	cRet += '1=Telefone Principal;'
+	cRet += '2=Telefone Comercial;'
+	cRet += '3=Telefone Fax;'
+	cRet += '4=Telefone Celular;'
+	cRet += '5=Telefone Residencial;'
+	cRet += '6=Email;'
+	cRet += '7=Telefone Comercial Adicional;'
+	cRet += '8=Telefone Residencial Adicional;'
+	cRet += '9=Email Adicional;'
+	cRet += '10=Telefone Celular Adicional;'
+	cRet += '11=Telefone Fax Adicional;'
+	cRet += '12=Telefone Principal Adicional;'
+
+Return cRet

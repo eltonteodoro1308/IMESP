@@ -27,11 +27,18 @@ Função de Retorno Modelo de dados da Tabela ZX2.
 Static Function ModelDef()
 
 	Local oModel  := MPFormModel():New( 'ZX2_MODEL' )
-	Local oStruct := FWFormStruct( 1, 'ZX2' )
+	Local oStrZX2 := FWFormStruct( 1, 'ZX2' )
+	Local oStrZX3 := FWFormStruct( 1, 'ZX3' )
 
-	oModel:SetDescription( 'DETALHE DO LOG DE INTEGRAÇÃO CDCF' )
+	oModel:SetDescription( 'LOG DE INTEGRAÇÃO CDCF Cliente' )
 
-	oModel:addFields( 'ZX2_FIELD_MODEL', , oStruct )
+	oModel:addFields( 'ZX2_FIELD_MODEL', , oStrZX2 )
+	oModel:AddGrid  ( 'ZX3_GRID_MODEL', 'ZX2_FIELD_MODEL', oStrZX3 )
+
+	oModel:GetModel( 'ZX3_GRID_MODEL' ):SetOptional( .T. )
+
+	oModel:SetRelation( 'ZX3_GRID_MODEL', { { 'ZX3_FILIAL', 'ZX2_FILIAL' }, { 'ZX3_CODIGO', 'ZX2_CODIGO' },;
+	{ 'ZX3_ITEMCL', 'ZX2_ITEM' } }, ZX3->(IndexKey(1)) )
 
 Return oModel
 
@@ -46,12 +53,25 @@ Static Function ViewDef()
 
 	Local oView   := FWFormView():New()
 	Local oModel  := ModelDef()
-	Local oStruct := FWFormStruct( 2, 'ZX2' )
+	Local oStrZX2 := FWFormStruct( 2, 'ZX2' )
+	Local oStrZX3 := FWFormStruct( 2, 'ZX3' )
 
 	oView:SetModel( oModel )
-	oView:AddField( 'ZX2_FIELD_VIEW', oStruct, 'ZX2_FIELD_MODEL' )
-	oView:CreateHorizontalBox( 'BOX_ZX2_FIELD_VIEW', 100)
+
+	oView:CreateFolder( 'PASTAS' )
+
+	oView:AddSheet( 'PASTAS', 'ABA01', 'Cliente' )
+	oView:AddSheet( 'PASTAS', 'ABA02', 'Contatos' )
+
+	oView:AddField( 'ZX2_FIELD_VIEW', oStrZX2, 'ZX2_FIELD_MODEL' )
+	oView:CreateHorizontalBox( 'BOX_ZX2_FIELD_VIEW', 100,,, 'PASTAS', 'ABA01')
 	oView:SetOwnerView( 'ZX2_FIELD_VIEW', 'BOX_ZX2_FIELD_VIEW' )
+
+	oView:AddGrid( 'ZX3_GRID_VIEW', oStrZX3, 'ZX3_GRID_MODEL' )
+	oView:CreateHorizontalBox( 'BOX_ZX3_GRID_VIEW', 100,,, 'PASTAS', 'ABA02')
+	oView:SetOwnerView( 'ZX3_GRID_VIEW', 'BOX_ZX3_GRID_VIEW' )
+
+	oView:SetViewProperty( 'ZX3_GRID_VIEW', "ENABLEDGRIDDETAIL", { 60 } )
 
 Return oView
 
