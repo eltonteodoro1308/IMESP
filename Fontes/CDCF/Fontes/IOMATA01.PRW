@@ -738,13 +738,16 @@ Executa o processamento do Array com os dados do cliente e seus contatos
 /*/
 Static Function RunExecAuto( cUUID, cXmlPrc, aClientes )
 
-	Local nX      := 0
-	Local nY      := 0
-	Local aArea   := GetArea()
-	Local cCodigo := ''
-	Local nOpc    := 0
-	Local cCodCon := ''
-	Local aLog    := {}
+	Local nX       := 0
+	Local nY       := 0
+	Local aArea    := GetArea()
+	Local cCodigo  := ''
+	Local nOpc     := 0
+	Local cCodCon  := ''
+	Local aLog     := {}
+	Local aLogCli  := {}
+	Local aLogCont := {}
+
 
 	Private	lMsErroAuto    := .F.
 	Private	lMsHelpAuto    := .T.
@@ -768,9 +771,9 @@ Static Function RunExecAuto( cUUID, cXmlPrc, aClientes )
 
 		End If
 
-
-
 		EndTran()
+
+		aAdd( aLogCli, { } )
 
 		If ! lMsErroAuto
 
