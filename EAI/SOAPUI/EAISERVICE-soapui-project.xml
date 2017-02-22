@@ -58,11 +58,11 @@
 <TOTVSIntegrator>
 	<GlobalProduct>TOTVS|EAI</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
-	<GlobalDocumentFunctionCode>IOMATA01</GlobalDocumentFunctionCode>
-	<GlobalDocumentFunctionDescription>CDCF</GlobalDocumentFunctionDescription>
+	<GlobalDocumentFunctionCode>SGPEC002</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>Funcionarios</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2017-02-16T00:00:00Z</DocDateTime>
-	<DocIdentifier>6AA84F1D-C94D-4C2D-9414-B305697BEFF8</DocIdentifier>
+	<DocDateTime>2017-02-22T00:00:00Z</DocDateTime>
+	<DocIdentifier>8E8100A2-7959-47CC-80C5-B9540E9E3133</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -71,8 +71,8 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier>IOMATA01</Identifier>
-			<FunctionCode>U_IOMATA01</FunctionCode>
+			<Identifier>SGPEC002</Identifier>
+			<FunctionCode>U_SGPEC002.004642.RA_BITMAP1</FunctionCode>
 			<Content>
 			</Content>
 		</Layouts>
