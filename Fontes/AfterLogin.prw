@@ -12,7 +12,7 @@ User Function AfterLogin()
 
 	//	SetKey( K_CTRL_D,  {|| U_DicAdvpl() } )
 	//	SetKey( K_CTRL_P,  {|| U_PrmBxTst() } )
-	SetKey( K_CTRL_V,  {|| U_MyTmk070()   } )
+	SetKey( K_CTRL_V,  {|| U_SGPEC002()   } )
 	SetKey( K_CTRL_I,  {|| U_IOMT1INT()})
 
 Return
