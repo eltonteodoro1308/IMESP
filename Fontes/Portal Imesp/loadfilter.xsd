@@ -36,6 +36,8 @@
 									<xs:enumeration value="RA_NASC"/>
 									<xs:enumeration value="RA_EMAIL"/>
 									<xs:enumeration value="RA_CIC"/>
+									<!--INCLUIR CONSULTA AO DEPARTAMENTO-->
+									<!---->
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>

@@ -180,7 +180,7 @@ User Function SGPEC001( cXml )
 			If ( cTmp )->( .Not. Eof() )
 
 				cRet += '<?xml version="1.0" encoding="UTF-8"?>'
-				cRet += '<SGPEC001 Operation="1">'
+				cRet += '<SGPEC001>'
 
 				Do While ( cTmp )->( .Not. Eof() )
 

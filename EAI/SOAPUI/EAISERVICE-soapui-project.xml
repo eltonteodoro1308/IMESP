@@ -72,7 +72,7 @@
 		<Layouts>
 			<Version>1.000</Version>
 			<Identifier>SGPEC002</Identifier>
-			<FunctionCode>U_SGPEC002.004642.RA_BITMAP1</FunctionCode>
+			<FunctionCode>U_SGPEC001</FunctionCode>
 			<Content>
 			</Content>
 		</Layouts>

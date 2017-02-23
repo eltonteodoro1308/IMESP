@@ -9,28 +9,28 @@ Função acionada pelo EAI que retorna a foto do cadastro do funcionário conforme 
 @param cWarning, Caracter, Variável passada por referência, serve para alimentar uma mensagem de warning para o EAI. A alteração deste valor por rotinas tratadas neste tópico não causam nenhum efeito para o EAI.
 @param cParams , Caracter, Parâmetros passados na mensagem do EAI. Para o envio destes parâmetros é utilizada a seguinte regra:
 - Estes parâmetros são passados após o nome da função, na tag FunctionCode, no path /TOTVSIntegrator/Message/Layouts/
-- Após o nome da função a ser executada deve ser colocado um '.' e após cada um dos parâmetros mais um. Exemplo: <FunctionCode>U_SGPEC002.3536.RA_BITMAP1</FunctionCode>.
-- OS parâmetros são enviados na forma de uma string, separados por ','. No exemplo acima, a variável cParams irá receber a string 3536,RA_BITMAP1
-- Para Função deverá ser passado dois parâmetro o primeiro com o código do funcionário e o segundo o nome de um dos três campos de imagem existentes no cadastrod o funcionário.
+- Após o nome da função a ser executada deve ser colocado um '.' e após cada um dos parâmetros mais um. Exemplo: <FunctionCode>U_SGPEC002.3536.65</FunctionCode>.
+- OS parâmetros são enviados na forma de uma string, separados por ','. No exemplo acima, a variável cParams irá receber a string 3536,65
+- Para Função deverá ser passado dois parâmetro o primeiro com o código do funcionário e o segundo deve ser 65 para foto só de rosto do campo RA_BITMAP1 e 200 para foto do campo RA_BITIMAP2 .
 @param oFwEai  , Object  , O objeto de EAI criado na camada do EAI Protheus. A manipulação deste objeto deve ser realizada com o máximo de cautela, e deve ser evitada ao máximo.
 @return cRet   , Imagem solicitado em formato Base64
 /*/
 User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 	Local cRet    := ''
-	Local aParams := StrTokArr2( cParams, ',', .T. )
+	Local aParams := {'000004','65'}//StrTokArr2( cParams, ',', .T. )
 	Local aArea   := GetArea()
 	Local cBitMap := ''
 
 	If Len( aParams ) < 2
 
-		Return 'Os Parâmetros enviados são insufucientes para execução da rotina.'
+		Return 'Erro: Os Parâmetros enviados são insufucientes para execução da rotina.'
 
 	End If
 
-	If ! AllTrim( aParams[ 2 ] ) $ 'RA_BITMAP1/RA_BITMAP2'
+	If ! AllTrim( aParams[ 2 ] ) $ '65/200'
 
-		Return 'O Segundo parâmetro só pode ter os seguintes valores permitidos: RA_BITMAP1 / RA_BITMAP2.'
+		Return 'Erro: O Segundo parâmetro só pode ter os seguintes valores permitidos: 65 / 200.'
 
 	End If
 
@@ -39,25 +39,25 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 	If ! DbSeek( xFilial( 'SRA' ) + AllTrim( aParams[ 1 ] ) )
 
-		Return 'Matrícula do Funcionário não localizada.'
+		Return 'Erro: Matrícula do Funcionário não localizada.'
 
 	Else
 
-		If AllTrim( aParams[ 2 ] ) = 'RA_BITMAP1'
+		If AllTrim( aParams[ 2 ] ) = '65'
 
-			If Empty( cBitMap := SRA->RA_BITMAP1 ) .And. Empty( cBitMap := SRA->RA_BITMAP ) .And. Empty( cBitMap := GetNewPar( 'MV_IOBMP1', '' ) )
+			If Empty( cBitMap := SRA->RA_BITMAP1 ) .And. Empty( cBitMap := SRA->RA_BITMAP ) .And. Empty( cBitMap := GetNewPar( 'IO_JPG_65', '' ) )
 
-				Return 'Nenhuma imagem definida nos campos RA_BITMAP / RA_BITAMAP1 e no parâmetro MV_IOBMP1.'
+				Return 'Erro: Nenhuma imagem definida nos campos RA_BITMAP / RA_BITAMAP1 e no parâmetro IO_JPG_65.'
 
 			End If
 
 		End If
 
-		If AllTrim( aParams[ 2 ] ) = 'RA_BITMAP2'
+		If AllTrim( aParams[ 2 ] ) = '200'
 
-			If Empty( cBitMap := SRA->RA_BITMAP2 ) .And. Empty( cBitMap := GetNewPar( 'MV_IOBMP2', '' ) )
+			If Empty( cBitMap := SRA->RA_BITMAP2 ) .And. Empty( cBitMap := GetNewPar( 'IO_JPG_200', '' ) )
 
-				Return 'Nenhuma imagem definida no campo RA_BITMAP2 ou no parâmetro MV_IOBMP2.'
+				Return 'Erro: Nenhuma imagem definida no campo RA_BITMAP2 ou no parâmetro IO_JPG_200.'
 
 			End If
 
@@ -74,7 +74,7 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 	If ! DbSeek( cBitMap )
 
-		Return 'Não localizado no repositório de imagens o conteúdo do campo solicitado ou dos parâmetros MV_IOBMP1 e MV_IOBMP2'
+		Return 'Erro: Não localizado no repositório de imagens o conteúdo do campo solicitado ou dos parâmetros IO_JPG_65 e IO_JPG_200'
 
 	Else
 
