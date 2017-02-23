@@ -18,7 +18,7 @@ Função acionada pelo EAI que retorna a foto do cadastro do funcionário conforme 
 User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 	Local cRet    := ''
-	Local aParams := {'000004','65'}//StrTokArr2( cParams, ',', .T. )
+	Local aParams := StrTokArr2( cParams, ',', .T. )
 	Local aArea   := GetArea()
 	Local cBitMap := ''
 
