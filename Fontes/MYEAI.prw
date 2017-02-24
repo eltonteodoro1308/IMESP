@@ -75,7 +75,7 @@ Static Function Gravar( cXml )
 	cRet += '<ProcessingInformation>'
 	cRet += '<ProcessedOn>' + cAno + '-' + cMes + '-' + cDia + 'T' + Time() + '</ProcessedOn>'
 	cRet += '<Status>OK</Status>'
-	cRet += '<ListOfMessages>
+	cRet += '<ListOfMessages>'
 	cRet += '<Message type="WARNING" code="00">Executado com Sucesso</Message>'
 	cRet += '</ListOfMessages>'
 	cRet += '</ProcessingInformation>'

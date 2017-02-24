@@ -61,8 +61,8 @@
 	<GlobalDocumentFunctionCode>SGPEC002</GlobalDocumentFunctionCode>
 	<GlobalDocumentFunctionDescription>Funcionarios</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2017-02-22T00:00:00Z</DocDateTime>
-	<DocIdentifier>8E8100A2-7959-47CC-80C5-B9540E9E3133</DocIdentifier>
+	<DocDateTime>2017-02-23T00:00:00Z</DocDateTime>
+	<DocIdentifier>4C32D760-C5A5-458B-8F28-4B86FC39B69A</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -72,7 +72,7 @@
 		<Layouts>
 			<Version>1.000</Version>
 			<Identifier>SGPEC002</Identifier>
-			<FunctionCode>U_SGPEC001</FunctionCode>
+			<FunctionCode>U_SGPEC002.004642.200</FunctionCode>
 			<Content>
 			</Content>
 		</Layouts>

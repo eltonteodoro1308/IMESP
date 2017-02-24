@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" 	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
 	<xs:element name="loadfilter">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="filter" maxOccurs="unbounded"	minOccurs="0">
+				<xs:element name="filter" maxOccurs="unbounded" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="value" maxOccurs="1" minOccurs="1" default="string">
 								<xs:simpleType>
 									<xs:restriction base="xs:string">
-										<xs:minLength value="1" />
+										<xs:minLength value="1"/>
 									</xs:restriction>
 								</xs:simpleType>
 							</xs:element>
@@ -17,15 +16,15 @@
 						<xs:attribute name="field" use="required">
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
-									<xs:pattern	value="[A-Z0-9]{2}_[A-Z0-9]{1,7}|[A-Z0-9]{3}_[A-Z0-9]{1,6}">
+									<xs:pattern value="[A-Z0-9]{2}_[A-Z0-9]{1,7}|[A-Z0-9]{3}_[A-Z0-9]{1,6}">
 										<xs:annotation>
 											<xs:documentation>
-												<![CDATA[ A nomenclatura dos campos do protheus tem como prefixo o nome da tabela seguido do caracter "_" e do nome do campo.]]>
-												<![CDATA[ Caso o nome da tabela comece com a letra "S" esta letra é suprimida no prefixo do nome do campo.]]>
-												<![CDATA[ B1_COD é um campo da tabela SB1.]]>
-												<![CDATA[ RA_MAT é um campo da tabela SRA.]]>
-												<![CDATA[ CT1_CONTA é um campo da tabela CT1.]]>
-												<![CDATA[ NNR_DESCRI é um campo da tabela NNR.]]>
+												<![CDATA[ A nomenclatura dos campos do protheus tem como prefixo o nome da tabela seguido do caracter "_" e do nome do campo. ]]>
+												<![CDATA[ Caso o nome da tabela comece com a letra "S" esta letra é suprimida no prefixo do nome do campo. ]]>
+												<![CDATA[ B1_COD é um campo da tabela SB1. ]]>
+												<![CDATA[ RA_MAT é um campo da tabela SRA. ]]>
+												<![CDATA[ CT1_CONTA é um campo da tabela CT1. ]]>
+												<![CDATA[ NNR_DESCRI é um campo da tabela NNR. ]]>
 											</xs:documentation>
 										</xs:annotation>
 									</xs:pattern>
@@ -36,8 +35,8 @@
 									<xs:enumeration value="RA_NASC"/>
 									<xs:enumeration value="RA_EMAIL"/>
 									<xs:enumeration value="RA_CIC"/>
-									<!--INCLUIR CONSULTA AO DEPARTAMENTO-->
-									<!---->
+									<!-- INCLUIR CONSULTA AO DEPARTAMENTO -->
+									<!--  -->
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
@@ -54,6 +53,7 @@
 									<xs:enumeration value="NOT_CONTAINS"/>
 									<xs:enumeration value="IS_CONTAINED"/>
 									<xs:enumeration value="IS_NOT_CONTAINED"/>
+									<!--  Começa com e termina com  -->
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
@@ -65,6 +65,10 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
+						<!--  Ordenar por Default pelo campo RA_NOMECMP, permitir ordenar por TaG sort com opção ASC e DESC -->
+						<!--  <sort>RA_NOMECMP DESC, RA_MAT ASC </sort>  -->
+						<!-- Tratar paginação opcional <Pagina Quantidade="10"  Pagina="3"/>-->
+						<!-- Neste exemplo considera páginas de 10 itens e traz a segunda -->
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
