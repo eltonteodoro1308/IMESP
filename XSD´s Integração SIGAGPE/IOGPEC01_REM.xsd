@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:element name="IOGPEC01">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filter" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="value" maxOccurs="1" minOccurs="1" default="string">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="field" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="QB_DESCRIC"/>
+									<xs:enumeration value="RA_APELIDO"/>
+									<xs:enumeration value="RA_DEPTO"/>
+									<xs:enumeration value="RA_NASC"/>
+									<xs:enumeration value="RA_CIC"/>
+									<xs:enumeration value="RA_FILIAL"/>
+									<xs:enumeration value="RA_MAT"/>
+									<xs:enumeration value="RA_NOME"/>
+									<xs:enumeration value="RA_NOMECMP"/>
+									<xs:enumeration value="RA_SITFOLH"/>
+									<xs:enumeration value="RA_XLOGIN"/>
+									<xs:enumeration value="RA_XNCARGO"/>
+									<xs:enumeration value="RA_XRAMAL"/>
+									<xs:enumeration value="RA_XRAMAL2"/>
+									<xs:enumeration value="RA_XRAMAL3"/>
+									<xs:enumeration value="RA_XSIGLA"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="relation" use="optional" default="EQUAL">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="EQUAL"/>
+									<xs:enumeration value="NOT_EQUAL"/>
+									<xs:enumeration value="LESS"/>
+									<xs:enumeration value="LESS_EQUAL"/>
+									<xs:enumeration value="GREATER"/>
+									<xs:enumeration value="GREATER_EQUAL"/>
+									<xs:enumeration value="CONTAINS"/>
+									<xs:enumeration value="NOT_CONTAINS"/>
+									<xs:enumeration value="IS_CONTAINED"/>
+									<xs:enumeration value="IS_NOT_CONTAINED"/>
+									<xs:enumeration value="START_WITH"/>
+									<xs:enumeration value="NOT_START_WITH"/>
+									<xs:enumeration value="ENDS_WITH"/>
+									<xs:enumeration value="NOT_ENDS_WITH"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="operator" use="optional" default="AND">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="AND"/>
+									<xs:enumeration value="OR"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="sort" minOccurs="0" maxOccurs="1" type="xs:string" default="string"/>
+				<xs:element name="pagination" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:attribute name="number_of_records" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:minInclusive value="1"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="page" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:minInclusive value="1"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
