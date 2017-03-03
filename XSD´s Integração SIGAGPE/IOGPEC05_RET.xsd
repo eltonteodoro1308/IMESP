@@ -1,0 +1,18 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="IOGPEC05">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="IOGPEC05_SQB">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="QB_DEPTO"/>
+							<xs:element type="xs:string" name="QB_DESCRIC"/>
+							<xs:element type="xs:string" name="QB_DEPTO_SUPERIOR"/>
+						</xs:sequence>
+						<xs:attribute type="xs:byte" name="order"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

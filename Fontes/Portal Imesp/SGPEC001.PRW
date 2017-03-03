@@ -33,13 +33,13 @@ User Function SGPEC001( cXml )
 
 	cCase += "CASE "
 
-	Do While SM0->( .Not. Eof() ) .And. SM0->M0_CODIGO == cEmpAnt
+	Do While SM0->( ! Eof() ) .And. SM0->M0_CODIGO == cEmpAnt
 
 		cCase += "WHEN SRA.RA_FILIAL = '" + SM0->M0_CODFIL + "' THEN '" + AllTrim( SM0->M0_FILIAL ) + "' "
 
 		SM0->( DbSkip() )
 
-	End Do
+	EndDo
 
 	cCase += "ELSE '' "
 	cCase += "END SM0_NOME,"
@@ -177,12 +177,12 @@ User Function SGPEC001( cXml )
 
 			( cTmp )->( DbGoTop() )
 
-			If ( cTmp )->( .Not. Eof() )
+			If ( cTmp )->( ! Eof() )
 
 				cRet += '<?xml version="1.0" encoding="UTF-8"?>'
 				cRet += '<SGPEC001>'
 
-				Do While ( cTmp )->( .Not. Eof() )
+				Do While ( cTmp )->( ! Eof() )
 
 					cRet += '<SGPEC001_SRA record="' + cValToChar(nY) + '">'
 
@@ -202,7 +202,7 @@ User Function SGPEC001( cXml )
 
 					cRet += '</SGPEC001_SRA>'
 
-				End Do
+				EndDo
 
 				cRet += '</SGPEC001>'
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="IOGPEC04">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="QB_FILRESP"/>
+				<xs:element type="xs:string" name="QB_MATRESP"/>
+				<xs:element type="xs:string" name="RA_DEPTO"/>
+				<xs:element type="xs:string" name="RA_MAT"/>
+				<xs:element type="xs:string" name="RA_NOME"/>
+				<xs:element type="xs:string" name="RD4_CHAVE"/>
+				<xs:element type="xs:string" name="RD4_TREE"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

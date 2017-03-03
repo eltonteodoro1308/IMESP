@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="IOGPEC01">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="IOGPEC01_SRA" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="QB_DESCRIC">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_APELIDO">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_DEPTO">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_NASC">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_CARGO">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_CIC">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_DEMISSA">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_EMAIL">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_FILIAL">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_MAT">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_NOME">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_NOMECMP">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_SITFOLH">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_XLOGIN">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_XNCARGO">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_XRAMAL">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_XRAMAL2">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_XRAMAL3">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_XSIGLA">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute type="xs:byte" name="record" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TOTAL_SEARCH_RECORDS">
+					<xs:complexType>
+						<xs:attribute type="xs:short" name="value"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

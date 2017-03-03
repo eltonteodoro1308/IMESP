@@ -84,9 +84,9 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 			DbSkip()
 
-		End Do
+		EndDo 
 
-	End If
+	EndIf
 
 	PROTHEUS_REPOSIT->( DbCloseArea() )
 
