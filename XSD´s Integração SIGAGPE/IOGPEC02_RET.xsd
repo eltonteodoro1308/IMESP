@@ -4,7 +4,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element type="xs:base64Binary" name="image" minOccurs="0" maxOccurs="1"/>
-				<xs:element type="xs:string" name="erro" minOccurs="0" maxOccurs="1"/>
+				<xs:element type="xs:string" name="error" minOccurs="0" maxOccurs="1"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

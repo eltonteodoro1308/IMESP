@@ -20,17 +20,18 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 	Local cRet    := ''
 	Local aParams := StrTokArr2( cParams, ',', .T. )
 	Local aArea   := GetArea()
-	Local cBitMap := ''
+	Local cBitMap := '' 
+
 
 	If Len( aParams ) < 2
 
-		Return 'Erro: Os Parâmetros enviados são insufucientes para execução da rotina.'
+		Return MakeXml( ,'Os Parâmetros enviados são insufucientes para execução da rotina.')
 
 	End If
 
 	If ! AllTrim( aParams[ 2 ] ) $ '65/200'
 
-		Return 'Erro: O Segundo parâmetro só pode ter os seguintes valores permitidos: 65 / 200.'
+		Return MakeXml( ,'O Segundo parâmetro só pode ter os seguintes valores permitidos: 65 / 200.' )
 
 	End If
 
@@ -39,7 +40,7 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 	If ! DbSeek( xFilial( 'SRA' ) + AllTrim( aParams[ 1 ] ) )
 
-		Return 'Erro: Matrícula do Funcionário não localizada.'
+		Return MakeXml( ,'Matrícula do Funcionário não localizada.' )
 
 	Else
 
@@ -47,7 +48,7 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 			If Empty( cBitMap := SRA->RA_BITMAP1 ) .And. Empty( cBitMap := SRA->RA_BITMAP ) .And. Empty( cBitMap := GetNewPar( 'IO_JPG_65', '' ) )
 
-				Return 'Erro: Nenhuma imagem definida nos campos RA_BITMAP / RA_BITAMAP1 e no parâmetro IO_JPG_65.'
+				Return MakeXml( ,'Nenhuma imagem definida nos campos RA_BITMAP / RA_BITAMAP1 e no parâmetro IO_JPG_65.' )
 
 			End If
 
@@ -57,7 +58,7 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 			If Empty( cBitMap := SRA->RA_BITMAP2 ) .And. Empty( cBitMap := GetNewPar( 'IO_JPG_200', '' ) )
 
-				Return 'Erro: Nenhuma imagem definida no campo RA_BITMAP2 ou no parâmetro IO_JPG_200.'
+				Return MakeXml( ,'Nenhuma imagem definida no campo RA_BITMAP2 ou no parâmetro IO_JPG_200.' )
 
 			End If
 
@@ -74,7 +75,7 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 	If ! DbSeek( cBitMap )
 
-		Return 'Erro: Não localizado no repositório de imagens o conteúdo do campo solicitado ou dos parâmetros IO_JPG_65 e IO_JPG_200'
+		Return MakeXml( ,'Não localizado no repositório de imagens o conteúdo do campo solicitado ou dos parâmetros IO_JPG_65 e IO_JPG_200' )
 
 	Else
 
@@ -92,4 +93,27 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 	RestArea( aArea )
 
-Return EnCode64( cRet )
+Return MakeXml( EnCode64( cRet ) )
+
+/*/{Protheus.doc} MakeXml
+Gera o xml de retorno da requisição EAI
+@author Elton Teodoro Alves
+@since 03/03/2017
+@version 12.1.014
+@param cImagem, characters, Foto Funcionário em Base64
+@param cError, characters, Mensagem de Erro
+@return character, Xml de Retorno do EAI
+/*/
+Static Function MakeXml( cImagem, cError )
+
+	Local cRet := ''
+
+	Default cImagem := ''
+	Default cError  := ''
+
+	cRet += '<IOGPEC02>'	
+	cRet += '<image>'+cImagem+'</image>' 
+	cRet += '<error>'+cError+'</error>'
+	cRet += '</IOGPEC02>'
+
+Return cRet
