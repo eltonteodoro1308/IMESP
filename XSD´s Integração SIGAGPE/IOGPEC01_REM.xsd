@@ -1,5 +1,5 @@
-<!-- Descreve o layout do xml de remessa para pesquisa do cadastro de funcionarios -->
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Descreve o layout do xml de remessa para pesquisa do cadastro de funcionarios -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
 	<xs:element name="IOGPEC01_REM">
 		<xs:complexType>

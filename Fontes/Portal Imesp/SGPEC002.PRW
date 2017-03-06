@@ -113,13 +113,13 @@ Static Function MakeXml( cImagem, cError )
 
 	cRet += '<IOGPEC02>'
 
-	If ! AllTrim( cImagem )	
+	If ! Empty( cImagem )	
 
 		cRet += '<image>'+cImagem+'</image>'
 
 	End If 
 
-	If ! AllTrim( cImagem )	
+	If ! Empty( cImagem )	
 
 		cRet += '<error>'+cError+'</error>'
 
