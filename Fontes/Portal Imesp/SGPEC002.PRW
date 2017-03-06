@@ -111,9 +111,20 @@ Static Function MakeXml( cImagem, cError )
 	Default cImagem := ''
 	Default cError  := ''
 
-	cRet += '<IOGPEC02>'	
-	cRet += '<image>'+cImagem+'</image>' 
-	cRet += '<error>'+cError+'</error>'
+	cRet += '<IOGPEC02>'
+
+	If ! AllTrim( cImagem )	
+
+		cRet += '<image>'+cImagem+'</image>'
+
+	End If 
+
+	If ! AllTrim( cImagem )	
+
+		cRet += '<error>'+cError+'</error>'
+
+	End If
+
 	cRet += '</IOGPEC02>'
 
 Return cRet
