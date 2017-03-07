@@ -15,12 +15,12 @@ Função acionada pelo EAI que retorna a foto do cadastro do funcionário conforme 
 @param oFwEai  , Object  , O objeto de EAI criado na camada do EAI Protheus. A manipulação deste objeto deve ser realizada com o máximo de cautela, e deve ser evitada ao máximo.
 @return cRet   , Imagem solicitado em formato Base64
 /*/
-User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
+User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 
 	Local cRet    := ''
 	Local aParams := StrTokArr2( cParams, ',', .T. )
 	Local aArea   := GetArea()
-	Local cBitMap := '' 
+	Local cBitMap := ''
 
 
 	If Len( aParams ) < 2
@@ -71,7 +71,7 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 	OpenRepositDB()
 
 	DbSelectArea( 'PROTHEUS_REPOSIT' )
-	DbSetOrder( 1 )
+	DbSetOrder( 1 ) //BMPNAME
 
 	If ! DbSeek( cBitMap )
 
@@ -85,7 +85,7 @@ User Function SGPEC002( cXml, cError, cWarning, cParams, oFwEai )
 
 			DbSkip()
 
-		EndDo 
+		EndDo
 
 	EndIf
 
@@ -111,20 +111,9 @@ Static Function MakeXml( cImagem, cError )
 	Default cImagem := ''
 	Default cError  := ''
 
-	cRet += '<IOGPEC02>'
-
-	If ! Empty( cImagem )	
-
-		cRet += '<image>'+cImagem+'</image>'
-
-	End If 
-
-	If ! Empty( cImagem )	
-
-		cRet += '<error>'+cError+'</error>'
-
-	End If
-
-	cRet += '</IOGPEC02>'
+	cRet += '<IOGPEC02_RET>'
+	cRet += '<image>'+cImagem+'</image>'
+	cRet += '<error>'+cError+'</error>'
+	cRet += '</IOGPEC02_RET>'
 
 Return cRet

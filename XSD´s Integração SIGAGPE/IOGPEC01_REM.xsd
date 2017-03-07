@@ -29,7 +29,7 @@
 									<xs:enumeration value="RA_NOMECMP"/>
 									<xs:enumeration value="RA_SITFOLH"/>
 									<xs:enumeration value="RA_XLOGIN"/>
-									<xs:enumeration value="RA_XNCARGO"/>
+									<xs:enumeration value="Q3_CLASSE"/>
 									<xs:enumeration value="RA_XRAMAL"/>
 									<xs:enumeration value="RA_XRAMAL2"/>
 									<xs:enumeration value="RA_XRAMAL3"/>

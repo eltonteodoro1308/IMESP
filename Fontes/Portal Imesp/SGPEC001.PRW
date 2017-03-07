@@ -71,7 +71,7 @@ User Function SGPEC001( cXml )
 	cQuery += RetSqlName( "SRA" ) + " SRA WHERE "
 
 	If oXml:Parse( cXML ) .And.;
-	oXml:ParseSchemaFile('\schemas\loadfilter.xsd') .And.;
+	oXml:ParseSchemaFile('\schemas\IOGPEC01_REM.xsd') .And.;
 	oXml:SchemaValidate()
 
 		nChild := oXml:DOMChildCount()

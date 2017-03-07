@@ -58,11 +58,11 @@
 <TOTVSIntegrator>
 	<GlobalProduct>TOTVS|EAI</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
-	<GlobalDocumentFunctionCode>SGPEC002</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionCode>IOGPEC01</GlobalDocumentFunctionCode>
 	<GlobalDocumentFunctionDescription>Funcionarios</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2017-02-23T00:00:00Z</DocDateTime>
-	<DocIdentifier>83CACF00-3D22-4C78-8802-7E5BE887EE8C</DocIdentifier>
+	<DocDateTime>2017-03-07T00:00:00Z</DocDateTime>
+	<DocIdentifier>9FF97187-E54B-4F0E-95BF-66125E22B8DB</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -71,9 +71,16 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier>SGPEC002</Identifier>
-			<FunctionCode>U_SGPEC002.000002.200</FunctionCode>
+			<Identifier>IOGPEC01</Identifier>
+			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
+				<IOGPEC01_REM>
+					<filter field="QB_DESCRIC" relation="EQUAL" operator="AND">
+						<value>str1234</value>
+					</filter>
+					<sort>str1234</sort>
+					<pagination number_of_records="1234" page="1234" />
+				</IOGPEC01_REM>
 			</Content>
 		</Layouts>
 	</Message>
