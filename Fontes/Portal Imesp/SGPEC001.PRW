@@ -79,7 +79,8 @@ User Function SGPEC001( cXml )
 		For nX := 1 To nChild
 
 			If nX == 1
-				oXml:DOMChildNode()
+
+				 oXml:DOMChildNode()
 
 			End If
 
