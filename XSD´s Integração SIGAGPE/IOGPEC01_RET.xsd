@@ -7,78 +7,6 @@
 				<xs:element name="IOGPEC01_SRA" maxOccurs="unbounded" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="QB_DESCRIC">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="value"/>
-									</xs:sequence>
-									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="RA_APELIDO">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="value"/>
-									</xs:sequence>
-									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="RA_DEPTO">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="value"/>
-									</xs:sequence>
-									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="RA_NASC">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="value"/>
-									</xs:sequence>
-									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="RA_CARGO">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="value"/>
-									</xs:sequence>
-									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="RA_CIC">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="value"/>
-									</xs:sequence>
-									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="RA_DEMISSA">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="value"/>
-									</xs:sequence>
-									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="RA_EMAIL">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="value"/>
-									</xs:sequence>
-									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="RA_FILIAL">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element type="xs:string" name="value"/>
-									</xs:sequence>
-									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
-								</xs:complexType>
-							</xs:element>
 							<xs:element name="RA_MAT">
 								<xs:complexType>
 									<xs:sequence>
@@ -103,7 +31,7 @@
 									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="RA_SITFOLH">
+							<xs:element name="RA_APELIDO">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
@@ -111,7 +39,7 @@
 									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="RA_XLOGIN">
+							<xs:element name="RA_CARGO">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
@@ -119,7 +47,7 @@
 									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="Q3_CLASSE">
+							<xs:element name="M0_NOME">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
@@ -151,7 +79,87 @@
 									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
+							<xs:element name="RA_DEPTO">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="QB_DESCRIC">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_DEMISSA">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Q3_CLASSE">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_NASC">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_FILIAL">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_SITFOLH">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_EMAIL">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_CIC">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
 							<xs:element name="RA_XSIGLA">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value"/>
+									</xs:sequence>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RA_XLOGIN">
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>

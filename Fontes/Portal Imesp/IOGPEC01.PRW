@@ -10,6 +10,7 @@ e retorna outro xml com resultado da consulta.
 /*/
 User Function IOGPEC01( cXml )
 
+	Local cRet       := ''
 	Local cPesq      := ''
 	Local cErro      := ''
 	Local oXml       := TXmlManager():New()
@@ -115,7 +116,7 @@ User Function IOGPEC01( cXml )
 
 		If TcSqlExec( cQuery ) < 0
 
-			cErro := '<ERROR>' + TcSqlError() + '</ERROR>'
+			cErro := TcSqlError()
 
 		Else
 
@@ -133,15 +134,21 @@ User Function IOGPEC01( cXml )
 
 						cField := AllTrim( ( cTmp )->( FieldName( nX ) ) )
 
-						cPesq += '<' + cField + ' order="'+ cValToChar( nX ) +'"><value>'
-						cPesq += AllTrim( ( cTmp )->( FieldGet( nX ) ) )
-						cPesq += '</value></' + cField + '>'
+						If cField # 'ROW_NUMBER'
+
+							cPesq += '<' + cField + ' order="'+ cValToChar( nX ) +'"><value>'
+							cPesq += AllTrim( ( cTmp )->( FieldGet( nX ) ) )
+							cPesq += '</value></' + cField + '>'
+
+						EndIf
 
 					Next nX
 
+					cPesq += '</IOGPEC01_SRA>'
+
 				Else
 
-					cPesq += '<TOTAL_SEARCH_RECORDS value="' + AllTrim( (cTmp)->RA_MAT ) + '" />'
+					cPesq += '<TOTAL_SEARCH_RECORDS value="' + AllTrim( cValToChar( (cTmp)->ROW_NUMBER ) ) + '" />'
 
 				EndIf
 
@@ -153,13 +160,15 @@ User Function IOGPEC01( cXml )
 
 	Else
 
-		cErro := '<ERROR>Erro no Parse ou Schema Validate do XML enviado: ' + oXml:LastError() + '</ERROR>'
+		cErro := 'Erro no Parse ou Schema Validate do XML enviado: ' + oXml:LastError()
 
 	EndIf
 
 	RestArea( aArea )
 
-Return '<IOGPEC01_RET>' + cPesq + cErro + '</IOGPEC01_RET>'
+	cRet := '<IOGPEC01_RET>' + cPesq + '<ERROR>' + cErro + '</ERROR></IOGPEC01_RET>'
+
+Return cRet
 
 /*/{Protheus.doc} MakeQuery
 Função que monta a query de pesquisa ao banco
