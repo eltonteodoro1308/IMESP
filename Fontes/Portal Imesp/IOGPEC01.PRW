@@ -31,7 +31,7 @@ User Function IOGPEC01( cXml )
 	Local cOperator  := ''
 	Local nX         := 0
 	Local nY         := 0
-	cXml := MemoRead( '\xml\IOGPEC01_REM.xml' )
+
 	If oXml:Parse( cXML ) .And.;
 	oXml:ParseSchemaFile('\schemas\IOGPEC01_REM.xsd') .And.;
 	oXml:SchemaValidate()
