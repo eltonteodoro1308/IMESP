@@ -116,6 +116,7 @@ User Function IOGPEC01( cXml )
 
 		If TcSqlExec( cQuery ) < 0
 
+			cPesq := '<IOGPEC01_SRA record="0"></IOGPEC01_SRA>'
 			cErro := TcSqlError()
 
 		Else
@@ -148,7 +149,7 @@ User Function IOGPEC01( cXml )
 
 				Else
 
-					cPesq += '<TOTAL_SEARCH_RECORDS value="' + AllTrim( cValToChar( (cTmp)->ROW_NUMBER ) ) + '" />'
+					cPesq += '<TOTAL_SEARCH_RECORDS>' + AllTrim( cValToChar( (cTmp)->ROW_NUMBER ) ) + '</TOTAL_SEARCH_RECORDS>'
 
 				EndIf
 
@@ -160,11 +161,14 @@ User Function IOGPEC01( cXml )
 
 	Else
 
+		cPesq := '<IOGPEC01_SRA record="0"></IOGPEC01_SRA>'
 		cErro := 'Erro no Parse ou Schema Validate do XML enviado: ' + oXml:LastError()
 
 	EndIf
 
 	RestArea( aArea )
+
+
 
 	cRet := '<IOGPEC01_RET>' + cPesq + '<ERROR>' + cErro + '</ERROR></IOGPEC01_RET>'
 

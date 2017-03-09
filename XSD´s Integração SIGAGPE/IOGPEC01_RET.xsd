@@ -172,9 +172,9 @@
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="TOTAL_SEARCH_RECORDS">
-					<xs:complexType>
-						<xs:attribute type="xs:positiveInteger" name="value"/>
-					</xs:complexType>
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger"/>	
+					</xs:simpleType>
 				</xs:element>
 				<xs:element type="xs:string" name="ERROR"/>
 			</xs:sequence>

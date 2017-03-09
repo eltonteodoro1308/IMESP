@@ -50,11 +50,14 @@
       <soap:address location="http://spon4944:7112/ws/EAISERVICE.apw"/>
     </port>
   </service>
-</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint></con:endpoints><con:operation id="5ecb6193-1179-4469-9858-9a5f3a7f61a2" isOneWay="false" action="http://www.totvs.com/RECEIVEMESSAGE" name="RECEIVEMESSAGE" bindingOperationName="RECEIVEMESSAGE" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2e3475cd-e2cb-4a2c-bb0d-b7b28e91f942" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint></con:endpoints><con:operation id="5ecb6193-1179-4469-9858-9a5f3a7f61a2" isOneWay="false" action="http://www.totvs.com/RECEIVEMESSAGE" name="RECEIVEMESSAGE" bindingOperationName="RECEIVEMESSAGE" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2e3475cd-e2cb-4a2c-bb0d-b7b28e91f942" name="IOGPEC01"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <tot:RECEIVEMESSAGE>\r
          <tot:INMSG><![CDATA[
+
+
+         
 <TOTVSIntegrator>
 	<GlobalProduct>TOTVS|EAI</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
@@ -62,7 +65,7 @@
 	<GlobalDocumentFunctionDescription>Funcionarios</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
 	<DocDateTime>2017-03-07T00:00:00Z</DocDateTime>
-	<DocIdentifier>9FF97187-E54B-4F0E-95BF-66125E22B8DB</DocIdentifier>
+	<DocIdentifier>4AA06679-BBBD-456F-9334-8236DF886EC1</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -75,11 +78,14 @@
 			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
 				<IOGPEC01_REM>
-					<filter field="QB_DESCRIC" relation="EQUAL" operator="AND">
-						<value>str1234</value>
+					<filter field="RA_NOME" relation="CONTAINS" operator="AND">
+						<value>jose</value>
 					</filter>
-					<sort>str1234</sort>
-					<pagination number_of_records="1234" page="1234" />
+					<SORT>
+						<ASC>RA_MAT</ASC>
+						<ASC>RA_NOME</ASC>
+					</SORT>
+					<PAGINATION number_of_records="10" page="5" />
 				</IOGPEC01_REM>
 			</Content>
 		</Layouts>
@@ -88,7 +94,7 @@
          ]]]]>><![CDATA[</tot:INMSG>\r
       </tot:RECEIVEMESSAGE>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4689ed92-7876-4c43-aa6f-26ede0fb7196" name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4689ed92-7876-4c43-aa6f-26ede0fb7196" name="TOTVSMessage"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <tot:RECEIVEMESSAGE>\r
@@ -119,6 +125,37 @@
 		</BusinessContent>
 	</BusinessMessage>
 </TOTVSMessage>
+         ]]]]>><![CDATA[</tot:INMSG>\r
+      </tot:RECEIVEMESSAGE>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="499c72fb-d3f6-4f6c-a445-0f7ba66c5854" name="IOGPEC02"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tot:RECEIVEMESSAGE>\r
+         <tot:INMSG><![CDATA[
+<TOTVSIntegrator>
+	<GlobalProduct>TOTVS|EAI</GlobalProduct>
+	<GlobalFunctionCode>EAI</GlobalFunctionCode>
+	<GlobalDocumentFunctionCode>IOGPEC02</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>Funcionarios</GlobalDocumentFunctionDescription>
+	<DocVersion>1.000</DocVersion>
+	<DocDateTime>2017-03-09T00:00:00Z</DocDateTime>
+	<DocIdentifier>577D626C-8411-498B-B1CC-21B63B1A0784</DocIdentifier>
+	<DocCompany>99</DocCompany>
+	<DocBranch>01</DocBranch>
+	<DocName />
+	<DocFederalID />
+	<DocType>1</DocType>
+	<Message>
+		<Layouts>
+			<Version>1.000</Version>
+			<Identifier>IOGPEC02</Identifier>
+			<FunctionCode>U_IOGPEC02.000996.200</FunctionCode>
+			<Content>
+			</Content>
+		</Layouts>
+	</Message>
+</TOTVSIntegrator>    
          ]]]]>><![CDATA[</tot:INMSG>\r
       </tot:RECEIVEMESSAGE>\r
    </soapenv:Body>\r
