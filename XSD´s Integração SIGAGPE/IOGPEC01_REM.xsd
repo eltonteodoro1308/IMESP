@@ -67,19 +67,26 @@
 						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="SORT" minOccurs="0" maxOccurs="1" type="xs:string" default="string"/>
+				<xs:element name="SORT" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ASC" type="SORT_FIELDS" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="DESC" type="SORT_FIELDS" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 				<xs:element name="PAGINATION" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:attribute name="number_of_records" use="required">
 							<xs:simpleType>
-								<xs:restriction base="xs:integer">
+								<xs:restriction base="xs:positiveInteger">
 									<xs:minInclusive value="1"/>
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
 						<xs:attribute name="page" use="required">
 							<xs:simpleType>
-								<xs:restriction base="xs:integer">
+								<xs:restriction base="xs:positiveInteger">
 									<xs:minInclusive value="1"/>
 								</xs:restriction>
 							</xs:simpleType>
@@ -89,4 +96,27 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	<xs:simpleType name="SORT_FIELDS">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="QB_DESCRIC"/>
+			<xs:enumeration value="RA_APELIDO"/>
+			<xs:enumeration value="RA_DEPTO"/>
+			<xs:enumeration value="RA_NASC"/>
+			<xs:enumeration value="RA_CARGO"/>
+			<xs:enumeration value="RA_CIC"/>
+			<xs:enumeration value="RA_DEMISSA"/>
+			<xs:enumeration value="RA_EMAIL"/>
+			<xs:enumeration value="RA_FILIAL"/>
+			<xs:enumeration value="RA_MAT"/>
+			<xs:enumeration value="RA_NOME"/>
+			<xs:enumeration value="RA_NOMECMP"/>
+			<xs:enumeration value="RA_SITFOLH"/>
+			<xs:enumeration value="RA_XLOGIN"/>
+			<xs:enumeration value="Q3_CLASSE"/>
+			<xs:enumeration value="RA_XRAMAL"/>
+			<xs:enumeration value="RA_XRAMAL2"/>
+			<xs:enumeration value="RA_XRAMAL3"/>
+			<xs:enumeration value="RA_XSIGLA"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>

@@ -28,6 +28,8 @@ User Function IOGPEC01( cXml )
 	Local cValue     := ''
 	Local cRelation  := ''
 	Local cOperator  := ''
+	Local nX         := 0
+	Local nY         := 0
 	cXml := MemoRead( '\xml\IOGPEC01_REM.xml' )
 	If oXml:Parse( cXML ) .And.;
 	oXml:ParseSchemaFile('\schemas\IOGPEC01_REM.xsd') .And.;
@@ -56,9 +58,34 @@ User Function IOGPEC01( cXml )
 				aAdd( aWhere, { cField, cValue, cRelation, cOperator } )
 
 			ElseIf oXml:cName == 'SORT'
-				//TODO Informar alias da tabela antes do nome do campo
-				//TODO validar no schema xml por expressão regular se campos permitidos estão informados no tag <SORT>
-				cOrder := oXml:cText
+
+				oXml:DOMChildNode()
+
+				Do While AllWaysTrue()
+
+					If oXml:cName == "ASC"
+
+						cOrder += oXml:cText + " ASC"
+
+					ElseIf oXml:cName == "DESC"
+
+						cOrder += oXml:cText + " DESC"
+
+					EndIf
+
+					If ! oXml:DOMNextNode()
+
+						Exit
+
+					Else
+
+						cOrder += ","
+
+					EndIf
+
+				EndDO
+
+				oXml:DOMParentNode()
 
 			ElseIf oXml:cName == 'PAGINATION'
 
@@ -93,6 +120,34 @@ User Function IOGPEC01( cXml )
 		Else
 
 			dbUseArea( .T., "TOPCONN", TcGenQry( ,, cQuery ) , cTmp, .F., .T. )
+
+			(cTmp)->( DbGoTop() )
+
+			Do While ! (cTmp)->( Eof() )
+
+				If ! AllTrim( (cTmp)->RA_MAT ) == 'COUNT'
+
+					cPesq += '<IOGPEC01_SRA record="' + cValToChar(++nY) + '">'
+
+					For nX := 1 To ( cTmp )->( FCount() )
+
+						cField := AllTrim( ( cTmp )->( FieldName( nX ) ) )
+
+						cPesq += '<' + cField + ' order="'+ cValToChar( nX ) +'"><value>'
+						cPesq += AllTrim( ( cTmp )->( FieldGet( nX ) ) )
+						cPesq += '</value></' + cField + '>'
+
+					Next nX
+
+				Else
+
+					cPesq += '<TOTAL_SEARCH_RECORDS value="' + AllTrim( (cTmp)->RA_MAT ) + '" />'
+
+				EndIf
+
+				( cTmp )->( DbSkip() )
+
+			EndDo
 
 		EndIf
 
@@ -147,16 +202,16 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 
 	SM0->( RestArea( aAreaSM0 ) )
 	RestArea( aArea )
-	//TODO Criar campos fixos como vazios na query no dicionario
+
 	aAdd( aCpos, "SRA.RA_MAT, " )
 	aAdd( aCpos, "SRA.RA_NOME, " )
 	aAdd( aCpos, "SRA.RA_NOMECMP, " )
 	aAdd( aCpos, "SRA.RA_APELIDO, " )
 	aAdd( aCpos, "SRA.RA_CARGO," )
 	aAdd( aCpos, cCase )//M0_FILIAL
-	aAdd( aCpos, "RA_XRAMAL='', " )
-	aAdd( aCpos, "RA_XRAMAL2='', " )
-	aAdd( aCpos, "RA_XRAMAL3='', " )
+	aAdd( aCpos, "SRA.RA_XRAMAL, " )
+	aAdd( aCpos, "SRA.RA_XRAMAL2, " )
+	aAdd( aCpos, "SRA.RA_XRAMAL3, " )
 	aAdd( aCpos, "SRA.RA_DEPTO, " )
 	aAdd( aCpos, "QB_DESCRIC = COALESCE(SQB.QB_DESCRIC,''), " )
 	aAdd( aCpos, "SRA.RA_DEMISSA, " )
@@ -166,8 +221,8 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	aAdd( aCpos, "SRA.RA_SITFOLH, " )
 	aAdd( aCpos, "SRA.RA_EMAIL, " )
 	aAdd( aCpos, "SRA.RA_CIC, " )
-	aAdd( aCpos, "RA_XSIGLA='', " )
-	aAdd( aCpos, "RA_XLOGIN='' " )
+	aAdd( aCpos, "SRA.RA_XSIGLA, " )
+	aAdd( aCpos, "SRA.RA_XLOGIN " )
 
 	cQuery += "WITH PAGINA_SRA AS( "
 	cQuery += "SELECT "

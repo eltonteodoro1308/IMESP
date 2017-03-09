@@ -12,7 +12,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_APELIDO">
@@ -20,7 +20,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_DEPTO">
@@ -28,7 +28,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_NASC">
@@ -36,7 +36,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_CARGO">
@@ -44,7 +44,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_CIC">
@@ -52,7 +52,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_DEMISSA">
@@ -60,7 +60,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_EMAIL">
@@ -68,7 +68,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_FILIAL">
@@ -76,7 +76,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_MAT">
@@ -84,7 +84,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_NOME">
@@ -92,7 +92,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_NOMECMP">
@@ -100,7 +100,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_SITFOLH">
@@ -108,7 +108,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_XLOGIN">
@@ -116,7 +116,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="Q3_CLASSE">
@@ -124,7 +124,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_XRAMAL">
@@ -132,7 +132,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_XRAMAL2">
@@ -140,7 +140,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_XRAMAL3">
@@ -148,7 +148,7 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="RA_XSIGLA">
@@ -156,16 +156,16 @@
 									<xs:sequence>
 										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
-									<xs:attribute type="xs:byte" name="order" use="required"/>
+									<xs:attribute type="xs:positiveInteger" name="order" use="required"/>
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute type="xs:byte" name="record" use="required"/>
+						<xs:attribute type="xs:positiveInteger" name="record" use="required"/>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="TOTAL_SEARCH_RECORDS">
 					<xs:complexType>
-						<xs:attribute type="xs:short" name="value"/>
+						<xs:attribute type="xs:positiveInteger" name="value"/>
 					</xs:complexType>
 				</xs:element>
 				<xs:element type="xs:string" name="ERROR"/>
