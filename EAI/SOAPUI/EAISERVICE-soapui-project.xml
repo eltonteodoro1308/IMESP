@@ -54,10 +54,7 @@
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <tot:RECEIVEMESSAGE>\r
-         <tot:INMSG><![CDATA[
-
-
-         
+         <tot:INMSG><![CDATA[         
 <TOTVSIntegrator>
 	<GlobalProduct>TOTVS|EAI</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
