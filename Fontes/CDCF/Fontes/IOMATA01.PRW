@@ -121,7 +121,7 @@ Static Function ExecInteg( cUUID )
 	If DbSeek( xFilial( 'ZX1' ) + cUUID )
 
 		FWJsonDeserialize( ZX1->ZX1_PARAMS, @aParams )
-		// TODO Voltar a buscar XML no Web Sercice do CDCF
+		//TODO Voltar a buscar XML no Web Sercice do CDCF
 		Eval( {|| oXml:= TXmlManager():New(), oXml:ParseFile( '\xml\cdcf.xml' ), cXml := oXml:Save2String() } )
 		//cXml := GetXmlCDCF( cUUID, AllTrim( ZX1->ZX1_METODO ), aParams )
 
@@ -772,7 +772,10 @@ Static Function RunExecAuto( cUUID, cXmlPrc, aClientes )
 		End If
 
 		EndTran()
-
+			
+//TODO A seguir as consultas ao array de clientes para consulta de dados para registro do log
+	//aClientes[nX, 1,aScan( aClientes[nX,1], {|X| X[1] == "A1_COD"} ),2]
+	//aClientes[nX, 2, nPos, 1, aScan(  aClientes[nX, 2, nPos, 1], {|X| X[1] == "U5_CODCONT"} ), 2]
 		aAdd( aLogCli, { } )
 
 		If ! lMsErroAuto
