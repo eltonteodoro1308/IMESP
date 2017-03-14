@@ -13,7 +13,7 @@ Função acionada pelo EAI que retorna a foto do cadastro do funcionário conforme 
 - OS parâmetros são enviados na forma de uma string, separados por ','. No exemplo acima, a variável cParams irá receber a string 3536,65
 - Para Função deverá ser passado dois parâmetro o primeiro com o código do funcionário e o segundo deve ser 65 para foto só de rosto do campo RA_BITMAP1 e 200 para foto do campo RA_BITIMAP2 .
 @param oFwEai  , Object  , O objeto de EAI criado na camada do EAI Protheus. A manipulação deste objeto deve ser realizada com o máximo de cautela, e deve ser evitada ao máximo.
-@return cRet   , Imagem solicitado em formato Base64
+@return cRet   , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
 /*/
 User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 

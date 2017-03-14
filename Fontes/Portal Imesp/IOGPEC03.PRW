@@ -5,9 +5,13 @@ Função acionada pelo EAI que retorna a lista de afastamentos do funcionário conf
 @since 13/03/2016
 @version 12.1.014
 @param cXml  , Caracter, O conteúdo da tag Content do XML recebido pelo EAI Protheus.
-@return cRet , Imagem solicitado em formato Base64
+@param cError  , Caracter, Variável passada por referência, serve para alimentar a mensagem de erro, nos casos em que a transação não foi bem sucedida.
+@param cWarning, Caracter, Variável passada por referência, serve para alimentar uma mensagem de warning para o EAI. A alteração deste valor por rotinas tratadas neste tópico não causam nenhum efeito para o EAI.
+@param cParams , Caracter, Parâmetros passados na mensagem do EAI.
+@param oFwEai  , Object  , O objeto de EAI criado na camada do EAI Protheus. A manipulação deste objeto deve ser realizada com o máximo de cautela, e deve ser evitada ao máximo.
+@return cRet   , Xml de retorno
 /*/
-User Function IOGPEC03( cXml )
+User Function IOGPEC03( cXml, cError, cWarning, cParams, oFwEai )
 
 	Local cRet     := '<IOGPEC03_RET>'
 	Local cErro    := ''
@@ -35,6 +39,7 @@ User Function IOGPEC03( cXml )
 		cQuery += "WHERE SRA.D_E_L_E_T_= ' ' "
 		cQuery += "AND SR8.D_E_L_E_T_= ' ' "
 		cQuery += "AND RCM.D_E_L_E_T_= ' ' "
+		cQuery += "AND SRA.RA_FILIAL = '" + oFwEai:cDocBranch + "' "
 		cQuery += "AND SRA.RA_MAT = '" + cMat + "' "
 		cQuery += "AND SR8.R8_DATAINI >= '" + cDataIni + "' "
 		cQuery += "AND SR8.R8_DATAFIM <= '" + cDataFim + "' "

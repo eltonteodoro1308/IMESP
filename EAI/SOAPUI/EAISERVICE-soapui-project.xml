@@ -168,7 +168,7 @@
 	<GlobalDocumentFunctionDescription>Afastamentos</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
 	<DocDateTime>2017-03-14T00:00:00Z</DocDateTime>
-	<DocIdentifier>CC60F3CA-D649-492B-9114-5CB437BCB12C</DocIdentifier>
+	<DocIdentifier>3C00AD64-A637-4CAE-A03C-001CB813BABA</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -181,9 +181,9 @@
 			<FunctionCode>U_IOGPEC03</FunctionCode>
 			<Content>
 				<IOGPEC03_REM>
-					<RA_MAT>004642</RA_MAT>
-					<R8_DATAINI>20060101</R8_DATAINI>
-					<R8_DATAFIM>20161231</R8_DATAFIM>
+					<RA_MAT>004155</RA_MAT>
+					<R8_DATAINI>19000101</R8_DATAINI>
+					<R8_DATAFIM>20171231</R8_DATAFIM>
 				</IOGPEC03_REM>
 			</Content>
 		</Layouts>
