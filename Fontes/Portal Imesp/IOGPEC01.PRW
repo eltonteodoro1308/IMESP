@@ -196,9 +196,14 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	Local nX       := ""
 
 	Default cWhere     := ""
-	Default cOrder     := "SRA.RA_MAT"
 	Default nNumRegPag := 0
 	Default nPagina    := 0
+
+	If Empty(cOrder)
+
+		cOrder := "SRA.RA_MAT"
+
+	End If
 
 	cCase += "CASE "
 

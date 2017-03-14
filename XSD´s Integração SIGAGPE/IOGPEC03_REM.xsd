@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Descreve o layout do xml de remessa para pesquisa de afastamentos de funcionarios -->
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!-- Descreve o layout do xml de remessa para pesquisa de afastamentos de  	funcionarios -->
+<xs:schema attributeFormDefault="unqualified" 	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:element name="IOGPEC03_REM">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="RA_MAT">
+				<xs:element name="RA_MAT" maxOccurs="1" minOccurs="1">
 					<xs:simpleType>
-						<xs:list itemType="xs:string"/>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="[0-9]{6}"/>
+						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element type="xs:string" name="R8_DATAINI"/>
-				<xs:element type="xs:string" name="R8_DATAFIM"/>
+				<xs:element name="R8_DATAINI" maxOccurs="1" minOccurs="1" type="PROTHEUS_DATE"/>
+				<xs:element name="R8_DATAFIM" maxOccurs="1" minOccurs="1" type="PROTHEUS_DATE"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	<xs:simpleType name="PROTHEUS_DATE">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{4}[0-1]{1}[0-9]{1}[0-3]{1}[0-9]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
