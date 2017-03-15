@@ -30,7 +30,6 @@ User Function IOGPEC01( cXml )
 	Local cRelation  := ''
 	Local cOperator  := ''
 	Local nX         := 0
-	Local nY         := 0
 
 	If oXml:Parse( cXML ) .And.;
 	oXml:ParseSchemaFile('\schemas\IOGPEC01_REM.xsd') .And.;
@@ -116,7 +115,7 @@ User Function IOGPEC01( cXml )
 
 		If TcSqlExec( cQuery ) < 0
 
-			cPesq := '<IOGPEC01_SRA record="0"></IOGPEC01_SRA>'
+			cPesq := '<IOGPEC01_SRA></IOGPEC01_SRA>'
 			cErro := TcSqlError()
 
 		Else
@@ -129,7 +128,7 @@ User Function IOGPEC01( cXml )
 
 				If ! AllTrim( (cTmp)->RA_MAT ) == 'COUNT'
 
-					cPesq += '<IOGPEC01_SRA record="' + cValToChar(++nY) + '">'
+					cPesq += '<IOGPEC01_SRA>'
 
 					For nX := 1 To ( cTmp )->( FCount() )
 
@@ -137,9 +136,9 @@ User Function IOGPEC01( cXml )
 
 						If cField # 'ROW_NUMBER'
 
-							cPesq += '<' + cField + ' order="'+ cValToChar( nX ) +'"><value>'
+							cPesq += '<' + cField + '>'
 							cPesq += AllTrim( ( cTmp )->( FieldGet( nX ) ) )
-							cPesq += '</value></' + cField + '>'
+							cPesq += '</' + cField + '>'
 
 						EndIf
 
@@ -161,7 +160,7 @@ User Function IOGPEC01( cXml )
 
 	Else
 
-		cPesq := '<IOGPEC01_SRA record="0"></IOGPEC01_SRA>'
+		cPesq := '<IOGPEC01_SRA></IOGPEC01_SRA>'
 		cErro := 'Erro no Parse ou Schema Validate do XML enviado: ' + oXml:LastError()
 
 	EndIf
