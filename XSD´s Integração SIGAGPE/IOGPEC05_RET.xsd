@@ -19,3 +19,10 @@
 		</xs:complexType>
 	</xs:element>
 </xs:schema>
+
+<!--
+RD4_CHAVE
+RD4_DESC
+RD4_CODIDE
+
+-->
