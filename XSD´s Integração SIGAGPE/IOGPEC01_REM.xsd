@@ -1,67 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Descreve o layout do xml de remessa para pesquisa do cadastro de funcionarios -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 	attributeFormDefault="unqualified" elementFormDefault="qualified">
 	<xs:element name="IOGPEC01_REM">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="filter" maxOccurs="unbounded" minOccurs="0">
+				<xs:element name="filter" maxOccurs="unbounded"	minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="value" maxOccurs="1" minOccurs="1" default="string">
+							<xs:element name="value" maxOccurs="1" minOccurs="1"	default="string">
 								<xs:simpleType>
 									<xs:restriction base="xs:string">
-										<xs:minLength value="1"/>
+										<xs:minLength value="1" />
 									</xs:restriction>
 								</xs:simpleType>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute name="field" use="required">
+						<xs:attribute name="function" use="optional">
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
-									<xs:enumeration value="QB_DESCRIC"/>
-									<xs:enumeration value="RA_APELIDO"/>
-									<xs:enumeration value="RA_DEPTO"/>
-									<xs:enumeration value="RA_NASC"/>
-									<xs:enumeration value="RA_CIC"/>
-									<xs:enumeration value="RA_FILIAL"/>
-									<xs:enumeration value="RA_MAT"/>
-									<xs:enumeration value="RA_NOME"/>
-									<xs:enumeration value="RA_NOMECMP"/>
-									<xs:enumeration value="RA_SITFOLH"/>
-									<xs:enumeration value="RA_XLOGIN"/>
-									<xs:enumeration value="Q3_CLASSE"/>
-									<xs:enumeration value="RA_XRAMAL"/>
-									<xs:enumeration value="RA_XRAMAL2"/>
-									<xs:enumeration value="RA_XRAMAL3"/>
-									<xs:enumeration value="RA_XSIGLA"/>
+									<xs:enumeration value="LEN" />
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
+						<xs:attribute name="field" use="required" type="FIELDS" />
 						<xs:attribute name="relation" use="optional" default="EQUAL">
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
-									<xs:enumeration value="EQUAL"/>
-									<xs:enumeration value="NOT_EQUAL"/>
-									<xs:enumeration value="LESS"/>
-									<xs:enumeration value="LESS_EQUAL"/>
-									<xs:enumeration value="GREATER"/>
-									<xs:enumeration value="GREATER_EQUAL"/>
-									<xs:enumeration value="CONTAINS"/>
-									<xs:enumeration value="NOT_CONTAINS"/>
-									<xs:enumeration value="IS_CONTAINED"/>
-									<xs:enumeration value="IS_NOT_CONTAINED"/>
-									<xs:enumeration value="START_WITH"/>
-									<xs:enumeration value="NOT_START_WITH"/>
-									<xs:enumeration value="ENDS_WITH"/>
-									<xs:enumeration value="NOT_ENDS_WITH"/>
+									<xs:enumeration value="EQUAL" />
+									<xs:enumeration value="NOT_EQUAL" />
+									<xs:enumeration value="LESS" />
+									<xs:enumeration value="LESS_EQUAL" />
+									<xs:enumeration value="GREATER" />
+									<xs:enumeration value="GREATER_EQUAL" />
+									<xs:enumeration value="CONTAINS" />
+									<xs:enumeration value="NOT_CONTAINS" />
+									<xs:enumeration value="IS_CONTAINED" />
+									<xs:enumeration value="IS_NOT_CONTAINED" />
+									<xs:enumeration value="START_WITH" />
+									<xs:enumeration value="NOT_START_WITH" />
+									<xs:enumeration value="ENDS_WITH" />
+									<xs:enumeration value="NOT_ENDS_WITH" />
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
 						<xs:attribute name="operator" use="optional" default="AND">
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
-									<xs:enumeration value="AND"/>
-									<xs:enumeration value="OR"/>
+									<xs:enumeration value="AND" />
+									<xs:enumeration value="OR" />
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
@@ -70,8 +56,8 @@
 				<xs:element name="SORT" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="ASC" type="SORT_FIELDS" minOccurs="0" maxOccurs="unbounded"/>
-							<xs:element name="DESC" type="SORT_FIELDS" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="ASC" type="FIELDS" minOccurs="0"	maxOccurs="unbounded" />
+							<xs:element name="DESC" type="FIELDS" minOccurs="0"	maxOccurs="unbounded" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -80,14 +66,14 @@
 						<xs:attribute name="number_of_records" use="required">
 							<xs:simpleType>
 								<xs:restriction base="xs:positiveInteger">
-									<xs:minInclusive value="1"/>
+									<xs:minInclusive value="1" />
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
 						<xs:attribute name="page" use="required">
 							<xs:simpleType>
 								<xs:restriction base="xs:positiveInteger">
-									<xs:minInclusive value="1"/>
+									<xs:minInclusive value="1" />
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
@@ -96,27 +82,28 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:simpleType name="SORT_FIELDS">
+	<xs:simpleType name="FIELDS">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="QB_DESCRIC"/>
-			<xs:enumeration value="RA_APELIDO"/>
-			<xs:enumeration value="RA_DEPTO"/>
-			<xs:enumeration value="RA_NASC"/>
-			<xs:enumeration value="RA_CARGO"/>
-			<xs:enumeration value="RA_CIC"/>
-			<xs:enumeration value="RA_DEMISSA"/>
-			<xs:enumeration value="RA_EMAIL"/>
-			<xs:enumeration value="RA_FILIAL"/>
-			<xs:enumeration value="RA_MAT"/>
-			<xs:enumeration value="RA_NOME"/>
-			<xs:enumeration value="RA_NOMECMP"/>
-			<xs:enumeration value="RA_SITFOLH"/>
-			<xs:enumeration value="RA_XLOGIN"/>
-			<xs:enumeration value="Q3_CLASSE"/>
-			<xs:enumeration value="RA_XRAMAL"/>
-			<xs:enumeration value="RA_XRAMAL2"/>
-			<xs:enumeration value="RA_XRAMAL3"/>
-			<xs:enumeration value="RA_XSIGLA"/>
+			<xs:enumeration value="QB_DESCRIC" />
+			<xs:enumeration value="RA_APELIDO" />
+			<xs:enumeration value="RA_DEPTO" />
+			<xs:enumeration value="RD4_CHAVE" />
+			<xs:enumeration value="RA_NASC" />
+			<xs:enumeration value="RA_CARGO" />
+			<xs:enumeration value="RA_CIC" />
+			<xs:enumeration value="RA_DEMISSA" />
+			<xs:enumeration value="RA_EMAIL" />
+			<xs:enumeration value="RA_FILIAL" />
+			<xs:enumeration value="RA_MAT" />
+			<xs:enumeration value="RA_NOME" />
+			<xs:enumeration value="RA_NOMECMP" />
+			<xs:enumeration value="RA_SITFOLH" />
+			<xs:enumeration value="RA_XLOGIN" />
+			<xs:enumeration value="Q3_CLASSE" />
+			<xs:enumeration value="RA_XRAMAL" />
+			<xs:enumeration value="RA_XRAMAL2" />
+			<xs:enumeration value="RA_XRAMAL3" />
+			<xs:enumeration value="RA_XSIGLA" />
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

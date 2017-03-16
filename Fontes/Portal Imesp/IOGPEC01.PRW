@@ -29,6 +29,8 @@ User Function IOGPEC01( cXml )
 	Local cValue     := ''
 	Local cRelation  := ''
 	Local cOperator  := ''
+	Local cFunction  := ''
+	Local cTemp      := ''
 	Local nX         := 0
 
 	If oXml:Parse( cXML ) .And.;
@@ -45,7 +47,7 @@ User Function IOGPEC01( cXml )
 			If ! oXml:cName $ 'SORT/PAGINATION'
 
 				nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'field' } )
-				cfield    := aAttNode[ nPos, 2 ]
+				cField    := aAttNode[ nPos, 2 ]
 
 				cValue    := Upper( aChildNode[ 1, 2 ] )
 
@@ -55,7 +57,10 @@ User Function IOGPEC01( cXml )
 				nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'operator' } )
 				cOperator := If( nPos == 0, 'AND', aAttNode[ nPos, 2 ] )
 
-				aAdd( aWhere, { cField, cValue, cRelation, cOperator } )
+				nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'function' } )
+				cFunction := If( nPos == 0, '', aAttNode[ nPos, 2 ] )
+
+				aAdd( aWhere, { cField, cValue, cRelation, cOperator, cFunction } )
 
 			ElseIf oXml:cName == 'SORT'
 
@@ -107,7 +112,18 @@ User Function IOGPEC01( cXml )
 
 		For nX:= 1 To Len( aWhere )
 
-			cWhere += MakeWhere( aWhere[nX,1], aWhere[nX,2], aWhere[nX,3], aWhere[nX,4], nX == 1 , nX == Len( aWhere ) )
+			cTemp := MakeWhere( aWhere[nX,1], aWhere[nX,2], aWhere[nX,3], aWhere[nX,4], aWhere[nX,5], nX == 1 , nX == Len( aWhere ) )
+
+			If SubStr( cTemp, 1, Len("Permitido") ) = "Permitido"
+
+				cPesq := '<IOGPEC01_SRA></IOGPEC01_SRA>'
+				Return '<IOGPEC01_RET>' + cPesq + '<ERROR>' + cTemp + '</ERROR></IOGPEC01_RET>'
+
+			Else
+
+				cWhere += cTemp
+
+			EndIf
 
 		Next nX
 
@@ -166,8 +182,6 @@ User Function IOGPEC01( cXml )
 	EndIf
 
 	RestArea( aArea )
-
-
 
 	cRet := '<IOGPEC01_RET>' + cPesq + '<ERROR>' + cErro + '</ERROR></IOGPEC01_RET>'
 
@@ -230,6 +244,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	aAdd( aCpos, "SRA.RA_XRAMAL2, " )
 	aAdd( aCpos, "SRA.RA_XRAMAL3, " )
 	aAdd( aCpos, "SRA.RA_DEPTO, " )
+	aAdd( aCpos, "RD4_CHAVE = COALESCE(RD4.RD4_CHAVE,''), " )
 	aAdd( aCpos, "QB_DESCRIC = COALESCE(SQB.QB_DESCRIC,''), " )
 	aAdd( aCpos, "SRA.RA_DEMISSA, " )
 	aAdd( aCpos, "Q3_CLASSE = COALESCE(SQ3.Q3_CLASSE,''), " )
@@ -254,6 +269,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	cQuery += "FROM " + RetSqlName( "SRA" ) + " SRA "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO = SQB.QB_DEPTO "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO "
+	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO = RD4.RD4_CODIDE "
 	cQuery += "WHERE SRA.D_E_L_E_T_ = ' ' "
 	cQuery += cWhere
 	cQuery += ")SELECT * FROM PAGINA_SRA "
@@ -272,6 +288,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	cQuery += "SELECT COUNT(*) ,'COUNT'" + Replicate( ",''", Len( aCpos ) - 1 ) + " FROM " + RetSqlName( "SRA" ) + " SRA "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO = SQB.QB_DEPTO "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO "
+	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO = RD4.RD4_CODIDE "
 	cQuery += "WHERE SRA.D_E_L_E_T_ = ' ' "
 	cQuery += cWhere
 
@@ -282,12 +299,24 @@ Função que monta as cláusulas where
 @author Elton Teodoro Alves
 @since 08/03/2017
 @version 12.1.014
-@param cRelation, characters, Relação enviada pelo XML
+@param cField, characters, descricao
+@param cValue, characters, descricao
+@param cRelation, characters, descricao
+@param cOperator, characters, descricao
+@param cFunction, characters, descricao
+@param lFirst, logical, descricao
+@param lLast, logical, descricao
 @return characters, Relação SQL correspondente
 /*/
-Static Function MakeWhere( cField, cValue, cRelation, cOperator, lFirst, lLast )
+Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, lFirst, lLast )
 
 	Local cRet := ''
+
+	If ! Empty( cFunction ) .AND. ! cRelation $ "EQUAL/NOT_EQUAL/LESS/LESS_EQUAL/GREATER/GREATER_EQUAL"
+
+		Return 'Permitido utilizar atributo "function" somente quando o atributo "relation" for igual a "EQUAL, NOT_EQUAL, LESS, LESS_EQUAL, GREATER, GREATER_EQUAL"'
+
+	EndIf
 
 	If SubStr( cField, 3, 1 ) == '_'
 
@@ -301,7 +330,21 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, lFirst, lLast )
 
 	End If
 
-	cField := "UPPER(" + cField + ")"
+	If ! Empty( cFunction )
+
+		cField := cFunction + "(" + cField + ")"
+
+	ElseIf ! cRelation $ "IS_NOT_CONTAINED/IS_CONTAINED"
+
+		cValue := "'" + cValue + "'"
+
+	EndIf
+
+	If Empty( cFunction )
+
+		cField := "UPPER(" + cField + ")"
+
+	EndIf
 
 	If lFirst
 
@@ -315,27 +358,27 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, lFirst, lLast )
 
 	If cRelation == "EQUAL"
 
-		cRet += cField + " = '" + cValue + "' "
+		cRet += cField + " = " + cValue + " "
 
 	ElseIf cRelation == "NOT_EQUAL"
 
-		cRet += cField + " <> '" + cValue + "' "
+		cRet += cField + " <> " + cValue + " "
 
 	ElseIf cRelation == "LESS"
 
-		cRet += cField + " < '" + cValue + "' "
+		cRet += cField + " < " + cValue + " "
 
 	ElseIf cRelation == "LESS_EQUAL"
 
-		cRet += cField + " <= '" + cValue + "' "
+		cRet += cField + " <= " + cValue + " "
 
 	ElseIf cRelation == "GREATER"
 
-		cRet += cField + " > '" + cValue + "' "
+		cRet += cField + " > " + cValue + " "
 
 	ElseIf cRelation == "GREATER_EQUAL"
 
-		cRet += cField + " >= '" + cValue + "' "
+		cRet += cField + " >= " + cValue + " "
 
 	ElseIf cRelation == "CONTAINS"
 

@@ -17,6 +17,7 @@
 							<xs:element name="RA_XRAMAL2" type="xs:string"/>
 							<xs:element name="RA_XRAMAL3" type="xs:string"/>
 							<xs:element name="RA_DEPTO" type="xs:string"/>
+							<xs:element name="RD4_CHAVE" type="xs:string"/>
 							<xs:element name="QB_DESCRIC" type="xs:string"/>
 							<xs:element name="RA_DEMISSA" type="xs:string"/>
 							<xs:element name="Q3_CLASSE" type="xs:string"/>
