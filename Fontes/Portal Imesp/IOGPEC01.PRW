@@ -270,7 +270,10 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO = SQB.QB_DEPTO "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO "
 	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO = RD4.RD4_CODIDE "
-	cQuery += "WHERE SRA.D_E_L_E_T_ = ' ' "
+	cQuery += "WHERE COALESCE(SRA.D_E_L_E_T_, ' ') = ' ' "
+	cQuery += "AND COALESCE(SQB.D_E_L_E_T_, ' ') = ' ' "
+	cQuery += "AND COALESCE(SQ3.D_E_L_E_T_, ' ') = ' ' "
+	cQuery += "AND COALESCE(RD4.D_E_L_E_T_, ' ') = ' ' "
 	cQuery += cWhere
 	cQuery += ")SELECT * FROM PAGINA_SRA "
 
@@ -289,7 +292,10 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO = SQB.QB_DEPTO "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO "
 	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO = RD4.RD4_CODIDE "
-	cQuery += "WHERE SRA.D_E_L_E_T_ = ' ' "
+	cQuery += "WHERE COALESCE(SRA.D_E_L_E_T_, ' ') = ' ' "
+	cQuery += "AND COALESCE(SQB.D_E_L_E_T_, ' ') = ' ' "
+	cQuery += "AND COALESCE(SQ3.D_E_L_E_T_, ' ') = ' ' "
+	cQuery += "AND COALESCE(RD4.D_E_L_E_T_, ' ') = ' ' "
 	cQuery += cWhere
 
 Return

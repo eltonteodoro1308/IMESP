@@ -4,13 +4,12 @@
 	<xs:element name="IOGPEC05_RET">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="IOGPEC05_SQB">
+				<xs:element name="IOGPEC05_RD4">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element type="xs:string" name="QB_DEPTO"/>
-							<xs:element type="xs:string" name="QB_DESCRIC"/>
+							<xs:element type="xs:string" name="RD4_CODIDE"/>
 							<xs:element type="xs:string" name="RD4_CHAVE"/>
-							<xs:element type="xs:string" name="RD4_TREE"/>
+							<xs:element type="xs:string" name="RD4_DESC"/>
 						</xs:sequence>
 						<xs:attribute type="xs:byte" name="order"/>
 					</xs:complexType>
@@ -19,10 +18,3 @@
 		</xs:complexType>
 	</xs:element>
 </xs:schema>
-
-<!--
-RD4_CHAVE
-RD4_DESC
-RD4_CODIDE
-
--->

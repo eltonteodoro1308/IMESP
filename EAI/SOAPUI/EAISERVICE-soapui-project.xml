@@ -61,8 +61,8 @@
 	<GlobalDocumentFunctionCode>IOGPEC01</GlobalDocumentFunctionCode>
 	<GlobalDocumentFunctionDescription>Funcionarios</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2017-03-07T00:00:00Z</DocDateTime>
-	<DocIdentifier>093E0E9A-656F-4C01-B4ED-4FE19198BC6F</DocIdentifier>
+	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
+	<DocIdentifier>953115DE-3A18-4794-B148-78F3028B5F1A</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -74,12 +74,17 @@
 			<Identifier>IOGPEC01</Identifier>
 			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
-				<IOGPEC01_REM xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="IOGPEC01_REM.xsd">
-					<filter field="RD4_CHAVE" relation="EQUAL" function="LEN">
-						<value>6</value>
-					</filter>
-					<PAGINATION number_of_records="5" page="1"/>
-				</IOGPEC01_REM>
+				<IOGPEC01_REM>
+	<filter field="RA_MAT" relation="IS_CONTAINED" operator="AND">
+		<value>004641, 004642, 004643,</value>
+	</filter>
+	<filter field="RA_SITFOLH" relation="NOT_EQUAL" operator="AND">
+		<value>D</value>
+	</filter>
+	<SORT>
+		<ASC>RA_NOMECMP</ASC>
+	</SORT>
+</IOGPEC01_REM>
 			</Content>
 		</Layouts>
 	</Message>
@@ -188,4 +193,4 @@
          ]]]]>><![CDATA[</tot:INMSG>\r
       </tot:RECEIVEMESSAGE>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
