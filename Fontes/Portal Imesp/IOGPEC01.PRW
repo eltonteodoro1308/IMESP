@@ -239,6 +239,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	aAdd( aCpos, "SRA.RA_NOMECMP, " )
 	aAdd( aCpos, "SRA.RA_APELIDO, " )
 	aAdd( aCpos, "SRA.RA_CARGO," )
+	aAdd( aCpos, "SQ3.Q3_DESCSUM," )
 	aAdd( aCpos, cCase )//M0_FILIAL
 	aAdd( aCpos, "SRA.RA_XRAMAL, " )
 	aAdd( aCpos, "SRA.RA_XRAMAL2, " )
