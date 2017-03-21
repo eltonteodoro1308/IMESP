@@ -32,13 +32,13 @@ User Function myMata030()
 	RpcSetEnv("99","01")
 
 	aVetor:={;
-	{"A1_COD"       ,"888888"           	,Nil},; // Codigo
+	{"A1_COD"       ,"999999"           	,Nil},; // Codigo
 	{"A1_LOJA"      ,"00"               	,Nil},; // Loja
 	{"A1_NOME"      ,"INC. AUTOMATICO"  	,Nil},; // Nome
 	{"A1_NREDUZ"    ,"AUTOMATICO"			,Nil},; // Nome reduz.
 	{"A1_TIPO"      ,"R"					,Nil},; // Tipo
 	{"A1_END"       ,"RUA AUTOMATICA"		,Nil},; // Endereco
-	{"A1_EST"       ,"SP"				    ,Nil},;  // Estado
+	{"A1_EST"       ,""				    ,Nil},;  // Estado
 	{"A1_COD_MUN"   ,'50308'                ,Nil},; // Cod Cidade
 	{"A1_MUN"       ,"SAO PAULO"		    ,Nil}} // Cidad
 
@@ -46,7 +46,16 @@ User Function myMata030()
 
 	If lMsErroAuto
 
-		VarInfo( 'GetAutoGRLog()', GetAutoGRLog(), , .F.,.T.)
+		aErro := GetAutoGRLog()
+
+		//VarInfo( 'aErro', aErro, , .F.,.T.)
+
+		For nX := 1 To Len( aErro )
+
+			ConOut( aErro[nX] )
+
+		Next nX
+
 
 	Else
 

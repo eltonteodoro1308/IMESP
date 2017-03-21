@@ -1,4 +1,5 @@
 #INCLUDE 'TOTVS.CH'
+#INCLUDE 'FWMVCDEF.CH'
 
 /*/{Protheus.doc} IOMT2LOG
 Registra o Log da Requisição de integração com o CDCF e envia e-mail com erro no processamento
@@ -24,7 +25,7 @@ para as contas definidas na tabela genéria ZX caso o ZX1_STATUS seja definido co
 @param cHoraPr, characters, Hora do Processamento do XML retornado pelo método do CDCF
 @param cXmlPrc, characters, XML de Processamento retornado pelo método invocado no WebService do CDCF
 @param cObserv, characters, Observações do Processamento. Registro de erros e alertas durante todo o processo de integração
-@param aArrCli, array, Array com os dados dos Clientes e seus contatos processados na integração, composto por:
+@param aLogCli, array, Array com os dados dos Clientes e seus contatos processados na integração, composto por:
 [N,1] - Código ERP do Cliente
 [N,2] - Código CDCF do Cliente
 [N,3] - Razão Social do Cliente
@@ -38,11 +39,13 @@ para as contas definidas na tabela genéria ZX caso o ZX1_STATUS seja definido co
 [N,M,4] - Importado 1=Sim/2=Não
 @return logical, Indica se a gravação do registro ocorreu sem erros.
 /*/
-User Function IOMT2LOG( cUUID, cEmpPrc, cFilPrc, dDataRe, cHoraRe, cMetodo, cStatus, cXmlRec, cParams, dDataPr, cHoraPr, cXmlPrc, cObserv, aArrCli )
+User Function IOMT2LOG( cUUID, cEmpPrc, cFilPrc, dDataRe, cHoraRe, cMetodo, cStatus, cXmlRec, cParams, dDataPr, cHoraPr, cXmlPrc, cObserv, aLogCli )
 
 	Local lRet   := .T.
-	Local oModel := Model()
+	Local oModel := ModelDef()
 	Local aArea  := GetArea()
+	Local nX     := 0
+	Local nY     := 0
 
 	DbSelectArea( 'ZX1' )
 	DbSetOrder( 2 )
@@ -73,7 +76,43 @@ User Function IOMT2LOG( cUUID, cEmpPrc, cFilPrc, dDataRe, cHoraRe, cMetodo, cSta
 	If ( ValType( cXmlPrc  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_XMLPRC', cXmlPrc  ), Nil )
 	If ( ValType( cObserv  ) != 'U', oModel:SetValue( 'ZX1_FIELD_MODEL', 'ZX1_OBSERV', cObserv  ), Nil )
 
-	If ! Empty( aArrCli )
+	If ! Empty( aLogCli )
+
+		For nX := 1 To Len( aLogCli )
+
+			If nX > 1
+
+				oModel:GetModel( 'ZX2_GRID_MODEL' ):AddLine()
+
+			EndIf
+
+			oModel:SetValue( 'ZX2_GRID_MODEL', 'ZX2_ITEM'   , StrZero( nX, TamSx3( 'ZX2_ITEM' )[ 1 ] ) )
+			oModel:SetValue( 'ZX2_GRID_MODEL', 'ZX2_CODERP' , aLogCli[ nX, 1 ] )
+			oModel:SetValue( 'ZX2_GRID_MODEL', 'ZX2_CODCDC' , aLogCli[ nX, 2 ] )
+			oModel:SetValue( 'ZX2_GRID_MODEL', 'ZX2_RAZAO'  , aLogCli[ nX, 3 ] )
+			oModel:SetValue( 'ZX2_GRID_MODEL', 'ZX2_FANTAS' , aLogCli[ nX, 4 ] )
+			oModel:SetValue( 'ZX2_GRID_MODEL', 'ZX2_OBSERV' , aLogCli[ nX, 5 ] )
+			oModel:SetValue( 'ZX2_GRID_MODEL', 'ZX2_STATUS' , aLogCli[ nX, 6 ] )
+			oModel:SetValue( 'ZX2_GRID_MODEL', 'ZX2_ARREXE' , aLogCli[ nX, 7 ] )
+
+			For nY := 1 To Len( aLogCli[ nX, 8 ] )
+
+				If nY > 1
+
+					oModel:GetModel( 'ZX3_GRID_MODEL' ):AddLine()
+
+				EndIf
+
+				oModel:SetValue( 'ZX3_GRID_MODEL', 'ZX3_ITEM'   , StrZero( nY, TamSx3( 'ZX3_ITEM' )[ 1 ] ) )
+				oModel:SetValue( 'ZX3_GRID_MODEL', 'ZX3_CODCDC' , aLogCli[ nX, 8, nY, 1 ] )
+				oModel:SetValue( 'ZX3_GRID_MODEL', 'ZX3_NOME'   , aLogCli[ nX, 8, nY, 2 ] )
+				oModel:SetValue( 'ZX3_GRID_MODEL', 'ZX3_OBSERV' , aLogCli[ nX, 8, nY, 3 ] )
+				oModel:SetValue( 'ZX3_GRID_MODEL', 'ZX3_IMPORT' , aLogCli[ nX, 8, nY, 4 ] )
+				oModel:SetValue( 'ZX3_GRID_MODEL', 'ZX3_ARREXE' , aLogCli[ nX, 8, nY, 5 ] )
+
+			Next nY
+
+		Next nX
 
 	End If
 

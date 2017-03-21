@@ -6,9 +6,6 @@
 #DEFINE IMPORTADO_COM_FALHAS   '3'
 #DEFINE IMPORTADO              '4'
 
-#DEFINE CONF_SIM '1'
-#DEFINE CONF_NAO '2'
-
 /*/{Protheus.doc} IOMATA01
 User Function chamada via EAI para registrar na fila as requisições de importação do cadastro de clientes incluir e alterados do CDCF.
 @author Elton Teodoro Alves
@@ -122,8 +119,8 @@ Static Function ExecInteg( cUUID )
 
 		FWJsonDeserialize( ZX1->ZX1_PARAMS, @aParams )
 		//TODO Voltar a buscar XML no Web Sercice do CDCF
-		Eval( {|| oXml:= TXmlManager():New(), oXml:ParseFile( '\xml\cdcf.xml' ), cXml := oXml:Save2String() } )
-		//cXml := GetXmlCDCF( cUUID, AllTrim( ZX1->ZX1_METODO ), aParams )
+		//Eval( {|| oXml:= TXmlManager():New(), oXml:ParseFile( '\xml\cdcf.xml' ), cXml := oXml:Save2String() } )
+		cXml := GetXmlCDCF( cUUID, AllTrim( ZX1->ZX1_METODO ), aParams )
 
 		If ! Empty( cXml )
 
@@ -401,7 +398,14 @@ Retorna o valor da Tag descendente solicitada correspondenente a Tag posicionada
 /*/
 Static Function GetValTag( oXml, cTag )
 
-	cRet := oXml:DOMGetChildArray() [ aScan( oXml:DOMGetChildArray(), { | X | X[1] = cTag } ) ] [2]
+	Local cRet := ""
+	Local nPos := aScan( oXml:DOMGetChildArray(), { | X | X[1] = cTag } )
+
+	If nPos > 0
+
+		cRet := oXml:DOMGetChildArray() [ nPos, 2]
+
+	End If
 
 Return cRet
 
@@ -738,15 +742,32 @@ Executa o processamento do Array com os dados do cliente e seus contatos
 /*/
 Static Function RunExecAuto( cUUID, cXmlPrc, aClientes )
 
-	Local nX       := 0
-	Local nY       := 0
-	Local aArea    := GetArea()
-	Local cCodigo  := ''
-	Local nOpc     := 0
-	Local cCodCon  := ''
-	Local aLog     := {}
-	Local aLogCli  := {}
-	Local aLogCont := {}
+	Local nX         := 0
+	Local nY         := 0
+	Local nZ         := 0
+	Local aArea      := GetArea()
+	Local cCodigo    := ''
+	Local nOpc       := 0
+	Local cCodCon    := ''
+	Local aLog       := {}
+	Local aLogCli    := {}
+
+	Local cCodErp    := ''
+	Local cCodCdcf   := ''
+	Local cRazao     := ''
+	Local cFantas    := ''
+	Local cObserv    := ''
+	Local cStatus    := ''
+	Local cArrexe    := ''
+	Local aErro      := ''
+
+	Local cCodCont   := ''
+	Local cNomeCont  := ''
+	Local cObsCont   := ''
+	Local cImpCont   := ''
+	Local cArrexeCnt := ''
+
+	Local lAllOk     := .T.
 
 
 	Private	lMsErroAuto    := .F.
@@ -767,22 +788,40 @@ Static Function RunExecAuto( cUUID, cXmlPrc, aClientes )
 
 		If lMsErroAuto
 
+			lAllOk := lAllOk .And. ! lMsErroAuto
+
 			DisarmTransaction()
 
 		End If
 
 		EndTran()
-			
-//TODO A seguir as consultas ao array de clientes para consulta de dados para registro do log
-	//aClientes[nX, 1,aScan( aClientes[nX,1], {|X| X[1] == "A1_COD"} ),2]
-	//aClientes[nX, 2, nPos, 1, aScan(  aClientes[nX, 2, nPos, 1], {|X| X[1] == "U5_CODCONT"} ), 2]
-		aAdd( aLogCli, { } )
+
+		If lMsErroAuto
+
+			aErro := GetAutoGRLog()
+
+			For nZ := 1 To Len( aErro )
+
+				cObserv += aErro[ nZ ] + Chr( 13 ) + Chr( 10 )
+
+			Next nZ
+
+		EndIf
+
+		cCodErp := aClientes[nX, 1,aScan( aClientes[nX,1], {|X| X[1] == "A1_COD"} ),2]
+		cCodCdc := aClientes[nX, 1,aScan( aClientes[nX,1], {|X| X[1] == "A1_XCD_CDC"} ),2]
+		cRazao  := aClientes[nX, 1,aScan( aClientes[nX,1], {|X| X[1] == "A1_NOME"} ),2]
+		cFantas := aClientes[nX, 1,aScan( aClientes[nX,1], {|X| X[1] == "A1_NREDUZ"} ),2]
+		cStatus := If( lMsErroAuto, '2', '0' )
+		cArrexe := FWJsonSerialize( aClientes[ nX, 1 ] )
+
+		aAdd( aLogCli, { cCodErp, cCodCdc, cRazao, cFantas, cObserv, cStatus, cArrexe , Array(0) } )
 
 		If ! lMsErroAuto
 
-			BeginTran()
-
 			For nY := 1 To Len( aClientes[ NX, 2 ] )
+
+				BeginTran()
 
 				cCodCon := aClientes[ nX, 2, nY, 1, aScan( aClientes[ nX, 2, nY, 1 ], { | X | X[ 1 ] == 'U5_CODCONT' } ), 2 ]
 
@@ -790,36 +829,61 @@ Static Function RunExecAuto( cUUID, cXmlPrc, aClientes )
 
 				MSExecAuto( { | X, Y, Z, A, B | TMKA070( X, Y, Z, A, B ) }, aClientes[ nX, 2, nY, 1 ], 3, {}, aClientes[ nX, 2, nY, 2 ], .F. )
 
-				RecLock( 'AC8', .T. )
+				If ! lMsErroAuto
 
-				AC8->AC8_ENTIDA := 'SA1'
-				AC8->AC8_CODENT := aClientes[ nX, 1 , aScan( aClientes[ nX, 1 ], { | X | X[ 1 ] == 'A1_COD' } ), 2] + '01'
-				AC8->AC8_CODCON := aClientes[ nX, 2, nY, 1, aScan( aClientes[ nX, 2, nY, 1 ], { | X | X[ 1 ] == 'U5_CODCONT' } ), 2 ]
+					RecLock( 'AC8', .T. )
 
-				MsUnlock()
+					AC8->AC8_ENTIDA := 'SA1'
+					AC8->AC8_CODENT := aClientes[ nX, 1 , aScan( aClientes[ nX, 1 ], { | X | X[ 1 ] == 'A1_COD' } ), 2] + '01'
+					AC8->AC8_CODCON := aClientes[ nX, 2, nY, 1, aScan( aClientes[ nX, 2, nY, 1 ], { | X | X[ 1 ] == 'U5_CODCONT' } ), 2 ]
+
+					MsUnlock()
+
+				EndIf
 
 				If lMsErroAuto
 
-					VarInfo( 'GetAutoGRLog()', GetAutoGRLog(), , .F., .T. )
-					VarInfo( 'aClientes[ nX, 2, nY, 1 ]', aClientes[ nX, 2, nY, 1 ],, .F., .T. )
-					VarInfo( 'aClientes[ nX, 2, nY, 2 ]', aClientes[ nX, 2, nY, 2 ],, .F., .T. )
+					aErro := GetAutoGRLog()
+
+					For nZ := 1 To Len( aErro )
+
+						cObsCont += aErro[ nZ ] + Chr( 13 ) + Chr( 10 )
+
+					Next nZ
+
+				EndIf
+
+				cCodCont   := aClientes[nX, 2, nY, 1, aScan(  aClientes[nX, 2, nY, 1], {|X| X[1] == "U5_CODCONT"} ), 2]
+				cNomeCont  := aClientes[nX, 2, nY, 1, aScan(  aClientes[nX, 2, nY, 1], {|X| X[1] == "U5_CONTAT"} ), 2]
+				cImpCont   := If( lMsErroAuto, '2', '1' )
+				cArrexeCnt := FWJsonSerialize( aClientes[ nX, 2 ] )
+
+				aAdd( aTail( aLogCli )[ 8 ], { cCodCont, cNomeCont, cObsCont, cImpCont, cArrexeCnt } )
+
+				aTail( aLogCli )[ 6 ] := If( lMsErroAuto, '1', '0' )
+
+				If lMsErroAuto
+
+					lAllOk := lAllOk .And. ! lMsErroAuto
+
 					DisarmTransaction()
-					lMsErroAuto := .F.
 
 				Else
 
-				End If
+					EndTran()
+
+				EndIf
 
 			Next nY
 
-			EndTran()
-
 		End If
 
+		lMsErroAuto := .F.
+
 	Next nX
-	//TODO Tratat Registro de Log
-	//U_IOMT2LOG( cUUID,,,,,, /*IMPORTADO_COM_FALHAS*/,,, Date(), Time(),;
-	//cXmlPrc,, /*'Observação'*/ )
+
+	U_IOMT2LOG( cUUID,,,,,, If( lAllOk, IMPORTADO, IMPORTADO_COM_FALHAS ),,, Date(), Time(),;
+	cXmlPrc, If( lAllOk, 'Importação ocorreu sm falhas.', 'Importação ocorreu com falhas.' ), aLogCli )
 
 Return
 
