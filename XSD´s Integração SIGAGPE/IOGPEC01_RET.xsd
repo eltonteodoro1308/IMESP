@@ -12,6 +12,7 @@
 							<xs:element name="RA_NOMECMP" type="xs:string"/>
 							<xs:element name="RA_APELIDO" type="xs:string"/>
 							<xs:element name="RA_CARGO" type="xs:string"/>
+							<xs:element name="Q3_DESCSUM" type="xs:string"/>
 							<xs:element name="M0_NOME" type="xs:string"/>
 							<xs:element name="RA_XRAMAL" type="xs:string"/>
 							<xs:element name="RA_XRAMAL2" type="xs:string"/>

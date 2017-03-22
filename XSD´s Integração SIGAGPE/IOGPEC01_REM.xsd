@@ -90,6 +90,7 @@
 			<xs:enumeration value="RD4_CHAVE" />
 			<xs:enumeration value="RA_NASC" />
 			<xs:enumeration value="RA_CARGO" />
+			<xs:enumeration value="Q3_DESCSUM" />
 			<xs:enumeration value="RA_CIC" />
 			<xs:enumeration value="RA_DEMISSA" />
 			<xs:enumeration value="RA_EMAIL" />
