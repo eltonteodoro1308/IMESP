@@ -341,7 +341,7 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, lFir
 
 		cField := cFunction + "(" + cField + ")"
 
-	ElseIf ! cRelation $ "IS_NOT_CONTAINED/IS_CONTAINED"
+	ElseIf ! cRelation $ "IS_NOT_CONTAINED/IS_CONTAINED/NOT_CONTAINS/CONTAINS"
 
 		cValue := "'" + cValue + "'"
 
