@@ -207,7 +207,7 @@
 	<DocDateTime>2017-03-24T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	37286B6E-8FFC-4A73-8B49-307BBDFB049F
+	E843450B-1AA9-4409-8281-5AC13B106A84
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -219,7 +219,7 @@
 		<Layouts>
 			<Version>1.000</Version>
 			<Identifier>IOGPEC04</Identifier>
-			<FunctionCode>U_IOGPEC04.9999</FunctionCode>
+			<FunctionCode>U_IOGPEC04.004642.1</FunctionCode>
 			<Content>
 			</Content>
 		</Layouts>
