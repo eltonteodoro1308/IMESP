@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:element name="AHG_MODEL">
+<xs:annotation>
+<xs:documentation>Publicacoes</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AHG_FIELD_MASTER">
+<xs:annotation>
+<xs:documentation>AHG_FIELD_MASTER</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:all>
+<xs:element name="AHG_FILIAL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Filial do Sistema
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="AHG_CODPUB" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Código da Publicação
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="AHG_CODPRO" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Código do Produto
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="AHG_TITPUB" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Título da Publicação
+ Tipo de dado: C
+ Tamanho: 45
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="45"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="AHG_TIPO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo de Publicação
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="AHG_NUMREG" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Num. do Registro
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="AHG_NUMEXE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Num. de Exemplares
+ Tipo de dado: N
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,15}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="AHG_PERIOD" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Periodicidade
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+</xs:all>
+<xs:attribute name="modeltype" type="MPmodeltype" use="required"/>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="Operation" type="MPoperation" use="required"/>
+<xs:attribute name="version" type="MPversion" use="required"/>
+<xs:attribute name="pkIndexOrder" type="xs:integer" use="optional"/>
+<xs:attribute name="WKDef" type="xs:string" use="optional"/>
+<xs:attribute name="WKVersDef" type="xs:string" use="optional"/>
+<xs:attribute name="WKNumProces" type="xs:string" use="optional"/>
+<xs:attribute name="WKNumState" type="xs:string" use="optional"/>
+<xs:attribute name="WKCurrentState" type="xs:string" use="optional"/>
+<xs:attribute name="WKCompany" type="xs:string" use="optional"/>
+<xs:attribute name="WKUser" type="xs:string" use="optional"/>
+<xs:attribute name="WKUserEmail" type="xs:string" use="optional"/>
+<xs:attribute name="WKCompletTask" type="xs:string" use="optional"/>
+<xs:attribute name="WKNextState" type="xs:string" use="optional"/>
+<xs:attribute name="WKCardId" type="xs:string" use="optional"/>
+<xs:attribute name="WKFormId" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="MPmodeltype">
+<xs:annotation>
+<xs:documentation>tipo da estrutura de dados do modelo
+FIELDS - Estrutura de dados de campos
+GRID - Estrutura de dados em linha
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:whiteSpace value="preserve"/>
+<xs:enumeration value="FIELDS"/>
+<xs:enumeration value="GRID"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPoperation">
+<xs:annotation>
+<xs:documentation>Tipo da operação:
+1 - VIEW
+3 - INSERT
+4 - UPDATE
+5 - DELETE
+6 - ONLYUPDATE
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:whiteSpace value="preserve"/>
+<xs:enumeration value="1"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+<xs:enumeration value="6"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPversion">
+<xs:annotation>
+<xs:documentation>VersÃ£o do schema e layout</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:token">
+<xs:pattern value="1\.01"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPdeleted">
+<xs:annotation>
+<xs:documentation>Status da linha da estrutura do tipo GRID :
+1 - deletada
+0 - ativa
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:whiteSpace value="preserve"/>
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPorder">
+<xs:annotation>
+<xs:documentation>
+indica a ordem de entrada dos dados que deve ser executada na carga do xml
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:token">
+<xs:pattern value="[1-9]{1}[0-9]{0,2}"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPiditem">
+<xs:annotation>
+<xs:documentation>
+codigo de identificacao da linha
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:token">
+<xs:pattern value="[1-9]{1}[0-9]{0,2}"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>

@@ -75,11 +75,13 @@
 			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
 				<IOGPEC01_REM>
-	<filter field="RA_MAT" relation="IS_CONTAINED" operator="AND">
-		<value>004641, 004642, 004643,</value>
-	</filter>
-	<filter field="RA_SITFOLH" relation="NOT_EQUAL" operator="AND">
+
+	<filter field="RA_SITFOLH" relation="NOT_EQUAL" operator="AND" >
 		<value>D</value>
+	</filter>
+				
+	<filter field="RA_NASC" relation="ENDS_WITH" operator="OR">
+		<value>0514</value>
 	</filter>
 	<SORT>
 		<ASC>RA_NOMECMP</ASC>
