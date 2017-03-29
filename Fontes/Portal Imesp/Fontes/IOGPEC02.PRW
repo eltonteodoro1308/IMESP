@@ -22,7 +22,6 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 	Local aArea   := GetArea()
 	Local cBitMap := ''
 
-
 	If Len( aParams ) < 2
 
 		Return MakeXml( ,'Os Parâmetros enviados são insufucientes para execução da rotina.')
@@ -36,9 +35,9 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 	End If
 
 	DbSelectArea( 'SRA' )
-	DbSetOrder( 1 ) // RA_FILIAL + RA_MAT
+	DbSetOrder( 13 ) // RA_MAT + RA_FILIAL
 
-	If ! DbSeek( xFilial( 'SRA' ) + AllTrim( aParams[ 1 ] ) )
+	If ! DbSeek( AllTrim( aParams[ 1 ] ) )
 
 		Return MakeXml( ,'Matrícula do Funcionário não localizada.' )
 

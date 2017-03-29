@@ -32,6 +32,8 @@ User Function IOGPEC03( cXml, cError, cWarning, cParams, oFwEai )
 		cDataIni := AllTrim( oXml:XPathGetNodeValue( '/IOGPEC03_REM/R8_DATAINI' ) )
 		cDataFim := AllTrim( oXml:XPathGetNodeValue( '/IOGPEC03_REM/R8_DATAFIM' ) )
 
+		cDataFim := If( Empty( cDataFim ), DtoS( Date() ), cDataFim )
+
 		cQuery += "SELECT SRA.RA_MAT, SRA.RA_NOMECMP, SR8.R8_TIPOAFA, RCM.RCM_DESCRI, SR8.R8_DATAINI, SR8.R8_DATAFIM "
 		cQuery += "FROM " + RetSqlName( "SRA" ) + " SRA "
 		cQuery += "LEFT JOIN " + RetSqlName( "SR8" ) + " SR8 ON SRA.RA_MAT = SR8.R8_MAT "
@@ -39,10 +41,12 @@ User Function IOGPEC03( cXml, cError, cWarning, cParams, oFwEai )
 		cQuery += "WHERE SRA.D_E_L_E_T_= ' ' "
 		cQuery += "AND SR8.D_E_L_E_T_= ' ' "
 		cQuery += "AND RCM.D_E_L_E_T_= ' ' "
-		cQuery += "AND SRA.RA_FILIAL = '" + oFwEai:cDocBranch + "' "
+		//cQuery += "AND SRA.RA_FILIAL = '" + oFwEai:cDocBranch + "' "
 		cQuery += "AND SRA.RA_MAT = '" + cMat + "' "
-		cQuery += "AND SR8.R8_DATAINI >= '" + cDataIni + "' "
-		cQuery += "AND SR8.R8_DATAFIM <= '" + cDataFim + "' "
+		cQuery += "AND ( SR8.R8_DATAINI >= '" + cDataIni + "' "
+		cQuery += "OR SR8.R8_DATAFIM >= '" + cDataIni + "' ) "
+		cQuery += "AND ( SR8.R8_DATAINI <= '" + cDataFim + "' "
+		cQuery += "OR SR8.R8_DATAFIM < '" + cDataFim + "' ) "
 		cQuery += "ORDER BY SR8.R8_DATAINI"
 
 		If TcSqlExec( cQuery ) < 0

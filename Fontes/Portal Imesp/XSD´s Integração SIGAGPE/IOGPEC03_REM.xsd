@@ -12,7 +12,7 @@
 					</xs:simpleType>
 				</xs:element>
 				<xs:element name="R8_DATAINI" maxOccurs="1" minOccurs="1" type="PROTHEUS_DATE"/>
-				<xs:element name="R8_DATAFIM" maxOccurs="1" minOccurs="1" type="PROTHEUS_DATE"/>
+				<xs:element name="R8_DATAFIM" maxOccurs="1" minOccurs="0" type="PROTHEUS_DATE"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
