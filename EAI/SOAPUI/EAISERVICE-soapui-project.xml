@@ -55,6 +55,8 @@
    <soapenv:Body>\r
       <tot:RECEIVEMESSAGE>\r
          <tot:INMSG><![CDATA[         
+
+
 <TOTVSIntegrator>
 	<GlobalProduct>TOTVS|EAI</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
@@ -64,7 +66,7 @@
 	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	DFEDB37D-3C81-4EE1-B4BA-173FE7F4891E
+	7A3FE9CB-F824-4C44-9230-76CFD4597A7E
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -79,18 +81,34 @@
 			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
 				<IOGPEC01_REM>
-	<filter field="RA_NOMECMP" relation="START_WITH">
-		<value>MARIA</value>
-	</filter>
-	<SORT>
-		<DESC>RA_NOME</DESC>
-		<DESC>RA_MAT</DESC>
-	</SORT>
-</IOGPEC01_REM>
+					<CONDITION>
+						<filter operator="AND" field="RA_SITFOLH" relation="NOT_EQUAL"  >
+							<value>D</value>
+						</filter>
+					</CONDITION>
+					<CONDITION>
+						<filter field="RA_NASC" relation="ENDS_WITH" operator="OR">
+							<value>0514</value>
+						</filter>
+						<filter field="RA_NASC" relation="ENDS_WITH" operator="OR">
+							<value>0614</value>
+						</filter>
+						<filter field="RA_NASC" relation="ENDS_WITH" operator="OR">
+							<value>0714</value>
+						</filter>
+					</CONDITION>
+					<SORT>
+						<ASC>RA_NOMECMP</ASC>
+					</SORT>
+					<!-- <PAGINATION number_of_records="1" page="1"/> -->
+				</IOGPEC01_REM>
 			</Content>
 		</Layouts>
 	</Message>
-</TOTVSIntegrator>    
+</TOTVSIntegrator>
+
+
+   
          ]]]]>><![CDATA[</tot:INMSG>\r
       </tot:RECEIVEMESSAGE>\r
    </soapenv:Body>\r
