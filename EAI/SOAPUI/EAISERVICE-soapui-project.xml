@@ -62,7 +62,11 @@
 	<GlobalDocumentFunctionDescription>Funcionarios</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
 	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
-	<DocIdentifier>953115DE-3A18-4794-B148-78F3028B5F1A</DocIdentifier>
+	<DocIdentifier>
+	
+	DFEDB37D-3C81-4EE1-B4BA-173FE7F4891E
+	
+	</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -75,16 +79,12 @@
 			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
 				<IOGPEC01_REM>
-
-	<filter field="RA_SITFOLH" relation="NOT_EQUAL" operator="AND" >
-		<value>D</value>
-	</filter>
-				
-	<filter field="RA_NASC" relation="ENDS_WITH" operator="OR">
-		<value>0514</value>
+	<filter field="RA_NOMECMP" relation="START_WITH">
+		<value>MARIA</value>
 	</filter>
 	<SORT>
-		<ASC>RA_NOMECMP</ASC>
+		<DESC>RA_NOME</DESC>
+		<DESC>RA_MAT</DESC>
 	</SORT>
 </IOGPEC01_REM>
 			</Content>

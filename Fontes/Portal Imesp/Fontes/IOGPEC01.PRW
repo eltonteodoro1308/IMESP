@@ -17,6 +17,8 @@ User Function IOGPEC01( cXml )
 	Local aArea      := GetArea()
 	Local cTmp       := GetNextAlias()
 	Local cQuery     := ''
+	Local aConds     := {}
+	Local cConds     := ''
 	Local aWhere     := {}
 	Local cWhere     := ''
 	Local cOrder     := ''
@@ -32,6 +34,7 @@ User Function IOGPEC01( cXml )
 	Local cFunction  := ''
 	Local cTemp      := ''
 	Local nX         := 0
+	Local nY         := 0
 
 	If oXml:Parse( cXML ) .And.;
 	oXml:ParseSchemaFile('\schemas\IOGPEC01_REM.xsd') .And.;
@@ -41,26 +44,44 @@ User Function IOGPEC01( cXml )
 
 		Do While AllWaysTrue()
 
-			aAttNode   := oXML:DOMGetAttArray()
-			aChildNode := oXML:DOMGetChildArray()
+			If oXml:cName $ 'CONDITION'
 
-			If ! oXml:cName $ 'SORT/PAGINATION'
+				oXml:DOMChildNode()
 
-				nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'field' } )
-				cField    := aAttNode[ nPos, 2 ]
+				aAttNode   := oXML:DOMGetAttArray()
+				aChildNode := oXML:DOMGetChildArray()
 
-				cValue    := Upper( aChildNode[ 1, 2 ] )
+				Do While AllWaysTrue()
 
-				nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'relation' } )
-				cRelation := If( nPos == 0, 'EQUAL', aAttNode[ nPos, 2 ] )
+					nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'field' } )
+					cField    := aAttNode[ nPos, 2 ]
 
-				nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'operator' } )
-				cOperator := If( nPos == 0, 'AND', aAttNode[ nPos, 2 ] )
+					cValue    := Upper( aChildNode[ 1, 2 ] )
 
-				nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'function' } )
-				cFunction := If( nPos == 0, '', aAttNode[ nPos, 2 ] )
+					nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'relation' } )
+					cRelation := If( nPos == 0, 'EQUAL', aAttNode[ nPos, 2 ] )
 
-				aAdd( aWhere, { cField, cValue, cRelation, cOperator, cFunction } )
+					nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'operator' } )
+					cOperator := If( nPos == 0, 'AND', aAttNode[ nPos, 2 ] )
+
+					nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'function' } )
+					cFunction := If( nPos == 0, '', aAttNode[ nPos, 2 ] )
+
+					aAdd( aWhere, { cField, cValue, cRelation, cOperator, cFunction } )
+
+					If ! oXml:DOMNextNode()
+
+						Exit
+
+					EndIf
+
+				End Do
+
+				oXml:DOMParentNode()
+
+				aAdd( aConds, aClone( aWhere ) )
+
+				aSize( aWhere, 0 )
 
 			ElseIf oXml:cName == 'SORT'
 
@@ -108,26 +129,34 @@ User Function IOGPEC01( cXml )
 
 			EndIf
 
-		EndDO
+		End Do
 
-		For nX:= 1 To Len( aWhere )
+		For nY := 1 To Len( aConds )
 
-			cTemp := MakeWhere( aWhere[nX,1], aWhere[nX,2], aWhere[nX,3], aWhere[nX,4], aWhere[nX,5], nX == 1 , nX == Len( aWhere ) )
+			For nX:= 1 To Len( aConds[ nY ] )
 
-			If SubStr( cTemp, 1, Len("Permitido") ) = "Permitido"
+				cTemp := MakeWhere( aConds[nY,nX,1], aConds[nY,nX,2], aConds[nY,nX,3], aConds[nY,nX,4], aConds[nY,nX,5], nX == 1 , nX == Len( aConds[ nY ] ) )
 
-				cPesq := '<IOGPEC01_SRA></IOGPEC01_SRA>'
-				Return '<IOGPEC01_RET>' + cPesq + '<ERROR>' + cTemp + '</ERROR></IOGPEC01_RET>'
+				If SubStr( cTemp, 1, Len("Permitido") ) = "Permitido"
 
-			Else
+					cPesq := '<IOGPEC01_SRA></IOGPEC01_SRA>'
+					Return '<IOGPEC01_RET>' + cPesq + '<ERROR>' + cTemp + '</ERROR></IOGPEC01_RET>'
 
-				cWhere += cTemp
+				Else
 
-			EndIf
+					cWhere += cTemp
 
-		Next nX
+				EndIf
 
-		MakeQuery( @cQuery, cWhere, cOrder, nNumRegPag, nPagina )
+			Next nX
+
+			cConds += ' AND (' + cWhere + ') '
+
+			cWhere := ''
+
+		Next nY
+
+		MakeQuery( @cQuery, cConds, cOrder, nNumRegPag, nPagina )
 
 		If TcSqlExec( cQuery ) < 0
 
@@ -229,7 +258,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	EndDo
 
 	cCase += "ELSE '' "
-	cCase += "END SM0_NOME, "
+	cCase += "END M0_NOME, "
 
 	SM0->( RestArea( aAreaSM0 ) )
 	RestArea( aArea )
@@ -240,6 +269,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	aAdd( aCpos, "SRA.RA_APELIDO, " )
 	aAdd( aCpos, "SRA.RA_CARGO," )
 	aAdd( aCpos, "SQ3.Q3_DESCSUM," )
+	aAdd( aCpos, "SRA.RA_CATFUNC," )
 	aAdd( aCpos, cCase )//M0_FILIAL
 	aAdd( aCpos, "SRA.RA_XRAMAL, " )
 	aAdd( aCpos, "SRA.RA_XRAMAL2, " )
@@ -306,13 +336,13 @@ Função que monta as cláusulas where
 @author Elton Teodoro Alves
 @since 08/03/2017
 @version 12.1.014
-@param cField, characters, descricao
-@param cValue, characters, descricao
-@param cRelation, characters, descricao
-@param cOperator, characters, descricao
-@param cFunction, characters, descricao
-@param lFirst, logical, descricao
-@param lLast, logical, descricao
+@param cField, characters, Nome do Campo
+@param cValue, characters, Valor de comparação
+@param cRelation, characters, Operador relacional
+@param cOperator, characters, Operador Logico
+@param cFunction, characters, Funcao aplicada na condicao
+@param lFirst, logical, Indica se é a primeira condição
+@param lLast, logical, Indica se é a ultima condição
 @return characters, Relação SQL correspondente
 /*/
 Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, lFirst, lLast )
@@ -341,7 +371,8 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, lFir
 
 		cField := cFunction + "(" + cField + ")"
 
-	ElseIf ! cRelation $ "IS_NOT_CONTAINED/IS_CONTAINED/NOT_CONTAINS/CONTAINS"
+	ElseIf ! cRelation $ "IS_NOT_CONTAINED/IS_CONTAINED/NOT_CONTAINS/CONTAINS/" +;
+	"START_WITH/NOT_START_WITH/ENDS_WITH/NOT_ENDS_WITH"
 
 		cValue := "'" + cValue + "'"
 
@@ -350,16 +381,6 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, lFir
 	If Empty( cFunction )
 
 		cField := "UPPER(" + cField + ")"
-
-	EndIf
-
-	If lFirst
-
-		cRet += " AND "
-
-	Else
-
-		cRet += " " + cOperator + " "
 
 	EndIf
 
@@ -418,6 +439,12 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, lFir
 	ElseIf cRelation == "IS_NOT_CONTAINED"
 
 		cRet += cField + " NOT IN (" + StrList( StrTokArr2( cValue, ",", .T. ) ) + ") "
+
+	EndIf
+
+	If ! lLast
+
+		cRet += " " + cOperator + " "
 
 	EndIf
 

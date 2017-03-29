@@ -4,53 +4,59 @@
 	<xs:element name="IOGPEC01_REM">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="filter" maxOccurs="unbounded"	minOccurs="0">
+				<xs:element name="CONDITION" maxOccurs="unbounded"	minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="value" maxOccurs="1" minOccurs="1"	default="string">
-								<xs:simpleType>
-									<xs:restriction base="xs:string">
-										<xs:minLength value="1" />
-									</xs:restriction>
-								</xs:simpleType>
+							<xs:element name="filter" maxOccurs="unbounded"	minOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="1" minOccurs="1"	default="string">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="function" use="optional">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="LEN" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="field" use="required" type="FIELDS" />
+									<xs:attribute name="relation" use="optional" default="EQUAL">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="EQUAL" />
+												<xs:enumeration value="NOT_EQUAL" />
+												<xs:enumeration value="LESS" />
+												<xs:enumeration value="LESS_EQUAL" />
+												<xs:enumeration value="GREATER" />
+												<xs:enumeration value="GREATER_EQUAL" />
+												<xs:enumeration value="CONTAINS" />
+												<xs:enumeration value="NOT_CONTAINS" />
+												<xs:enumeration value="IS_CONTAINED" />
+												<xs:enumeration value="IS_NOT_CONTAINED" />
+												<xs:enumeration value="START_WITH" />
+												<xs:enumeration value="NOT_START_WITH" />
+												<xs:enumeration value="ENDS_WITH" />
+												<xs:enumeration value="NOT_ENDS_WITH" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="operator" use="optional" default="AND">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="AND" />
+												<xs:enumeration value="OR" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute name="function" use="optional">
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:enumeration value="LEN" />
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:attribute>
-						<xs:attribute name="field" use="required" type="FIELDS" />
-						<xs:attribute name="relation" use="optional" default="EQUAL">
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:enumeration value="EQUAL" />
-									<xs:enumeration value="NOT_EQUAL" />
-									<xs:enumeration value="LESS" />
-									<xs:enumeration value="LESS_EQUAL" />
-									<xs:enumeration value="GREATER" />
-									<xs:enumeration value="GREATER_EQUAL" />
-									<xs:enumeration value="CONTAINS" />
-									<xs:enumeration value="NOT_CONTAINS" />
-									<xs:enumeration value="IS_CONTAINED" />
-									<xs:enumeration value="IS_NOT_CONTAINED" />
-									<xs:enumeration value="START_WITH" />
-									<xs:enumeration value="NOT_START_WITH" />
-									<xs:enumeration value="ENDS_WITH" />
-									<xs:enumeration value="NOT_ENDS_WITH" />
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:attribute>
-						<xs:attribute name="operator" use="optional" default="AND">
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:enumeration value="AND" />
-									<xs:enumeration value="OR" />
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:attribute>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="SORT" minOccurs="0" maxOccurs="1">
@@ -91,6 +97,7 @@
 			<xs:enumeration value="RA_NASC" />
 			<xs:enumeration value="RA_CARGO" />
 			<xs:enumeration value="Q3_DESCSUM" />
+			<xs:enumeration value="RA_CATFUNC" />
 			<xs:enumeration value="RA_CIC" />
 			<xs:enumeration value="RA_DEMISSA" />
 			<xs:enumeration value="RA_EMAIL" />

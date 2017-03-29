@@ -6,13 +6,14 @@
 			<xs:sequence>
 				<xs:element name="IOGPEC01_SRA" maxOccurs="unbounded" minOccurs="0">
 					<xs:complexType>
-						<xs:sequence>
+						<xs:all minOccurs="1" maxOccurs="1">
 							<xs:element name="RA_MAT" type="xs:string"/>
 							<xs:element name="RA_NOME" type="xs:string"/>
 							<xs:element name="RA_NOMECMP" type="xs:string"/>
 							<xs:element name="RA_APELIDO" type="xs:string"/>
 							<xs:element name="RA_CARGO" type="xs:string"/>
 							<xs:element name="Q3_DESCSUM" type="xs:string"/>
+							<xs:element name="RA_CATFUNC"  type="xs:string"/>
 							<xs:element name="M0_NOME" type="xs:string"/>
 							<xs:element name="RA_XRAMAL" type="xs:string"/>
 							<xs:element name="RA_XRAMAL2" type="xs:string"/>
@@ -29,7 +30,7 @@
 							<xs:element name="RA_CIC" type="xs:string"/>
 							<xs:element name="RA_XSIGLA" type="xs:string"/>
 							<xs:element name="RA_XLOGIN" type="xs:string"/>
-						</xs:sequence>
+						</xs:all>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="TOTAL_SEARCH_RECORDS">
