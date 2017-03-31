@@ -54,7 +54,7 @@
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <tot:RECEIVEMESSAGE>\r
-         <tot:INMSG><![CDATA[         
+         <tot:INMSG><![CDATA[    
 
 
 <TOTVSIntegrator>
@@ -66,7 +66,7 @@
 	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	7A3FE9CB-F824-4C44-9230-76CFD4597A7E
+	A1BC988A-C9F1-48BD-868B-D3B3DCD69BA5
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -80,28 +80,20 @@
 			<Identifier>IOGPEC01</Identifier>
 			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
-				<IOGPEC01_REM>
-					<CONDITION>
-						<filter operator="AND" field="RA_SITFOLH" relation="NOT_EQUAL"  >
-							<value>D</value>
-						</filter>
-					</CONDITION>
-					<CONDITION>
-						<filter field="RA_NASC" relation="ENDS_WITH" operator="OR">
-							<value>0514</value>
-						</filter>
-						<filter field="RA_NASC" relation="ENDS_WITH" operator="OR">
-							<value>0614</value>
-						</filter>
-						<filter field="RA_NASC" relation="ENDS_WITH" operator="OR">
-							<value>0714</value>
-						</filter>
-					</CONDITION>
-					<SORT>
-						<ASC>RA_NOMECMP</ASC>
-					</SORT>
-					<!-- <PAGINATION number_of_records="1" page="1"/> -->
-				</IOGPEC01_REM>
+				<IOGPEC01_REM xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<CONDITION>
+		<filter field="RA_SITFOLH" relation="NOT_EQUAL">
+			<value>D</value>
+		</filter>
+		<filter field="RA_NOMECMP" relation="CONTAINS">
+			<value>cesaro</value>
+		</filter>
+	</CONDITION>
+	<SORT>
+		<DESC>RA_NOME</DESC>
+		<DESC>RA_MAT</DESC>
+	</SORT>
+</IOGPEC01_REM>
 			</Content>
 		</Layouts>
 	</Message>

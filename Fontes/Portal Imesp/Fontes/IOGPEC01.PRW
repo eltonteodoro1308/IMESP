@@ -48,10 +48,10 @@ User Function IOGPEC01( cXml )
 
 				oXml:DOMChildNode()
 
-				aAttNode   := oXML:DOMGetAttArray()
-				aChildNode := oXML:DOMGetChildArray()
-
 				Do While AllWaysTrue()
+
+					aAttNode   := oXML:DOMGetAttArray()
+					aChildNode := oXML:DOMGetChildArray()
 
 					nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'field' } )
 					cField    := aAttNode[ nPos, 2 ]
