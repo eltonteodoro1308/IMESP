@@ -6,7 +6,6 @@
 			<xs:sequence>
 				<xs:element type="xs:byte" name="RESULTADO_INTEGRACAO"/>
 				<xs:element type="xs:string" name="DESCRICAO_RESULTADO"/>
-				<xs:element type="xs:string" name="MENSAGEM_EXECAUTO"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

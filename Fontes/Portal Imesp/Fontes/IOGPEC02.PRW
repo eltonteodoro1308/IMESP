@@ -17,10 +17,12 @@ Função acionada pelo EAI que retorna a foto do cadastro do funcionário conforme 
 /*/
 User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 
-	Local cRet    := ''
-	Local aParams := StrTokArr2( cParams, ',', .T. )
-	Local aArea   := GetArea()
-	Local cBitMap := ''
+	Local cRet      := ''
+	Local aParams   := StrTokArr2( cParams, ',', .T. )
+	Local aArea     := GetArea()
+	Local cBitMap   := ''
+	Local cIOJPG65  := GetNewPar( 'IO_JPG_65' , '' )
+	Local cIOJPG200 := GetNewPar( 'IO_JPG_200', '' )
 
 	If Len( aParams ) < 2
 
@@ -45,7 +47,7 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 
 		If AllTrim( aParams[ 2 ] ) = '65'
 
-			If Empty( cBitMap := SRA->RA_BITMAP1 ) .And. Empty( cBitMap := SRA->RA_BITMAP ) .And. Empty( cBitMap := GetNewPar( 'IO_JPG_65', '' ) )
+			If Empty( cBitMap := SRA->RA_BITMAP1 ) .And. Empty( cBitMap := SRA->RA_BITMAP ) .And. Empty( cBitMap := cIOJPG65 )
 
 				Return MakeXml( ,'Nenhuma imagem definida nos campos RA_BITMAP / RA_BITAMAP1 e no parâmetro IO_JPG_65.' )
 
@@ -55,7 +57,7 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 
 		If AllTrim( aParams[ 2 ] ) = '200'
 
-			If Empty( cBitMap := SRA->RA_BITMAP2 ) .And. Empty( cBitMap := GetNewPar( 'IO_JPG_200', '' ) )
+			If Empty( cBitMap := SRA->RA_BITMAP2 ) .And. Empty( cBitMap := cIOJPG65 )
 
 				Return MakeXml( ,'Nenhuma imagem definida no campo RA_BITMAP2 ou no parâmetro IO_JPG_200.' )
 
@@ -74,19 +76,25 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 
 	If ! DbSeek( cBitMap )
 
-		Return MakeXml( ,'Não localizado no repositório de imagens o conteúdo do campo solicitado ou dos parâmetros IO_JPG_65 e IO_JPG_200' )
+		If DbSeek( Eval( { || &( 'cIOJPG' + aParams[ 2 ] ) } ) )
 
-	Else
+			cBitMap := Eval( { || &( 'cIOJPG' + aParams[ 2 ] ) } )
 
-		Do While ! Eof() .And. AllTrim( PROTHEUS_REPOSIT->BMPNAME ) == cBitMap
+		Else
 
-			cRet += PROTHEUS_REPOSIT->MEMO
+			Return MakeXml( ,'Não localizado no repositório de imagens o conteúdo do campo solicitado ou dos parâmetros IO_JPG_65 e IO_JPG_200' )
 
-			DbSkip()
+		End If
 
-		EndDo
+	End If
 
-	EndIf
+	Do While ! Eof() .And. AllTrim( PROTHEUS_REPOSIT->BMPNAME ) == cBitMap
+
+		cRet += PROTHEUS_REPOSIT->MEMO
+
+		DbSkip()
+
+	End Do
 
 	PROTHEUS_REPOSIT->( DbCloseArea() )
 

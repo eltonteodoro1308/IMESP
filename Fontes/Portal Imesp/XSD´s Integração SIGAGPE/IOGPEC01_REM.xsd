@@ -22,9 +22,12 @@
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
 												<xs:enumeration value="LEN" />
+												<xs:enumeration value="SUBSTRING" />
 											</xs:restriction>
 										</xs:simpleType>
 									</xs:attribute>
+									<xs:attribute name="start" type="xs:positiveInteger"/>
+									<xs:attribute name="length" type="xs:positiveInteger"/>
 									<xs:attribute name="field" use="required" type="FIELDS" />
 									<xs:attribute name="relation" use="optional" default="EQUAL">
 										<xs:simpleType>

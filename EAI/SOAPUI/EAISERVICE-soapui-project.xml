@@ -82,7 +82,7 @@
 			<Content>
 				<IOGPEC01_REM xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<CONDITION>
-		<filter field="RA_SITFOLH" relation="NOT_EQUAL">
+		<filter function=SUBSTRING start=3 length=3 field="RA_SITFOLH" relation="NOT_EQUAL">
 			<value>D</value>
 		</filter>
 		<filter field="RA_NOMECMP" relation="CONTAINS">

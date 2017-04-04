@@ -32,6 +32,8 @@ User Function IOGPEC01( cXml )
 	Local cRelation  := ''
 	Local cOperator  := ''
 	Local cFunction  := ''
+	Local cStart     := ''
+	Local cLength    := ''
 	Local cTemp      := ''
 	Local nX         := 0
 	Local nY         := 0
@@ -67,7 +69,13 @@ User Function IOGPEC01( cXml )
 					nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'function' } )
 					cFunction := If( nPos == 0, '', aAttNode[ nPos, 2 ] )
 
-					aAdd( aWhere, { cField, cValue, cRelation, cOperator, cFunction } )
+					nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'start' } )
+					cStart := If( nPos == 0, '', aAttNode[ nPos, 2 ] )
+
+					nPos      := aScan( aAttNode, { | X | X[ 1 ] == 'length' } )
+					cLength := If( nPos == 0, '', aAttNode[ nPos, 2 ] )
+
+					aAdd( aWhere, { cField, cValue, cRelation, cOperator, cFunction, cStart, cLength } )
 
 					If ! oXml:DOMNextNode()
 
@@ -135,7 +143,7 @@ User Function IOGPEC01( cXml )
 
 			For nX:= 1 To Len( aConds[ nY ] )
 
-				cTemp := MakeWhere( aConds[nY,nX,1], aConds[nY,nX,2], aConds[nY,nX,3], aConds[nY,nX,4], aConds[nY,nX,5], nX == 1 , nX == Len( aConds[ nY ] ) )
+				cTemp := MakeWhere( aConds[nY,nX,1], aConds[nY,nX,2], aConds[nY,nX,3], aConds[nY,nX,4], aConds[nY,nX,5], aConds[nY,nX,6], aConds[nY,nX,7], nX == 1 , nX == Len( aConds[ nY ] ) )
 
 				If SubStr( cTemp, 1, Len("Permitido") ) = "Permitido"
 
@@ -345,7 +353,7 @@ Função que monta as cláusulas where
 @param lLast, logical, Indica se é a ultima condição
 @return characters, Relação SQL correspondente
 /*/
-Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, lFirst, lLast )
+Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, cStart, cLength, lFirst, lLast )
 
 	Local cRet := ''
 
@@ -369,9 +377,20 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, lFir
 
 	If ! Empty( cFunction )
 
-		cField := cFunction + "(" + cField + ")"
+		If cFunction = 'LEN'
 
-	ElseIf ! cRelation $ "IS_NOT_CONTAINED/IS_CONTAINED/NOT_CONTAINS/CONTAINS/" +;
+			cField := cFunction + "(" + cField + ")"
+
+		ElseIf cFunction = 'SUBSTRING'
+
+			cField := cFunction + "(" + cField + "," + cStart + "," + cLength + ")"
+
+		End If
+
+	End If
+
+	If ! cRelation $ ;
+	"IS_NOT_CONTAINED/IS_CONTAINED/NOT_CONTAINS/CONTAINS/" +;
 	"START_WITH/NOT_START_WITH/ENDS_WITH/NOT_ENDS_WITH"
 
 		cValue := "'" + cValue + "'"

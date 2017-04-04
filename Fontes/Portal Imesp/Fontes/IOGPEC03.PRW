@@ -36,7 +36,7 @@ User Function IOGPEC03( cXml, cError, cWarning, cParams, oFwEai )
 
 		cQuery += "SELECT SRA.RA_MAT, SRA.RA_NOMECMP, SR8.R8_TIPOAFA, RCM.RCM_DESCRI, SR8.R8_DATAINI, SR8.R8_DATAFIM "
 		cQuery += "FROM " + RetSqlName( "SRA" ) + " SRA "
-		cQuery += "LEFT JOIN " + RetSqlName( "SR8" ) + " SR8 ON SRA.RA_MAT = SR8.R8_MAT "
+		cQuery += "LEFT JOIN " + RetSqlName( "SR8" ) + " SR8 ON SRA.RA_MAT = SR8.R8_MAT AND SRA.RA_FILIAL = SR8.R8_FILIAL "
 		cQuery += "LEFT JOIN " + RetSqlName( "RCM" ) + " RCM ON SR8.R8_TIPOAFA = RCM.RCM_TIPO "
 		cQuery += "WHERE SRA.D_E_L_E_T_= ' ' "
 		cQuery += "AND SR8.D_E_L_E_T_= ' ' "
