@@ -23,7 +23,9 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 	Local cBitMap   := ''
 	Local cIOJPG65  := GetNewPar( 'IO_JPG_65' , '' )
 	Local cIOJPG200 := GetNewPar( 'IO_JPG_200', '' )
-
+	/*
+	//TODO Ajustar estye fonte para buscar fotos na tabela SZ0
+	*/
 	If Len( aParams ) < 2
 
 		Return MakeXml( ,'Os Parâmetros enviados são insufucientes para execução da rotina.')

@@ -22,7 +22,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:attribute>
-						<xs:attribute name="field" use="required" type="FIELDS" />
+						<xs:attribute name="field" use="required" type="FIELDS_IOGPEC05" />
 						<xs:attribute name="relation" use="optional" default="EQUAL">
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
@@ -56,8 +56,8 @@
 				<xs:element name="SORT" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="ASC" type="FIELDS" minOccurs="0"	maxOccurs="unbounded" />
-							<xs:element name="DESC" type="FIELDS" minOccurs="0"	maxOccurs="unbounded" />
+							<xs:element name="ASC" type="FIELDS_IOGPEC05" minOccurs="0"	maxOccurs="unbounded" />
+							<xs:element name="DESC" type="FIELDS_IOGPEC05" minOccurs="0"	maxOccurs="unbounded" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -82,7 +82,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:simpleType name="FIELDS">
+	<xs:simpleType name="FIELDS_IOGPEC05">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="RD4_CODIDE" />
 			<xs:enumeration value="RD4_CHAVE" />

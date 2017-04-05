@@ -28,7 +28,7 @@
 									</xs:attribute>
 									<xs:attribute name="start" type="xs:positiveInteger"/>
 									<xs:attribute name="length" type="xs:positiveInteger"/>
-									<xs:attribute name="field" use="required" type="FIELDS" />
+									<xs:attribute name="field" use="required" type="FIELDS_IOGPEC01" />
 									<xs:attribute name="relation" use="optional" default="EQUAL">
 										<xs:simpleType>
 											<xs:restriction base="xs:string">
@@ -65,8 +65,8 @@
 				<xs:element name="SORT" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="ASC" type="FIELDS" minOccurs="0"	maxOccurs="unbounded" />
-							<xs:element name="DESC" type="FIELDS" minOccurs="0"	maxOccurs="unbounded" />
+							<xs:element name="ASC" type="FIELDS_IOGPEC01" minOccurs="0"	maxOccurs="unbounded" />
+							<xs:element name="DESC" type="FIELDS_IOGPEC01" minOccurs="0"	maxOccurs="unbounded" />
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -91,7 +91,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:simpleType name="FIELDS">
+	<xs:simpleType name="FIELDS_IOGPEC01">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="QB_DESCRIC" />
 			<xs:enumeration value="RA_APELIDO" />

@@ -24,7 +24,7 @@ User Function IOGPEC03( cXml, cError, cWarning, cParams, oFwEai )
 	Local nX       := 0
 	Local nCount   := 0
 
-	If oXml:Parse( cXML ) .And.;
+	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML ) .And.;
 	oXml:ParseSchemaFile('\schemas\IOGPEC03_REM.xsd') .And.;
 	oXml:SchemaValidate()
 

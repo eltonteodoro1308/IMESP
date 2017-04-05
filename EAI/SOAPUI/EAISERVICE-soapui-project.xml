@@ -66,7 +66,7 @@
 	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	A1BC988A-C9F1-48BD-868B-D3B3DCD69BA5
+	75C55834-7A32-4DE1-BBCD-9FB9F808EC86
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -80,19 +80,17 @@
 			<Identifier>IOGPEC01</Identifier>
 			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
-				<IOGPEC01_REM xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+				<IOGPEC01_REM>
 	<CONDITION>
-		<filter function=SUBSTRING start=3 length=3 field="RA_SITFOLH" relation="NOT_EQUAL">
-			<value>D</value>
-		</filter>
-		<filter field="RA_NOMECMP" relation="CONTAINS">
-			<value>cesaro</value>
+		<filter function="SUBSTRING" start="5" length="2" field="RA_NASC" relation="EQUAL">
+			<value>08</value>
 		</filter>
 	</CONDITION>
 	<SORT>
 		<DESC>RA_NOME</DESC>
 		<DESC>RA_MAT</DESC>
 	</SORT>
+	<PAGINATION number_of_records="10" page="1"/>
 </IOGPEC01_REM>
 			</Content>
 		</Layouts>
@@ -233,6 +231,47 @@
 			<Identifier>IOGPEC04</Identifier>
 			<FunctionCode>U_IOGPEC04.004642.1</FunctionCode>
 			<Content>
+			</Content>
+		</Layouts>
+	</Message>
+</TOTVSIntegrator>     
+         ]]]]>><![CDATA[</tot:INMSG>\r
+      </tot:RECEIVEMESSAGE>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c145b805-2637-43a0-9a87-c8df6c1b33c7" name="IOGPEC05"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tot:RECEIVEMESSAGE>\r
+         <tot:INMSG><![CDATA[
+<TOTVSIntegrator>
+	<GlobalProduct>TOTVS|EAI</GlobalProduct>
+	<GlobalFunctionCode>EAI</GlobalFunctionCode>
+	<GlobalDocumentFunctionCode>IOGPEC05</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>Departamentos</GlobalDocumentFunctionDescription>
+	<DocVersion>1.000</DocVersion>
+	<DocDateTime>2017-03-24T00:00:00Z</DocDateTime>
+	<DocIdentifier>
+	
+	8BCAF3D7-3C6F-41BB-B2DF-9D15C58B3D35
+	
+	</DocIdentifier>
+	<DocCompany>99</DocCompany>
+	<DocBranch>01</DocBranch>
+	<DocName />
+	<DocFederalID />
+	<DocType>1</DocType>
+	<Message>
+		<Layouts>
+			<Version>1.000</Version>
+			<Identifier>IOGPEC05</Identifier>
+			<FunctionCode>U_IOGPEC05</FunctionCode>
+			<Content>
+<IOGPEC05_REM>
+	<filter field="RD4_DESC" relation="START_WITH" >
+		<value>SEÇÃO DE</value>
+	</filter>
+</IOGPEC05_REM>
+			
 			</Content>
 		</Layouts>
 	</Message>

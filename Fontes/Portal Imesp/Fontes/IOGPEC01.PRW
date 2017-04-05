@@ -38,7 +38,7 @@ User Function IOGPEC01( cXml )
 	Local nX         := 0
 	Local nY         := 0
 
-	If oXml:Parse( cXML ) .And.;
+	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML ) .And.;
 	oXml:ParseSchemaFile('\schemas\IOGPEC01_REM.xsd') .And.;
 	oXml:SchemaValidate()
 
@@ -122,6 +122,8 @@ User Function IOGPEC01( cXml )
 				oXml:DOMParentNode()
 
 			ElseIf oXml:cName == 'PAGINATION'
+
+				aAttNode   := oXML:DOMGetAttArray()
 
 				nPos       := aScan( aAttNode, { | X | X[ 1 ] == 'number_of_records' } )
 				nNumRegPag := Val( aAttNode[ nPos, 2 ] )
@@ -270,7 +272,10 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 
 	SM0->( RestArea( aAreaSM0 ) )
 	RestArea( aArea )
-
+/*
+// TODO Substituir os campos criados na SRA pelo criados na SZ0
+// TODO Incluir o campo RA_PROCESS
+*/
 	aAdd( aCpos, "SRA.RA_MAT, " )
 	aAdd( aCpos, "SRA.RA_NOME, " )
 	aAdd( aCpos, "SRA.RA_NOMECMP, " )
@@ -307,7 +312,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 
 	cQuery += "FROM " + RetSqlName( "SRA" ) + " SRA "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO = SQB.QB_DEPTO "
-	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO "
+	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO AND SRA.RA_FILIAL = SQ3.Q3_FILIAL "
 	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO = RD4.RD4_CODIDE "
 	cQuery += "WHERE COALESCE(SRA.D_E_L_E_T_, ' ') = ' ' "
 	cQuery += "AND COALESCE(SQB.D_E_L_E_T_, ' ') = ' ' "
@@ -329,7 +334,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 
 	cQuery += "SELECT COUNT(*) ,'COUNT'" + Replicate( ",''", Len( aCpos ) - 1 ) + " FROM " + RetSqlName( "SRA" ) + " SRA "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO = SQB.QB_DEPTO "
-	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO "
+	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO AND SRA.RA_FILIAL = SQ3.Q3_FILIAL "
 	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO = RD4.RD4_CODIDE "
 	cQuery += "WHERE COALESCE(SRA.D_E_L_E_T_, ' ') = ' ' "
 	cQuery += "AND COALESCE(SQB.D_E_L_E_T_, ' ') = ' ' "

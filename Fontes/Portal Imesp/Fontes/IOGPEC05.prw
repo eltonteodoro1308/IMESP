@@ -33,7 +33,7 @@ User Function IOGPEC05( cXml )
 	Local cTemp      := ''
 	Local nX         := 0
 
-	If oXml:Parse( cXML ) .And.;
+	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML ) .And.;
 	oXml:ParseSchemaFile('\schemas\IOGPEC05_REM.xsd') .And.;
 	oXml:SchemaValidate()
 
@@ -297,7 +297,9 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, lFir
 
 		cField := cFunction + "(" + cField + ")"
 
-	ElseIf ! cRelation $ "IS_NOT_CONTAINED/IS_CONTAINED"
+	ElseIf ! cRelation $  ;
+	"IS_NOT_CONTAINED/IS_CONTAINED/NOT_CONTAINS/CONTAINS/" +;
+	"START_WITH/NOT_START_WITH/ENDS_WITH/NOT_ENDS_WITH"
 
 		cValue := "'" + cValue + "'"
 
