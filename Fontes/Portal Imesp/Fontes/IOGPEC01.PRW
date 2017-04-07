@@ -272,10 +272,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 
 	SM0->( RestArea( aAreaSM0 ) )
 	RestArea( aArea )
-/*
-// TODO Substituir os campos criados na SRA pelo criados na SZ0
-// TODO Incluir o campo RA_PROCESS
-*/
+
 	aAdd( aCpos, "SRA.RA_MAT, " )
 	aAdd( aCpos, "SRA.RA_NOME, " )
 	aAdd( aCpos, "SRA.RA_NOMECMP, " )
@@ -283,10 +280,10 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	aAdd( aCpos, "SRA.RA_CARGO," )
 	aAdd( aCpos, "SQ3.Q3_DESCSUM," )
 	aAdd( aCpos, "SRA.RA_CATFUNC," )
-	aAdd( aCpos, cCase )//M0_FILIAL
-	aAdd( aCpos, "SRA.RA_XRAMAL, " )
-	aAdd( aCpos, "SRA.RA_XRAMAL2, " )
-	aAdd( aCpos, "SRA.RA_XRAMAL3, " )
+	aAdd( aCpos, cCase )//M0_NOME
+	aAdd( aCpos, "SZ0.Z0_XRAMAL, " )
+	aAdd( aCpos, "SZ0.Z0_XRAMAL2, " )
+	aAdd( aCpos, "SZ0.Z0_XRAMAL3, " )
 	aAdd( aCpos, "SRA.RA_DEPTO, " )
 	aAdd( aCpos, "RD4_CHAVE = COALESCE(RD4.RD4_CHAVE,''), " )
 	aAdd( aCpos, "QB_DESCRIC = COALESCE(SQB.QB_DESCRIC,''), " )
@@ -297,8 +294,9 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	aAdd( aCpos, "SRA.RA_SITFOLH, " )
 	aAdd( aCpos, "SRA.RA_EMAIL, " )
 	aAdd( aCpos, "SRA.RA_CIC, " )
-	aAdd( aCpos, "SRA.RA_XSIGLA, " )
-	aAdd( aCpos, "SRA.RA_XLOGIN " )
+	aAdd( aCpos, "SQB.QB_XSIGLA, " )
+	aAdd( aCpos, "SZ0.Z0_XLOGIN, " )
+	aAdd( aCpos, "SRA.RA_PROCES " )
 
 	cQuery += "WITH PAGINA_SRA AS( "
 	cQuery += "SELECT "
@@ -311,9 +309,10 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	Next nX
 
 	cQuery += "FROM " + RetSqlName( "SRA" ) + " SRA "
-	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO = SQB.QB_DEPTO "
-	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO AND SRA.RA_FILIAL = SQ3.Q3_FILIAL "
-	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO = RD4.RD4_CODIDE "
+	cQuery += "LEFT JOIN " + RetSqlName( "SZ0" ) + " SZ0 ON SRA.RA_MAT    = SZ0.Z0_CODIGO AND SRA.RA_FILIAL = SZ0.Z0_FILIAL "
+	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO  = SQB.QB_DEPTO "
+	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO  = SQ3.Q3_CARGO AND SRA.RA_FILIAL = SQ3.Q3_FILIAL "
+	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO  = RD4.RD4_CODIDE "
 	cQuery += "WHERE COALESCE(SRA.D_E_L_E_T_, ' ') = ' ' "
 	cQuery += "AND COALESCE(SQB.D_E_L_E_T_, ' ') = ' ' "
 	cQuery += "AND COALESCE(SQ3.D_E_L_E_T_, ' ') = ' ' "
@@ -333,6 +332,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	cQuery += " UNION ALL "
 
 	cQuery += "SELECT COUNT(*) ,'COUNT'" + Replicate( ",''", Len( aCpos ) - 1 ) + " FROM " + RetSqlName( "SRA" ) + " SRA "
+	cQuery += "LEFT JOIN " + RetSqlName( "SZ0" ) + " SZ0 ON SRA.RA_MAT    = SZ0.Z0_CODIGO AND SRA.RA_FILIAL = SZ0.Z0_FILIAL "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO = SQB.QB_DEPTO "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO AND SRA.RA_FILIAL = SQ3.Q3_FILIAL "
 	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO = RD4.RD4_CODIDE "

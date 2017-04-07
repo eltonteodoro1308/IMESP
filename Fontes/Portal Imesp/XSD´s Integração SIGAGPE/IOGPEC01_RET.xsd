@@ -15,9 +15,9 @@
 							<xs:element name="Q3_DESCSUM" type="xs:string"/>
 							<xs:element name="RA_CATFUNC"  type="xs:string"/>
 							<xs:element name="M0_NOME" type="xs:string"/>
-							<xs:element name="RA_XRAMAL" type="xs:string"/>
-							<xs:element name="RA_XRAMAL2" type="xs:string"/>
-							<xs:element name="RA_XRAMAL3" type="xs:string"/>
+							<xs:element name="Z0_XRAMAL" type="xs:string"/>
+							<xs:element name="Z0_XRAMAL2" type="xs:string"/>
+							<xs:element name="Z0_XRAMAL3" type="xs:string"/>
 							<xs:element name="RA_DEPTO" type="xs:string"/>
 							<xs:element name="RD4_CHAVE" type="xs:string"/>
 							<xs:element name="QB_DESCRIC" type="xs:string"/>
@@ -28,8 +28,9 @@
 							<xs:element name="RA_SITFOLH" type="xs:string"/>
 							<xs:element name="RA_EMAIL" type="xs:string"/>
 							<xs:element name="RA_CIC" type="xs:string"/>
-							<xs:element name="RA_XSIGLA" type="xs:string"/>
-							<xs:element name="RA_XLOGIN" type="xs:string"/>
+							<xs:element name="QB_XSIGLA" type="xs:string"/>
+							<xs:element name="Z0_XLOGIN" type="xs:string"/>
+							<xs:element name="RA_PROCESS" type="xs:string"/>
 						</xs:all>
 					</xs:complexType>
 				</xs:element>

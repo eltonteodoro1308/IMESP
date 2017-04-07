@@ -38,7 +38,7 @@ User Function myMata030()
 	{"A1_NREDUZ"    ,"AUTOMATICO"			,Nil},; // Nome reduz.
 	{"A1_TIPO"      ,"R"					,Nil},; // Tipo
 	{"A1_END"       ,"RUA AUTOMATICA"		,Nil},; // Endereco
-	{"A1_EST"       ,""				    ,Nil},;  // Estado
+	{"A1_EST"       ,"SP"				    ,Nil},;  // Estado
 	{"A1_COD_MUN"   ,'50308'                ,Nil},; // Cod Cidade
 	{"A1_MUN"       ,"SAO PAULO"		    ,Nil}} // Cidad
 

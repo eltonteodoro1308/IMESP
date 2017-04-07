@@ -45,29 +45,38 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 
 		Return MakeXml( ,'Matrícula do Funcionário não localizada.' )
 
-	Else
+	End If
 
-		If AllTrim( aParams[ 2 ] ) = '65'
+	DbSelectArea( 'SZ0' )
+	DbSetOrder( 1 )// Z0_CODIGO
 
-			If Empty( cBitMap := SRA->RA_BITMAP1 ) .And. Empty( cBitMap := SRA->RA_BITMAP ) .And. Empty( cBitMap := cIOJPG65 )
+	If ! DbSeek( AllTrim( aParams[ 1 ] ) )
 
-				Return MakeXml( ,'Nenhuma imagem definida nos campos RA_BITMAP / RA_BITAMAP1 e no parâmetro IO_JPG_65.' )
+		Return MakeXml( ,'Complemento de Portal do Funcionário não localizado.' )
 
-			End If
+	End If
 
-		End If
+	If AllTrim( aParams[ 2 ] ) = '65'
 
-		If AllTrim( aParams[ 2 ] ) = '200'
+		If Empty( cBitMap := SZ0->Z0_BITMAP1 ) .And. Empty( cBitMap := SRA->RA_BITMAP ) .And. Empty( cBitMap := cIOJPG65 )
 
-			If Empty( cBitMap := SRA->RA_BITMAP2 ) .And. Empty( cBitMap := cIOJPG65 )
-
-				Return MakeXml( ,'Nenhuma imagem definida no campo RA_BITMAP2 ou no parâmetro IO_JPG_200.' )
-
-			End If
+			Return MakeXml( ,'Nenhuma imagem definida nos campos Z0_BITMAP1 / RA_BITAMAP e no parâmetro IO_JPG_65.' )
 
 		End If
 
 	End If
+
+	If AllTrim( aParams[ 2 ] ) = '200'
+
+		If Empty( cBitMap := SZ0->Z0_BITMAP2 ) .And. Empty( cBitMap := cIOJPG65 )
+
+			Return MakeXml( ,'Nenhuma imagem definida no campo Z0_BITMAP2 ou no parâmetro IO_JPG_200.' )
+
+		End If
+
+	End If
+
+
 
 	cBitMap := AllTrim( cBitMap )
 

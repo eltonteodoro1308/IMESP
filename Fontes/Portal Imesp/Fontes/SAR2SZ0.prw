@@ -13,16 +13,18 @@ User Function SAR2SZ0()
 
 	Do While ! SRA->( Eof() )
 
-		RecLock( 'SZ0', .T. )
+		If ! SZ0-> ( DbSeek( SRA->RA_MAT ) )
 
-		ConOut( SRA->( RA_FILIAL + ' - ' + RA_MAT + ' - ' + RA_BITMAP1 + ' - ' + RA_BITMAP2 ) )
+			RecLock( 'SZ0', .T. )
 
-		SZ0->Z0_FILIAL  := SRA->RA_FILIAL
-		SZ0->Z0_CODIGO  := SRA->RA_MAT
-		SZ0->Z0_BITMAP1 := SRA->RA_BITMAP1
-		SZ0->Z0_BITMAP2 := SRA->RA_BITMAP2
+			ConOut( SRA->( RA_FILIAL + ' - ' + RA_MAT ) )
 
-		MsUnlock()
+			SZ0->Z0_FILIAL  := SRA->RA_FILIAL
+			SZ0->Z0_CODIGO  := SRA->RA_MAT
+
+			MsUnlock()
+
+		End If
 
 		SRA->( DbSkip() )
 

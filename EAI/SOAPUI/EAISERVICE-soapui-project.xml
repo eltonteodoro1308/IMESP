@@ -66,7 +66,7 @@
 	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	75C55834-7A32-4DE1-BBCD-9FB9F808EC86
+	33AFF90A-25B3-45C6-AC28-4E6481B71730
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -276,6 +276,58 @@
 		</Layouts>
 	</Message>
 </TOTVSIntegrator>     
+         ]]]]>><![CDATA[</tot:INMSG>\r
+      </tot:RECEIVEMESSAGE>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="1d5da169-ec80-488d-b1ea-fac9461b0bdf" name="IOMATA01"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tot:RECEIVEMESSAGE>\r
+         <tot:INMSG><![CDATA[    
+
+
+<TOTVSIntegrator>
+	<GlobalProduct>TOTVS|EAI</GlobalProduct>
+	<GlobalFunctionCode>EAI</GlobalFunctionCode>
+	<GlobalDocumentFunctionCode>IOMATA01</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>Inclusão Imediata Clientes</GlobalDocumentFunctionDescription>
+	<DocVersion>1.000</DocVersion>
+	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
+	<DocIdentifier>
+	
+	01A62999-0EDB-40F3-B0D8-512B7C671CBD
+	
+	</DocIdentifier>
+	<DocCompany>99</DocCompany>
+	<DocBranch>01</DocBranch>
+	<DocName />
+	<DocFederalID />
+	<DocType>1</DocType>
+	<Message>
+		<Layouts>
+			<Version>1.000</Version>
+			<Identifier>
+			
+			01A62999-0EDB-40F3-B0D8-512B7C671CBD
+			
+			</Identifier>
+			<FunctionCode>U_IOMATA01</FunctionCode>
+			<Content>
+				<IOMATA01_REM>
+					<A1_COD>CE004</A1_COD>
+					<A1_NOME>Cliente Teste ExecAuto 001</A1_NOME>
+					<A1_NREDUZ>Cliente Teste ExecAuto 001</A1_NREDUZ>
+					<A1_END>Rua dos Gráficos, 123</A1_END>
+					<A1_EST>XX</A1_EST>
+					<A1_MUN>São Paulo</A1_MUN>
+				</IOMATA01_REM>
+			</Content>
+		</Layouts>
+	</Message>
+</TOTVSIntegrator>
+
+
+   
          ]]]]>><![CDATA[</tot:INMSG>\r
       </tot:RECEIVEMESSAGE>\r
    </soapenv:Body>\r
