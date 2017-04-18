@@ -296,7 +296,8 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	aAdd( aCpos, "SRA.RA_CIC, " )
 	aAdd( aCpos, "SQB.QB_XSIGLA, " )
 	aAdd( aCpos, "SZ0.Z0_XLOGIN, " )
-	aAdd( aCpos, "SRA.RA_PROCES " )
+	aAdd( aCpos, "SRA.RA_PROCES, " )
+	aAdd( aCpos, "SRA.RA_CC " )
 
 	cQuery += "WITH PAGINA_SRA AS( "
 	cQuery += "SELECT "

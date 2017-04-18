@@ -115,7 +115,8 @@
 			<xs:enumeration value="Z0_XRAMAL2" />
 			<xs:enumeration value="Z0_XRAMAL3" />
 			<xs:enumeration value="QB_XSIGLA" />
-			<xs:enumeration value="RA_PROCESS" />
+			<xs:enumeration value="RA_PROCES" />
+			<xs:enumeration value="RA_CC" />
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

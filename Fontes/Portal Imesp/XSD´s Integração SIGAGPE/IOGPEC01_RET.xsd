@@ -30,7 +30,8 @@
 							<xs:element name="RA_CIC" type="xs:string"/>
 							<xs:element name="QB_XSIGLA" type="xs:string"/>
 							<xs:element name="Z0_XLOGIN" type="xs:string"/>
-							<xs:element name="RA_PROCESS" type="xs:string"/>
+							<xs:element name="RA_PROCES" type="xs:string"/>
+							<xs:element name="RA_CC" type="xs:string"/>
 						</xs:all>
 					</xs:complexType>
 				</xs:element>

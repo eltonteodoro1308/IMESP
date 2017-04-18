@@ -1,5 +1,5 @@
 #INCLUDE 'TOTVS.CH'
-
+//http://spon4944:7112/U_GPEC02.apw?cfunc=004642&ctam=65
 user function GPEC02()
 
 	Local cRet  := ''
@@ -21,7 +21,7 @@ user function GPEC02()
 	cRet += '</head>'
 	cRet += '<body>'
 	cRet += '<img src="data:image/jpg;base64,' + cImg + '"/>'
-	cRet += '<p>' + 'cErro' + '</p>'
+	//cRet += '<p>' + 'cErro' + '</p>'
 	cRet += '</body>'
 	cRet += '</html>'
 

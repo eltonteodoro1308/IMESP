@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Descreve o layout do xml de retorno para pesquisa do superior do funcionario -->
-<xs:schema attributeFormDefault="unqualified"
-	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="IOGPEC04_RET">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element type="xs:string" name="QB_FILRESP" />
-				<xs:element type="xs:string" name="QB_MATRESP" />
-				<xs:element type="xs:string" name="RA_DEPTO" />
-				<xs:element type="xs:string" name="RA_NOME" />
-				<xs:element type="xs:string" name="RD4_CHAVE" />
-				<xs:element type="xs:string" name="RD4_TREE" />
-				<xs:element type="xs:string" name="ERROR" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="IOGPEC05_RET">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IOGPEC05_RD4" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="RD4_CODIDE"/>
+              <xs:element type="xs:string" name="RD4_CHAVE"/>
+              <xs:element type="xs:string" name="RD4_DESC"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:positiveInteger" name="TOTAL_SEARCH_RECORDS"/>
+        <xs:element type="xs:string" name="ERROR"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

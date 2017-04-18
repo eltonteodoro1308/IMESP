@@ -31,23 +31,24 @@ Static Function Gravar( cXml )
 	Local cAno  := cValToChar( Year( Date() ) )
 	Local oXml  := TXmlManager():New()
 
-	RpcSetEnv( "99","01" )
+	//RpcSetEnv( "99","01" )
 
-	aArea := GetArea()
+	//aArea := GetArea()
 
-	ChkFile( 'ZZZ' )
+	//ChkFile( 'ZZZ' )
 
-	DbSelectArea( 'ZZZ' )
+	//DbSelectArea( 'ZZZ' )
 
-	RecLock('ZZZ',.T.)
+	//RecLock('ZZZ',.T.)
 
-	ZZZ->ZZZ_DTTIME := cDia + '/' + cMes + '/' + cAno + ' - ' + Time()
-	ZZZ->ZZZ_XML    := cXml
+	//ZZZ->ZZZ_DTTIME := cDia + '/' + cMes + '/' + cAno + ' - ' + Time()
+	//ZZZ->ZZZ_XML    := cXml
 
-	MsUnlock()
+	//MsUnlock()
 
 	oXml:Parse( cXml )
 
+	//cRet += '<![CDATA['
 	cRet += '<?xml version="1.0" encoding="UTF-8"?>'
 	cRet += '<TOTVSMessage>'
 	cRet += '<MessageInformation version="1.000">'
@@ -84,9 +85,10 @@ Static Function Gravar( cXml )
 	cRet += '</ReturnContent>'
 	cRet += '</ResponseMessage>'
 	cRet += '</TOTVSMessage>'
+	//cRet += ']]>'
 
-	RestArea( aArea )
+	//RestArea( aArea )
 
-	RpcClearEnv()
+	//RpcClearEnv()
 
 Return cRet

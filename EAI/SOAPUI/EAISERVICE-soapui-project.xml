@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="704c384b-8ef7-45f3-bfa1-9499edaffade" activeEnvironment="Default" name="EAISERVICE" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="3c07d040-86ee-4316-b86e-106414fe1d48" wsaVersion="NONE" name="EAISERVICESOAP" type="wsdl" bindingName="{http://www.totvs.com/}EAISERVICESOAP" soapVersion="1_1" anonymous="optional" definition="http://spon4944:7112/ws/EAISERVICE.apw?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="CreateWsdlDocumentationAction@report-directory">C:\Users\elton.alves\Desktop\</con:setting></con:settings><con:definitionCache type="TEXT" rootPart="http://spon4944:7112/ws/EAISERVICE.apw?WSDL"><con:part><con:url>http://spon4944:7112/ws/EAISERVICE.apw?WSDL</con:url><con:content><![CDATA[<!--Generated 20160913 17:50:34 by ADVPL WSDL Server 1.110216 / Protheus 7.00.131227A-20160707 NG-->
+<con:soapui-project id="704c384b-8ef7-45f3-bfa1-9499edaffade" activeEnvironment="Default" name="EAISERVICE" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" defaultScriptLanguage="Groovy" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="3c07d040-86ee-4316-b86e-106414fe1d48" wsaVersion="NONE" name="EAISERVICESOAP" type="wsdl" bindingName="{http://www.totvs.com/}EAISERVICESOAP" soapVersion="1_1" anonymous="optional" definition="http://spon4944:7112/ws/EAISERVICE.apw?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="CreateWsdlDocumentationAction@report-directory">C:\Users\elton.alves\Desktop\</con:setting></con:settings><con:definitionCache type="TEXT" rootPart="http://spon4944:7112/ws/EAISERVICE.apw?WSDL"><con:part><con:url>http://spon4944:7112/ws/EAISERVICE.apw?WSDL</con:url><con:content><![CDATA[<!--Generated 20160913 17:50:34 by ADVPL WSDL Server 1.110216 / Protheus 7.00.131227A-20160707 NG-->
 <definitions targetNamespace="http://www.totvs.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.totvs.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://www.totvs.com/">
@@ -66,7 +66,7 @@
 	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	33AFF90A-25B3-45C6-AC28-4E6481B71730
+	1D730BB6-8A99-431E-B819-96B828CD85FE
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -77,7 +77,11 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier>IOGPEC01</Identifier>
+			<Identifier>
+			
+			1D730BB6-8A99-431E-B819-96B828CD85FE
+			
+			</Identifier>
 			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
 				<IOGPEC01_REM>
@@ -147,8 +151,16 @@
 	<GlobalDocumentFunctionCode>IOGPEC02</GlobalDocumentFunctionCode>
 	<GlobalDocumentFunctionDescription>Funcionarios</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2017-03-09T00:00:00Z</DocDateTime>
-	<DocIdentifier>577D626C-8411-498B-B1CC-21B63B1A0784</DocIdentifier>
+	<DocDateTime>
+	
+	2017-04-12T00:00:00Z
+	
+	</DocDateTime>	
+	<DocIdentifier>
+	
+	BECCF372-2E07-4986-B86C-EAA57BC2A15C
+	
+	</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
@@ -157,8 +169,12 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier>IOGPEC02</Identifier>
-			<FunctionCode>U_IOGPEC02.000996.200</FunctionCode>
+			<Identifier>
+			
+			BECCF372-2E07-4986-B86C-EAA57BC2A15C
+			
+			</Identifier>
+			<FunctionCode>U_IOGPEC02.004642.65</FunctionCode>
 			<Content>
 			</Content>
 		</Layouts>
@@ -217,7 +233,7 @@
 	<DocDateTime>2017-03-24T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	E843450B-1AA9-4409-8281-5AC13B106A84
+	70E281CC-99DF-487E-9019-87DA640785AA
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -228,7 +244,11 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier>IOGPEC04</Identifier>
+			<Identifier>
+			
+			70E281CC-99DF-487E-9019-87DA640785AA
+			
+			</Identifier>
 			<FunctionCode>U_IOGPEC04.004642.1</FunctionCode>
 			<Content>
 			</Content>
@@ -252,7 +272,7 @@
 	<DocDateTime>2017-03-24T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	8BCAF3D7-3C6F-41BB-B2DF-9D15C58B3D35
+	85B77B1C-BF0A-41F6-BAEB-23BB48FC70D3
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -263,13 +283,22 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier>IOGPEC05</Identifier>
+			<Identifier>
+			
+			85B77B1C-BF0A-41F6-BAEB-23BB48FC70D3
+			
+			</Identifier>
 			<FunctionCode>U_IOGPEC05</FunctionCode>
 			<Content>
 <IOGPEC05_REM>
 	<filter field="RD4_DESC" relation="START_WITH" >
 		<value>SEÇÃO DE</value>
 	</filter>
+
+<filter field="QB_XDTEXTI" relation="EQUAL" >
+		<value>20110831</value>
+	</filter>
+	
 </IOGPEC05_REM>
 			
 			</Content>
@@ -331,4 +360,4 @@
          ]]]]>><![CDATA[</tot:INMSG>\r
       </tot:RECEIVEMESSAGE>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:afterLoadScript>window.alert('message');</con:afterLoadScript><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

@@ -1,0 +1,1240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:element name="SH6_MODEL">
+<xs:annotation>
+<xs:documentation>Movimentação da Produção</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SH6_FIELD_MODEL">
+<xs:annotation>
+<xs:documentation>SH6_FIELD_MODEL</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:all>
+<xs:element name="H6_FILIAL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Filial do Sistema
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_OP" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Ordem de Producao
+ Tipo de dado: C
+ Tamanho: 13
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="13"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_PRODUTO" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo do Produto
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_OPERAC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo da Operacao
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_RECURSO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo do Recurso
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_FERRAM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo da Ferramenta
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_DATAINI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data Inicial
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_HORAINI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Hora Inicial
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_DATAFIN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data Final
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_HORAFIN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Hora Final
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_QTDPROD" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Quantidade Produzida
+ Tipo de dado: N
+ Tamanho: 11
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,11}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_QTDPERD" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Quantidade Perdida
+ Tipo de dado: N
+ Tamanho: 11
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,11}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_PT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Producao Parcial ou Total
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: P=Parcial;
+T=Total;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="P"/><xs:enumeration value="T"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_DTAPONT" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Data do Apontamento
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_DESDOBR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Desdobramento
+ Tipo de dado: C
+ Tamanho: 4
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="4"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_IDENT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Identificacao da OP Pai
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_TEMPO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tempo Real do Apontamento
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_LOTECTL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Lote
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="10"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_NUMLOTE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Sub-Lote
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_DTVALID" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Validade do Lote inform.
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_MOTIVO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Motivo Hora Improdutiva
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_DESCRI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Descrição do Motivo
+ Tipo de dado: C
+ Tamanho: 35
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="35"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_OBSERVA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Observacoes
+ Tipo de dado: C
+ Tamanho: 30
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="30"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_TIPO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo do Apontamento
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="1"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_OPERADO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Operador do Recurso
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="10"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_PERDANT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Perda acumul. anteriormen
+ Tipo de dado: N
+ Tamanho: 11
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,11}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_SEQ" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Seq. do Roteiro Operacoes
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_IDENTE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Identificacao do Produto
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="8"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_IDEINV" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Ident. Invertida Produto
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="8"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_DTPROD" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data da Producao
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_PRDINV" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data da Producao Invert.
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="8"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_LOTINV" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Nro. do Lote Invertido
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_VERIFI" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Indica se Insp. ou Cert.
+ Tipo de dado: N
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,1}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_INSCER" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Insp./Certif./Libera Urg.
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_LAUDO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Laudo da Producao
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="1"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_CERQUA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Certificado de Qualidade
+ Tipo de dado: C
+ Tamanho: 12
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="12"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_TAMLOT" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Tamanho do Lote
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="8"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_REVI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Revisao do Produto
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_QTDPRO2" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Quantidade Produzida 2aUM
+ Tipo de dado: N
+ Tamanho: 11
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,11}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_SEQCARG" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Numero da Carga Maquina
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_POTENCI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Potencia do Lote
+ Tipo de dado: N
+ Tamanho: 6
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,6}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_TIPOTEM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Formato do Tempo
+ Tipo de dado: N
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,1}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_RATEIO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[% Rateio de Custo
+ Tipo de dado: N
+ Tamanho: 6
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,6}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_LOCAL" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Armazem do apontamento
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_STATUS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Status?
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="1"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_PERIMP" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Percentual Importacao FCI
+ Tipo de dado: N
+ Tamanho: 8
+ Decimal: 4
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,4}|[0-9]{0,8}(\.[0-9]{1,4})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_QTGANHO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Qtde ganho de produção
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_QTMAIOR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Qtde produzida a maior
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="H6_CBFLAG" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Flag ACD
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="1"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+</xs:all>
+<xs:attribute name="modeltype" type="MPmodeltype" use="required"/>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="Operation" type="MPoperation" use="required"/>
+<xs:attribute name="version" type="MPversion" use="required"/>
+<xs:attribute name="pkIndexOrder" type="xs:integer" use="optional"/>
+<xs:attribute name="WKDef" type="xs:string" use="optional"/>
+<xs:attribute name="WKVersDef" type="xs:string" use="optional"/>
+<xs:attribute name="WKNumProces" type="xs:string" use="optional"/>
+<xs:attribute name="WKNumState" type="xs:string" use="optional"/>
+<xs:attribute name="WKCurrentState" type="xs:string" use="optional"/>
+<xs:attribute name="WKCompany" type="xs:string" use="optional"/>
+<xs:attribute name="WKUser" type="xs:string" use="optional"/>
+<xs:attribute name="WKUserEmail" type="xs:string" use="optional"/>
+<xs:attribute name="WKCompletTask" type="xs:string" use="optional"/>
+<xs:attribute name="WKNextState" type="xs:string" use="optional"/>
+<xs:attribute name="WKCardId" type="xs:string" use="optional"/>
+<xs:attribute name="WKFormId" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="MPmodeltype">
+<xs:annotation>
+<xs:documentation>tipo da estrutura de dados do modelo
+FIELDS - Estrutura de dados de campos
+GRID - Estrutura de dados em linha
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:whiteSpace value="preserve"/>
+<xs:enumeration value="FIELDS"/>
+<xs:enumeration value="GRID"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPoperation">
+<xs:annotation>
+<xs:documentation>Tipo da operação:
+1 - VIEW
+3 - INSERT
+4 - UPDATE
+5 - DELETE
+6 - ONLYUPDATE
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:whiteSpace value="preserve"/>
+<xs:enumeration value="1"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+<xs:enumeration value="6"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPversion">
+<xs:annotation>
+<xs:documentation>VersÃ£o do schema e layout</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:token">
+<xs:pattern value="1\.01"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPdeleted">
+<xs:annotation>
+<xs:documentation>Status da linha da estrutura do tipo GRID :
+1 - deletada
+0 - ativa
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:whiteSpace value="preserve"/>
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPorder">
+<xs:annotation>
+<xs:documentation>
+indica a ordem de entrada dos dados que deve ser executada na carga do xml
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:token">
+<xs:pattern value="[1-9]{1}[0-9]{0,2}"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPiditem">
+<xs:annotation>
+<xs:documentation>
+codigo de identificacao da linha
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:token">
+<xs:pattern value="[1-9]{1}[0-9]{0,2}"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>

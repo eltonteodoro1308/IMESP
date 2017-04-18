@@ -21,11 +21,10 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 	Local aParams   := StrTokArr2( cParams, ',', .T. )
 	Local aArea     := GetArea()
 	Local cBitMap   := ''
+	Local cRaBitMap := ''
 	Local cIOJPG65  := GetNewPar( 'IO_JPG_65' , '' )
 	Local cIOJPG200 := GetNewPar( 'IO_JPG_200', '' )
-	/*
-	//TODO Ajustar estye fonte para buscar fotos na tabela SZ0
-	*/
+
 	If Len( aParams ) < 2
 
 		Return MakeXml( ,'Os Parâmetros enviados são insufucientes para execução da rotina.')
@@ -35,15 +34,6 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 	If ! AllTrim( aParams[ 2 ] ) $ '65/200'
 
 		Return MakeXml( ,'O Segundo parâmetro só pode ter os seguintes valores permitidos: 65 / 200.' )
-
-	End If
-
-	DbSelectArea( 'SRA' )
-	DbSetOrder( 13 ) // RA_MAT + RA_FILIAL
-
-	If ! DbSeek( AllTrim( aParams[ 1 ] ) )
-
-		Return MakeXml( ,'Matrícula do Funcionário não localizada.' )
 
 	End If
 
@@ -58,7 +48,17 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 
 	If AllTrim( aParams[ 2 ] ) = '65'
 
-		If Empty( cBitMap := SZ0->Z0_BITMAP1 ) .And. Empty( cBitMap := SRA->RA_BITMAP ) .And. Empty( cBitMap := cIOJPG65 )
+		cRaBitMap := Posicione( 'SRA', 13, SZ0->Z0_CODIGO, 'RA_BITMAP' )
+
+		RestArea( aArea )
+
+		If ! Empty( cBitMap := SZ0->Z0_BASE641 ) .Or.;
+		! Empty( cBitMap := U_IOGPEB64( cRaBitMap ) ) .Or.;
+		! Empty( cBitMap := U_IOGPEB64( cIOJPG65 ) )
+
+			Return MakeXml( cBitMap )
+
+		Else
 
 			Return MakeXml( ,'Nenhuma imagem definida nos campos Z0_BITMAP1 / RA_BITAMAP e no parâmetro IO_JPG_65.' )
 
@@ -68,7 +68,12 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 
 	If AllTrim( aParams[ 2 ] ) = '200'
 
-		If Empty( cBitMap := SZ0->Z0_BITMAP2 ) .And. Empty( cBitMap := cIOJPG65 )
+		If ! Empty( cBitMap := SZ0->Z0_BASE642 ) .Or.;
+		! Empty( cBitMap := U_IOGPEB64( cIOJPG200 ) )
+
+			Return MakeXml( cBitMap )
+
+		Else
 
 			Return MakeXml( ,'Nenhuma imagem definida no campo Z0_BITMAP2 ou no parâmetro IO_JPG_200.' )
 
@@ -76,42 +81,9 @@ User Function IOGPEC02( cXml, cError, cWarning, cParams, oFwEai )
 
 	End If
 
-
-
-	cBitMap := AllTrim( cBitMap )
-
-	OpenRepositDB()
-
-	DbSelectArea( 'PROTHEUS_REPOSIT' )
-	DbSetOrder( 1 ) //BMPNAME
-
-	If ! DbSeek( cBitMap )
-
-		If DbSeek( Eval( { || &( 'cIOJPG' + aParams[ 2 ] ) } ) )
-
-			cBitMap := Eval( { || &( 'cIOJPG' + aParams[ 2 ] ) } )
-
-		Else
-
-			Return MakeXml( ,'Não localizado no repositório de imagens o conteúdo do campo solicitado ou dos parâmetros IO_JPG_65 e IO_JPG_200' )
-
-		End If
-
-	End If
-
-	Do While ! Eof() .And. AllTrim( PROTHEUS_REPOSIT->BMPNAME ) == cBitMap
-
-		cRet += PROTHEUS_REPOSIT->MEMO
-
-		DbSkip()
-
-	End Do
-
-	PROTHEUS_REPOSIT->( DbCloseArea() )
-
 	RestArea( aArea )
 
-Return MakeXml( EnCode64( cRet ) )
+Return
 
 /*/{Protheus.doc} MakeXml
 Gera o xml de retorno da requisição EAI
