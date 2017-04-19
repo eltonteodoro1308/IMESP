@@ -116,7 +116,7 @@ Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 		cXMLRet +=     '</Identification>'
 		cXMLRet += '</BusinessEvent>'
 		cXMLRet += '<BusinessContent>'
-		cXMLRet +=    '<Code>'+cCode + '</Code>'
+		cXMLRet +=    '<Code>' + cCode + '</Code>'
 		cXMLRet += '</BusinessContent>'
 
 	End If

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TOTVSMessage>
+	<MessageInformation version="1.000">
+		<UUID>d2de9568-3c8d-4000-8DFB-c6f3d6c420d0</UUID>
+		<Type>ResponseMessage</Type>
+		<Transaction>MIOGPEA1</Transaction>
+		<StandardVersion>1.000</StandardVersion>
+		<SourceApplication>ENVIRONMENT</SourceApplication>
+		<CompanyId>99</CompanyId>
+		<BranchId>01</BranchId>
+		<Product name="PROTHEUS" version="12" />
+		<DeliveryType>Sync</DeliveryType>
+		<GeneratedOn>2017-04-19T14:27:45</GeneratedOn>
+	</MessageInformation>
+	<ResponseMessage>
+		<ReceivedMessage>
+			<SentBy>PROTHEUS</SentBy>
+			<UUID>40ad46f8-6df4-a725-18bc-5563f2d8dac4</UUID>
+			<MessageContent><![CDATA[<?xml version="1.0" encoding="utf-8"?><TOTVSMessage><MessageInformation version="1.000"><UUID>40ad46f8-6df4-a725-18bc-5563f2d8dac4</UUID><Type>BusinessMessage</Type><Transaction>MIOGPEA1</Transaction><StandardVersion>1.000</StandardVersion><SourceApplication>ENVIRONMENT99</SourceApplication><CompanyId>99</CompanyId><BranchId>01</BranchId><Enterprise></Enterprise><BusinessUnit></BusinessUnit><Product name="PROTHEUS" version="12"></Product><GeneratedOn>2017-04-19T17:27:43Z</GeneratedOn><DeliveryType>Sync</DeliveryType></MessageInformation><BusinessMessage><BusinessEvent><Entity>MYMESSAGE</Entity><Event>UPSERT</Event><Identification><Key name="InternalId">99  004642</Key></Identification></BusinessEvent><BusinessContent><Code>004642</Code></BusinessContent></BusinessMessage></TOTVSMessage>]]></MessageContent>
+		</ReceivedMessage>
+		<ProcessingInformation>
+			<ProcessedOn>2017-04-19T14:27:45</ProcessedOn>
+			<Status>OK</Status>
+			<ListOfMessages>
+				<Message type="WARNING" code="00">Executado com Sucesso</Message>
+			</ListOfMessages>
+		</ProcessingInformation>
+		<ReturnContent>
+			<Status>Incluido</Status>
+		</ReturnContent>
+	</ResponseMessage>
+</TOTVSMessage>
