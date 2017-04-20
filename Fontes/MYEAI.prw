@@ -68,9 +68,9 @@ Static Function Gravar( cXml )
 	cRet += '<SentBy>PROTHEUS</SentBy>'
 	cRet += '<UUID>' + oXml:XPathGetNodeValue( '/TOTVSMessage/MessageInformation/UUID' ) + '</UUID>'
 	cRet += '<MessageContent>'
-	cRet += '<![CDATA['
-	cRet += cXml
-	cRet += ']]>'
+	//cRet += '<![CDATA['
+	//cRet += cXml
+	//cRet += ']]>'
 	cRet += '</MessageContent>'
 	cRet += '</ReceivedMessage>'
 	cRet += '<ProcessingInformation>'

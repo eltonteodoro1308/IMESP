@@ -310,7 +310,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	Next nX
 
 	cQuery += "FROM " + RetSqlName( "SRA" ) + " SRA "
-	cQuery += "LEFT JOIN " + RetSqlName( "SZ0" ) + " SZ0 ON SRA.RA_MAT    = SZ0.Z0_CODIGO AND SRA.RA_FILIAL = SZ0.Z0_FILIAL "
+	cQuery += "LEFT JOIN " + RetSqlName( "SZ0" ) + " SZ0 ON SRA.RA_MAT    = SZ0.Z0_CODIGO "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO  = SQB.QB_DEPTO "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO  = SQ3.Q3_CARGO AND SRA.RA_FILIAL = SQ3.Q3_FILIAL "
 	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO  = RD4.RD4_CODIDE "
@@ -333,7 +333,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	cQuery += " UNION ALL "
 
 	cQuery += "SELECT COUNT(*) ,'COUNT'" + Replicate( ",''", Len( aCpos ) - 1 ) + " FROM " + RetSqlName( "SRA" ) + " SRA "
-	cQuery += "LEFT JOIN " + RetSqlName( "SZ0" ) + " SZ0 ON SRA.RA_MAT    = SZ0.Z0_CODIGO AND SRA.RA_FILIAL = SZ0.Z0_FILIAL "
+	cQuery += "LEFT JOIN " + RetSqlName( "SZ0" ) + " SZ0 ON SRA.RA_MAT   = SZ0.Z0_CODIGO "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO = SQB.QB_DEPTO "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO AND SRA.RA_FILIAL = SQ3.Q3_FILIAL "
 	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO = RD4.RD4_CODIDE "
@@ -389,7 +389,7 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, cSta
 
 		ElseIf cFunction = 'SUBSTRING'
 
-			cField := cFunction + "(" + cField + "," + cStart + "," + cLength + ")"
+			cField := cFunction + "(" + cField + " COLLATE SQL_LATIN1_GENERAL_CP1251_CI_AS ," + cStart + "," + cLength + ")"
 
 		End If
 
@@ -405,7 +405,7 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, cSta
 
 	If Empty( cFunction )
 
-		cField := "UPPER(" + cField + ")"
+		cField := " " + cField + " COLLATE SQL_LATIN1_GENERAL_CP1251_CI_AS "
 
 	EndIf
 

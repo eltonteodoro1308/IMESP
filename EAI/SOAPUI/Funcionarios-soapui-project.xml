@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="7b2110cd-9d19-4a1b-932e-8cca4b3b862d" activeEnvironment="Default" name="Funcionarios" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="c367e8b1-6c89-49f7-93b9-4fe38648908c" wsaVersion="NONE" name="BasicHttpsBinding_Funcionarios" type="wsdl" bindingName="{http://servicos.imprensaoficial.com.br/Integrador/Funcionarios}BasicHttpsBinding_Funcionarios" soapVersion="1_1" anonymous="optional" definition="http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc?singleWsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc</con:endpoint></con:endpoints><con:operation id="92506b1e-8d3b-467c-bbaa-3dfbe60a0ed5" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/AfastamentoPorMatricula" name="AfastamentoPorMatricula" bindingOperationName="AfastamentoPorMatricula" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5ec6463a-72d2-4059-a478-4a24704dea50" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:AfastamentoPorMatricula>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:matricula>?</fun:matricula>\r
+         <!--Optional:-->\r
+         <fun:DataInicial>?</fun:DataInicial>\r
+         <!--Optional:-->\r
+         <fun:DataFinal>?</fun:DataFinal>\r
+      </fun:AfastamentoPorMatricula>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/AfastamentoPorMatricula"/></con:call></con:operation><con:operation id="eb10e6d8-3fba-4d33-be99-1c8561fcd51b" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FotoPorRegistro" name="FotoPorRegistro" bindingOperationName="FotoPorRegistro" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c9217d8f-54c4-4c04-9061-8e3503e32768" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FotoPorRegistro>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:matricula>?</fun:matricula>\r
+         <!--Optional:-->\r
+         <fun:tamanho>?</fun:tamanho>\r
+      </fun:FotoPorRegistro>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FotoPorRegistro"/></con:call></con:operation><con:operation id="121d127f-239d-4152-8832-6fdad2dbc9f3" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosAniversariantes" name="FuncionariosAniversariantes" bindingOperationName="FuncionariosAniversariantes" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8fc32446-f86e-4808-a576-4a88db22bd1c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FuncionariosAniversariantes>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:mesDiaInicial>?</fun:mesDiaInicial>\r
+         <!--Optional:-->\r
+         <fun:mesDiaFinal>?</fun:mesDiaFinal>\r
+      </fun:FuncionariosAniversariantes>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosAniversariantes"/></con:call></con:operation><con:operation id="8ffd1f47-518e-4c1c-9bd4-6ff85b49e4a1" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorDepto" name="FuncionariosPorDepto" bindingOperationName="FuncionariosPorDepto" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ecce7ca3-654f-4c8d-818a-71714d50d716" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FuncionariosPorDepto>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:nomeDepto>?</fun:nomeDepto>\r
+      </fun:FuncionariosPorDepto>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorDepto"/></con:call></con:operation><con:operation id="2f7457ca-01b2-4f71-92ec-e0ab46b7c595" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorMatricula" name="FuncionariosPorMatricula" bindingOperationName="FuncionariosPorMatricula" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="85cda502-5085-4a95-a800-855432c71f92" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FuncionariosPorMatricula>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:Matriculas>\r
+            <!--Zero or more repetitions:-->\r
+            <arr:int>?</arr:int>\r
+         </fun:Matriculas>\r
+      </fun:FuncionariosPorMatricula>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorMatricula"/></con:call></con:operation><con:operation id="7692b7a1-fa0d-4e21-a3d4-1be8712cfe16" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorNome" name="FuncionariosPorNome" bindingOperationName="FuncionariosPorNome" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1d4d1ba5-b450-4415-9dfa-21c087f2eb74" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FuncionariosPorNome>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:nomeFuncionario>?</fun:nomeFuncionario>\r
+      </fun:FuncionariosPorNome>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorNome"/></con:call></con:operation><con:operation id="00ccf416-0e73-414a-b959-41cd9ff10074" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorRamal" name="FuncionariosPorRamal" bindingOperationName="FuncionariosPorRamal" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4d372131-08ce-4bac-917b-aacf1bd023ee" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FuncionariosPorRamal>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:ramal>?</fun:ramal>\r
+      </fun:FuncionariosPorRamal>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorRamal"/></con:call></con:operation><con:operation id="9bb5d020-673d-47a0-8094-90f8f04dd594" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/InformaFotoAtualizada" name="InformaFotoAtualizada" bindingOperationName="InformaFotoAtualizada" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1e5ec08e-ee60-41ec-8701-c47e1a1f77ff" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:InformaFotoAtualizada>\r
+         <!--Optional:-->\r
+         <fun:receiveMessage>?</fun:receiveMessage>\r
+      </fun:InformaFotoAtualizada>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/InformaFotoAtualizada"/></con:call></con:operation><con:operation id="7b8b2690-489f-44d9-8363-eeafe9287f2c" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/testaChamada" name="testaChamada" bindingOperationName="testaChamada" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5783fdba-98cf-4fbe-a40e-0f61debd565a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:testaChamada/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/testaChamada"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="a90d5d0b-0ad6-4a1c-baaa-daa82431728e" wsaVersion="NONE" name="BasicHttpBinding_Funcionarios" type="wsdl" bindingName="{http://servicos.imprensaoficial.com.br/Integrador/Funcionarios}BasicHttpBinding_Funcionarios" soapVersion="1_1" anonymous="optional" definition="http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc?singleWsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc?singleWsdl"><con:part><con:url>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc?singleWsdl</con:url><con:content><![CDATA[<wsdl:definitions name="Funcionarios" targetNamespace="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_Funcionarios_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false"/>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256/>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict/>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import/>
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+      <xs:element name="InformaFotoAtualizada">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="receiveMessage" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InformaFotoAtualizadaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="InformaFotoAtualizadaResult" nillable="true" type="TOTVSMessage"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FuncionariosPorMatricula">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sistema" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Matriculas" nillable="true" type="q1:ArrayOfint" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FuncionariosPorMatriculaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="FuncionariosPorMatriculaResult" nillable="true" type="Funcionarios_RET"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FuncionariosPorNome">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sistema" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="nomeFuncionario" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FuncionariosPorNomeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="FuncionariosPorNomeResult" nillable="true" type="Funcionarios_RET"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FuncionariosPorRamal">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sistema" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="ramal" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FuncionariosPorRamalResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="FuncionariosPorRamalResult" nillable="true" type="Funcionarios_RET"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FuncionariosPorDepto">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sistema" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="nomeDepto" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FuncionariosPorDeptoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="FuncionariosPorDeptoResult" nillable="true" type="Funcionarios_RET"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FuncionariosAniversariantes">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sistema" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="mesDiaInicial" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="mesDiaFinal" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FuncionariosAniversariantesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="FuncionariosAniversariantesResult" nillable="true" type="Funcionarios_RET"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FotoPorRegistro">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sistema" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="matricula" type="xs:int"/>
+            <xs:element minOccurs="0" name="tamanho" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="FotoPorRegistroResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="FotoPorRegistroResult" nillable="true" type="Foto_RET"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AfastamentoPorMatricula">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sistema" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="matricula" type="xs:int"/>
+            <xs:element minOccurs="0" name="DataInicial" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="DataFinal" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AfastamentoPorMatriculaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="AfastamentoPorMatriculaResult" nillable="true" type="Afastamentos_RET"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="testaChamada">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="testaChamadaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="testaChamadaResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+      <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+      <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+      <xs:element name="byte" nillable="true" type="xs:byte"/>
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+      <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+      <xs:element name="double" nillable="true" type="xs:double"/>
+      <xs:element name="float" nillable="true" type="xs:float"/>
+      <xs:element name="int" nillable="true" type="xs:int"/>
+      <xs:element name="long" nillable="true" type="xs:long"/>
+      <xs:element name="QName" nillable="true" type="xs:QName"/>
+      <xs:element name="short" nillable="true" type="xs:short"/>
+      <xs:element name="string" nillable="true" type="xs:string"/>
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+      <xs:element name="char" nillable="true" type="tns:char"/>
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int"/>
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration"/>
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid"/>
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName"/>
+      <xs:attribute name="Id" type="xs:ID"/>
+      <xs:attribute name="Ref" type="xs:IDREF"/>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="TOTVSMessage">
+        <xs:sequence>
+          <xs:element name="MessageInformation" nillable="true" type="MessageInformation"/>
+          <xs:element name="ResponseMessage" nillable="true" type="ResponseMessage"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TOTVSMessage" nillable="true" type="TOTVSMessage"/>
+      <xs:complexType name="MessageInformation">
+        <xs:sequence>
+          <xs:element name="UUID" nillable="true" type="xs:string"/>
+          <xs:element name="Type" nillable="true" type="xs:string"/>
+          <xs:element name="Transaction" nillable="true" type="xs:string"/>
+          <xs:element name="StandardVersion" nillable="true" type="xs:string"/>
+          <xs:element name="SourceApplication" nillable="true" type="xs:string"/>
+          <xs:element name="CompanyId" nillable="true" type="xs:string"/>
+          <xs:element name="BranchId" nillable="true" type="xs:string"/>
+          <xs:element name="Product" nillable="true" type="xs:string"/>
+          <xs:element name="DeliveryType" nillable="true" type="xs:string"/>
+          <xs:element name="GeneratedOn" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MessageInformation" nillable="true" type="MessageInformation"/>
+      <xs:complexType name="ResponseMessage">
+        <xs:sequence>
+          <xs:element name="ReceivedMessage" nillable="true" type="ReceivedMessage"/>
+          <xs:element name="ProcessingInformation" nillable="true" type="ProcessingInformation"/>
+          <xs:element name="ReturnContent" nillable="true" type="ReturnContent"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResponseMessage" nillable="true" type="ResponseMessage"/>
+      <xs:complexType name="ReceivedMessage">
+        <xs:sequence>
+          <xs:element name="SentBy" nillable="true" type="xs:string"/>
+          <xs:element name="UUID" nillable="true" type="xs:string"/>
+          <xs:element name="MessageContent" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ReceivedMessage" nillable="true" type="ReceivedMessage"/>
+      <xs:complexType name="ProcessingInformation">
+        <xs:sequence>
+          <xs:element name="ProcessedOn" nillable="true" type="xs:string"/>
+          <xs:element name="Status" nillable="true" type="xs:string"/>
+          <xs:element name="ListOfMessages" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProcessingInformation" nillable="true" type="ProcessingInformation"/>
+      <xs:complexType name="ReturnContent">
+        <xs:sequence>
+          <xs:element name="Status" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ReturnContent" nillable="true" type="ReturnContent"/>
+      <xs:complexType name="Funcionarios_RET">
+        <xs:sequence>
+          <xs:element name="Funcionarios" nillable="true" type="ArrayOfFuncionario"/>
+          <xs:element name="TOTAL_REGISTROS" nillable="true" type="xs:string"/>
+          <xs:element name="ERROR" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Funcionarios_RET" nillable="true" type="Funcionarios_RET"/>
+      <xs:complexType name="ArrayOfFuncionario">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Funcionario" nillable="true" type="Funcionario"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfFuncionario" nillable="true" type="ArrayOfFuncionario"/>
+      <xs:complexType name="Funcionario">
+        <xs:sequence>
+          <xs:element name="Matricula" nillable="true" type="xs:string"/>
+          <xs:element name="Cpf" nillable="true" type="xs:string"/>
+          <xs:element name="Nome" nillable="true" type="xs:string"/>
+          <xs:element name="NomeCompleto" nillable="true" type="xs:string"/>
+          <xs:element name="Apelido" nillable="true" type="xs:string"/>
+          <xs:element name="CodigoCargo" nillable="true" type="xs:string"/>
+          <xs:element name="DescricaoCargo" nillable="true" type="xs:string"/>
+          <xs:element name="CodigoFilial" nillable="true" type="xs:string"/>
+          <xs:element name="LocalTrabalho" nillable="true" type="xs:string"/>
+          <xs:element name="CodigoDepto" nillable="true" type="xs:string"/>
+          <xs:element name="DescricaoDepto" nillable="true" type="xs:string"/>
+          <xs:element name="SiglaDepto" nillable="true" type="xs:string"/>
+          <xs:element name="ChaveDepto" nillable="true" type="xs:string"/>
+          <xs:element name="DataDemissao" nillable="true" type="xs:string"/>
+          <xs:element name="Q3_Classe" nillable="true" type="xs:string"/>
+          <xs:element name="DataNascimento" nillable="true" type="xs:string"/>
+          <xs:element name="Situacao" nillable="true" type="xs:string"/>
+          <xs:element name="Email" nillable="true" type="xs:string"/>
+          <xs:element name="Login" nillable="true" type="xs:string"/>
+          <xs:element name="Ramal1" nillable="true" type="xs:string"/>
+          <xs:element name="Ramal2" nillable="true" type="xs:string"/>
+          <xs:element name="Ramal3" nillable="true" type="xs:string"/>
+          <xs:element name="CentroCusto" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Funcionario" nillable="true" type="Funcionario"/>
+      <xs:complexType name="Foto_RET">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="erro" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="imagem" nillable="true" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Foto_RET" nillable="true" type="Foto_RET"/>
+      <xs:complexType name="Afastamentos_RET">
+        <xs:sequence>
+          <xs:element name="Matricula" type="xs:int"/>
+          <xs:element name="Nome" nillable="true" type="xs:string"/>
+          <xs:element name="Afastamentos" nillable="true" type="ArrayOfAfastamento"/>
+          <xs:element name="ERROR" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Afastamentos_RET" nillable="true" type="Afastamentos_RET"/>
+      <xs:complexType name="ArrayOfAfastamento">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Afastamento" nillable="true" type="Afastamento"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAfastamento" nillable="true" type="ArrayOfAfastamento"/>
+      <xs:complexType name="Afastamento">
+        <xs:sequence>
+          <xs:element name="Descricao" nillable="true" type="xs:string"/>
+          <xs:element name="DataInicial" nillable="true" type="xs:string"/>
+          <xs:element name="DataFinal" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Afastamento" nillable="true" type="Afastamento"/>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <xs:complexType name="ArrayOfint">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="int" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfint" nillable="true" type="tns:ArrayOfint"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="Funcionarios_InformaFotoAtualizada_InputMessage">
+    <wsdl:part name="parameters" element="tns:InformaFotoAtualizada"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_InformaFotoAtualizada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InformaFotoAtualizadaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_InformaFotoAtualizada_StringFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:string" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorMatricula_InputMessage">
+    <wsdl:part name="parameters" element="tns:FuncionariosPorMatricula"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorMatricula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FuncionariosPorMatriculaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorMatricula_StringFault_FaultMessage">
+    <wsdl:part name="detail" element="q2:string" xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorNome_InputMessage">
+    <wsdl:part name="parameters" element="tns:FuncionariosPorNome"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorNome_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FuncionariosPorNomeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorNome_StringFault_FaultMessage">
+    <wsdl:part name="detail" element="q3:string" xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorRamal_InputMessage">
+    <wsdl:part name="parameters" element="tns:FuncionariosPorRamal"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorRamal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FuncionariosPorRamalResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorRamal_StringFault_FaultMessage">
+    <wsdl:part name="detail" element="q4:string" xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorDepto_InputMessage">
+    <wsdl:part name="parameters" element="tns:FuncionariosPorDepto"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorDepto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FuncionariosPorDeptoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosPorDepto_StringFault_FaultMessage">
+    <wsdl:part name="detail" element="q5:string" xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosAniversariantes_InputMessage">
+    <wsdl:part name="parameters" element="tns:FuncionariosAniversariantes"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosAniversariantes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FuncionariosAniversariantesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FuncionariosAniversariantes_StringFault_FaultMessage">
+    <wsdl:part name="detail" element="q6:string" xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FotoPorRegistro_InputMessage">
+    <wsdl:part name="parameters" element="tns:FotoPorRegistro"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FotoPorRegistro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FotoPorRegistroResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_FotoPorRegistro_StringFault_FaultMessage">
+    <wsdl:part name="detail" element="q7:string" xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_AfastamentoPorMatricula_InputMessage">
+    <wsdl:part name="parameters" element="tns:AfastamentoPorMatricula"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_AfastamentoPorMatricula_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AfastamentoPorMatriculaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_AfastamentoPorMatricula_StringFault_FaultMessage">
+    <wsdl:part name="detail" element="q8:string" xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_testaChamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:testaChamada"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_testaChamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:testaChamadaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="Funcionarios_testaChamada_StringFault_FaultMessage">
+    <wsdl:part name="detail" element="q9:string" xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  </wsdl:message>
+  <wsdl:portType name="Funcionarios">
+    <wsdl:operation name="InformaFotoAtualizada">
+      <wsdl:input wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/InformaFotoAtualizada" message="tns:Funcionarios_InformaFotoAtualizada_InputMessage"/>
+      <wsdl:output wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/InformaFotoAtualizadaResponse" message="tns:Funcionarios_InformaFotoAtualizada_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/InformaFotoAtualizadaStringFault" name="StringFault" message="tns:Funcionarios_InformaFotoAtualizada_StringFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorMatricula">
+      <wsdl:input wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorMatricula" message="tns:Funcionarios_FuncionariosPorMatricula_InputMessage"/>
+      <wsdl:output wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorMatriculaResponse" message="tns:Funcionarios_FuncionariosPorMatricula_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorMatriculaStringFault" name="StringFault" message="tns:Funcionarios_FuncionariosPorMatricula_StringFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorNome">
+      <wsdl:input wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorNome" message="tns:Funcionarios_FuncionariosPorNome_InputMessage"/>
+      <wsdl:output wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorNomeResponse" message="tns:Funcionarios_FuncionariosPorNome_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorNomeStringFault" name="StringFault" message="tns:Funcionarios_FuncionariosPorNome_StringFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorRamal">
+      <wsdl:input wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorRamal" message="tns:Funcionarios_FuncionariosPorRamal_InputMessage"/>
+      <wsdl:output wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorRamalResponse" message="tns:Funcionarios_FuncionariosPorRamal_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorRamalStringFault" name="StringFault" message="tns:Funcionarios_FuncionariosPorRamal_StringFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorDepto">
+      <wsdl:input wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorDepto" message="tns:Funcionarios_FuncionariosPorDepto_InputMessage"/>
+      <wsdl:output wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorDeptoResponse" message="tns:Funcionarios_FuncionariosPorDepto_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorDeptoStringFault" name="StringFault" message="tns:Funcionarios_FuncionariosPorDepto_StringFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosAniversariantes">
+      <wsdl:input wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosAniversariantes" message="tns:Funcionarios_FuncionariosAniversariantes_InputMessage"/>
+      <wsdl:output wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosAniversariantesResponse" message="tns:Funcionarios_FuncionariosAniversariantes_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosAniversariantesStringFault" name="StringFault" message="tns:Funcionarios_FuncionariosAniversariantes_StringFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="FotoPorRegistro">
+      <wsdl:input wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FotoPorRegistro" message="tns:Funcionarios_FotoPorRegistro_InputMessage"/>
+      <wsdl:output wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FotoPorRegistroResponse" message="tns:Funcionarios_FotoPorRegistro_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FotoPorRegistroStringFault" name="StringFault" message="tns:Funcionarios_FotoPorRegistro_StringFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="AfastamentoPorMatricula">
+      <wsdl:input wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/AfastamentoPorMatricula" message="tns:Funcionarios_AfastamentoPorMatricula_InputMessage"/>
+      <wsdl:output wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/AfastamentoPorMatriculaResponse" message="tns:Funcionarios_AfastamentoPorMatricula_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/AfastamentoPorMatriculaStringFault" name="StringFault" message="tns:Funcionarios_AfastamentoPorMatricula_StringFault_FaultMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="testaChamada">
+      <wsdl:input wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/testaChamada" message="tns:Funcionarios_testaChamada_InputMessage"/>
+      <wsdl:output wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/testaChamadaResponse" message="tns:Funcionarios_testaChamada_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/testaChamadaStringFault" name="StringFault" message="tns:Funcionarios_testaChamada_StringFault_FaultMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_Funcionarios" type="tns:Funcionarios">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="InformaFotoAtualizada">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/InformaFotoAtualizada" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorMatricula">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorMatricula" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorNome">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorNome" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorRamal">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorRamal" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorDepto">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorDepto" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosAniversariantes">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosAniversariantes" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FotoPorRegistro">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FotoPorRegistro" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfastamentoPorMatricula">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/AfastamentoPorMatricula" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testaChamada">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/testaChamada" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpsBinding_Funcionarios" type="tns:Funcionarios">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_Funcionarios_policy"/>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="InformaFotoAtualizada">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/InformaFotoAtualizada" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorMatricula">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorMatricula" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorNome">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorNome" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorRamal">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorRamal" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosPorDepto">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorDepto" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FuncionariosAniversariantes">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosAniversariantes" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="FotoPorRegistro">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FotoPorRegistro" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfastamentoPorMatricula">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/AfastamentoPorMatricula" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="testaChamada">
+      <soap:operation soapAction="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/testaChamada" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Funcionarios">
+    <wsdl:port name="BasicHttpBinding_Funcionarios" binding="tns:BasicHttpBinding_Funcionarios">
+      <soap:address location="http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc"/>
+    </wsdl:port>
+    <wsdl:port name="BasicHttpsBinding_Funcionarios" binding="tns:BasicHttpsBinding_Funcionarios">
+      <soap:address location="https://rhenium23.dmzimprensaoficial.sp/Integrador/Funcionarios/Funcionarios.svc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc</con:endpoint></con:endpoints><con:operation id="3733d11b-3fb6-42b0-8d2e-12f34c696ecf" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/AfastamentoPorMatricula" name="AfastamentoPorMatricula" bindingOperationName="AfastamentoPorMatricula" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ee2c78a1-f6ad-4b74-b686-139a7a36db14" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:AfastamentoPorMatricula>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:matricula>?</fun:matricula>\r
+         <!--Optional:-->\r
+         <fun:DataInicial>?</fun:DataInicial>\r
+         <!--Optional:-->\r
+         <fun:DataFinal>?</fun:DataFinal>\r
+      </fun:AfastamentoPorMatricula>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/AfastamentoPorMatricula"/></con:call></con:operation><con:operation id="9aeb4d81-ff19-457f-b39c-cf90321d47a6" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FotoPorRegistro" name="FotoPorRegistro" bindingOperationName="FotoPorRegistro" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a542c642-977b-4c19-961d-b4b885188072" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FotoPorRegistro>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:matricula>?</fun:matricula>\r
+         <!--Optional:-->\r
+         <fun:tamanho>?</fun:tamanho>\r
+      </fun:FotoPorRegistro>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FotoPorRegistro"/></con:call></con:operation><con:operation id="bf2c156a-cf93-48d5-895f-7f9b7d2cd715" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosAniversariantes" name="FuncionariosAniversariantes" bindingOperationName="FuncionariosAniversariantes" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f569cfe2-da1e-43a8-b177-20add887fb3c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FuncionariosAniversariantes>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:mesDiaInicial>?</fun:mesDiaInicial>\r
+         <!--Optional:-->\r
+         <fun:mesDiaFinal>?</fun:mesDiaFinal>\r
+      </fun:FuncionariosAniversariantes>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosAniversariantes"/></con:call></con:operation><con:operation id="bedf1d2c-fb84-463d-afa0-20d3c48a5360" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorDepto" name="FuncionariosPorDepto" bindingOperationName="FuncionariosPorDepto" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b4665ce6-e397-42fd-ba8f-f6ac1e5cf95d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FuncionariosPorDepto>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:nomeDepto>?</fun:nomeDepto>\r
+      </fun:FuncionariosPorDepto>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorDepto"/></con:call></con:operation><con:operation id="348674c2-d6df-4778-9f81-a378ae6733a5" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorMatricula" name="FuncionariosPorMatricula" bindingOperationName="FuncionariosPorMatricula" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fe481344-e764-4eda-8e0a-6c612e6bf933" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FuncionariosPorMatricula>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:Matriculas>\r
+            <!--Zero or more repetitions:-->\r
+            <arr:int>?</arr:int>\r
+         </fun:Matriculas>\r
+      </fun:FuncionariosPorMatricula>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorMatricula"/></con:call></con:operation><con:operation id="08d2fad3-a5b6-4896-adea-3712cb745eec" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorNome" name="FuncionariosPorNome" bindingOperationName="FuncionariosPorNome" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f416f7a6-6635-4a2c-8e04-767774d4e296" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FuncionariosPorNome>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:nomeFuncionario>?</fun:nomeFuncionario>\r
+      </fun:FuncionariosPorNome>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorNome"/></con:call></con:operation><con:operation id="78398831-092c-405f-9157-906f9e9a9a99" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorRamal" name="FuncionariosPorRamal" bindingOperationName="FuncionariosPorRamal" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="98475a2c-b53a-45ba-8b21-725050698a2f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:FuncionariosPorRamal>\r
+         <!--Optional:-->\r
+         <fun:sistema>?</fun:sistema>\r
+         <!--Optional:-->\r
+         <fun:ramal>?</fun:ramal>\r
+      </fun:FuncionariosPorRamal>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/FuncionariosPorRamal"/></con:call></con:operation><con:operation id="6388f607-717d-4501-aace-75beaefd986e" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/InformaFotoAtualizada" name="InformaFotoAtualizada" bindingOperationName="InformaFotoAtualizada" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="891bae52-de0f-4dd1-ab98-e7bbc5ad62c0" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:InformaFotoAtualizada>\r
+         <!--Optional:-->\r
+         <fun:receiveMessage><![CDATA[
+
+<?xml version="1.0" encoding="utf-8"?>
+<TOTVSMessage>
+	<MessageInformation version="1.000">
+		<UUID>40ad46f8-6df4-a725-18bc-5563f2d8dac4</UUID>
+		<Type>BusinessMessage</Type>
+		<Transaction>MIOGPEA1</Transaction>
+		<StandardVersion>1.000</StandardVersion>
+		<SourceApplication>ENVIRONMENT99</SourceApplication>
+		<CompanyId>99</CompanyId>
+		<BranchId>01</BranchId>
+		<Enterprise></Enterprise>
+		<BusinessUnit></BusinessUnit>
+		<Product name="PROTHEUS" version="12"></Product>
+		<GeneratedOn>2017-04-19T17:27:43Z</GeneratedOn>
+		<DeliveryType>Sync</DeliveryType>
+	</MessageInformation>
+	<BusinessMessage>
+		<BusinessEvent>
+			<Entity>MYMESSAGE</Entity>
+			<Event>UPSERT</Event>
+			<Identification>
+				<Key name="InternalId">99 004642</Key>
+			</Identification>
+		</BusinessEvent>
+		<BusinessContent>
+			<Code>004642</Code>
+		</BusinessContent>
+	</BusinessMessage>
+</TOTVSMessage>
+         
+         ]]]]>><![CDATA[
+         </fun:receiveMessage>\r
+      </fun:InformaFotoAtualizada>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/InformaFotoAtualizada"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e727e2a9-5c6a-4847-ae51-26a1d52ba7e7" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/testaChamada" name="testaChamada" bindingOperationName="testaChamada" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4e1b0b8f-3954-484b-a691-d0aa9864decd" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fun="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <fun:testaChamada/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.imprensaoficial.com.br/Integrador/Funcionarios/Funcionarios/testaChamada"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

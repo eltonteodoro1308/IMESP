@@ -13,7 +13,7 @@ User Function IOMATA02( aParam )
 	Local cLastTime  := GetGlbValue( 'IOMATA02' )
 	Local nTime      := Val( cTimeStamp ) - Val( cLastTime )
 	Local oEai       := Nil
-	Local cXml       := GerXml( aParam )
+	Local cXml       := GerXml( aParam := {'99','01'} )
 	Local oXml       := TXmlManager():New()
 	Local cUuid      := ''
 
@@ -136,6 +136,7 @@ User Function IOCDCF( cXml, cError, cWarning, cParams, oFwEai )
 	Local cXmlCDCF   := ''
 	Local cErrorCDCF := ''
 	Local cRet       := ''
+	Local aArrExec   := ''
 
 	GetXmlCDCF( @cXmlCDCF, @cErrorCDCF )
 
@@ -145,7 +146,7 @@ User Function IOCDCF( cXml, cError, cWarning, cParams, oFwEai )
 
 	End If
 
-	GerArrExec( oFwEai:cUuid, cXmlCDCF )
+	aArrExec := GerArrExec( oFwEai:cUuid, cXmlCDCF )
 
 	oFwEai:cReturnMsg := cXmlCDCF
 
@@ -853,7 +854,7 @@ Executa o processamento do Array com os dados do cliente e seus contatos
 @version 12.1.014
 @param aClientes, array, Array com os dados dos clinetes e seus contatos
 /*/
-Static Function RunExecAuto( cUUID, cXmlPrc, aClientes )
+Static Function RunExecAuto( cUUID, aClientes )
 
 	Local nX         := 0
 	Local nY         := 0
@@ -995,8 +996,8 @@ Static Function RunExecAuto( cUUID, cXmlPrc, aClientes )
 
 	Next nX
 
-	U_IOMT2LOG( cUUID,,,,,, If( lAllOk, IMPORTADO, IMPORTADO_COM_FALHAS ),,, Date(), Time(),;
-	cXmlPrc, If( lAllOk, 'Importação ocorreu sm falhas.', 'Importação ocorreu com falhas.' ), aLogCli )
+	//	U_IOMT2LOG( cUUID,,,,,, If( lAllOk, IMPORTADO, IMPORTADO_COM_FALHAS ),,, Date(), Time(),;
+	//	cXmlPrc, If( lAllOk, 'Importação ocorreu sm falhas.', 'Importação ocorreu com falhas.' ), aLogCli )
 
 Return
 
@@ -1010,14 +1011,23 @@ Deleta os dados do contato e seu vínculo com o cliente para ser incluido novamen
 /*/
 Static Function DeleteCont( cCodCon, cCodigo )
 
-	Local cQuery  := ''
-	Local lRet    := .T.
+	Local aArea := GetArea()
+	Local cSeek := '' 
 
-	cQuery := "DELETE " + RetSqlName( 'AGA' ) + " WHERE AGA_ENTIDA = 'SU5' AND AGA_CODENT = '" + cCodCon + "' AND AGA_FILIAL = '" + xFilial( 'AGA' ) + "'"
+	DbSelectArea( 'AGA' )
+	DbSetOrder( 1 ) // AGA_FILIAL + AGA_ENTIDA + AGA_CODENT + AGA_TIPO
 
-	TCSqlExec( cQuery )
+	If DbSeek( cSeek := xFilial( 'AGA' ) + 'SU5' + cCodCon )
 
-	cQuery := ''
+		Do While ! Eof() .And. cSeek == AGA->( AGA_FILIAL + AGA_ENTIDA + AGA_CODENT )
+
+			//AGA->( )
+
+		End Do
+
+	End IF	
+
+
 
 	cQuery := "DELETE " + RetSqlName( 'AGB' ) + " WHERE AGB_ENTIDA = 'SU5' AND AGB_CODENT = '" + cCodCon + "' AND AGB_FILIAL = '" + xFilial( 'AGB' ) + "'"
 
@@ -1043,4 +1053,32 @@ Static Function DeleteCont( cCodCon, cCodigo )
 
 	TCSqlExec( cQuery )
 
+	RestArea()
+
 Return
+
+/*/{Protheus.doc} IOMT1CMB
+Retorna os opções da combox do Campo AGB_XTIPO
+@author Elton Teodoro Alves
+@since 21/02/2017
+@version 12.1.014
+@return Character, String com as opções
+/*/
+User Function IOMT1CMB()
+
+	Local cRet := ''
+
+	cRet += '1=Telefone Principal;'
+	cRet += '2=Telefone Comercial;'
+	cRet += '3=Telefone Fax;'
+	cRet += '4=Telefone Celular;'
+	cRet += '5=Telefone Residencial;'
+	cRet += '6=Email;'
+	cRet += '7=Telefone Comercial Adicional;'
+	cRet += '8=Telefone Residencial Adicional;'
+	cRet += '9=Email Adicional;'
+	cRet += '10=Telefone Celular Adicional;'
+	cRet += '11=Telefone Fax Adicional;'
+	cRet += '12=Telefone Principal Adicional;'
+
+Return cRet
