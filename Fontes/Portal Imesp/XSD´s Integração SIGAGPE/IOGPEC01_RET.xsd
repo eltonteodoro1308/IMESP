@@ -26,6 +26,7 @@
 							<xs:element name="RA_NASC" type="xs:string"/>
 							<xs:element name="RA_FILIAL" type="xs:string"/>
 							<xs:element name="RA_SITFOLH" type="xs:string"/>
+							<xs:element name="R8_TIPOAFA" type="xs:string"/>
 							<xs:element name="RA_EMAIL" type="xs:string"/>
 							<xs:element name="RA_CIC" type="xs:string"/>
 							<xs:element name="QB_XSIGLA" type="xs:string"/>

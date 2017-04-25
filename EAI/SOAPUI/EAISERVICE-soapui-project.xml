@@ -66,7 +66,7 @@
 	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	1D730BB6-8A99-431E-B819-96B828CD85FE
+	E568C43F-1CA3-4787-9C06-EF46C2B259F8
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -79,15 +79,15 @@
 			<Version>1.000</Version>
 			<Identifier>
 			
-			1D730BB6-8A99-431E-B819-96B828CD85FE
+			E568C43F-1CA3-4787-9C06-EF46C2B259F8
 			
 			</Identifier>
 			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
 				<IOGPEC01_REM>
 	<CONDITION>
-		<filter function="SUBSTRING" start="5" length="2" field="RA_NASC" relation="EQUAL">
-			<value>08</value>
+		<filter field="R8_TIPOAFA" relation="NOT_EQUAL">
+			<value></value>
 		</filter>
 	</CONDITION>
 	<SORT>
@@ -272,7 +272,7 @@
 	<DocDateTime>2017-03-24T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	85B77B1C-BF0A-41F6-BAEB-23BB48FC70D3
+	DC4AAF20-4EA7-4609-9943-8B1320FB840F
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -285,7 +285,7 @@
 			<Version>1.000</Version>
 			<Identifier>
 			
-			85B77B1C-BF0A-41F6-BAEB-23BB48FC70D3
+			DC4AAF20-4EA7-4609-9943-8B1320FB840F
 			
 			</Identifier>
 			<FunctionCode>U_IOGPEC05</FunctionCode>

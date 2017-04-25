@@ -160,7 +160,17 @@ User Function IOGPEC01( cXml )
 
 			Next nX
 
-			cConds += ' AND (' + cWhere + ') '
+			If nY == 1
+
+				cConds += ' WHERE ('
+
+			Else
+
+				cConds += ' AND ('
+
+			End If
+
+			cConds += cWhere + ') '
 
 			cWhere := ''
 
@@ -242,6 +252,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	Local aAreaSM0 := SM0->( GetArea() )
 	Local aArea    := GetArea()
 	Local cCase    := ""
+	Local cTipoAfa := ""
 	Local cPagIni  := ""
 	Local cPagFim  := ""
 	Local aCpos    := {}
@@ -273,6 +284,16 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	SM0->( RestArea( aAreaSM0 ) )
 	RestArea( aArea )
 
+	cTipoAfa += "R8_TIPOAFA = "
+	cTipoAfa += "COALESCE(( "
+	cTipoAfa += "SELECT TOP 1 SR8.R8_TIPOAFA FROM " + RetSqlName( "SR8" ) + " SR8 "
+	cTipoAfa += "WHERE SR8.D_E_L_E_T_ = ' ' "
+	cTipoAfa += "AND SR8.R8_FILIAL = SRA.RA_FILIAL "
+	cTipoAfa += "AND SR8.R8_MAT = SRA.RA_MAT "
+	cTipoAfa += "AND SR8.R8_DATAINI <= FORMAT(GETDATE(),'yyyymmdd') "
+	cTipoAfa += "AND ( SR8.R8_DATAFIM >= FORMAT(GETDATE(),'yyyymmdd') OR SR8.R8_DATAFIM = '' ) "
+	cTipoAfa += "),''), "
+
 	aAdd( aCpos, "SRA.RA_MAT, " )
 	aAdd( aCpos, "SRA.RA_NOME, " )
 	aAdd( aCpos, "SRA.RA_NOMECMP, " )
@@ -292,6 +313,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	aAdd( aCpos, "SRA.RA_NASC, " )
 	aAdd( aCpos, "SRA.RA_FILIAL, " )
 	aAdd( aCpos, "SRA.RA_SITFOLH, " )
+	aAdd( aCpos, cTipoAfa ) //R8_TIPOAFA
 	aAdd( aCpos, "SRA.RA_EMAIL, " )
 	aAdd( aCpos, "SRA.RA_CIC, " )
 	aAdd( aCpos, "SQB.QB_XSIGLA, " )
@@ -300,8 +322,8 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	aAdd( aCpos, "SRA.RA_CC " )
 
 	cQuery += "WITH PAGINA_SRA AS( "
+	cQuery += "SELECT ROW_NUMBER = ROW_NUMBER() OVER ( ORDER BY RA_NOME DESC,RA_MAT DESC ),* FROM ( "
 	cQuery += "SELECT "
-	cQuery += "ROW_NUMBER = ROW_NUMBER() OVER ( ORDER BY " + cOrder + " ), "
 
 	For nX := 1 To Len( aCpos )
 
@@ -317,7 +339,9 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	cQuery += "WHERE COALESCE(SRA.D_E_L_E_T_, ' ') = ' ' "
 	cQuery += "AND COALESCE(SQB.D_E_L_E_T_, ' ') = ' ' "
 	cQuery += "AND COALESCE(SQ3.D_E_L_E_T_, ' ') = ' ' "
+	cQuery += "AND COALESCE(SZ0.D_E_L_E_T_, ' ') = ' ' "
 	cQuery += "AND COALESCE(RD4.D_E_L_E_T_, ' ') = ' ' "
+	cQuery += ") SUBQRY "
 	cQuery += cWhere
 	cQuery += ")SELECT * FROM PAGINA_SRA "
 
@@ -332,16 +356,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 
 	cQuery += " UNION ALL "
 
-	cQuery += "SELECT COUNT(*) ,'COUNT'" + Replicate( ",''", Len( aCpos ) - 1 ) + " FROM " + RetSqlName( "SRA" ) + " SRA "
-	cQuery += "LEFT JOIN " + RetSqlName( "SZ0" ) + " SZ0 ON SRA.RA_MAT   = SZ0.Z0_CODIGO "
-	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO = SQB.QB_DEPTO "
-	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO = SQ3.Q3_CARGO AND SRA.RA_FILIAL = SQ3.Q3_FILIAL "
-	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO = RD4.RD4_CODIDE "
-	cQuery += "WHERE COALESCE(SRA.D_E_L_E_T_, ' ') = ' ' "
-	cQuery += "AND COALESCE(SQB.D_E_L_E_T_, ' ') = ' ' "
-	cQuery += "AND COALESCE(SQ3.D_E_L_E_T_, ' ') = ' ' "
-	cQuery += "AND COALESCE(RD4.D_E_L_E_T_, ' ') = ' ' "
-	cQuery += cWhere
+	cQuery += "SELECT COUNT(*) ,'COUNT'" + Replicate( ",''", Len( aCpos ) - 1 ) + " FROM PAGINA_SRA "
 
 Return
 
@@ -369,17 +384,7 @@ Static Function MakeWhere( cField, cValue, cRelation, cOperator, cFunction, cSta
 
 	EndIf
 
-	If SubStr( cField, 3, 1 ) == '_'
-
-		cField := 'S' + SubStr( cField, 1, 2 ) + '.' + cField
-
-	End If
-
-	If SubStr( cField, 4, 1 ) == '_'
-
-		cField := SubStr( cField, 1, 3 ) + '.' + cField
-
-	End If
+	cField := 'SUBQRY' + '.' + cField
 
 	If ! Empty( cFunction )
 

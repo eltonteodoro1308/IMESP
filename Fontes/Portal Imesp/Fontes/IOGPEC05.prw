@@ -251,15 +251,15 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 
 	cQuery += " UNION ALL "
 
-	cQuery += "SELECT COUNT(*) ,'COUNT'" + Replicate( ",''", Len( aCpos ) - 1 ) + " FROM " + RetSqlName( "RD4" ) + " RD4 "
-	cQuery += "LEFT JOIN " + RetSqlName( "RDK" ) + " RDK ON RDK.RDK_CODIGO = RD4.RD4_CODIGO "
-	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON RD4.RD4_CODIDE = SQB.QB_DEPTO "
-	cQuery += "WHERE RDK.D_E_L_E_T_ = ' ' "
-	cQuery += "AND RD4.D_E_L_E_T_ = ' ' "
-	cQuery += "AND RDK.RDK_STATUS = '1' "
-	cQuery += "AND ( SQB.QB_XDTCRIA <= FORMAT(GETDATE(),'yyyymmdd') OR SQB.QB_XDTCRIA = '' ) "
-	cQuery += "AND ( SQB.QB_XDTEXTI >= FORMAT(GETDATE(),'yyyymmdd') OR SQB.QB_XDTEXTI = '' ) "
-	cQuery += cWhere
+	cQuery += "SELECT COUNT(*) ,'COUNT'" + Replicate( ",''", Len( aCpos ) - 1 ) + " FROM PAGINA_RD4 " //+ RetSqlName( "RD4" ) + " RD4 "
+//	cQuery += "LEFT JOIN " + RetSqlName( "RDK" ) + " RDK ON RDK.RDK_CODIGO = RD4.RD4_CODIGO "
+//	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON RD4.RD4_CODIDE = SQB.QB_DEPTO "
+//	cQuery += "WHERE RDK.D_E_L_E_T_ = ' ' "
+//	cQuery += "AND RD4.D_E_L_E_T_ = ' ' "
+//	cQuery += "AND RDK.RDK_STATUS = '1' "
+//	cQuery += "AND ( SQB.QB_XDTCRIA <= FORMAT(GETDATE(),'yyyymmdd') OR SQB.QB_XDTCRIA = '' ) "
+//	cQuery += "AND ( SQB.QB_XDTEXTI >= FORMAT(GETDATE(),'yyyymmdd') OR SQB.QB_XDTEXTI = '' ) "
+//	cQuery += cWhere
 
 Return
 
