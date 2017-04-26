@@ -22,7 +22,7 @@
 							<xs:element name="RD4_CHAVE" type="xs:string"/>
 							<xs:element name="QB_DESCRIC" type="xs:string"/>
 							<xs:element name="RA_DEMISSA" type="xs:string"/>
-							<xs:element name="Q3_CLASSE" type="xs:string"/>
+							<xs:element name="Q3_XNIVCAR" type="xs:string"/>
 							<xs:element name="RA_NASC" type="xs:string"/>
 							<xs:element name="RA_FILIAL" type="xs:string"/>
 							<xs:element name="RA_SITFOLH" type="xs:string"/>

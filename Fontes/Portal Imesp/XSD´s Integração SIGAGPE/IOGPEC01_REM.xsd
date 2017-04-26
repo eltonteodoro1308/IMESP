@@ -111,7 +111,7 @@
 			<xs:enumeration value="RA_SITFOLH" />
 			<xs:enumeration value="R8_TIPOAFA" />
 			<xs:enumeration value="Z0_XLOGIN" />
-			<xs:enumeration value="Q3_CLASSE" />
+			<xs:enumeration value="Q3_XNIVCAR" />
 			<xs:enumeration value="Z0_XRAMAL" />
 			<xs:enumeration value="Z0_XRAMAL2" />
 			<xs:enumeration value="Z0_XRAMAL3" />

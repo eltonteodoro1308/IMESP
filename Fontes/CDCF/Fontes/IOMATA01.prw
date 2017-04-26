@@ -32,14 +32,16 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 
 	End If
 
-	aAdd( aVetor, { 'A1_COD'    ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_COD'    ) ), Nil } )
-	aAdd( aVetor, { 'A1_LOJA'   ,'01'                                                          , Nil } )
-	aAdd( aVetor, { 'A1_TIPO'   ,'R'                                                           , Nil } )
-	aAdd( aVetor, { 'A1_NOME'   ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_NOME'   ) ), Nil } )
-	aAdd( aVetor, { 'A1_NREDUZ' ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_NREDUZ' ) ), Nil } )
-	aAdd( aVetor, { 'A1_END'    ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_END'    ) ), Nil } )
-	aAdd( aVetor, { 'A1_EST'    ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_EST'    ) ), Nil } )
-	aAdd( aVetor, { 'A1_MUN'    ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_MUN'    ) ), Nil } )
+	aAdd( aVetor, { 'A1_COD'    ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_COD'    ) ), Nil } ) // 01
+	aAdd( aVetor, { 'A1_LOJA'   ,'01'                                                          , Nil } ) // 02
+	aAdd( aVetor, { 'A1_TIPO'   ,'R'                                                           , Nil } ) // 03
+	aAdd( aVetor, { 'A1_NOME'   ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_NOME'   ) ), Nil } ) // 04
+	aAdd( aVetor, { 'A1_PESSOA' ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_PESSOA' ) ), Nil } ) // 05
+	aAdd( aVetor, { 'A1_NREDUZ' ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_NREDUZ' ) ), Nil } ) // 06
+	aAdd( aVetor, { 'A1_END'    ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_END'    ) ), Nil } ) // 07
+	aAdd( aVetor, { 'A1_EST'    ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_EST'    ) ), Nil } ) // 08
+	aAdd( aVetor, { 'A1_MUN'    ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_MUN'    ) ), Nil } ) // 09
+	aAdd( aVetor, { 'A1_CGC'    ,AllTrim( oXml:XPathGetNodeValue( '/IOMATA01_REM/A1_CGC'    ) ), Nil } ) // 10
 
 	DbSelectArea( 'SA1' )
 	DbSetOrder( 1 )
@@ -51,6 +53,16 @@ User Function IOMATA01( cXml, cError, cWarning, cParams, oFwEai )
 		RestArea( aArea )
 
 		Return MakeXml( '0', 'Cliente já Cadastrado' )
+
+	End If
+
+	DbSetOrder( 3 )
+
+	If DbSeek( xFilial( 'SA1' ) + aVetor[ 10, 2 ] )
+
+		RestArea( aArea )
+
+		Return MakeXml( '0', 'CNPJ/CPF já Cadastrado' )
 
 	End If
 

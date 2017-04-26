@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Descreve o layout do xml de remessa para inclusão imediata de clientes -->
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:element name="IOMATA01_REM">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element type="xs:string" name="A1_COD"/>
-				<xs:element type="xs:string" name="A1_NOME"/>
-				<xs:element type="xs:string" name="A1_NREDUZ"/>
-				<xs:element type="xs:string" name="A1_END"/>
-				<xs:element type="xs:string" name="A1_EST"/>
-				<xs:element type="xs:string" name="A1_MUN"/>
+				<xs:element type="xs:string" name="A1_COD" />
+				<xs:element type="xs:string" name="A1_NOME" />
+				<xs:element name="A1_PESSOA">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="F" />
+							<xs:enumeration value="J" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element type="xs:string" name="A1_NREDUZ" />
+				<xs:element type="xs:string" name="A1_END" />
+				<xs:element name="A1_EST">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="AC" />
+							<xs:enumeration value="AL" />
+							<xs:enumeration value="AM" />
+							<xs:enumeration value="AP" />
+							<xs:enumeration value="BA" />
+							<xs:enumeration value="CE" />
+							<xs:enumeration value="DF" />
+							<xs:enumeration value="ES" />
+							<xs:enumeration value="EX" />
+							<xs:enumeration value="GO" />
+							<xs:enumeration value="MA" />
+							<xs:enumeration value="MG" />
+							<xs:enumeration value="MS" />
+							<xs:enumeration value="MT" />
+							<xs:enumeration value="PA" />
+							<xs:enumeration value="PB" />
+							<xs:enumeration value="PE" />
+							<xs:enumeration value="PI" />
+							<xs:enumeration value="PR" />
+							<xs:enumeration value="RJ" />
+							<xs:enumeration value="RN" />
+							<xs:enumeration value="RO" />
+							<xs:enumeration value="RR" />
+							<xs:enumeration value="RS" />
+							<xs:enumeration value="SC" />
+							<xs:enumeration value="SE" />
+							<xs:enumeration value="SP" />
+							<xs:enumeration value="TO" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element type="xs:string" name="A1_MUN" />
+				<xs:element type="xs:string" name="A1_CGC" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

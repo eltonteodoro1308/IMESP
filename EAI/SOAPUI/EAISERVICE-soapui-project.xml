@@ -66,7 +66,7 @@
 	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	E568C43F-1CA3-4787-9C06-EF46C2B259F8
+	8CBA8F3B-FEAB-41EA-80AC-06D2BB62A3D6
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -79,7 +79,7 @@
 			<Version>1.000</Version>
 			<Identifier>
 			
-			E568C43F-1CA3-4787-9C06-EF46C2B259F8
+			8CBA8F3B-FEAB-41EA-80AC-06D2BB62A3D6
 			
 			</Identifier>
 			<FunctionCode>U_IOGPEC01</FunctionCode>
@@ -324,7 +324,7 @@
 	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	01A62999-0EDB-40F3-B0D8-512B7C671CBD
+	7B4D30BF-64CB-48B4-895B-69A5C932DCB0
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -337,18 +337,20 @@
 			<Version>1.000</Version>
 			<Identifier>
 			
-			01A62999-0EDB-40F3-B0D8-512B7C671CBD
+			7B4D30BF-64CB-48B4-895B-69A5C932DCB0
 			
 			</Identifier>
 			<FunctionCode>U_IOMATA01</FunctionCode>
 			<Content>
 				<IOMATA01_REM>
-					<A1_COD>CE004</A1_COD>
+					<A1_COD>CE001</A1_COD>
 					<A1_NOME>Cliente Teste ExecAuto 001</A1_NOME>
+					<A1_PESSOA>J</A1_PESSOA>
 					<A1_NREDUZ>Cliente Teste ExecAuto 001</A1_NREDUZ>
 					<A1_END>Rua dos Gráficos, 123</A1_END>
-					<A1_EST>XX</A1_EST>
+					<A1_EST>SP</A1_EST>
 					<A1_MUN>São Paulo</A1_MUN>
+					<A1_CGC>58576604000160</A1_CGC>
 				</IOMATA01_REM>
 			</Content>
 		</Layouts>
