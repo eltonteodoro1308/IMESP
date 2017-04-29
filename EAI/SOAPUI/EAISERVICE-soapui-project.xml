@@ -66,7 +66,7 @@
 	<DocDateTime>2017-03-17T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	8CBA8F3B-FEAB-41EA-80AC-06D2BB62A3D6
+	4EE06DC9-704F-4F67-9F96-775922104349
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -79,15 +79,15 @@
 			<Version>1.000</Version>
 			<Identifier>
 			
-			8CBA8F3B-FEAB-41EA-80AC-06D2BB62A3D6
+			4EE06DC9-704F-4F67-9F96-775922104349
 			
 			</Identifier>
 			<FunctionCode>U_IOGPEC01</FunctionCode>
 			<Content>
 				<IOGPEC01_REM>
 	<CONDITION>
-		<filter field="R8_TIPOAFA" relation="NOT_EQUAL">
-			<value></value>
+		<filter field="RA_NOME" relation="CONTAINS">
+			<value>brasil</value>
 		</filter>
 	</CONDITION>
 	<SORT>

@@ -290,8 +290,8 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	cTipoAfa += "WHERE SR8.D_E_L_E_T_ = ' ' "
 	cTipoAfa += "AND SR8.R8_FILIAL = SRA.RA_FILIAL "
 	cTipoAfa += "AND SR8.R8_MAT = SRA.RA_MAT "
-	cTipoAfa += "AND SR8.R8_DATAINI <= FORMAT(GETDATE(),'yyyymmdd') "
-	cTipoAfa += "AND ( SR8.R8_DATAFIM >= FORMAT(GETDATE(),'yyyymmdd') OR SR8.R8_DATAFIM = '' ) "
+	cTipoAfa += "AND SR8.R8_DATAINI <= FORMAT(GETDATE(),'yyyyMMdd') "
+	cTipoAfa += "AND ( SR8.R8_DATAFIM >= FORMAT(GETDATE(),'yyyyMMdd') OR SR8.R8_DATAFIM = '' ) "
 	cTipoAfa += "),''), "
 
 	aAdd( aCpos, "SRA.RA_MAT, " )
@@ -334,7 +334,7 @@ Static Function MakeQuery( cQuery, cWhere, cOrder, nNumRegPag, nPagina )
 	cQuery += "FROM " + RetSqlName( "SRA" ) + " SRA "
 	cQuery += "LEFT JOIN " + RetSqlName( "SZ0" ) + " SZ0 ON SRA.RA_MAT    = SZ0.Z0_CODIGO "
 	cQuery += "LEFT JOIN " + RetSqlName( "SQB" ) + " SQB ON SRA.RA_DEPTO  = SQB.QB_DEPTO "
-	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO  = SQ3.Q3_CARGO AND SRA.RA_FILIAL = SQ3.Q3_FILIAL "
+	cQuery += "LEFT JOIN " + RetSqlName( "SQ3" ) + " SQ3 ON SRA.RA_CARGO  = SQ3.Q3_CARGO "
 	cQuery += "LEFT JOIN " + RetSqlName( "RD4" ) + " RD4 ON SRA.RA_DEPTO  = RD4.RD4_CODIDE "
 	cQuery += "WHERE COALESCE(SRA.D_E_L_E_T_, ' ') = ' ' "
 	cQuery += "AND COALESCE(SQB.D_E_L_E_T_, ' ') = ' ' "
