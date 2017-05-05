@@ -27,9 +27,17 @@ User Function CTA030TOK()
 
 	Next nX
 
-	oModel:VldData()
+	If oModel:VldData()
 
-	oModel:CommitData()
+		oModel:CommitData()
+
+		U_TSTCTB030( oModel )
+
+	Else
+
+		VarInfo('oModel:GetErrorMessage()',oModel:GetErrorMessage(),,.F.,.T.)
+
+	End If 
 
 	oModel:DeActivate()
 
@@ -37,7 +45,7 @@ Return .F.
 
 Static Function ModelDef()
 
-	Local oStru  := FWFormStruct( 1, 'CTT')
+	Local oStru  := FWFormStruct( 1, 'CTT', { | cCampo | AllTrim(cCampo) $ 'CTT_FILIAL/CTT_CUSTO/CTT_DESC01/CTT_BLOQ/CTT_CLASSE'} )
 	Local oModel := MPFormModel():New( 'COSTCENTER' )
 
 	oModel:AddFields( 'CTT_MODEL',, oStru )

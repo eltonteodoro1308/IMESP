@@ -3,10 +3,10 @@
 #INCLUDE 'FWEDITPANEL.CH'
 #INCLUDE 'FWADAPTEREAI.CH'
 
-user function A010TOK()
+user function MA180TOK()
 
 	Local oModel  := ModelDef()
-	Local aFields := oModel:GetModel('SB1_MODEL'):GetStruct():GetFields()
+	Local aFields := oModel:GetModel('SB5_MODEL'):GetStruct():GetFields()
 	Local aValues := {}
 	Local nX      := 0
 
@@ -30,7 +30,7 @@ user function A010TOK()
 
 	For nX := 1 To Len( aValues )
 
-		oModel:SetValue( 'SB1_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
+		oModel:SetValue( 'SB5_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
 
 	Next nX
 
@@ -44,13 +44,13 @@ return .T.
 
 Static Function ModelDef()
 
-	Local oStru  := FWFormStruct( 1, 'SB1', { | cCampo | ! AllTrim( cCampo ) $ 'B1_QTDSER' } )
-	Local oModel := MPFormModel():New( 'ITEM' )
+	Local oStru  := FWFormStruct( 1, 'SB5', { | cCampo | GetSX3Cache( cCampo, 'X3_CONTEXT' ) # 'V' } )
+	Local oModel := MPFormModel():New( 'PRODUCTADDON' )
 
-	oModel:AddFields( 'SB1_MODEL',, oStru )
-	oModel:SetDescription( 'Cadastro de Produtos' )
-	oModel:GetModel( 'SB1_MODEL' ):SetDescription( 'Cadastro de Produtos' )
-	oModel:GetModel( 'SB1_MODEL' ):SetOnlyQuery ( .T. )
+	oModel:AddFields( 'SB5_MODEL',, oStru )
+	oModel:SetDescription( 'Complemento de Produtos' )
+	oModel:GetModel( 'SB5_MODEL' ):SetDescription( 'Complemento de Produtos' )
+	oModel:GetModel( 'SB5_MODEL' ):SetOnlyQuery ( .T. )
 
 Return oModel
 
@@ -69,7 +69,7 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 		cXmlRet += '<Event>upsert</Event>'
 		cXmlRet += '<Identification>'
 		cXmlRet += '<key name="Code">'
-		cXmlRet += AllTrim( oModel:GetModel( 'SB1_MODEL' ):GetValue( 'B1_COD' ) )
+		cXmlRet += AllTrim( oModel:GetModel( 'SB5_MODEL' ):GetValue( 'B5_COD' ) )
 		cXmlRet += '</key>'
 		cXmlRet += '</Identification>'
 		cXmlRet += '</BusinessEvent>'

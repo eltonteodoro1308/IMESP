@@ -1,0 +1,1485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="a6efc5e3-b5f6-4d1d-b635-19e9e567d838" activeEnvironment="Default" name="ECALC" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="82ec270b-eac3-470f-8045-5812fc74c905" wsaVersion="NONE" name="WSIntegraImespSoap12" type="wsdl" bindingName="{http://tempuri.org/}WSIntegraImespSoap12" soapVersion="1_2" anonymous="optional" definition="http://10.20.5.182/WSIntegraImesp.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint></con:endpoints><con:operation id="1fc6efb8-94ca-4eac-b58c-a2eff2e78fab" isOneWay="false" action="http://tempuri.org/salvarCentroDeCusto" name="salvarCentroDeCusto" bindingOperationName="salvarCentroDeCusto" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="90de09e5-a7a2-4615-941f-228d20d55a73" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarCentroDeCusto>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>Master</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>MASTER</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>C001</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>Centro Custo 001</tem:nome>\r
+         <tem:ativo>true</tem:ativo>\r
+      </tem:salvarCentroDeCusto>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarCentroDeCustoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="abff84cb-e5e1-4329-b3af-353a0dc111f3" isOneWay="false" action="http://tempuri.org/salvarCondicaoDePagamento" name="salvarCondicaoDePagamento" bindingOperationName="salvarCondicaoDePagamento" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c4244877-fa3f-42e9-93c7-614403662430" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarCondicaoDePagamento>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:descricao>?</tem:descricao>\r
+         <tem:ativo>?</tem:ativo>\r
+         <!--Optional:-->\r
+         <tem:parcelasDiasVariaveis>\r
+            <!--Zero or more repetitions:-->\r
+            <tem:ParcelaDiaVariavelVO>\r
+               <tem:LazyObject>?</tem:LazyObject>\r
+               <tem:hasCache>?</tem:hasCache>\r
+               <tem:loadClusterd>?</tem:loadClusterd>\r
+               <!--Optional:-->\r
+               <tem:Erros>\r
+                  <!--Optional:-->\r
+                  <tem:Errors>\r
+                     <!--Zero or more repetitions:-->\r
+                     <tem:ErrorStruct>\r
+                        <!--Optional:-->\r
+                        <tem:errorKey>?</tem:errorKey>\r
+                        <tem:objKey>?</tem:objKey>\r
+                        <!--Optional:-->\r
+                        <tem:Error>?</tem:Error>\r
+                        <tem:ErrorType>?</tem:ErrorType>\r
+                     </tem:ErrorStruct>\r
+                  </tem:Errors>\r
+                  <!--Optional:-->\r
+                  <tem:SucessMsg>?</tem:SucessMsg>\r
+               </tem:Erros>\r
+               <tem:Codigo>?</tem:Codigo>\r
+               <tem:CodigoCondicaoDePagamento>?</tem:CodigoCondicaoDePagamento>\r
+               <tem:Adicionar>?</tem:Adicionar>\r
+               <tem:Percentual>?</tem:Percentual>\r
+               <tem:Dias>?</tem:Dias>\r
+               <tem:PercentualIPI>?</tem:PercentualIPI>\r
+            </tem:ParcelaDiaVariavelVO>\r
+         </tem:parcelasDiasVariaveis>\r
+      </tem:salvarCondicaoDePagamento>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarCondicaoDePagamentoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d4964a38-20c3-4fad-a4ec-f859535fc0f9" isOneWay="false" action="http://tempuri.org/salvarEstoque" name="salvarEstoque" bindingOperationName="salvarEstoque" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="25c0f732-c5c0-40bc-a912-0d0081cf83fb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarEstoque>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <tem:quantidade>?</tem:quantidade>\r
+      </tem:salvarEstoque>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarEstoqueRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="7a4645f8-479b-4e34-b7e2-141f217a9d52" isOneWay="false" action="http://tempuri.org/salvarFeriado" name="salvarFeriado" bindingOperationName="salvarFeriado" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a4caefc6-e68e-4768-b51c-9de4c61cc702" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarFeriado>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <tem:feriado>?</tem:feriado>\r
+         <tem:dataFixa>?</tem:dataFixa>\r
+      </tem:salvarFeriado>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarFeriadoRequest"/></con:call></con:operation><con:operation id="34fbf0dc-6a29-40b1-a121-3be975b65e61" isOneWay="false" action="http://tempuri.org/salvarMaquina" name="salvarMaquina" bindingOperationName="salvarMaquina" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a940aaf5-4b24-4378-b0f8-c613e3771eec" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarMaquina>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <tem:custoHora>?</tem:custoHora>\r
+         <tem:mediaProdutividade>?</tem:mediaProdutividade>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarMaquina>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarMaquinaRequest"/></con:call></con:operation><con:operation id="cc2c532d-e264-4f0b-a568-6eab06777f2b" isOneWay="false" action="http://tempuri.org/salvarNaturezaDeOperacao" name="salvarNaturezaDeOperacao" bindingOperationName="salvarNaturezaDeOperacao" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="88983ada-246e-4f49-b846-317e29a3c0b8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarNaturezaDeOperacao>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <!--Optional:-->\r
+         <tem:cfop>?</tem:cfop>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarNaturezaDeOperacao>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarNaturezaDeOperacaoRequest"/></con:call></con:operation><con:operation id="68a87024-6bd5-4220-b2da-edb5cc34a92d" isOneWay="false" action="http://tempuri.org/salvarNotaFiscal" name="salvarNotaFiscal" bindingOperationName="salvarNotaFiscal" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b536e2a3-a89b-43f6-baf0-c703a49d1d7b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarNotaFiscal>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <tem:numeroNota>?</tem:numeroNota>\r
+         <!--Optional:-->\r
+         <tem:serie>?</tem:serie>\r
+         <!--Optional:-->\r
+         <tem:clienteID>?</tem:clienteID>\r
+         <tem:dataEntrega>?</tem:dataEntrega>\r
+         <tem:dataSaida>?</tem:dataSaida>\r
+         <tem:valorTotal>?</tem:valorTotal>\r
+         <tem:valorNota>?</tem:valorNota>\r
+         <!--Optional:-->\r
+         <tem:obs>?</tem:obs>\r
+         <tem:vendaID>?</tem:vendaID>\r
+         <tem:status>?</tem:status>\r
+      </tem:salvarNotaFiscal>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarNotaFiscalRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="35ddf33a-2f04-4bd2-bcab-aaa1b9eab7f2" isOneWay="false" action="http://tempuri.org/salvarOperador" name="salvarOperador" bindingOperationName="salvarOperador" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2a035222-41f0-48fa-ab1f-7b787b504a37" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarOperador>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarOperador>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarOperadorRequest"/></con:call></con:operation><con:operation id="783772bd-1e8b-4a85-8116-b9ea12af70c2" isOneWay="false" action="http://tempuri.org/salvarProdutoAcabado" name="salvarProdutoAcabado" bindingOperationName="salvarProdutoAcabado" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3e873221-42c4-4e27-a1ab-e19f54125e58" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarProdutoAcabado>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <!--Optional:-->\r
+         <tem:descricao>?</tem:descricao>\r
+         <!--Optional:-->\r
+         <tem:clienteID>?</tem:clienteID>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarProdutoAcabado>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarProdutoAcabadoRequest"/></con:call></con:operation><con:operation id="e771c738-6c7b-4047-a338-5448ed9befcf" isOneWay="false" action="http://tempuri.org/salvarSecretaria" name="salvarSecretaria" bindingOperationName="salvarSecretaria" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="56bd929a-e206-4454-b0a6-35130d87df33" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarSecretaria>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <!--Optional:-->\r
+         <tem:razaoSocial>?</tem:razaoSocial>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarSecretaria>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarSecretariaRequest"/></con:call></con:operation><con:operation id="c47d5400-a759-4b84-bcbd-e0a9259ecab9" isOneWay="false" action="http://tempuri.org/salvarTipoCliente" name="salvarTipoCliente" bindingOperationName="salvarTipoCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="63099916-34b6-41ac-bf20-5da28d085430" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarTipoCliente>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+      </tem:salvarTipoCliente>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarTipoClienteRequest"/></con:call></con:operation><con:operation id="17f13aa4-3c03-4207-8ebb-0f885aca852f" isOneWay="false" action="http://tempuri.org/salvarTransportadora" name="salvarTransportadora" bindingOperationName="salvarTransportadora" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="17198cf2-ef50-4356-ae50-b33169ce25c7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarTransportadora>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <!--Optional:-->\r
+         <tem:razaoSocial>?</tem:razaoSocial>\r
+         <tem:ativo>?</tem:ativo>\r
+         <!--Optional:-->\r
+         <tem:CPF>?</tem:CPF>\r
+         <!--Optional:-->\r
+         <tem:CNPJ>?</tem:CNPJ>\r
+         <!--Optional:-->\r
+         <tem:inscEstadual>?</tem:inscEstadual>\r
+         <!--Optional:-->\r
+         <tem:inscMunicipal>?</tem:inscMunicipal>\r
+         <!--Optional:-->\r
+         <tem:endereco>?</tem:endereco>\r
+         <!--Optional:-->\r
+         <tem:bairro>?</tem:bairro>\r
+         <!--Optional:-->\r
+         <tem:codMunicipioIBGE>?</tem:codMunicipioIBGE>\r
+         <!--Optional:-->\r
+         <tem:estado>?</tem:estado>\r
+         <!--Optional:-->\r
+         <tem:cep>?</tem:cep>\r
+         <!--Optional:-->\r
+         <tem:DDD>?</tem:DDD>\r
+         <!--Optional:-->\r
+         <tem:telefone>?</tem:telefone>\r
+         <!--Optional:-->\r
+         <tem:fax>?</tem:fax>\r
+         <!--Optional:-->\r
+         <tem:email>?</tem:email>\r
+      </tem:salvarTransportadora>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarTransportadoraRequest"/></con:call></con:operation><con:operation id="75d8bcfa-dba1-4bb0-aefb-807027533530" isOneWay="false" action="http://tempuri.org/salvarUnidade" name="salvarUnidade" bindingOperationName="salvarUnidade" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="14f1b836-8853-4213-859a-6c91c541b290" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarUnidade>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nomeAbreviado>?</tem:nomeAbreviado>\r
+         <!--Optional:-->\r
+         <tem:descricao>?</tem:descricao>\r
+         <tem:operador>?</tem:operador>\r
+         <tem:multiplicador>?</tem:multiplicador>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarUnidade>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarUnidadeRequest"/></con:call></con:operation><con:operation id="7f43f1a4-ba90-4e75-82da-3c8bb23fa86e" isOneWay="false" action="http://tempuri.org/salvarVendedor" name="salvarVendedor" bindingOperationName="salvarVendedor" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="949d3ecb-24fc-4c50-8cb8-9648d789bdb7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:salvarVendedor>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <!--Optional:-->\r
+         <tem:razaoSocial>?</tem:razaoSocial>\r
+         <tem:ativo>?</tem:ativo>\r
+         <!--Optional:-->\r
+         <tem:cpf>?</tem:cpf>\r
+         <!--Optional:-->\r
+         <tem:cnpj>?</tem:cnpj>\r
+         <!--Optional:-->\r
+         <tem:endereco>?</tem:endereco>\r
+         <!--Optional:-->\r
+         <tem:codMunicipioIBGE>?</tem:codMunicipioIBGE>\r
+         <!--Optional:-->\r
+         <tem:estado>?</tem:estado>\r
+         <!--Optional:-->\r
+         <tem:cep>?</tem:cep>\r
+         <!--Optional:-->\r
+         <tem:ddd>?</tem:ddd>\r
+         <!--Optional:-->\r
+         <tem:telefone>?</tem:telefone>\r
+         <!--Optional:-->\r
+         <tem:fax>?</tem:fax>\r
+         <!--Optional:-->\r
+         <tem:email>?</tem:email>\r
+         <tem:comissao>?</tem:comissao>\r
+      </tem:salvarVendedor>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/salvarVendedorRequest"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="bf79acec-b56e-4a9d-b9a4-a818d6ae021e" wsaVersion="NONE" name="WSIntegraImespSoap" type="wsdl" bindingName="{http://tempuri.org/}WSIntegraImespSoap" soapVersion="1_1" anonymous="optional" definition="http://10.20.5.182/WSIntegraImesp.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://10.20.5.182/WSIntegraImesp.asmx?WSDL"><con:part><con:url>http://10.20.5.182/WSIntegraImesp.asmx?WSDL</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="salvarNaturezaDeOperacao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="cfop" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="ativo" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AccessToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Senha" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="salvarNaturezaDeOperacaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarNaturezaDeOperacaoResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Sucesso" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="IDRetorno" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Mensagem" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="salvarVendedor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="razaoSocial" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="ativo" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="cpf" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="cnpj" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="endereco" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="codMunicipioIBGE" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="cep" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ddd" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="telefone" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="comissao" type="s:double"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarVendedorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarVendedorResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarTipoCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarTipoClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarTipoClienteResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarFeriado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="feriado" type="s:dateTime"/>
+            <s:element minOccurs="1" maxOccurs="1" name="dataFixa" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarFeriadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarFeriadoResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarCondicaoDePagamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="descricao" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="ativo" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="parcelasDiasVariaveis" type="tns:ArrayOfParcelaDiaVariavelVO"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfParcelaDiaVariavelVO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ParcelaDiaVariavelVO" nillable="true" type="tns:ParcelaDiaVariavelVO"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParcelaDiaVariavelVO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EcalcValueObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Codigo" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="CodigoCondicaoDePagamento" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="Adicionar" type="s:boolean"/>
+              <s:element minOccurs="1" maxOccurs="1" name="Percentual" type="s:double"/>
+              <s:element minOccurs="1" maxOccurs="1" name="Dias" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PercentualIPI" type="s:double"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EcalcValueObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LazyObject" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="hasCache" type="s:boolean"/>
+          <s:element minOccurs="1" maxOccurs="1" name="loadClusterd" type="s:boolean"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Erros" type="tns:ListaErros"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ListaErros">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:ArrayOfErrorStruct"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SucessMsg" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfErrorStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ErrorStruct" nillable="true" type="tns:ErrorStruct"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ErrorStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="errorKey" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="objKey" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorType" type="tns:ErrorType"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ErrorType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Undefined"/>
+          <s:enumeration value="Error"/>
+          <s:enumeration value="Warning"/>
+          <s:enumeration value="Confirmation"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="salvarCondicaoDePagamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarCondicaoDePagamentoResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarTransportadora">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="razaoSocial" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="ativo" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CPF" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="CNPJ" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="inscEstadual" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="inscMunicipal" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="endereco" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="bairro" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="codMunicipioIBGE" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="cep" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="DDD" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="telefone" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarTransportadoraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarTransportadoraResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarSecretaria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="razaoSocial" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="ativo" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarSecretariaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarSecretariaResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarNotaFiscal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="numeroNota" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="serie" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="clienteID" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="dataEntrega" type="s:dateTime"/>
+            <s:element minOccurs="1" maxOccurs="1" name="dataSaida" type="s:dateTime"/>
+            <s:element minOccurs="1" maxOccurs="1" name="valorTotal" type="s:double"/>
+            <s:element minOccurs="1" maxOccurs="1" name="valorNota" type="s:double"/>
+            <s:element minOccurs="0" maxOccurs="1" name="obs" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="vendaID" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="tns:TStatusNF"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="TStatusNF">
+        <s:restriction base="s:string">
+          <s:enumeration value="tIndefinido"/>
+          <s:enumeration value="tEmitida"/>
+          <s:enumeration value="tCancelada"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="salvarNotaFiscalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarNotaFiscalResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarUnidade">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="nomeAbreviado" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="descricao" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="operador" type="tns:OperadorUnidade"/>
+            <s:element minOccurs="1" maxOccurs="1" name="multiplicador" type="s:double"/>
+            <s:element minOccurs="1" maxOccurs="1" name="ativo" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="OperadorUnidade">
+        <s:restriction base="s:string">
+          <s:enumeration value="Multiplicador"/>
+          <s:enumeration value="Divisor"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="salvarUnidadeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarUnidadeResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarProdutoAcabado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="descricao" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="clienteID" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="ativo" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarProdutoAcabadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarProdutoAcabadoResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarEstoque">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="quantidade" type="s:double"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarEstoqueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarEstoqueResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarCentroDeCusto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="ativo" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarCentroDeCustoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarCentroDeCustoResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarOperador">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="ativo" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarOperadorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarOperadorResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarMaquina">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="tns:AccessToken"/>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="custoHora" type="s:double"/>
+            <s:element minOccurs="1" maxOccurs="1" name="mediaProdutividade" type="s:double"/>
+            <s:element minOccurs="1" maxOccurs="1" name="ativo" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="salvarMaquinaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="salvarMaquinaResult" type="tns:WSResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="salvarNaturezaDeOperacaoSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarNaturezaDeOperacao"/>
+  </wsdl:message>
+  <wsdl:message name="salvarNaturezaDeOperacaoSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarNaturezaDeOperacaoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarVendedorSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarVendedor"/>
+  </wsdl:message>
+  <wsdl:message name="salvarVendedorSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarVendedorResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarTipoClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarTipoCliente"/>
+  </wsdl:message>
+  <wsdl:message name="salvarTipoClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarTipoClienteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarFeriadoSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarFeriado"/>
+  </wsdl:message>
+  <wsdl:message name="salvarFeriadoSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarFeriadoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarCondicaoDePagamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarCondicaoDePagamento"/>
+  </wsdl:message>
+  <wsdl:message name="salvarCondicaoDePagamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarCondicaoDePagamentoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarTransportadoraSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarTransportadora"/>
+  </wsdl:message>
+  <wsdl:message name="salvarTransportadoraSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarTransportadoraResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarSecretariaSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarSecretaria"/>
+  </wsdl:message>
+  <wsdl:message name="salvarSecretariaSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarSecretariaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarNotaFiscalSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarNotaFiscal"/>
+  </wsdl:message>
+  <wsdl:message name="salvarNotaFiscalSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarNotaFiscalResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarUnidadeSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarUnidade"/>
+  </wsdl:message>
+  <wsdl:message name="salvarUnidadeSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarUnidadeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarProdutoAcabadoSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarProdutoAcabado"/>
+  </wsdl:message>
+  <wsdl:message name="salvarProdutoAcabadoSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarProdutoAcabadoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarEstoqueSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarEstoque"/>
+  </wsdl:message>
+  <wsdl:message name="salvarEstoqueSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarEstoqueResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarCentroDeCustoSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarCentroDeCusto"/>
+  </wsdl:message>
+  <wsdl:message name="salvarCentroDeCustoSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarCentroDeCustoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarOperadorSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarOperador"/>
+  </wsdl:message>
+  <wsdl:message name="salvarOperadorSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarOperadorResponse"/>
+  </wsdl:message>
+  <wsdl:message name="salvarMaquinaSoapIn">
+    <wsdl:part name="parameters" element="tns:salvarMaquina"/>
+  </wsdl:message>
+  <wsdl:message name="salvarMaquinaSoapOut">
+    <wsdl:part name="parameters" element="tns:salvarMaquinaResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="WSIntegraImespSoap">
+    <wsdl:operation name="salvarNaturezaDeOperacao">
+      <wsdl:input message="tns:salvarNaturezaDeOperacaoSoapIn"/>
+      <wsdl:output message="tns:salvarNaturezaDeOperacaoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarVendedor">
+      <wsdl:input message="tns:salvarVendedorSoapIn"/>
+      <wsdl:output message="tns:salvarVendedorSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarTipoCliente">
+      <wsdl:input message="tns:salvarTipoClienteSoapIn"/>
+      <wsdl:output message="tns:salvarTipoClienteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarFeriado">
+      <wsdl:input message="tns:salvarFeriadoSoapIn"/>
+      <wsdl:output message="tns:salvarFeriadoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarCondicaoDePagamento">
+      <wsdl:input message="tns:salvarCondicaoDePagamentoSoapIn"/>
+      <wsdl:output message="tns:salvarCondicaoDePagamentoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarTransportadora">
+      <wsdl:input message="tns:salvarTransportadoraSoapIn"/>
+      <wsdl:output message="tns:salvarTransportadoraSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarSecretaria">
+      <wsdl:input message="tns:salvarSecretariaSoapIn"/>
+      <wsdl:output message="tns:salvarSecretariaSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarNotaFiscal">
+      <wsdl:input message="tns:salvarNotaFiscalSoapIn"/>
+      <wsdl:output message="tns:salvarNotaFiscalSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarUnidade">
+      <wsdl:input message="tns:salvarUnidadeSoapIn"/>
+      <wsdl:output message="tns:salvarUnidadeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarProdutoAcabado">
+      <wsdl:input message="tns:salvarProdutoAcabadoSoapIn"/>
+      <wsdl:output message="tns:salvarProdutoAcabadoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarEstoque">
+      <wsdl:input message="tns:salvarEstoqueSoapIn"/>
+      <wsdl:output message="tns:salvarEstoqueSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarCentroDeCusto">
+      <wsdl:input message="tns:salvarCentroDeCustoSoapIn"/>
+      <wsdl:output message="tns:salvarCentroDeCustoSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarOperador">
+      <wsdl:input message="tns:salvarOperadorSoapIn"/>
+      <wsdl:output message="tns:salvarOperadorSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="salvarMaquina">
+      <wsdl:input message="tns:salvarMaquinaSoapIn"/>
+      <wsdl:output message="tns:salvarMaquinaSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSIntegraImespSoap" type="tns:WSIntegraImespSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="salvarNaturezaDeOperacao">
+      <soap:operation soapAction="http://tempuri.org/salvarNaturezaDeOperacao" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarVendedor">
+      <soap:operation soapAction="http://tempuri.org/salvarVendedor" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarTipoCliente">
+      <soap:operation soapAction="http://tempuri.org/salvarTipoCliente" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarFeriado">
+      <soap:operation soapAction="http://tempuri.org/salvarFeriado" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarCondicaoDePagamento">
+      <soap:operation soapAction="http://tempuri.org/salvarCondicaoDePagamento" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarTransportadora">
+      <soap:operation soapAction="http://tempuri.org/salvarTransportadora" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarSecretaria">
+      <soap:operation soapAction="http://tempuri.org/salvarSecretaria" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarNotaFiscal">
+      <soap:operation soapAction="http://tempuri.org/salvarNotaFiscal" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarUnidade">
+      <soap:operation soapAction="http://tempuri.org/salvarUnidade" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarProdutoAcabado">
+      <soap:operation soapAction="http://tempuri.org/salvarProdutoAcabado" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarEstoque">
+      <soap:operation soapAction="http://tempuri.org/salvarEstoque" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarCentroDeCusto">
+      <soap:operation soapAction="http://tempuri.org/salvarCentroDeCusto" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarOperador">
+      <soap:operation soapAction="http://tempuri.org/salvarOperador" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarMaquina">
+      <soap:operation soapAction="http://tempuri.org/salvarMaquina" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSIntegraImespSoap12" type="tns:WSIntegraImespSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="salvarNaturezaDeOperacao">
+      <soap12:operation soapAction="http://tempuri.org/salvarNaturezaDeOperacao" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarVendedor">
+      <soap12:operation soapAction="http://tempuri.org/salvarVendedor" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarTipoCliente">
+      <soap12:operation soapAction="http://tempuri.org/salvarTipoCliente" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarFeriado">
+      <soap12:operation soapAction="http://tempuri.org/salvarFeriado" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarCondicaoDePagamento">
+      <soap12:operation soapAction="http://tempuri.org/salvarCondicaoDePagamento" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarTransportadora">
+      <soap12:operation soapAction="http://tempuri.org/salvarTransportadora" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarSecretaria">
+      <soap12:operation soapAction="http://tempuri.org/salvarSecretaria" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarNotaFiscal">
+      <soap12:operation soapAction="http://tempuri.org/salvarNotaFiscal" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarUnidade">
+      <soap12:operation soapAction="http://tempuri.org/salvarUnidade" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarProdutoAcabado">
+      <soap12:operation soapAction="http://tempuri.org/salvarProdutoAcabado" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarEstoque">
+      <soap12:operation soapAction="http://tempuri.org/salvarEstoque" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarCentroDeCusto">
+      <soap12:operation soapAction="http://tempuri.org/salvarCentroDeCusto" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarOperador">
+      <soap12:operation soapAction="http://tempuri.org/salvarOperador" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="salvarMaquina">
+      <soap12:operation soapAction="http://tempuri.org/salvarMaquina" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSIntegraImesp">
+    <wsdl:port name="WSIntegraImespSoap" binding="tns:WSIntegraImespSoap">
+      <soap:address location="http://10.20.5.182/WSIntegraImesp.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="WSIntegraImespSoap12" binding="tns:WSIntegraImespSoap12">
+      <soap12:address location="http://10.20.5.182/WSIntegraImesp.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint></con:endpoints><con:operation id="451bf4bc-d7f8-4b14-8714-5b5ab1b53530" isOneWay="false" action="http://tempuri.org/salvarCentroDeCusto" name="salvarCentroDeCusto" bindingOperationName="salvarCentroDeCusto" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dea8c22f-2e78-46c7-8ae1-62a753dcc9c5" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarCentroDeCusto>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarCentroDeCusto>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarCentroDeCusto"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="65491dff-d69e-4954-98a4-9a267954d409" isOneWay="false" action="http://tempuri.org/salvarCondicaoDePagamento" name="salvarCondicaoDePagamento" bindingOperationName="salvarCondicaoDePagamento" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0ffcde6b-3d23-4e5a-b0a7-7cddf878c828" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarCondicaoDePagamento>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:descricao>?</tem:descricao>\r
+         <tem:ativo>?</tem:ativo>\r
+         <!--Optional:-->\r
+         <tem:parcelasDiasVariaveis>\r
+            <!--Zero or more repetitions:-->\r
+            <tem:ParcelaDiaVariavelVO>\r
+               <tem:LazyObject>?</tem:LazyObject>\r
+               <tem:hasCache>?</tem:hasCache>\r
+               <tem:loadClusterd>?</tem:loadClusterd>\r
+               <!--Optional:-->\r
+               <tem:Erros>\r
+                  <!--Optional:-->\r
+                  <tem:Errors>\r
+                     <!--Zero or more repetitions:-->\r
+                     <tem:ErrorStruct>\r
+                        <!--Optional:-->\r
+                        <tem:errorKey>?</tem:errorKey>\r
+                        <tem:objKey>?</tem:objKey>\r
+                        <!--Optional:-->\r
+                        <tem:Error>?</tem:Error>\r
+                        <tem:ErrorType>?</tem:ErrorType>\r
+                     </tem:ErrorStruct>\r
+                  </tem:Errors>\r
+                  <!--Optional:-->\r
+                  <tem:SucessMsg>?</tem:SucessMsg>\r
+               </tem:Erros>\r
+               <tem:Codigo>?</tem:Codigo>\r
+               <tem:CodigoCondicaoDePagamento>?</tem:CodigoCondicaoDePagamento>\r
+               <tem:Adicionar>?</tem:Adicionar>\r
+               <tem:Percentual>?</tem:Percentual>\r
+               <tem:Dias>?</tem:Dias>\r
+               <tem:PercentualIPI>?</tem:PercentualIPI>\r
+            </tem:ParcelaDiaVariavelVO>\r
+         </tem:parcelasDiasVariaveis>\r
+      </tem:salvarCondicaoDePagamento>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarCondicaoDePagamento"/></con:call></con:operation><con:operation id="b050baf8-dd5c-4143-91c2-edabf4fa8e40" isOneWay="false" action="http://tempuri.org/salvarEstoque" name="salvarEstoque" bindingOperationName="salvarEstoque" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="884ebbeb-8fb3-41f5-9355-fb754f648659" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarEstoque>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <tem:quantidade>?</tem:quantidade>\r
+      </tem:salvarEstoque>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarEstoque"/></con:call></con:operation><con:operation id="2c2cb437-f36d-4b34-ba22-47bbb64eb981" isOneWay="false" action="http://tempuri.org/salvarFeriado" name="salvarFeriado" bindingOperationName="salvarFeriado" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e40c60ff-5b9b-4247-a9c6-8309906b63fe" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarFeriado>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <tem:feriado>?</tem:feriado>\r
+         <tem:dataFixa>?</tem:dataFixa>\r
+      </tem:salvarFeriado>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarFeriado"/></con:call></con:operation><con:operation id="4664f17f-c8bd-4ff3-a747-9da8e9b23da4" isOneWay="false" action="http://tempuri.org/salvarMaquina" name="salvarMaquina" bindingOperationName="salvarMaquina" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="00e20133-e768-4ec0-80ef-b42ccba70ec8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarMaquina>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <tem:custoHora>?</tem:custoHora>\r
+         <tem:mediaProdutividade>?</tem:mediaProdutividade>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarMaquina>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarMaquina"/></con:call></con:operation><con:operation id="4dd4419d-a9d6-493e-92ef-0088f0371234" isOneWay="false" action="http://tempuri.org/salvarNaturezaDeOperacao" name="salvarNaturezaDeOperacao" bindingOperationName="salvarNaturezaDeOperacao" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7af46210-6bfd-4293-9ef0-5c68dededfad" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarNaturezaDeOperacao>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <!--Optional:-->\r
+         <tem:cfop>?</tem:cfop>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarNaturezaDeOperacao>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarNaturezaDeOperacao"/></con:call></con:operation><con:operation id="6fa84896-36ab-40af-b334-028afb5b7b7a" isOneWay="false" action="http://tempuri.org/salvarNotaFiscal" name="salvarNotaFiscal" bindingOperationName="salvarNotaFiscal" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6c32be15-b13b-4409-a2b1-0c25506a68fb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarNotaFiscal>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <tem:numeroNota>?</tem:numeroNota>\r
+         <!--Optional:-->\r
+         <tem:serie>?</tem:serie>\r
+         <!--Optional:-->\r
+         <tem:clienteID>?</tem:clienteID>\r
+         <tem:dataEntrega>?</tem:dataEntrega>\r
+         <tem:dataSaida>?</tem:dataSaida>\r
+         <tem:valorTotal>?</tem:valorTotal>\r
+         <tem:valorNota>?</tem:valorNota>\r
+         <!--Optional:-->\r
+         <tem:obs>?</tem:obs>\r
+         <tem:vendaID>?</tem:vendaID>\r
+         <tem:status>?</tem:status>\r
+      </tem:salvarNotaFiscal>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarNotaFiscal"/></con:call></con:operation><con:operation id="7970c149-0559-4864-86a7-eb8f6c6138a9" isOneWay="false" action="http://tempuri.org/salvarOperador" name="salvarOperador" bindingOperationName="salvarOperador" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="07ba989a-4546-4832-a67b-62dab5740557" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarOperador>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarOperador>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarOperador"/></con:call></con:operation><con:operation id="d676f43f-0421-4a9e-83e0-6c9185141745" isOneWay="false" action="http://tempuri.org/salvarProdutoAcabado" name="salvarProdutoAcabado" bindingOperationName="salvarProdutoAcabado" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="88669945-6ed5-4aa2-99e4-bf2f2a18056a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarProdutoAcabado>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <!--Optional:-->\r
+         <tem:descricao>?</tem:descricao>\r
+         <!--Optional:-->\r
+         <tem:clienteID>?</tem:clienteID>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarProdutoAcabado>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarProdutoAcabado"/></con:call></con:operation><con:operation id="68f2fa86-a142-436a-8c5d-75facf84efb8" isOneWay="false" action="http://tempuri.org/salvarSecretaria" name="salvarSecretaria" bindingOperationName="salvarSecretaria" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="78ebb0c2-cbcb-4180-9f87-bb0894e784bc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarSecretaria>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <!--Optional:-->\r
+         <tem:razaoSocial>?</tem:razaoSocial>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarSecretaria>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarSecretaria"/></con:call></con:operation><con:operation id="d9a2cf1b-549a-473f-9ec3-c7ab18d72406" isOneWay="false" action="http://tempuri.org/salvarTipoCliente" name="salvarTipoCliente" bindingOperationName="salvarTipoCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cf247086-d102-4569-b037-8ffff0c9b087" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarTipoCliente>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+      </tem:salvarTipoCliente>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarTipoCliente"/></con:call></con:operation><con:operation id="c66b7b56-731f-4502-9e51-65156af6daea" isOneWay="false" action="http://tempuri.org/salvarTransportadora" name="salvarTransportadora" bindingOperationName="salvarTransportadora" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9322a9a0-d0b3-463f-b641-7e56d5442d48" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarTransportadora>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <!--Optional:-->\r
+         <tem:razaoSocial>?</tem:razaoSocial>\r
+         <tem:ativo>?</tem:ativo>\r
+         <!--Optional:-->\r
+         <tem:CPF>?</tem:CPF>\r
+         <!--Optional:-->\r
+         <tem:CNPJ>?</tem:CNPJ>\r
+         <!--Optional:-->\r
+         <tem:inscEstadual>?</tem:inscEstadual>\r
+         <!--Optional:-->\r
+         <tem:inscMunicipal>?</tem:inscMunicipal>\r
+         <!--Optional:-->\r
+         <tem:endereco>?</tem:endereco>\r
+         <!--Optional:-->\r
+         <tem:bairro>?</tem:bairro>\r
+         <!--Optional:-->\r
+         <tem:codMunicipioIBGE>?</tem:codMunicipioIBGE>\r
+         <!--Optional:-->\r
+         <tem:estado>?</tem:estado>\r
+         <!--Optional:-->\r
+         <tem:cep>?</tem:cep>\r
+         <!--Optional:-->\r
+         <tem:DDD>?</tem:DDD>\r
+         <!--Optional:-->\r
+         <tem:telefone>?</tem:telefone>\r
+         <!--Optional:-->\r
+         <tem:fax>?</tem:fax>\r
+         <!--Optional:-->\r
+         <tem:email>?</tem:email>\r
+      </tem:salvarTransportadora>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarTransportadora"/></con:call></con:operation><con:operation id="5f1cfb82-98e9-44ea-bdd6-8ce3532349c8" isOneWay="false" action="http://tempuri.org/salvarUnidade" name="salvarUnidade" bindingOperationName="salvarUnidade" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4e8ec2e0-589c-48cd-8fac-26c08fa48186" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarUnidade>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nomeAbreviado>?</tem:nomeAbreviado>\r
+         <!--Optional:-->\r
+         <tem:descricao>?</tem:descricao>\r
+         <tem:operador>?</tem:operador>\r
+         <tem:multiplicador>?</tem:multiplicador>\r
+         <tem:ativo>?</tem:ativo>\r
+      </tem:salvarUnidade>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarUnidade"/></con:call></con:operation><con:operation id="1cbbf22a-1eb9-4bad-a510-374c543ebc94" isOneWay="false" action="http://tempuri.org/salvarVendedor" name="salvarVendedor" bindingOperationName="salvarVendedor" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="202e2369-6935-43ef-8b55-e284a1809ad1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:salvarVendedor>\r
+         <!--Optional:-->\r
+         <tem:token>\r
+            <!--Optional:-->\r
+            <tem:Usuario>?</tem:Usuario>\r
+            <!--Optional:-->\r
+            <tem:Senha>?</tem:Senha>\r
+         </tem:token>\r
+         <!--Optional:-->\r
+         <tem:id>?</tem:id>\r
+         <!--Optional:-->\r
+         <tem:nome>?</tem:nome>\r
+         <!--Optional:-->\r
+         <tem:razaoSocial>?</tem:razaoSocial>\r
+         <tem:ativo>?</tem:ativo>\r
+         <!--Optional:-->\r
+         <tem:cpf>?</tem:cpf>\r
+         <!--Optional:-->\r
+         <tem:cnpj>?</tem:cnpj>\r
+         <!--Optional:-->\r
+         <tem:endereco>?</tem:endereco>\r
+         <!--Optional:-->\r
+         <tem:codMunicipioIBGE>?</tem:codMunicipioIBGE>\r
+         <!--Optional:-->\r
+         <tem:estado>?</tem:estado>\r
+         <!--Optional:-->\r
+         <tem:cep>?</tem:cep>\r
+         <!--Optional:-->\r
+         <tem:ddd>?</tem:ddd>\r
+         <!--Optional:-->\r
+         <tem:telefone>?</tem:telefone>\r
+         <!--Optional:-->\r
+         <tem:fax>?</tem:fax>\r
+         <!--Optional:-->\r
+         <tem:email>?</tem:email>\r
+         <tem:comissao>?</tem:comissao>\r
+      </tem:salvarVendedor>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/salvarVendedor"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

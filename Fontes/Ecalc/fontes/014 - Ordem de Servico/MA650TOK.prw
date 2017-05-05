@@ -3,10 +3,10 @@
 #INCLUDE 'FWEDITPANEL.CH'
 #INCLUDE 'FWADAPTEREAI.CH'
 
-user function A010TOK()
+user function MA650TOK()
 
 	Local oModel  := ModelDef()
-	Local aFields := oModel:GetModel('SB1_MODEL'):GetStruct():GetFields()
+	Local aFields := oModel:GetModel('SC2_MODEL'):GetStruct():GetFields()
 	Local aValues := {}
 	Local nX      := 0
 
@@ -30,7 +30,7 @@ user function A010TOK()
 
 	For nX := 1 To Len( aValues )
 
-		oModel:SetValue( 'SB1_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
+		oModel:Setvalue( 'SC2_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
 
 	Next nX
 
@@ -44,13 +44,15 @@ return .T.
 
 Static Function ModelDef()
 
-	Local oStru  := FWFormStruct( 1, 'SB1', { | cCampo | ! AllTrim( cCampo ) $ 'B1_QTDSER' } )
-	Local oModel := MPFormModel():New( 'ITEM' )
+	Local oModel := MPFormModel():New('PRODUCTIONORDER')
+	Local oStr:= FWFormStruct( 1, 'SC2', { | cCampo | GetSX3Cache( cCampo, 'X3_CONTEXT' ) # 'V' .And. AllTrim(cCampo) # 'C2_VERIFI' } )
 
-	oModel:AddFields( 'SB1_MODEL',, oStru )
-	oModel:SetDescription( 'Cadastro de Produtos' )
-	oModel:GetModel( 'SB1_MODEL' ):SetDescription( 'Cadastro de Produtos' )
-	oModel:GetModel( 'SB1_MODEL' ):SetOnlyQuery ( .T. )
+	oStr:SetProperty( '*' , MODEL_FIELD_VALID, {||.T.} )
+	
+	oModel:SetDescription('Ordem de Produção')
+	oModel:addFields('SC2_MODEL',,oStr)
+	oModel:getModel('SC2_MODEL'):SetDescription('Ordem de Produção')
+	oModel:GetModel( 'SC2_MODEL' ):SetOnlyQuery ( .T. )
 
 Return oModel
 
@@ -65,11 +67,11 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 		oModel := FwModelActive()
 
 		cXmlRet += '<BusinessEvent>'
-		cXmlRet += '<Entity>ITEM</Entity>'
+		cXmlRet += '<Entity>PRODUCTIONORDER</Entity>'
 		cXmlRet += '<Event>upsert</Event>'
 		cXmlRet += '<Identification>'
 		cXmlRet += '<key name="Code">'
-		cXmlRet += AllTrim( oModel:GetModel( 'SB1_MODEL' ):GetValue( 'B1_COD' ) )
+		cXmlRet += AllTrim( oModel:GetModel( 'SC2_MODEL' ):GetValue( 'C2_NUM' ) )
 		cXmlRet += '</key>'
 		cXmlRet += '</Identification>'
 		cXmlRet += '</BusinessEvent>'
@@ -79,4 +81,4 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 
 	End If
 
-Return { lRet, cXmlRet, 'ITEM' }
+Return { lRet, cXmlRet, 'PRODUCTIONORDER' }

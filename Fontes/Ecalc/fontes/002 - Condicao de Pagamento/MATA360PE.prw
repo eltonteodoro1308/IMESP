@@ -5,15 +5,27 @@
 
 user function MATA360()
 
-	If PARAMIXB[ 2 ] == 'MODELPOS' .And. PARAMIXB[ 1 ]:nOperation == MODEL_OPERATION_DELETE
+	Local xRet := Nil 
 
-		Help(,, 'Help',, 'Não é Permitido Excluir Condiçao de Pagamento !!!', 1, 0 )
+	//	If PARAMIXB[ 2 ] == 'MODELPOS' .And. PARAMIXB[ 1 ]:nOperation == MODEL_OPERATION_DELETE
+	//
+	//		Help(,, 'Help',, 'Não é Permitido Excluir Condiçao de Pagamento !!!', 1, 0 )
+	//
+	//		Return .F.
+	//
+	//	End If
 
-		Return .F.
+	If PARAMIXB[ 2 ] == 'BUTTONBAR'
 
-	End If
+		Return {}
 
-return .T.
+	Else
+
+		Return .T.
+
+	EndIf
+
+return xRet
 
 Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
 

@@ -3,10 +3,10 @@
 #INCLUDE 'FWEDITPANEL.CH'
 #INCLUDE 'FWADAPTEREAI.CH'
 
-user function A010TOK()
+user function MT240TOK()
 
 	Local oModel  := ModelDef()
-	Local aFields := oModel:GetModel('SB1_MODEL'):GetStruct():GetFields()
+	Local aFields := oModel:GetModel('SD3_MODEL'):GetStruct():GetFields()
 	Local aValues := {}
 	Local nX      := 0
 
@@ -30,7 +30,7 @@ user function A010TOK()
 
 	For nX := 1 To Len( aValues )
 
-		oModel:SetValue( 'SB1_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
+		oModel:Setvalue( 'SD3_MODEL', aValues[ nX, 1 ], aValues[ nX, 2 ] )
 
 	Next nX
 
@@ -44,13 +44,14 @@ return .T.
 
 Static Function ModelDef()
 
-	Local oStru  := FWFormStruct( 1, 'SB1', { | cCampo | ! AllTrim( cCampo ) $ 'B1_QTDSER' } )
-	Local oModel := MPFormModel():New( 'ITEM' )
+	Local oModel
 
-	oModel:AddFields( 'SB1_MODEL',, oStru )
-	oModel:SetDescription( 'Cadastro de Produtos' )
-	oModel:GetModel( 'SB1_MODEL' ):SetDescription( 'Cadastro de Produtos' )
-	oModel:GetModel( 'SB1_MODEL' ):SetOnlyQuery ( .T. )
+	Local oStr1:= FWFormStruct(1,'SD3', { | cCampo | GetSX3Cache( cCampo, 'X3_CONTEXT' ) # 'V' } )
+	oModel := MPFormModel():New('INVENTORYMOVIMENT')
+	oModel:SetDescription('Movimentação de Estoque')
+	oModel:addFields('SD3_MODEL',,oStr1)
+	oModel:getModel('SD3_MODEL'):SetDescription('Movimentação de Estoque')
+	oModel:SetPrimaryKey({ 'D3_COD' })
 
 Return oModel
 
@@ -65,11 +66,11 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 		oModel := FwModelActive()
 
 		cXmlRet += '<BusinessEvent>'
-		cXmlRet += '<Entity>ITEM</Entity>'
+		cXmlRet += '<Entity>INVENTORYMOVIMENT</Entity>'
 		cXmlRet += '<Event>upsert</Event>'
 		cXmlRet += '<Identification>'
 		cXmlRet += '<key name="Code">'
-		cXmlRet += AllTrim( oModel:GetModel( 'SB1_MODEL' ):GetValue( 'B1_COD' ) )
+		cXmlRet += AllTrim( oModel:GetModel( 'SD3_MODEL' ):GetValue( 'D3_COD' ) )
 		cXmlRet += '</key>'
 		cXmlRet += '</Identification>'
 		cXmlRet += '</BusinessEvent>'
@@ -79,4 +80,4 @@ Static Function IntegDef(cXml, cTypeTran, cTypeMsg, cVersion)
 
 	End If
 
-Return { lRet, cXmlRet, 'ITEM' }
+Return { lRet, cXmlRet, 'INVENTORYMOVIMENT' }
