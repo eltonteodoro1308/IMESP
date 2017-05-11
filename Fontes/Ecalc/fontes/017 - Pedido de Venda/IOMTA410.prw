@@ -21,13 +21,14 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 	Local aChild  := Nil
 	Local nX      := 0
 	Local aErro   := Nil
-
+	//Default cXml := MemoRead( '\XML\IOMTA410.XML' )
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
 	Private	lAutoErrNoFile	:=	.T.
 
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
 
+		aAdd( aCabec, { 'C5_NUM'     , oXML:XPathGetNodeValue( '/MATA410_MODEL/SC5_FIELD_MASTER/C5_NUM/value'     ), Nil } )
 		aAdd( aCabec, { 'C5_TIPO'    , oXML:XPathGetNodeValue( '/MATA410_MODEL/SC5_FIELD_MASTER/C5_TIPO/value'    ), Nil } )
 		aAdd( aCabec, { 'C5_CLIENTE' , oXML:XPathGetNodeValue( '/MATA410_MODEL/SC5_FIELD_MASTER/C5_CLIENTE/value' ), Nil } )
 		aAdd( aCabec, { 'C5_LOJACLI' , oXML:XPathGetNodeValue( '/MATA410_MODEL/SC5_FIELD_MASTER/C5_LOJACLI/value' ), Nil } )
@@ -81,8 +82,7 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 			End If
 
 		End Do
-
-
+		//RpcSetEnv( '99', '01' )
 		MSExecAuto( { | X, Y, Z | MATA410( X, Y, Z ) }, aCabec, aItens, 3 )
 
 		If lMsErroAuto
@@ -105,4 +105,6 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 
 	End If
 
+	//RpcClearEnv()
+	ConOut( cRet )
 Return cRet

@@ -3,13 +3,13 @@
 
 /* ===============================================================================
 WSDL Location    http://spon4944:7112/ws/MYEAI.apw?WSDL
-Gerado em        04/18/17 16:31:24
+Gerado em        05/10/17 15:36:40
 Observações      Código-Fonte gerado por ADVPL WSDL Client 1.120703
                  Alterações neste arquivo podem causar funcionamento incorreto
                  e serão perdidas caso o código-fonte seja gerado novamente.
 =============================================================================== */
 
-User Function _SMZPYBK ; Return  // "dummy" function - Internal Use 
+User Function _IWLOMNN ; Return  // "dummy" function - Internal Use 
 
 /* -------------------------------------------------------------------------------
 WSDL Service WSMYEAI
@@ -34,7 +34,7 @@ ENDWSCLIENT
 WSMETHOD NEW WSCLIENT WSMYEAI
 ::Init()
 If !FindFunction("XMLCHILDEX")
-	UserException("O Código-Fonte Client atual requer os executáveis do Protheus Build [7.00.131227A-20170323 NG] ou superior. Atualize o Protheus ou gere o Código-Fonte novamente utilizando o Build atual.")
+	UserException("O Código-Fonte Client atual requer os executáveis do Protheus Build [7.00.131227A-20170412 NG] ou superior. Atualize o Protheus ou gere o Código-Fonte novamente utilizando o Build atual.")
 EndIf
 Return Self
 
