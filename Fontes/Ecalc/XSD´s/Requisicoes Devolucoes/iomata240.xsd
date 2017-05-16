@@ -1,0 +1,2326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="SD3_MODEL">
+		<xs:annotation>
+			<xs:documentation>Movimentações Internas</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SD3_FIELD_MASTER">
+					<xs:annotation>
+						<xs:documentation>SD3_FIELD_MASTER</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="D3_FILIAL" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Filial do Sistema
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_TM" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Tipo de movimento
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_COD" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Codigo do Produto
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="15" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_UM" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Unidade de Medida
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_QUANT" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Quantidade do Movimento
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CF" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Tipo de Requisicao/devolu
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CONTA" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Codigo da Conta Contabil
+ Tipo de dado: C
+ Tamanho: 20
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="20" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_OP" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Ordem de Producao
+ Tipo de dado: C
+ Tamanho: 13
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="13" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_LOCAL" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Codigo do Armazem
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_DOC" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Numero do Documento
+ Tipo de dado: C
+ Tamanho: 9
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="9" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_EMISSAO" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Data de Emissao
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:pattern
+														value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_GRUPO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Grupo do Produto
+ Tipo de dado: C
+ Tamanho: 4
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="4" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSTO1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSTO2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo na moeda 2
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSTO3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo na moeda 3
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSTO4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo na moeda 4
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSTO5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo na moeda 5
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CC" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Centro de custo
+ Tipo de dado: C
+ Tamanho: 9
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="9" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_PARCTOT" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Parcial ou total
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: P=Parcial;
+T=Total;
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:enumeration value="P" />
+													<xs:enumeration value="T" />
+													<xs:enumeration value="" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_ESTORNO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Foi estornado (S/N) ?
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: S=Sim;
+N=Nao;
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:enumeration value="S" />
+													<xs:enumeration value="N" />
+													<xs:enumeration value="" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_NUMSEQ" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Numeracao sequencial
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="6" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_SEGUM" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Segunda Unidade de Medida
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_QTSEGUM" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Qtde na Segunda Unidade
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_TIPO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Tipo do material
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_USUARIO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Usuario resp. p/digitacao
+ Tipo de dado: C
+ Tamanho: 25
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="25" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_REGWMS" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Regra de Apanhe do WMS
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Lote;
+2=Numero de Serie;
+3=Data/Seq.Abastecimento;
+4=Data;
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:enumeration value="1" />
+													<xs:enumeration value="2" />
+													<xs:enumeration value="3" />
+													<xs:enumeration value="4" />
+													<xs:enumeration value="" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_DESCRI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Descrição do Produto
+ Tipo de dado: C
+ Tamanho: 30
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="30" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_PERDA" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Perda do Movimento
+ Tipo de dado: N
+ Tamanho: 11
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,11}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_TRT" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Sequencia da Estrutura
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CHAVE" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Chave de Indexação
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_RATEIO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[% Rateio de Custo
+ Tipo de dado: N
+ Tamanho: 6
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,6}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_LOTECTL" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Lote
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="10" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_NUMLOTE" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Sub-Lote
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="6" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_DTVALID" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Validade do Lote inform.
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:pattern
+														value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_LOCALIZ" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Endereco
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="15" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_NUMSERI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Num de Serie do Produto
+ Tipo de dado: C
+ Tamanho: 20
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="20" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSFF1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo FIFO Moeda 1
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSFF2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo FIFO Moeda 2
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSFF3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo FIFO Moeda 3
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSFF4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo FIFO Moeda 4
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSFF5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo FIFO Moeda 5
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_ITEM" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Item do Remito
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_ITEMCTA" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Item Contabil
+ Tipo de dado: C
+ Tamanho: 9
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="9" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CLVL" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Classe Valor Contabil
+ Tipo de dado: C
+ Tamanho: 9
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="9" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_PROJPMS" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Codigo do Projeto
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="10" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_TASKPMS" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Codigo da Tarefa
+ Tipo de dado: C
+ Tamanho: 12
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="12" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_ORDEM" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Ordem de Servico
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="6" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CODGRP" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Grupo Veiculos/Oficina
+ Tipo de dado: C
+ Tamanho: 4
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="4" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CODITE" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Produto Veiculos/Oficina
+ Tipo de dado: C
+ Tamanho: 27
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="27" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_SERVIC" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Codigo do Servico
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_STSERV" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Status do Servico
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Servico Nao Executado;
+2=Servico Interrompido;
+3=Servico Executado;
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:enumeration value="1" />
+													<xs:enumeration value="2" />
+													<xs:enumeration value="3" />
+													<xs:enumeration value="" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_OSTEC" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[OS Assistencia Tecnica
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="8" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_POTENCI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Potencia do Lote
+ Tipo de dado: N
+ Tamanho: 6
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,6}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_TPESTR" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Cod. da Estrutura Fisica
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="6" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_REGATEN" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Registro de Atendimento
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="10" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_ITEMSWN" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Item do SWN
+ Tipo de dado: C
+ Tamanho: 4
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="4" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_ITEMGRD" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Item Grade
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_STATUS" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Status de Controle Intern
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSRP1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo de Reposicao
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSRP2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo de Reposicao 2a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSRP3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo de Reposicao 3a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSRP4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo de Reposicao 4a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CUSRP5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo de Reposicao 5a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CMRP" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo Rep. Unitario
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 4
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,4}|[0-9]{0,14}(\.[0-9]{1,4})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_MOEDRP" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Moeda do Custo Reposicao
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_REVISAO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Revisão da Estrutura
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_HAWB" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Processo de importação
+ Tipo de dado: C
+ Tamanho: 17
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="17" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_EMPOP" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Empenho para OP
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CMFIXO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Custo Unitario Fixo
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 4
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,4}|[0-9]{0,14}(\.[0-9]{1,4})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_PMACNUT" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Perc. de Macronutrientes
+ Tipo de dado: N
+ Tamanho: 6
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,6}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_PMICNUT" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Perc. de Micronutrientes
+ Tipo de dado: N
+ Tamanho: 6
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,6}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_MOEDA" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Moeda do Custo Fixo
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_GARANTI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Insumo tem Garantia
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: S=Sim;
+N=Não;
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:enumeration value="S" />
+													<xs:enumeration value="N" />
+													<xs:enumeration value="" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_NRBPIMS" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Numero do boletim
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="10" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_QTGANHO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Qtde ganho de produção
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_QTMAIOR" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Qtde produzida a maior
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_PERIMP" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Percentual Importacao FCI
+ Tipo de dado: N
+ Tamanho: 8
+ Decimal: 4
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,4}|[0-9]{0,8}(\.[0-9]{1,4})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_VLRVI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor da Parcela Importad
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_OKISS" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Marca
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_VLRPD" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor Parcela Dedutivel
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_TEATF" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Tipo de Entrada da Nota
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="D3_CODSAF" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Código Safra
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="15" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+						<xs:attribute name="modeltype" type="MPmodeltype"
+							use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Operation" type="MPoperation" use="required" />
+			<xs:attribute name="version" type="MPversion" use="required" />
+			<xs:attribute name="pkIndexOrder" type="xs:integer" use="optional" />
+			<xs:attribute name="WKDef" type="xs:string" use="optional" />
+			<xs:attribute name="WKVersDef" type="xs:string" use="optional" />
+			<xs:attribute name="WKNumProces" type="xs:string" use="optional" />
+			<xs:attribute name="WKNumState" type="xs:string" use="optional" />
+			<xs:attribute name="WKCurrentState" type="xs:string"
+				use="optional" />
+			<xs:attribute name="WKCompany" type="xs:string" use="optional" />
+			<xs:attribute name="WKUser" type="xs:string" use="optional" />
+			<xs:attribute name="WKUserEmail" type="xs:string" use="optional" />
+			<xs:attribute name="WKCompletTask" type="xs:string" use="optional" />
+			<xs:attribute name="WKNextState" type="xs:string" use="optional" />
+			<xs:attribute name="WKCardId" type="xs:string" use="optional" />
+			<xs:attribute name="WKFormId" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="MPmodeltype">
+		<xs:annotation>
+			<xs:documentation>tipo da estrutura de dados do modelo
+				FIELDS - Estrutura de dados de campos
+				GRID - Estrutura de dados em linha
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:enumeration value="FIELDS" />
+			<xs:enumeration value="GRID" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MPoperation">
+		<xs:annotation>
+			<xs:documentation>Tipo da operação:
+				1 - VIEW
+				3 - INSERT
+				4 - UPDATE
+				5 - DELETE
+				6 - ONLYUPDATE
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:enumeration value="1" />
+			<xs:enumeration value="3" />
+			<xs:enumeration value="4" />
+			<xs:enumeration value="5" />
+			<xs:enumeration value="6" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MPversion">
+		<xs:annotation>
+			<xs:documentation>VersÃ£o do schema e layout</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="1\.01" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MPdeleted">
+		<xs:annotation>
+			<xs:documentation>Status da linha da estrutura do tipo GRID :
+				1 - deletada
+				0 - ativa
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:enumeration value="0" />
+			<xs:enumeration value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MPorder">
+		<xs:annotation>
+			<xs:documentation>
+				indica a ordem de entrada dos dados que deve ser executada na carga do xml
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[1-9]{1}[0-9]{0,2}" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MPiditem">
+		<xs:annotation>
+			<xs:documentation>
+				codigo de identificacao da linha
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[1-9]{1}[0-9]{0,2}" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

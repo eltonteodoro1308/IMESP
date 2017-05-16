@@ -1,0 +1,3432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="SC2_MODEL">
+		<xs:annotation>
+			<xs:documentation>Ordens de Produção</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SC2_FIELDS_MASTER">
+					<xs:annotation>
+						<xs:documentation>SubModel Tabela SC2</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="C2_FILIAL" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Filial do Sistema
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_NUM" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Numero ordem de producao
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="6" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_ITEM" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Item da Ordem de producao
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_SEQUEN" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Sequencia
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_PRODUTO" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Codigo do Produto
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="15" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_LOCAL" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Armazem
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_CC" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Centro de Custo
+ Tipo de dado: C
+ Tamanho: 9
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="9" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_QUANT" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Quantidade da OP
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_UM" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Unidade de medida
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_DATPRI" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Data prevista de inicio
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:pattern
+														value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_DATPRF" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Data prevista de entrega
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:pattern
+														value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_OBS" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Observacao
+ Tipo de dado: C
+ Tamanho: 30
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="30" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_EMISSAO" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Data de Emissao da OP
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:pattern
+														value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_PRIOR" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Prioridade da O.P.
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_QUJE" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Qtde Produzida
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_DATRF" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Data real de fim da OP
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:pattern
+														value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_STATUS" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Situacao da O.P.
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: U=Suspensa;
+S=Sacramentada;
+N=Normal;
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:enumeration value="U" />
+													<xs:enumeration value="S" />
+													<xs:enumeration value="N" />
+													<xs:enumeration value="" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VATU1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor atual da OP em $
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINI1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIM1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final para transf.
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VATU2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor atual na 2a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINI2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial na 2a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIM2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.fim 2a moeda p/transf
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VATU3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor atual na 3a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINI3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial na 3a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIM3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.fim 3a moeda p/transf
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VATU4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor atual na 4a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINI4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial na 4a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIM4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.fim 4a moeda p/transf
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VATU5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor atual na 5a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINI5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial na 5a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIM5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.fim 5a moeda p/transf
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRATU1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor apropriado ao estoq
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRINI1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRFIM1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRATU2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor apr.ao est.2a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRINI2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inic.apr.ao est.2a
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRFIM2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final apr.ao est.2a
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRATU3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor apr.ao est.3a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRINI3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inic.apr.ao est.3a
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRFIM3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final apr.ao est.3a
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRATU4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor apr.ao est.4a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRINI4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inic.apr.ao est.4a
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRFIM4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final apr.ao est.4a
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRATU5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor apr.ao est.5a moeda
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRINI5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inic.apr.ao est.5a
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRFIM5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final apr.ao est.5a
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_NIVEL" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Nivel invertido estrutura
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_DATAJI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Data Ajustada Inicial
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:pattern
+														value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_DATAJF" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Data Ajustada Final
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:pattern
+														value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_SEGUM" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Segunda Unidade de Medida
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_PERDA" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Perda da OP
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_DTUPROG" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Data da Rep. Ultimo MRP
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:pattern
+														value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_QTUPROG" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Qtde Rep. Ultimo MRP
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_SEQPAI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Sequencia da Op Pai
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_HORAJI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Hora Ajustada Inicial
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_HORAJF" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Hora Ajustada Final
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="5" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_ROTEIRO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Roteiro de Operação
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_IDENT" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Ident Origem OP
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: P=Projecao;
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:enumeration value="P" />
+													<xs:enumeration value="" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_RECURSO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Codigo do Recurso
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="6" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_PEDIDO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Ped. Venda que gerou a OP
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="6" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_ITEMPV" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Item do Pedido de Venda
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_OPC" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Opcionais utilizados p/OP
+ Tipo de dado: C
+ Tamanho: 80
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="80" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_QTSEGUM" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Quantidade 2a UM da OP
+ Tipo de dado: N
+ Tamanho: 12
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINIFF1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINIFF2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINIFF3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINIFF4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINIFF5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIMFF1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final para transf.
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIMFF2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final para transf.
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIMFF3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final para transf.
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIMFF4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final para transf.
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIMFF5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final para transf.
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APINFF1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APINFF2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APINFF3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APINFF4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APINFF5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor inicial apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APFIFF1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APFIFF2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APFIFF3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APFIFF4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APFIFF5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor final apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_TPOP" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Tipo da Ordem de Produção
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: F=Firme;
+P=Prevista;
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:enumeration value="F" />
+													<xs:enumeration value="P" />
+													<xs:enumeration value="" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_REVI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Revisao do Produto
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_CHAVE" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Chave de Ligacao
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="8" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_CERQUA" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Numero do Certificado
+ Tipo de dado: C
+ Tamanho: 12
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="12" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_REVISAO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Revisao da Estrutura
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_GRADE" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Grade
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_ITEMGRD" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Item da Grade
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="2" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_ITEMCTA" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Item Contabil
+ Tipo de dado: C
+ Tamanho: 9
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="9" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_CLVL" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Classe Valor Contabil
+ Tipo de dado: C
+ Tamanho: 9
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="9" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_LAUDO" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Laudo da Producao
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VERIFI" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Indica se Insp.ou Certif.
+ Tipo de dado: N
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="[0-9]{0,1}(\.0)?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_INSCER" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Inspeciona / Certifica
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="15" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_CHVQIP" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Chave Insp. de Processos
+ Tipo de dado: C
+ Tamanho: 40
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="40" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_SEQMRP" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Seq MRP que originou OP
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="6" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_LINHA" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Linha de Producao
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="3" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_MOPC" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Mesmo opcional
+ Tipo de dado: M
+ Tamanho: 5000
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="5000" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIMRP1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Valor Final de Reposicao
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIMRP2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.Fim de Reposicao 2a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIMRP3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.Fim de Reposicao 3a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIMRP4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.Fim de Reposicao 4a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VFIMRP5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.Fim de Reposicao 5a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINIRP1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr. Inicial de Reposicao
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINIRP2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.Ini de Reposicao 2a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINIRP3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.Ini de Reposicao 3a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINIRP4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.Ini de Reposicao 4a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_VINIRP5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Vlr.Ini de Reposicao 5a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRIRP1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Rep. Inicial Apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRIRP2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Rep. Inic. Apropr. 2a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRIRP3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Rep. Inic. Apropr. 3a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRIRP4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Rep. Inic. Apropr. 4a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRIRP5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Rep. Inic. Apropr. 5a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRFRP1" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Rep. Final Apropriado
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRFRP2" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Rep. Fim Apropr. 2a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRFRP3" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Rep. Fim Apropr. 3a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRFRP4" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Rep. Fim Apropr. 4a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_APRFRP5" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Rep. Fim Apropr. 5a M
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_DIASOCI" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Dias para ociosidade
+ Tipo de dado: N
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="[0-9]{0,2}(\.0)?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_PROGRAM" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Num Programa
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="0" />
+													<xs:maxLength value="10" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_PMACNUT" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Perc. de Macronutrientes
+ Tipo de dado: N
+ Tamanho: 6
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,6}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_PMICNUT" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Perc. de Micronutrientes
+ Tipo de dado: N
+ Tamanho: 6
+ Decimal: 2
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" default="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,6}(\.[0-9]{1,2})?" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C2_TPPR" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation><![CDATA[Tipo de Producao
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: I=Interna;
+E=Externa;
+]]></xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:whiteSpace value="preserve" />
+													<xs:enumeration value="I" />
+													<xs:enumeration value="E" />
+													<xs:enumeration value="" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="order" type="MPorder" use="required" />
+									<xs:attribute name="len" type="xs:string" use="optional" />
+									<xs:attribute name="datatype" type="xs:string"
+										use="optional" />
+									<xs:attribute name="info" type="xs:string" use="optional" />
+									<xs:attribute name="obrigat" type="xs:string" use="optional" />
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+						<xs:attribute name="modeltype" type="MPmodeltype"
+							use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Operation" type="MPoperation" use="required" />
+			<xs:attribute name="version" type="MPversion" use="required" />
+			<xs:attribute name="pkIndexOrder" type="xs:integer" use="optional" />
+			<xs:attribute name="WKDef" type="xs:string" use="optional" />
+			<xs:attribute name="WKVersDef" type="xs:string" use="optional" />
+			<xs:attribute name="WKNumProces" type="xs:string" use="optional" />
+			<xs:attribute name="WKNumState" type="xs:string" use="optional" />
+			<xs:attribute name="WKCurrentState" type="xs:string"
+				use="optional" />
+			<xs:attribute name="WKCompany" type="xs:string" use="optional" />
+			<xs:attribute name="WKUser" type="xs:string" use="optional" />
+			<xs:attribute name="WKUserEmail" type="xs:string" use="optional" />
+			<xs:attribute name="WKCompletTask" type="xs:string" use="optional" />
+			<xs:attribute name="WKNextState" type="xs:string" use="optional" />
+			<xs:attribute name="WKCardId" type="xs:string" use="optional" />
+			<xs:attribute name="WKFormId" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="MPmodeltype">
+		<xs:annotation>
+			<xs:documentation>tipo da estrutura de dados do modelo
+				FIELDS - Estrutura de dados de campos
+				GRID - Estrutura de dados em linha
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:enumeration value="FIELDS" />
+			<xs:enumeration value="GRID" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MPoperation">
+		<xs:annotation>
+			<xs:documentation>Tipo da operação:
+				1 - VIEW
+				3 - INSERT
+				4 - UPDATE
+				5 - DELETE
+				6 - ONLYUPDATE
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:enumeration value="1" />
+			<xs:enumeration value="3" />
+			<xs:enumeration value="4" />
+			<xs:enumeration value="5" />
+			<xs:enumeration value="6" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MPversion">
+		<xs:annotation>
+			<xs:documentation>VersÃ£o do schema e layout</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="1\.01" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MPdeleted">
+		<xs:annotation>
+			<xs:documentation>Status da linha da estrutura do tipo GRID :
+				1 - deletada
+				0 - ativa
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve" />
+			<xs:enumeration value="0" />
+			<xs:enumeration value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MPorder">
+		<xs:annotation>
+			<xs:documentation>
+				indica a ordem de entrada dos dados que deve ser executada na carga do xml
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[1-9]{1}[0-9]{0,2}" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MPiditem">
+		<xs:annotation>
+			<xs:documentation>
+				codigo de identificacao da linha
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="[1-9]{1}[0-9]{0,2}" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

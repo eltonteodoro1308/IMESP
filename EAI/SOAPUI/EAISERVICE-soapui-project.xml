@@ -377,20 +377,20 @@
 	<DocDateTime>2017-05-05T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	82CD8CB5-C030-4412-8406-87588CF57A25
+	53AF6303-7626-4C0F-B4C8-B8C5C72BB76F
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
 	<DocBranch>01</DocBranch>
 	<DocName />
 	<DocFederalID />
-	<DocType>1</DocType>
+	<DocType>2</DocType>
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
 			<Identifier>
 			
-			82CD8CB5-C030-4412-8406-87588CF57A25
+			53AF6303-7626-4C0F-B4C8-B8C5C72BB76F
 			
 			</Identifier>
 			<FunctionCode>U_IOMTA410</FunctionCode>
@@ -398,7 +398,7 @@
 				<MATA410_MODEL>
 					<SC5_FIELD_MASTER>
 						<C5_NUM>
-							<value>000008</value>
+							<value>000001</value>
 						</C5_NUM>
 						<C5_TIPO>
 							<value>N</value>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="6b480f38-7399-49ef-b375-99cc4fa70d5a" activeEnvironment="Default" name="ECALC2" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="ced66f4f-f32e-4444-9593-e0c2f64bf134" wsaVersion="NONE" name="WSIntegraImespSoap12" type="wsdl" bindingName="{http://tempuri.org/}WSIntegraImespSoap12" soapVersion="1_2" anonymous="optional" definition="file:/C:/Users/elton.alves/Desktop/eCalc-SIntegraImesp2.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/C:/Users/elton.alves/Desktop/eCalc-SIntegraImesp2.wsdl"><con:part><con:url>file:/C:/Users/elton.alves/Desktop/eCalc-SIntegraImesp2.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RECEIVEMESSAGE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INMSG" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RECEIVEMESSAGEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RECEIVEMESSAGEResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RECEIVEMESSAGESoapIn">
+    <wsdl:part name="parameters" element="tns:RECEIVEMESSAGE"/>
+  </wsdl:message>
+  <wsdl:message name="RECEIVEMESSAGESoapOut">
+    <wsdl:part name="parameters" element="tns:RECEIVEMESSAGEResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="WSIntegraImespSoap">
+    <wsdl:operation name="RECEIVEMESSAGE">
+      <wsdl:input message="tns:RECEIVEMESSAGESoapIn"/>
+      <wsdl:output message="tns:RECEIVEMESSAGESoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSIntegraImespSoap" type="tns:WSIntegraImespSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RECEIVEMESSAGE">
+      <soap:operation soapAction="http://tempuri.org/RECEIVEMESSAGE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSIntegraImespSoap12" type="tns:WSIntegraImespSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RECEIVEMESSAGE">
+      <soap12:operation soapAction="http://tempuri.org/RECEIVEMESSAGE" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSIntegraImesp">
+    <wsdl:port name="WSIntegraImespSoap" binding="tns:WSIntegraImespSoap">
+      <soap:address location="http://10.20.5.182/WSIntegraImesp.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="WSIntegraImespSoap12" binding="tns:WSIntegraImespSoap12">
+      <soap12:address location="http://10.20.5.182/WSIntegraImesp.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint></con:endpoints><con:operation id="8e6fba6e-ef08-4ae7-a793-15c29b9af1f4" isOneWay="false" action="http://tempuri.org/RECEIVEMESSAGE" name="RECEIVEMESSAGE" bindingOperationName="RECEIVEMESSAGE" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f8a36961-b582-41c3-b7fd-03a1cd54268f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:RECEIVEMESSAGE>\r
+         <tem:INMSG><![CDATA[
+         
+
+<TOTVSIntegrator><GlobalProduct>PROTHEUS</GlobalProduct><GlobalFunctionCode>EAI</GlobalFunctionCode><GlobalDocumentFunctionCode>MODCENTRODECUSTO</GlobalDocumentFunctionCode><GlobalDocumentFunctionDescription>Cadastro de Centro de Custo</GlobalDocumentFunctionDescription><DocVersion>1.000</DocVersion><DocDateTime>2017-05-12T12:45:25Z</DocDateTime><DocIdentifier>9b85ac02-1b5d-9abe-0504-ef9de38ad2a0</DocIdentifier><DocCompany>99</DocCompany><DocBranch>01</DocBranch><DocName></DocName><DocFederalID></DocFederalID><DocType>1</DocType><Message><Layouts><Identifier>MODCENTRODECUSTO</Identifier><Version>1.0</Version><FunctionCode>FWFORMEAI.CTA030TOK                                         </FunctionCode><Content><MODCENTRODECUSTO Operation="3" version="1.01"><CENTRODECUSTO modeltype="FIELDS"><ID order="1"><value>C001</value></ID><NOME order="2"><value>CENTRO DE CUSTO C001</value></NOME><ATIVO order="3"><value>T</value></ATIVO></CENTRODECUSTO></MODCENTRODECUSTO></Content></Layouts></Message></TOTVSIntegrator>
+
+
+         
+          ]]]]>><![CDATA[</tem:INMSG>\r
+      </tem:RECEIVEMESSAGE>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/WSIntegraImespSoap/RECEIVEMESSAGERequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="0aeb1313-15c8-478d-91ce-0729ddec008d" wsaVersion="NONE" name="WSIntegraImespSoap" type="wsdl" bindingName="{http://tempuri.org/}WSIntegraImespSoap" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/elton.alves/Desktop/eCalc-SIntegraImesp2.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\elton.alves\Desktop\eCalc-SIntegraImesp2.wsdl"><con:part><con:url>file:\C:\Users\elton.alves\Desktop\eCalc-SIntegraImesp2.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RECEIVEMESSAGE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="INMSG" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RECEIVEMESSAGEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RECEIVEMESSAGEResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RECEIVEMESSAGESoapIn">
+    <wsdl:part name="parameters" element="tns:RECEIVEMESSAGE"/>
+  </wsdl:message>
+  <wsdl:message name="RECEIVEMESSAGESoapOut">
+    <wsdl:part name="parameters" element="tns:RECEIVEMESSAGEResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="WSIntegraImespSoap">
+    <wsdl:operation name="RECEIVEMESSAGE">
+      <wsdl:input message="tns:RECEIVEMESSAGESoapIn"/>
+      <wsdl:output message="tns:RECEIVEMESSAGESoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSIntegraImespSoap" type="tns:WSIntegraImespSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RECEIVEMESSAGE">
+      <soap:operation soapAction="http://tempuri.org/RECEIVEMESSAGE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSIntegraImespSoap12" type="tns:WSIntegraImespSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RECEIVEMESSAGE">
+      <soap12:operation soapAction="http://tempuri.org/RECEIVEMESSAGE" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSIntegraImesp">
+    <wsdl:port name="WSIntegraImespSoap" binding="tns:WSIntegraImespSoap">
+      <soap:address location="http://10.20.5.182/WSIntegraImesp.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="WSIntegraImespSoap12" binding="tns:WSIntegraImespSoap12">
+      <soap12:address location="http://10.20.5.182/WSIntegraImesp.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint></con:endpoints><con:operation id="d7d1db1b-df46-41fd-8851-2a507347bb80" isOneWay="false" action="http://tempuri.org/RECEIVEMESSAGE" name="RECEIVEMESSAGE" bindingOperationName="RECEIVEMESSAGE" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="68625aaf-7a3e-481a-a191-741d709518ae" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.20.5.182/WSIntegraImesp.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:RECEIVEMESSAGE>\r
+         <!--Optional:-->\r
+         <tem:INMSG>?</tem:INMSG>\r
+      </tem:RECEIVEMESSAGE>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

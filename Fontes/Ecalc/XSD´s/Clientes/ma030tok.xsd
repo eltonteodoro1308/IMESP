@@ -1,0 +1,5468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:element name="CUSTOMERVENDOR">
+<xs:annotation>
+<xs:documentation>Cadastro de Clientes</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="SA1_MODEL">
+<xs:annotation>
+<xs:documentation>Cadastro de Clientes</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:all>
+<xs:element name="A1_FILIAL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Filial do Sistema
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_COD" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo do Cliente
+ Tipo de dado: C
+ Tamanho: 12
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="12"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_LOJA" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Loja do Cliente
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_NOME" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Nome do cliente
+ Tipo de dado: C
+ Tamanho: 40
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="40"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PESSOA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Pessoa Fisica/Juridica
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: F=Fisica;
+J=Juridica;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="F"/><xs:enumeration value="J"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_NREDUZ" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Nome Reduzido do cliente
+ Tipo de dado: C
+ Tamanho: 20
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="20"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_END" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Endereco do cliente
+ Tipo de dado: C
+ Tamanho: 80
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="80"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_BAIRRO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Bairro do cliente
+ Tipo de dado: C
+ Tamanho: 40
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="40"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TIPO" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo do Cliente
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: F=Cons.Final;
+L=Produtor Rural;
+R=Revendedor;
+S=Solidario;
+X=Exportacao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="F"/><xs:enumeration value="L"/><xs:enumeration value="R"/><xs:enumeration value="S"/><xs:enumeration value="X"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_EST" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Estado do cliente
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ESTADO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Nome do Estado Fornecedor
+ Tipo de dado: C
+ Tamanho: 20
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="20"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CEP" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cod Enderecamento Postal
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="8"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_COD_MUN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Código do Municipio
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MUN" minOccurs="1">
+<xs:annotation>
+<xs:documentation><![CDATA[Municipio do cliente
+ Tipo de dado: C
+ Tamanho: 60
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="60"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_REGIAO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Regiao do Cliente
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DSCREG" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Descrição da Região
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_NATUREZ" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo da Nat Financeira
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="10"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_IBGE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo do IBGE
+ Tipo de dado: C
+ Tamanho: 11
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="11"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DDI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo do DDI
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ENDCOB" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[End.de cobr. do cliente
+ Tipo de dado: C
+ Tamanho: 40
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="40"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DDD" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo do DDD
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TEL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Telefone do cliente
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ENDENT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[End.de entr. do cliente
+ Tipo de dado: C
+ Tamanho: 40
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="40"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ENDREC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[End.de Receb. do cliente
+ Tipo de dado: C
+ Tamanho: 40
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="40"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TRIBFAV" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Pessoa Trib. Favor.
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_FAX" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Numero do FAX do cliente
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CONTATO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Nome do Contato
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CGC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[CNPJ/CPF do cliente
+ Tipo de dado: C
+ Tamanho: 14
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="14"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PFISICA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Reg.Geral/Ced.Estrangeiro
+ Tipo de dado: C
+ Tamanho: 18
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="18"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_INSCR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Inscricao Estadual
+ Tipo de dado: C
+ Tamanho: 18
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="18"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TELEX" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Telex do cliente
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="10"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_INSCRM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Inscricao Municipal
+ Tipo de dado: C
+ Tamanho: 18
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="18"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PAIS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo do País
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_VEND" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo do Vendedor
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_COMIS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Aliquota de Comissao
+ Tipo de dado: N
+ Tamanho: 5
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,5}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CONTA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Conta Contabil do cliente
+ Tipo de dado: C
+ Tamanho: 20
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="20"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_BCO1" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[BANCO 1
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_BCO2" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[BANCO 2
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_BCO3" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[BANCO 3
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_BCO4" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[BANCO 4
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_BCO5" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[BANCO 5
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TRANSP" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo da Transportadora
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TPFRET" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo de Frete do cliente
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: C=CIF;
+F=FOB;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="C"/><xs:enumeration value="F"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_COND" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Condicao de Pagamento
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DESC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Desconto ao cliente
+ Tipo de dado: N
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,2}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PRIOR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Prioridade do cliente
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="1"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RISCO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Grau de Risco do cliente
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: A=Risco A;
+B=Risco B;
+C=Risco C;
+D=Risco D;
+E=Risco E;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="A"/><xs:enumeration value="B"/><xs:enumeration value="C"/><xs:enumeration value="D"/><xs:enumeration value="E"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_LC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Limite de Cred.do cliente
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_VENCLC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Vencimento do Lim. Credit
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CLASSE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Classe de Credito
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: A=Classe A;
+B=Classe B;
+C=Classe C;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="A"/><xs:enumeration value="B"/><xs:enumeration value="C"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_LCFIN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Lim Credito Secundario
+ Tipo de dado: N
+ Tamanho: 14
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,14}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MOEDALC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Moeda do Limite de credit
+ Tipo de dado: N
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,2}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MSALDO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Maior Saldo do cliente
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MCOMPRA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Maior Compra do cliente
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_METR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Méd.de atrasos do cliente
+ Tipo de dado: N
+ Tamanho: 7
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,7}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PRICOM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data 1a Compra do cliente
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ULTCOM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data da ultima Compra
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_NROCOM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Nro de compras do cliente
+ Tipo de dado: N
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,5}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_FORMVIS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Formula da Visita
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TEMVIS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Frequencia de Visitas
+ Tipo de dado: N
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,3}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ULTVIS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data da ultima Visita
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TMPVIS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tempo da Visita
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TMPSTD" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tempo Padrao p/Deslocam.
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CLASVEN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Classificacao de Vendas
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: A=Classe A;
+B=Classe B;
+C=Classe C;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="A"/><xs:enumeration value="B"/><xs:enumeration value="C"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MENSAGE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Mensagem do cliente
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SALDUP" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Saldo Duplic. do cliente
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RECISS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Recolhe ISS             ?
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_NROPAG" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Nro de Pagtos do cliente
+ Tipo de dado: N
+ Tamanho: 4
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,4}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SALPEDL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Saldo Pedidos Liberados
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TRANSF" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Flag p/transf. arquivos
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="1"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SUFRAMA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo na SUFRAMA
+ Tipo de dado: C
+ Tamanho: 12
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="12"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ATR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Valor dos Atrasos
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_VACUM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Valor Acum. Vendas no Ano
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SALPED" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Saldo de Pedidos
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TITPROT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Titulos Protestados
+ Tipo de dado: N
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,3}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DTULTIT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data do Ult. Titulos Dev.
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CHQDEVO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Numero de Cheques Devolv.
+ Tipo de dado: N
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,3}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DTULCHQ" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Dt.de Devol. Ult. Cheque
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MATR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Maior atraso do cliente
+ Tipo de dado: N
+ Tamanho: 4
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,4}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MAIDUPL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Valor da maior Duplicata
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TABELA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tabela de preco padrao
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_INCISS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[ISS incluso no preço
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: S=Sim;
+N=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="S"/><xs:enumeration value="N"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SALDUPM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Saldo em Moeda Forte
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PAGATR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Pag. feitos com atraso
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CXPOSTA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Caixa Postal
+ Tipo de dado: C
+ Tamanho: 20
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="20"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ATIVIDA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo da Atividade
+ Tipo de dado: C
+ Tamanho: 7
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="7"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CARGO1" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cargo do Contato Coml.
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CARGO2" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cargo do Contato CPD
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CARGO3" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cargo do Contato C.Rec.
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RTEC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Representante Tecnico
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SUPER" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Franquia Responsavel
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ALIQIR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Aliquota IRRF
+ Tipo de dado: N
+ Tamanho: 5
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,5}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RG" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cedula de Identidade
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_OBSERV" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Observacao para relatorio
+ Tipo de dado: C
+ Tamanho: 40
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="40"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CALCSUF" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Calcula Desc. p/ Suframa
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: S=Sim;
+N=Nao;
+I=ICMS;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="S"/><xs:enumeration value="N"/><xs:enumeration value="I"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DTNASC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data de Nasc. ou Abertura
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CLIFAT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cliente a Faturar
+ Tipo de dado: C
+ Tamanho: 12
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="12"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_GRPTRIB" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Grupo de Clientes
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_BAIRROC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Bairro de cobranca
+ Tipo de dado: C
+ Tamanho: 30
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="30"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CEPC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cep de Cobranca
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="8"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MUNC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Municipio de Cobranca
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ESTC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Uf de Cobranca
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CEPE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cep de Entrega
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="8"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_BAIRROE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Bairro de Entrega
+ Tipo de dado: C
+ Tamanho: 20
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="20"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MUNE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Municipio de Entrega
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ESTE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Estado de Entrega
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SATIV1" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Segmentacao de Ativid. 1
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SATIV2" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Segmentacao de Ativid. 2
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODPAIS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cód. país Banco Central
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TPISSRS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo de Escrituração
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TPESSOA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo de Pessoa
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+ Lista de valores: CI=Comercio/Industria;
+PF=Pessoa Fisica;
+OS=Prestacäo de Servico;
+EP=Empresa Publica;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="CI"/><xs:enumeration value="PF"/><xs:enumeration value="OS"/><xs:enumeration value="EP"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SATIV3" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Segmentacao de Ativid. 3
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SATIV4" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Segmentacao de Ativid. 4
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SATIV5" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Segmentacao de Ativid. 5
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SATIV6" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Segmentacao de Ativid. 6
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SATIV7" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Segmentacao de Ativid. 7
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SATIV8" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Segmentacao de Ativid. 8
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODMARC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Marcacao
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODAGE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Código do agente
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_COMAGE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[% Comissão agente
+ Tipo de dado: N
+ Tamanho: 15
+ Decimal: 8
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,8}|[0-9]{0,15}(\.[0-9]{1,8})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TIPCLI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo Cliente Exportação
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Importador;
+2=Consignee;
+3=Notify;
+4=Todos;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value="3"/><xs:enumeration value="4"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_EMAIL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[E-Mail
+ Tipo de dado: C
+ Tamanho: 30
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="30"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DEST_1" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Destino 1
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DEST_2" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Destino 2
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODMUN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cod. Mun. ZF Manaus e ALC
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DEST_3" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Destino 3
+ Tipo de dado: C
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="3"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_HPAGE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Home-Page
+ Tipo de dado: C
+ Tamanho: 30
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="30"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CBO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Codigo do CBO
+ Tipo de dado: C
+ Tamanho: 7
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="7"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CNAE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Código CNAE do Cliente
+ Tipo de dado: C
+ Tamanho: 9
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="9"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CONDPAG" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cond. Pagto
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DIASPAG" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Dias  Pagto
+ Tipo de dado: N
+ Tamanho: 3
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,3}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_OBS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Observacoes
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_AGREG" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Agregador de liberacao
+ Tipo de dado: C
+ Tamanho: 4
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="4"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RECINSS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Recolhe INSS <S/N> ?
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: S=Sim;
+N=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="S"/><xs:enumeration value="N"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RECCOFI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Recolhe COFINS  ?
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: S=Sim;
+N=Nao;
+P=Empresa Pública;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="S"/><xs:enumeration value="N"/><xs:enumeration value="P"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RECCSLL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Recolhe CSLL ?
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: S=Sim;
+N=Nao;
+P=Empresa Pública;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="S"/><xs:enumeration value="N"/><xs:enumeration value="P"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RECPIS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Recolhe PIS ?
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: S=Sim;
+N=Nao;
+P=Empresa Pública;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="S"/><xs:enumeration value="N"/><xs:enumeration value="P"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TIPPER" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo de Periodo
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+ Lista de valores: 02=Toda segunda;
+03=Toda terca;
+04=Toda quarta;
+05=Toda quinta;
+06=Toda sexta;
+10=a cada 10 dias;
+15=a cada 15 dias;
+30=todo fim de mes;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="02"/><xs:enumeration value="03"/><xs:enumeration value="04"/><xs:enumeration value="05"/><xs:enumeration value="06"/><xs:enumeration value="10"/><xs:enumeration value="15"/><xs:enumeration value="30"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SALFIN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Saldo LC secundario
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CONTAB" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Conta contabil importacäo
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SALFINM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Saldo LC Secundario na MF
+ Tipo de dado: N
+ Tamanho: 16
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,16}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_B2B" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Utiliza B2B?
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_GRPVEN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Grupo de Vendas.
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CLICNV" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[O Cliente e¦ Convenio?
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 0=Nao;
+1=Sim;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="0"/><xs:enumeration value="1"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_INSCRUR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Inscricao produtor rural
+ Tipo de dado: C
+ Tamanho: 18
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="18"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MSBLQL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Status do Registro
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Inativo;
+2=Ativo;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_COMPLEM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Complemento do endereço
+ Tipo de dado: C
+ Tamanho: 50
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="50"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_HRCAD" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Hora de Cadastro
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DTCAD" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data de Cadastro
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CLIPRI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cliente Primário
+ Tipo de dado: C
+ Tamanho: 12
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="12"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_LOJPRI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Loja do Cliente Primário
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODSEG" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Código do Segmento
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SUBCOD" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Sub codigo
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="1"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CDRDES" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Regiao do Cliente
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_FILDEB" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Filial de Debito
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODFOR" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cod.Fornec.para o cliente
+ Tipo de dado: C
+ Tamanho: 15
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="15"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ABICS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cod. Abics
+ Tipo de dado: C
+ Tamanho: 4
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="4"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TIPOCLI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo do Cliente
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_VINCULO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Pessoa Vinculada
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DTINIV" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data Inicial do Vinculo
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_DTFIMV" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data Final do Vinculo
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODMUNE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Municipio da Entrega
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PERFIL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Nota Perfil do Cliente
+ Tipo de dado: N
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,2}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_HRTRANS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Translado
+ Tipo de dado: C
+ Tamanho: 5
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_UNIDVEN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Unidade de Venda
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TIPPRFL" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo de Perfil do cliente
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Perfil 1;
+2=Perfil 2;
+3=Perfil 3;
+4=Perfil 4;
+5=Perfil 5;
+6=Perfil 6;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value="3"/><xs:enumeration value="4"/><xs:enumeration value="5"/><xs:enumeration value="6"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PRF_VLD" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data de validade do Perfi
+ Tipo de dado: D
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:pattern value="\s*|((((19|20)(([02468][048])|([13579][26]))0229))|((19|20)[0-9][0-9])((((0[1-9])|(1[0-2]))((0[1-9])|(1\d)|(2[0-8])))|((((0[13578])|(1[02]))31)|(((0[1,3-9])|(1[0-2]))(29|30)))))"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PRF_OBS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Observacao do Perfil
+ Tipo de dado: M
+ Tamanho: 5000
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="5000"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_REGPB" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Regime Paraíba
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_USADDA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cliente aderiu ao DDA
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SIMPLES" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Clie. optante SIMPLES/SC
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_FRETISS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Forma de retenção do ISS
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Cons Vlr Mínimo;
+2=Sempre Retém;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CEINSS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cadastro Especifico INSS
+ Tipo de dado: C
+ Tamanho: 14
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="14"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODSIAF" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cod.Municipio SIAFI
+ Tipo de dado: C
+ Tamanho: 4
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="4"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_IRBAX" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[IRPJ baixa
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_INDRET" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Indicador de Retencao
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_REGESIM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Reg. Simlificado MT
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PERCATM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Pecentual de Carga Media
+ Tipo de dado: N
+ Tamanho: 5
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,5}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CTARE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Contribuinte TARE ?
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MSEXP" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Ident.Exp.Dados
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="8"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ENDNOT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Endereço não formatado
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ORIGEM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Origem do Cliente
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ABATIMP" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Modo Abatim. Imposto
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Calculo do Sistema;
+2=Efetua Retencao;
+3=Nao efetua retencao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value="3"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RECIRRF" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cliente recolhera IRRF
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TIMEKEE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Advogado apontador Horas
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="8"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CONTRIB" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Contribuinte do ICMS
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TDA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Taxa Dif. Acesso
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_FILTRF" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Filial para transferência
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="2"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_INCULT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Incentivo a Cultura
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ENTID" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo de Entidade
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+ Lista de valores: 00=PJ D Pv;
+01=Órg,A Fd;
+02=Aq Ap;
+03=EP/SocEcMta/PJ;
+04=//PJ-Tr P;
+05=//-Sv Pr F;
+06=//-Dm Sv;
+07=//-D E;
+08=//-A Pf;
+09=//-Cb;
+10=Pg n E;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="00"/><xs:enumeration value="01"/><xs:enumeration value="02"/><xs:enumeration value="03"/><xs:enumeration value="04"/><xs:enumeration value="05"/><xs:enumeration value="06"/><xs:enumeration value="07"/><xs:enumeration value="08"/><xs:enumeration value="09"/><xs:enumeration value="10"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_MINIRF" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Valor Mínimo de IRRF
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ALIFIXA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Ind. Alíquota fixa
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CRDMA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Crédito Estimulo Manaus
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Nao Incent.;
+2=Construtora;
+3=Outros;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value="3"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PRSTSER" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Ind. Prestador de Serv.
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="1"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RFABOV" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Recolhe FABOV
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TPDP" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Calcula TPDP
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_PERFECP" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Per.Carga devida ao Fundo
+ Tipo de dado: N
+ Tamanho: 5
+ Decimal: 2
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,5}(\.[0-9]{1,2})?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RFACS" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Recolhe FACS
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_IENCONT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Destaca IE não Contr.
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Nao;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RECFET" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Recolhe FETHAB
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_FOMEZER" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Participação Fome Zero
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODFID" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Código Cartão Fidelidade
+ Tipo de dado: C
+ Tamanho: 40
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="40"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_SIMPNAC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Optante Simples Nacional
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ORIGCT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Origem do Cliente
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Mailing;
+2=Campanha;
+3=Web;
+4=Indicação;
+5=Evento;
+6=Anúncio;
+7=Parceiro;
+8=Relações públicas;
+9=Seminário;
+A=Boca-a-boca;
+B=Outros;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value="3"/><xs:enumeration value="4"/><xs:enumeration value="5"/><xs:enumeration value="6"/><xs:enumeration value="7"/><xs:enumeration value="8"/><xs:enumeration value="9"/><xs:enumeration value="A"/><xs:enumeration value="B"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ENTORI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Entidade de Origem
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_IMGUMOV" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Ver imagem uMov.me
+ Tipo de dado: C
+ Tamanho: 100
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="100"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_RESFAT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Forma Faturamento Viagem
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Nota Normal;
+2=Nota Debito;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_IDESTN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Id. de Acesso Estr. Neg.
+ Tipo de dado: C
+ Tamanho: 30
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="30"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_NVESTN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Nvl de Acesso a Estr. Neg
+ Tipo de dado: N
+ Tamanho: 2
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value" default="0">
+<xs:simpleType>
+<xs:restriction base="xs:decimal"><xs:pattern value="[0-9]{0,2}(\.0)?"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_ISSRSLC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[LC Enq. ISS
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="1"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TPCAMP" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo de Campanha
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="1"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CHVCAM" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Código da Campanha
+ Tipo de dado: C
+ Tamanho: 14
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="14"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_INOVAUT" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Inovar Auto
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Sim;
+2=Não;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TPNFSE" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo de pessoa NFSE
+ Tipo de dado: C
+ Tamanho: 2
+ Decimal: 0
+ Lista de valores: 0=Outro;
+1=SUS;
+2=Executivo;
+3=Bancos;
+4=Comercio/Industria;
+5=Legislativo/Judiciario;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="0"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value="3"/><xs:enumeration value="4"/><xs:enumeration value="5"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_OUTRMUN" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Cod. Outros Municipios
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="10"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_USERLGA" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Log de Alteração
+ Tipo de dado: C
+ Tamanho: 17
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="17"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_USERLGI" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Log de Inclusão
+ Tipo de dado: C
+ Tamanho: 17
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="17"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_HREXPO" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Hora da ultima Exportação
+ Tipo de dado: C
+ Tamanho: 8
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="8"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TPJ" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo de Pessoa Jurídica
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=ME - Micro Empresa;
+2=EPP - Empresas de Pequeno Porte;
+3=MEI - Microempreendedor Individual;
+4=Não Optante;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value="3"/><xs:enumeration value="4"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODTER" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Código do Território
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_CODMEMB" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Código do Membro
+ Tipo de dado: C
+ Tamanho: 6
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="6"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_TPMEMB" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Tipo do Membro
+ Tipo de dado: C
+ Tamanho: 1
+ Decimal: 0
+ Lista de valores: 1=Unidade de Negócio;
+2=Usuário do CRM;
+3=Equipe;
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:whiteSpace value="preserve"/><xs:enumeration value="1"/><xs:enumeration value="2"/><xs:enumeration value="3"/><xs:enumeration value=""/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_XCD_CDC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Código do Cliente no CDCF
+ Tipo de dado: C
+ Tamanho: 10
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="10"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="A1_XDH_CDC" minOccurs="0">
+<xs:annotation>
+<xs:documentation><![CDATA[Data Hora Alteração CDCF
+ Tipo de dado: C
+ Tamanho: 20
+ Decimal: 0
+]]></xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="value">
+<xs:simpleType>
+<xs:restriction base="xs:string"><xs:minLength value="0"/><xs:maxLength value="20"/></xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="order" type="MPorder" use="required"/>
+<xs:attribute name="len" type="xs:string" use="optional"/>
+<xs:attribute name="datatype" type="xs:string" use="optional"/>
+<xs:attribute name="info" type="xs:string" use="optional"/>
+<xs:attribute name="obrigat" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+</xs:all>
+<xs:attribute name="modeltype" type="MPmodeltype" use="required"/>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="Operation" type="MPoperation" use="required"/>
+<xs:attribute name="version" type="MPversion" use="required"/>
+<xs:attribute name="pkIndexOrder" type="xs:integer" use="optional"/>
+<xs:attribute name="WKDef" type="xs:string" use="optional"/>
+<xs:attribute name="WKVersDef" type="xs:string" use="optional"/>
+<xs:attribute name="WKNumProces" type="xs:string" use="optional"/>
+<xs:attribute name="WKNumState" type="xs:string" use="optional"/>
+<xs:attribute name="WKCurrentState" type="xs:string" use="optional"/>
+<xs:attribute name="WKCompany" type="xs:string" use="optional"/>
+<xs:attribute name="WKUser" type="xs:string" use="optional"/>
+<xs:attribute name="WKUserEmail" type="xs:string" use="optional"/>
+<xs:attribute name="WKCompletTask" type="xs:string" use="optional"/>
+<xs:attribute name="WKNextState" type="xs:string" use="optional"/>
+<xs:attribute name="WKCardId" type="xs:string" use="optional"/>
+<xs:attribute name="WKFormId" type="xs:string" use="optional"/>
+</xs:complexType>
+</xs:element>
+<xs:simpleType name="MPmodeltype">
+<xs:annotation>
+<xs:documentation>tipo da estrutura de dados do modelo
+FIELDS - Estrutura de dados de campos
+GRID - Estrutura de dados em linha
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:whiteSpace value="preserve"/>
+<xs:enumeration value="FIELDS"/>
+<xs:enumeration value="GRID"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPoperation">
+<xs:annotation>
+<xs:documentation>Tipo da operação:
+1 - VIEW
+3 - INSERT
+4 - UPDATE
+5 - DELETE
+6 - ONLYUPDATE
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:whiteSpace value="preserve"/>
+<xs:enumeration value="1"/>
+<xs:enumeration value="3"/>
+<xs:enumeration value="4"/>
+<xs:enumeration value="5"/>
+<xs:enumeration value="6"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPversion">
+<xs:annotation>
+<xs:documentation>VersÃ£o do schema e layout</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:token">
+<xs:pattern value="1\.01"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPdeleted">
+<xs:annotation>
+<xs:documentation>Status da linha da estrutura do tipo GRID :
+1 - deletada
+0 - ativa
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:whiteSpace value="preserve"/>
+<xs:enumeration value="0"/>
+<xs:enumeration value="1"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPorder">
+<xs:annotation>
+<xs:documentation>
+indica a ordem de entrada dos dados que deve ser executada na carga do xml
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:token">
+<xs:pattern value="[1-9]{1}[0-9]{0,2}"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MPiditem">
+<xs:annotation>
+<xs:documentation>
+codigo de identificacao da linha
+</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:token">
+<xs:pattern value="[1-9]{1}[0-9]{0,2}"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
