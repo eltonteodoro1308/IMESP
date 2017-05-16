@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="MODFERIADO">
+    <xsd:annotation>
+      <xsd:documentation>Modelo de dados para integração</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="FERIADO">
+          <xsd:annotation>
+            <xsd:documentation>Integração de feriado</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:all>
+              <xsd:element name="ID" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                  <xsd:documentation> ID do registro </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="value">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:minLength value="1"/>
+                          <xsd:maxLength value="20"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="FERIADO" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                  <xsd:documentation> Data do feriado. Formato: AAAA-MM-DDTHH:MM:SSZ (Ex.: 2017-05-10T21:07:04Z)</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="value">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:minLength value="1"/>
+                          <xsd:maxLength value="40"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="DATAFIXA" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                  <xsd:documentation> Caso seja um feriado fixo: 'T' ou 'F'. Ex.: 25/12/2014, será desconsiderado o ano e consideraremos que todo dia 25/12 será feriado. </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="value">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:minLength value="1"/>
+                          <xsd:maxLength value="1"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:all>
+            <xsd:attribute name="OPERACAOINTEGRACAO" use="optional">
+              <xsd:annotation>
+                <xsd:documentation>Tipo da Operação. Inclusão ou Edição: 0 ou Sem Atributo; Exclusão: 1</xsd:documentation>
+              </xsd:annotation>
+            </xsd:attribute>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>  
+</xsd:schema>

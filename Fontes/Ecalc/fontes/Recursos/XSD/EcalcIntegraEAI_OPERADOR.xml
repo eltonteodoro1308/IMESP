@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODOPERADOR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_OPERADOR.xsd">
+  <OPERADOR OPERACAOINTEGRACAO="">
+    <ID>
+      <value>value</value>
+    </ID>
+    <NOME>
+      <value>value</value>
+    </NOME>
+    <ATIVO>
+      <value>value</value>
+    </ATIVO>
+  </OPERADOR>
+</MODOPERADOR>

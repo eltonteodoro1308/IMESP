@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODMAQUINA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_MAQUINA.xsd">
+  <MAQUINA OPERACAOINTEGRACAO="">
+    <ID>
+      <value>value</value>
+    </ID>
+    <NOME>
+      <value>value</value>
+    </NOME>
+    <ATIVO>
+      <value>value</value>
+    </ATIVO>
+    <CUSTOHORA>
+      <value>0</value>
+    </CUSTOHORA>
+    <MEDIAPRODUTIVIDADE>
+      <value>0</value>
+    </MEDIAPRODUTIVIDADE>
+  </MAQUINA>
+</MODMAQUINA>
