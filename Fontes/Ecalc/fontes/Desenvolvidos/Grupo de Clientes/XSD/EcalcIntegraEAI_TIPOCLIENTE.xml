@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODTIPOCLIENTE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_TIPOCLIENTE.xsd">
+  <TIPOCLIENTE>
+    <ID>
+      <value>value</value>
+    </ID>
+    <NOME>
+      <value>value</value>
+    </NOME>
+  </TIPOCLIENTE>
+</MODTIPOCLIENTE>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODNOTAFISCAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_NOTAFISCAL.xsd">
+  <NOTAFISCAL>
+    <ID>
+      <value>value</value>
+    </ID>
+    <NOTANUM>
+      <value>0</value>
+    </NOTANUM>
+    <NFSERIE>
+      <value>value</value>
+    </NFSERIE>
+    <CODCLIENTE>
+      <value>value</value>
+    </CODCLIENTE>
+    <ENTREGA>
+      <value>value</value>
+    </ENTREGA>
+    <SAIDA>
+      <value>value</value>
+    </SAIDA>
+    <VALORTOTAL>
+      <value>0</value>
+    </VALORTOTAL>
+    <VALORNOTA>
+      <value>0</value>
+    </VALORNOTA>
+    <STATUS>
+      <value>value</value>
+    </STATUS>
+    <VENDAID>
+      <value>0</value>
+    </VENDAID>
+  </NOTAFISCAL>
+</MODNOTAFISCAL>

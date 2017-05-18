@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODITEMESTOQUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_ITEMESTOQUE.xsd">
+  <ITEMESTOQUE>
+    <ID>
+      <value>value</value>
+    </ID>
+    <NOME>
+      <value>value</value>
+    </NOME>
+    <DESCRICAO>
+      <value>value</value>
+    </DESCRICAO>
+    <ATIVO>
+      <value>value</value>
+    </ATIVO>
+    <ITEMPROD>
+      <value>value</value>
+    </ITEMPROD>
+  </ITEMESTOQUE>
+</MODITEMESTOQUE>

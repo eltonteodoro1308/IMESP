@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODFERIADO xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_FERIADO.xsd">
+  <FERIADO>
+    <ID>
+      <value>value</value>
+    </ID>
+    <FERIADO>
+      <value>value</value>
+    </FERIADO>
+    <DATAFIXA>
+      <value>value</value>
+    </DATAFIXA>
+  </FERIADO>
+</MODFERIADO>

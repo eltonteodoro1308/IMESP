@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODQUANTESTOQUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_QUANTESTOQUE.xsd">
+  <QUANTESTOQUE>
+    <ID>
+      <value>value</value>
+    </ID>
+    <QUANTESTPRINC>
+      <value>0</value>
+    </QUANTESTPRINC>
+  </QUANTESTOQUE>
+</MODQUANTESTOQUE>

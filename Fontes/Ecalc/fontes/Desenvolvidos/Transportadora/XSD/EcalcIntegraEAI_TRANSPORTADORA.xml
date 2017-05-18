@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODTRANSPORTADORA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_TRANSPORTADORA.xsd">
+  <TRANSPORTADORA>
+    <ID>
+      <value>value</value>
+    </ID>
+    <NOME>
+      <value>value</value>
+    </NOME>
+    <RAZAOSOCIAL>
+      <value>value</value>
+    </RAZAOSOCIAL>
+    <ATIVO>
+      <value>value</value>
+    </ATIVO>
+  </TRANSPORTADORA>
+</MODTRANSPORTADORA>

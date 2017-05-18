@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODNATUREZADEOPERACAO xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_TES.xsd">
+  <NATUREZADEOPERACAO>
+    <ID>
+      <value>value</value>
+    </ID>
+    <NOME>
+      <value>value</value>
+    </NOME>
+    <CFOP>
+      <value>value</value>
+    </CFOP>
+    <ATIVO>
+      <value>value</value>
+    </ATIVO>
+  </NATUREZADEOPERACAO>
+</MODNATUREZADEOPERACAO>
