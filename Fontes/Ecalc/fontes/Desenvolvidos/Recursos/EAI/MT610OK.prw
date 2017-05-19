@@ -18,14 +18,14 @@ User Function MT610OK()
 
 		oModel:Activate()
 
-		oModel:Setvalue( cNomeMod, 'ID'   , M->H1_CODIGO  )
-		oModel:Setvalue( cNomeMod, 'NOME' , M->H1_DESCRI )
-		oModel:Setvalue( cNomeMod, 'ATIVO', If( M->H1_MSBLQL = '1', 'F', 'T' ) )
+		oModel:LoadValue( cNomeMod, 'ID'   , M->H1_CODIGO  )
+		oModel:LoadValue( cNomeMod, 'NOME' , M->H1_DESCRI )
+		oModel:LoadValue( cNomeMod, 'ATIVO', If( M->H1_MSBLQL = '1', 'F', 'T' ) )
 
 		If cTipo == '1'
 
-			oModel:Setvalue( cNomeMod, 'CUSTOHORA'          , AllTrim( Str( M->H1_XCTOHR ) ) )
-			oModel:Setvalue( cNomeMod, 'MEDIAPRODUTIVIDADE' , AllTrim( Str( M->H1_XMDPRD ) ) )
+			oModel:LoadValue( cNomeMod, 'CUSTOHORA'          , AllTrim( Str( M->H1_XCTOHR ) ) )
+			oModel:LoadValue( cNomeMod, 'MEDIAPRODUTIVIDADE' , AllTrim( Str( M->H1_XMDPRD ) ) )
 
 		End If
 

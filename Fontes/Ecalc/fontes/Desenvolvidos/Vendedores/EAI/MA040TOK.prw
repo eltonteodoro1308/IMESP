@@ -10,10 +10,10 @@ user function MA040TOK()
 
 	oModel:Activate()
 
-	oModel:Setvalue( 'VENDEDOR', 'ID'          , M->A3_COD    )
-	oModel:Setvalue( 'VENDEDOR', 'NOME'        , M->A3_NREDUZ )
-	oModel:Setvalue( 'VENDEDOR', 'RAZAOSOCIAL' , M->A3_NOME   )
-	oModel:Setvalue( 'VENDEDOR', 'ATIVO'       , If( M->A3_BLOQ = '1', 'F', 'T' ) )
+	oModel:LoadValue( 'VENDEDOR', 'ID'          , M->A3_COD    )
+	oModel:LoadValue( 'VENDEDOR', 'NOME'        , M->A3_NREDUZ )
+	oModel:LoadValue( 'VENDEDOR', 'RAZAOSOCIAL' , M->A3_NOME   )
+	oModel:LoadValue( 'VENDEDOR', 'ATIVO'       , If( M->A3_MSBLQL = '1', 'F', 'T' ) )
 
 	If oModel:VldData()
 
@@ -51,9 +51,9 @@ Static Function Struct()
 
 	oStruct:AddTable('SA3_ECALC',,'SA3_ECALC')
 
-	oStruct:AddField('ID'          , 'ID'          , 'ID'          , 'C', 06, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME'        , 'NOME'        , 'NOME'        , 'C', 25, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'          , 'ID'          , 'ID'          , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME'        , 'NOME'        , 'NOME'        , 'C', 50, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'C', 60, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ATIVO'       , 'ATIVO'       , 'ATIVO'       , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct

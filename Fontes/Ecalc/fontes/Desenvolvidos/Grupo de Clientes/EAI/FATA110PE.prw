@@ -66,7 +66,7 @@ Static Function Struct()
 
 	oStruct:AddTable('ACY_ECALC',,'ACY_ECALC')
 
-	oStruct:AddField('ID'   , 'ID'   , 'ID'   , 'C', 06, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME' , 'NOME' , 'NOME' , 'C', 30, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'   , 'ID'   , 'ID'   , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME' , 'NOME' , 'NOME' , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct

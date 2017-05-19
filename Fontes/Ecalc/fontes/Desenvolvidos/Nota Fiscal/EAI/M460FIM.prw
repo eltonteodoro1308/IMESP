@@ -1,7 +1,5 @@
 #INCLUDE 'TOTVS.CH'
 #INCLUDE 'FWMVCDEF.CH'
-#INCLUDE 'FWEDITPANEL.CH'
-#INCLUDE 'FWADAPTEREAI.CH'
 
 user function M460FIM()
 
@@ -22,16 +20,16 @@ user function M460FIM()
 	cData += PadL( cValToChar( Day  ( SF2->F2_EMISSAO ) ), 2, '0' )
 	cData += 'T' + AllTrim( SF2->F2_HORA ) + ':00Z'
 
-	oModel:Setvalue( 'NOTAFISCAL' , 'ID'        , SF2->( F2_DOC + F2_SERIE + DtoS( F2_EMISSAO ) ) )
-	oModel:Setvalue( 'NOTAFISCAL' , 'NOTANUM'   , SF2->F2_DOC )
-	oModel:Setvalue( 'NOTAFISCAL' , 'NFSERIE'   , SF2->F2_SERIE  )
-	oModel:Setvalue( 'NOTAFISCAL' , 'CODCLIENTE', SF2->F2_CLIENTE )
-	oModel:Setvalue( 'NOTAFISCAL' , 'ENTREGA'   , cData )
-	oModel:Setvalue( 'NOTAFISCAL' , 'SAIDA'     , cData )
-	oModel:Setvalue( 'NOTAFISCAL' , 'VALORTOTAL', AllTrim( Str( SF2->F2_VALMERC ) ) )
-	oModel:Setvalue( 'NOTAFISCAL' , 'VALORNOTA' , AllTrim( Str( SF2->F2_VALBRUT ) ) )
-	oModel:Setvalue( 'NOTAFISCAL' , 'STATUS'    , '1' )
-	oModel:Setvalue( 'NOTAFISCAL' , 'VENDAID'   , SF2->( F2_DOC + F2_SERIE + DtoS( F2_EMISSAO ) ) )
+	oModel:LoadValue( 'NOTAFISCAL' , 'ID'        , SF2->( F2_DOC + F2_SERIE + DtoS( F2_EMISSAO ) ) )
+	oModel:LoadValue( 'NOTAFISCAL' , 'NOTANUM'   , SF2->F2_DOC )
+	oModel:LoadValue( 'NOTAFISCAL' , 'NFSERIE'   , SF2->F2_SERIE  )
+	oModel:LoadValue( 'NOTAFISCAL' , 'CODCLIENTE', SF2->F2_CLIENTE )
+	oModel:LoadValue( 'NOTAFISCAL' , 'ENTREGA'   , cData )
+	oModel:LoadValue( 'NOTAFISCAL' , 'SAIDA'     , cData )
+	oModel:LoadValue( 'NOTAFISCAL' , 'VALORTOTAL', AllTrim( Str( SF2->F2_VALMERC ) ) )
+	oModel:LoadValue( 'NOTAFISCAL' , 'VALORNOTA' , AllTrim( Str( SF2->F2_VALBRUT ) ) )
+	oModel:LoadValue( 'NOTAFISCAL' , 'STATUS'    , '1' )
+	oModel:LoadValue( 'NOTAFISCAL' , 'VENDAID'   , '999999' )
 
 	If oModel:VldData()
 
@@ -71,10 +69,10 @@ Static Function Struct()
 
 	oStruct:AddField( 'ID'         , 'ID'        , 'ID'        , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField( 'NOTANUM'    , 'NOTANUM'   , 'NOTANUM'   , 'C', 09, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField( 'NFSERIE'    , 'NFSERIE'   , 'NFSERIE'   , 'C', 03, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField( 'CODCLIENTE' , 'CODCLIENTE', 'CODCLIENTE', 'C', 06, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField( 'ENTREGA'    , 'ENTREGA'   , 'ENTREGA'   , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField( 'SAIDA'      , 'SAIDA'     , 'SAIDA'     , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField( 'NFSERIE'    , 'NFSERIE'   , 'NFSERIE'   , 'C', 05, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField( 'CODCLIENTE' , 'CODCLIENTE', 'CODCLIENTE', 'C', 15, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField( 'ENTREGA'    , 'ENTREGA'   , 'ENTREGA'   , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField( 'SAIDA'      , 'SAIDA'     , 'SAIDA'     , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField( 'VALORTOTAL' , 'VALORTOTAL', 'VALORTOTAL', 'C', 14, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField( 'VALORNOTA'  , 'VALORNOTA' , 'VALORNOTA' , 'C', 14, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField( 'STATUS'     , 'STATUS'    , 'STATUS'    , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )

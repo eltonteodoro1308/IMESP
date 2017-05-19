@@ -1,7 +1,5 @@
 #INCLUDE 'TOTVS.CH'
 #INCLUDE 'FWMVCDEF.CH'
-#INCLUDE 'FWEDITPANEL.CH'
-#INCLUDE 'FWADAPTEREAI.CH'
 
 User Function QIEA030()
 
@@ -72,9 +70,9 @@ Static Function Struct()
 
 	oStruct:AddTable('SAH_ECALC',,'SAH_ECALC')
 
-	oStruct:AddField('ID'            , 'ID'            , 'ID'            , 'C', 02, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME'          , 'NOME'          , 'NOME'          , 'C', 09, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('DESCRICAO'     , 'DESCRICAO'     , 'DESCRICAO'     , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'            , 'ID'            , 'ID'            , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME'          , 'NOME'          , 'NOME'          , 'C', 10, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('DESCRICAO'     , 'DESCRICAO'     , 'DESCRICAO'     , 'C', 60, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ATIVO'         , 'ATIVO'         , 'ATIVO'         , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('OPERADOR'      , 'OPERADOR'      , 'OPERADOR'      , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('MULTIPLICADOR' , 'MULTIPLICADOR' , 'MULTIPLICADOR' , 'C', 04, 0, , , {}, .F., , .F., .F., .F., , )

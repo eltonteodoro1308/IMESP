@@ -68,8 +68,8 @@ Static Function Struct()
 
 	oStruct:AddTable('SE4_ECALC',,'SE4_ECALC')
 
-	oStruct:AddField('ID'        , 'ID'        , 'ID'        , 'C', 03, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('DESCRICAO' , 'DESCRICAO' , 'DESCRICAO' , 'C', 15, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'        , 'ID'        , 'ID'        , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('DESCRICAO' , 'DESCRICAO' , 'DESCRICAO' , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ATIVO'     , 'ATIVO'     , 'ATIVO'     , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct

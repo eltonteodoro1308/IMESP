@@ -1,4 +1,5 @@
 #INCLUDE 'TOTVS.CH'
+#INCLUDE 'FWMVCDEF.CH'
 
 User Function MA080VLD()
 
@@ -57,9 +58,9 @@ Static Function Struct()
 
 	oStruct:AddTable('SF4_ECALC',,'SF4_ECALC')
 
-	oStruct:AddField('ID'   , 'ID'   , 'ID'   , 'C', 03, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME' , 'NOME' , 'NOME' , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('CFOP' , 'CFOP' , 'CFOP' , 'C', 05, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'   , 'ID'   , 'ID'   , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME' , 'NOME' , 'NOME' , 'C', 60, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('CFOP' , 'CFOP' , 'CFOP' , 'C', 10, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ATIVO', 'ATIVO', 'ATIVO', 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct

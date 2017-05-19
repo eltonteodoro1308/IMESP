@@ -68,9 +68,9 @@ Static Function Struct()
 
 	oStruct:AddTable('Z01_ECALC',,'Z01_ECALC')
 
-	oStruct:AddField('ID'          , 'ID'          , 'ID'          , 'C', 06, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME'        , 'DESCRICAO'   , 'DESCRICAO'   , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('ATIVO'       , 'ATIVO'       , 'ATIVO'       , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'          , 'ID'          , 'ID'          , 'C', 020, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME'        , 'DESCRICAO'   , 'DESCRICAO'   , 'C', 040, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'C', 120, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ATIVO'       , 'ATIVO'       , 'ATIVO'       , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct

@@ -10,9 +10,9 @@ User Function CTA030TOK()
 
 	oModel:Activate()
 
-	oModel:Setvalue( 'CENTRODECUSTO', 'ID'   , M->CTT_CUSTO  )
-	oModel:Setvalue( 'CENTRODECUSTO', 'NOME' , M->CTT_DESC01 )
-	oModel:Setvalue( 'CENTRODECUSTO', 'ATIVO', If( M->CTT_BLOQ = '1', 'F', 'T' ) )
+	oModel:LoadValue( 'CENTRODECUSTO', 'ID'   , M->CTT_CUSTO  )
+	oModel:LoadValue( 'CENTRODECUSTO', 'NOME' , M->CTT_DESC01 )
+	oModel:LoadValue( 'CENTRODECUSTO', 'ATIVO', If( M->CTT_BLOQ = '1', 'F', 'T' ) )
 
 	If oModel:VldData()
 
@@ -50,7 +50,7 @@ Static Function Struct()
 
 	oStruct:AddTable('CTT_ECALC',,'CTT_ECALC')
 
-	oStruct:AddField('ID'   , 'ID'   , 'ID'   , 'C', 09, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'   , 'ID'   , 'ID'   , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('NOME' , 'NOME' , 'NOME' , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ATIVO', 'ATIVO', 'ATIVO', 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
 

@@ -15,7 +15,6 @@ Static Function MenuDef()
 
 Return FWMVCMenu( 'FATXSEC' )
 
-
 Static Function ModelDef()
 
 	Local oModel

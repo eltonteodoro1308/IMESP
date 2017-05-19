@@ -21,10 +21,10 @@ Static Function Struct()
 
 	oStruct:AddTable('SH1_ECALC',,'SH1_ECALC')
 
-	oStruct:AddField('ID'                 , 'ID'                 , 'ID'                 , 'C', 06, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME'               , 'NOME'               , 'NOME'               , 'C', 30, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'                 , 'ID'                 , 'ID'                 , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME'               , 'NOME'               , 'NOME'               , 'C', 60, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ATIVO'              , 'ATIVO'              , 'ATIVO'              , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('CUSTOHORA'          , 'CUSTOHORA'          , 'CUSTOHORA'          , 'C', 10, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('MEDIAPRODUTIVIDADE' , 'MEDIAPRODUTIVIDADE' , 'MEDIAPRODUTIVIDADE' , 'C', 10, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('CUSTOHORA'          , 'CUSTOHORA'          , 'CUSTOHORA'          , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('MEDIAPRODUTIVIDADE' , 'MEDIAPRODUTIVIDADE' , 'MEDIAPRODUTIVIDADE' , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct

@@ -19,7 +19,7 @@ user function A010TOK()
 		oModel:Setvalue( 'ITEMESTOQUE' , 'ID'          , M->B1_COD )
 		oModel:Setvalue( 'ITEMESTOQUE' , 'NOME'        , M->B1_DESC )
 		oModel:Setvalue( 'ITEMESTOQUE' , 'DESCRICAO'   , M->B1_DESC )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'ATIVO'       , If( M->B1_BLOQ = '1', 'F', 'T' ) )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'ATIVO'       , If( M->B1_MSBLQL = '1', 'F', 'T' ) )
 		oModel:Setvalue( 'ITEMESTOQUE' , 'ITEMPROD'    , '2' )
 
 		If oModel:VldData()
@@ -60,10 +60,10 @@ Static Function Struct()
 
 	oStruct:AddTable('SB1_ECALC',,'SB1_ECALC')
 
-	oStruct:AddField('ID'        , 'ID'        , 'ID'        , 'C', 15, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME'      , 'NOME'      , 'NOME'      , 'C', 30, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('DESCRICAO' , 'DESCRICAO' , 'DESCRICAO' , 'C', 30, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('ATIVO'     , 'ATIVO'     , 'ATIVO'     , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('ITEMPROD'  , 'ITEMPROD'  , 'ITEMPROD'  , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'        , 'ID'        , 'ID'        , 'C', 020, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME'      , 'NOME'      , 'NOME'      , 'C', 060, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('DESCRICAO' , 'DESCRICAO' , 'DESCRICAO' , 'C', 120, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ATIVO'     , 'ATIVO'     , 'ATIVO'     , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ITEMPROD'  , 'ITEMPROD'  , 'ITEMPROD'  , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct

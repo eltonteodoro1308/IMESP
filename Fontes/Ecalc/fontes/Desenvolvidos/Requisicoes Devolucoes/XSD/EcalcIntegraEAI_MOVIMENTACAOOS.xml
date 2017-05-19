@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODMOVIMENTACAOOS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_MOVIMENTACAOOS.xsd">
+  <MOVIMENTACAOOS>
+    <ID>
+      <value>value</value>
+      <!--  Não pode repetir -->
+    </ID>
+    <NUMANO>
+      <value>value</value>
+      <!--  Pode repetir -->
+    </NUMANO>
+    <TIPO>
+      <value>value</value>
+    </TIPO>
+    <DATAMOVIMENTO>
+      <value>value</value>
+    </DATAMOVIMENTO>
+    <QUANTIDADE>
+      <value>0</value>
+    </QUANTIDADE>
+    <VALORTOTAL>
+      <value>0</value>
+    </VALORTOTAL>
+    <VALORICMS>
+      <value>0</value>
+    </VALORICMS>
+    <STATUS>
+      <value>value</value>
+    </STATUS>
+  </MOVIMENTACAOOS>
+</MODMOVIMENTACAOOS>

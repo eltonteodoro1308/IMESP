@@ -57,8 +57,8 @@ Static Function EnviaSaldo()
 
 	oModel:Activate()
 
-	oModel:Setvalue( 'QUANTESTOQUE' , 'ID'           , ( cTrab )->B2_COD )
-	oModel:Setvalue( 'QUANTESTOQUE' , 'QUANTESTPRINC', AllTrim( Str( ( cTrab )->B2_QATU ) ) )
+	oModel:LoadValue( 'QUANTESTOQUE' , 'ID'           , ( cTrab )->B2_COD )
+	oModel:LoadValue( 'QUANTESTOQUE' , 'QUANTESTPRINC', AllTrim( Str( ( cTrab )->B2_QATU ) ) )
 
 	If oModel:VldData()
 
@@ -100,7 +100,7 @@ Static Function Struct()
 
 	oStruct:AddTable('SB2_ECALC',,'SB2_ECALC')
 
-	oStruct:AddField('ID'           , 'ID'            , 'ID'            , 'C', 15, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'           , 'ID'            , 'ID'            , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('QUANTESTPRINC', 'QUANTESTPRINC' , 'QUANTESTPRINC' , 'C', 30, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct

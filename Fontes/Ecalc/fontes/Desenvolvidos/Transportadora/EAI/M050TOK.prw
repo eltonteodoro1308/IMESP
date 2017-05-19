@@ -10,10 +10,10 @@ User Function M050TOK()
 
 	oModel:Activate()
 
-	oModel:Setvalue( 'TRANSPORTADORA', 'ID'          , M->A4_COD    )
-	oModel:Setvalue( 'TRANSPORTADORA', 'NOME'        , M->A4_NREDUZ )
-	oModel:Setvalue( 'TRANSPORTADORA', 'RAZAOSOCIAL' , M->A4_NOME   )
-	oModel:Setvalue( 'TRANSPORTADORA', 'ATIVO'       , If( M->A4_BLOQ = '1', 'F', 'T' ) )
+	oModel:LoadValue( 'TRANSPORTADORA', 'ID'          , M->A4_COD    )
+	oModel:LoadValue( 'TRANSPORTADORA', 'NOME'        , M->A4_NREDUZ )
+	oModel:LoadValue( 'TRANSPORTADORA', 'RAZAOSOCIAL' , M->A4_NOME   )
+	oModel:LoadValue( 'TRANSPORTADORA', 'ATIVO'       , If( M->A4_BLOQ = '1', 'F', 'T' ) )
 
 	If oModel:VldData()
 
@@ -51,9 +51,9 @@ Static Function Struct()
 
 	oStruct:AddTable('SA4_ECALC',,'SA4_ECALC')
 
-	oStruct:AddField('ID'          , 'ID'          , 'ID'          , 'C', 06, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME'        , 'NOME'        , 'NOME'        , 'C', 15, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'          , 'ID'          , 'ID'          , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME'        , 'NOME'        , 'NOME'        , 'C', 50, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'C', 60, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ATIVO'       , 'ATIVO'       , 'ATIVO'       , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct

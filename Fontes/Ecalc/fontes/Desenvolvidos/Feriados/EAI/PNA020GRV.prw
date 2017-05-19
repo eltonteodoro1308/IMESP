@@ -64,8 +64,8 @@ Static Function Struct()
 
 	oStruct:AddTable('SP3_ECALC',,'SP3_ECALC')
 
-	oStruct:AddField('ID'       , 'ID'       , 'ID'       , 'C', 08, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('FERIADO'  , 'FERIADO'  , 'FERIADO'  , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'       , 'ID'       , 'ID'       , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('FERIADO'  , 'FERIADO'  , 'FERIADO'  , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('DATAFIXA' , 'DATAFIXA' , 'DATAFIXA' , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct
