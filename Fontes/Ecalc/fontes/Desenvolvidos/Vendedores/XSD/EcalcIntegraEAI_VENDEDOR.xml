@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MODVENDEDOR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_VENDEDOR.xsd">
-  <VENDEDOR>
+  <VENDEDOR OPERACAOINTEGRACAO="">
     <ID>
       <value>value</value>
     </ID>
@@ -13,5 +13,38 @@
     <ATIVO>
       <value>value</value>
     </ATIVO>
+    <CPF>
+      <value>value</value>
+    </CPF>
+    <CNPJ>
+      <value>value</value>
+    </CNPJ>
+    <ENDERECO>
+      <value>value</value>
+    </ENDERECO>
+    <CODMUNICIPIOIBGE>
+      <value>value</value>
+    </CODMUNICIPIOIBGE>
+    <ESTADO>
+      <value>value</value>
+    </ESTADO>
+    <CEP>
+      <value>value</value>
+    </CEP>
+    <DDD>
+      <value>value</value>
+    </DDD>
+    <TELEFONE>
+      <value>value</value>
+    </TELEFONE>
+    <FAX>
+      <value>value</value>
+    </FAX>
+    <EMAIL>
+      <value>value</value>
+    </EMAIL>
+    <COMISSAO>
+      <value>0</value>
+    </COMISSAO>
   </VENDEDOR>
 </MODVENDEDOR>

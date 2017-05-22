@@ -20,11 +20,11 @@ User Function PNA020GRV()
 		cData += PadL( cValToChar( Month( SP3->P3_DATA ) ), 2, '0' )
 		cData += '-'
 		cData += PadL( cValToChar( Day  ( SP3->P3_DATA ) ), 2, '0' )
-		cData += 'T00:00:00Z'
+		cData += 'T' + TIME() + 'Z'
 
-		oModel:LoadValue( 'FERIADO', 'ID'       , DtoS( SP3->P3_DATA ) )
-		oModel:LoadValue( 'FERIADO', 'FERIADO'  , cData )
-		oModel:LoadValue( 'FERIADO', 'DATAFIXA' , If( SP3->P3_FIXO = 'S', 'T', 'F' ) )
+		oModel:LoadValue( 'FERIADO', 'ID'          , DtoS( SP3->P3_DATA ) )
+		oModel:LoadValue( 'FERIADO', 'DATAFERIADO' , cData )
+		oModel:LoadValue( 'FERIADO', 'DATAFIXA'    , If( SP3->P3_FIXO = 'S', 'T', 'F' ) )
 
 		If oModel:VldData()
 
@@ -64,8 +64,8 @@ Static Function Struct()
 
 	oStruct:AddTable('SP3_ECALC',,'SP3_ECALC')
 
-	oStruct:AddField('ID'       , 'ID'       , 'ID'       , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('FERIADO'  , 'FERIADO'  , 'FERIADO'  , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('DATAFIXA' , 'DATAFIXA' , 'DATAFIXA' , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'          , 'ID'          , 'ID'          , 'C', 20, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('DATAFERIADO' , 'DATAFERIADO' , 'DATAFERIADO' , 'C', 40, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('DATAFIXA'    , 'DATAFIXA'    , 'DATAFIXA'    , 'C', 01, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct

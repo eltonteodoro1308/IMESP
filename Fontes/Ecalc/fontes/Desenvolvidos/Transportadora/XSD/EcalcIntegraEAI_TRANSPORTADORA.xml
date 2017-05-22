@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MODTRANSPORTADORA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_TRANSPORTADORA.xsd">
-  <TRANSPORTADORA>
+  <TRANSPORTADORA OPERACAOINTEGRACAO="">
     <ID>
       <value>value</value>
     </ID>
@@ -13,5 +13,44 @@
     <ATIVO>
       <value>value</value>
     </ATIVO>
+    <CPF>
+      <value>value</value>
+    </CPF>
+    <CNPJ>
+      <value>value</value>
+    </CNPJ>
+    <INSCRICAOMUNICIPAL>
+      <value>value</value>
+    </INSCRICAOMUNICIPAL>
+    <INSCRICAOESTADUAL>
+      <value>value</value>
+    </INSCRICAOESTADUAL>
+    <ENDERECO>
+      <value>value</value>
+    </ENDERECO>
+    <BAIRRO>
+      <value>value</value>
+    </BAIRRO>
+    <CODMUNICIPIOIBGE>
+      <value>value</value>
+    </CODMUNICIPIOIBGE>
+    <ESTADO>
+      <value>value</value>
+    </ESTADO>
+    <CEP>
+      <value>value</value>
+    </CEP>
+    <DDD>
+      <value>value</value>
+    </DDD>
+    <TELEFONE>
+      <value>value</value>
+    </TELEFONE>
+    <FAX>
+      <value>value</value>
+    </FAX>
+    <EMAIL>
+      <value>value</value>
+    </EMAIL>
   </TRANSPORTADORA>
 </MODTRANSPORTADORA>
