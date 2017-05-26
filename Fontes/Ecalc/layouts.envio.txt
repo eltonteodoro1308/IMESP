@@ -1,0 +1,11 @@
+Apontamentos - Verificar questão de integração do reteiro de operações 
+Matéria prima (apenas papéis) - Cadastro de produtos referentes a papeis, verificar a lógica de geração do código do produto (visual)
+8 horas - Aviso de Produção (alimentação do estoque de produtos) - Baixa da OP com possível ganho de produção mas sem conceito produção a maior.
+
+
+4 horas - Ordem de Produção (ou Ordem de Serviço) - Ordem Produção - SC2 
+4 horas - Materiais da OP (ou materiais da OS) - Empenhos - SD4
+8 horas - Solicitação de NF (ou Pedido de Venda)
+4 horas - Dados DIF - Cadastro de papel imune, Espécies de plublicações, publicações e tipos de papéis
+
+40 horas - CDCF

@@ -1,8 +1,16 @@
 #INCLUDE 'TOTVS.CH'
-#INCLUDE 'FWMVCDEF.CH'
-#INCLUDE 'FWEDITPANEL.CH'
-#INCLUDE 'FWADAPTEREAI.CH'
 
-user function MS520VLD()
+User Function MS520VLD()
 
-return
+	Local aArea := GetArea()
+
+	DbSelectArea( 'SC5' )
+	DBOrderNickname( 'XVENDID' )
+
+	DbSeek( xFilial( 'SC5' ) + SF2->F2_XVENDID )
+
+	U_IONFE( '2' )
+
+	RestArea( aArea )
+
+Return .T.

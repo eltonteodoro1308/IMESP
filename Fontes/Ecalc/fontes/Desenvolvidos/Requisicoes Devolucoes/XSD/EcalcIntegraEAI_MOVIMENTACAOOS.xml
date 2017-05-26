@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MODMOVIMENTACAOOS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_MOVIMENTACAOOS.xsd">
-  <MOVIMENTACAOOS>
+  <MOVIMENTACAOOS OPERACAOINTEGRACAO="">
     <ID>
       <value>value</value>
-      <!--  Não pode repetir -->
     </ID>
     <NUMANO>
       <value>value</value>
-      <!--  Pode repetir -->
     </NUMANO>
+    <CODITEM>
+      <value>value</value>
+    </CODITEM>
+    <DESCRICAO>
+      <value>value</value>
+    </DESCRICAO>
     <TIPO>
       <value>value</value>
     </TIPO>

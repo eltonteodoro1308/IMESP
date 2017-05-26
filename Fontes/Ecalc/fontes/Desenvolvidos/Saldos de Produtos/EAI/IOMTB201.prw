@@ -1,37 +1,8 @@
+//TODO Só enviar saldo de papel verificar se utiliza o campo B1_GRUPO
 #INCLUDE 'TOTVS.CH'
 #INCLUDE 'FWMVCDEF.CH'
 
-User Function MTAB2D1R()
-
-	EnviaSaldo()
-
-Return
-
-User Function MTAB2D1()
-
-Return
-
-User Function MTAB2D2R()
-
-	EnviaSaldo()
-
-Return
-
-User Function MTAB2D2()
-
-Return
-
-User Function MTAB2D3R()
-
-	EnviaSaldo()
-
-Return
-
-User Function MTAB2D3()
-
-Return
-
-Static Function EnviaSaldo()
+User Function IOMTB201()
 
 	Local oModel  := Nil
 	Local lInclui := INCLUI
