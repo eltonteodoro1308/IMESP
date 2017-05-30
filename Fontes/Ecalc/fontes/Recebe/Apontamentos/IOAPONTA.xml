@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MIOAPONT>
+  <SH6_FIELD>
+    <H6_OP>
+      <value>value</value>
+    </H6_OP>
+    <H6_PRODUTO>
+      <value>value</value>
+    </H6_PRODUTO>
+    <H6_RECURSO>
+      <value>value</value>
+    </H6_RECURSO>
+    <H6_DATAINI>
+      <value>value</value>
+    </H6_DATAINI>
+    <H6_HORAINI>
+      <value>value</value>
+    </H6_HORAINI>
+    <H6_DATAFIN>
+      <value>value</value>
+    </H6_DATAFIN>
+    <H6_HORAFIN>
+      <value>value</value>
+    </H6_HORAFIN>
+  </SH6_FIELD>
+</MIOAPONT>
