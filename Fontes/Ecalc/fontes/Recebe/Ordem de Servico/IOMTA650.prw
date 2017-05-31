@@ -12,50 +12,87 @@ Função acionada pelo EAI que recebe xml com dados do pedido venda e faz sua incl
 @return cRet   , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
 /*/
 User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
-
-	Local cRet  := 'ok'
-	Local oXml  := TXmlManager():New()
-	Local aCpos := {}
-	Local nX    := 0
-	Local aErro := Nil
-
+	
+	Local cRet    := ''
+	Local oXml    := TXmlManager():New()
+	Local aCpos   := {}
+	Local nX      := 0
+	Local aErro   := Nil
+	Local cOrdSrv := ''
+	Local aArea   := GetArea()
+	Local lExclui := .F.
+	Local lExiste := .F.
+	
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
 	Private	lAutoErrNoFile	:=	.T.
-
+	
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
-
-		aAdd( aCpos, { 'C2_NUM'     , oXML:XPathGetNodeValue( '/SC2_MODEL/SC2_FIELDS_MASTER/C2_NUM/value'     ), Nil } )
-		aAdd( aCpos, { 'C2_ITEM'    , oXML:XPathGetNodeValue( '/SC2_MODEL/SC2_FIELDS_MASTER/C2_ITEM/value'    ), Nil } )
-		aAdd( aCpos, { 'C2_SEQUEN'  , oXML:XPathGetNodeValue( '/SC2_MODEL/SC2_FIELDS_MASTER/C2_SEQUEN/value'  ), Nil } )
-		aAdd( aCpos, { 'C2_PRODUTO' , oXML:XPathGetNodeValue( '/SC2_MODEL/SC2_FIELDS_MASTER/C2_PRODUTO/value' ), Nil } )
-		aAdd( aCpos, { 'C2_LOCAL'   , oXML:XPathGetNodeValue( '/SC2_MODEL/SC2_FIELDS_MASTER/C2_LOCAL/value'   ), Nil } )
-		aAdd( aCpos, { 'C2_QUANT'   , Val( oXML:XPathGetNodeValue( '/SC2_MODEL/SC2_FIELDS_MASTER/C2_QUANT/value' ) ), Nil } )
-		aAdd( aCpos, { 'C2_DATPRI'  , stod( oXML:XPathGetNodeValue( '/SC2_MODEL/SC2_FIELDS_MASTER/C2_DATPRI/value'  ) ), Nil } )
-		aAdd( aCpos, { 'C2_DATPRF'  , stod( oXML:XPathGetNodeValue( '/SC2_MODEL/SC2_FIELDS_MASTER/C2_DATPRF/value'  ) ), Nil } )
-		aAdd( aCpos, { 'C2_EMISSAO' , stod( oXML:XPathGetNodeValue( '/SC2_MODEL/SC2_FIELDS_MASTER/C2_EMISSAO/value' ) ), Nil } )
-		aAdd( aCpos, { 'C2_TPOP'    , oXML:XPathGetNodeValue( '/SC2_MODEL/SC2_FIELDS_MASTER/C2_TPOP/value'    ), Nil } )
-
-		MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, 3 )
-
-		If lMsErroAuto
-
-			aErro := aClone( GetAutoGRLog() )
-
-			cRet += Chr(13) + Chr(10)
-
-			For nX := 1 To Len( aErro )
-
-				cRet += aErro[ nX ] + Chr(13) + Chr(10)
-
-			Next nX
-
+		
+		cOrdSrv := oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_XOS/value' )
+		
+		DbSelectArea( 'SC2' )
+		DBOrderNickname( 'XOS' )
+		
+		If lExiste := DbSeek( xFilial( 'SC2' ) + cOrdSrv )
+			
+			lExclui := ( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/EXCLUI/value' ) == 'T' )
+			
+			aAdd( aCpos, { 'C2_NUM'     , SC2->( C2_NUM    ), Nil } )
+			aAdd( aCpos, { 'C2_ITEM'    , SC2->( C2_ITEM   ), Nil } )
+			aAdd( aCpos, { 'C2_SEQUEN'  , SC2->( C2_SEQUEN ), Nil } )
+			
 		End If
-
+		
+		RestArea( aArea )
+		
+		aAdd( aCpos, { 'C2_XOS'     ,       cOrdSrv                                                           , Nil } )
+		aAdd( aCpos, { 'C2_XDES'    ,       oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_XDES/value'    )  , Nil } )
+		aAdd( aCpos, { 'C2_PRODUTO' ,       oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_PRODUTO/value' )  , Nil } )
+		aAdd( aCpos, { 'C2_QUANT'   , Val ( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_QUANT/value'   ) ), Nil } )
+		aAdd( aCpos, { 'C2_DATPRI'  , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_DATPRI/value'  ) ), Nil } )
+		aAdd( aCpos, { 'C2_DATPRF'  , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_DATPRF/value'  ) ), Nil } )
+		aAdd( aCpos, { 'C2_EMISSAO' , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_EMISSAO/value' ) ), Nil } )
+		aAdd( aCpos, { 'C2_TPOP'    ,       oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_TPOP/value'    )  , Nil } )
+		
+		If lExiste
+			
+			MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, 5 )
+			
+			If ! lExclui
+				
+				MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, 3 )				
+				
+			End If
+			
+		Else
+			
+			MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, 3 )
+			
+		End If
+		
+		If lMsErroAuto
+			
+			aErro := aClone( GetAutoGRLog() )
+			
+			cRet += Chr(13) + Chr(10)
+			
+			For nX := 1 To Len( aErro )
+				
+				cRet += aErro[ nX ] + Chr(13) + Chr(10)
+				
+			Next nX
+			
+		Else
+			
+			cRet := 'OK' 
+			
+		End If
+		
 	Else
-
+		
 		cRet := 'Erro no Parse do XML: ' + oXml:LastError()
-
+		
 	End If
-
+	
 Return cRet
