@@ -32,7 +32,7 @@ User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 	
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
 		
-		cOrdSrv := oXML:XPathGetNodeValue( '/IOMTA380/SD4_FIELD/D4_OP/value' )
+		cOrdSrv := oXML:XPathGetNodeValue( '/IOMTA380/SD4_FIELD/D4_XOS/value' )
 		lExclui := ( oXML:XPathGetNodeValue( '/IOMTA380/SD4_FIELD/EXCLUI/value' ) == 'T' )
 		
 		DbSelectArea( 'SC2' )
