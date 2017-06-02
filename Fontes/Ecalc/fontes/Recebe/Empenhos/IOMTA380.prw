@@ -9,22 +9,23 @@ Função acionada pelo EAI que recebe xml com dados do empenho da OP
 @param cWarning, Caracter, Variável passada por referência, serve para alimentar uma mensagem de warning para o EAI. A alteração deste valor por rotinas tratadas neste tópico não causam nenhum efeito para o EAI.
 @param cParams , Caracter, Parâmetros passados na mensagem do EAI.
 @param oFwEai  , Object  , O objeto de EAI criado na camada do EAI Protheus. A manipulação deste objeto deve ser realizada com o máximo de cautela, e deve ser evitada ao máximo.
-@return cRet   , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
+@return Caracter , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
 /*/
 User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 	
-	Local cRet    := ''
-	Local oXml    := TXmlManager():New()
-	Local aCpos   := {}
-	Local nX      := 0
-	Local aErro   := Nil
-	Local cOrdSrv := ''
-	Local aArea   := GetArea()
-	Local lExclui := .F.
-	Local lExiste := .F.
-	Local cOp     := ''
-	Local cCod    := ''
-	Local cLocal  := ''
+	Local cMsg     := ''
+	Local cSucesso := 'T'
+	Local oXml     := TXmlManager():New()
+	Local aCpos    := {}
+	Local nX       := 0
+	Local aErro    := Nil
+	Local cOrdSrv  := ''
+	Local aArea    := GetArea()
+	Local lExclui  := .F.
+	Local lExiste  := .F.
+	Local cOp      := ''
+	Local cCod     := ''
+	Local cLocal   := ''
 	
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
@@ -32,8 +33,8 @@ User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 	
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
 		
-		cOrdSrv := oXML:XPathGetNodeValue( '/IOMTA380/SD4_FIELD/D4_XOS/value' )
-		lExclui := ( oXML:XPathGetNodeValue( '/IOMTA380/SD4_FIELD/EXCLUI/value' ) == 'T' )
+		cOrdSrv := oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_XOS/value' )
+		lExclui := ( oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/EXCLUI/value' ) == 'T' )
 		
 		DbSelectArea( 'SC2' )
 		DBOrderNickname( 'XOS' )
@@ -47,10 +48,10 @@ User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 		
 		RestArea( aArea )
 		
-		cCod   := oXML:XPathGetNodeValue( '/IOMTA380/SD4_FIELD/D4_COD/value' )
-        cCod   += Space( TamSx3( 'D4_COD' )[1] - Len( cCod )  ) 
+		cCod   := oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_COD/value' )
+		cCod   += Space( TamSx3( 'D4_COD' )[1] - Len( cCod )  )
 		
-		cLocal := oXML:XPathGetNodeValue( '/IOMTA380/SD4_FIELD/D4_LOCAL/value' )
+		cLocal := oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_LOCAL/value' )
 		cLocal += Space( TamSx3( 'D4_LOCAL' )[1] - Len( cLocal )  )
 		
 		DbSelectArea( 'SD4' )
@@ -63,8 +64,8 @@ User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 		aAdd( aCpos, { 'D4_COD'     ,      cCod                                                               , Nil } )
 		aAdd( aCpos, { 'D4_LOCAL'   ,      cLocal                                                             , Nil } )
 		aAdd( aCpos, { 'D4_OP'      ,      cOp                                                                , Nil } )
-		aAdd( aCpos, { 'D4_QTDEORI' , Val( oXML:XPathGetNodeValue( '/IOMTA380/SD4_FIELD/D4_QTDEORI/value' ) ) , Nil } )
-		aAdd( aCpos, { 'D4_QUANT'   , Val( oXML:XPathGetNodeValue( '/IOMTA380/SD4_FIELD/D4_QUANT/value'   ) ) , Nil } )
+		aAdd( aCpos, { 'D4_QTDEORI' , Val( oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_QTDEORI/value' ) ) , Nil } )
+		aAdd( aCpos, { 'D4_QUANT'   , Val( oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_QUANT/value'   ) ) , Nil } )
 		
 		If lExiste
 			
@@ -84,26 +85,44 @@ User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 		
 		If lMsErroAuto
 			
+			cSucesso := 'F'
+			
 			aErro := aClone( GetAutoGRLog() )
 			
-			cRet += Chr(13) + Chr(10)
+			cMsg += Chr(13) + Chr(10)
 			
 			For nX := 1 To Len( aErro )
 				
-				cRet += aErro[ nX ] + Chr(13) + Chr(10)
+				cMsg += _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)
 				
 			Next nX
-			
-		Else
-			
-			cRet := 'OK'
 			
 		End If
 		
 	Else
+	
+		cSucesso := 'F' 
 		
-		cRet := 'Erro no Parse do XML: ' + oXml:LastError()
+		cMsg := 'Erro no Parse do XML: ' + oXml:LastError()
 		
 	End If
+	
+Return Retorno( cSucesso, cMsg )
+
+Static Function Retorno( cSucesso, cMsg )
+	
+	Local cRet := ''
+	
+	cRet += '<MIOMT380>'
+	cRet += '<SUCESSO>'
+	cRet += '<value>' + cSucesso + '</value>'
+	cRet += '</SUCESSO>'
+	//	cRet += '<IDRETORNO>'
+	//	cRet += '<value>str1234</value>'
+	//	cRet += '</IDRETORNO>'
+	cRet += '<MENSAGEM>'
+	cRet += '<value>' + cMsg + '</value>'
+	cRet += '</MENSAGEM>'
+	cRet += '</MIOMT380>'
 	
 Return cRet

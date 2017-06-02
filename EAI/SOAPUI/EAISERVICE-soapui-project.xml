@@ -518,7 +518,7 @@
 	<DocDateTime>2017-05-05T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	142F385E-48B5-4504-B2A3-9036FA58F37F
+	1D207C38-7CEB-41F0-9B10-386091432236
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -531,18 +531,18 @@
 			<Version>1.000</Version>
 			<Identifier>
 			
-			142F385E-48B5-4504-B2A3-9036FA58F37F	
+			1D207C38-7CEB-41F0-9B10-386091432236
 			
 			</Identifier>
 			<FunctionCode>FWFORMEAI.IOMTA921</FunctionCode>
 			<Content>
-				<MIOMTA921 Operation="3">
+				<MIOMT921 Operation="3">
 					<AHG_FIELD modeltype="FIELDS">
 						<AHG_CODPRO order="1">
-							<value>P002</value>
+							<value>PA001</value>
 						</AHG_CODPRO>
 					</AHG_FIELD>
-				</MIOMTA921>
+				</MIOMT921>
 			</Content>
 		</Layouts>
 	</Message>
@@ -834,6 +834,50 @@
 			<FunctionCode>U_IOMTA380</FunctionCode>
 			<Content>
 				
+			</Content>
+		</Layouts>
+	</Message>
+</TOTVSIntegrator>
+   
+         ]]]]>><![CDATA[</tot:INMSG>\r
+      </tot:RECEIVEMESSAGE>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="3b16906a-96bc-4632-8010-a9c2aa952255" name="SOMA"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tot:RECEIVEMESSAGE>\r
+         <tot:INMSG><![CDATA[ 
+
+<TOTVSIntegrator>
+	<GlobalProduct>TOTVS|EAI</GlobalProduct>
+	<GlobalFunctionCode>EAI</GlobalFunctionCode>
+	<GlobalDocumentFunctionCode>SOMA</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>SOMA DE DOIS NUMEROS</GlobalDocumentFunctionDescription>
+	<DocVersion>1.000</DocVersion>
+	<DocDateTime>2017-06-06T00:00:00Z</DocDateTime>
+	<DocIdentifier>
+	
+	87C90DC0-8232-46E5-B803-C21474938622
+	
+	</DocIdentifier>
+	<DocCompany>99</DocCompany>
+	<DocBranch>01</DocBranch>
+	<DocName />
+	<DocFederalID />
+	<DocType>1</DocType>
+	<Message>
+		<Layouts>
+			<Version>1.000</Version>
+			<Identifier>
+			
+			87C90DC0-8232-46E5-B803-C21474938622
+			
+			</Identifier>
+			<FunctionCode>U_SOMA.0.3.4.5</FunctionCode>
+			<Content>
+				<TESTE>
+				<CAMPO><value>TOTVS</value></CAMPO>
+				</TESTE>
 			</Content>
 		</Layouts>
 	</Message>

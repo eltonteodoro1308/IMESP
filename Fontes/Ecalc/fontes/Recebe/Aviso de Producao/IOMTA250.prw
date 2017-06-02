@@ -9,18 +9,18 @@ Função acionada pelo EAI que recebe xml com dados da Produção de uma OP
 @param cWarning, Caracter, Variável passada por referência, serve para alimentar uma mensagem de warning para o EAI. A alteração deste valor por rotinas tratadas neste tópico não causam nenhum efeito para o EAI.
 @param cParams , Caracter, Parâmetros passados na mensagem do EAI.
 @param oFwEai  , Object  , O objeto de EAI criado na camada do EAI Protheus. A manipulação deste objeto deve ser realizada com o máximo de cautela, e deve ser evitada ao máximo.
-@return cRet   , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
+@return Caracter , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
 /*/
 User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 	
-	Local cRet    := ''
+	Local aMsg    := {}
 	Local oXml    := TXmlManager():New()
 	Local aCpos   := {}
 	Local nX      := 0
 	Local cOrdSrv := ''
 	Local aArea   := {}
 	
-	Local aChild   := {}
+	//Local aChild   := {}
 	Local aAtt     := {}
 	
 	Local nOpc     := 3
@@ -35,21 +35,69 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
 	Private	lAutoErrNoFile	:=	.T.
-	
+	Default cXml:= MemoRead( '\XML\MIOMT250.XML' )
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
 		
 		If oXml:DOMChildNode()
 			
 			Do While .T.
 				
-				aChild := oXml:DOMGetChildArray()
+				//aChild := oXml:DOMGetChildArray()
 				aAtt   := oXml:DOMGetAttArray()
 				
-				cTipoMov :=      aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'D3_TM'    } ) ][ 2 ]
-				nQuant   := Val( aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'D3_QUANT' } ) ][ 2 ] )
-				cOrdSrv  :=      aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'D3_XOS'   } ) ][ 2 ]
-				lEstorna :=      aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'ESTORNA'  } ) ][ 2 ] == 'T'
-				cReg     :=      aAtt   [ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'registro' } ) ][ 2 ]
+				// cTipoMov :=      aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'D3_TM'    } ) ][ 2 ]
+				// nQuant   := Val( aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'D3_QUANT' } ) ][ 2 ] )
+				// cOrdSrv  :=      aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'D3_XOS'   } ) ][ 2 ]
+				// lEstorna :=      aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'ESTORNA'  } ) ][ 2 ] == 'T'
+				cReg := aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'registro' } ) ][ 2 ]
+				
+				oXml:DOMChildNode()
+				
+				Do While .T.
+					
+					If oXml:cName == 'D3_TM'
+						
+						oXml:DOMChildNode()
+						
+						cTipoMov := oXml:cText
+						
+						oXml:DOMParentNode()
+						
+					ElseIf oXml:cName == 'D3_QUANT
+						
+						oXml:DOMChildNode()
+						
+						nQuant :=  Val( oXml:cText )
+						
+						oXml:DOMParentNode()
+						
+					ElseIf oXml:cName == 'D3_XOS'
+						
+						oXml:DOMChildNode()
+						
+						cOrdSrv := oXml:cText
+						
+						oXml:DOMParentNode()
+						
+					ElseIf oXml:cName == 'ESTORNA'
+						
+						oXml:DOMChildNode()
+						
+						lEstorna := ( oXml:cText == 'T' )
+						
+						oXml:DOMParentNode()
+						
+					End If
+					
+					If ! oXml:DOMNextNode()
+						
+						Exit
+						
+					End If
+					
+				End Do
+				
+				oXml:DOMParentNode()
 				
 				aArea := GetArea()
 				
@@ -75,10 +123,12 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 				aAdd( aCpos, { 'D3_QUANT'   , nQuant   , Nil } )
 				aAdd( aCpos, { 'D3_OP'      , cOP      , Nil } )
 				aAdd( aCpos, { 'D3_LOCAL'   , cLocal   , Nil } )
-								
+				
 				MSExecAuto( { | X, Y | MATA250( X, Y ) }, aCpos, nOpc )
-								
+				
 				aSize( aCpos, 0 )
+				
+				aAdd( aMsg, '<SD3_FIELD registro="' + cReg + '">' )
 				
 				If lMsErroAuto
 					
@@ -86,23 +136,35 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 					
 					aErro := aClone( GetAutoGRLog() )
 					
-					cRet += Chr(13) + Chr(10)
-					cRet += 'Registro: ' + cReg
-					cRet += Chr(13) + Chr(10)
+					aAdd( aMsg, '<SUCESSO>' )
+					aAdd( aMsg, '<value>F</value>' )
+					aAdd( aMsg, '</SUCESSO>' )
+					
+					aAdd( aMsg, '<MENSAGEM>' )
+					aAdd( aMsg, '<value>' )
 					
 					For nX := 1 To Len( aErro )
 						
-						cRet += aErro[ nX ] + Chr(13) + Chr(10)
+						aAdd( aMsg, _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)  )
 						
 					Next nX
 					
+					aAdd( aMsg, '</value>' )
+					aAdd( aMsg, '</MENSAGEM>' )
+					
 				Else
 					
-					cRet += Chr(13) + Chr(10)
-					cRet += 'Registro: ' + cReg + ' OK'
-					cRet += Chr(13) + Chr(10)
+					aAdd( aMsg, '<SUCESSO>' )
+					aAdd( aMsg, '<value>T</value>' )
+					aAdd( aMsg, '</SUCESSO>' )
+					aAdd( aMsg, '<MENSAGEM>' )
+					aAdd( aMsg, '<value>' )
+					aAdd( aMsg, '</value>' )
+					aAdd( aMsg, '</MENSAGEM>' )
 					
 				End If
+				
+				aAdd( aMsg, '</SD3_FIELD>' )
 				
 				If ! oXml:DOMNextNode()
 					
@@ -116,8 +178,32 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 		
 	Else
 		
-		cRet := 'Erro no Parse do XML: ' + oXml:LastError()
+		aAdd( aMsg, '<SUCESSO>' )
+		aAdd( aMsg, '<value>F</value>' )
+		aAdd( aMsg, '<SUCESSO>' )
+		aAdd( aMsg, '<MENSAGEM>' )
+		aAdd( aMsg, '<value>' )
+		aAdd( aMsg, 	'Erro no Parse do XML: ' + oXml:LastError() )
+		aAdd( aMsg, '</value>' )
+		aAdd( aMsg, '<MENSAGEM>' )
 		
 	End If
+	
+Return Retorno( aMsg )
+
+Static Function Retorno( aMsg )
+	
+	Local cRet := ''
+	Local nX   := 0
+	
+	cRet += '<MIOMT250>'
+	
+	For nX := 1 To Len( aMsg )
+		
+		cRet += aMsg[ nX ]
+		
+	Next nX
+	
+	cRet += '</MIOMT250>'
 	
 Return cRet

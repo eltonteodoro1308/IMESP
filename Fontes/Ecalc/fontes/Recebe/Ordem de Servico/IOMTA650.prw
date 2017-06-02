@@ -9,19 +9,20 @@ Função acionada pelo EAI que recebe xml com dados do pedido venda e faz sua incl
 @param cWarning, Caracter, Variável passada por referência, serve para alimentar uma mensagem de warning para o EAI. A alteração deste valor por rotinas tratadas neste tópico não causam nenhum efeito para o EAI.
 @param cParams , Caracter, Parâmetros passados na mensagem do EAI.
 @param oFwEai  , Object  , O objeto de EAI criado na camada do EAI Protheus. A manipulação deste objeto deve ser realizada com o máximo de cautela, e deve ser evitada ao máximo.
-@return cRet   , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
+@return Caracter , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
 /*/
 User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 	
-	Local cRet    := ''
-	Local oXml    := TXmlManager():New()
-	Local aCpos   := {}
-	Local nX      := 0
-	Local aErro   := Nil
-	Local cOrdSrv := ''
-	Local aArea   := GetArea()
-	Local lExclui := .F.
-	Local lExiste := .F.
+	Local cMsg     := ''
+	Local cSucesso := 'T' 
+	Local oXml     := TXmlManager():New()
+	Local aCpos    := {}
+	Local nX       := 0
+	Local aErro    := Nil
+	Local cOrdSrv  := ''
+	Local aArea    := GetArea()
+	Local lExclui  := .F.
+	Local lExiste  := .F.
 	
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
@@ -61,7 +62,7 @@ User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 			
 			If ! lExclui
 				
-				MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, 3 )				
+				MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, 3 )
 				
 			End If
 			
@@ -73,26 +74,43 @@ User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 		
 		If lMsErroAuto
 			
+			cSucesso := 'F' 
+			
 			aErro := aClone( GetAutoGRLog() )
 			
-			cRet += Chr(13) + Chr(10)
+			cMsg += Chr(13) + Chr(10)
 			
 			For nX := 1 To Len( aErro )
 				
-				cRet += aErro[ nX ] + Chr(13) + Chr(10)
+				cMsg += _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)
 				
 			Next nX
-			
-		Else
-			
-			cRet := 'OK' 
-			
+					
 		End If
 		
 	Else
 		
-		cRet := 'Erro no Parse do XML: ' + oXml:LastError()
+		cSucesso := 'F' 
+		cMsg := 'Erro no Parse do XML: ' + oXml:LastError()
 		
 	End If
+	
+Return Retorno( cSucesso, cMsg )
+
+Static Function Retorno( cSucesso, cMsg )
+	
+	Local cRet := ''
+	
+	cRet += '<MIOMT650>'
+	cRet += '<SUCESSO>'
+	cRet += '<value>' + cSucesso + '</value>'
+	cRet += '</SUCESSO>'
+//	cRet += '<IDRETORNO>'
+//	cRet += '<value>str1234</value>'
+//	cRet += '</IDRETORNO>'
+	cRet += '<MENSAGEM>'
+	cRet += '<value>' + cMsg + '</value>'
+	cRet += '</MENSAGEM>'
+	cRet += '</MIOMT650>'
 	
 Return cRet
