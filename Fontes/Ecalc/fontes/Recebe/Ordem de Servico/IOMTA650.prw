@@ -14,14 +14,14 @@ Função acionada pelo EAI que recebe xml com dados do pedido venda e faz sua incl
 User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 	
 	Local cMsg     := ''
-	Local cSucesso := 'T' 
+	Local cSucesso := 'T'
 	Local oXml     := TXmlManager():New()
 	Local aCpos    := {}
 	Local nX       := 0
 	Local aErro    := Nil
 	Local cOrdSrv  := ''
 	Local aArea    := GetArea()
-	Local lExclui  := .F.
+	Local nOper    := ''
 	Local lExiste  := .F.
 	
 	Private	lMsErroAuto		:=	.F.
@@ -29,6 +29,8 @@ User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 	Private	lAutoErrNoFile	:=	.T.
 	
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
+		
+		nOper := Val( oXml:XPathGetAtt( '/MIOMT650', 'Operation' ) )
 		
 		cOrdSrv := oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_XOS/value' )
 		
@@ -54,27 +56,23 @@ User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 		aAdd( aCpos, { 'C2_DATPRI'  , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_DATPRI/value'  ) ), Nil } )
 		aAdd( aCpos, { 'C2_DATPRF'  , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_DATPRF/value'  ) ), Nil } )
 		aAdd( aCpos, { 'C2_EMISSAO' , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_EMISSAO/value' ) ), Nil } )
-		aAdd( aCpos, { 'C2_TPOP'    ,       oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_TPOP/value'    )  , Nil } )
+		//aAdd( aCpos, { 'C2_XTRIB'   , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_XTRIB/value'   ) ), Nil } )
+		ConOut(ProcName() + ' : ' + cValToChar( ProcLine() ))
 		
-		If lExiste
+		VarInfo('aCpos',aCpos,,.F.,.T.)
+		VarInfo('nOper',nOper,,.F.,.T.)
+		
+		If lExiste .And. nOper == 3
 			
-			MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, 5 )
-			
-			If ! lExclui
-				
-				MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, 3 )
-				
-			End If
-			
-		Else
-			
-			MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, 3 )
+			nOper := 4
 			
 		End If
 		
+		MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, nOper )
+		ConOut(ProcName() + ' : ' + cValToChar( ProcLine() ))
 		If lMsErroAuto
 			
-			cSucesso := 'F' 
+			cSucesso := 'F'
 			
 			aErro := aClone( GetAutoGRLog() )
 			
@@ -85,19 +83,19 @@ User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 				cMsg += _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)
 				
 			Next nX
-					
+			
 		End If
 		
 	Else
 		
-		cSucesso := 'F' 
+		cSucesso := 'F'
 		cMsg := 'Erro no Parse do XML: ' + oXml:LastError()
 		
 	End If
 	
-Return Retorno( cSucesso, cMsg )
+Return Retorno( cSucesso, cMsg, oFwEai )
 
-Static Function Retorno( cSucesso, cMsg )
+Static Function Retorno( cSucesso, cMsg, oFwEai )
 	
 	Local cRet := ''
 	
@@ -105,12 +103,11 @@ Static Function Retorno( cSucesso, cMsg )
 	cRet += '<SUCESSO>'
 	cRet += '<value>' + cSucesso + '</value>'
 	cRet += '</SUCESSO>'
-//	cRet += '<IDRETORNO>'
-//	cRet += '<value>str1234</value>'
-//	cRet += '</IDRETORNO>'
 	cRet += '<MENSAGEM>'
 	cRet += '<value>' + cMsg + '</value>'
 	cRet += '</MENSAGEM>'
 	cRet += '</MIOMT650>'
+	
+	oFwEai:cReturnMsg := cRet
 	
 Return cRet
