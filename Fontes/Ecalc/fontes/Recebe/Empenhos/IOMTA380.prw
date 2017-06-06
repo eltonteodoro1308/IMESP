@@ -21,8 +21,8 @@ User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 	Local aErro    := Nil
 	Local cOrdSrv  := ''
 	Local aArea    := GetArea()
-	Local lExclui  := .F.
 	Local lExiste  := .F.
+	Local nOper    := 0
 	Local cOp      := ''
 	Local cCod     := ''
 	Local cLocal   := ''
@@ -33,8 +33,9 @@ User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 	
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
 		
+		nOper := Val( oXml:XPathGetAtt( '/MIOMT380', 'Operation' ) )
+		
 		cOrdSrv := oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_XOS/value' )
-		lExclui := ( oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/EXCLUI/value' ) == 'T' )
 		
 		DbSelectArea( 'SC2' )
 		DBOrderNickname( 'XOS' )
@@ -51,37 +52,29 @@ User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 		cCod   := oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_COD/value' )
 		cCod   += Space( TamSx3( 'D4_COD' )[1] - Len( cCod )  )
 		
-		cLocal := oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_LOCAL/value' )
-		cLocal += Space( TamSx3( 'D4_LOCAL' )[1] - Len( cLocal )  )
+		//cLocal := oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_LOCAL/value' )
+		//cLocal += Space( TamSx3( 'D4_LOCAL' )[1] - Len( cLocal )  )
 		
 		DbSelectArea( 'SD4' )
 		DBSetOrder( 2 )
 		
-		lExiste := DbSeek( xFilial( 'SD4' ) + cOp + cCod + cLocal )
+		lExiste := DbSeek( xFilial( 'SD4' ) + cOp + cCod /*+ cLocal*/ )
 		
 		RestArea( aArea )
 		
 		aAdd( aCpos, { 'D4_COD'     ,      cCod                                                               , Nil } )
-		aAdd( aCpos, { 'D4_LOCAL'   ,      cLocal                                                             , Nil } )
+		//aAdd( aCpos, { 'D4_LOCAL'   ,      cLocal                                                             , Nil } )
 		aAdd( aCpos, { 'D4_OP'      ,      cOp                                                                , Nil } )
 		aAdd( aCpos, { 'D4_QTDEORI' , Val( oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_QTDEORI/value' ) ) , Nil } )
 		aAdd( aCpos, { 'D4_QUANT'   , Val( oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_QUANT/value'   ) ) , Nil } )
 		
-		If lExiste
+		If lExiste .And. nOper == 3
 			
-			MSExecAuto( { | X, Y | MATA380( X, Y ) }, aCpos, 5 )
+			nOper := 4
 			
-			If ! lExclui
-				
-				MSExecAuto( { | X, Y | MATA380( X, Y ) }, aCpos, 3 )
-				
-			End If
-			
-		Else
-			
-			MSExecAuto( { | X, Y | MATA380( X, Y ) }, aCpos, 3 )
-			
-		End If
+		End If	
+		
+		MSExecAuto( { | X, Y | MATA380( X, Y ) }, aCpos, nOper )		
 		
 		If lMsErroAuto
 			
@@ -100,29 +93,30 @@ User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 		End If
 		
 	Else
-	
-		cSucesso := 'F' 
+		
+		cSucesso := 'F'
 		
 		cMsg := 'Erro no Parse do XML: ' + oXml:LastError()
 		
 	End If
 	
-Return Retorno( cSucesso, cMsg )
+Return Retorno( cSucesso, cMsg, oFwEai )
 
-Static Function Retorno( cSucesso, cMsg )
+Static Function Retorno( cSucesso, cMsg, oFwEai )
 	
 	Local cRet := ''
 	
 	cRet += '<MIOMT380>'
+	cRet += '<SD4_FIELD>'
 	cRet += '<SUCESSO>'
 	cRet += '<value>' + cSucesso + '</value>'
 	cRet += '</SUCESSO>'
-	//	cRet += '<IDRETORNO>'
-	//	cRet += '<value>str1234</value>'
-	//	cRet += '</IDRETORNO>'
 	cRet += '<MENSAGEM>'
 	cRet += '<value>' + cMsg + '</value>'
 	cRet += '</MENSAGEM>'
+	cRet += '</SD4_FIELD>'
 	cRet += '</MIOMT380>'
+	
+	oFwEai:cReturnMsg := cRet
 	
 Return cRet

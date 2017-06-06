@@ -20,13 +20,12 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 	Local cOrdSrv := ''
 	Local aArea   := {}
 	
-	//Local aChild   := {}
 	Local aAtt     := {}
 	
 	Local nOpc     := 3
 	
 	Local cReg     := ''
-	Local cTipoMov := ''
+	Local cTipoMov := GetMv( 'MV_TMPAD' )
 	Local nQuant   := 0
 	Local cOP      := ''
 	Local cLocal   := ''
@@ -35,59 +34,118 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
 	Private	lAutoErrNoFile	:=	.T.
-	Default cXml:= MemoRead( '\XML\MIOMT250.XML' )
+	
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
 		
 		If oXml:DOMChildNode()
 			
-			Do While .T.
-				
-				//aChild := oXml:DOMGetChildArray()
-				aAtt   := oXml:DOMGetAttArray()
-				
-				// cTipoMov :=      aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'D3_TM'    } ) ][ 2 ]
-				// nQuant   := Val( aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'D3_QUANT' } ) ][ 2 ] )
-				// cOrdSrv  :=      aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'D3_XOS'   } ) ][ 2 ]
-				// lEstorna :=      aChild [ aScan( aChild, { | X | AllTrim( X[ 1 ] ) == 'ESTORNA'  } ) ][ 2 ] == 'T'
-				cReg := aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'registro' } ) ][ 2 ]
-				
-				oXml:DOMChildNode()
+			BeginTran()
 				
 				Do While .T.
 					
-					If oXml:cName == 'D3_TM'
+					aAtt   := oXml:DOMGetAttArray()
+					
+					cReg := aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'Registro' } ) ][ 2 ]
+					nOpc := Val( aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'Operation' } ) ][ 2 ] )
+					
+					oXml:DOMChildNode()
+					
+					Do While .T.
 						
-						oXml:DOMChildNode()
+						If oXml:cName == 'D3_QUANT
+							
+							oXml:DOMChildNode()
+							
+							nQuant :=  Val( oXml:cText )
+							
+							oXml:DOMParentNode()
+							
+						ElseIf oXml:cName == 'D3_XOS'
+							
+							oXml:DOMChildNode()
+							
+							cOrdSrv := oXml:cText
+							
+							oXml:DOMParentNode()
+							
+						End If
 						
-						cTipoMov := oXml:cText
+						If ! oXml:DOMNextNode()
+							
+							Exit
+							
+						End If
 						
-						oXml:DOMParentNode()
+					End Do
+					
+					oXml:DOMParentNode()
+					
+					aArea := GetArea()
+					
+					DbSelectArea( 'SC2' )
+					DBOrderNickname( 'XOS' )
+					
+					If DbSeek( xFilial( 'SC2' ) + cOrdSrv )
 						
-					ElseIf oXml:cName == 'D3_QUANT
-						
-						oXml:DOMChildNode()
-						
-						nQuant :=  Val( oXml:cText )
-						
-						oXml:DOMParentNode()
-						
-					ElseIf oXml:cName == 'D3_XOS'
-						
-						oXml:DOMChildNode()
-						
-						cOrdSrv := oXml:cText
-						
-						oXml:DOMParentNode()
-						
-					ElseIf oXml:cName == 'ESTORNA'
-						
-						oXml:DOMChildNode()
-						
-						lEstorna := ( oXml:cText == 'T' )
-						
-						oXml:DOMParentNode()
+						cOp    := SC2->( C2_NUM + C2_ITEM + C2_SEQUEN )
+						cLocal := SC2->C2_LOCAL
 						
 					End If
+					
+					RestArea( aArea )
+					
+					aAdd( aCpos, { 'D3_TM'      , cTipoMov , Nil } )
+					aAdd( aCpos, { 'D3_QUANT'   , nQuant   , Nil } )
+					aAdd( aCpos, { 'D3_OP'      , cOP      , Nil } )
+					aAdd( aCpos, { 'D3_LOCAL'   , cLocal   , Nil } )
+					aAdd( aCpos, { 'D3_EMISSAO' , Date()   , Nil } )
+					
+					MSExecAuto( { | X, Y | MATA250( X, Y ) }, aCpos, nOpc )
+					
+					aSize( aCpos, 0 )
+					
+					aAdd( aMsg, '<SD3_FIELD registro="' + cReg + '">' )
+					
+					If lMsErroAuto
+						
+						aErro := aClone( GetAutoGRLog() )
+						
+						aAdd( aMsg, '<SUCESSO>' )
+						aAdd( aMsg, '<value>F</value>' )
+						aAdd( aMsg, '</SUCESSO>' )
+						
+						aAdd( aMsg, '<MENSAGEM>' )
+						aAdd( aMsg, '<value>' )
+						
+						For nX := 1 To Len( aErro )
+							
+							aAdd( aMsg, _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)  )
+							
+						Next nX
+						
+						aAdd( aMsg, '</value>' )
+						aAdd( aMsg, '</MENSAGEM>' )
+						
+					Else
+						
+						aAdd( aMsg, '<SUCESSO>' )
+						aAdd( aMsg, '<value>T</value>' )
+						aAdd( aMsg, '</SUCESSO>' )
+						aAdd( aMsg, '<MENSAGEM>' )
+						aAdd( aMsg, '<value>' )
+						aAdd( aMsg, '</value>' )
+						aAdd( aMsg, '</MENSAGEM>' )
+						
+					End If
+					
+					aAdd( aMsg, '</SD3_FIELD>' )
+					
+					If lMsErroAuto
+						
+						Disarmtransaction()
+						Exit
+						
+					End IF
 					
 					If ! oXml:DOMNextNode()
 						
@@ -97,82 +155,7 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 					
 				End Do
 				
-				oXml:DOMParentNode()
-				
-				aArea := GetArea()
-				
-				DbSelectArea( 'SC2' )
-				DBOrderNickname( 'XOS' )
-				
-				If DbSeek( xFilial( 'SC2' ) + cOrdSrv )
-					
-					cOp    := SC2->( C2_NUM + C2_ITEM + C2_SEQUEN )
-					cLocal := SC2->C2_LOCAL
-					
-				End If
-				
-				RestArea( aArea )
-				
-				If lEstorna
-					
-					nOpc := 5
-					
-				End If
-				
-				aAdd( aCpos, { 'D3_TM'      , cTipoMov , Nil } )
-				aAdd( aCpos, { 'D3_QUANT'   , nQuant   , Nil } )
-				aAdd( aCpos, { 'D3_OP'      , cOP      , Nil } )
-				aAdd( aCpos, { 'D3_LOCAL'   , cLocal   , Nil } )
-				
-				MSExecAuto( { | X, Y | MATA250( X, Y ) }, aCpos, nOpc )
-				
-				aSize( aCpos, 0 )
-				
-				aAdd( aMsg, '<SD3_FIELD registro="' + cReg + '">' )
-				
-				If lMsErroAuto
-					
-					lMsErroAuto := .F.
-					
-					aErro := aClone( GetAutoGRLog() )
-					
-					aAdd( aMsg, '<SUCESSO>' )
-					aAdd( aMsg, '<value>F</value>' )
-					aAdd( aMsg, '</SUCESSO>' )
-					
-					aAdd( aMsg, '<MENSAGEM>' )
-					aAdd( aMsg, '<value>' )
-					
-					For nX := 1 To Len( aErro )
-						
-						aAdd( aMsg, _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)  )
-						
-					Next nX
-					
-					aAdd( aMsg, '</value>' )
-					aAdd( aMsg, '</MENSAGEM>' )
-					
-				Else
-					
-					aAdd( aMsg, '<SUCESSO>' )
-					aAdd( aMsg, '<value>T</value>' )
-					aAdd( aMsg, '</SUCESSO>' )
-					aAdd( aMsg, '<MENSAGEM>' )
-					aAdd( aMsg, '<value>' )
-					aAdd( aMsg, '</value>' )
-					aAdd( aMsg, '</MENSAGEM>' )
-					
-				End If
-				
-				aAdd( aMsg, '</SD3_FIELD>' )
-				
-				If ! oXml:DOMNextNode()
-					
-					Exit
-					
-				End If
-				
-			End Do
+			EndTran()
 			
 		End If
 		
@@ -183,11 +166,21 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 		aAdd( aMsg, '<SUCESSO>' )
 		aAdd( aMsg, '<MENSAGEM>' )
 		aAdd( aMsg, '<value>' )
-		aAdd( aMsg, 	'Erro no Parse do XML: ' + oXml:LastError() )
+		aAdd( aMsg, 'Erro no Parse do XML: ' + oXml:LastError() )
 		aAdd( aMsg, '</value>' )
 		aAdd( aMsg, '<MENSAGEM>' )
 		
 	End If
+	
+	oFwEai:cReturnMsg := Retorno( aMsg )
+	
+	aSize( aMsg, 0 )
+	
+	aAdd( aMsg, '<SD3_FIELD'       )
+	aAdd( aMsg, '<SUCESSO>'        )
+	aAdd( aMsg, '<value>' + If(  lMsErroAuto, 'F', 'T' ) + '</value>' )
+	aAdd( aMsg, '<SUCESSO>'        )
+	aAdd( aMsg, '</SD3_FIELD>' )
 	
 Return Retorno( aMsg )
 

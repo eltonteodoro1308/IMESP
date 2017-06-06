@@ -56,11 +56,6 @@ User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 		aAdd( aCpos, { 'C2_DATPRI'  , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_DATPRI/value'  ) ), Nil } )
 		aAdd( aCpos, { 'C2_DATPRF'  , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_DATPRF/value'  ) ), Nil } )
 		aAdd( aCpos, { 'C2_EMISSAO' , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_EMISSAO/value' ) ), Nil } )
-		//aAdd( aCpos, { 'C2_XTRIB'   , StoD( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/C2_XTRIB/value'   ) ), Nil } )
-		ConOut(ProcName() + ' : ' + cValToChar( ProcLine() ))
-		
-		VarInfo('aCpos',aCpos,,.F.,.T.)
-		VarInfo('nOper',nOper,,.F.,.T.)
 		
 		If lExiste .And. nOper == 3
 			
@@ -68,8 +63,12 @@ User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 			
 		End If
 		
-		MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, nOper )
-		ConOut(ProcName() + ' : ' + cValToChar( ProcLine() ))
+		If nOper # 4
+			
+			MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, nOper )
+			
+		End If
+		
 		If lMsErroAuto
 			
 			cSucesso := 'F'
@@ -100,12 +99,14 @@ Static Function Retorno( cSucesso, cMsg, oFwEai )
 	Local cRet := ''
 	
 	cRet += '<MIOMT650>'
+	cRet += '<SC2_FIELD>'
 	cRet += '<SUCESSO>'
 	cRet += '<value>' + cSucesso + '</value>'
 	cRet += '</SUCESSO>'
 	cRet += '<MENSAGEM>'
 	cRet += '<value>' + cMsg + '</value>'
 	cRet += '</MENSAGEM>'
+	cRet += '</SC2_FIELD>'
 	cRet += '</MIOMT650>'
 	
 	oFwEai:cReturnMsg := cRet
