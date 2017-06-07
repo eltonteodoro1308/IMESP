@@ -163,12 +163,12 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 		
 		aAdd( aMsg, '<SUCESSO>' )
 		aAdd( aMsg, '<value>F</value>' )
-		aAdd( aMsg, '<SUCESSO>' )
+		aAdd( aMsg, '</SUCESSO>' )
 		aAdd( aMsg, '<MENSAGEM>' )
 		aAdd( aMsg, '<value>' )
 		aAdd( aMsg, 'Erro no Parse do XML: ' + oXml:LastError() )
 		aAdd( aMsg, '</value>' )
-		aAdd( aMsg, '<MENSAGEM>' )
+		aAdd( aMsg, '</MENSAGEM>' )
 		
 	End If
 	
@@ -176,10 +176,14 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 	
 	aSize( aMsg, 0 )
 	
-	aAdd( aMsg, '<SD3_FIELD'       )
+	aAdd( aMsg, '<SD3_FIELD>'       )
 	aAdd( aMsg, '<SUCESSO>'        )
 	aAdd( aMsg, '<value>' + If(  lMsErroAuto, 'F', 'T' ) + '</value>' )
-	aAdd( aMsg, '<SUCESSO>'        )
+	aAdd( aMsg, '</SUCESSO>'        )
+	aAdd( aMsg, '<MENSAGEM>' )
+	aAdd( aMsg, '<value>' )
+	aAdd( aMsg, '</value>' )
+	aAdd( aMsg, '</MENSAGEM>' )
 	aAdd( aMsg, '</SD3_FIELD>' )
 	
 Return Retorno( aMsg )

@@ -29,6 +29,23 @@
                   </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>
+              <xsd:element name="CCODIGO" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                  <xsd:documentation> Código visual do item </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="value">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:minLength value="1"/>
+                          <xsd:maxLength value="1"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
               <xsd:element name="NOME" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
                   <xsd:documentation> Nome do item de estoque </xsd:documentation>
@@ -82,7 +99,7 @@
               </xsd:element>
               <xsd:element name="CODCLIENTE" minOccurs="0" maxOccurs="1">
                 <xsd:annotation>
-                  <xsd:documentation> Código do cliente do item de estoque </xsd:documentation>
+                  <xsd:documentation> (APENAS PRODUTOS / ITEMPROD = 2) Código do cliente do produto </xsd:documentation>
                 </xsd:annotation>
                 <xsd:complexType>
                   <xsd:sequence>
@@ -99,7 +116,24 @@
               </xsd:element>
               <xsd:element name="ITEMPROD" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
-                  <xsd:documentation> Tipo do Item: 1 = Item; 2 = Produto </xsd:documentation>
+                  <xsd:documentation> Tipo do Item: 1 = Matéria-Prima; 2 = Produto </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="value">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:minLength value="1"/>
+                          <xsd:maxLength value="1"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            <xsd:element name="TIPOITEMEC" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                  <xsd:documentation> (APENAS MATERIA-PRIMA / ITEMPROD = 1) Tipo do Item: 0 = Chapa; 1 = Papel; 2 = Tinta; 3 = Outros </xsd:documentation>
                 </xsd:annotation>
                 <xsd:complexType>
                   <xsd:sequence>

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MODITEMESTOQUE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="EcalcIntegraEAI_ITEMESTOQUE.xsd">
-  <ITEMESTOQUE>
+  <ITEMESTOQUE OPERACAOINTEGRACAO="">
     <ID>
       <value>value</value>
     </ID>
+    <CCODIGO>
+      <value>value</value>
+    </CCODIGO>
     <NOME>
       <value>value</value>
     </NOME>
@@ -13,8 +16,14 @@
     <ATIVO>
       <value>value</value>
     </ATIVO>
+    <CODCLIENTE>
+      <value>value</value>
+    </CODCLIENTE>
     <ITEMPROD>
       <value>value</value>
     </ITEMPROD>
+    <TIPOITEMEC>
+      <value>value</value>
+    </TIPOITEMEC>
   </ITEMESTOQUE>
 </MODITEMESTOQUE>
