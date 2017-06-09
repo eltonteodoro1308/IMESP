@@ -5,27 +5,47 @@
 
 user function A010TOK()
 
-	Local oModel    := Nil
-	Local lInclui   := INCLUI
-	Local cCodigo   := ''
-	Local cItemProd := ''
-	Local cXmlResp  := ''
-	Local oXmlResp  := TXmlManager():New()
-	Local lRet      := .T.
+	Local oModel     := Nil
+	Local lInclui    := INCLUI
+	Local cItemProd  := ''
+	Local cTipoItem  := ''
+	Local cXmlResp   := ''
+	Local lIsPrdAcab := .F.
+	Local lIsMatPrim := .F.
+	Local lIsChapa   := .F.
+	Local lIsTinta   := .F.
+	Local lIsPapel   := .F.
+	Local lRet       := .T.
 
-	If AllTrim( M->B1_TIPO ) == 'PA' .Or.;
-	( AllTrim( M->B1_GRUPO ) == AllTrim( GetMv( 'IO_GRPAPEL' ) ) .And.;
-	! Empty( AllTrim( M->B1_XECFML ) + AllTrim( M->B1_XECGRM ) + AllTrim( M->B1_XECLRG ) + AllTrim( M->B1_XECALT ) ) )
+	lIsPrdAcab  := AllTrim( M->B1_TIPO  ) == 'PA'
+	lIsMatPrim  := AllTrim( M->B1_TIPO  ) == 'MP'
+	lIsChapa    := AllTrim( M->B1_GRUPO ) == AllTrim( GetMv( 'IO_GRCHAPA' ) )
+	lIsTinta    := AllTrim( M->B1_GRUPO ) == AllTrim( GetMv( 'IO_GRTINTA' ) )
+	lIsPapel    := AllTrim( M->B1_GRUPO ) == AllTrim( GetMv( 'IO_GRPAPEL' ) )
 
-		If M->B1_TIPO == 'PA'
+	If lIsPrdAcab .Or. ( lIsMatPrim .And. ( lIsPapel .Or. lIsChapa .Or. lIsTinta ) )
 
-			cCodigo   := M->B1_COD
+		If lIsPrdAcab
+
 			cItemProd := '2'
 
 		Else
 
-			cCodigo   := AllTrim( M->B1_XECFML ) + '.' + AllTrim( M->B1_XECGRM ) + '.' + AllTrim( M->B1_XECLRG ) + '.' + AllTrim( M->B1_XECALT )
 			cItemProd := '1'
+
+			If AllTrim( M->B1_GRUPO ) == AllTrim( GetMv( 'IO_GRCHAPA' ) )
+
+				cTipoItem := '0'
+
+			ElseIf AllTrim( M->B1_GRUPO ) == AllTrim( GetMv( 'IO_GRPAPEL' ) )
+
+				cTipoItem := '1'
+
+			ElseIf AllTrim( M->B1_GRUPO ) == AllTrim( GetMv( 'IO_GRTINTA' ) )
+
+				cTipoItem := '2'
+
+			End If
 
 		End If
 
@@ -35,27 +55,21 @@ user function A010TOK()
 
 		oModel:Activate()
 
-		oModel:Setvalue( 'ITEMESTOQUE' , 'ID'         , M->B1_COD )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'CCODIGO'    , cCodigo )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'NOME'       , M->B1_DESC )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'DESCRICAO'  , M->B1_DESC )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'ATIVO'      , If( M->B1_MSBLQL = '1', 'F', 'T' ) )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'ITEMPROD'   , cItemProd )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'TIPOITEMEC' , '1' )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'ID'             , M->B1_COD )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'NOME'           , M->B1_DESC )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'DESCRICAO'      , M->B1_DESC )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'ATIVO'          , If( M->B1_MSBLQL = '1', 'F', 'T' ) )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'ITEMPROD'       , cItemProd )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'TIPOITEMEC'     , cTipoItem )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'PAPELFAMILIA'   , AllTrim( M->B1_XECFML ) )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'PAPELGRAMATURA' , AllTrim( Str( M->B1_XECGRM ) ) )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'PAPELLARGURA'   , AllTrim( Str( M->B1_XECLRG ) ) )
+		oModel:Setvalue( 'ITEMESTOQUE' , 'PAPELALTURA'    , AllTrim( Str( M->B1_XECALT ) ) )
 
 		If oModel:VldData()
 
 			//oModel:CommitData()
-			cXmlResp := EaiEnvio( oModel, Replace( ProcName(), 'U_' ) )
-			oXmlResp:Parse( cXmlResp )
-
-			If oXmlResp:XPathGetNodeValue( '/EcalcIntegraEAIResponse/SUCESSO' ) == 'F'
-
-				ApMsgStop ( oXmlResp:XPathGetNodeValue( '/EcalcIntegraEAIResponse/MENSAGEM' ), 'Atenção' )
-
-				lRet := .F.
-
-			End If
+			lRet := EaiEnvio( oModel, Replace( ProcName(), 'U_' ) )
 
 		Else
 
@@ -91,20 +105,25 @@ Static Function Struct()
 
 	oStruct:AddTable('SB1_ECALC',,'SB1_ECALC')
 
-	oStruct:AddField('ID'         , 'ID'         , 'ID'         , 'C', 020, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('CCODIGO'    , 'CCODIGO'    , 'CCODIGO'    , 'C', 020, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME'       , 'NOME'       , 'NOME'       , 'C', 060, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('DESCRICAO'  , 'DESCRICAO'  , 'DESCRICAO'  , 'C', 120, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('ATIVO'      , 'ATIVO'      , 'ATIVO'      , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('ITEMPROD'   , 'ITEMPROD'   , 'ITEMPROD'   , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('TIPOITEMEC' , 'TIPOITEMEC' , 'TIPOITEMEC' , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ID'             , 'ID'             , 'ID'             , 'C', 020, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME'           , 'NOME'           , 'NOME'           , 'C', 060, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('DESCRICAO'      , 'DESCRICAO'      , 'DESCRICAO'      , 'C', 120, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ATIVO'          , 'ATIVO'          , 'ATIVO'          , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('ITEMPROD'       , 'ITEMPROD'       , 'ITEMPROD'       , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('TIPOITEMEC'     , 'TIPOITEMEC'     , 'TIPOITEMEC'     , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('PAPELFAMILIA'   , 'PAPELFAMILIA'   , 'PAPELFAMILIA'   , 'C', 012, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('PAPELGRAMATURA' , 'PAPELGRAMATURA' , 'PAPELGRAMATURA' , 'C', 018, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('PAPELLARGURA'   , 'PAPELLARGURA'   , 'PAPELLARGURA'   , 'C', 018, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('PAPELALTURA'    , 'PAPELALTURA'    , 'PAPELALTURA'    , 'C', 018, 0, , , {}, .F., , .F., .F., .F., , )
 
 return oStruct
 
 Static Function EaiEnvio( oModel, cPrg )
 
-	Local oFwEai := FwEai():New()
-	Local cRet   := ''
+	Local oFwEai   := FwEai():New()
+	Local lRet     := .T.
+	Local oXmlResp := TXmlManager():New()
+	Local cXmlResp := ''
 
 	oFwEai:AddLayout( oModel:GetId(), '1.000', 'FWFORMEAI.' + cPrg, oModel:GetXmlData() )
 
@@ -118,9 +137,25 @@ Static Function EaiEnvio( oModel, cPrg )
 
 	oFwEai:Activate()
 
-	oFwEai:Save()
+	If ! oFwEai:Save()
 
-	cRet := oFwEai:cResult
+		ApMsgStop ( 'Não foi possivel estabelecer Comunicação com o sistema ECalc, integração não executada.', 'Atenção' )
+
+	Else
+
+		cXmlResp := oFwEai:cResult
+
+		oXmlResp:Parse( cXmlResp )
+
+		If oXmlResp:XPathGetNodeValue( '/EcalcIntegraEAIResponse/SUCESSO' ) == 'F'
+
+			ApMsgStop ( oXmlResp:XPathGetNodeValue( '/EcalcIntegraEAIResponse/MENSAGEM' ), 'Atenção' )
+
+			cRet := .F.
+
+		End If
+
+	End If
 
 	oFwEai:DeActivate()
 

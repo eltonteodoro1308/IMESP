@@ -12,8 +12,8 @@ Função acionada pelo EAI que recebe xml com dados do pedido venda e faz sua incl
 @return cRet   , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
 /*/
 User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
-
-	Local cRet    := 'ok'
+	
+	Local cMsg    := ''
 	Local oXml    := TXmlManager():New()
 	Local aCabec  := {}
 	Local aItem   := {}
@@ -21,88 +21,117 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 	Local aChild  := Nil
 	Local nX      := 0
 	Local aErro   := Nil
-
+	Local cSucesso:= 'T'
+	Local nItem   := 1
+	
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
 	Private	lAutoErrNoFile	:=	.T.
-
+	
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
-
-		aAdd( aCabec, { 'C5_NUM'     , oXML:XPathGetNodeValue( '/MATA410_MODEL/SC5_FIELD_MASTER/C5_NUM/value'     ), Nil } )
-		aAdd( aCabec, { 'C5_TIPO'    , oXML:XPathGetNodeValue( '/MATA410_MODEL/SC5_FIELD_MASTER/C5_TIPO/value'    ), Nil } )
-		aAdd( aCabec, { 'C5_CLIENTE' , oXML:XPathGetNodeValue( '/MATA410_MODEL/SC5_FIELD_MASTER/C5_CLIENTE/value' ), Nil } )
-		aAdd( aCabec, { 'C5_LOJACLI' , oXML:XPathGetNodeValue( '/MATA410_MODEL/SC5_FIELD_MASTER/C5_LOJACLI/value' ), Nil } )
-		aAdd( aCabec, { 'C5_TIPOCLI' , oXML:XPathGetNodeValue( '/MATA410_MODEL/SC5_FIELD_MASTER/C5_TIPOCLI/value' ), Nil } )
-		aAdd( aCabec, { 'C5_CONDPAG' , oXML:XPathGetNodeValue( '/MATA410_MODEL/SC5_FIELD_MASTER/C5_CONDPAG/value' ), Nil } )
-
+		
+		aAdd( aCabec, { 'C5_TIPO'     , 'N'                                                                          , Nil } )
+		aAdd( aCabec, { 'C5_CLIENTE'  , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_CLIENTE/value' ) , Nil } )
+		//		aAdd( aCabec, { 'C5_LOJACLI'  , '01'                                                                         , Nil } )
+		//		aAdd( aCabec, { 'C5_TIPOCLI'  , 'F'                                                                          , Nil } )
+		aAdd( aCabec, { 'C5_CONDPAG'  , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_CONDPAG/value' ) , Nil } )
+		aAdd( aCabec, { 'C5_TRANSP'   , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_TRANSP/value'  ) , Nil } )
+		aAdd( aCabec, { 'C5_XVENDAID' , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_NUM/value'     ) , Nil } )
+		
 		oXml:DOMChildNode()
 		oXml:DOMChildNode()
-
+		
 		Do While AllWaysTrue()
-
+			
 			oXml:DOMNextNode()
-
-			If oXml:cName == 'SC6_GRID_MASTER'
-
+			
+			If oXml:cName == 'SC6_GRID'
+				
 				Exit
-
+				
 			End If
-
+			
 		End Do
-
+		
 		oXml:DOMChildNode()
 		oXml:DOMChildNode()
-
+		
 		Do While AllWaysTrue()
-
+			
 			aChild := oXML:DOMGetChildArray()
-
+			
+			aAdd( aItem, { 'C6_ITEM', StrZero( nItem, TamSx3( 'C6_ITEM' )[ 1 ] ), Nil} )
+			
 			For nX := 1 To Len( aChild  )
-
-				If ! AllTrim( aChild[ nX, 1 ] ) $ 'C6_QTDVEN/C6_PRCVEN'
-
+				
+				If ! AllTrim( aChild[ nX, 1 ] ) $ 'C6_QTDVEN/C6_PRCVEN/C6_VALDESC'
+					
 					aAdd( aItem, { aChild[ nX, 1 ], aChild[ nX, 2 ], Nil} )
-
+					
 				Else
-
+					
 					aAdd( aItem, { aChild[ nX, 1 ], Val( aChild[ nX, 2 ] ) , Nil} )
-
+					
 				End If
-
+				
 			Next nX
-
+			
 			aAdd( aItens, aClone( aItem ) )
-
+			
 			aSize( aItem, 0 )
-
+			
 			If ! oXml:DOMNextNode()
-
+				
 				Exit
-
+				
 			End If
-
+			
+			nItem++
+			
 		End Do
-
+		
 		MSExecAuto( { | X, Y, Z | MATA410( X, Y, Z ) }, aCabec, aItens, 3 )
-
+		
 		If lMsErroAuto
-
+			
+			cSucesso := 'F'
+			
 			aErro := aClone( GetAutoGRLog() )
-
-			cRet += Chr(13) + Chr(10)
-
+			
+			cMsg += Chr(13) + Chr(10)
+			
 			For nX := 1 To Len( aErro )
-
-				cRet += aErro[ nX ] + Chr(13) + Chr(10)
-
+				
+				cMsg += _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)
+				
 			Next nX
-
+			
 		End If
-
+		
 	Else
-
-		cRet := 'Erro no Parse do XML: ' + oXml:LastError()
-
+		
+		cSucesso := 'F'
+		cMsg := 'Erro no Parse do XML: ' + oXml:LastError()
+		
 	End If
+	
+Return Retorno( cSucesso, cMsg, oFwEai )
 
+Static Function Retorno( cSucesso, cMsg, oFwEai )
+	
+	Local cRet := ''
+	
+	cRet += '<MIOMT410>'
+	cRet += '<SC5_FIELD>'
+	cRet += '<SUCESSO>'
+	cRet += '<value>' + cSucesso + '</value>'
+	cRet += '</SUCESSO>'
+	cRet += '<MENSAGEM>'
+	cRet += '<value>' + cMsg + '</value>'
+	cRet += '</MENSAGEM>'
+	cRet += '</SC5_FIELD>'
+	cRet += '</MIOMT410>'
+	
+	oFwEai:cReturnMsg := cRet
+	
 Return cRet

@@ -4,9 +4,6 @@
     <ID>
       <value>value</value>
     </ID>
-    <CCODIGO>
-      <value>value</value>
-    </CCODIGO>
     <NOME>
       <value>value</value>
     </NOME>
@@ -25,5 +22,17 @@
     <TIPOITEMEC>
       <value>value</value>
     </TIPOITEMEC>
+    <PAPELFAMILIA>
+      <value>value</value>
+    </PAPELFAMILIA>
+    <PAPELGRAMATURA>
+      <value>0</value>
+    </PAPELGRAMATURA>
+    <PAPELLARGURA>
+      <value>0</value>
+    </PAPELLARGURA>
+    <PAPELALTURA>
+      <value>0</value>
+    </PAPELALTURA>
   </ITEMESTOQUE>
 </MODITEMESTOQUE>
