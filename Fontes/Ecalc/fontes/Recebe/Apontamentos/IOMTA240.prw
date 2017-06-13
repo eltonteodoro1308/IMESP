@@ -1,6 +1,6 @@
-#INCLUDE 'TOTVS.CH'
-/*/{Protheus.doc} IOMTA380
-Função acionada pelo EAI que recebe xml com dados da Produção de uma OP
+#Include 'TOTVS.CH'
+/*/{Protheus.doc} IOAPONTA
+Função acionada pelo EAI que recebe xml com dados dos apontamentos.
 @author Elton Teodoro Alves
 @since 04/05/2016
 @version Protheus 12.1.014
@@ -9,23 +9,27 @@ Função acionada pelo EAI que recebe xml com dados da Produção de uma OP
 @param cWarning, Caracter, Variável passada por referência, serve para alimentar uma mensagem de warning para o EAI. A alteração deste valor por rotinas tratadas neste tópico não causam nenhum efeito para o EAI.
 @param cParams , Caracter, Parâmetros passados na mensagem do EAI.
 @param oFwEai  , Object  , O objeto de EAI criado na camada do EAI Protheus. A manipulação deste objeto deve ser realizada com o máximo de cautela, e deve ser evitada ao máximo.
-@return Caracter , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
+@return cRet   , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
 /*/
-User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
+User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 	
-	Local aMsg    := {}
-	Local oXml    := TXmlManager():New()
-	Local aCpos   := {}
-	Local nX      := 0
-	Local cOrdSrv := ''
-	Local aArea   := {}	
-	Local aAtt     := {}	
-	Local nOpc     := 3	
+	Local aMsg     := {}
+	Local oXml     := TXmlManager():New()
+	Local aCpos    := {}
+	Local nX       := 0
+	Local cOrdSrv  := ''
+	Local aArea    := {}
+	Local aAtt     := {}
+	Local nOpc     := 3
 	Local cReg     := ''
-	Local cTipoMov := GetMv( 'MV_TMPAD' )
-	Local nQuant   := 0
+	Local cTipoMov := GetMv( 'IO_TMAPONT' )
 	Local cOP      := ''
-	Local cLocal   := ''
+	Local cCC      := ''
+	Local cDoc     := ''
+	Local cDataIni := ''
+	Local cHoraIni := ''
+	Local cDataFin := ''
+	Local cHoraFin := ''
 	Local lEstorna := .F.
 	
 	Private	lMsErroAuto		:=	.F.
@@ -49,19 +53,59 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 					
 					Do While .T.
 						
-						If oXml:cName == 'D3_QUANT
-							
-							oXml:DOMChildNode()
-							
-							nQuant :=  Val( oXml:cText )
-							
-							oXml:DOMParentNode()
-							
-						ElseIf oXml:cName == 'D3_XOS'
+						If oXml:cName == 'D3_XOS'
 							
 							oXml:DOMChildNode()
 							
 							cOrdSrv := oXml:cText
+							
+							oXml:DOMParentNode()
+							
+						ElseIf oXml:cName == 'D3_CC'
+							
+							oXml:DOMChildNode()
+							
+							cCC := oXml:cText
+							
+							oXml:DOMParentNode()
+							
+						ElseIf oXml:cName == 'D3_DOC'
+							
+							oXml:DOMChildNode()
+							
+							cDoc := oXml:cText
+							
+							oXml:DOMParentNode()
+							
+						ElseIf oXml:cName == 'D3_DATAINI'
+							
+							oXml:DOMChildNode()
+							
+							cDataIni := oXml:cText
+							
+							oXml:DOMParentNode()
+							
+						ElseIf oXml:cName == 'D3_HORAINI'
+							
+							oXml:DOMChildNode()
+							
+							cHoraIni := oXml:cText
+							
+							oXml:DOMParentNode()
+							
+						ElseIf oXml:cName == 'D3_DATAFIN'
+							
+							oXml:DOMChildNode()
+							
+							cDataFin := oXml:cText
+							
+							oXml:DOMParentNode()
+							
+						ElseIf oXml:cName == 'D3_HORAFIN'
+							
+							oXml:DOMChildNode()
+							
+							cHoraFin := oXml:cText
 							
 							oXml:DOMParentNode()
 							
@@ -91,11 +135,13 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 					
 					RestArea( aArea )
 					
-					aAdd( aCpos, { 'D3_TM'      , cTipoMov , Nil } )
-					aAdd( aCpos, { 'D3_QUANT'   , nQuant   , Nil } )
-					aAdd( aCpos, { 'D3_OP'      , cOP      , Nil } )
-					aAdd( aCpos, { 'D3_LOCAL'   , cLocal   , Nil } )
-					aAdd( aCpos, { 'D3_EMISSAO' , Date()   , Nil } )
+					
+					
+					aAdd( aCpos, { 'D3_TM'      , cTipoMov                                            , Nil } )
+					aAdd( aCpos, { 'D3_QUANT'   , CalcHoras( cDataIni, cHoraIni, cDataFin, cHoraFin ) , Nil } )
+					aAdd( aCpos, { 'D3_OP'      , cOP                                                 , Nil } )
+					//aAdd( aCpos, { 'D3_LOCAL'   , cLocal                                              , Nil } )
+					aAdd( aCpos, { 'D3_EMISSAO' , Date()                                              , Nil } )
 					
 					MSExecAuto( { | X, Y | MATA250( X, Y ) }, aCpos, nOpc )
 					
@@ -190,7 +236,7 @@ Static Function Retorno( aMsg )
 	Local cRet := ''
 	Local nX   := 0
 	
-	cRet += '<MIOMT250>'
+	cRet += '<MIOMT240>'
 	
 	For nX := 1 To Len( aMsg )
 		
@@ -198,6 +244,82 @@ Static Function Retorno( aMsg )
 		
 	Next nX
 	
-	cRet += '</MIOMT250>'
+	cRet += '</MIOMT240>'
 	
 Return cRet
+
+Static Function DaysList( cDataIni, cHoraIni, cDataFin, cHoraFin )
+	
+	Local aRet     := {}
+	Local nX       := 0
+	Local cDtAux   := ''
+	local nDiasDif := DateDiffDay( StoD( cDataIni ), StoD( cDataFin ) ) + 1
+	
+	For nX := 1 To nDiasDif
+		
+		If cDataIni == cDataFin
+			
+			aAdd( aRet, { cDataIni, CalcHoras( cDataIni, cHoraIni, cDataFin, cHoraFin ) } )
+			
+			Return aRet
+			
+		Else
+			
+			If nX == 1
+				
+				aAdd( aRet, { cDataIni, CalcHoras( cDataIni, cHoraIni, cDataIni, '23:59' ) } )
+				
+				cDtAux := DtoS( DaySum( StoD( cDataIni ), nX ) )
+				
+			ElseIf nX == nDiasDif
+				
+				aAdd( aRet, { cDataFin, CalcHoras( cDataFin, '00:00', cDataFin, cHoraFin ) } )
+				
+			Else
+				
+				aAdd( aRet, { cDtAux, CalcHoras( cDtAux, '00:00', cDtAux, '23:59' ) } )
+				
+				cDtAux := DtoS( DaySum( StoD( cDataIni ), nX ) )
+				
+			End If
+			
+		End If
+		
+	Next nX
+	
+Return aRet
+
+Static Function CalcHoras( cDataIni, cHoraIni, cDataFin, cHoraFin )
+	
+	Local nRet := 0
+	
+	nRet := Val( FwTimeStamp( 4, StoD( cDataFin ) , cHoraFin + ':00') )
+	nRet := nRet - Val( FwTimeStamp( 4, StoD( cDataIni ) , cHoraIni + ':00' ) )
+	nRet := nRet / ( 60 * 60 )
+	
+Return nRet
+
+user function TMTA240()
+	
+	Local lMsErroAuto := .F.
+	Local aVetor      := {}
+	Local nX          := 0
+	
+	DbSelectArea( 'SD3' )
+	DbSetOrder( 2 )
+	
+	If DbSeek( xFilial( 'SD3' ) + 'DOC001')
+		
+		For nX := 1 To FCount()
+			
+			aAdd( aVetor, { FieldName( nX ), SD3->&( FieldName( nX ) ), Nil } )
+			
+		Next Nx
+		
+		aAdd( aVetor, { 'INDEX', 2, Nil } )
+		
+		MSExecAuto( { | X, Y | MATA240( X, Y ) }, aVetor, 5 )
+		
+	End If
+	
+return

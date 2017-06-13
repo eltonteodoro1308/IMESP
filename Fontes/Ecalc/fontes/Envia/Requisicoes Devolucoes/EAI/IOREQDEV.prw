@@ -1,5 +1,5 @@
 #INCLUDE 'TOTVS.CH'
-#INCLUDE 'FWMVCDEF.CH
+#INCLUDE 'FWMVCDEF.CH'
 
 User function IOREQDEV( cId, cNumAno, cCodItem, cDescricao, cTipo, cDataMovimento, cQuantidade, cValorTotal, cValorIcms, cStatus )
 

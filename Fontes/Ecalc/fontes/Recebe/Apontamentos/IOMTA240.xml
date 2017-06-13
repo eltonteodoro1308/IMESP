@@ -1,0 +1,48 @@
+<TOTVSIntegrator>
+	<GlobalProduct>PROTHEUS</GlobalProduct>
+	<GlobalFunctionCode>EAI</GlobalFunctionCode>
+	<GlobalDocumentFunctionCode>U_IOMTA240</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>Apontamnetos</GlobalDocumentFunctionDescription>
+	<DocVersion>1.00</DocVersion>
+	<DocDateTime>2017-06-12T18:02:10Z</DocDateTime>
+	<DocIdentifier>6529CA80-F461-4162-BE7B-E20932E7A0BC 	</DocIdentifier>
+	<DocCompany>01</DocCompany>
+	<DocBranch>01</DocBranch>
+	<DocName>IMPRENSA OFICIAL DO</DocName>
+	<DocFederalID>48.066.047/0001-84</DocFederalID>
+	<DocType>1</DocType>
+	<Message>
+		<Layouts>
+			<Identifier>6529CA80-F461-4162-BE7B-E20932E7A0BC</Identifier>
+			<Version>1.00</Version>
+			<FunctionCode>U_IOMTA240</FunctionCode>
+			<Content>
+				<MIOMT240>
+					<SD3_FIELD Operation="3">
+						<D3_XOS>
+							<value>value</value>
+						</D3_XOS>
+						<D3_CC>
+							<value>value</value>
+						</D3_CC>
+						<D3_DOC>
+							<value>value</value>
+						</D3_DOC>
+						<D3_DATAINI>
+							<value>value</value>
+						</D3_DATAINI>
+						<D3_HORAINI>
+							<value>value</value>
+						</D3_HORAINI>
+						<D3_DATAFIN>
+							<value>value</value>
+						</D3_DATAFIN>
+						<D3_HORAFIN>
+							<value>value</value>
+						</D3_HORAFIN>
+					</SD3_FIELD>
+				</MIOMT240>
+			</Content>
+		</Layouts>
+	</Message>
+</TOTVSIntegrator>
