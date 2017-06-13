@@ -28,7 +28,24 @@
                     </xsd:element>
                   </xsd:sequence>
                 </xsd:complexType>
-              </xsd:element>              
+              </xsd:element>
+              <xsd:element name="CCODIGO" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                  <xsd:documentation> Código visual do item </xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="value">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:minLength value="1"/>
+                          <xsd:maxLength value="1"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
               <xsd:element name="NOME" minOccurs="1" maxOccurs="1">
                 <xsd:annotation>
                   <xsd:documentation> Nome do item de estoque </xsd:documentation>
@@ -125,70 +142,6 @@
                         <xsd:restriction base="xsd:string">
                           <xsd:minLength value="1"/>
                           <xsd:maxLength value="1"/>
-                        </xsd:restriction>
-                      </xsd:simpleType>
-                    </xsd:element>
-                  </xsd:sequence>
-                </xsd:complexType>
-              </xsd:element>
-            <xsd:element name="PAPELFAMILIA" minOccurs="0" maxOccurs="1">
-                <xsd:annotation>
-                  <xsd:documentation> (APENAS MATERIA-PRIMA (ITEMPROD = 1) E PAPEL (TIPOITEMEC = 1)) Código da familia do do papel </xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                  <xsd:sequence>
-                    <xsd:element name="value">
-                      <xsd:simpleType>
-                        <xsd:restriction base="xsd:string">
-                          <xsd:minLength value="1"/>
-                          <xsd:maxLength value="12"/>
-                        </xsd:restriction>
-                      </xsd:simpleType>
-                    </xsd:element>
-                  </xsd:sequence>
-                </xsd:complexType>
-              </xsd:element>
-            <xsd:element name="PAPELGRAMATURA" minOccurs="0" maxOccurs="1">
-                <xsd:annotation>
-                  <xsd:documentation> (APENAS MATERIA-PRIMA (ITEMPROD = 1) E PAPEL (TIPOITEMEC = 1)) Gramatura do papel </xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                  <xsd:sequence>
-                    <xsd:element name="value">
-                      <xsd:simpleType>
-                        <xsd:restriction base="xsd:int">
-                        </xsd:restriction>
-                      </xsd:simpleType>
-                    </xsd:element>
-                  </xsd:sequence>
-                </xsd:complexType>
-              </xsd:element>
-            <xsd:element name="PAPELLARGURA" minOccurs="0" maxOccurs="1">
-                <xsd:annotation>
-                  <xsd:documentation> (APENAS MATERIA-PRIMA (ITEMPROD = 1) E PAPEL (TIPOITEMEC = 1)) Largura do papel </xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                  <xsd:sequence>
-                    <xsd:element name="value" default="0">
-                      <xsd:simpleType>
-                        <xsd:restriction base="xsd:decimal">
-                          <xsd:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
-                        </xsd:restriction>
-                      </xsd:simpleType>
-                    </xsd:element>
-                  </xsd:sequence>
-                </xsd:complexType>
-              </xsd:element>
-              <xsd:element name="PAPELALTURA" minOccurs="0" maxOccurs="1">
-                <xsd:annotation>
-                  <xsd:documentation> (APENAS MATERIA-PRIMA (ITEMPROD = 1) E PAPEL (TIPOITEMEC = 1)) Altura do papel </xsd:documentation>
-                </xsd:annotation>
-                <xsd:complexType>
-                  <xsd:sequence>
-                    <xsd:element name="value" default="0">
-                      <xsd:simpleType>
-                        <xsd:restriction base="xsd:decimal">
-                          <xsd:pattern value="0|0\.[0-9]{1,2}|[0-9]{0,12}(\.[0-9]{1,2})?" />
                         </xsd:restriction>
                       </xsd:simpleType>
                     </xsd:element>

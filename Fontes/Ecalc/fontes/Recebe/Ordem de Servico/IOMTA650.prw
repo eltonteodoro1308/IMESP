@@ -21,7 +21,7 @@ User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 	Local aErro    := Nil
 	Local cOrdSrv  := ''
 	Local aArea    := GetArea()
-	Local nOper    := ''
+	Local nOper    := 0
 	Local lExiste  := .F.
 	
 	Private	lMsErroAuto		:=	.F.
@@ -38,9 +38,7 @@ User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 		DBOrderNickname( 'XOS' )
 		
 		If lExiste := DbSeek( xFilial( 'SC2' ) + cOrdSrv )
-			
-			lExclui := ( oXML:XPathGetNodeValue( '/MIOMT650/SC2_FIELD/EXCLUI/value' ) == 'T' )
-			
+						
 			aAdd( aCpos, { 'C2_NUM'     , SC2->( C2_NUM    ), Nil } )
 			aAdd( aCpos, { 'C2_ITEM'    , SC2->( C2_ITEM   ), Nil } )
 			aAdd( aCpos, { 'C2_SEQUEN'  , SC2->( C2_SEQUEN ), Nil } )
