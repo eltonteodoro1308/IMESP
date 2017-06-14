@@ -167,6 +167,8 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 		aAdd( aMsg, '</value>' )
 		aAdd( aMsg, '</MENSAGEM>' )
 		
+		lMsErroAuto := .T.
+		
 	End If
 	
 	oFwEai:cReturnMsg := Retorno( aMsg )

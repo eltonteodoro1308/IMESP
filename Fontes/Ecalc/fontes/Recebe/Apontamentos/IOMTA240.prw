@@ -13,24 +13,22 @@ Função acionada pelo EAI que recebe xml com dados dos apontamentos.
 /*/
 User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 	
-	Local aMsg     := {}
 	Local oXml     := TXmlManager():New()
-	Local aCpos    := {}
-	Local nX       := 0
-	Local cOrdSrv  := ''
-	Local aArea    := {}
+	Local aAponts  := {}
+	Local aAux     := {}
 	Local aAtt     := {}
-	Local nOpc     := 3
-	Local cReg     := ''
-	Local cTipoMov := GetMv( 'IO_TMAPONT' )
-	Local cOP      := ''
+	local cReg     := ''
+	Local nOpc     := 0
+	Local aMsg     := {}
+	Local cOrdSrv  := ''
 	Local cCC      := ''
 	Local cDoc     := ''
 	Local cDataIni := ''
 	Local cHoraIni := ''
 	Local cDataFin := ''
 	Local cHoraFin := ''
-	Local lEstorna := .F.
+	Local nX       := ''
+	Local aErro    := {}
 	
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
@@ -40,114 +38,119 @@ User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 		
 		If oXml:DOMChildNode()
 			
-			BeginTran()
+			Do While .T.
+				
+				aAtt   := oXml:DOMGetAttArray()
+				
+				cReg := aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'Registro' } ) ][ 2 ]
+				nOpc := Val( aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'Operation' } ) ][ 2 ] )
+				
+				oXml:DOMChildNode()
 				
 				Do While .T.
 					
-					aAtt   := oXml:DOMGetAttArray()
-					
-					cReg := aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'Registro' } ) ][ 2 ]
-					nOpc := Val( aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'Operation' } ) ][ 2 ] )
-					
-					oXml:DOMChildNode()
-					
-					Do While .T.
+					If oXml:cName == 'D3_XOS
 						
-						If oXml:cName == 'D3_XOS'
-							
-							oXml:DOMChildNode()
-							
-							cOrdSrv := oXml:cText
-							
-							oXml:DOMParentNode()
-							
-						ElseIf oXml:cName == 'D3_CC'
-							
-							oXml:DOMChildNode()
-							
-							cCC := oXml:cText
-							
-							oXml:DOMParentNode()
-							
-						ElseIf oXml:cName == 'D3_DOC'
-							
-							oXml:DOMChildNode()
-							
-							cDoc := oXml:cText
-							
-							oXml:DOMParentNode()
-							
-						ElseIf oXml:cName == 'D3_DATAINI'
-							
-							oXml:DOMChildNode()
-							
-							cDataIni := oXml:cText
-							
-							oXml:DOMParentNode()
-							
-						ElseIf oXml:cName == 'D3_HORAINI'
-							
-							oXml:DOMChildNode()
-							
-							cHoraIni := oXml:cText
-							
-							oXml:DOMParentNode()
-							
-						ElseIf oXml:cName == 'D3_DATAFIN'
-							
-							oXml:DOMChildNode()
-							
-							cDataFin := oXml:cText
-							
-							oXml:DOMParentNode()
-							
-						ElseIf oXml:cName == 'D3_HORAFIN'
-							
-							oXml:DOMChildNode()
-							
-							cHoraFin := oXml:cText
-							
-							oXml:DOMParentNode()
-							
-						End If
+						oXml:DOMChildNode()
 						
-						If ! oXml:DOMNextNode()
-							
-							Exit
-							
-						End If
+						cOrdSrv :=  oXml:cText
 						
-					End Do
-					
-					oXml:DOMParentNode()
-					
-					aArea := GetArea()
-					
-					DbSelectArea( 'SC2' )
-					DBOrderNickname( 'XOS' )
-					
-					If DbSeek( xFilial( 'SC2' ) + cOrdSrv )
+						oXml:DOMParentNode()
 						
-						cOp    := SC2->( C2_NUM + C2_ITEM + C2_SEQUEN )
-						cLocal := SC2->C2_LOCAL
+						
+					ElseIf oXml:cName == 'D3_CC'
+						
+						oXml:DOMChildNode()
+						
+						cCC := oXml:cText
+						
+						oXml:DOMParentNode()
+						
+					ElseIf oXml:cName == 'D3_DOC'
+						
+						oXml:DOMChildNode()
+						
+						cDoc := oXml:cText
+						
+						oXml:DOMParentNode()
+						
+					ElseIf oXml:cName == 'D3_DATAINI'
+						
+						oXml:DOMChildNode()
+						
+						cDataIni := oXml:cText
+						
+						oXml:DOMParentNode()
+						
+					ElseIf oXml:cName == 'D3_HORAINI'
+						
+						oXml:DOMChildNode()
+						
+						cHoraIni := oXml:cText
+						
+						oXml:DOMParentNode()
+						
+					ElseIf oXml:cName == 'D3_DATAFIN'
+						
+						oXml:DOMChildNode()
+						
+						cDataFin := oXml:cText
+						
+						oXml:DOMParentNode()
+						
+					ElseIf oXml:cName == 'D3_HORAFIN'
+						
+						oXml:DOMChildNode()
+						
+						cHoraFin := oXml:cText
+						
+						oXml:DOMParentNode()
 						
 					End If
 					
-					RestArea( aArea )
+					If ! oXml:DOMNextNode()
+						
+						Exit
+						
+					End If
 					
+				End Do
+				
+				oXml:DOMParentNode()
+				
+				aAux := DaysList( cDataIni, cHoraIni, cDataFin, cHoraFin, cOrdSrv, cCC, cDoc )
+				
+				For nX := 1 To Len( aAux )
 					
+					aAdd( aAponts, { nOpc, cReg, aAux[ nX ] } )
 					
-					aAdd( aCpos, { 'D3_TM'      , cTipoMov                                            , Nil } )
-					aAdd( aCpos, { 'D3_QUANT'   , CalcHoras( cDataIni, cHoraIni, cDataFin, cHoraFin ) , Nil } )
-					aAdd( aCpos, { 'D3_OP'      , cOP                                                 , Nil } )
-					//aAdd( aCpos, { 'D3_LOCAL'   , cLocal                                              , Nil } )
-					aAdd( aCpos, { 'D3_EMISSAO' , Date()                                              , Nil } )
+				Next nX
+				
+				aSize( aAux, 0 )
+				
+				If ! oXml:DOMNextNode()
 					
-					MSExecAuto( { | X, Y | MATA250( X, Y ) }, aCpos, nOpc )
+					Exit
 					
-					aSize( aCpos, 0 )
+				End If
+				
+			End Do
+			
+			BeginTran()
+				
+				For nX := 1 To Len( aAponts )
 					
-					aAdd( aMsg, '<SD3_FIELD registro="' + cReg + '">' )
+					If aAponts[ nX, 1 ] == 3
+						
+						MSExecAuto( { | X, Y | MATA240( X, Y ) }, aAponts[ nX, 3 ] , 3 )
+						
+					Else
+						
+						//EstornaMov( cDoc )
+						
+					End If
+					
+					aAdd( aMsg, '<SD3_FIELD Registro="' + aAponts[ nX, 2 ] + '">' )
 					
 					If lMsErroAuto
 						
@@ -190,13 +193,7 @@ User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 						
 					End IF
 					
-					If ! oXml:DOMNextNode()
-						
-						Exit
-						
-					End If
-					
-				End Do
+				Next nX
 				
 			EndTran()
 			
@@ -212,6 +209,8 @@ User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 		aAdd( aMsg, 'Erro no Parse do XML: ' + oXml:LastError() )
 		aAdd( aMsg, '</value>' )
 		aAdd( aMsg, '</MENSAGEM>' )
+		
+		lMsErroAuto := .T.
 		
 	End If
 	
@@ -248,18 +247,43 @@ Static Function Retorno( aMsg )
 	
 Return cRet
 
-Static Function DaysList( cDataIni, cHoraIni, cDataFin, cHoraFin )
+Static Function DaysList( cDataIni, cHoraIni, cDataFin, cHoraFin, cOrdSrv, cCC, cDoc )
 	
 	Local aRet     := {}
 	Local nX       := 0
 	Local cDtAux   := ''
-	local nDiasDif := DateDiffDay( StoD( cDataIni ), StoD( cDataFin ) ) + 1
+	Local cTipoMov := GetMv( 'IO_TMAPONT' )
+	Local cOp      := ''
+	Local nDiasDif := DateDiffDay( StoD( cDataIni ), StoD( cDataFin ) ) + 1
+	Local aArea    := {}
+	Local nQuant   := 0
+	
+	aArea := GetArea()
+	
+	DbSelectArea( 'SC2' )
+	DBOrderNickname( 'XOS' )
+	
+	If DbSeek( xFilial( 'SC2' ) + cOrdSrv )
+		
+		cOp    := SC2->( C2_NUM + C2_ITEM + C2_SEQUEN )
+		
+	End If
+	
+	RestArea( aArea )
 	
 	For nX := 1 To nDiasDif
 		
 		If cDataIni == cDataFin
 			
-			aAdd( aRet, { cDataIni, CalcHoras( cDataIni, cHoraIni, cDataFin, cHoraFin ) } )
+			nQuant := CalcHoras( cDataIni, cHoraIni, cDataFin, cHoraFin )
+			
+			aAdd( aRet, {;
+				{ 'D3_TM'      , cTipoMov         , Nil },;
+				{ 'D3_COD'     , 'MOD' + cCC      , Nil },;
+				{ 'D3_QUANT'   , nQuant           , Nil },;
+				{ 'D3_OP'      , cOP              , Nil },;
+				{ 'D3_DOC'     , cDoc             , Nil },;
+				{ 'D3_EMISSAO' , StoD( cDataIni ) , Nil } } )
 			
 			Return aRet
 			
@@ -267,17 +291,41 @@ Static Function DaysList( cDataIni, cHoraIni, cDataFin, cHoraFin )
 			
 			If nX == 1
 				
-				aAdd( aRet, { cDataIni, CalcHoras( cDataIni, cHoraIni, cDataIni, '23:59' ) } )
+				nQuant := CalcHoras( cDataIni, cHoraIni, cDataIni, '23:59' )
+				
+				aAdd( aRet, {;
+					{ 'D3_TM'      , cTipoMov         , Nil },;
+					{ 'D3_COD'     , 'MOD' + cCC      , Nil },;
+					{ 'D3_QUANT'   , nQuant           , Nil },;
+					{ 'D3_OP'      , cOP              , Nil },;
+					{ 'D3_DOC'     , cDoc             , Nil },;
+					{ 'D3_EMISSAO' , Stod( cDataIni ) , Nil } } )
 				
 				cDtAux := DtoS( DaySum( StoD( cDataIni ), nX ) )
 				
 			ElseIf nX == nDiasDif
 				
-				aAdd( aRet, { cDataFin, CalcHoras( cDataFin, '00:00', cDataFin, cHoraFin ) } )
+				nQuant := CalcHoras( cDataFin, '00:00', cDataFin, cHoraFin )
+				
+				aAdd( aRet, {;
+					{ 'D3_TM'      , cTipoMov         , Nil },;
+					{ 'D3_COD'     , 'MOD' + cCC      , Nil },;
+					{ 'D3_QUANT'   , nQuant           , Nil },;
+					{ 'D3_OP'      , cOP              , Nil },;
+					{ 'D3_DOC'     , cDoc             , Nil },;
+					{ 'D3_EMISSAO' , StoD( cDataFin ) , Nil } } )
 				
 			Else
 				
-				aAdd( aRet, { cDtAux, CalcHoras( cDtAux, '00:00', cDtAux, '23:59' ) } )
+				nQuant := CalcHoras( cDtAux, '00:00', cDtAux, '23:59' )
+				
+				aAdd( aRet, {;
+					{ 'D3_TM'      , cTipoMov       , Nil },;
+					{ 'D3_COD'     , 'MOD' + cCC    , Nil },;
+					{ 'D3_QUANT'   , nQuant         , Nil },;
+					{ 'D3_OP'      , cOP            , Nil },;
+					{ 'D3_DOC'     , cDoc           , Nil },;
+					{ 'D3_EMISSAO' , StoD( cDtAux ) , Nil } } )
 				
 				cDtAux := DtoS( DaySum( StoD( cDataIni ), nX ) )
 				
@@ -299,16 +347,15 @@ Static Function CalcHoras( cDataIni, cHoraIni, cDataFin, cHoraFin )
 	
 Return nRet
 
-user function TMTA240()
+static function EstornaMov( cDoc )
 	
-	Local lMsErroAuto := .F.
 	Local aVetor      := {}
 	Local nX          := 0
 	
 	DbSelectArea( 'SD3' )
 	DbSetOrder( 2 )
 	
-	If DbSeek( xFilial( 'SD3' ) + 'DOC001')
+	If DbSeek( xFilial( 'SD3' ) + cDoc )
 		
 		For nX := 1 To FCount()
 			

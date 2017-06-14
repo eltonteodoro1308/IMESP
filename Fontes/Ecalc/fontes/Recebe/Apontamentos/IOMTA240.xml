@@ -2,7 +2,8 @@
 	<GlobalProduct>PROTHEUS</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
 	<GlobalDocumentFunctionCode>U_IOMTA240</GlobalDocumentFunctionCode>
-	<GlobalDocumentFunctionDescription>Apontamnetos</GlobalDocumentFunctionDescription>
+	<GlobalDocumentFunctionDescription>Apontamnetos
+	</GlobalDocumentFunctionDescription>
 	<DocVersion>1.00</DocVersion>
 	<DocDateTime>2017-06-12T18:02:10Z</DocDateTime>
 	<DocIdentifier>6529CA80-F461-4162-BE7B-E20932E7A0BC 	</DocIdentifier>
@@ -20,25 +21,25 @@
 				<MIOMT240>
 					<SD3_FIELD Operation="3">
 						<D3_XOS>
-							<value>value</value>
+							<value>046.998/001</value>
 						</D3_XOS>
 						<D3_CC>
-							<value>value</value>
+							<value>021318</value>
 						</D3_CC>
 						<D3_DOC>
-							<value>value</value>
+							<value>000001</value>
 						</D3_DOC>
 						<D3_DATAINI>
-							<value>value</value>
+							<value>20170601</value>
 						</D3_DATAINI>
 						<D3_HORAINI>
-							<value>value</value>
+							<value>08:00</value>
 						</D3_HORAINI>
 						<D3_DATAFIN>
-							<value>value</value>
+							<value>20170605</value>
 						</D3_DATAFIN>
 						<D3_HORAFIN>
-							<value>value</value>
+							<value>18:00</value>
 						</D3_HORAFIN>
 					</SD3_FIELD>
 				</MIOMT240>
