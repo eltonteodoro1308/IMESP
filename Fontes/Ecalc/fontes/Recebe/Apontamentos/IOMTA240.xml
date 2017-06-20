@@ -19,7 +19,7 @@
 			<FunctionCode>U_IOMTA240</FunctionCode>
 			<Content>
 				<MIOMT240>
-					<SD3_FIELD Operation="3">
+					<SD3_FIELD Operation="3" Registro="021318">
 						<D3_XOS>
 							<value>046.998/001</value>
 						</D3_XOS>
