@@ -563,10 +563,10 @@
 	<GlobalDocumentFunctionCode>IOMTA922</GlobalDocumentFunctionCode>
 	<GlobalDocumentFunctionDescription>Espécies de Publicações</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2017-05-05T00:00:00Z</DocDateTime>
+	<DocDateTime>2017-06-20T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	233126CE-B168-4BF6-88DF-2172423182A6	
+	F5B4F5CC-DAB3-4594-B46A-B9FDD8236BE3
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -579,17 +579,17 @@
 			<Version>1.000</Version>
 			<Identifier>
 			
-			233126CE-B168-4BF6-88DF-2172423182A6
+			
 			
 			</Identifier>
-			<FunctionCode>FWFORMEAI.IOMTA922</FunctionCode>
+			<FunctionCode>U_IOMTA922</FunctionCode>
 			<Content>
-				<MIOMTA922 Operation="3">
-					<AHH_FIELD modeltype="FIELDS">
-						<AHH_CODELE order="1">
+				<MIOMTA922>
+					<AHH_FIELD Operation="3" Registro="001">
+						<AHH_CODELE>
 							<value>01</value>
 						</AHH_CODELE>
-						<AHH_CODPUB order="2">
+						<AHH_CODPUB>
 							<value>00003</value>
 						</AHH_CODPUB>
 					</AHH_FIELD>
