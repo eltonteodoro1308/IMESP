@@ -13,25 +13,37 @@ Função acionada pelo EAI que recebe xml com dados dos apontamentos.
 /*/
 User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 	
-	Local aMsg    := {}
-	Local oXml    := TXmlManager():New()
-	Local aCpos   := {}
-	Local nX      := 0
-	Local cOrdSrv := ''
-	Local aArea   := {}
+	Local aMsg     := {}
+	Local oXml     := TXmlManager():New()
+	Local aCpos    := {}
+	Local nX       := 0
+	Local cOrdSrv  := ''
+	Local aArea    := {}
 	Local aAtt     := {}
 	Local nOpc     := 3
 	Local cReg     := ''
-	Local cTipoMov := GetMv( 'IO_TMAPONT' )
+	Local cTipoMov := ''
 	Local cCC      := ''
 	Local cDoc     := ''
 	Local cDataIni := ''
 	Local cHoraIni := ''
 	Local cDataFin := ''
 	Local cHoraFin := ''
-	Local nQuant   := 0
+	Local cLocal   := ''
+	LocaL nQuant   := 0
+	Local cCod     := ''
 	Local cOP      := ''
 	Local dEmissao := CtoD('')
+	
+	If cParams == 'APONT'
+		
+		cTipoMov := GetMv( 'IO_TMAPONT' )
+		
+	ElseIf cParams == 'REQUIS'
+		
+		cTipoMov := GetMv( 'IO_TMREQUI' )
+		
+	End If
 	
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
@@ -111,6 +123,30 @@ User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 							
 							oXml:DOMParentNode()
 							
+						ElseIf oXml:cName == 'D3_QUANT'
+							
+							oXml:DOMChildNode()
+							
+							nQuant := Val( oXml:cText )
+							
+							oXml:DOMParentNode()
+							
+						ElseIf oXml:cName == 'D3_LOCAL'
+							
+							oXml:DOMChildNode()
+							
+							cLocal := oXml:cText
+							
+							oXml:DOMParentNode()
+							
+						ElseIf oXml:cName == 'D3_COD'
+							
+							oXml:DOMChildNode()
+							
+							cCod := oXml:cText
+							
+							oXml:DOMParentNode()
+							
 						End If
 						
 						If ! oXml:DOMNextNode()
@@ -159,23 +195,40 @@ User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 						
 					End If
 					
-					nQuant := CalcHoras( cDataIni, cHoraIni, cDataFin, cHoraFin )
-					
-					dEmissao := StoD( cDataIni )
-					
-					If cHoraIni < '06:01:00'
+					If cParams == 'APONT'
 						
-						dEmissao := dEmissao - 1
+						cCod := 'MOD' + cCC
+						
+						nQuant := CalcHoras( cDataIni, cHoraIni, cDataFin, cHoraFin )
+						
+						dEmissao := StoD( cDataIni )
+						
+						If cHoraIni < '06:01:00'
+							
+							dEmissao := dEmissao - 1
+							
+						End If
+						
+					ElseIf cParams == 'REQUIS'
+						
+						dEmissao := Date()
 						
 					End If
 					
-					aAdd( aCpos, { 'D3_TM'      , cTipoMov    , Nil } )
-					aAdd( aCpos, { 'D3_QUANT'   , nQuant      , Nil } )
-					aAdd( aCpos, { 'D3_OP'      , cOP         , Nil } )
-					aAdd( aCpos, { 'D3_CC'      , cCC         , Nil } )
-					aAdd( aCpos, { 'D3_COD'     , 'MOD' + cCC , Nil } )
-					aAdd( aCpos, { 'D3_DOC'     , cDoc        , Nil } )
-					aAdd( aCpos, { 'D3_EMISSAO' , dEmissao    , Nil } )
+					aAdd( aCpos, { 'D3_TM'      , cTipoMov , Nil } )
+					aAdd( aCpos, { 'D3_QUANT'   , nQuant   , Nil } )
+					aAdd( aCpos, { 'D3_OP'      , cOP      , Nil } )
+					aAdd( aCpos, { 'D3_CC'      , cCC      , Nil } )
+					aAdd( aCpos, { 'D3_COD'     , cCod     , Nil } )
+					
+					If cParams == 'REQUIS'
+						
+						aAdd( aCpos, { 'D3_LOCAL'   , cLocal   , Nil } )
+						
+					End If
+					
+					aAdd( aCpos, { 'D3_DOC'     , cDoc     , Nil } )
+					aAdd( aCpos, { 'D3_EMISSAO' , dEmissao , Nil } )
 					
 					cOp := ''
 					
@@ -269,19 +322,8 @@ User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 	
 	oFwEai:cReturnMsg := Retorno( aMsg )
 	
-	//	aSize( aMsg, 0 )
-	//
-	//	aAdd( aMsg, '<SD3_FIELD>'       )
-	//	aAdd( aMsg, '<SUCESSO>'        )
-	//	aAdd( aMsg, '<value>' + If(  lMsErroAuto, 'F', 'T' ) + '</value>' )
-	//	aAdd( aMsg, '</SUCESSO>'        )
-	//	aAdd( aMsg, '<MENSAGEM>' )
-	//	aAdd( aMsg, '<value>' )
-	//	aAdd( aMsg, '</value>' )
-	//	aAdd( aMsg, '</MENSAGEM>' )
-	//	aAdd( aMsg, '</SD3_FIELD>' )
 	
-Return Retorno( aMsg )
+Return oFwEai:cReturnMsg
 
 Static Function Retorno( aMsg )
 	
@@ -321,13 +363,13 @@ static function EstornaMov( cDoc )
 	DbSetOrder( 2 )
 	
 	If DbSeek( xFilial( 'SD3' ) + cDoc )
-	
+		
 		RecLock( 'SD3', .F.)
 		
 		SD3->D3_OP = 'X'
 		
-		MsUnlock() 
-			
+		MsUnlock()
+		
 		For nX := 1 To FCount()
 			
 			aAdd( aVetor, { FieldName( nX ), SD3->&( FieldName( nX ) ), Nil } )

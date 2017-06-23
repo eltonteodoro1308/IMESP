@@ -13,16 +13,19 @@ Função acionada pelo EAI que recebe xml com dados do pedido venda e faz sua incl
 /*/
 User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 	
-	Local cMsg    := ''
-	Local oXml    := TXmlManager():New()
-	Local aCabec  := {}
-	Local aItem   := {}
-	Local aItens  := {}
-	Local aChild  := Nil
-	Local nX      := 0
-	Local aErro   := Nil
-	Local cSucesso:= 'T'
-	Local nItem   := 1
+	Local cMsg     := ''
+	Local oXml     := TXmlManager():New()
+	Local aCabec   := {}
+	Local aItem    := {}
+	Local aItens   := {}
+	Local aChild   := Nil
+	Local nX       := 0
+	Local cSucesso := 'T'
+	Local nItem    := 1
+	Local cVendaId := ''
+	Local aArea    := GetArea()
+	Local lExiste  := .F.
+	Local nOper    := 0
 	
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
@@ -30,13 +33,33 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 	
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
 		
-		aAdd( aCabec, { 'C5_TIPO'     , 'N'                                                                          , Nil } )
-		aAdd( aCabec, { 'C5_CLIENTE'  , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_CLIENTE/value' ) , Nil } )
-		//		aAdd( aCabec, { 'C5_LOJACLI'  , '01'                                                                         , Nil } )
-		//		aAdd( aCabec, { 'C5_TIPOCLI'  , 'F'                                                                          , Nil } )
-		aAdd( aCabec, { 'C5_CONDPAG'  , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_CONDPAG/value' ) , Nil } )
-		aAdd( aCabec, { 'C5_TRANSP'   , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_TRANSP/value'  ) , Nil } )
-		aAdd( aCabec, { 'C5_XVENDAID' , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_NUM/value'     ) , Nil } )
+		nOper := Val( oXml:XPathGetAtt( '/MIOMT410', 'Operation' ) )
+		
+		cVendaId := oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_NUM/value' )
+		
+		DbSelectArea( 'SC5' )
+		DBOrderNickname( 'XVENDID' )
+		
+		If DbSeek( xFilial( 'SC5' ) + cVendaId )
+			
+			aAdd( aCabec, { 'C5_NUM', SC5->C5_NUM, Nil } )
+			
+			lExiste := .T.
+			
+		End If
+		
+		RestArea( aArea )
+		
+		aAdd( aCabec, { 'C5_TIPO'    , 'N'                                                                     , Nil } )
+		aAdd( aCabec, { 'C5_CLIENTE' , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_CLIENTE/value'      )   , Nil } )
+		aAdd( aCabec, { 'C5_CONDPAG' , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_CONDPAG/value'      )   , Nil } )
+		aAdd( aCabec, { 'C5_TRANSP'  , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_TRANSP/value'       )   , Nil } )
+		aAdd( aCabec, { 'C5_XVENDID' , cVendaId                                                                , Nil } )
+		aAdd( aCabec, { 'C5_PESOL'   , Val( oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_PESOL/value'   ) ) , Nil } )
+		aAdd( aCabec, { 'C5_PBRUTO'  , Val( oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_PBRUTO/value'  ) ) , Nil } )
+		aAdd( aCabec, { 'C5_VOLUME1' , Val( oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_VOLUME1/value' ) ) , Nil } )
+		aAdd( aCabec, { 'C5_ESPECI1' , oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_ESPECI1/value'      )   , Nil } )
+		aAdd( aCabec, { 'C5_XOBSNF'  , StrTran( oXML:XPathGetNodeValue( '/MIOMT410/SC5_FIELD/C5_XOBSNF/value' ), '/n', Chr(13)+ Chr(10) ), Nil } )
 		
 		oXml:DOMChildNode()
 		oXml:DOMChildNode()
@@ -90,21 +113,19 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 			
 		End Do
 		
-		MSExecAuto( { | X, Y, Z | MATA410( X, Y, Z ) }, aCabec, aItens, 3 )
+		If lExiste
+			
+			MSExecAuto( { | X, Y, Z | MATA410( X, Y, Z ) }, aCabec, aItens, 5 )
+			
+			MsErroAuto( cSucesso, cMsg )
+			
+		End If
 		
-		If lMsErroAuto
+		If ! lMsErroAuto .And. nOper # 5
 			
-			cSucesso := 'F'
+			MSExecAuto( { | X, Y, Z | MATA410( X, Y, Z ) }, aCabec, aItens, 3 )
 			
-			aErro := aClone( GetAutoGRLog() )
-			
-			cMsg += Chr(13) + Chr(10)
-			
-			For nX := 1 To Len( aErro )
-				
-				cMsg += _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)
-				
-			Next nX
+			MsErroAuto( cSucesso, cMsg )
 			
 		End If
 		
@@ -135,3 +156,26 @@ Static Function Retorno( cSucesso, cMsg, oFwEai )
 	oFwEai:cReturnMsg := cRet
 	
 Return cRet
+
+Static Function MsErroAuto( cSucesso, cMsg )
+	
+	Local nX    := 0
+	Local aErro := {}
+	
+	If lMsErroAuto
+		
+		cSucesso := 'F'
+		
+		aErro := aClone( GetAutoGRLog() )
+		
+		cMsg += Chr(13) + Chr(10)
+		
+		For nX := 1 To Len( aErro )
+			
+			cMsg += _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)
+			
+		Next nX
+		
+	End If
+	
+Return

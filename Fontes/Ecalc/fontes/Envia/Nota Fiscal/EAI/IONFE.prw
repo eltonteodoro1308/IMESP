@@ -1,5 +1,5 @@
 #INCLUDE 'TOTVS.CH'
-#INCLUDE 'FWMVCDEF.CH
+#INCLUDE 'FWMVCDEF.CH'
 
 user function IONFE( cStatus )
 
