@@ -9,7 +9,6 @@ User Function IOMTA922( cXml, cError, cWarning, cParams, oFwEai )
 	Local aCpos := {}
 	Local aErro := {}
 	Local cErro := ''
-	Local cMsg  := ''
 
 	Private lMsErroAuto    := .F.
 	Private lMsHelpAuto	   := .T.
@@ -31,7 +30,7 @@ User Function IOMTA922( cXml, cError, cWarning, cParams, oFwEai )
 
 				aCpos := MontaCpos( oXml )
 
-				ExecAuto( aCpos, @cMsg )
+				ExecAuto( aCpos )
 
 				If lMsErroAuto
 
@@ -39,7 +38,7 @@ User Function IOMTA922( cXml, cError, cWarning, cParams, oFwEai )
 
 					For nX := 1 To Len( aErro )
 
-						cErro += aErro[ nX ] + Chr( 13 ) + Chr( 10 )
+						cErro += '<line>' + aErro[ nX ] + '</line>'
 
 					Next nX
 
@@ -51,9 +50,7 @@ User Function IOMTA922( cXml, cError, cWarning, cParams, oFwEai )
 
 				Else
 
-					BuildMsg( @aMsg, 'T', cMsg, cReg )
-
-					cMsg := ''
+					BuildMsg( @aMsg, 'T', '', cReg )
 
 				End If
 
@@ -169,18 +166,14 @@ Static Function Retorno( aMsg )
 Return cRet
 
 
-static function ExecAuto( aCpos, cMsg )
+static function ExecAuto( aCpos )
 
 	Local nX        := 0
 	Local oModel    := ModelDef()
 	Local aErro     := {}
 	Local lSetValue := .T.
-	Local lCodPubOk := .T.
 	Local xAux      := Nil
 	Local cType     := ''
-	Local aArea     := {}
-	Local aAreaSX5  := {}
-	Local aAreaAHG  := {}
 
 	oModel:SetOperation( 3 )
 
@@ -208,38 +201,6 @@ static function ExecAuto( aCpos, cMsg )
 
 		End If
 
-		aArea := GetArea()
-
-		If aCpos[ nX, 1 ] == 'AHH_CODELE'
-
-			aAreaSX5 := SX5->( GetArea() )
-
-			xAux := AllTrim( Posicione( 'SX5', 2, xFilial( 'SX5' ) + 'LN' + xAux, 'X5_CHAVE' ) )
-
-			SX5->( RestArea( aAreaSX5 ) )
-
-		ElseIf aCpos[ nX, 1 ] == 'AHH_CODPUB'
-
-			aAreaAHG := AHG->( GetArea() )
-
-			xAux := AllTrim( Posicione( 'AHG', 2, xFilial( 'AHG' ) + xAux, 'AHG_CODPUB' ) )
-
-			AHG->( RestArea( aAreaAHG ) )
-
-			If Empty( xAux )
-
-				lCodPubOk := .F.
-
-				cMsg := 'Código da Publicação "' + aCpos[ nX, 2 ] + '" não localizado.'
-
-				Exit
-
-			End If
-
-		End If
-
-		RestArea( aArea )
-
 		If ! oModel:SetValue( 'AHH_FIELD', aCpos[ nX, 1 ], xAux )
 
 			aErro := aClone( oModel:GetErrorMessage() )
@@ -252,7 +213,7 @@ static function ExecAuto( aCpos, cMsg )
 
 	Next nX
 
-	If lSetValue .And. lCodPubOk
+	If lSetValue
 
 		If ! ( oModel:VldData() .And. oModel:CommitData() )
 
@@ -260,19 +221,19 @@ static function ExecAuto( aCpos, cMsg )
 
 		End If
 
-		If ! Empty( aErro )
+	End If
 
-			AutoGrLog( "Id do formulário de origem:" + ' [' + AllToChar( aErro[1] ) + ']' )
-			AutoGrLog( "Id do campo de origem: "     + ' [' + AllToChar( aErro[2] ) + ']' )
-			AutoGrLog( "Id do formulário de erro: "  + ' [' + AllToChar( aErro[3] ) + ']' )
-			AutoGrLog( "Id do campo de erro: "       + ' [' + AllToChar( aErro[4] ) + ']' )
-			AutoGrLog( "Id do erro: "                + ' [' + AllToChar( aErro[5] ) + ']' )
-			AutoGrLog( "Mensagem do erro: "          + ' [' + AllToChar( aErro[6] ) + ']' )
-			AutoGrLog( "Mensagem da solução: "       + ' [' + AllToChar( aErro[7] ) + ']' )
-			AutoGrLog( "Valor atribuído: "           + ' [' + AllToChar( aErro[8] ) + ']' )
-			AutoGrLog( "Valor anterior: "            + ' [' + AllToChar( aErro[9] ) + ']' )
+	If ! Empty( aErro )
 
-		End If
+		AutoGrLog( "Id do formulário de origem:" + ' [' + AllToChar( aErro[1] ) + ']' )
+		AutoGrLog( "Id do campo de origem: "     + ' [' + AllToChar( aErro[2] ) + ']' )
+		AutoGrLog( "Id do formulário de erro: "  + ' [' + AllToChar( aErro[3] ) + ']' )
+		AutoGrLog( "Id do campo de erro: "       + ' [' + AllToChar( aErro[4] ) + ']' )
+		AutoGrLog( "Id do erro: "                + ' [' + AllToChar( aErro[5] ) + ']' )
+		AutoGrLog( "Mensagem do erro: "          + ' [' + AllToChar( aErro[6] ) + ']' )
+		AutoGrLog( "Mensagem da solução: "       + ' [' + AllToChar( aErro[7] ) + ']' )
+		AutoGrLog( "Valor atribuído: "           + ' [' + AllToChar( aErro[8] ) + ']' )
+		AutoGrLog( "Valor anterior: "            + ' [' + AllToChar( aErro[9] ) + ']' )
 
 	End If
 

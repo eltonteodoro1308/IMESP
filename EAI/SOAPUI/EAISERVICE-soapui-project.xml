@@ -566,7 +566,7 @@
 	<DocDateTime>2017-06-20T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	A448713B-22C5-4B82-81A2-0E623DE41014
+	F5B4F5CC-DAB3-4594-B46A-B9FDD8236BE3
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -577,32 +577,21 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier/>
+			<Identifier>
+			
+			
+			
+			</Identifier>
 			<FunctionCode>U_IOMTA922</FunctionCode>
 			<Content>
 				<MIOMTA922>
-					<AHH_FIELD Registro="001">
-						<AHH_CODPUB order="1">
-							<value>Guia de Jardinagem</value>
-						</AHH_CODPUB>
-						<AHH_CODELE order="1">
-							<value>Capa</value>
+					<AHH_FIELD Operation="3" Registro="001">
+						<AHH_CODELE>
+							<value>01</value>
 						</AHH_CODELE>
-						<AHH_CODPAP order="1">
-							<value>01.0.114.018</value>
-						</AHH_CODPAP>
-						<AHH_QTDEP order="1">
-							<value>1690</value>
-						</AHH_QTDEP>
-						<AHH_LARGUR  order="1">
-							<value>96.00</value>
-						</AHH_LARGUR >
-						<AHH_ALTURA  order="1">
-							<value>66.00</value>
-						</AHH_ALTURA >
-						<AHH_SOBRA order="1">
-							<value>112.46</value>
-						</AHH_SOBRA>
+						<AHH_CODPUB>
+							<value>00003</value>
+						</AHH_CODPUB>
 					</AHH_FIELD>
 				</MIOMTA922>
 			</Content>
