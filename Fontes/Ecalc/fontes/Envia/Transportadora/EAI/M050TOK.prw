@@ -79,7 +79,7 @@ Static Function Struct()
 
 	oStruct:AddField('ID'                 , 'ID'                 , 'ID'                 , 'C', 020, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('NOME'               , 'NOME'               , 'NOME'               , 'C', 050, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('RAZAOSOCIAL'        , 'RAZAOSOCIAL'        , 'RAZAOSOCIAL'        , 'C', 060, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('RAZAOSOCIAL'        , 'RAZAOSOCIAL'        , 'RAZAOSOCIAL'        , 'C', 100, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ATIVO'              , 'ATIVO'              , 'ATIVO'              , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('CPF'                , 'CPF'                , 'CPF'                , 'C', 019, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('CNPJ'               , 'CNPJ'               , 'CNPJ'               , 'C', 019, 0, , , {}, .F., , .F., .F., .F., , )

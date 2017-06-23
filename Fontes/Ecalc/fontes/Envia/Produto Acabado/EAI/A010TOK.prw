@@ -55,16 +55,16 @@ user function A010TOK()
 
 		oModel:Activate()
 
-		oModel:Setvalue( 'ITEMESTOQUE' , 'ID'             , M->B1_COD )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'NOME'           , M->B1_DESC )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'DESCRICAO'      , M->B1_DESC )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'ATIVO'          , If( M->B1_MSBLQL = '1', 'F', 'T' ) )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'ITEMPROD'       , cItemProd )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'TIPOITEMEC'     , cTipoItem )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'PAPELFAMILIA'   , AllTrim( M->B1_XECFML ) )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'PAPELGRAMATURA' , AllTrim( Str( M->B1_XECGRM ) ) )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'PAPELLARGURA'   , AllTrim( Str( M->B1_XECLRG ) ) )
-		oModel:Setvalue( 'ITEMESTOQUE' , 'PAPELALTURA'    , AllTrim( Str( M->B1_XECALT ) ) )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'ID'             , M->B1_COD )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'NOME'           , M->B1_DESC )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'DESCRICAO'      , M->B1_DESC )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'ATIVO'          , If( M->B1_MSBLQL = '1', 'F', 'T' ) )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'ITEMPROD'       , cItemProd )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'TIPOITEMEC'     , cTipoItem )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'PAPELFAMILIA'   , AllTrim( M->B1_XECFML ) )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'PAPELGRAMATURA' , AllTrim( Str( M->B1_XECGRM ) ) )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'PAPELLARGURA'   , AllTrim( Str( M->B1_XECLRG ) ) )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'PAPELALTURA'    , AllTrim( Str( M->B1_XECALT ) ) )
 
 		If oModel:VldData()
 
@@ -106,7 +106,7 @@ Static Function Struct()
 	oStruct:AddTable('SB1_ECALC',,'SB1_ECALC')
 
 	oStruct:AddField('ID'             , 'ID'             , 'ID'             , 'C', 020, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME'           , 'NOME'           , 'NOME'           , 'C', 060, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME'           , 'NOME'           , 'NOME'           , 'C', 120, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('DESCRICAO'      , 'DESCRICAO'      , 'DESCRICAO'      , 'C', 120, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ATIVO'          , 'ATIVO'          , 'ATIVO'          , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ITEMPROD'       , 'ITEMPROD'       , 'ITEMPROD'       , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
@@ -151,7 +151,7 @@ Static Function EaiEnvio( oModel, cPrg )
 
 			ApMsgStop ( oXmlResp:XPathGetNodeValue( '/EcalcIntegraEAIResponse/MENSAGEM' ), 'Atenção' )
 
-			cRet := .F.
+			lRet := .F.
 
 		End If
 
@@ -159,4 +159,4 @@ Static Function EaiEnvio( oModel, cPrg )
 
 	oFwEai:DeActivate()
 
-return cRet
+return lRet
