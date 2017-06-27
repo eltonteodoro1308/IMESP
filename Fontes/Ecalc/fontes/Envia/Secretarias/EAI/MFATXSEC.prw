@@ -16,7 +16,7 @@ user function MFATXSEC()
 		oModel:Activate()
 
 		oModel:LoadValue( 'SECRETARIA', 'ID'          , Z01->Z01_COD )
-		oModel:LoadValue( 'SECRETARIA', 'DESCRICAO'   , Z01->Z01_DESC )
+		oModel:LoadValue( 'SECRETARIA', 'NOME'        , Z01->Z01_DESC )
 		oModel:LoadValue( 'SECRETARIA', 'RAZAOSOCIAL' , Z01->Z01_DESC )
 		oModel:LoadValue( 'SECRETARIA', 'ATIVO'       , If( Z01->Z01_ATIVO = '1', 'T', 'F' ) )
 
@@ -69,7 +69,7 @@ Static Function Struct()
 	oStruct:AddTable('Z01_ECALC',,'Z01_ECALC')
 
 	oStruct:AddField('ID'          , 'ID'          , 'ID'          , 'C', 020, 0, , , {}, .F., , .F., .F., .F., , )
-	oStruct:AddField('NOME'        , 'DESCRICAO'   , 'DESCRICAO'   , 'C', 040, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('NOME'        , 'NOME'        , 'NOME'        , 'C', 040, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'RAZAOSOCIAL' , 'C', 120, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('ATIVO'       , 'ATIVO'       , 'ATIVO'       , 'C', 001, 0, , , {}, .F., , .F., .F., .F., , )
 

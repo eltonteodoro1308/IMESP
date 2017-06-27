@@ -117,7 +117,7 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 			
 			MSExecAuto( { | X, Y, Z | MATA410( X, Y, Z ) }, aCabec, aItens, 5 )
 			
-			MsErroAuto( cSucesso, cMsg )
+			MsErroAuto( @cSucesso, @cMsg )
 			
 		End If
 		
@@ -125,7 +125,7 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 			
 			MSExecAuto( { | X, Y, Z | MATA410( X, Y, Z ) }, aCabec, aItens, 3 )
 			
-			MsErroAuto( cSucesso, cMsg )
+			MsErroAuto( @cSucesso, @cMsg )
 			
 		End If
 		

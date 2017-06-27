@@ -62,8 +62,10 @@ User Function IOMTA380( cXml, cError, cWarning, cParams, oFwEai )
 		
 		RestArea( aArea )
 		
+		cLocal := Posicione( 'SB1', 1, xFilial( 'SB1' ) + cCod, 'B1_LOCPAD' )
+		ConOut( 'Local: ' + cLocal )
 		aAdd( aCpos, { 'D4_COD'     ,      cCod                                                               , Nil } )
-		//aAdd( aCpos, { 'D4_LOCAL'   ,      cLocal                                                             , Nil } )
+		aAdd( aCpos, { 'D4_LOCAL'   ,      cLocal                                                             , Nil } )
 		aAdd( aCpos, { 'D4_OP'      ,      cOp                                                                , Nil } )
 		aAdd( aCpos, { 'D4_QTDEORI' , Val( oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_QTDEORI/value' ) ) , Nil } )
 		aAdd( aCpos, { 'D4_QUANT'   , Val( oXML:XPathGetNodeValue( '/MIOMT380/SD4_FIELD/D4_QUANT/value'   ) ) , Nil } )
