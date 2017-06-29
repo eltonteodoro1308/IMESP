@@ -2,26 +2,28 @@
 #INCLUDE 'FWMVCDEF.CH'
 
 User Function M050TOK()
-
-	Local oModel  := ModelDef()
-	Local lInclui := INCLUI
-	Local cCPF    := ''
-	Local cCGC    := ''
-
+	
+	Local oModel      := ModelDef()
+	Local lInclui     := INCLUI
+	Local cCPF        := ''
+	Local cCGC        := ''
+	Local lRet        := .T.
+	Local cHoraInicio := TIME()
+	
 	If M->A4_XPESSO = 'J'
-
+		
 		cCGC := M->A4_CGC
-
+		
 	Else
-
+		
 		cCPF := M->A4_CGC
-
+		
 	End If
-
+	
 	oModel:SetOperation( 3 )
-
+	
 	oModel:Activate()
-
+	
 	oModel:LoadValue( 'TRANSPORTADORA', 'ID'                 , M->A4_COD    )
 	oModel:LoadValue( 'TRANSPORTADORA', 'NOME'               , M->A4_NREDUZ )
 	oModel:LoadValue( 'TRANSPORTADORA', 'RAZAOSOCIAL'        , M->A4_NOME   )
@@ -39,44 +41,47 @@ User Function M050TOK()
 	oModel:LoadValue( 'TRANSPORTADORA', 'TELEFONE'           , M->A4_TEL )
 	oModel:LoadValue( 'TRANSPORTADORA', 'FAX'                , M->A4_XFAX )
 	oModel:LoadValue( 'TRANSPORTADORA', 'EMAIL'              , M->A4_EMAIL )
-
-
+	
+	
 	If oModel:VldData()
-
-		oModel:CommitData()
-
+		
+		//oModel:CommitData()
+		lRet := EaiEnvio( oModel, Replace( ProcName(), 'U_' ) )
+		
 	Else
-
+		
 		VarInfo('oModel:GetErrorMessage()',oModel:GetErrorMessage(),,.F.,.T.)
-
+		
 	End If
-
+	
 	oModel:DeActivate()
-
+	
+	ConOut( ProcName() + ' Executado em ' + ElapTime( cHoraInicio, TIME() ) )
+	
 	INCLUI := lInclui
-
-return .T.
+	
+return lRet
 
 Static Function ModelDef()
-
+	
 	Local oModel  := MPFormModel():New('MODTRANSPORTADORA')
 	Local oStruct := Struct()
-
+	
 	oModel:addFields('TRANSPORTADORA',,oStruct)
 	oModel:SetPrimaryKey( { 'ID' } )
-
+	
 	oModel:SetDescription('Cadastro de Transportadoras')
 	oModel:getModel('TRANSPORTADORA'):SetDescription('Cadastro de Transportadoras')
 	oModel:GetModel( 'TRANSPORTADORA' ):SetOnlyQuery ( .T. )
-
+	
 Return oModel
 
 Static Function Struct()
-
+	
 	Local oStruct := FWFormModelStruct():New()
-
+	
 	oStruct:AddTable('SA4_ECALC',,'SA4_ECALC')
-
+	
 	oStruct:AddField('ID'                 , 'ID'                 , 'ID'                 , 'C', 020, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('NOME'               , 'NOME'               , 'NOME'               , 'C', 050, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('RAZAOSOCIAL'        , 'RAZAOSOCIAL'        , 'RAZAOSOCIAL'        , 'C', 100, 0, , , {}, .F., , .F., .F., .F., , )
@@ -94,5 +99,48 @@ Static Function Struct()
 	oStruct:AddField('TELEFONE'           , 'TELEFONE'           , 'TELEFONE'           , 'C', 030, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('FAX'                , 'FAX'                , 'FAX'                , 'C', 040, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('EMAIL'              , 'EMAIL'              , 'EMAIL'              , 'C', 250, 0, , , {}, .F., , .F., .F., .F., , )
-
+	
 return oStruct
+
+Static Function EaiEnvio( oModel, cPrg )
+	
+	Local oFwEai   := FwEai():New()
+	Local lRet     := .T.
+	Local oXmlResp := TXmlManager():New()
+	Local cXmlResp := ''
+	
+	oFwEai:AddLayout( oModel:GetId(), '1.000', 'FWFORMEAI.' + cPrg, oModel:GetXmlData() )
+	
+	oFwEai:SetDocType( '1' )
+	
+	oFwEai:SetFuncCode( oModel:GetId() )
+	
+	oFwEai:SetFuncDescription( oModel:GetDescription() )
+	
+	oFwEai:SetSendChannel( '2' )
+	
+	oFwEai:Activate()
+	
+	If ! oFwEai:Save()
+		
+		ApMsgStop ( 'Não foi possivel estabelecer Comunicação com o sistema ECalc, integração não executada.', 'Atenção' )
+		
+	Else
+		
+		cXmlResp := oFwEai:cResult
+		
+		oXmlResp:Parse( cXmlResp )
+		
+		If oXmlResp:XPathGetNodeValue( '/EcalcIntegraEAIResponse/SUCESSO' ) == 'F'
+			
+			ApMsgStop ( oXmlResp:XPathGetNodeValue( '/EcalcIntegraEAIResponse/MENSAGEM' ), 'Atenção' )
+			
+			lRet := .F.
+			
+		End If
+		
+	End If
+	
+	oFwEai:DeActivate()
+	
+return lRet
