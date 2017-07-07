@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" 	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="MIOMT410_RET">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SC5_FIELD">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SUCESSO">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="T"/>
+													<xs:enumeration value="F"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="MENSAGEM">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

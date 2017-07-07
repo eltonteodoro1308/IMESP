@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" 	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="MIOMT410_REM">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SC5_FIELD" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="C5_XSISTEM" minOccurs="1" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="01">
+														<xs:annotation>
+															<xs:documentation>Central de Pagamento</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="02">
+														<xs:annotation>
+															<xs:documentation>Livraria</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="03">
+														<xs:annotation>
+															<xs:documentation>Portal de Negócios</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="04">
+														<xs:annotation>
+															<xs:documentation>ECommerce</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="05">
+														<xs:annotation>
+															<xs:documentation>ECalc</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_XVENDID" minOccurs="1" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_XIDCPGT" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_CLIENTE" minOccurs="1" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_CONDPAG" minOccurs="1" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_MENNOTA" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_TRANSP" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_PBRUTO" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:float" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_PESOL" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:float" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_XOBSNF" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_VOLUME1" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:byte" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_ESPECI1" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_TPFRETE" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element  name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="C">
+														<xs:annotation>
+															<xs:documentation>CIF</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="F">
+														<xs:annotation>
+															<xs:documentation>FOB</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="T">
+														<xs:annotation>
+															<xs:documentation>Por Conta de Terceiros</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="S">
+														<xs:annotation>
+															<xs:documentation>Sem Frete</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_FRETE" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:float" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="SC6_GRID" minOccurs="1" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="itens" minOccurs="1" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="item" minOccurs="1" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="C6_PRODUTO" minOccurs="1"	maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="value" />
+																		</xs:sequence>
+																		<xs:attribute type="xs:byte" name="order" />
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="C6_QTDVEN" minOccurs="1"	maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:float" name="value" />
+																		</xs:sequence>
+																		<xs:attribute type="xs:byte" name="order" />
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="C6_PRCVEN" minOccurs="1"	maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:float" name="value" />
+																		</xs:sequence>
+																		<xs:attribute type="xs:byte" name="order" />
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="C6_TES" minOccurs="1"	maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:short" name="value" />
+																		</xs:sequence>
+																		<xs:attribute type="xs:byte" name="order" />
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="C6_VALDESC" minOccurs="0"	maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:float" name="value" />
+																		</xs:sequence>
+																		<xs:attribute type="xs:byte" name="order" />
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="C6_XOS" minOccurs="0"	maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="value" />
+																		</xs:sequence>
+																		<xs:attribute type="xs:byte" name="order" />
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute type="xs:byte" name="deleted" />
+															<xs:attribute type="xs:short" name="id" />
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute type="xs:string" name="modeltype" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute type="xs:string" name="modeltype" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="SE1_FIELD" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="itens" minOccurs="1" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="item" minOccurs="1" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="E1_PARCELA" minOccurs="1" maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:positiveInteger" name="value"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="E1_VENCTO" minOccurs="1"	maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="value"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="E1_VALOR" minOccurs="1" maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:float" name="value"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute type="xs:string" name="modeltype" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute type="xs:string" name="version" />
+			<xs:attribute name="Operation" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:enumeration value="3"/>
+						<xs:enumeration value="5"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

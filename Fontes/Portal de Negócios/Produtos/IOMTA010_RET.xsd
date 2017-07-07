@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="IOGPEC01_RET">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="IOGPEC01_SRA" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType>
+						<xs:all minOccurs="1" maxOccurs="1">
+							<xs:element name="B1_FILIAL" type="xs:string" />
+							<xs:element name="B1_COD" type="xs:string" />
+							<xs:element name="B1_DESC" type="xs:string" />
+							<xs:element name="B1_TIPO" type="xs:string" />
+							<xs:element name="B1_UM" type="xs:string" />
+							<xs:element name="B1_LOCPAD" type="xs:string" />
+							<xs:element name="B1_GRUPO" type="xs:string" />
+							<xs:element name="B1_PICM" type="xs:float" />
+							<xs:element name="B1_IPI" type="xs:float" />
+							<xs:element name="B1_POSIPI" type="xs:string" />
+							<xs:element name="B1_ESPECIE" type="xs:string" />
+							<xs:element name="B1_EX_NCM" type="xs:string" />
+							<xs:element name="B1_TS" type="xs:string" />
+							<xs:element name="B1_ALTER" type="xs:string" />
+							<xs:element name="B5_CEME" type="xs:string" />
+							<xs:element name="B5_ECPESOE" type="xs:float" />
+							<xs:element name="B5_ECALTEM" type="xs:float" />
+							<xs:element name="B5_COMPR" type="xs:float" />
+							<xs:element name="B5_ESPESS" type="xs:float" />
+							<xs:element name="B5_QE1" type="xs:float" />
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TOTAL_SEARCH_RECORDS">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element type="xs:string" name="ERROR" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema> 

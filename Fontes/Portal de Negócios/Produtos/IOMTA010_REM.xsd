@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Descreve o layout do xml de remessa para pesquisa do cadastro de funcionarios -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 	attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:element name="IOGPEC01_REM">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CONDITION" maxOccurs="unbounded"	minOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="filter" maxOccurs="unbounded"	minOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value" maxOccurs="1" minOccurs="1" default="string">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="function" use="optional">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="LEN" />
+												<xs:enumeration value="SUBSTRING" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="start" type="xs:positiveInteger"/>
+									<xs:attribute name="length" type="xs:positiveInteger"/>
+									<xs:attribute name="field" use="required" type="FIELDS_IOMTA010" />
+									<xs:attribute name="relation" use="optional" default="EQUAL">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="EQUAL" />
+												<xs:enumeration value="NOT_EQUAL" />
+												<xs:enumeration value="LESS" />
+												<xs:enumeration value="LESS_EQUAL" />
+												<xs:enumeration value="GREATER" />
+												<xs:enumeration value="GREATER_EQUAL" />
+												<xs:enumeration value="CONTAINS" />
+												<xs:enumeration value="NOT_CONTAINS" />
+												<xs:enumeration value="IS_CONTAINED" />
+												<xs:enumeration value="IS_NOT_CONTAINED" />
+												<xs:enumeration value="START_WITH" />
+												<xs:enumeration value="NOT_START_WITH" />
+												<xs:enumeration value="ENDS_WITH" />
+												<xs:enumeration value="NOT_ENDS_WITH" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="operator" use="optional" default="AND">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="AND" />
+												<xs:enumeration value="OR" />
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="SORT" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ASC" type="FIELDS_IOMTA010" minOccurs="0"	maxOccurs="unbounded" />
+							<xs:element name="DESC" type="FIELDS_IOMTA010" minOccurs="0" maxOccurs="unbounded" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PAGINATION" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:attribute name="number_of_records" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:minInclusive value="1" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="page" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:positiveInteger">
+									<xs:minInclusive value="1" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="FIELDS_IOMTA010">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="B1_FILIAL"/>
+			<xs:enumeration value="B1_COD"/>
+			<xs:enumeration value="B1_DESC"/>
+			<xs:enumeration value="B1_TIPO"/>
+			<xs:enumeration value="B1_UM"/>
+			<xs:enumeration value="B1_LOCPAD"/>
+			<xs:enumeration value="B1_GRUPO"/>
+			<xs:enumeration value="B1_PICM"/>
+			<xs:enumeration value="B1_IPI"/>
+			<xs:enumeration value="B1_POSIPI"/>
+			<xs:enumeration value="B1_ESPECIE"/>
+			<xs:enumeration value="B1_EX_NCM"/>
+			<xs:enumeration value="B1_TS"/>
+			<xs:enumeration value="B1_ALTER"/>
+			<xs:enumeration value="B5_CEME"/>
+			<xs:enumeration value="B5_ECPESOE"/>
+			<xs:enumeration value="B5_ECALTEM"/>
+			<xs:enumeration value="B5_COMPR"/>
+			<xs:enumeration value="B5_ESPESS"/>
+			<xs:enumeration value="B5_QE1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
