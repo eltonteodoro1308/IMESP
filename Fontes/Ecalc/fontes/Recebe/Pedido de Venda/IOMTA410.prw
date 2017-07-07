@@ -11,6 +11,12 @@ Função acionada pelo EAI que recebe xml com dados do pedido venda e faz sua incl
 @param oFwEai  , Object  , O objeto de EAI criado na camada do EAI Protheus. A manipulação deste objeto deve ser realizada com o máximo de cautela, e deve ser evitada ao máximo.
 @return cRet   , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
 /*/
+
+/*TODO
+- Tratar a situação em que o pedido será inativa e deve-se impedir o seu faturamento.
+- Verificar o ponto de entrada M460MARK
+- Também campo C5_MSBLQL
+*/
 User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 
 	Local cMsg     := ''
@@ -106,6 +112,12 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 				Else
 
 					aAdd( aItem, { cName, Val( oXml:cText ) , Nil} )
+
+					If AllTrim( cName ) == 'C6_QTDVEN'
+
+						aAdd( aItem, { 'C6_QTDLIB', Val( oXml:cText ) , Nil} )
+
+					End If
 
 				End If
 
