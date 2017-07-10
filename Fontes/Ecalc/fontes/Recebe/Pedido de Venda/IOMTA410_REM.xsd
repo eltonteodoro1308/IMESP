@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" 	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:element name="MIOMT410_REM">
 		<xs:complexType>
 			<xs:sequence>
@@ -76,6 +77,33 @@
 									<xs:attribute type="xs:byte" name="order" />
 								</xs:complexType>
 							</xs:element>
+							<xs:element name="C5_MSBLQL" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="value">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="1">
+														<xs:annotation>
+															<xs:documentation>
+																1 = Pedido Inativo
+															</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+													<xs:enumeration value="2">
+														<xs:annotation>
+															<xs:documentation>
+																2 = Pedido ativo
+															</xs:documentation>
+														</xs:annotation>
+													</xs:enumeration>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
 							<xs:element name="C5_MENNOTA" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>
@@ -135,7 +163,7 @@
 							<xs:element name="C5_TPFRETE" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element  name="value">
+										<xs:element name="value">
 											<xs:simpleType>
 												<xs:restriction base="xs:string">
 													<xs:enumeration value="C">
@@ -150,7 +178,8 @@
 													</xs:enumeration>
 													<xs:enumeration value="T">
 														<xs:annotation>
-															<xs:documentation>Por Conta de Terceiros</xs:documentation>
+															<xs:documentation>Por Conta de Terceiros
+															</xs:documentation>
 														</xs:annotation>
 													</xs:enumeration>
 													<xs:enumeration value="S">
@@ -182,7 +211,8 @@
 													<xs:element name="item" minOccurs="1" maxOccurs="unbounded">
 														<xs:complexType>
 															<xs:sequence>
-																<xs:element name="C6_PRODUTO" minOccurs="1"	maxOccurs="1">
+																<xs:element name="C6_PRODUTO" minOccurs="1"
+																	maxOccurs="1">
 																	<xs:complexType>
 																		<xs:sequence>
 																			<xs:element type="xs:string" name="value" />
@@ -190,7 +220,8 @@
 																		<xs:attribute type="xs:byte" name="order" />
 																	</xs:complexType>
 																</xs:element>
-																<xs:element name="C6_QTDVEN" minOccurs="1"	maxOccurs="1">
+																<xs:element name="C6_QTDVEN" minOccurs="1"
+																	maxOccurs="1">
 																	<xs:complexType>
 																		<xs:sequence>
 																			<xs:element type="xs:float" name="value" />
@@ -198,7 +229,8 @@
 																		<xs:attribute type="xs:byte" name="order" />
 																	</xs:complexType>
 																</xs:element>
-																<xs:element name="C6_PRCVEN" minOccurs="1"	maxOccurs="1">
+																<xs:element name="C6_PRCVEN" minOccurs="1"
+																	maxOccurs="1">
 																	<xs:complexType>
 																		<xs:sequence>
 																			<xs:element type="xs:float" name="value" />
@@ -206,7 +238,8 @@
 																		<xs:attribute type="xs:byte" name="order" />
 																	</xs:complexType>
 																</xs:element>
-																<xs:element name="C6_TES" minOccurs="1"	maxOccurs="1">
+																<xs:element name="C6_TES" minOccurs="1"
+																	maxOccurs="1">
 																	<xs:complexType>
 																		<xs:sequence>
 																			<xs:element type="xs:short" name="value" />
@@ -214,7 +247,8 @@
 																		<xs:attribute type="xs:byte" name="order" />
 																	</xs:complexType>
 																</xs:element>
-																<xs:element name="C6_VALDESC" minOccurs="0"	maxOccurs="1">
+																<xs:element name="C6_VALDESC" minOccurs="0"
+																	maxOccurs="1">
 																	<xs:complexType>
 																		<xs:sequence>
 																			<xs:element type="xs:float" name="value" />
@@ -222,7 +256,8 @@
 																		<xs:attribute type="xs:byte" name="order" />
 																	</xs:complexType>
 																</xs:element>
-																<xs:element name="C6_XOS" minOccurs="0"	maxOccurs="1">
+																<xs:element name="C6_XOS" minOccurs="0"
+																	maxOccurs="1">
 																	<xs:complexType>
 																		<xs:sequence>
 																			<xs:element type="xs:string" name="value" />
@@ -252,24 +287,28 @@
 													<xs:element name="item" minOccurs="1" maxOccurs="unbounded">
 														<xs:complexType>
 															<xs:sequence>
-																<xs:element name="E1_PARCELA" minOccurs="1" maxOccurs="1">
+																<xs:element name="E1_PARCELA" minOccurs="1"
+																	maxOccurs="1">
 																	<xs:complexType>
 																		<xs:sequence>
-																			<xs:element type="xs:positiveInteger" name="value"/>
+																			<xs:element type="xs:positiveInteger"
+																				name="value" />
 																		</xs:sequence>
 																	</xs:complexType>
 																</xs:element>
-																<xs:element name="E1_VENCTO" minOccurs="1"	maxOccurs="1">
+																<xs:element name="E1_VENCTO" minOccurs="1"
+																	maxOccurs="1">
 																	<xs:complexType>
 																		<xs:sequence>
-																			<xs:element type="xs:string" name="value"/>
+																			<xs:element type="xs:string" name="value" />
 																		</xs:sequence>
 																	</xs:complexType>
 																</xs:element>
-																<xs:element name="E1_VALOR" minOccurs="1" maxOccurs="1">
+																<xs:element name="E1_VALOR" minOccurs="1"
+																	maxOccurs="1">
 																	<xs:complexType>
 																		<xs:sequence>
-																			<xs:element type="xs:float" name="value"/>
+																			<xs:element type="xs:float" name="value" />
 																		</xs:sequence>
 																	</xs:complexType>
 																</xs:element>
@@ -291,8 +330,8 @@
 			<xs:attribute name="Operation" use="required">
 				<xs:simpleType>
 					<xs:restriction base="xs:byte">
-						<xs:enumeration value="3"/>
-						<xs:enumeration value="5"/>
+						<xs:enumeration value="3" />
+						<xs:enumeration value="5" />
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:attribute>

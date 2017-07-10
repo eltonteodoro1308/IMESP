@@ -9,14 +9,8 @@ Função acionada pelo EAI que recebe xml com dados do pedido venda e faz sua incl
 @param cWarning, Caracter, Variável passada por referência, serve para alimentar uma mensagem de warning para o EAI. A alteração deste valor por rotinas tratadas neste tópico não causam nenhum efeito para o EAI.
 @param cParams , Caracter, Parâmetros passados na mensagem do EAI.
 @param oFwEai  , Object  , O objeto de EAI criado na camada do EAI Protheus. A manipulação deste objeto deve ser realizada com o máximo de cautela, e deve ser evitada ao máximo.
-@return cRet   , Xml de retorno com a Imagem solicitado em formato Base64 ou erro de processamento
+@return cRet   , Xml de retorno status da operação
 /*/
-
-/*TODO
-- Tratar a situação em que o pedido será inativa e deve-se impedir o seu faturamento.
-- Verificar o ponto de entrada M460MARK
-- Também campo C5_MSBLQL
-*/
 User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 
 	Local cMsg     := ''
@@ -30,6 +24,7 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 	Local nItem    := 1
 	Local cName    := ''
 	Local cVendaId := ''
+	Local cMsBlQl  := ''
 	Local aArea    := GetArea()
 	Local lExiste  := .F.
 	Local nOper    := 0
@@ -42,9 +37,9 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 	oXml:ParseSchemaFile('\schemas\IOMTA410_REM.xsd') .And.;
 	oXml:SchemaValidate()
 
-		nOper := Val( oXml:XPathGetAtt( '/MIOMT410_REM', 'Operation' ) )
-
+		nOper     := Val( oXml:XPathGetAtt( '/MIOMT410_REM', 'Operation' ) )
 		cVendaId  := oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_XVENDID/value' )
+		cMsBlQl   := oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_MSBLQL/value'       )
 
 		DbSelectArea( 'SC5' )
 		DBOrderNickname( 'XVENDID' )
@@ -62,13 +57,14 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 		aAdd( aCabec, { 'C5_TIPO'    , 'N'                                                                         , Nil } )
 		aAdd( aCabec, { 'C5_CLIENTE' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_CLIENTE/value'      )   , Nil } )
 		aAdd( aCabec, { 'C5_CONDPAG' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_CONDPAG/value'      )   , Nil } )
+		aAdd( aCabec, { 'C5_MSBLQL'  , cMsBlQl                                                                     , Nil } )
 		aAdd( aCabec, { 'C5_TRANSP'  , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_TRANSP/value'       )   , Nil } )
-		aAdd( aCabec, { 'C5_XSISTEM' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_XSISTEM/value'  )       , Nil } )
+		aAdd( aCabec, { 'C5_XSISTEM' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_XSISTEM/value'      )   , Nil } )
 		aAdd( aCabec, { 'C5_XVENDID' , cVendaId                                                                    , Nil } )
-		aAdd( aCabec, { 'C5_XIDCPGT' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_XIDCPGT/value'  )       , Nil } )
-		aAdd( aCabec, { 'C5_MENNOTA' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_MENNOTA/value'  )       , Nil } )
-		aAdd( aCabec, { 'C5_TPFRETE' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_TPFRETE/value'  )       , Nil } )
-		aAdd( aCabec, { 'C5_FRETE'   , Val( oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_FRETE/value' ) )   , Nil } )
+		aAdd( aCabec, { 'C5_XIDCPGT' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_XIDCPGT/value'      )   , Nil } )
+		aAdd( aCabec, { 'C5_MENNOTA' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_MENNOTA/value'      )   , Nil } )
+		aAdd( aCabec, { 'C5_TPFRETE' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_TPFRETE/value'      )   , Nil } )
+		aAdd( aCabec, { 'C5_FRETE'   , Val( oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_FRETE/value'   ) ) , Nil } )
 		aAdd( aCabec, { 'C5_PESOL'   , Val( oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_PESOL/value'   ) ) , Nil } )
 		aAdd( aCabec, { 'C5_PBRUTO'  , Val( oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_PBRUTO/value'  ) ) , Nil } )
 		aAdd( aCabec, { 'C5_VOLUME1' , Val( oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_VOLUME1/value' ) ) , Nil } )
@@ -115,7 +111,15 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 
 					If AllTrim( cName ) == 'C6_QTDVEN'
 
-						aAdd( aItem, { 'C6_QTDLIB', Val( oXml:cText ) , Nil} )
+						If cMsBlQl == '1'
+
+							aAdd( aItem, { 'C6_QTDLIB', 0 , Nil} )
+
+						Else
+
+							aAdd( aItem, { 'C6_QTDLIB', Val( oXml:cText ) , Nil} )
+
+						EndIf
 
 					End If
 
