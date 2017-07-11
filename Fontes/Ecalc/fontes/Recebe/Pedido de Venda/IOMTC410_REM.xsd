@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="MIOMC410">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SC5_FIELD">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="C5_NUM">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:byte" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_CLIENTE">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_CONDPAG">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:float" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_MSBLQL">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:byte" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_TPFRETE">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_FRETE">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:float" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_MENNOTA">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_XSISTEM">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:byte" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_XVENDID">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:int" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_XIDCPGT">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:int" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="C5_XOBSNF">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="value" />
+									</xs:sequence>
+									<xs:attribute type="xs:byte" name="order" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="SC6_GRID">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="struct">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="C6_PRODUTO">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:string">
+																	<xs:attribute type="xs:byte" name="order" />
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="C6_QTDVEN">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:string">
+																	<xs:attribute type="xs:byte" name="order" />
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="C6_PRCVEN">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:string">
+																	<xs:attribute type="xs:byte" name="order" />
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="C6_TES">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:string">
+																	<xs:attribute type="xs:byte" name="order" />
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="items">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="item">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="C6_PRODUTO" />
+																<xs:element type="xs:float" name="C6_QTDVEN" />
+																<xs:element type="xs:float" name="C6_PRCVEN" />
+																<xs:element type="xs:short" name="C6_TES" />
+															</xs:sequence>
+															<xs:attribute type="xs:byte" name="id" />
+															<xs:attribute type="xs:byte" name="deleted" />
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute type="xs:string" name="modeltype" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute type="xs:string" name="modeltype" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute type="xs:byte" name="Operation" />
+			<xs:attribute type="xs:float" name="version" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

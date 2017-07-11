@@ -366,18 +366,17 @@
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <tot:RECEIVEMESSAGE>\r
-         <tot:INMSG><![CDATA[ 
-
+         <tot:INMSG><![CDATA[
 <TOTVSIntegrator>
 	<GlobalProduct>TOTVS|EAI</GlobalProduct>
 	<GlobalFunctionCode>EAI</GlobalFunctionCode>
 	<GlobalDocumentFunctionCode>IOMTA410</GlobalDocumentFunctionCode>
 	<GlobalDocumentFunctionDescription>Pedido de Venda</GlobalDocumentFunctionDescription>
 	<DocVersion>1.000</DocVersion>
-	<DocDateTime>2017-05-05T00:00:00Z</DocDateTime>
+	<DocDateTime>2017-07-11T00:00:00Z</DocDateTime>
 	<DocIdentifier>
 	
-	DC540094-BB07-4F9E-8BF9-B893F37E0008
+	DA717769-E2F7-4F81-A5EE-6672A3410006
 	
 	</DocIdentifier>
 	<DocCompany>99</DocCompany>
@@ -388,7 +387,7 @@
 	<Message>
 		<Layouts>
 			<Version>1.000</Version>
-			<Identifier></Identifier>
+			<Identifier/>
 			<FunctionCode>U_IOMTA410</FunctionCode>
 			<Content>
 				<MIOMT410_REM Operation="3">
@@ -397,7 +396,7 @@
 							<value>01</value>
 						</C5_XSISTEM>
 						<C5_XVENDID>
-							<value>214365</value>
+							<value>123456</value>
 						</C5_XVENDID>
 						<C5_XIDCPGT>
 							<value>123456</value>
@@ -424,7 +423,7 @@
 							<value>100.0</value>
 						</C5_PESOL>
 						<C5_XOBSNF>
-							<value>Esta é uma observação/nde teste.</value>
+							<value>Esta é uma observação/nde teste./nOutra Linha</value>
 						</C5_XOBSNF>
 						<C5_VOLUME1>
 							<value>2</value>
@@ -439,7 +438,7 @@
 							<value>350.0</value>
 						</C5_FRETE>
 						<SC6_GRID>
-							<itens>
+							<items>
 								<item>
 									<C6_PRODUTO>
 										<value>PA002</value>
@@ -453,16 +452,15 @@
 									<C6_TES>
 										<value>512</value>
 									</C6_TES>
-								</item>								
-							</itens>
+								</item>
+							</items>
 						</SC6_GRID>
 					</SC5_FIELD>
 				</MIOMT410_REM>
 			</Content>
 		</Layouts>
 	</Message>
-</TOTVSIntegrator>
-   
+</TOTVSIntegrator>                  
          ]]]]>><![CDATA[</tot:INMSG>\r
       </tot:RECEIVEMESSAGE>\r
    </soapenv:Body>\r
@@ -906,6 +904,42 @@
 	</Message>
 </TOTVSIntegrator>
    
+         ]]]]>><![CDATA[</tot:INMSG>\r
+      </tot:RECEIVEMESSAGE>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c3b7cd8a-1fb5-472a-a50b-626d08ba082f" name="IOMTC410"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tot:RECEIVEMESSAGE>\r
+         <tot:INMSG><![CDATA[
+<TOTVSIntegrator>
+	<GlobalProduct>TOTVS|EAI</GlobalProduct>
+	<GlobalFunctionCode>EAI</GlobalFunctionCode>
+	<GlobalDocumentFunctionCode>IOMTC410</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>Consulta de Pedido de Venda</GlobalDocumentFunctionDescription>
+	<DocVersion>1.000</DocVersion>
+	<DocDateTime>2017-07-11T00:00:00Z</DocDateTime>
+	<DocIdentifier>
+	
+	DA717769-E2F7-4F81-A5EE-6672A3410023
+	
+	</DocIdentifier>
+	<DocCompany>99</DocCompany>
+	<DocBranch>01</DocBranch>
+	<DocName />
+	<DocFederalID />
+	<DocType>1</DocType>
+	<Message>
+		<Layouts>
+			<Version>1.000</Version>
+			<Identifier/>
+			<FunctionCode>U_IOMTC410.123456.01</FunctionCode>
+			<Content>
+				
+			</Content>
+		</Layouts>
+	</Message>
+</TOTVSIntegrator>                  
          ]]]]>><![CDATA[</tot:INMSG>\r
       </tot:RECEIVEMESSAGE>\r
    </soapenv:Body>\r

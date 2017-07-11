@@ -2,8 +2,8 @@
 /*/{Protheus.doc} IOMTA410
 Função acionada pelo EAI que recebe xml com dados do pedido venda e faz sua inclusão
 @author Elton Teodoro Alves
-@since 04/05/2016
-@version Protheus 12.1.014
+@since 11/07/2017
+@version Protheus 12.1.016
 @param cXml    , Caracter, O conteúdo da tag Content do XML recebido pelo EAI Protheus.
 @param cError  , Caracter, Variável passada por referência, serve para alimentar a mensagem de erro, nos casos em que a transação não foi bem sucedida.
 @param cWarning, Caracter, Variável passada por referência, serve para alimentar uma mensagem de warning para o EAI. A alteração deste valor por rotinas tratadas neste tópico não causam nenhum efeito para o EAI.
@@ -23,6 +23,9 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 	Local cSucesso := 'T'
 	Local nItem    := 1
 	Local cName    := ''
+	Local xCache   := ''
+	Local cTipo    := ''
+	Local cSistem  := ''
 	Local cVendaId := ''
 	Local cMsBlQl  := ''
 	Local aArea    := GetArea()
@@ -38,51 +41,85 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 	oXml:SchemaValidate()
 
 		nOper     := Val( oXml:XPathGetAtt( '/MIOMT410_REM', 'Operation' ) )
-		cVendaId  := oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_XVENDID/value' )
-		cMsBlQl   := oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_MSBLQL/value'       )
 
-		DbSelectArea( 'SC5' )
-		DBOrderNickname( 'XVENDID' )
-
-		If DbSeek( xFilial( 'SC5' ) + cVendaId )
-
-			aAdd( aCabec, { 'C5_NUM', SC5->C5_NUM, Nil } )
-
-			lExiste := .T.
-
-		End If
-
-		RestArea( aArea )
-
-		aAdd( aCabec, { 'C5_TIPO'    , 'N'                                                                         , Nil } )
-		aAdd( aCabec, { 'C5_CLIENTE' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_CLIENTE/value'      )   , Nil } )
-		aAdd( aCabec, { 'C5_CONDPAG' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_CONDPAG/value'      )   , Nil } )
-		aAdd( aCabec, { 'C5_MSBLQL'  , cMsBlQl                                                                     , Nil } )
-		aAdd( aCabec, { 'C5_TRANSP'  , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_TRANSP/value'       )   , Nil } )
-		aAdd( aCabec, { 'C5_XSISTEM' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_XSISTEM/value'      )   , Nil } )
-		aAdd( aCabec, { 'C5_XVENDID' , cVendaId                                                                    , Nil } )
-		aAdd( aCabec, { 'C5_XIDCPGT' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_XIDCPGT/value'      )   , Nil } )
-		aAdd( aCabec, { 'C5_MENNOTA' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_MENNOTA/value'      )   , Nil } )
-		aAdd( aCabec, { 'C5_TPFRETE' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_TPFRETE/value'      )   , Nil } )
-		aAdd( aCabec, { 'C5_FRETE'   , Val( oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_FRETE/value'   ) ) , Nil } )
-		aAdd( aCabec, { 'C5_PESOL'   , Val( oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_PESOL/value'   ) ) , Nil } )
-		aAdd( aCabec, { 'C5_PBRUTO'  , Val( oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_PBRUTO/value'  ) ) , Nil } )
-		aAdd( aCabec, { 'C5_VOLUME1' , Val( oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_VOLUME1/value' ) ) , Nil } )
-		aAdd( aCabec, { 'C5_ESPECI1' , oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_ESPECI1/value'      )   , Nil } )
-		aAdd( aCabec, { 'C5_XOBSNF'  , StrTran( oXML:XPathGetNodeValue( '/MIOMT410_REM/SC5_FIELD/C5_XOBSNF/value' ), '/n', Chr(13)+ Chr(10) ), Nil } )
+		aAdd( aCabec, { 'C5_TIPO', 'N', Nil } )
 
 		oXml:DOMChildNode()
 		oXml:DOMChildNode()
 
 		Do While AllWaysTrue()
 
-			oXml:DOMNextNode()
+			cName := oXml:cName
 
-			If oXml:cName == 'SC6_GRID'
+			If ! AllTrim( cName ) == 'SC6_GRID'
+
+				oXml:DOMChildNode()
+
+				cTipo := GetSx3Cache( cName, 'X3_TIPO' )
+
+				If cTipo == 'N'
+
+					xCache := Val( oXml:cText )
+
+				ElseIf cTipo == 'M'
+
+					xCache := StrTran( oXml:cText, '/n', Chr(13) + Chr(10) )
+
+				Else
+
+					xCache := oXml:cText
+
+				EndIf
+
+				aAdd( aCabec, { cName, xCache, Nil } )
+
+				If AllTrim( cName ) == 'C5_MSBLQL'
+
+					cMsBlQl := oXml:cText
+
+				EndIf
+
+				If AllTrim( cName ) == 'C5_XSISTEM'
+
+					cSistem := oXml:cText
+
+				EndIf
+
+				If AllTrim( cName ) == 'C5_XVENDID'
+
+					cVendaId  := oXml:cText
+
+				EndIf
+
+				If ! Empty( cSistem ) .And. ! Empty( cVendaId )
+
+					DbSelectArea( 'SC5' )
+					DBOrderNickname( 'XVENDID' )
+
+					cSistem  := PadR( cSistem , GetSx3Cache( 'C5_XSISTEM', 'X3_TAMANHO' ) )
+					cVendaId := PadR( cVendaId, GetSx3Cache( 'C5_XVENDID', 'X3_TAMANHO' ) )
+
+					If DbSeek( xFilial( 'SC5' ) + cSistem + cVendaId )
+
+						aAdd( aCabec, { 'C5_NUM', SC5->C5_NUM, Nil } )
+
+						lExiste := .T.
+
+					End If
+
+					RestArea( aArea )
+
+				EndIf
+
+				oXml:DOMParentNode()
+
+			Else
 
 				Exit
 
 			End If
+
+			oXml:DOMNextNode()
 
 		End Do
 
@@ -165,7 +202,15 @@ User Function IOMTA410( cXml, cError, cWarning, cParams, oFwEai )
 	End If
 
 Return Retorno( cSucesso, cMsg, oFwEai )
-
+/*/{Protheus.doc} Retorno
+//Monta o XML de retorno da Transação
+@author Elton Teodoro Alves
+@since 11/07/2017
+@version Protheus 12.1.016
+@param cSucesso, characters, Indica se a transação foi bem sucedida 'T' ou não 'F'
+@param cMsg, characters, Mensagem a ser exibida
+@param oFwEai, object, Objeto da transação EAI
+/*/
 Static Function Retorno( cSucesso, cMsg, oFwEai )
 
 	Local cRet := ''
@@ -184,7 +229,14 @@ Static Function Retorno( cSucesso, cMsg, oFwEai )
 	oFwEai:cReturnMsg := cRet
 
 Return cRet
-
+/*/{Protheus.doc} MsErroAuto
+//Em caso de erro com o ExecAuto, monta mensagem de erro para o xml de retorno
+@author Elton Teodoro Alves
+@since 11/07/2017
+@version Protheus 12.1.016
+@param cSucesso, characters, Indica se a transação foi bem sucedida 'T' ou não 'F'
+@param cMsg, characters, Mensagem a ser exibida
+/*/
 Static Function MsErroAuto( cSucesso, cMsg )
 
 	Local nX    := 0

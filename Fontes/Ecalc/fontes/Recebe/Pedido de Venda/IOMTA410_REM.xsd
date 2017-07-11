@@ -10,37 +10,7 @@
 							<xs:element name="C5_XSISTEM" minOccurs="1" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="value">
-											<xs:simpleType>
-												<xs:restriction base="xs:string">
-													<xs:enumeration value="01">
-														<xs:annotation>
-															<xs:documentation>Central de Pagamento</xs:documentation>
-														</xs:annotation>
-													</xs:enumeration>
-													<xs:enumeration value="02">
-														<xs:annotation>
-															<xs:documentation>Livraria</xs:documentation>
-														</xs:annotation>
-													</xs:enumeration>
-													<xs:enumeration value="03">
-														<xs:annotation>
-															<xs:documentation>Portal de Negócios</xs:documentation>
-														</xs:annotation>
-													</xs:enumeration>
-													<xs:enumeration value="04">
-														<xs:annotation>
-															<xs:documentation>ECommerce</xs:documentation>
-														</xs:annotation>
-													</xs:enumeration>
-													<xs:enumeration value="05">
-														<xs:annotation>
-															<xs:documentation>ECalc</xs:documentation>
-														</xs:annotation>
-													</xs:enumeration>
-												</xs:restriction>
-											</xs:simpleType>
-										</xs:element>
+										<xs:element type="xs:string" name="value"/>
 									</xs:sequence>
 									<xs:attribute type="xs:byte" name="order" />
 								</xs:complexType>
@@ -86,14 +56,14 @@
 													<xs:enumeration value="1">
 														<xs:annotation>
 															<xs:documentation>
-																1 = Pedido Inativo
+																Pedido Inativo
 															</xs:documentation>
 														</xs:annotation>
 													</xs:enumeration>
 													<xs:enumeration value="2">
 														<xs:annotation>
 															<xs:documentation>
-																2 = Pedido ativo
+																Pedido ativo
 															</xs:documentation>
 														</xs:annotation>
 													</xs:enumeration>
@@ -205,7 +175,7 @@
 							<xs:element name="SC6_GRID" minOccurs="1" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="itens" minOccurs="1" maxOccurs="1">
+										<xs:element name="items" minOccurs="1" maxOccurs="1">
 											<xs:complexType>
 												<xs:sequence>
 													<xs:element name="item" minOccurs="1" maxOccurs="unbounded">
@@ -281,7 +251,7 @@
 							<xs:element name="SE1_FIELD" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="itens" minOccurs="1" maxOccurs="1">
+										<xs:element name="items" minOccurs="1" maxOccurs="1">
 											<xs:complexType>
 												<xs:sequence>
 													<xs:element name="item" minOccurs="1" maxOccurs="unbounded">
