@@ -31,7 +31,7 @@ user function IONFE( cStatus )
 	oModel:LoadValue( 'NOTAFISCAL' , 'VALORTOTAL', AllTrim( Str( SF2->F2_VALMERC ) ) )
 	oModel:LoadValue( 'NOTAFISCAL' , 'VALORNOTA' , AllTrim( Str( SF2->F2_VALBRUT ) ) )
 	oModel:LoadValue( 'NOTAFISCAL' , 'STATUS'    , cStatus )
-	oModel:LoadValue( 'NOTAFISCAL' , 'VENDAID'   , SC5->C5_XVENDID )
+	oModel:LoadValue( 'NOTAFISCAL' , 'VENDAID'   , SF2->F2_XVENDID )
 	
 	If oModel:VldData()
 		

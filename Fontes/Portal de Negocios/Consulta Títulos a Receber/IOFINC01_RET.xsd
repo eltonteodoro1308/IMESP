@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Descreve o layout do xml de retorno para pesquisa do cadastro de titulos -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:element name="IOFINC01_RET">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="IOFINC01_SE1" maxOccurs="unbounded" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="E1_CLIENTE"/>
+							<xs:element type="xs:string" name="E1_XPEDIDO"/>
+							<xs:element type="xs:string" name="E1_TIPO"/>
+							<xs:element type="xs:string" name="E1_PREFIXO"/>
+							<xs:element type="xs:string" name="E1_NUM"/>
+							<xs:element type="xs:string" name="E1_PARCELA"/>
+							<xs:element type="xs:string" name="E1_VALOR"/>
+							<xs:element type="xs:string" name="E1_SALDO"/>
+							<xs:element type="xs:string" name="E1_NUMBCO"/>
+							<xs:element type="xs:string" name="E1_BAIXA"/>
+							<xs:element type="xs:string" name="E1_XSISTEM"/>
+							<xs:element type="xs:string" name="E1_XVENDID"/>
+							<xs:element type="xs:string" name="E1_VENCTO"/>
+							<xs:element type="xs:string" name="E1_XPEDIDO"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element type="xs:string" name="TOTAL_SEARCH_RECORDS"/>
+				<xs:element type="xs:string" name="ERROR"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

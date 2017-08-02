@@ -8,7 +8,7 @@ user function MATA360()
 	Local lRet        := .T.
 	Local cHoraInicio := TIME()
 	
-	If PARAMIXB[ 2 ] == 'FORMPOS' .And.;
+	If PARAMIXB[ 2 ] == 'MODELCOMMITNTTS' .And.;
 		( PARAMIXB[ 1 ]:GetOperation() == MODEL_OPERATION_INSERT .Or. PARAMIXB[ 1 ]:GetOperation() == MODEL_OPERATION_UPDATE )
 		
 		oModel  := ModelDef()
@@ -17,9 +17,9 @@ user function MATA360()
 		
 		oModel:Activate()
 		
-		oModel:LoadValue( 'CONDICAODEPAGAMENTO', 'ID'        , M->E4_CODIGO )
-		oModel:LoadValue( 'CONDICAODEPAGAMENTO', 'DESCRICAO' , M->E4_DESCRI )
-		oModel:LoadValue( 'CONDICAODEPAGAMENTO', 'ATIVO'     , If( M->E4_MSBLQL = '1', 'F', 'T' ) )
+		oModel:LoadValue( 'CONDICAODEPAGAMENTO', 'ID'        , SE4->E4_CODIGO )
+		oModel:LoadValue( 'CONDICAODEPAGAMENTO', 'DESCRICAO' , SE4->E4_DESCRI )
+		oModel:LoadValue( 'CONDICAODEPAGAMENTO', 'ATIVO'     , If( SE4->E4_MSBLQL = '1', 'F', 'T' ) )
 		
 		If oModel:VldData()
 			

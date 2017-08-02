@@ -1,6 +1,5 @@
-#INCLUDE 'TOTVS.CH'
-#INCLUDE 'FWMVCDEF.CH'
-#INCLUDE 'FWADAPTEREAI.CH'
+#Include 'TOTVS.CH'
+#Include 'FWMVCDef.ch'
 
 /*/{Protheus.doc} IOGPEA01
 //Cadastro de Dados Complementares de Funcionários para o Portal
@@ -38,7 +37,7 @@ Static Function ModelDef()
 
 	Local oModel
 	Local oStr1:= FWFormStruct(1,'SZ0')
-	oModel := MPFormModel():New( 'MIOGPEA1' )
+	oModel := MPFormModel():New('Complemento Para o Portal')
 	oModel:SetDescription('Imagens de Portal')
 	oModel:addFields('SZ0_FIELD',,oStr1)
 	oModel:getModel('SZ0_FIELD'):SetDescription('Complemento Para o Portal')
@@ -65,63 +64,6 @@ Static Function ViewDef()
 	oView:SetOwnerView('FORM1','BOXFORM1')
 
 Return oView
-
-/*/{Protheus.doc} IntegDef
-//Função que efetua o envio da mensagem única do registro incluido, alterado e excluido.
-@author elton.alves
-@since 18/04/2017
-@version undefined
-@param cXml, characters, XML recebido pelo EAI Protheus
-@param cTypeTran, characters, Tipo de transação
-@param cTypeMsg, characters, Tipo da mensagem do EAI
-@param cVersion, characters, Versão da Mensagem Única TOTVS
-@return Array,  O retorno desta rotina será sempre um array, de três posições, sendo estas:
-@obs
-[1] – Deve retornar uma variável lógica, indicando se o processamento foi executado com sucesso (.T.) ou não (.F.);
-[2] – Uma string contendo informações sobre o processamento;
-[3] – Uma string com o nome da mensagem única desta mensagem.
-/*/
-Static Function IntegDef( cXml, cTypeTran, cTypeMsg, cVersion )
-
-	Local lRet    := .T.
-	Local cXmlRet := ''
-	Local oModel  := Nil
-	Local cCode   := ''
-	Local cId     := ''
-
-
-	If cTypeTran == TRANS_SEND
-
-		oModel      := FwModelActive()
-		cCode       := oModel:GetValue( 'SZ0_FIELD', 'Z0_CODIGO' )
-		cId         := cEmpAnt + xFilial('SZ0') + cCode
-
-		cXMLRet := '<BusinessEvent>'
-		cXMLRet +=     '<Entity>MYMESSAGE</Entity>'
-		cXMLRet +=     '<Event>'
-
-		If oModel:GetOperation() <> MODEL_OPERATION_DELETE
-
-			cXmlRet += 'UPSERT'
-
-		Else
-
-			cXmlRet += 'DELETE'
-
-		Endif
-
-		cXmlRet += 	  '</Event>'
-		cXMLRet +=      '<Identification>'
-		cXMLRet +=         '<Key name="InternalId">' + cId + '</Key>'
-		cXMLRet +=     '</Identification>'
-		cXMLRet += '</BusinessEvent>'
-		cXMLRet += '<BusinessContent>'
-		cXMLRet +=    '<Code>' + cCode + '</Code>'
-		cXMLRet += '</BusinessContent>'
-
-	End If
-
-Return { lRet, cXmlRet, "IOGPEA01" }
 
 /*/{Protheus.doc} IOGPEB64
 //Resgata uma imagem do repositório e a converte para Base64,
@@ -161,7 +103,7 @@ User Function IOGPEB64( cBitMap )
 
 		RestArea( aArea )
 
-		//PROTHEUS_REPOSIT->( DbCloseArea() )
+		//PROTHEUS_REPOSIT->( aAreaRep )
 
 	End If
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema attributeFormDefault="unqualified"
 	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="MIOMC410">
+	<xs:element name="MIOMC410_RET">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="SC5_FIELD">
@@ -95,6 +95,7 @@
 									<xs:attribute type="xs:byte" name="order" />
 								</xs:complexType>
 							</xs:element>
+							<xs:element type="xs:string" name="ERRO"/>
 							<xs:element name="SC6_GRID">
 								<xs:complexType>
 									<xs:sequence>

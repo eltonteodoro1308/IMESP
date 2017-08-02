@@ -57,15 +57,15 @@ User Function IOMTA650( cXml, cError, cWarning, cParams, oFwEai )
 		
 		If lExiste .And. nOper == 3
 			
-			nOper := 4
+			MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, 5 )
 			
 		End If
 		
-		If nOper # 4
+		//If nOper # 4
 			
 			MSExecAuto( { | X, Y | MATA650( X, Y ) }, aCpos, nOper )
 			
-		End If
+		//End If
 		
 		If lMsErroAuto
 			

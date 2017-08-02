@@ -8,7 +8,7 @@ User Function FATA110()
 	Local lRet        := .T.
 	Local cHoraInicio := TIME()
 	
-	If PARAMIXB[ 2 ] == 'FORMPOS' .And.;
+	If PARAMIXB[ 2 ] == 'MODELCOMMITNTTS' .And.;
 			( PARAMIXB[ 1 ]:GetOperation() == MODEL_OPERATION_INSERT .Or. PARAMIXB[ 1 ]:GetOperation() == MODEL_OPERATION_UPDATE )
 		
 		oModel  := ModelDef()
@@ -18,7 +18,7 @@ User Function FATA110()
 		oModel:Activate()
 		
 		oModel:LoadValue( 'TIPOCLIENTE', 'ID'   , ACY->ACY_GRPVEN )
-		oModel:LoadValue( 'TIPOCLIENTE', 'NOME' , ACY->ACY_DESCRI )
+		oModel:LoadValue( 'TIPOCLIENTE', 'NOME' , ACY->ACY_DESCRI ) 
 		
 		If oModel:VldData()
 			
@@ -79,7 +79,7 @@ Static Function EaiEnvio( oModel, cPrg )
 	Local oXmlResp := TXmlManager():New()
 	Local cXmlResp := ''
 	
-	oFwEai:AddLayout( oModel:GetId(), '1.000', 'FWFORMEAI.' + cPrg, oModel:GetXmlData() )
+	oFwEai:AddLayout( oModel:GetId(), '1.000', 'FWFORMEAI.' + cPrg, DecodeUTF8( oModel:GetXmlData() ) )
 	
 	oFwEai:SetDocType( '1' )
 	

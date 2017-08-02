@@ -943,4 +943,188 @@
          ]]]]>><![CDATA[</tot:INMSG>\r
       </tot:RECEIVEMESSAGE>\r
    </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4c4a6072-2597-442f-a682-537d0fb8e487" name="IOMTA250"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tot:RECEIVEMESSAGE>\r
+         <tot:INMSG><![CDATA[ 
+<TOTVSIntegrator>
+	<GlobalProduct>Protheus|EAI</GlobalProduct>
+	<GlobalFunctionCode>EAI</GlobalFunctionCode>
+	<GlobalDocumentFunctionCode>IOMTA250</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>Aviso de Produçao</GlobalDocumentFunctionDescription>
+	<DocVersion>1.000</DocVersion>
+	<DocDateTime>2017-05-30T00:00:00Z</DocDateTime>
+	<DocIdentifier>
+	
+	E1CFFC4A-815A-416B-B2ED-3D704DF50034
+	
+	</DocIdentifier>
+	<DocCompany>99</DocCompany>
+	<DocBranch>01</DocBranch>
+	<DocName />
+	<DocFederalID />
+	<DocType>1</DocType>
+	<Message>
+		<Layouts>
+			<Version>1.000</Version>
+			<Identifier/>
+			<FunctionCode>U_IOMTA250</FunctionCode>
+			<Content>
+<MIOMT250>
+	<SD3_FIELD Registro="1" Operation="3">
+		<D3_DOC>
+			<value>99004</value>
+		</D3_DOC>
+		<D3_QUANT>
+			<value>150</value>
+		</D3_QUANT>
+		<D3_XOS>
+			<value>001.001/001</value>
+		</D3_XOS>
+	</SD3_FIELD>
+	<SD3_FIELD Registro="1" Operation="3">
+		<D3_DOC>
+			<value>99005</value>
+		</D3_DOC>
+		<D3_QUANT>
+			<value>150</value>
+		</D3_QUANT>
+		<D3_XOS>
+			<value>001.001/001</value>
+		</D3_XOS>
+	</SD3_FIELD>
+	<SD3_FIELD Registro="1" Operation="3">
+		<D3_DOC>
+			<value>99006</value>
+		</D3_DOC>
+		<D3_QUANT>
+			<value>150</value>
+		</D3_QUANT>
+		<D3_XOS>
+			<value>001.001/001</value>
+		</D3_XOS>
+	</SD3_FIELD>
+</MIOMT250>
+			</Content>
+		</Layouts>
+	</Message>
+</TOTVSIntegrator>	   
+         ]]]]>><![CDATA[</tot:INMSG>\r
+      </tot:RECEIVEMESSAGE>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="6501206a-4535-4d8f-bed2-0f651e7ac00f" name="IOMTA240.APONT"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tot:RECEIVEMESSAGE>\r
+         <tot:INMSG><![CDATA[ 
+<TOTVSIntegrator>
+	<GlobalProduct>Protheus|EAI</GlobalProduct>
+	<GlobalFunctionCode>EAI</GlobalFunctionCode>
+	<GlobalDocumentFunctionCode>IOMTA240.APONT</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>Apontamentos</GlobalDocumentFunctionDescription>
+	<DocVersion>1.000</DocVersion>
+	<DocDateTime>2017-07-21T00:00:00Z</DocDateTime>
+	<DocIdentifier>
+	
+	0B18CBF3-DA67-4E67-AB06-EDF87AB20037
+	
+	</DocIdentifier>
+	<DocCompany>99</DocCompany>
+	<DocBranch>01</DocBranch>
+	<DocName />
+	<DocFederalID />
+	<DocType>1</DocType>
+	<Message>
+		<Layouts>
+			<Version>1.000</Version>
+			<Identifier/>
+			<FunctionCode>U_IOMTA240.APONT</FunctionCode>
+			<Content>
+				<MIOMT240 version="1\.01">
+					<SD3_FIELD Operation="5" Registro="REG001">
+						<D3_XOS order="1">
+							<value>001.001/001</value>
+						</D3_XOS>
+						<D3_CC order="1">
+							<value>CC001</value>
+						</D3_CC>
+						<D3_DOC order="1">
+							<value>DOC001</value>
+						</D3_DOC>
+						<D3_DATAINI order="1">
+							<value>20170721</value>
+						</D3_DATAINI>
+						<D3_HORAINI order="1">
+							<value>07:00:00</value>
+						</D3_HORAINI>
+						<D3_DATAFIN order="1">
+							<value>20170721</value>
+						</D3_DATAFIN>
+						<D3_HORAFIN order="1">
+							<value>09:30:00</value>
+						</D3_HORAFIN>
+					</SD3_FIELD>										
+				</MIOMT240>
+			</Content>
+		</Layouts>
+	</Message>
+</TOTVSIntegrator>	   
+         ]]]]>><![CDATA[</tot:INMSG>\r
+      </tot:RECEIVEMESSAGE>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="e8bc62dc-7205-4331-a4a6-ecd5a881d5b2" name="IOMTA240.REQUIS"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tot:RECEIVEMESSAGE>\r
+         <tot:INMSG><![CDATA[ 
+<TOTVSIntegrator>
+	<GlobalProduct>Protheus|EAI</GlobalProduct>
+	<GlobalFunctionCode>EAI</GlobalFunctionCode>
+	<GlobalDocumentFunctionCode>IOMTA240.REQUIS</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>Requisição de Apontamentos</GlobalDocumentFunctionDescription>
+	<DocVersion>1.000</DocVersion>
+	<DocDateTime>2017-07-21T00:00:00Z</DocDateTime>
+	<DocIdentifier>
+	
+	0B18CBF3-DA67-4E67-AB06-EDF87AB20055
+	
+	</DocIdentifier>
+	<DocCompany>99</DocCompany>
+	<DocBranch>01</DocBranch>
+	<DocName />
+	<DocFederalID />
+	<DocType>1</DocType>
+	<Message>
+		<Layouts>
+			<Version>1.000</Version>
+			<Identifier/>
+			<FunctionCode>U_IOMTA240.REQUIS</FunctionCode>
+			<Content>
+				<MIOMT240 version="1\.01">
+					<SD3_FIELD Registro="REG001" Operation="3">
+						<D3_DOC order="3">
+							<value></value>
+						</D3_DOC>
+						<D3_XOS order="1">
+							<value>001.001/001</value>
+						</D3_XOS>
+						<D3_QUANT order="1">
+							<value>50.00</value>
+						</D3_QUANT>
+						<D3_COD order="1">
+							<value>MP001</value>
+						</D3_COD>
+						<D3_LOCAL order="1">
+							<value>00</value>
+						</D3_LOCAL>
+					</SD3_FIELD>
+				</MIOMT240>
+			</Content>
+		</Layouts>
+	</Message>
+</TOTVSIntegrator>	   
+         ]]]]>><![CDATA[</tot:INMSG>\r
+      </tot:RECEIVEMESSAGE>\r
+   </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:afterLoadScript>window.alert('message');</con:afterLoadScript><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

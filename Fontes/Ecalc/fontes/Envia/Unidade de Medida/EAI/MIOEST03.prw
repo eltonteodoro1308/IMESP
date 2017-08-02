@@ -8,7 +8,7 @@ user function MIOEST03()
 	Local lRet        := .T.
 	Local cHoraInicio := TIME()
 	
-	If PARAMIXB[ 2 ] == 'FORMPOS' .And.;
+	If PARAMIXB[ 2 ] == 'MODELCOMMITNTTS' .And.;
 			( PARAMIXB[ 1 ]:GetOperation() == MODEL_OPERATION_INSERT .Or. PARAMIXB[ 1 ]:GetOperation() == MODEL_OPERATION_UPDATE )
 		
 		oModel  := ModelDef()

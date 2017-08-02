@@ -4,7 +4,7 @@
 User Function MTAB2D3R()
 
 	Local aArea          := GetArea()
-	Local cId            := AllTrim( Str( SD3->( Recno() ) ) )
+	Local cId            := SD3->( D3_NUMSEQ + D3_CF )
 	Local cNumAno        := Transform( Posicione( 'SC2', 1, xFilial( 'SC2' ) + SD3->D3_OP, 'C2_XOS' ),'@R 999.999/999' )
 	Local cCodItem       := SD3->D3_COD
 	Local cDescricao     := Posicione( 'SB1', 1, xFilial( 'SB1' ) + SD3->D3_COD, 'B1_DESC' )
@@ -43,7 +43,7 @@ User Function MTAB2D3R()
 
 	End If
 
-	If ! Empty( cTipo )
+	If ! Empty( cTipo ) .And. ! Empty( SD3->D3_OP ) .And. AllTrim( SD3->D3_XTPDOC ) # '2'
 
 		U_IOREQDEV( cId, cNumAno, cCodItem, cDescricao, cTipo, cDataMovimento, cQuantidade, cValorTotal, cValorIcms, cStatus )
 

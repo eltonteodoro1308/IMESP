@@ -1,55 +1,61 @@
-//TODO Só enviar saldo de papel verificar se utiliza o campo B1_GRUPO
 #INCLUDE 'TOTVS.CH'
 #INCLUDE 'FWMVCDEF.CH'
 
 User Function IOMTB201()
 	
-	Local oModel  := Nil
-	Local lInclui := INCLUI
-	Local cTrab   := GetNextAlias()
-	Local aArea   := GetArea()
+	Local oModel      := Nil
+	Local lInclui     := INCLUI
+	Local cTrab       := GetNextAlias()
+	Local aArea       := GetArea()
 	Local cHoraInicio := TIME()
+	Local cGrupoPap   := Alltrim( GetMv( 'IO_GRPAPEL' ) ) 
+	Local cGrupoPrd   := AllTrim( Posicione( 'SB1', 1, xFilial( 'SB1' ) + PARAMIXB[1], 'B1_GRUPO' ) )
+	Local cTipo       := AllTrim( Posicione( 'SB1', 1, xFilial( 'SB1' ) + PARAMIXB[1], 'B1_TIPO'  ) )  
 	
-	BeginSQL Alias cTrab
+	If cGrupoPrd == cGrupoPap .And. cTipo == 'MP'
 		
-		SELECT SB2.B2_COD,SUM( SB2.B2_QATU ) B2_QATU
-		FROM %Table:SB2% SB2
-		WHERE SB2.B2_FILIAL = %xFilial:SB2%
-		AND SB2.B2_COD = %EXP:PARAMIXB[1]%
-		AND SB2.%NotDel%
-		GROUP BY SB2.B2_COD
+		BeginSQL Alias cTrab
+			
+			SELECT SB2.B2_COD,SUM( SB2.B2_QATU ) B2_QATU
+			FROM %Table:SB2% SB2
+			WHERE SB2.B2_FILIAL = %xFilial:SB2%
+			AND SB2.B2_COD = %EXP:PARAMIXB[1]%
+			AND SB2.%NotDel%
+			GROUP BY SB2.B2_COD
+			
+		EndSQL
 		
-	EndSQL
-	
-	VarInfo( 'GetLastQuery', GetLastQuery(),,.F.,.T. )
-	
-	oModel  := ModelDef()
-	
-	oModel:SetOperation( 3 )
-	
-	oModel:Activate()
-	
-	oModel:LoadValue( 'QUANTESTOQUE' , 'ID'           , ( cTrab )->B2_COD )
-	oModel:LoadValue( 'QUANTESTOQUE' , 'QUANTESTPRINC', AllTrim( Str( ( cTrab )->B2_QATU ) ) )
-	
-	If oModel:VldData()
+		VarInfo( 'GetLastQuery', GetLastQuery(),,.F.,.T. )
 		
-		//oModel:CommitData()
-		lRet := EaiEnvio( oModel, Replace( ProcName(), 'U_' ) )
+		oModel  := ModelDef()
 		
-	Else
+		oModel:SetOperation( 3 )
 		
-		VarInfo('oModel:GetErrorMessage()',oModel:GetErrorMessage(),,.F.,.T.)
+		oModel:Activate()
+		
+		oModel:LoadValue( 'QUANTESTOQUE' , 'ID'           , ( cTrab )->B2_COD )
+		oModel:LoadValue( 'QUANTESTOQUE' , 'QUANTESTPRINC', AllTrim( Str( ( cTrab )->B2_QATU ) ) )
+		
+		If oModel:VldData()
+			
+			//oModel:CommitData()
+			lRet := EaiEnvio( oModel, Replace( ProcName(), 'U_' ) )
+			
+		Else
+			
+			VarInfo('oModel:GetErrorMessage()',oModel:GetErrorMessage(),,.F.,.T.)
+			
+		End If
+		
+		oModel:DeActivate()
+		
+		ConOut( ProcName() + ' Executado em ' + ElapTime( cHoraInicio, TIME() ) )
+		
+		INCLUI := lInclui
+		
+		( cTrab )->( DbCloseArea() )
 		
 	End If
-	
-	oModel:DeActivate()
-	
-	ConOut( ProcName() + ' Executado em ' + ElapTime( cHoraInicio, TIME() ) )
-	
-	INCLUI := lInclui
-	
-	( cTrab )->( DbCloseArea() )
 	
 	RestArea( aArea )
 	

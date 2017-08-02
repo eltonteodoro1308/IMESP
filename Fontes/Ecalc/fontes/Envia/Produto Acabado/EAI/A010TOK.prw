@@ -66,6 +66,7 @@ user function A010TOK()
 		oModel:LoadValue( 'ITEMESTOQUE' , 'PAPELGRAMATURA' , AllTrim( Str( M->B1_XECGRM ) ) )
 		oModel:LoadValue( 'ITEMESTOQUE' , 'PAPELLARGURA'   , AllTrim( Str( M->B1_XECLRG ) ) )
 		oModel:LoadValue( 'ITEMESTOQUE' , 'PAPELALTURA'    , AllTrim( Str( M->B1_XECALT ) ) )
+		oModel:LoadValue( 'ITEMESTOQUE' , 'PRECO'          , AllTrim( Str( M->B1_PRV1 ) ) )
 		
 		If oModel:VldData()
 			
@@ -118,6 +119,7 @@ Static Function Struct()
 	oStruct:AddField('PAPELGRAMATURA' , 'PAPELGRAMATURA' , 'PAPELGRAMATURA' , 'C', 018, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('PAPELLARGURA'   , 'PAPELLARGURA'   , 'PAPELLARGURA'   , 'C', 018, 0, , , {}, .F., , .F., .F., .F., , )
 	oStruct:AddField('PAPELALTURA'    , 'PAPELALTURA'    , 'PAPELALTURA'    , 'C', 018, 0, , , {}, .F., , .F., .F., .F., , )
+	oStruct:AddField('PRECO'          , 'PRECO'          , 'PRECO'          , 'C', 018, 0, , , {}, .F., , .F., .F., .F., , )
 	
 return oStruct
 

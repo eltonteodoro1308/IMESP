@@ -24,6 +24,7 @@ User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 	Local cReg     := ''
 	Local cTipoMov := ''
 	Local cCC      := ''
+	Local cTpDoc   := ''
 	Local cDoc     := ''
 	Local cDataIni := ''
 	Local cHoraIni := ''
@@ -39,9 +40,13 @@ User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 		
 		cTipoMov := GetMv( 'IO_TMAPONT' )
 		
+		cTpDoc := '2'
+		
 	ElseIf cParams == 'REQUIS'
 		
 		cTipoMov := GetMv( 'IO_TMREQUI' )
+		
+		cTpDoc := '3'
 		
 	End If
 	
@@ -225,25 +230,37 @@ User Function IOMTA240( cXml, cError, cWarning, cParams, oFwEai )
 						
 						aAdd( aCpos, { 'D3_LOCAL'   , cLocal   , Nil } )
 						
+					Else
+						
+						cLocal := Posicione( 'SB1', 1, xFilial( 'SB1' ) + cCod, 'B1_LOCPAD	' )
+						
+						aAdd( aCpos, { 'D3_LOCAL'   , cLocal   , Nil } )
+						
 					End If
 					
-					aAdd( aCpos, { 'D3_DOC'     , cDoc     , Nil } )
+					
+					aAdd( aCpos, { 'D3_XOS'     , cOrdSrv  , Nil } )
+					aAdd( aCpos, { 'D3_XTPDOC'  , cTpDoc   , Nil } )
+					aAdd( aCpos, { 'D3_XDECALC' , cDoc     , Nil } )
 					aAdd( aCpos, { 'D3_EMISSAO' , dEmissao , Nil } )
 					
 					cOp := ''
 					
 					aArea := GetArea()
 					
-					If ! Empty( Posicione( 'SD3', 2, xFilial( 'SD3' ) + cDoc, 'D3_DOC' ) )
+					DbSelectArea( 'SD3' )
+					DBOrderNickname( 'DOCECALC' )
+					
+					If DbSeek( xFilial( 'SD3' ) + cTpDoc + Padr( cDoc, GetSx3Cache( 'D3_XDECALC', 'X3_TAMANHO' ) ) + ' ' )
 						
-						EstornaMov( cDoc )
+						EstornaMov( cTpDoc, cDoc )
 						
 					End If
 					
 					RestArea( aArea )
 					
 					If nOpc == 3 .And. ! lMsErroAuto
-						
+
 						MSExecAuto( { | X, Y | MATA240( X, Y ) }, aCpos, nOpc )
 						
 					End If
@@ -342,8 +359,6 @@ Static Function Retorno( aMsg )
 	
 Return cRet
 
-
-
 Static Function CalcHoras( cDataIni, cHoraIni, cDataFin, cHoraFin )
 	
 	Local nRet := 0
@@ -356,30 +371,17 @@ Return nRet
 
 static function EstornaMov( cDoc )
 	
-	Local aVetor      := {}
-	Local nX          := 0
+	Local aVetor := {}
+	Local nX     := 0
 	
-	DbSelectArea( 'SD3' )
-	DbSetOrder( 2 )
+	For nX := 1 To FCount()
+		
+		aAdd( aVetor, { FieldName( nX ), SD3->&( FieldName( nX ) ), Nil } )
+		
+	Next nX
 	
-	If DbSeek( xFilial( 'SD3' ) + cDoc )
-		
-		RecLock( 'SD3', .F.)
-		
-		SD3->D3_OP = 'X'
-		
-		MsUnlock()
-		
-		For nX := 1 To FCount()
-			
-			aAdd( aVetor, { FieldName( nX ), SD3->&( FieldName( nX ) ), Nil } )
-			
-		Next nX
-		
-		aAdd( aVetor, { 'INDEX', 2, Nil } )
-		
-		MSExecAuto( { | X, Y | MATA240( X, Y ) }, aVetor, 5 )
-		
-	End If
+	aAdd( aVetor, { 'INDEX', 4, Nil } )
 	
+	MSExecAuto( { | X, Y | MATA240( X, Y ) }, aVetor, 5 )	
+
 return

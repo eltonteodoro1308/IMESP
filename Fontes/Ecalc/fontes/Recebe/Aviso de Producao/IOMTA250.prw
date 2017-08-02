@@ -13,20 +13,8 @@ Função acionada pelo EAI que recebe xml com dados da Produção de uma OP
 /*/
 User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 	
-	Local aMsg    := {}
-	Local oXml    := TXmlManager():New()
-	Local aCpos   := {}
-	Local nX      := 0
-	Local cOrdSrv := ''
-	Local aArea   := {}	
-	Local aAtt     := {}	
-	Local nOpc     := 3	
-	Local cReg     := ''
-	Local cTipoMov := GetMv( 'MV_TMPAD' )
-	Local nQuant   := 0
-	Local cOP      := ''
-	Local cLocal   := ''
-	Local lEstorna := .F.
+	Local oXml := TXmlManager():New()
+	Local aMsg := {}
 	
 	Private	lMsErroAuto		:=	.F.
 	Private	lMsHelpAuto		:=	.T.
@@ -34,158 +22,31 @@ User Function IOMTA250( cXml, cError, cWarning, cParams, oFwEai )
 	
 	If oXml:Parse( '<?xml version="1.0" encoding="ISO-8859-1" ?>' + cXML )
 		
-		If oXml:DOMChildNode()
+		oXml:DOMChildNode()
+		
+		Do While .T.
 			
-			BeginTran()
-				
-				Do While .T.
-					
-					aAtt   := oXml:DOMGetAttArray()
-					
-					cReg := aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'Registro' } ) ][ 2 ]
-					nOpc := Val( aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'Operation' } ) ][ 2 ] )
-					
-					oXml:DOMChildNode()
-					
-					Do While .T.
-						
-						If oXml:cName == 'D3_QUANT
-							
-							oXml:DOMChildNode()
-							
-							nQuant :=  Val( oXml:cText )
-							
-							oXml:DOMParentNode()
-							
-						ElseIf oXml:cName == 'D3_XOS'
-							
-							oXml:DOMChildNode()
-							
-							cOrdSrv := oXml:cText
-							
-							oXml:DOMParentNode()
-							
-						End If
-						
-						If ! oXml:DOMNextNode()
-							
-							Exit
-							
-						End If
-						
-					End Do
-					
-					oXml:DOMParentNode()
-					
-					aArea := GetArea()
-					
-					DbSelectArea( 'SC2' )
-					DBOrderNickname( 'XOS' )
-					
-					If DbSeek( xFilial( 'SC2' ) + cOrdSrv )
-						
-						cOp    := SC2->( C2_NUM + C2_ITEM + C2_SEQUEN )
-						cLocal := SC2->C2_LOCAL
-						
-					End If
-					
-					RestArea( aArea )
-					
-					aAdd( aCpos, { 'D3_TM'      , cTipoMov , Nil } )
-					aAdd( aCpos, { 'D3_QUANT'   , nQuant   , Nil } )
-					aAdd( aCpos, { 'D3_OP'      , cOP      , Nil } )
-					aAdd( aCpos, { 'D3_LOCAL'   , cLocal   , Nil } )
-					aAdd( aCpos, { 'D3_EMISSAO' , Date()   , Nil } )
-					
-					MSExecAuto( { | X, Y | MATA250( X, Y ) }, aCpos, nOpc )
-					
-					aSize( aCpos, 0 )
-					
-					aAdd( aMsg, '<SD3_FIELD registro="' + cReg + '">' )
-					
-					If lMsErroAuto
-						
-						aErro := aClone( GetAutoGRLog() )
-						
-						aAdd( aMsg, '<SUCESSO>' )
-						aAdd( aMsg, '<value>F</value>' )
-						aAdd( aMsg, '</SUCESSO>' )
-						
-						aAdd( aMsg, '<MENSAGEM>' )
-						aAdd( aMsg, '<value>' )
-						
-						For nX := 1 To Len( aErro )
-							
-							aAdd( aMsg, _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)  )
-							
-						Next nX
-						
-						aAdd( aMsg, '</value>' )
-						aAdd( aMsg, '</MENSAGEM>' )
-						
-					Else
-						
-						aAdd( aMsg, '<SUCESSO>' )
-						aAdd( aMsg, '<value>T</value>' )
-						aAdd( aMsg, '</SUCESSO>' )
-						aAdd( aMsg, '<MENSAGEM>' )
-						aAdd( aMsg, '<value>' )
-						aAdd( aMsg, '</value>' )
-						aAdd( aMsg, '</MENSAGEM>' )
-						
-					End If
-					
-					aAdd( aMsg, '</SD3_FIELD>' )
-					
-					If lMsErroAuto
-						
-						Disarmtransaction()
-						Exit
-						
-					End IF
-					
-					If ! oXml:DOMNextNode()
-						
-						Exit
-						
-					End If
-					
-				End Do
-				
-			EndTran()
+			lMsErroAuto := .F.
 			
-		End If
+			Registra( oXml, @aMsg )
+			
+			If ! oXml:DOMNextNode()
+				
+				Exit
+				
+			End If
+			
+		End Do
 		
 	Else
 		
-		aAdd( aMsg, '<SUCESSO>' )
-		aAdd( aMsg, '<value>F</value>' )
-		aAdd( aMsg, '</SUCESSO>' )
-		aAdd( aMsg, '<MENSAGEM>' )
-		aAdd( aMsg, '<value>' )
-		aAdd( aMsg, 'Erro no Parse do XML: ' + oXml:LastError() )
-		aAdd( aMsg, '</value>' )
-		aAdd( aMsg, '</MENSAGEM>' )
-		
-		lMsErroAuto := .T.
+		BuildMsg( @aMsg, 'F', 'Erro no Parse do XML: ' + oXml:LastError(), '0' )
 		
 	End If
 	
 	oFwEai:cReturnMsg := Retorno( aMsg )
 	
-	aSize( aMsg, 0 )
-	
-	aAdd( aMsg, '<SD3_FIELD>'       )
-	aAdd( aMsg, '<SUCESSO>'        )
-	aAdd( aMsg, '<value>' + If(  lMsErroAuto, 'F', 'T' ) + '</value>' )
-	aAdd( aMsg, '</SUCESSO>'        )
-	aAdd( aMsg, '<MENSAGEM>' )
-	aAdd( aMsg, '<value>' )
-	aAdd( aMsg, '</value>' )
-	aAdd( aMsg, '</MENSAGEM>' )
-	aAdd( aMsg, '</SD3_FIELD>' )
-	
-Return Retorno( aMsg )
+Return oFwEai:cReturnMsg
 
 Static Function Retorno( aMsg )
 	
@@ -203,3 +64,270 @@ Static Function Retorno( aMsg )
 	cRet += '</MIOMT250>'
 	
 Return cRet
+
+Static Function BuildMsg( aMsg, cSucesso, cMsg, cReg )
+	
+	aAdd( aMsg, '<SD3_FIELD registro="' + cReg + '">' )
+	aAdd( aMsg, '<SUCESSO>'                           )
+	aAdd( aMsg, '<value>' + cSucesso + '</value>'     )
+	aAdd( aMsg, '</SUCESSO>'                          )
+	aAdd( aMsg, '<MENSAGEM>'                          )
+	aAdd( aMsg, '<value>'                             )
+	aAdd( aMsg,  cMsg                                 )
+	aAdd( aMsg, '</value>'                            )
+	aAdd( aMsg, '</MENSAGEM>'                         )
+	aAdd( aMsg, '</SD3_FIELD>'                        )
+	
+Return
+
+Static Function Registra( oXml, aMsg )
+	
+	Local nOpc     := 3
+	Local cReg     := ''
+	Local aCpos    := {}
+	Local cOrdSrv  := ''
+	Local cDoc     := ''
+	Local nQuant   := ''
+	Local cDtFech  := ''
+	Local cTipoMov := GetMv( 'MV_TMPAD' )
+	Local cOp      := ''
+	Local cLocal   := ''
+	Local aArea    := GetArea()
+	Local lRet     := .F.
+	Local nX       := 0
+	Local cSitOp   := ''
+	Local aErro    := {}
+	Local cErro    := ''
+	
+	aAtt := oXml:DOMGetAttArray()
+	
+	cReg := aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'Registro' } ) ][ 2 ]
+	nOpc := Val( aAtt[ aScan( aAtt  , { | X | AllTrim( X[ 1 ] ) == 'Operation' } ) ][ 2 ] )
+	
+	Carrega( oXml, @cOrdSrv, @cDoc, @nQuant, @cDtFech )
+	
+	If nOpc == 3 .Or. nOpc == 5
+		
+		DbSelectArea( 'SD3' )
+		DBOrderNickname( 'DOCECALC' )
+		
+		If lRet := DbSeek( xFilial( 'SD3' ) + '1' + Padr( cDoc, GetSx3Cache( 'D3_XDECALC', 'X3_TAMANHO' ) ) + ' ' )
+			
+			For nX := 1 To FCount()
+				
+				If ! AllTrim( FieldName( nX ) ) == 'D3_FATCORR' //Campo apresenta erro de gatilho, então foi tirado do array do execauto
+					
+					aAdd( aCpos, { FieldName( nX ), SD3->&( FieldName( nX ) ), Nil } )
+					
+				End If
+				
+			Next nX
+			
+			aAdd( aCpos, { 'INDEX', 4, Nil } )
+			
+			//BeginTran()
+			
+			MSExecAuto( { | X, Y | MATA250( X, Y ) }, aCpos, 5 )
+			
+			If ! lMsErroAuto .And. nOpc == 3
+				
+				aSize( aCpos, 0 )
+				
+				DbSelectArea( 'SC2' )
+				DBOrderNickname( 'XOS' )
+				
+				If lRet := DbSeek( xFilial( 'SC2' ) + cOrdSrv )
+					
+					cOp    := SC2->( C2_NUM + C2_ITEM + C2_SEQUEN )
+					cLocal := SC2->C2_LOCAL
+					
+					aAdd( aCpos, { 'D3_TM'      , cTipoMov , Nil } )
+					aAdd( aCpos, { 'D3_QUANT'   , nQuant   , Nil } )
+					aAdd( aCpos, { 'D3_OP'      , cOP      , Nil } )
+					aAdd( aCpos, { 'D3_XOS'     , cOrdSrv  , Nil } )
+					aAdd( aCpos, { 'D3_LOCAL'   , cLocal   , Nil } )
+					aAdd( aCpos, { 'D3_XTPDOC'  , '1'      , Nil } )
+					aAdd( aCpos, { 'D3_XDECALC' , cDoc     , Nil } )
+					
+					MSExecAuto( { | X, Y | MATA250( X, Y ) }, aCpos, 3 )
+					
+				Else
+					
+					BuildMsg( @aMsg, 'F', 'OS ' + cOrdSrv + ' não localizada.', cReg )
+					
+					Disarmtransaction()
+					
+				End If
+				
+			End If
+			
+			If lMsErroAuto
+				
+				aErro := aClone( GetAutoGRLog() )
+				
+				For nX := 1 To Len( aErro )
+					
+					cErro += aErro[ nX ] + Chr( 13 ) + Chr( 10 )
+					
+				Next nX
+				
+				BuildMsg( @aMsg, 'F', cErro, cReg )
+				
+				Disarmtransaction()
+				
+			Else
+				
+				BuildMsg( @aMsg, 'T', cErro, cReg )
+				
+			End If
+			
+			//EndTran()
+			
+		Else
+			
+			If nOpc == 5
+				
+				BuildMsg( @aMsg, 'F', 'Documento ' + cDoc + ' não localizada.', cReg )
+				
+			ElseIf nOpc == 3
+				
+				DbSelectArea( 'SC2' )
+				DBOrderNickname( 'XOS' )
+				
+				If lRet := DbSeek( xFilial( 'SC2' ) + cOrdSrv )
+					
+					cOp    := SC2->( C2_NUM + C2_ITEM + C2_SEQUEN )
+					cLocal := SC2->C2_LOCAL
+					
+					aAdd( aCpos, { 'D3_TM'      , cTipoMov , Nil } )
+					aAdd( aCpos, { 'D3_QUANT'   , nQuant   , Nil } )
+					aAdd( aCpos, { 'D3_OP'      , cOP      , Nil } )
+					aAdd( aCpos, { 'D3_XOS'     , cOrdSrv  , Nil } )
+					aAdd( aCpos, { 'D3_LOCAL'   , cLocal   , Nil } )
+					aAdd( aCpos, { 'D3_XTPDOC'  , '1'      , Nil } )
+					aAdd( aCpos, { 'D3_XDECALC' , cDoc     , Nil } )
+					
+					//BeginTran()
+					
+					MSExecAuto( { | X, Y | MATA250( X, Y ) }, aCpos, nOpc )
+					
+					If lMsErroAuto
+						
+						aErro := aClone( GetAutoGRLog() )
+						
+						For nX := 1 To Len( aErro )
+							
+							cErro += aErro[ nX ] + Chr( 13 ) + Chr( 10 )
+							
+						Next nX
+						
+						BuildMsg( @aMsg, 'F', cErro, cReg )
+						
+						Disarmtransaction()
+						
+					Else
+						
+						BuildMsg( @aMsg, 'T', cErro, cReg )
+						
+					End If
+					
+					//EndTran()
+					
+				Else
+					
+					BuildMsg( @aMsg, 'F', 'OS ' + cOrdSrv + ' não localizada.', cReg )
+					
+				End If
+				
+			End If
+			
+		End If
+		
+	ElseIf nOpc == 7 .Or. nOpc == 9
+		
+		DbSelectArea( 'SC2' )
+		DBOrderNickname( 'XOS' )
+		
+		If lRet := DbSeek( xFilial( 'SC2' ) + cOrdSrv )
+			
+			RecLock( 'SC2', .F. )
+			
+			If nOpc == 7
+				
+				SC2->C2_STATUS  := 'U'
+				SC2->C2_XDTFECH := StoD( Replace( SubStr( cDtFech, 1, 10 ), '-', '' ) )
+				
+			ElseIf nOpc == 9
+				
+				SC2->C2_STATUS := 'N'
+				SC2->C2_XDTFECH := CtoD( '' )				
+				
+			End If
+			
+			MsUnlock()
+			
+			BuildMsg( @aMsg, 'T', cErro, cReg )
+			
+		Else
+			
+			BuildMsg( @aMsg, 'F', 'OS ' + cOrdSrv + ' não localizada.', cReg )
+			
+		End If
+		
+	End If
+	
+	RestArea( aArea )
+	
+Return
+
+Static Function Carrega( oXml, cOrdSrv, cDoc, nQuant, cDtFech )
+	
+	oXml:DOMChildNode()
+	
+	Do While .T.
+		
+		If oXml:cName == 'D3_QUANT'
+			
+			oXml:DOMChildNode()
+			
+			nQuant :=  Val( oXml:cText )
+			
+			oXml:DOMParentNode()
+			
+		ElseIf oXml:cName == 'D3_XOS'
+			
+			oXml:DOMChildNode()
+			
+			cOrdSrv := oXml:cText
+			
+			oXml:DOMParentNode()
+			
+		ElseIf oXml:cName == 'D3_DOC'
+			
+			oXml:DOMChildNode()
+			
+			cDoc := oXml:cText
+			
+			oXml:DOMParentNode()
+			
+		ElseIf oXml:cName == 'C2_XDTFECH'
+			
+			oXml:DOMChildNode()
+			
+			cDtFech	 := oXml:cText
+			
+			oXml:DOMParentNode()
+			
+		End If
+		
+		If ! oXml:DOMNextNode()
+			
+			Exit
+			
+		End If
+		
+	End Do
+	
+	oXml:DOMParentNode()
+	
+Return
