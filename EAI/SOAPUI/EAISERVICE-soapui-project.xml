@@ -1127,4 +1127,41 @@
          ]]]]>><![CDATA[</tot:INMSG>\r
       </tot:RECEIVEMESSAGE>\r
    </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call><con:call id="3056a285-c942-4746-b3ce-d0055c3289c1" name="EaiTrans"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://spon4944:7112/ws/EAISERVICE.apw</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tot="http://www.totvs.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tot:RECEIVEMESSAGE>\r
+         <tot:INMSG><![CDATA[ 
+
+<TOTVSIntegrator>
+	<GlobalProduct>TOTVS|EAI</GlobalProduct>
+	<GlobalFunctionCode>EAI</GlobalFunctionCode>
+	<GlobalDocumentFunctionCode>EAITRANS</GlobalDocumentFunctionCode>
+	<GlobalDocumentFunctionDescription>EAITRANS</GlobalDocumentFunctionDescription>
+	<DocVersion>1.000</DocVersion>
+	<DocDateTime>2017-08-02T00:00:00Z</DocDateTime>
+	<DocIdentifier>
+	
+	87C90DC0-8232-46E5-B803-C21474930005
+	
+	</DocIdentifier>
+	<DocCompany>99</DocCompany>
+	<DocBranch>01</DocBranch>
+	<DocName />
+	<DocFederalID />
+	<DocType>1</DocType>
+	<Message>
+		<Layouts>
+			<Version>1.000</Version>
+			<Identifier></Identifier>
+			<FunctionCode>U_EAITRANS</FunctionCode>
+			<Content>
+			</Content>
+		</Layouts>
+	</Message>
+</TOTVSIntegrator>
+   
+         ]]]]>><![CDATA[</tot:INMSG>\r
+      </tot:RECEIVEMESSAGE>\r
+   </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.totvs.com/RECEIVEMESSAGE"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:afterLoadScript>window.alert('message');</con:afterLoadScript><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

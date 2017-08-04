@@ -1,0 +1,5 @@
+Parâmetros
+==========
+
+IO_TMPWAIT
+IO_EAIWSDL
