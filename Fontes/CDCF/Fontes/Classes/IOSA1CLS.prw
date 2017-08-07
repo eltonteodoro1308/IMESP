@@ -1,5 +1,18 @@
 #INCLUDE 'TOTVS.CH'
 
+/*/{Protheus.doc} IOSA1BLD
+//Retorno uma instância de objeto da classe IOSA1CLS
+@author Elton Teodoro Alves
+@since 07/08/2017
+@version 12.1.017
+@return return, Instância de objeto da classe IOSA1CLS
+/*/
+User Function IOSA1BLD()
+
+	Local oObject := IOSA1CLS():New()
+
+Return oObject
+
 /*/{Protheus.doc} IOSA1CLS
 //Classe que representa o cadastro do cliente e seus contatos a serem incluidos/atualizados na base
 @author Elton Teodoro Alves
@@ -47,7 +60,7 @@ Class IOSA1CLS
 	Data cXNMPSCB // dPaisCobranca.NomePais,
 	Data cENDENT  // endEntregaPrincipal.TipoLogradouro // endEntregaPrincipal.Logradouro // endEntregaPrincipal.LogradouroNumero
 	Data cXCMPENT // endEntregaPrincipal.LogradouroComplemento
-	Data cXBROCOB // endEntregaPrincipal.Bairro
+	Data cXBROENT // endEntregaPrincipal.Bairro
 	Data cXCDMNET // endEntregaPrincipal.CodigoMunicipio
 	Data cXMUNENT // endEntregaPrincipal.Municipio,
 	Data cXESTENT // endEntregaPrincipal.SiglaUnidadeFederativa,
@@ -62,8 +75,11 @@ Class IOSA1CLS
 	// clienteContatoDonodaConta.NomeContato,
 	// meioComunicacaoFax.DDD + meioComunicacaoFax.Telefone
 
+	Data cEMAIL
+	Data cXDHCDCF
+	Data lErroAuto
+	Data cErroMsg
 	Data aContatos
-
 
 	Method New() Constructor
 
@@ -76,5 +92,4 @@ End Class
 @version 12.1.017
 /*/
 Method New() Class IOSA1CLS
-
 Return Self

@@ -15,72 +15,44 @@ User Function IOMATA02( aParam )
 	Local nTime      := Val( cTimeStamp ) - Val( cLastTime )
 	Local oEai       := Nil
 	Local cXml       := ''
-	Local oXml       := TXmlManager():New()
-	Local cUuid      := ''
 
-	Default aParam := {'99','01'}
+	Default aParam := { '99', '01' }
 
 	cXml := GerXml( aParam )
 
-	oXml:Parse( cXml )
+	If RpcSetEnv( aParam[1], aParam[2] )
 
-	cUuid := oXml:XPathGetNodeValue( '/TOTVSIntegrator/DocIdentifier' )
+		If nTime >= GetMv( 'IO_TMPWAIT' )
 
-	If nTime >= Val( GetParam( Space( Len( aParam[2] ) ) + 'IO_TMPWAIT', aParam[1] ) )
+			oEai := WsEaiService():New()
 
-		oEai := WsEaiService():New()
+			oEai:_URL := GetMv( 'IO_EAIURL' )
 
-		oEai:_URL := AllTrim( GetParam( Space( Len( aParam[2] ) ) + 'IO_EAIURL', aParam[1] ) )
+			If oEai:ReceiveMessage( '<![CDATA[' + cXml + ']]>' )
 
-		If ! oEai:ReceiveMessage( '<![CDATA[' + cXml + ']]>' )
+				ConOut( oEai:cReceiveMessageResult )
 
-			U_IOEXCPT( cUUID, GetWSCError(), aParam[1] )
+			End If
+
+			FreeObj( oEai )
+
+			PutGlbValue ( 'IOMATA02', FWTimeStamp( 4 ) )
 
 		Else
 
-			ConOut( oEai:cReceiveMessageResult )
+			ConOut( ProcName() + ': Rotina executada a ' + cValTochar( nTime ) + ' segundos.')
 
-		EndIf
+		End If
 
-		FreeObj( oEai )
-
-		PutGlbValue ( 'IOMATA02', FWTimeStamp( 4 ) )
+		RpcClearEnv()
 
 	Else
 
-		ConOut( 'Não Executado as ' + Time() )
+		ConOut( ProcName() + ': Não foi possível acessar empresa/filial.' )
 
 	End If
 
 Return
-
-/*/{Protheus.doc} GetParam
-//Efetua a busca do valor de um parâmetro sem que haja algum environment ativo
-@author Elton Teodoro Alves
-@since 04/08/2017
-@version 12.1.017
-@param cSeek, characters, String de busca do parâmetro pela função DbSeek
-@param cEmp, characters, Código da Empresa da busca
-@return return, Valor do Parâmetro
-/*/
-Static Function GetParam( cSeek, cEmp )
-
-	Local cRet := ''
-
-	dbUseArea( .T. , 'CTREECDX',;
-	GetSrvProfString( 'STARTPATH', '\SYSTEM' ) +;
-	'SX6' + cEmp + '0' + GetDbExtension(),;
-	'SX6TMP', .T., .T.)
-
-	SX6TMP->( DbSetOrder( 1 ) )
-
-	SX6TMP->( DbSeek( cSeek ) )
-
-	cRet := SX6TMP->X6_CONTEUD
-
-	SX6TMP->( DbCloseArea() )
-
-Return cRet
 
 /*/{Protheus.doc} FXml
 //Monta o XML do documento EAI de requisição de integração com o CDCF

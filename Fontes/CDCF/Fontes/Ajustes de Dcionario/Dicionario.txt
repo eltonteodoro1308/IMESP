@@ -1,0 +1,8 @@
+Parâmetros
+==========
+
+IO_TMPWAIT
+IO_EAIWSDL
+IO_CDCFWSD
+IO_CDCFIDS
+IO_CDCFIDC

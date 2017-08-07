@@ -1,71 +1,36 @@
 #INCLUDE 'TOTVS.CH'
 
-/*/{Protheus.doc} eMailExcep
+/*/{Protheus.doc} IOEXCPT
 Função que registra uma User Exception e envia e-mail com a exception para lista de usuário definada na tabela ZX
 @author Elton Teodoro Alves
-@since 12/02/2017
-@version 12.1.014
+@since 04/08/2017
+@version 12.1.017
 @param cUUID, characters, UUID Documento Recebido
 @param cMsg, characters, Mensagem de Erro durante o Processamento.
 /*/
-User Function IOEXCPT( cUUID, cMsg, cEmp )
+User Function IOEXCPT( cUUID, cMsg )
 
 	Local oServer  := TMailManager():New()
 	Local oMessage := TMailMessage():new()
 	Local cTo      := ''
-	Local aArea    := Nil
-	Local aAreaSX5 := Nil
-	Local aAreaSM0 := Nil
+	Local aArea    := GetArea()
+	Local aAreaSX5 := SX5->( GetArea() )
+	Local aAreaSM0 := SM0->( GetArea() )
 
 	Local cMSGMAIL := ''
 
-	Local cRELSERV := ''
-	Local nPORSMTP := 0
-	Local cRELAUTH := ''
+	Local cRELSERV := GetMv( 'MV_RELSERV' ) // Nome do Servidor de Envio de E-mail utilizado nos relatorios
+	Local nPORSMTP := GetMv( 'MV_PORSMTP' ) // Porta Servidor SMTP
+	Local cRELAUTH := GetMv( 'MV_RELAUTH' ) // Servidor de EMAIL necessita de Autenticacão? Determina se o Servidor necessita de Autenticacão.
 
-	Local cRELAUSR := ''
-	Local cRELAPSW := ''
+	Local cRELAUSR := GetMv( 'MV_RELAUSR' ) // Usuario para Autenticacao no Servidor de Email
+	Local cRELAPSW := GetMv( 'MV_RELAPSW' ) // Senha para autenticacäo no servidor de e-mail
 
-	Local lRELTLS  := .F.
-	Local lRELSSL  := .F.
+	Local lRELTLS  := GetMv( 'MV_RELTLS'  ) // Informe se o servidor de SMTP possui conexão do tipo segura ( SSL/TLS ).
+	Local lRELSSL  := GetMv( 'MV_RELSSL'  ) // Define se o envio e recebimento de e-mails na rotina SPED utilizará conexão segura (SSL).
 
-	Local cRELACNT := ''
-	Local cRELPSW  := ''
-
-	Default cEmp := '99'
-
-	If ! FWIsInCallStack( 'U_IOCDCF' )
-
-		dbUseArea( .T. , 'TOPCONN',;
-		'SX5' + cEmp + '0',;
-		'SX5TMP', .T., .T.)
-
-
-		dbUseArea( .T. , 'CTREECDX',;
-		GetSrvProfString( 'STARTPATH', '\SYSTEM' ) +;
-		'SX6' + cEmp + '0' + GetDbExtension(),;
-		'SX6TMP', .T., .T.)
-
-	Else
-
-		aArea    := GetArea()
-		aAreaSX5 := SX5->( GetArea() )
-		aAreaSM0 := SM0->( GetArea() )
-
-	End If
-
-	cRELSERV := GetMv( 'MV_RELSERV' ) // Nome do Servidor de Envio de E-mail utilizado nos relatorios
-	nPORSMTP := GetMv( 'MV_PORSMTP' ) // Porta Servidor SMTP
-	cRELAUTH := GetMv( 'MV_RELAUTH' ) // Servidor de EMAIL necessita de Autenticacão? Determina se o Servidor necessita de Autenticacão.
-
-	cRELAUSR := GetMv( 'MV_RELAUSR' ) // Usuario para Autenticacao no Servidor de Email
-	cRELAPSW := GetMv( 'MV_RELAPSW' ) // Senha para autenticacäo no servidor de e-mail
-
-	lRELTLS  := GetMv( 'MV_RELTLS'  ) // Informe se o servidor de SMTP possui conexão do tipo segura ( SSL/TLS ).
-	lRELSSL  := GetMv( 'MV_RELSSL'  ) // Define se o envio e recebimento de e-mails na rotina SPED utilizará conexão segura (SSL).
-
-	cRELACNT := GetMv( 'MV_RELACNT' ) // Conta a ser utilizada no envio de E-Mail para os relatorios
-	cRELPSW  := GetMv( 'MV_RELPSW'  ) // Senha da Conta de E-Mail para envio de relatorios
+	Local cRELACNT := GetMv( 'MV_RELACNT' ) // Conta a ser utilizada no envio de E-Mail para os relatorios
+	Local cRELPSW  := GetMv( 'MV_RELPSW'  ) // Senha da Conta de E-Mail para envio de relatorios
 
 	// Montagem da mensagem de e-mail em HTML
 	cMSGMAIL += '<!DOCTYPE html>'
@@ -102,18 +67,9 @@ User Function IOEXCPT( cUUID, cMsg, cEmp )
 
 	EndDo
 
-	If ! FWIsInCallStack( 'U_IOCDCF' )
-
-		SX6TMP->( DbCloseArea() )
-		SX5TMP->( DbCloseArea() )
-
-	Else
-
-		RestArea( aAreaSM0 )
-		RestArea( aAreaSX5 )
-		RestArea( aArea    )
-
-	End If
+	RestArea( aAreaSM0 )
+	RestArea( aAreaSX5 )
+	RestArea( aArea    )
 
 	oServer:setUseSSL( lRELSSL )
 	oServer:setUseTLS( lRELTLS )
