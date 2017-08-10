@@ -28,9 +28,7 @@ User Function IOCDCF( cXml, cError, cWarning, cParams, oFwEai )
 
 	GravClient( @aArrStrut )
 
-	//GravContato( @aArrStrut )
-
-	//EnviaErro( @aArrStrut )
+	EnviaErro( @aArrStrut, cUuid )
 
 	oFwEai:cReturnMsg := cXmlCDCF
 
@@ -211,8 +209,8 @@ Static Function MontaStrut( aArrStrut, cXml, cUuid )
 			oCliente:cXESFERA := GetValTag( oXml, 'IdTipoEsfera' )
 			oCliente:cPESSOA  := If( oCliente:cXESFERA = '4', 'F' , 'J' )
 
-			oCliente:dDTCAD	  := GetDtCadAlt( oXml, 'DataHoraCriacao' )
-			oCliente:dXDTALT  := GetDtCadAlt( oXml, 'DataHoraAlteracao' )
+			oCliente:dDTCAD  := GetDtCadAlt( oXml, 'DataHoraCriacao' )
+			oCliente:dXDTALT := GetDtCadAlt( oXml, 'DataHoraAlteracao' )
 
 			If oCliente:cXESFERA == '4'
 
@@ -319,13 +317,24 @@ Return dRet
 /*/
 Static Function GetFisica( oCliente, oXml )
 
+	Local cDate := ''
+	Local cAno  := ''
+	Local cMes  := ''
+	Local cDia  := ''
+
 	oXml:DOMChildNode()
 
 	Do While .T.
 
 		If oXml:cName == 'PessoaFisica'
 
-			oCliente:dDTNASC := GetValTag( oXml, 'DataNascimento' )
+			cDate :=  GetValTag( oXml, 'DataNascimento' )
+
+			cAno := SubStr( cDate, 1, 4 )
+			cMes := SubStr( cDate, 6, 2 )
+			cDia := SubStr( cDate, 9, 2 )
+
+			oCliente:dDTNASC := StoD( cAno + cMes + cDia )
 			oCliente:cXSEXO  := GetValTag( oXml, 'IdTipoSexo' )
 			oCliente:cNREDUZ := oCliente:cNome
 
@@ -576,8 +585,6 @@ Static Function GetContato( oCliente, oXml )
 	Local oContato := Nil
 	Local cPerfis  := ''
 
-	oCliente:aContatos := {}
-
 	oXml:DOMChildNode()
 
 	Do While .T.
@@ -728,7 +735,6 @@ Return cRet
 @since 08/08/2017
 @version 12.1.017
 @param aArrStrut, array, Array  com a carga de dados dos clientes
-@return return, return_description
 /*/
 Static Function GravClient( aArrStrut )
 
@@ -769,3 +775,38 @@ Static Function GetExemplo()
 	FT_FUSE()
 
 Return cRet
+
+/*/{Protheus.doc} EnviaErro
+//Envia E-Mail com os clientes que tiveram erro na gravação
+@author elton.alves
+@since 10/08/2017
+@version 12.1.017
+@param aArrStrut, array, Array  com a carga de dados dos clientes
+/*/
+Static Function EnviaErro( aArrStrut, cUuid )
+
+	Local nX       := 0
+	Local oCliente := Nil
+	Local cMsg     := ''
+
+	For nX := 1 To len( aArrStrut )
+
+		oCliente := aArrStrut[ nX ]
+
+		If oCliente:lErroAuto
+
+			cMsg += Replicate( '-', 150 ) + '<br/>'
+			cMsg += 'Erro no cadastro do Cliente : ' + '<br/>'
+			cMsg += oCliente:cCOD + ' - ' + '<br/>'
+			cMsg += oCliente:cNOME + '<br/>'
+			cMsg += oCliente:cNOME + '<br/>'
+			cMsg += Replace( oCliente:cErroMsg, Chr( 13 ) + Chr( 10 ), '<br/>' )
+			cMsg += Replicate( '-', 150 ) + '<br/>'
+
+		End If
+
+	Next nX
+
+	U_IOEXCPT( cUuid, cMsg )
+
+Return

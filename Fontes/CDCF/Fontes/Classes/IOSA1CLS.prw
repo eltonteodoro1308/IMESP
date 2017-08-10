@@ -79,6 +79,9 @@ Class IOSA1CLS
 
 	Data cEMAIL
 	Data cXDHCDCF
+	Data mXCONTAC
+
+	// Atributos da classe que não tem campo correspondente no dicionário
 	Data lErroAuto
 	Data cErroMsg
 	Data aContatos
@@ -129,8 +132,9 @@ Method New() Class IOSA1CLS
 
 	Next nX
 
-	Self:cLoja := '01'
-	Self:cTipo := 'R'
+	Self:cLoja   := '01'
+	Self:cTipo    := 'R'
+	Self:cErroMsg := ''
 
 Return Self
 
@@ -142,20 +146,49 @@ Return Self
 /*/
 Method Grava() Class IOSA1CLS
 
-	Local aAtributos := ClassDataArr( Self, .F. )
+	Local aAtributos := {}
 	Local aBuffer    := {}
 	Local aCliente   := {}
+	Local oContato   := Nil
+	Local oMeioComum := Nil
 	Local cCampo     := ''
 	Local cOrdem     := ''
-	Local nOpc       := 0
 	Local aArea      := GetArea()
 	Local nPos       := 0
 	Local aErro      := {}
 	Local xValor     := Nil
+	Local nX         := 0
+	Local nY         := 0
 
 	Private	lMsErroAuto    := .F.
 	Private	lMsHelpAuto    := .T.
 	Private	lAutoErrNoFile := .T.
+
+	For nX := 1 To Len( Self:aContatos )
+
+		oContato := Self:aContatos[ nX ]
+
+		If oContato:cXNF_E == '1'
+
+			For nY:= 1 To Len( oContato:aMeioComun )
+
+				oMeioComum := oContato:aMeioComun[ nY ]
+
+				If oMeioComum:cXTIPO == '6'
+
+					Self:cEMAIL += oMeioComum:cXEMAIL + ';'
+
+				End If
+
+			Next nY
+
+		End If
+
+	Next nX
+
+	Self:mXCONTAC := FWJsonSerialize( Self:aContatos )
+
+	aAtributos := ClassDataArr( Self, .F. )
 
 	For nX := 1 To Len( aAtributos )
 
@@ -164,7 +197,8 @@ Method Grava() Class IOSA1CLS
 			cCampo := 'A1_' + SubStr( aAtributos[ nX, 1 ], 2, 7 )
 			xValor := aAtributos[ nX, 2 ]
 
-			If ValType( cOrdem := GetSx3Cache( cCampo, 'X3_ORDEM' ) ) # 'U' .And. ValType( xValor ) # 'U' .And. cCampo $ 'A1_COD/A1_LOJA/A1_NOME/A1_NREDUZ/A1_END/A1_TIPO/A1_EST/A1_MUN'
+			If ValType( cOrdem := GetSx3Cache( cCampo, 'X3_ORDEM' ) ) # 'U' .And. ! Empty( xValor );
+			.And. ValType( xValor ) # 'U'
 
 				aAdd( aBuffer, { cCampo, xValor, cOrdem } )
 
@@ -189,15 +223,21 @@ Method Grava() Class IOSA1CLS
 
 	If DbSeek( xFilial( 'SA1' ) + aCliente[ nPos, 2 ] )
 
-		nOpc := 4
+		RecLock( 'SA1', .F. )
+
+		For nX := 1 To Len( aCliente )
+
+			SA1->&( aCliente[ nX, 1 ] ) := aCliente[ nX, 2 ]
+
+		Next nX
+
+		MsUnlock()
 
 	Else
 
-		nOpc := 3
+		MSExecAuto( { | X, Y | MATA030( X, Y ) }, aCliente, 3 )
 
 	End If
-
-	MSExecAuto( { | X, Y | MATA030( X, Y ) }, aCliente, nOpc )
 
 	If Self:lErroAuto := lMsErroAuto
 
@@ -205,7 +245,8 @@ Method Grava() Class IOSA1CLS
 
 		For nX := 1 To Len( aErro )
 
-			Self:cErroMsg += _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)
+			//Self:cErroMsg += _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)
+			Self:cErroMsg += aErro[ nX ] + Chr(13) + Chr(10)
 
 		Next nX
 
