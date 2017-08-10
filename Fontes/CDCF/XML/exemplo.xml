@@ -1,1581 +1,1735 @@
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <soap:Body>
-      <SolicitaClientesParaIntegrarResponse xmlns="http://servicos.imprensaoficial.com.br/Clientes/">
-         <SolicitaClientesParaIntegrarResult>
-            <Cliente>
-               <IdCliente>310977</IdCliente>
-               <NomeCliente>ESCOLA PROF. JOÃO DA MOTTA SILVA</NomeCliente>
-               <DocumentoCliente>46384111009872</DocumentoCliente>
-               <CodigoERP>32.15.682.00</CodigoERP>
-               <ClienteAtivo>true</ClienteAtivo>
-               <EnvioCobrancaEmail>false</EnvioCobrancaEmail>
-               <IdTipoEsfera>2</IdTipoEsfera>
-               <Observacao xsi:nil="true" />
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285538</IdMeioComunicacao>
-                  <IdTipoContato>1</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD />
-                  <Telefone />
-                  <Ramal xsi:nil="true" />
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T18:02:19.68</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T18:02:19.68</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285539</IdMeioComunicacao>
-                  <IdTipoContato>3</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD />
-                  <Telefone />
-                  <Ramal />
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T18:02:19.68</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T18:02:19.68</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <ControleRegistro>
-                  <IdSistemaCriacao>8</IdSistemaCriacao>
-                  <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                  <IdUsuarioCriacao xsi:nil="true" />
-                  <IdUsuarioAlteracao xsi:nil="true" />
-                  <DataHoraCriacao>2017-08-07T18:01:01.583</DataHoraCriacao>
-                  <DataHoraAlteracao>2017-08-07T18:02:19.663</DataHoraAlteracao>
-               </ControleRegistro>
-               <Endereco>
-                  <IdEndereco>471835</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>1</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>Mata Machado</Logradouro>
-                  <LogradouroNumero>32</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>Vila Califórnia</Bairro>
-                  <CEP>03215000</CEP>
-                  <Municipio>São Paulo</Municipio>
-                  <CodigoMunicipio>50308</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T18:02:19.68</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T18:02:19.68</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco />
-                  <AceitaComunicacaoCorrespondendia>false</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>310977</IdCliente>
-               </Endereco>
-               <PessoaFisica xsi:nil="true" />
-               <PessoaJuridica xsi:nil="true" />
-               <OrgaoPublico>
-                  <IdOrgaoPublico>6849</IdOrgaoPublico>
-                  <NomeOrgaoPublico>ESCOLA PROF. JOÃO DA MOTTA SILVA</NomeOrgaoPublico>
-                  <UnidadeAdministrativa>20153</UnidadeAdministrativa>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <UnidadeOrganizadora>
-                     <IdUnidadeOrcamentaria>5</IdUnidadeOrcamentaria>
-                     <IdUnidadeOrcamentariaOrigem xsi:nil="true" />
-                     <CodigoUnidadeOrcamentaria>08000</CodigoUnidadeOrcamentaria>
-                     <NomeUnidadeOrcamentaria>SECRETARIA DA EDUCAÇÃO</NomeUnidadeOrcamentaria>
-                     <UnidadeOrcamentariaAtiva>true</UnidadeOrcamentariaAtiva>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>0</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2011-10-07T15:14:58.88</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                  </UnidadeOrganizadora>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T18:01:01.583</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T18:02:19.663</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <PessoaJuridica>
-                     <IdPessoaJuridica>68579</IdPessoaJuridica>
-                     <IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
-                     <IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
-                     <IdSituacaoPessoaJuridica>0</IdSituacaoPessoaJuridica>
-                     <IdPais xsi:nil="true" />
-                     <IsOrgaoPublico>false</IsOrgaoPublico>
-                     <CNPJ>46384111009872</CNPJ>
-                     <NaturezaJuridica xsi:nil="true" />
-                     <InscricaoEstadual xsi:nil="true" />
-                     <InscricaoMunicipal xsi:nil="true" />
-                     <DocumentoEstrangeiro xsi:nil="true" />
-                     <RazaoSocial>SAO PAULO SECRETARIA DA EDUCACAO</RazaoSocial>
-                     <NomeFantasia>DIRETORIA DE ENSINO REGIAO DE BRAGANCA PAULISTA</NomeFantasia>
-                     <DataAbertura xsi:nil="true" />
-                     <DataSituacaoCadastral xsi:nil="true" />
-                     <CidadeExterior xsi:nil="true" />
-                     <PaisDomicilio xsi:nil="true" />
-                     <CodigoPaisDomicilio xsi:nil="true" />
-                     <DataHoraConsultaRFB xsi:nil="true" />
-                     <ConferidoBEC>false</ConferidoBEC>
-                     <ConferidoSintegra>false</ConferidoSintegra>
-                     <ValidacaoPresencial>false</ValidacaoPresencial>
-                  </PessoaJuridica>
-                  <OrgaoPublicoVinculado>false</OrgaoPublicoVinculado>
-                  <UnidadeGestoraOrcamentaria>
-                     <IdUnidadeOrcamentaria>48</IdUnidadeOrcamentaria>
-                     <IdUnidadeOrcamentariaOrigem>5</IdUnidadeOrcamentariaOrigem>
-                     <CodigoUnidadeOrcamentaria>08046</CodigoUnidadeOrcamentaria>
-                     <NomeUnidadeOrcamentaria>FUND.PARA O DESENV.DA EDUCAÇÃO - FDE</NomeUnidadeOrcamentaria>
-                     <UnidadeOrcamentariaAtiva>true</UnidadeOrcamentariaAtiva>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>0</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2011-10-07T15:19:25.05</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                  </UnidadeGestoraOrcamentaria>
-                  <UnidadeGestoraExecutora>
-                     <IdUnidadeOrcamentaria>329</IdUnidadeOrcamentaria>
-                     <IdUnidadeOrcamentariaOrigem>48</IdUnidadeOrcamentariaOrigem>
-                     <CodigoUnidadeOrcamentaria>081101</CodigoUnidadeOrcamentaria>
-                     <NomeUnidadeOrcamentaria>FUNDAÇÃO PARA O DESENVOLVIM.DA EDUCAÇÃO-FDE-GFN</NomeUnidadeOrcamentaria>
-                     <UnidadeOrcamentariaAtiva>true</UnidadeOrcamentariaAtiva>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>0</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2011-10-07T15:33:15.477</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                  </UnidadeGestoraExecutora>
-               </OrgaoPublico>
-               <DataCadastro>2017-08-07T00:00:00</DataCadastro>
-            </Cliente>
-            <Cliente>
-               <IdCliente>279921</IdCliente>
-               <NomeCliente>ESCOLA DE SUZANO</NomeCliente>
-               <DocumentoCliente>62823257019039</DocumentoCliente>
-               <CodigoERP>62.42.718.00</CodigoERP>
-               <ClienteAtivo>true</ClienteAtivo>
-               <EnvioCobrancaEmail>false</EnvioCobrancaEmail>
-               <IdTipoEsfera>2</IdTipoEsfera>
-               <Observacao>Carga de Dados - RM</Observacao>
-               <ClienteContato>
-                  <IdClienteContato>198699</IdClienteContato>
-                  <IdPessoaFisica>0</IdPessoaFisica>
-                  <IdCliente>279921</IdCliente>
-                  <Funcao xsi:nil="true" />
-                  <DonoConta>true</DonoConta>
-                  <CotacaoCompras>false</CotacaoCompras>
-                  <FaturaPublicacao>true</FaturaPublicacao>
-                  <Financeiro>true</Financeiro>
-                  <NotaFiscalEletronica>true</NotaFiscalEletronica>
-                  <ServicosGraficos>false</ServicosGraficos>
-                  <ClienteContatoAtivo>true</ClienteContatoAtivo>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>2</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>3</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>4</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>3</IdSistemaCriacao>
-                     <IdSistemaAlteracao xsi:nil="true" />
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2012-01-07T02:42:32.587</DataHoraCriacao>
-                     <DataHoraAlteracao xsi:nil="true" />
-                  </ControleRegistro>
-                  <CPF xsi:nil="true" />
-                  <DataNascimento xsi:nil="true" />
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>653956</IdMeioComunicacao>
-                     <IdTipoContato>2</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>47481732</Telefone>
-                     <Ramal xsi:nil="true" />
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>3</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2012-01-07T02:42:32.59</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>653957</IdMeioComunicacao>
-                     <IdTipoContato>4</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>47429759</Telefone>
-                     <Ramal xsi:nil="true" />
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>3</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2012-01-07T02:42:32.59</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>653958</IdMeioComunicacao>
-                     <IdTipoContato>6</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD xsi:nil="true" />
-                     <Telefone xsi:nil="true" />
-                     <Ramal xsi:nil="true" />
-                     <Email>e.suzano.dir@centropaulasouza.sp.gov.br</Email>
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>3</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2012-01-07T02:42:32.59</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <DataCadastro>2009-03-17T13:36:00</DataCadastro>
-                  <BoletinsEletronicos>false</BoletinsEletronicos>
-                  <IdTemp>0</IdTemp>
-               </ClienteContato>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>598154</IdMeioComunicacao>
-                  <IdTipoContato>1</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>47481732</Telefone>
-                  <Ramal xsi:nil="true" />
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>true</EmailHtml>
-               </MeioComunicacao>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>598155</IdMeioComunicacao>
-                  <IdTipoContato>4</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>47429759</Telefone>
-                  <Ramal xsi:nil="true" />
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>true</EmailHtml>
-               </MeioComunicacao>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>598156</IdMeioComunicacao>
-                  <IdTipoContato>6</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD xsi:nil="true" />
-                  <Telefone xsi:nil="true" />
-                  <Ramal xsi:nil="true" />
-                  <Email>e.suzano.dir@centropaulasouza.sp.gov.br</Email>
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>true</EmailHtml>
-               </MeioComunicacao>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285537</IdMeioComunicacao>
-                  <IdTipoContato>3</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>12345678</Telefone>
-                  <Ramal />
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T17:56:50.03</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T17:56:50.03</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <ControleRegistro>
-                  <IdSistemaCriacao>4</IdSistemaCriacao>
-                  <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                  <IdUsuarioCriacao xsi:nil="true" />
-                  <IdUsuarioAlteracao xsi:nil="true" />
-                  <DataHoraCriacao>2012-01-07T00:37:53.39</DataHoraCriacao>
-                  <DataHoraAlteracao>2017-08-07T17:56:49.983</DataHoraAlteracao>
-               </ControleRegistro>
-               <Endereco>
-                  <IdEndereco>427178</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>4</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>Rua Guilherme</Logradouro>
-                  <LogradouroNumero>325</LogradouroNumero>
-                  <LogradouroComplemento xsi:nil="true" />
-                  <Bairro>Vila Urupês</Bairro>
-                  <CEP>08615110</CEP>
-                  <Municipio>Suzano</Municipio>
-                  <CodigoMunicipio>52502</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco xsi:nil="true" />
-                  <AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>279921</IdCliente>
-               </Endereco>
-               <Endereco>
-                  <IdEndereco>427179</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>3</IdTipoEndereco>
-                  <TipoLogradouro>RUA</TipoLogradouro>
-                  <Logradouro>RUA GUILHERME</Logradouro>
-                  <LogradouroNumero>325</LogradouroNumero>
-                  <LogradouroComplemento xsi:nil="true" />
-                  <Bairro>VILA URUPES</Bairro>
-                  <CEP>08615110</CEP>
-                  <Municipio>Suzano</Municipio>
-                  <CodigoMunicipio>52502</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco xsi:nil="true" />
-                  <AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>279921</IdCliente>
-               </Endereco>
-               <Endereco>
-                  <IdEndereco>427180</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>2</IdTipoEndereco>
-                  <TipoLogradouro>RUA</TipoLogradouro>
-                  <Logradouro>RUA GUILHERME</Logradouro>
-                  <LogradouroNumero>325</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>VILA URUPES</Bairro>
-                  <CEP>08615110</CEP>
-                  <Municipio>Suzano</Municipio>
-                  <CodigoMunicipio>52502</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T17:56:50</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T17:56:50</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco />
-                  <AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>279921</IdCliente>
-               </Endereco>
-               <Endereco>
-                  <IdEndereco>427181</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>1</IdTipoEndereco>
-                  <TipoLogradouro>RUA</TipoLogradouro>
-                  <Logradouro>RUA GUILHERME</Logradouro>
-                  <LogradouroNumero>325</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>VILA URUPES</Bairro>
-                  <CEP>08615110</CEP>
-                  <Municipio>Suzano</Municipio>
-                  <CodigoMunicipio>52502</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T17:56:50</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T17:56:50</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco />
-                  <AceitaComunicacaoCorrespondendia>true</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>279921</IdCliente>
-               </Endereco>
-               <PessoaFisica xsi:nil="true" />
-               <PessoaJuridica xsi:nil="true" />
-               <OrgaoPublico>
-                  <IdOrgaoPublico>879</IdOrgaoPublico>
-                  <NomeOrgaoPublico>ESCOLA DE SUZANO</NomeOrgaoPublico>
-                  <UnidadeAdministrativa xsi:nil="true" />
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <UnidadeOrganizadora xsi:nil="true" />
-                  <ControleRegistro>
-                     <IdSistemaCriacao>4</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2012-01-07T00:37:53.39</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T17:56:49.983</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <PessoaJuridica>
-                     <IdPessoaJuridica>93566</IdPessoaJuridica>
-                     <IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
-                     <IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
-                     <IdSituacaoPessoaJuridica>0</IdSituacaoPessoaJuridica>
-                     <IdPais xsi:nil="true" />
-                     <IsOrgaoPublico>false</IsOrgaoPublico>
-                     <CNPJ>62823257019039</CNPJ>
-                     <NaturezaJuridica xsi:nil="true" />
-                     <InscricaoEstadual xsi:nil="true" />
-                     <InscricaoMunicipal xsi:nil="true" />
-                     <DocumentoEstrangeiro xsi:nil="true" />
-                     <RazaoSocial>ESCOLA TÉCNICA ESTADUAL DE SUZANO</RazaoSocial>
-                     <NomeFantasia>ESCOLA TÉCNICA ESTADUAL DE SUZANO</NomeFantasia>
-                     <DataAbertura xsi:nil="true" />
-                     <DataSituacaoCadastral xsi:nil="true" />
-                     <CidadeExterior xsi:nil="true" />
-                     <PaisDomicilio xsi:nil="true" />
-                     <CodigoPaisDomicilio xsi:nil="true" />
-                     <DataHoraConsultaRFB xsi:nil="true" />
-                     <ConferidoBEC>false</ConferidoBEC>
-                     <ConferidoSintegra>false</ConferidoSintegra>
-                     <ValidacaoPresencial>false</ValidacaoPresencial>
-                  </PessoaJuridica>
-                  <OrgaoPublicoVinculado>false</OrgaoPublicoVinculado>
-               </OrgaoPublico>
-               <DataCadastro>2012-01-07T00:00:00</DataCadastro>
-            </Cliente>
-            <Cliente>
-               <IdCliente>310976</IdCliente>
-               <NomeCliente>Cliente 10.01 Orgão Público</NomeCliente>
-               <DocumentoCliente>49076139000108</DocumentoCliente>
-               <CodigoERP>10.01.001.01</CodigoERP>
-               <ClienteAtivo>true</ClienteAtivo>
-               <EnvioCobrancaEmail>false</EnvioCobrancaEmail>
-               <IdTipoEsfera>5</IdTipoEsfera>
-               <Observacao xsi:nil="true" />
-               <ClienteContato>
-                  <IdClienteContato>300662</IdClienteContato>
-                  <IdPessoaFisica>215362</IdPessoaFisica>
-                  <IdCliente>310976</IdCliente>
-                  <NomeContato>Contato 001</NomeContato>
-                  <Funcao>Coordenador</Funcao>
-                  <DonoConta>true</DonoConta>
-                  <CotacaoCompras>true</CotacaoCompras>
-                  <FaturaPublicacao>true</FaturaPublicacao>
-                  <Financeiro>true</Financeiro>
-                  <NotaFiscalEletronica>true</NotaFiscalEletronica>
-                  <ServicosGraficos>true</ServicosGraficos>
-                  <ClienteContatoAtivo>true</ClienteContatoAtivo>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>1</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>2</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>3</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>4</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>5</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>6</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>7</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao xsi:nil="true" />
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:24:20.583</DataHoraCriacao>
-                     <DataHoraAlteracao xsi:nil="true" />
-                  </ControleRegistro>
-                  <CPF>60757260047</CPF>
-                  <DataNascimento>1977-08-20T00:00:00</DataNascimento>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285530</IdMeioComunicacao>
-                     <IdTipoContato>2</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>43218765</Telefone>
-                     <Ramal>321</Ramal>
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:24:20.583</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285531</IdMeioComunicacao>
-                     <IdTipoContato>3</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>43218765</Telefone>
-                     <Ramal>321</Ramal>
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:24:20.583</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285532</IdMeioComunicacao>
-                     <IdTipoContato>4</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>43218765</Telefone>
-                     <Ramal xsi:nil="true" />
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:24:20.583</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285533</IdMeioComunicacao>
-                     <IdTipoContato>5</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>43218765</Telefone>
-                     <Ramal xsi:nil="true" />
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:24:20.6</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285534</IdMeioComunicacao>
-                     <IdTipoContato>6</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD xsi:nil="true" />
-                     <Telefone xsi:nil="true" />
-                     <Ramal xsi:nil="true" />
-                     <Email>coordenador@teste.com.br</Email>
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:24:20.6</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <DataCadastro>2017-08-07T16:24:00</DataCadastro>
-                  <BoletinsEletronicos>false</BoletinsEletronicos>
-                  <IdTemp>0</IdTemp>
-               </ClienteContato>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285535</IdMeioComunicacao>
-                  <IdTipoContato>1</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>43218765</Telefone>
-                  <Ramal xsi:nil="true" />
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:25:27.587</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:25:27.587</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285536</IdMeioComunicacao>
-                  <IdTipoContato>3</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>43218765</Telefone>
-                  <Ramal>321</Ramal>
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:25:27.587</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:25:27.587</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <ControleRegistro>
-                  <IdSistemaCriacao>8</IdSistemaCriacao>
-                  <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                  <IdUsuarioCriacao xsi:nil="true" />
-                  <IdUsuarioAlteracao xsi:nil="true" />
-                  <DataHoraCriacao>2017-08-07T16:24:38.46</DataHoraCriacao>
-                  <DataHoraAlteracao>2017-08-07T17:53:38.43</DataHoraAlteracao>
-               </ControleRegistro>
-               <Endereco>
-                  <IdEndereco>471832</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>1</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>da Mooca</Logradouro>
-                  <LogradouroNumero>1921</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>Mooca</Bairro>
-                  <CEP>03103902</CEP>
-                  <Municipio>São Paulo</Municipio>
-                  <CodigoMunicipio>50308</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:25:27.57</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:25:27.57</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco />
-                  <AceitaComunicacaoCorrespondendia>false</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>310976</IdCliente>
-               </Endereco>
-               <Endereco>
-                  <IdEndereco>471833</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>2</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>da Mooca</Logradouro>
-                  <LogradouroNumero>1921</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>Mooca</Bairro>
-                  <CEP>03103902</CEP>
-                  <Municipio>São Paulo</Municipio>
-                  <CodigoMunicipio>50308</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:25:27.57</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:25:27.57</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco />
-                  <AceitaComunicacaoCorrespondendia>false</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>310976</IdCliente>
-               </Endereco>
-               <Endereco>
-                  <IdEndereco>471834</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>3</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>da Mooca</Logradouro>
-                  <LogradouroNumero>1921</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>Mooca</Bairro>
-                  <CEP>03103902</CEP>
-                  <Municipio>São Paulo</Municipio>
-                  <CodigoMunicipio>50308</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:25:27.57</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:25:27.57</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco>Trabalho</ApelidoEndereco>
-                  <AceitaComunicacaoCorrespondendia>false</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>310976</IdCliente>
-               </Endereco>
-               <PessoaFisica xsi:nil="true" />
-               <PessoaJuridica>
-                  <IdPessoaJuridica>109265</IdPessoaJuridica>
-                  <IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
-                  <IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
-                  <IdSituacaoPessoaJuridica>2</IdSituacaoPessoaJuridica>
-                  <IdPais>1</IdPais>
-                  <IsOrgaoPublico>true</IsOrgaoPublico>
-                  <CNPJ>49076139000108</CNPJ>
-                  <NaturezaJuridica xsi:nil="true" />
-                  <InscricaoEstadual>708463229231</InscricaoEstadual>
-                  <InscricaoMunicipal>987654321</InscricaoMunicipal>
-                  <DocumentoEstrangeiro xsi:nil="true" />
-                  <RazaoSocial>Cliente 10.01 Orgão Público</RazaoSocial>
-                  <NomeFantasia>Cliente Orgão Público</NomeFantasia>
-                  <DataAbertura xsi:nil="true" />
-                  <DataSituacaoCadastral xsi:nil="true" />
-                  <CidadeExterior xsi:nil="true" />
-                  <PaisDomicilio xsi:nil="true" />
-                  <CodigoPaisDomicilio xsi:nil="true" />
-                  <DataHoraConsultaRFB xsi:nil="true" />
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:24:38.46</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:25:27.57</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ConferidoBEC>false</ConferidoBEC>
-                  <ConferidoSintegra>false</ConferidoSintegra>
-                  <ValidacaoPresencial>false</ValidacaoPresencial>
-               </PessoaJuridica>
-               <OrgaoPublico xsi:nil="true" />
-               <DataCadastro>2017-08-07T00:00:00</DataCadastro>
-            </Cliente>
-            <Cliente>
-               <IdCliente>310975</IdCliente>
-               <NomeCliente>Cliente 50.01 juridica</NomeCliente>
-               <DocumentoCliente>83535910000104</DocumentoCliente>
-               <CodigoERP>50.01.001.01</CodigoERP>
-               <ClienteAtivo>true</ClienteAtivo>
-               <EnvioCobrancaEmail>false</EnvioCobrancaEmail>
-               <IdTipoEsfera>5</IdTipoEsfera>
-               <Observacao xsi:nil="true" />
-               <ClienteContato>
-                  <IdClienteContato>300661</IdClienteContato>
-                  <IdPessoaFisica>215361</IdPessoaFisica>
-                  <IdCliente>310975</IdCliente>
-                  <NomeContato>Contato 001</NomeContato>
-                  <Funcao>Analista</Funcao>
-                  <DonoConta>true</DonoConta>
-                  <CotacaoCompras>true</CotacaoCompras>
-                  <FaturaPublicacao>true</FaturaPublicacao>
-                  <Financeiro>true</Financeiro>
-                  <NotaFiscalEletronica>true</NotaFiscalEletronica>
-                  <ServicosGraficos>true</ServicosGraficos>
-                  <ClienteContatoAtivo>true</ClienteContatoAtivo>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>1</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>2</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>3</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>4</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>5</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>6</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>7</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao xsi:nil="true" />
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:01:58.49</DataHoraCriacao>
-                     <DataHoraAlteracao xsi:nil="true" />
-                  </ControleRegistro>
-                  <CPF>82547256088</CPF>
-                  <DataNascimento>1977-08-20T00:00:00</DataNascimento>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285523</IdMeioComunicacao>
-                     <IdTipoContato>2</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>43218765</Telefone>
-                     <Ramal>321</Ramal>
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:01:58.49</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285524</IdMeioComunicacao>
-                     <IdTipoContato>3</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>43218765</Telefone>
-                     <Ramal>321</Ramal>
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:01:58.49</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285525</IdMeioComunicacao>
-                     <IdTipoContato>4</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>943218765</Telefone>
-                     <Ramal xsi:nil="true" />
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:01:58.507</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285526</IdMeioComunicacao>
-                     <IdTipoContato>5</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>43218765</Telefone>
-                     <Ramal xsi:nil="true" />
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:01:58.507</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285527</IdMeioComunicacao>
-                     <IdTipoContato>6</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD xsi:nil="true" />
-                     <Telefone xsi:nil="true" />
-                     <Ramal xsi:nil="true" />
-                     <Email>analista@teste.com.br</Email>
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao xsi:nil="true" />
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:01:58.507</DataHoraCriacao>
-                        <DataHoraAlteracao xsi:nil="true" />
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <DataCadastro>2017-08-07T16:02:00</DataCadastro>
-                  <BoletinsEletronicos>false</BoletinsEletronicos>
-                  <IdTemp>0</IdTemp>
-               </ClienteContato>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285528</IdMeioComunicacao>
-                  <IdTipoContato>1</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>43218765</Telefone>
-                  <Ramal xsi:nil="true" />
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:14:00.26</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:14:00.26</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285529</IdMeioComunicacao>
-                  <IdTipoContato>3</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>43218765</Telefone>
-                  <Ramal>321</Ramal>
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:14:00.277</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:14:00.277</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <ControleRegistro>
-                  <IdSistemaCriacao>8</IdSistemaCriacao>
-                  <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                  <IdUsuarioCriacao xsi:nil="true" />
-                  <IdUsuarioAlteracao xsi:nil="true" />
-                  <DataHoraCriacao>2017-08-07T16:02:27.617</DataHoraCriacao>
-                  <DataHoraAlteracao>2017-08-07T16:14:00.23</DataHoraAlteracao>
-               </ControleRegistro>
-               <Endereco>
-                  <IdEndereco>471829</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>1</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>da Mooca</Logradouro>
-                  <LogradouroNumero>1921</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>Mooca</Bairro>
-                  <CEP>03103902</CEP>
-                  <Municipio>São Paulo</Municipio>
-                  <CodigoMunicipio>50308</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:14:00.243</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:14:00.243</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco />
-                  <AceitaComunicacaoCorrespondendia>false</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>310975</IdCliente>
-               </Endereco>
-               <Endereco>
-                  <IdEndereco>471830</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>2</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>da Mooca</Logradouro>
-                  <LogradouroNumero />
-                  <LogradouroComplemento />
-                  <Bairro>Mooca</Bairro>
-                  <CEP>03103902</CEP>
-                  <Municipio>São Paulo</Municipio>
-                  <CodigoMunicipio>50308</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:14:00.26</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:14:00.26</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco />
-                  <AceitaComunicacaoCorrespondendia>false</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>310975</IdCliente>
-               </Endereco>
-               <Endereco>
-                  <IdEndereco>471831</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>3</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>da Mooca</Logradouro>
-                  <LogradouroNumero>1921</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>Mooca</Bairro>
-                  <CEP>03103902</CEP>
-                  <Municipio>São Paulo</Municipio>
-                  <CodigoMunicipio>50308</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:14:00.26</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:14:00.26</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco>Trabalho</ApelidoEndereco>
-                  <AceitaComunicacaoCorrespondendia>false</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>310975</IdCliente>
-               </Endereco>
-               <PessoaFisica xsi:nil="true" />
-               <PessoaJuridica>
-                  <IdPessoaJuridica>109264</IdPessoaJuridica>
-                  <IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
-                  <IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
-                  <IdSituacaoPessoaJuridica>2</IdSituacaoPessoaJuridica>
-                  <IdPais>1</IdPais>
-                  <IsOrgaoPublico>false</IsOrgaoPublico>
-                  <CNPJ>83535910000104</CNPJ>
-                  <NaturezaJuridica xsi:nil="true" />
-                  <InscricaoEstadual>838.191.149.860</InscricaoEstadual>
-                  <InscricaoMunicipal>321654987</InscricaoMunicipal>
-                  <DocumentoEstrangeiro xsi:nil="true" />
-                  <RazaoSocial>Cliente 50.01 juridica</RazaoSocial>
-                  <NomeFantasia>Cliente Juridica</NomeFantasia>
-                  <DataAbertura xsi:nil="true" />
-                  <DataSituacaoCadastral xsi:nil="true" />
-                  <CidadeExterior xsi:nil="true" />
-                  <PaisDomicilio xsi:nil="true" />
-                  <CodigoPaisDomicilio xsi:nil="true" />
-                  <DataHoraConsultaRFB xsi:nil="true" />
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:02:27.617</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:14:00.23</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ConferidoBEC>false</ConferidoBEC>
-                  <ConferidoSintegra>false</ConferidoSintegra>
-                  <ValidacaoPresencial>false</ValidacaoPresencial>
-               </PessoaJuridica>
-               <OrgaoPublico xsi:nil="true" />
-               <DataCadastro>2017-08-07T00:00:00</DataCadastro>
-            </Cliente>
-            <Cliente>
-               <IdCliente>310974</IdCliente>
-               <NomeCliente>Contato 001</NomeCliente>
-               <DocumentoCliente>82547256088</DocumentoCliente>
-               <CodigoERP>40.01.001.01</CodigoERP>
-               <ClienteAtivo>true</ClienteAtivo>
-               <EnvioCobrancaEmail>false</EnvioCobrancaEmail>
-               <IdTipoEsfera>4</IdTipoEsfera>
-               <Observacao xsi:nil="true" />
-               <ClienteContato>
-                  <IdClienteContato>300660</IdClienteContato>
-                  <IdPessoaFisica>215361</IdPessoaFisica>
-                  <IdCliente>310974</IdCliente>
-                  <NomeContato>Contato 001</NomeContato>
-                  <Funcao />
-                  <DonoConta>true</DonoConta>
-                  <CotacaoCompras>false</CotacaoCompras>
-                  <FaturaPublicacao>true</FaturaPublicacao>
-                  <Financeiro>true</Financeiro>
-                  <NotaFiscalEletronica>true</NotaFiscalEletronica>
-                  <ServicosGraficos>false</ServicosGraficos>
-                  <ClienteContatoAtivo>true</ClienteContatoAtivo>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>2</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>3</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>4</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <PerfilClienteContato>
-                     <IdTipoClienteContato>7</IdTipoClienteContato>
-                  </PerfilClienteContato>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T15:27:12.48</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:12:49.493</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <CPF>82547256088</CPF>
-                  <DataNascimento>1977-08-20T00:00:00</DataNascimento>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285518</IdMeioComunicacao>
-                     <IdTipoContato>2</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>43218765</Telefone>
-                     <Ramal>321</Ramal>
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
-                        <DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285519</IdMeioComunicacao>
-                     <IdTipoContato>3</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>43218765</Telefone>
-                     <Ramal>321</Ramal>
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
-                        <DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285520</IdMeioComunicacao>
-                     <IdTipoContato>4</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>43218765</Telefone>
-                     <Ramal xsi:nil="true" />
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
-                        <DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285521</IdMeioComunicacao>
-                     <IdTipoContato>5</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD>11</DDD>
-                     <Telefone>943218765</Telefone>
-                     <Ramal xsi:nil="true" />
-                     <Email xsi:nil="true" />
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
-                        <DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <MeioComunicacao>
-                     <IdMeioComunicacao>1285522</IdMeioComunicacao>
-                     <IdTipoContato>6</IdTipoContato>
-                     <DDI xsi:nil="true" />
-                     <DDD xsi:nil="true" />
-                     <Telefone xsi:nil="true" />
-                     <Ramal xsi:nil="true" />
-                     <Email>cliente40.01@teste.com.br</Email>
-                     <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                     <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                     <ControleRegistro>
-                        <IdSistemaCriacao>8</IdSistemaCriacao>
-                        <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                        <IdUsuarioCriacao xsi:nil="true" />
-                        <IdUsuarioAlteracao xsi:nil="true" />
-                        <DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
-                        <DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
-                     </ControleRegistro>
-                     <EmailHtml>false</EmailHtml>
-                  </MeioComunicacao>
-                  <DataCadastro>2017-08-07T15:21:00</DataCadastro>
-                  <BoletinsEletronicos>false</BoletinsEletronicos>
-                  <IdTemp>0</IdTemp>
-               </ClienteContato>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285518</IdMeioComunicacao>
-                  <IdTipoContato>2</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>43218765</Telefone>
-                  <Ramal>321</Ramal>
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285519</IdMeioComunicacao>
-                  <IdTipoContato>3</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>43218765</Telefone>
-                  <Ramal>321</Ramal>
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285520</IdMeioComunicacao>
-                  <IdTipoContato>4</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>43218765</Telefone>
-                  <Ramal xsi:nil="true" />
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285521</IdMeioComunicacao>
-                  <IdTipoContato>5</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD>11</DDD>
-                  <Telefone>943218765</Telefone>
-                  <Ramal xsi:nil="true" />
-                  <Email xsi:nil="true" />
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <MeioComunicacao>
-                  <IdMeioComunicacao>1285522</IdMeioComunicacao>
-                  <IdTipoContato>6</IdTipoContato>
-                  <DDI xsi:nil="true" />
-                  <DDD xsi:nil="true" />
-                  <Telefone xsi:nil="true" />
-                  <Ramal xsi:nil="true" />
-                  <Email>cliente40.01@teste.com.br</Email>
-                  <AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-                  <AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <EmailHtml>false</EmailHtml>
-               </MeioComunicacao>
-               <ControleRegistro>
-                  <IdSistemaCriacao>8</IdSistemaCriacao>
-                  <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                  <IdUsuarioCriacao xsi:nil="true" />
-                  <IdUsuarioAlteracao xsi:nil="true" />
-                  <DataHoraCriacao>2017-08-07T15:27:13.263</DataHoraCriacao>
-                  <DataHoraAlteracao>2017-08-07T16:12:50.087</DataHoraAlteracao>
-               </ControleRegistro>
-               <Endereco>
-                  <IdEndereco>471826</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>1</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>da Mooca</Logradouro>
-                  <LogradouroNumero>1921</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>Mooca</Bairro>
-                  <CEP>03103902</CEP>
-                  <Municipio>São Paulo</Municipio>
-                  <CodigoMunicipio>50308</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco />
-                  <AceitaComunicacaoCorrespondendia>false</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>310974</IdCliente>
-               </Endereco>
-               <Endereco>
-                  <IdEndereco>471827</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>2</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>da Mooca</Logradouro>
-                  <LogradouroNumero>1921</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>Mooca</Bairro>
-                  <CEP>03103902</CEP>
-                  <Municipio>São Paulo</Municipio>
-                  <CodigoMunicipio>50308</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco />
-                  <AceitaComunicacaoCorrespondendia>false</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>310974</IdCliente>
-               </Endereco>
-               <Endereco>
-                  <IdEndereco>471828</IdEndereco>
-                  <IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
-                  <IdOrigemEnderecoAlteracao xsi:nil="true" />
-                  <IdPais>1</IdPais>
-                  <IdTipoEndereco>3</IdTipoEndereco>
-                  <TipoLogradouro>Rua</TipoLogradouro>
-                  <Logradouro>da Mooca</Logradouro>
-                  <LogradouroNumero>1921</LogradouroNumero>
-                  <LogradouroComplemento />
-                  <Bairro>Mooca</Bairro>
-                  <CEP>03103902</CEP>
-                  <Municipio>São Paulo</Municipio>
-                  <CodigoMunicipio>50308</CodigoMunicipio>
-                  <SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
-                  </ControleRegistro>
-                  <ApelidoEndereco>Trabalho</ApelidoEndereco>
-                  <AceitaComunicacaoCorrespondendia>false</AceitaComunicacaoCorrespondendia>
-                  <IdCliente>310974</IdCliente>
-               </Endereco>
-               <PessoaFisica>
-                  <IdPessoaFisica>0</IdPessoaFisica>
-                  <IdTipoSexo>2</IdTipoSexo>
-                  <IdTipoSituacaoCadastral>1</IdTipoSituacaoCadastral>
-                  <IdPais>1</IdPais>
-                  <Nome>Contato 001</Nome>
-                  <CPF>82547256088</CPF>
-                  <RG>419995055</RG>
-                  <OrgaoEmissorRg xsi:nil="true" />
-                  <UfEmissaoRg xsi:nil="true" />
-                  <DataEmissaoRG xsi:nil="true" />
-                  <DataNascimento>1977-08-20</DataNascimento>
-                  <DataAtualizacaoReceita xsi:nil="true" />
-                  <Estrangeiro>false</Estrangeiro>
-                  <AnoObito xsi:nil="true" />
-                  <NomeMae xsi:nil="true" />
-                  <PaisResidencia xsi:nil="true" />
-                  <CodigoPaisResidencia xsi:nil="true" />
-                  <TituloEleitor xsi:nil="true" />
-                  <UnidadeAdministrativa xsi:nil="true" />
-                  <ExercicioOcupacao xsi:nil="true" />
-                  <NaturezaOcupacao xsi:nil="true" />
-                  <OcupacaoPrincipal xsi:nil="true" />
-                  <DataCadastro>2017-08-07</DataCadastro>
-                  <ControleRegistro>
-                     <IdSistemaCriacao>8</IdSistemaCriacao>
-                     <IdSistemaAlteracao>8</IdSistemaAlteracao>
-                     <IdUsuarioCriacao xsi:nil="true" />
-                     <IdUsuarioAlteracao xsi:nil="true" />
-                     <DataHoraCriacao>2017-08-07T15:27:13.263</DataHoraCriacao>
-                     <DataHoraAlteracao>2017-08-07T16:12:50.087</DataHoraAlteracao>
-                  </ControleRegistro>
-               </PessoaFisica>
-               <PessoaJuridica xsi:nil="true" />
-               <OrgaoPublico xsi:nil="true" />
-               <DataCadastro>2017-08-07T00:00:00</DataCadastro>
-            </Cliente>
-            <RegistroConsulta>
-               <IdConsulta>0</IdConsulta>
-               <TotalRetorno>0</TotalRetorno>
-            </RegistroConsulta>
-            <IntegracaoClientes>
-               <IdCliente>310977</IdCliente>
-               <CodigoERP>32.15.682.00</CodigoERP>
-               <DocumentoCliente>46384111009872</DocumentoCliente>
-               <IdTipoEsfera>2</IdTipoEsfera>
-               <DataHoraAlteracao>2017-08-07T18:02:19</DataHoraAlteracao>
-            </IntegracaoClientes>
-            <IntegracaoClientes>
-               <IdCliente>279921</IdCliente>
-               <CodigoERP>62.42.718.00</CodigoERP>
-               <DocumentoCliente>62823257019039</DocumentoCliente>
-               <IdTipoEsfera>2</IdTipoEsfera>
-               <DataHoraAlteracao>2017-08-07T17:56:49</DataHoraAlteracao>
-            </IntegracaoClientes>
-            <IntegracaoClientes>
-               <IdCliente>310976</IdCliente>
-               <CodigoERP>10.01.001.01</CodigoERP>
-               <DocumentoCliente>49076139000108</DocumentoCliente>
-               <IdTipoEsfera>5</IdTipoEsfera>
-               <DataHoraAlteracao>2017-08-07T17:53:38</DataHoraAlteracao>
-            </IntegracaoClientes>
-            <IntegracaoClientes>
-               <IdCliente>310975</IdCliente>
-               <CodigoERP>50.01.001.01</CodigoERP>
-               <DocumentoCliente>83535910000104</DocumentoCliente>
-               <IdTipoEsfera>5</IdTipoEsfera>
-               <DataHoraAlteracao>2017-08-07T16:14:00</DataHoraAlteracao>
-            </IntegracaoClientes>
-            <IntegracaoClientes>
-               <IdCliente>310974</IdCliente>
-               <CodigoERP>40.01.001.01</CodigoERP>
-               <DocumentoCliente>82547256088</DocumentoCliente>
-               <IdTipoEsfera>4</IdTipoEsfera>
-               <DataHoraAlteracao>2017-08-07T16:12:50</DataHoraAlteracao>
-            </IntegracaoClientes>
-         </SolicitaClientesParaIntegrarResult>
-      </SolicitaClientesParaIntegrarResponse>
-   </soap:Body>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<soap:Body>
+		<SolicitaClientesParaIntegrarResponse
+			xmlns="http://servicos.imprensaoficial.com.br/Clientes/">
+			<SolicitaClientesParaIntegrarResult>
+				<Cliente>
+					<IdCliente>310977</IdCliente>
+					<NomeCliente>ESCOLA PROF. JOÃO DA MOTTA SILVA</NomeCliente>
+					<DocumentoCliente>46384111009872</DocumentoCliente>
+					<CodigoERP>32.15.682.00</CodigoERP>
+					<ClienteAtivo>true</ClienteAtivo>
+					<EnvioCobrancaEmail>false</EnvioCobrancaEmail>
+					<IdTipoEsfera>2</IdTipoEsfera>
+					<Observacao xsi:nil="true" />
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285538</IdMeioComunicacao>
+						<IdTipoContato>1</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD />
+						<Telefone />
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T18:02:19.68</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T18:02:19.68</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285539</IdMeioComunicacao>
+						<IdTipoContato>3</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD />
+						<Telefone />
+						<Ramal />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T18:02:19.68</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T18:02:19.68</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<ControleRegistro>
+						<IdSistemaCriacao>8</IdSistemaCriacao>
+						<IdSistemaAlteracao>8</IdSistemaAlteracao>
+						<IdUsuarioCriacao xsi:nil="true" />
+						<IdUsuarioAlteracao xsi:nil="true" />
+						<DataHoraCriacao>2017-08-07T18:01:01.583</DataHoraCriacao>
+						<DataHoraAlteracao>2017-08-07T18:02:19.663</DataHoraAlteracao>
+					</ControleRegistro>
+					<Endereco>
+						<IdEndereco>471835</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>1</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>Mata Machado</Logradouro>
+						<LogradouroNumero>32</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Vila Califórnia</Bairro>
+						<CEP>03215000</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T18:02:19.68</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T18:02:19.68</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>false
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>310977</IdCliente>
+					</Endereco>
+					<PessoaFisica xsi:nil="true" />
+					<PessoaJuridica xsi:nil="true" />
+					<OrgaoPublico>
+						<IdOrgaoPublico>6849</IdOrgaoPublico>
+						<NomeOrgaoPublico>ESCOLA PROF. JOÃO DA MOTTA SILVA
+						</NomeOrgaoPublico>
+						<UnidadeAdministrativa>20153</UnidadeAdministrativa>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<UnidadeOrganizadora>
+							<IdUnidadeOrcamentaria>5</IdUnidadeOrcamentaria>
+							<IdUnidadeOrcamentariaOrigem xsi:nil="true" />
+							<CodigoUnidadeOrcamentaria>08000</CodigoUnidadeOrcamentaria>
+							<NomeUnidadeOrcamentaria>SECRETARIA DA EDUCAÇÃO
+							</NomeUnidadeOrcamentaria>
+							<UnidadeOrcamentariaAtiva>true</UnidadeOrcamentariaAtiva>
+							<ControleRegistro>
+								<IdSistemaCriacao>0</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2011-10-07T15:14:58.88</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+						</UnidadeOrganizadora>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T18:01:01.583</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T18:02:19.663</DataHoraAlteracao>
+						</ControleRegistro>
+						<PessoaJuridica>
+							<IdPessoaJuridica>68579</IdPessoaJuridica>
+							<IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
+							<IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
+							<IdSituacaoPessoaJuridica>0</IdSituacaoPessoaJuridica>
+							<IdPais xsi:nil="true" />
+							<IsOrgaoPublico>false</IsOrgaoPublico>
+							<CNPJ>46384111009872</CNPJ>
+							<NaturezaJuridica xsi:nil="true" />
+							<InscricaoEstadual xsi:nil="true" />
+							<InscricaoMunicipal xsi:nil="true" />
+							<DocumentoEstrangeiro xsi:nil="true" />
+							<RazaoSocial>SAO PAULO SECRETARIA DA EDUCACAO</RazaoSocial>
+							<NomeFantasia>DIRETORIA DE ENSINO REGIAO DE BRAGANCA PAULISTA
+							</NomeFantasia>
+							<DataAbertura xsi:nil="true" />
+							<DataSituacaoCadastral xsi:nil="true" />
+							<CidadeExterior xsi:nil="true" />
+							<PaisDomicilio xsi:nil="true" />
+							<CodigoPaisDomicilio xsi:nil="true" />
+							<DataHoraConsultaRFB xsi:nil="true" />
+							<ConferidoBEC>false</ConferidoBEC>
+							<ConferidoSintegra>false</ConferidoSintegra>
+							<ValidacaoPresencial>false</ValidacaoPresencial>
+						</PessoaJuridica>
+						<OrgaoPublicoVinculado>false</OrgaoPublicoVinculado>
+						<UnidadeGestoraOrcamentaria>
+							<IdUnidadeOrcamentaria>48</IdUnidadeOrcamentaria>
+							<IdUnidadeOrcamentariaOrigem>5</IdUnidadeOrcamentariaOrigem>
+							<CodigoUnidadeOrcamentaria>08046</CodigoUnidadeOrcamentaria>
+							<NomeUnidadeOrcamentaria>FUND.PARA O DESENV.DA EDUCAÇÃO - FDE
+							</NomeUnidadeOrcamentaria>
+							<UnidadeOrcamentariaAtiva>true</UnidadeOrcamentariaAtiva>
+							<ControleRegistro>
+								<IdSistemaCriacao>0</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2011-10-07T15:19:25.05</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+						</UnidadeGestoraOrcamentaria>
+						<UnidadeGestoraExecutora>
+							<IdUnidadeOrcamentaria>329</IdUnidadeOrcamentaria>
+							<IdUnidadeOrcamentariaOrigem>48</IdUnidadeOrcamentariaOrigem>
+							<CodigoUnidadeOrcamentaria>081101</CodigoUnidadeOrcamentaria>
+							<NomeUnidadeOrcamentaria>FUNDAÇÃO PARA O DESENVOLVIM.DA
+								EDUCAÇÃO-FDE-GFN</NomeUnidadeOrcamentaria>
+							<UnidadeOrcamentariaAtiva>true</UnidadeOrcamentariaAtiva>
+							<ControleRegistro>
+								<IdSistemaCriacao>0</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2011-10-07T15:33:15.477</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+						</UnidadeGestoraExecutora>
+					</OrgaoPublico>
+					<DataCadastro>2017-08-07T00:00:00</DataCadastro>
+				</Cliente>
+				<Cliente>
+					<IdCliente>279921</IdCliente>
+					<NomeCliente>ESCOLA DE SUZANO</NomeCliente>
+					<DocumentoCliente>62823257019039</DocumentoCliente>
+					<CodigoERP>62.42.718.00</CodigoERP>
+					<ClienteAtivo>true</ClienteAtivo>
+					<EnvioCobrancaEmail>false</EnvioCobrancaEmail>
+					<IdTipoEsfera>2</IdTipoEsfera>
+					<Observacao>Carga de Dados - RM</Observacao>
+					<ClienteContato>
+						<IdClienteContato>198699</IdClienteContato>
+						<IdPessoaFisica>0</IdPessoaFisica>
+						<IdCliente>279921</IdCliente>
+						<Funcao xsi:nil="true" />
+						<DonoConta>true</DonoConta>
+						<CotacaoCompras>false</CotacaoCompras>
+						<FaturaPublicacao>true</FaturaPublicacao>
+						<Financeiro>true</Financeiro>
+						<NotaFiscalEletronica>true</NotaFiscalEletronica>
+						<ServicosGraficos>false</ServicosGraficos>
+						<ClienteContatoAtivo>true</ClienteContatoAtivo>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>2</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>3</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>4</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<ControleRegistro>
+							<IdSistemaCriacao>3</IdSistemaCriacao>
+							<IdSistemaAlteracao xsi:nil="true" />
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-01-07T02:42:32.587</DataHoraCriacao>
+							<DataHoraAlteracao xsi:nil="true" />
+						</ControleRegistro>
+						<CPF xsi:nil="true" />
+						<DataNascimento xsi:nil="true" />
+						<MeioComunicacao>
+							<IdMeioComunicacao>653956</IdMeioComunicacao>
+							<IdTipoContato>2</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>47481732</Telefone>
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>3</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2012-01-07T02:42:32.59</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>653957</IdMeioComunicacao>
+							<IdTipoContato>4</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>47429759</Telefone>
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>3</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2012-01-07T02:42:32.59</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>653958</IdMeioComunicacao>
+							<IdTipoContato>6</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD xsi:nil="true" />
+							<Telefone xsi:nil="true" />
+							<Ramal xsi:nil="true" />
+							<Email>e.suzano.dir@centropaulasouza.sp.gov.br</Email>
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>3</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2012-01-07T02:42:32.59</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<DataCadastro>2009-03-17T13:36:00</DataCadastro>
+						<BoletinsEletronicos>false</BoletinsEletronicos>
+						<IdTemp>0</IdTemp>
+					</ClienteContato>
+					<MeioComunicacao>
+						<IdMeioComunicacao>598154</IdMeioComunicacao>
+						<IdTipoContato>1</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>47481732</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>598155</IdMeioComunicacao>
+						<IdTipoContato>4</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>47429759</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>598156</IdMeioComunicacao>
+						<IdTipoContato>6</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD xsi:nil="true" />
+						<Telefone xsi:nil="true" />
+						<Ramal xsi:nil="true" />
+						<Email>e.suzano.dir@centropaulasouza.sp.gov.br</Email>
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>true</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285537</IdMeioComunicacao>
+						<IdTipoContato>3</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>12345678</Telefone>
+						<Ramal />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T17:56:50.03</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T17:56:50.03</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<ControleRegistro>
+						<IdSistemaCriacao>4</IdSistemaCriacao>
+						<IdSistemaAlteracao>8</IdSistemaAlteracao>
+						<IdUsuarioCriacao xsi:nil="true" />
+						<IdUsuarioAlteracao xsi:nil="true" />
+						<DataHoraCriacao>2012-01-07T00:37:53.39</DataHoraCriacao>
+						<DataHoraAlteracao>2017-08-07T17:56:49.983</DataHoraAlteracao>
+					</ControleRegistro>
+					<Endereco>
+						<IdEndereco>427178</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>4</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>Rua Guilherme</Logradouro>
+						<LogradouroNumero>325</LogradouroNumero>
+						<LogradouroComplemento xsi:nil="true" />
+						<Bairro>Vila Urupês</Bairro>
+						<CEP>08615110</CEP>
+						<Municipio>Suzano</Municipio>
+						<CodigoMunicipio>52502</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco xsi:nil="true" />
+						<AceitaComunicacaoCorrespondendia>true
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>279921</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>427179</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>3</IdTipoEndereco>
+						<TipoLogradouro>RUA</TipoLogradouro>
+						<Logradouro>RUA GUILHERME</Logradouro>
+						<LogradouroNumero>325</LogradouroNumero>
+						<LogradouroComplemento xsi:nil="true" />
+						<Bairro>VILA URUPES</Bairro>
+						<CEP>08615110</CEP>
+						<Municipio>Suzano</Municipio>
+						<CodigoMunicipio>52502</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco xsi:nil="true" />
+						<AceitaComunicacaoCorrespondendia>true
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>279921</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>427180</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>2</IdTipoEndereco>
+						<TipoLogradouro>RUA</TipoLogradouro>
+						<Logradouro>RUA GUILHERME</Logradouro>
+						<LogradouroNumero>325</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>VILA URUPES</Bairro>
+						<CEP>08615110</CEP>
+						<Municipio>Suzano</Municipio>
+						<CodigoMunicipio>52502</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T17:56:50</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T17:56:50</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>true
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>279921</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>427181</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>1</IdTipoEndereco>
+						<TipoLogradouro>RUA</TipoLogradouro>
+						<Logradouro>RUA GUILHERME</Logradouro>
+						<LogradouroNumero>325</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>VILA URUPES</Bairro>
+						<CEP>08615110</CEP>
+						<Municipio>Suzano</Municipio>
+						<CodigoMunicipio>52502</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T17:56:50</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T17:56:50</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>true
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>279921</IdCliente>
+					</Endereco>
+					<PessoaFisica xsi:nil="true" />
+					<PessoaJuridica xsi:nil="true" />
+					<OrgaoPublico>
+						<IdOrgaoPublico>879</IdOrgaoPublico>
+						<NomeOrgaoPublico>ESCOLA DE SUZANO</NomeOrgaoPublico>
+						<UnidadeAdministrativa xsi:nil="true" />
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<UnidadeOrganizadora xsi:nil="true" />
+						<ControleRegistro>
+							<IdSistemaCriacao>4</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2012-01-07T00:37:53.39</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T17:56:49.983</DataHoraAlteracao>
+						</ControleRegistro>
+						<PessoaJuridica>
+							<IdPessoaJuridica>93566</IdPessoaJuridica>
+							<IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
+							<IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
+							<IdSituacaoPessoaJuridica>0</IdSituacaoPessoaJuridica>
+							<IdPais xsi:nil="true" />
+							<IsOrgaoPublico>false</IsOrgaoPublico>
+							<CNPJ>62823257019039</CNPJ>
+							<NaturezaJuridica xsi:nil="true" />
+							<InscricaoEstadual xsi:nil="true" />
+							<InscricaoMunicipal xsi:nil="true" />
+							<DocumentoEstrangeiro xsi:nil="true" />
+							<RazaoSocial>ESCOLA TÉCNICA ESTADUAL DE SUZANO</RazaoSocial>
+							<NomeFantasia>ESCOLA TÉCNICA ESTADUAL DE SUZANO</NomeFantasia>
+							<DataAbertura xsi:nil="true" />
+							<DataSituacaoCadastral xsi:nil="true" />
+							<CidadeExterior xsi:nil="true" />
+							<PaisDomicilio xsi:nil="true" />
+							<CodigoPaisDomicilio xsi:nil="true" />
+							<DataHoraConsultaRFB xsi:nil="true" />
+							<ConferidoBEC>false</ConferidoBEC>
+							<ConferidoSintegra>false</ConferidoSintegra>
+							<ValidacaoPresencial>false</ValidacaoPresencial>
+						</PessoaJuridica>
+						<OrgaoPublicoVinculado>false</OrgaoPublicoVinculado>
+					</OrgaoPublico>
+					<DataCadastro>2012-01-07T00:00:00</DataCadastro>
+				</Cliente>
+				<Cliente>
+					<IdCliente>310976</IdCliente>
+					<NomeCliente>Cliente 10.01 Orgão Público</NomeCliente>
+					<DocumentoCliente>49076139000108</DocumentoCliente>
+					<CodigoERP>10.01.001.01</CodigoERP>
+					<ClienteAtivo>true</ClienteAtivo>
+					<EnvioCobrancaEmail>false</EnvioCobrancaEmail>
+					<IdTipoEsfera>5</IdTipoEsfera>
+					<Observacao xsi:nil="true" />
+					<ClienteContato>
+						<IdClienteContato>300662</IdClienteContato>
+						<IdPessoaFisica>215362</IdPessoaFisica>
+						<IdCliente>310976</IdCliente>
+						<NomeContato>Contato 001</NomeContato>
+						<Funcao>Coordenador</Funcao>
+						<DonoConta>true</DonoConta>
+						<CotacaoCompras>true</CotacaoCompras>
+						<FaturaPublicacao>true</FaturaPublicacao>
+						<Financeiro>true</Financeiro>
+						<NotaFiscalEletronica>true</NotaFiscalEletronica>
+						<ServicosGraficos>true</ServicosGraficos>
+						<ClienteContatoAtivo>true</ClienteContatoAtivo>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>1</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>2</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>3</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>4</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>5</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>6</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>7</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao xsi:nil="true" />
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:24:20.583</DataHoraCriacao>
+							<DataHoraAlteracao xsi:nil="true" />
+						</ControleRegistro>
+						<CPF>60757260047</CPF>
+						<DataNascimento>1977-08-20T00:00:00</DataNascimento>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285530</IdMeioComunicacao>
+							<IdTipoContato>2</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>43218765</Telefone>
+							<Ramal>321</Ramal>
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-07T16:24:20.583</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285531</IdMeioComunicacao>
+							<IdTipoContato>3</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>43218765</Telefone>
+							<Ramal>321</Ramal>
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-07T16:24:20.583</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285532</IdMeioComunicacao>
+							<IdTipoContato>4</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>43218765</Telefone>
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-07T16:24:20.583</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285533</IdMeioComunicacao>
+							<IdTipoContato>5</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>43218765</Telefone>
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-07T16:24:20.6</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285534</IdMeioComunicacao>
+							<IdTipoContato>6</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD xsi:nil="true" />
+							<Telefone xsi:nil="true" />
+							<Ramal xsi:nil="true" />
+							<Email>coordenador@teste.com.br</Email>
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-07T16:24:20.6</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<DataCadastro>2017-08-07T16:24:00</DataCadastro>
+						<BoletinsEletronicos>false</BoletinsEletronicos>
+						<IdTemp>0</IdTemp>
+					</ClienteContato>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285535</IdMeioComunicacao>
+						<IdTipoContato>1</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>43218765</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:25:27.587</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:25:27.587</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285536</IdMeioComunicacao>
+						<IdTipoContato>3</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>43218765</Telefone>
+						<Ramal>321</Ramal>
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:25:27.587</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:25:27.587</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<ControleRegistro>
+						<IdSistemaCriacao>8</IdSistemaCriacao>
+						<IdSistemaAlteracao>8</IdSistemaAlteracao>
+						<IdUsuarioCriacao xsi:nil="true" />
+						<IdUsuarioAlteracao xsi:nil="true" />
+						<DataHoraCriacao>2017-08-07T16:24:38.46</DataHoraCriacao>
+						<DataHoraAlteracao>2017-08-07T17:53:38.43</DataHoraAlteracao>
+					</ControleRegistro>
+					<Endereco>
+						<IdEndereco>471832</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>1</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>da Mooca</Logradouro>
+						<LogradouroNumero>1921</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Mooca</Bairro>
+						<CEP>03103902</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:25:27.57</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:25:27.57</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>false
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>310976</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>471833</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>2</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>da Mooca</Logradouro>
+						<LogradouroNumero>1921</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Mooca</Bairro>
+						<CEP>03103902</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:25:27.57</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:25:27.57</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>false
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>310976</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>471834</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>3</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>da Mooca</Logradouro>
+						<LogradouroNumero>1921</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Mooca</Bairro>
+						<CEP>03103902</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:25:27.57</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:25:27.57</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco>Trabalho</ApelidoEndereco>
+						<AceitaComunicacaoCorrespondendia>false
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>310976</IdCliente>
+					</Endereco>
+					<PessoaFisica xsi:nil="true" />
+					<PessoaJuridica>
+						<IdPessoaJuridica>109265</IdPessoaJuridica>
+						<IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
+						<IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
+						<IdSituacaoPessoaJuridica>2</IdSituacaoPessoaJuridica>
+						<IdPais>1</IdPais>
+						<IsOrgaoPublico>true</IsOrgaoPublico>
+						<CNPJ>49076139000108</CNPJ>
+						<NaturezaJuridica xsi:nil="true" />
+						<InscricaoEstadual>708463229231</InscricaoEstadual>
+						<InscricaoMunicipal>987654321</InscricaoMunicipal>
+						<DocumentoEstrangeiro xsi:nil="true" />
+						<RazaoSocial>Cliente 10.01 Orgão Público</RazaoSocial>
+						<NomeFantasia>Cliente Orgão Público</NomeFantasia>
+						<DataAbertura xsi:nil="true" />
+						<DataSituacaoCadastral xsi:nil="true" />
+						<CidadeExterior xsi:nil="true" />
+						<PaisDomicilio xsi:nil="true" />
+						<CodigoPaisDomicilio xsi:nil="true" />
+						<DataHoraConsultaRFB xsi:nil="true" />
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:24:38.46</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:25:27.57</DataHoraAlteracao>
+						</ControleRegistro>
+						<ConferidoBEC>false</ConferidoBEC>
+						<ConferidoSintegra>false</ConferidoSintegra>
+						<ValidacaoPresencial>false</ValidacaoPresencial>
+					</PessoaJuridica>
+					<OrgaoPublico xsi:nil="true" />
+					<DataCadastro>2017-08-07T00:00:00</DataCadastro>
+				</Cliente>
+				<Cliente>
+					<IdCliente>310975</IdCliente>
+					<NomeCliente>Cliente 50.01 juridica</NomeCliente>
+					<DocumentoCliente>83535910000104</DocumentoCliente>
+					<CodigoERP>50.01.001.01</CodigoERP>
+					<ClienteAtivo>true</ClienteAtivo>
+					<EnvioCobrancaEmail>false</EnvioCobrancaEmail>
+					<IdTipoEsfera>5</IdTipoEsfera>
+					<Observacao xsi:nil="true" />
+					<ClienteContato>
+						<IdClienteContato>300661</IdClienteContato>
+						<IdPessoaFisica>215361</IdPessoaFisica>
+						<IdCliente>310975</IdCliente>
+						<NomeContato>Contato 001</NomeContato>
+						<Funcao>Analista</Funcao>
+						<DonoConta>true</DonoConta>
+						<CotacaoCompras>true</CotacaoCompras>
+						<FaturaPublicacao>true</FaturaPublicacao>
+						<Financeiro>true</Financeiro>
+						<NotaFiscalEletronica>true</NotaFiscalEletronica>
+						<ServicosGraficos>true</ServicosGraficos>
+						<ClienteContatoAtivo>true</ClienteContatoAtivo>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>1</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>2</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>3</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>4</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>5</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>6</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:01:58.49</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-08T11:46:07.623</DataHoraAlteracao>
+						</ControleRegistro>
+						<CPF>82547256088</CPF>
+						<DataNascimento>1977-08-20T00:00:00</DataNascimento>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285523</IdMeioComunicacao>
+							<IdTipoContato>2</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>43218765</Telefone>
+							<Ramal>321</Ramal>
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-08T11:46:07.623</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-08T11:46:07.623</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285524</IdMeioComunicacao>
+							<IdTipoContato>3</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>43218765</Telefone>
+							<Ramal>321</Ramal>
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-08T11:46:07.64</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-08T11:46:07.64</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285525</IdMeioComunicacao>
+							<IdTipoContato>4</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>943218765</Telefone>
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-08T11:46:07.64</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-08T11:46:07.64</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285526</IdMeioComunicacao>
+							<IdTipoContato>5</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>43218765</Telefone>
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-08T11:46:07.64</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-08T11:46:07.64</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285527</IdMeioComunicacao>
+							<IdTipoContato>6</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD xsi:nil="true" />
+							<Telefone xsi:nil="true" />
+							<Ramal xsi:nil="true" />
+							<Email>analista@teste.com.br</Email>
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-08T11:46:07.657</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-08T11:46:07.657</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<DataCadastro>2017-08-07T16:02:00</DataCadastro>
+						<BoletinsEletronicos>false</BoletinsEletronicos>
+						<IdTemp>0</IdTemp>
+					</ClienteContato>
+					<ClienteContato>
+						<IdClienteContato>300663</IdClienteContato>
+						<IdPessoaFisica>215363</IdPessoaFisica>
+						<IdCliente>310975</IdCliente>
+						<NomeContato>Contato 002</NomeContato>
+						<Funcao />
+						<DonoConta>false</DonoConta>
+						<CotacaoCompras>true</CotacaoCompras>
+						<FaturaPublicacao>true</FaturaPublicacao>
+						<Financeiro>true</Financeiro>
+						<NotaFiscalEletronica>true</NotaFiscalEletronica>
+						<ServicosGraficos>true</ServicosGraficos>
+						<ClienteContatoAtivo>true</ClienteContatoAtivo>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>1</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>2</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>3</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>4</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>5</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>6</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>7</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-08T11:45:50.507</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-08T11:46:26.4</DataHoraAlteracao>
+						</ControleRegistro>
+						<CPF>27597407068</CPF>
+						<DataNascimento xsi:nil="true" />
+						<MeioComunicacao>
+							<IdMeioComunicacao>0</IdMeioComunicacao>
+							<IdTipoContato>0</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD xsi:nil="true" />
+							<Telefone xsi:nil="true" />
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>0</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>0001-01-01T00:00:00</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<DataCadastro>2017-08-08T11:46:00</DataCadastro>
+						<BoletinsEletronicos>false</BoletinsEletronicos>
+						<IdTemp>0</IdTemp>
+					</ClienteContato>
+					<ClienteContato>
+						<IdClienteContato>300664</IdClienteContato>
+						<IdPessoaFisica>215363</IdPessoaFisica>
+						<IdCliente>310975</IdCliente>
+						<NomeContato>Contato 002</NomeContato>
+						<Funcao />
+						<DonoConta>false</DonoConta>
+						<CotacaoCompras>true</CotacaoCompras>
+						<FaturaPublicacao>true</FaturaPublicacao>
+						<Financeiro>true</Financeiro>
+						<NotaFiscalEletronica>true</NotaFiscalEletronica>
+						<ServicosGraficos>true</ServicosGraficos>
+						<ClienteContatoAtivo>true</ClienteContatoAtivo>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>1</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>2</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>3</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>4</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>5</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>6</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>7</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-08T11:45:50.507</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-08T11:46:26.4</DataHoraAlteracao>
+						</ControleRegistro>
+						<CPF>27597407068</CPF>
+						<DataNascimento xsi:nil="true" />
+						<MeioComunicacao>
+							<IdMeioComunicacao>0</IdMeioComunicacao>
+							<IdTipoContato>0</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD xsi:nil="true" />
+							<Telefone xsi:nil="true" />
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>0</IdSistemaCriacao>
+								<IdSistemaAlteracao xsi:nil="true" />
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>0001-01-01T00:00:00</DataHoraCriacao>
+								<DataHoraAlteracao xsi:nil="true" />
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<DataCadastro>2017-08-08T11:46:00</DataCadastro>
+						<BoletinsEletronicos>false</BoletinsEletronicos>
+						<IdTemp>0</IdTemp>
+					</ClienteContato>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285528</IdMeioComunicacao>
+						<IdTipoContato>1</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>43218765</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-08T11:46:46.88</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-08T11:46:46.88</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285529</IdMeioComunicacao>
+						<IdTipoContato>3</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>43218765</Telefone>
+						<Ramal>321</Ramal>
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-08T11:46:46.88</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-08T11:46:46.88</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<ControleRegistro>
+						<IdSistemaCriacao>8</IdSistemaCriacao>
+						<IdSistemaAlteracao>8</IdSistemaAlteracao>
+						<IdUsuarioCriacao xsi:nil="true" />
+						<IdUsuarioAlteracao xsi:nil="true" />
+						<DataHoraCriacao>2017-08-07T16:02:27.617</DataHoraCriacao>
+						<DataHoraAlteracao>2017-08-08T11:46:46.787</DataHoraAlteracao>
+					</ControleRegistro>
+					<Endereco>
+						<IdEndereco>471829</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>1</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>da Mooca</Logradouro>
+						<LogradouroNumero>1921</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Mooca</Bairro>
+						<CEP>03103902</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-08T11:46:46.85</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-08T11:46:46.85</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>false
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>310975</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>471830</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>2</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>da Mooca</Logradouro>
+						<LogradouroNumero />
+						<LogradouroComplemento />
+						<Bairro>Mooca</Bairro>
+						<CEP>03103902</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-08T11:46:46.863</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-08T11:46:46.863</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>false
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>310975</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>471831</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>3</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>da Mooca</Logradouro>
+						<LogradouroNumero>1921</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Mooca</Bairro>
+						<CEP>03103902</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-08T11:46:46.863</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-08T11:46:46.863</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco>Trabalho</ApelidoEndereco>
+						<AceitaComunicacaoCorrespondendia>false
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>310975</IdCliente>
+					</Endereco>
+					<PessoaFisica xsi:nil="true" />
+					<PessoaJuridica>
+						<IdPessoaJuridica>109264</IdPessoaJuridica>
+						<IdTipoPessoaJuridica>0</IdTipoPessoaJuridica>
+						<IdTipoPortePessoaJuridica>0</IdTipoPortePessoaJuridica>
+						<IdSituacaoPessoaJuridica>2</IdSituacaoPessoaJuridica>
+						<IdPais>1</IdPais>
+						<IsOrgaoPublico>false</IsOrgaoPublico>
+						<CNPJ>83535910000104</CNPJ>
+						<NaturezaJuridica xsi:nil="true" />
+						<InscricaoEstadual>838.191.149.860</InscricaoEstadual>
+						<InscricaoMunicipal>321654987</InscricaoMunicipal>
+						<DocumentoEstrangeiro xsi:nil="true" />
+						<RazaoSocial>Cliente 50.01 juridica</RazaoSocial>
+						<NomeFantasia>Cliente Juridica</NomeFantasia>
+						<DataAbertura xsi:nil="true" />
+						<DataSituacaoCadastral xsi:nil="true" />
+						<CidadeExterior xsi:nil="true" />
+						<PaisDomicilio xsi:nil="true" />
+						<CodigoPaisDomicilio xsi:nil="true" />
+						<DataHoraConsultaRFB xsi:nil="true" />
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:02:27.617</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-08T11:46:46.787</DataHoraAlteracao>
+						</ControleRegistro>
+						<ConferidoBEC>false</ConferidoBEC>
+						<ConferidoSintegra>false</ConferidoSintegra>
+						<ValidacaoPresencial>false</ValidacaoPresencial>
+					</PessoaJuridica>
+					<OrgaoPublico xsi:nil="true" />
+					<DataCadastro>2017-08-07T00:00:00</DataCadastro>
+				</Cliente>
+				<Cliente>
+					<IdCliente>310974</IdCliente>
+					<NomeCliente>Contato 001</NomeCliente>
+					<DocumentoCliente>82547256088</DocumentoCliente>
+					<CodigoERP>40.01.001.01</CodigoERP>
+					<ClienteAtivo>true</ClienteAtivo>
+					<EnvioCobrancaEmail>false</EnvioCobrancaEmail>
+					<IdTipoEsfera>4</IdTipoEsfera>
+					<Observacao xsi:nil="true" />
+					<ClienteContato>
+						<IdClienteContato>300660</IdClienteContato>
+						<IdPessoaFisica>215361</IdPessoaFisica>
+						<IdCliente>310974</IdCliente>
+						<NomeContato>Contato 001</NomeContato>
+						<Funcao />
+						<DonoConta>true</DonoConta>
+						<CotacaoCompras>false</CotacaoCompras>
+						<FaturaPublicacao>true</FaturaPublicacao>
+						<Financeiro>true</Financeiro>
+						<NotaFiscalEletronica>true</NotaFiscalEletronica>
+						<ServicosGraficos>false</ServicosGraficos>
+						<ClienteContatoAtivo>true</ClienteContatoAtivo>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>2</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>3</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>4</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<PerfilClienteContato>
+							<IdTipoClienteContato>7</IdTipoClienteContato>
+						</PerfilClienteContato>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T15:27:12.48</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:12:49.493</DataHoraAlteracao>
+						</ControleRegistro>
+						<CPF>82547256088</CPF>
+						<DataNascimento>1977-08-20T00:00:00</DataNascimento>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285518</IdMeioComunicacao>
+							<IdTipoContato>2</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>43218765</Telefone>
+							<Ramal>321</Ramal>
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285519</IdMeioComunicacao>
+							<IdTipoContato>3</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>43218765</Telefone>
+							<Ramal>321</Ramal>
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285520</IdMeioComunicacao>
+							<IdTipoContato>4</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>43218765</Telefone>
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285521</IdMeioComunicacao>
+							<IdTipoContato>5</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD>11</DDD>
+							<Telefone>943218765</Telefone>
+							<Ramal xsi:nil="true" />
+							<Email xsi:nil="true" />
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<MeioComunicacao>
+							<IdMeioComunicacao>1285522</IdMeioComunicacao>
+							<IdTipoContato>6</IdTipoContato>
+							<DDI xsi:nil="true" />
+							<DDD xsi:nil="true" />
+							<Telefone xsi:nil="true" />
+							<Ramal xsi:nil="true" />
+							<Email>cliente40.01@teste.com.br</Email>
+							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+							<ControleRegistro>
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
+								<IdUsuarioCriacao xsi:nil="true" />
+								<IdUsuarioAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
+							</ControleRegistro>
+							<EmailHtml>false</EmailHtml>
+						</MeioComunicacao>
+						<DataCadastro>2017-08-07T15:21:00</DataCadastro>
+						<BoletinsEletronicos>false</BoletinsEletronicos>
+						<IdTemp>0</IdTemp>
+					</ClienteContato>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285518</IdMeioComunicacao>
+						<IdTipoContato>2</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>43218765</Telefone>
+						<Ramal>321</Ramal>
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285519</IdMeioComunicacao>
+						<IdTipoContato>3</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>43218765</Telefone>
+						<Ramal>321</Ramal>
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285520</IdMeioComunicacao>
+						<IdTipoContato>4</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>43218765</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285521</IdMeioComunicacao>
+						<IdTipoContato>5</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD>11</DDD>
+						<Telefone>943218765</Telefone>
+						<Ramal xsi:nil="true" />
+						<Email xsi:nil="true" />
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<MeioComunicacao>
+						<IdMeioComunicacao>1285522</IdMeioComunicacao>
+						<IdTipoContato>6</IdTipoContato>
+						<DDI xsi:nil="true" />
+						<DDD xsi:nil="true" />
+						<Telefone xsi:nil="true" />
+						<Ramal xsi:nil="true" />
+						<Email>cliente40.01@teste.com.br</Email>
+						<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
+						<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:12:50.117</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:12:50.117</DataHoraAlteracao>
+						</ControleRegistro>
+						<EmailHtml>false</EmailHtml>
+					</MeioComunicacao>
+					<ControleRegistro>
+						<IdSistemaCriacao>8</IdSistemaCriacao>
+						<IdSistemaAlteracao>8</IdSistemaAlteracao>
+						<IdUsuarioCriacao xsi:nil="true" />
+						<IdUsuarioAlteracao xsi:nil="true" />
+						<DataHoraCriacao>2017-08-07T15:27:13.263</DataHoraCriacao>
+						<DataHoraAlteracao>2017-08-07T16:12:50.087</DataHoraAlteracao>
+					</ControleRegistro>
+					<Endereco>
+						<IdEndereco>471826</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>1</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>da Mooca</Logradouro>
+						<LogradouroNumero>1921</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Mooca</Bairro>
+						<CEP>03103902</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>false
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>310974</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>471827</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>2</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>da Mooca</Logradouro>
+						<LogradouroNumero>1921</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Mooca</Bairro>
+						<CEP>03103902</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco />
+						<AceitaComunicacaoCorrespondendia>false
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>310974</IdCliente>
+					</Endereco>
+					<Endereco>
+						<IdEndereco>471828</IdEndereco>
+						<IdOrigemEnderecoCriacao>0</IdOrigemEnderecoCriacao>
+						<IdOrigemEnderecoAlteracao xsi:nil="true" />
+						<IdPais>1</IdPais>
+						<IdTipoEndereco>3</IdTipoEndereco>
+						<TipoLogradouro>Rua</TipoLogradouro>
+						<Logradouro>da Mooca</Logradouro>
+						<LogradouroNumero>1921</LogradouroNumero>
+						<LogradouroComplemento />
+						<Bairro>Mooca</Bairro>
+						<CEP>03103902</CEP>
+						<Municipio>São Paulo</Municipio>
+						<CodigoMunicipio>50308</CodigoMunicipio>
+						<SiglaUnidadeFederativa>SP</SiglaUnidadeFederativa>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T16:12:50.103</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:12:50.103</DataHoraAlteracao>
+						</ControleRegistro>
+						<ApelidoEndereco>Trabalho</ApelidoEndereco>
+						<AceitaComunicacaoCorrespondendia>false
+						</AceitaComunicacaoCorrespondendia>
+						<IdCliente>310974</IdCliente>
+					</Endereco>
+					<PessoaFisica>
+						<IdPessoaFisica>0</IdPessoaFisica>
+						<IdTipoSexo>2</IdTipoSexo>
+						<IdTipoSituacaoCadastral>1</IdTipoSituacaoCadastral>
+						<IdPais>1</IdPais>
+						<Nome>Contato 001</Nome>
+						<CPF>82547256088</CPF>
+						<RG>419995055</RG>
+						<OrgaoEmissorRg xsi:nil="true" />
+						<UfEmissaoRg xsi:nil="true" />
+						<DataEmissaoRG xsi:nil="true" />
+						<DataNascimento>1977-08-20</DataNascimento>
+						<DataAtualizacaoReceita xsi:nil="true" />
+						<Estrangeiro>false</Estrangeiro>
+						<AnoObito xsi:nil="true" />
+						<NomeMae xsi:nil="true" />
+						<PaisResidencia xsi:nil="true" />
+						<CodigoPaisResidencia xsi:nil="true" />
+						<TituloEleitor xsi:nil="true" />
+						<UnidadeAdministrativa xsi:nil="true" />
+						<ExercicioOcupacao xsi:nil="true" />
+						<NaturezaOcupacao xsi:nil="true" />
+						<OcupacaoPrincipal xsi:nil="true" />
+						<DataCadastro>2017-08-07</DataCadastro>
+						<ControleRegistro>
+							<IdSistemaCriacao>8</IdSistemaCriacao>
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
+							<IdUsuarioCriacao xsi:nil="true" />
+							<IdUsuarioAlteracao xsi:nil="true" />
+							<DataHoraCriacao>2017-08-07T15:27:13.263</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-07T16:12:50.087</DataHoraAlteracao>
+						</ControleRegistro>
+					</PessoaFisica>
+					<PessoaJuridica xsi:nil="true" />
+					<OrgaoPublico xsi:nil="true" />
+					<DataCadastro>2017-08-07T00:00:00</DataCadastro>
+				</Cliente>
+				<RegistroConsulta>
+					<IdConsulta>0</IdConsulta>
+					<TotalRetorno>0</TotalRetorno>
+				</RegistroConsulta>
+				<IntegracaoClientes>
+					<IdCliente>310977</IdCliente>
+					<CodigoERP>32.15.682.00</CodigoERP>
+					<DocumentoCliente>46384111009872</DocumentoCliente>
+					<IdTipoEsfera>2</IdTipoEsfera>
+					<DataHoraAlteracao>2017-08-07T18:02:19</DataHoraAlteracao>
+				</IntegracaoClientes>
+				<IntegracaoClientes>
+					<IdCliente>279921</IdCliente>
+					<CodigoERP>62.42.718.00</CodigoERP>
+					<DocumentoCliente>62823257019039</DocumentoCliente>
+					<IdTipoEsfera>2</IdTipoEsfera>
+					<DataHoraAlteracao>2017-08-07T17:56:49</DataHoraAlteracao>
+				</IntegracaoClientes>
+				<IntegracaoClientes>
+					<IdCliente>310976</IdCliente>
+					<CodigoERP>10.01.001.01</CodigoERP>
+					<DocumentoCliente>49076139000108</DocumentoCliente>
+					<IdTipoEsfera>5</IdTipoEsfera>
+					<DataHoraAlteracao>2017-08-07T17:53:38</DataHoraAlteracao>
+				</IntegracaoClientes>
+				<IntegracaoClientes>
+					<IdCliente>310975</IdCliente>
+					<CodigoERP>50.01.001.01</CodigoERP>
+					<DocumentoCliente>83535910000104</DocumentoCliente>
+					<IdTipoEsfera>5</IdTipoEsfera>
+					<DataHoraAlteracao>2017-08-08T11:46:46</DataHoraAlteracao>
+				</IntegracaoClientes>
+				<IntegracaoClientes>
+					<IdCliente>310974</IdCliente>
+					<CodigoERP>40.01.001.01</CodigoERP>
+					<DocumentoCliente>82547256088</DocumentoCliente>
+					<IdTipoEsfera>4</IdTipoEsfera>
+					<DataHoraAlteracao>2017-08-07T16:12:50</DataHoraAlteracao>
+				</IntegracaoClientes>
+			</SolicitaClientesParaIntegrarResult>
+		</SolicitaClientesParaIntegrarResponse>
+	</soap:Body>
 </soap:Envelope>

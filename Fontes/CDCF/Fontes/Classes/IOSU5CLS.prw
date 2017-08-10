@@ -9,7 +9,7 @@
 /*/
 User Function IOSU5BLD()
 
-	Local oObject := IOSA1CLS():New()
+	Local oObject := IOSU5CLS():New()
 
 Return oObject
 

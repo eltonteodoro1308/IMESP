@@ -9,7 +9,7 @@
 /*/
 User Function IOAGBBLD()
 
-	Local oObject := IOSA1CLS():New()
+	Local oObject := IOAGBCLS():New()
 
 Return oObject
 

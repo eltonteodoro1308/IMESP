@@ -25,6 +25,8 @@ Class IOSA1CLS
 
 	Data cXCDCDCF // cliente.IdCliente
 	Data cCOD     // cliente.CodigoERP
+	Data cLoja
+	Data cTipo
 	Data cNREDUZ  // sNomeFantasia,
 	Data cNOME    // cliente.NomeCliente
 	Data cCGC     // cliente.DocumentoCliente
@@ -82,6 +84,7 @@ Class IOSA1CLS
 	Data aContatos
 
 	Method New() Constructor
+	Method Grava()
 
 End Class
 
@@ -92,4 +95,122 @@ End Class
 @version 12.1.017
 /*/
 Method New() Class IOSA1CLS
+
+	Local aAtributos := ClassDataArr( Self, .F. )
+	Local nX         := 0
+
+	For nX := 1 To Len( aAtributos )
+
+		If SubStr( aAtributos[ nX, 1 ], 1, 1 ) == 'A'
+
+			Eval( &( '{||Self:' + aAtributos[ nX, 1 ] + ' := {} }' ) )
+
+		ElseIf SubStr( aAtributos[ nX, 1 ], 1, 1 ) $ 'CM'
+
+			Eval( &( '{||Self:' + aAtributos[ nX, 1 ] + ' := "" }' ) )
+
+		ElseIf SubStr( aAtributos[ nX, 1 ], 1, 1 ) == 'D'
+
+			Eval( &( '{||Self:' + aAtributos[ nX, 1 ] + ' := CtoD( "" ) }' ) )
+
+		ElseIf SubStr( aAtributos[ nX, 1 ], 1, 1 ) == 'L'
+
+			Eval( &( '{||Self:' + aAtributos[ nX, 1 ] + ' := .F. }' ) )
+
+		ElseIf SubStr( aAtributos[ nX, 1 ], 1, 1 ) == 'N'
+
+			Eval( &( '{||Self:' + aAtributos[ nX, 1 ] + ' := 0 }' ) )
+
+		Else
+
+			Eval( &( '{||Self:' + aAtributos[ nX, 1 ] + ' := Nil }' ) )
+
+		End If
+
+	Next nX
+
+	Self:cLoja := '01'
+	Self:cTipo := 'R'
+
 Return Self
+
+/*/{Protheus.doc} Grava
+//Método Contrutor da Classe Cliente
+@author Elton Teodoro Alves
+@since 04/08/2017
+@version 12.1.017
+/*/
+Method Grava() Class IOSA1CLS
+
+	Local aAtributos := ClassDataArr( Self, .F. )
+	Local aBuffer    := {}
+	Local aCliente   := {}
+	Local cCampo     := ''
+	Local cOrdem     := ''
+	Local nOpc       := 0
+	Local aArea      := GetArea()
+	Local nPos       := 0
+	Local aErro      := {}
+	Local xValor     := Nil
+
+	Private	lMsErroAuto    := .F.
+	Private	lMsHelpAuto    := .T.
+	Private	lAutoErrNoFile := .T.
+
+	For nX := 1 To Len( aAtributos )
+
+		If ! Upper( aAtributos[ nX, 1 ] ) $ Upper( 'lErroAuto/cErroMsg/aContatos' )
+
+			cCampo := 'A1_' + SubStr( aAtributos[ nX, 1 ], 2, 7 )
+			xValor := aAtributos[ nX, 2 ]
+
+			If ValType( cOrdem := GetSx3Cache( cCampo, 'X3_ORDEM' ) ) # 'U' .And. ValType( xValor ) # 'U' .And. cCampo $ 'A1_COD/A1_LOJA/A1_NOME/A1_NREDUZ/A1_END/A1_TIPO/A1_EST/A1_MUN'
+
+				aAdd( aBuffer, { cCampo, xValor, cOrdem } )
+
+			End If
+
+		End If
+
+	Next nX
+
+	aCliente := aSort( aBuffer,,, { | X, Y |  X[ 3 ] < Y[ 3 ] } )
+
+	For nX := 1 To Len( aCliente )
+
+		aCliente[ nX, 3 ] := Nil
+
+	Next nX
+
+	nPos := aScan( aCliente, { | X | X[ 1 ] == 'A1_COD' } )
+
+	DbSelectArea( 'SA1' )
+	DbSetOrder( 1 )
+
+	If DbSeek( xFilial( 'SA1' ) + aCliente[ nPos, 2 ] )
+
+		nOpc := 4
+
+	Else
+
+		nOpc := 3
+
+	End If
+
+	MSExecAuto( { | X, Y | MATA030( X, Y ) }, aCliente, nOpc )
+
+	If Self:lErroAuto := lMsErroAuto
+
+		aErro := aClone( GetAutoGRLog() )
+
+		For nX := 1 To Len( aErro )
+
+			Self:cErroMsg += _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)
+
+		Next nX
+
+	End If
+
+	RestArea( aArea )
+
+Return

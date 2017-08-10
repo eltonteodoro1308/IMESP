@@ -22,9 +22,15 @@ User Function IOCDCF( cXml, cError, cWarning, cParams, oFwEai )
 	oXml:Parse( oFwEai:cXml )
 	cUuid := oXml:XPathGetNodeValue( '/TOTVSIntegrator/DocIdentifier' )
 
-	GetXmlCDCF( @cXmlCDCF, cUuid )
+	cXmlCDCF := GetExemplo()//GetXmlCDCF( @cXmlCDCF, cUuid )
 
 	MontaStrut( @aArrStrut, cXmlCDCF, cUuid )
+
+	GravClient( @aArrStrut )
+
+	//GravContato( @aArrStrut )
+
+	//EnviaErro( @aArrStrut )
 
 	oFwEai:cReturnMsg := cXmlCDCF
 
@@ -226,6 +232,8 @@ Static Function MontaStrut( aArrStrut, cXml, cUuid )
 
 			GetTelPrinc( @oCliente, oXml )
 
+			GetContato( @oCliente, oXml )
+
 			aAdd( aArrStrut, oCliente )
 
 		ElseIf oXml:cName == 'IntegracaoClientes'
@@ -317,8 +325,9 @@ Static Function GetFisica( oCliente, oXml )
 
 		If oXml:cName == 'PessoaFisica'
 
-			oCliente:dDTNASC  := GetValTag( oXml, 'DataNascimento' )
-			oCliente:cXSEXO   := GetValTag( oXml, 'IdTipoSexo' )
+			oCliente:dDTNASC := GetValTag( oXml, 'DataNascimento' )
+			oCliente:cXSEXO  := GetValTag( oXml, 'IdTipoSexo' )
+			oCliente:cNREDUZ := oCliente:cNome
 
 			Exit
 
@@ -511,7 +520,8 @@ Static Function GetEnd( oCliente, oXml )
 	oXml:DOMParentNode()
 
 Return
-/*/{Protheus.doc} GetEnd
+
+/*/{Protheus.doc} GetTelPrinc
 //Popula os campos do objeto do cliente com dados pertinentes ao telefone principal
 @author Elton Teodoro Alves
 @since 07/08/2017
@@ -553,6 +563,144 @@ Static Function GetTelPrinc( oCliente, oXml )
 
 Return
 
+/*/{Protheus.doc} GetContato
+//Popula os campos do objeto do cliente com dados pertinentes aos contatos
+@author Elton Teodoro Alves
+@since 07/08/2017
+@version 12.1.017
+@param oCliente, object, Objeto que representa o cliente
+@param oXml, object, Objeto que representa o xml do CDCF
+/*/
+Static Function GetContato( oCliente, oXml )
+
+	Local oContato := Nil
+	Local cPerfis  := ''
+
+	oCliente:aContatos := {}
+
+	oXml:DOMChildNode()
+
+	Do While .T.
+
+		If oXml:cName == 'ClienteContato'
+
+			cPerfis := InfoPerfCont( oXml )
+
+			aAdd( oCliente:aContatos, U_IOSU5BLD() )
+
+			oContato := oCliente:aContatos[ Len( oCliente:aContatos ) ]
+
+			oContato:cCODCONT := GetValTag( oXml, 'IdClienteContato' )
+			oContato:cCONTAT  := GetValTag( oXml, 'NomeContato' )
+			oContato:cXCOTCOM := If( '1' $ cPerfis, '1', '2' )
+			oContato:cXFATPUB := If( '2' $ cPerfis, '1', '2' )
+			oContato:cXFINANC := If( '3' $ cPerfis, '1', '2' )
+			oContato:cXNF_E   := If( '4' $ cPerfis, '1', '2' )
+			oContato:cXSRVGRF := If( '5' $ cPerfis, '1', '2' )
+			oContato:cXPUBLIC := If( '6' $ cPerfis, '1', '2' )
+			oContato:cXBOLELE := If( '7' $ cPerfis, '1', '2' )
+
+			oContato:aMeioComun := GetMeioCom( oXml )
+
+		End If
+
+		// Verifica se existe mais tag´s no mesmo nível e passa para a próxima
+		If ! oXml:DOMNextNode()
+
+			Exit
+
+		End If
+
+	End Do
+
+	oXml:DOMParentNode()
+
+Return
+
+/*/{Protheus.doc} InfoPerfCont
+Resgata co XML as informações correspondentes ao perfil do contato
+@author Elton Teodoro Alves
+@since 07/08/2017
+@version 12.1.017
+@param oXml, object, Obejeto do Parser do XML retornado pelo XML
+@return characteres, String concatenada com os perfis do contato
+/*/
+Static Function InfoPerfCont( oXml )
+
+	Local cRet := ''
+
+	oXml:DOMChildNode()
+
+	Do While AllWaysTrue()
+
+		If oXml:cName == 'PerfilClienteContato'
+
+			cRet += GetValTag( oXml, 'IdTipoClienteContato' )
+
+		End If
+
+		If ! oXml:DOMNextNode()
+
+			Exit
+
+		End If
+
+	EndDo
+
+	oXml:DOMParentNode()
+
+Return cRet
+
+/*/{Protheus.doc} GetMeioCom
+Resgata co XML as informações correspondentes ao perfil do contato
+@author Elton Teodoro Alves
+@since 07/08/2017
+@version 12.1.017
+@param oXml, object, Obejeto do Parser do XML retornado pelo XML
+@return characteres, String concatenada com os perfis do contato
+/*/
+Static Function GetMeioCom( oXml )
+
+	Local aRet     := {}
+	Local oMeioCom := Nil
+	Local cDDD     := ''
+	Local cTel     := ''
+
+	oXml:DOMChildNode()
+
+	Do While AllWaysTrue()
+
+		If oXml:cName == 'MeioComunicacao'
+
+			aAdd( aRet, U_IOAGBBLD() )
+
+			oMeioCom := aRet[ Len( aRet ) ]
+
+			cDDD := GetValTag( oXml, 'DDD'      )
+			cTel := GetValTag( oXml, 'Telefone' )
+
+			oMeioCom:cCODIGO := GetValTag( oXml, 'IdMeioComunicacao' )
+			oMeioCom:cXTIPO  := GetValTag( oXml, 'IdTipoContato'     )
+			oMeioCom:cXEMAIL := GetValTag( oXml, 'Email'             )
+			oMeioCom:cDDI    := GetValTag( oXml, 'DDI'               )
+			oMeioCom:cDDD    := If( Empty( cDDD ), '0', cDDD         )
+			oMeioCom:cTELEFO := If( Empty( cTel ), '0', cTel         )
+			oMeioCom:cCOMP   := GetValTag( oXml, 'Ramal'             )
+
+		End If
+
+		If ! oXml:DOMNextNode()
+
+			Exit
+
+		End If
+
+	EndDo
+
+	oXml:DOMParentNode()
+
+Return aRet
+
 /*/{Protheus.doc} GetValTag
 Retorna o valor da Tag descendente solicitada correspondenente a Tag posicionada no XML.
 @author Elton Teodoro Alves
@@ -571,5 +719,53 @@ Static Function GetValTag( oXml, cTag )
 		cRet := oXml:DOMGetChildArray() [ nPos, 2]
 
 	End If
+
+Return cRet
+
+/*/{Protheus.doc} GravClient
+//Percorre o array com a carga de dados dos clientes e faz a gravação dos mesmos
+@author Elton Teodoro Alves
+@since 08/08/2017
+@version 12.1.017
+@param aArrStrut, array, Array  com a carga de dados dos clientes
+@return return, return_description
+/*/
+Static Function GravClient( aArrStrut )
+
+	Local nX       := 0
+	Local oCliente := Nil
+
+	For nX := 1 To Len( aArrStrut )
+
+		oCliente := aArrStrut[ nX ]
+
+		oCliente:Grava()
+
+	Next nX
+
+Return
+
+Static Function GetExemplo()
+
+	Local cRet := ''
+	Local nHandle := FT_FUse( '\xml\exemplo.xml' )
+
+	If nHandle = -1
+
+		return cRet
+
+	End If
+
+	FT_FGoTop()
+
+	While ! FT_FEOF()
+
+		cRet += FT_FReadLn()
+
+		FT_FSKIP()
+
+	End
+
+	FT_FUSE()
 
 Return cRet
