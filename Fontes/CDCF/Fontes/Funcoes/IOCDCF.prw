@@ -375,6 +375,7 @@ Static Function GetJuridic( oCliente, oXml )
 			oCliente:cINSCR   := GetValTag( oXml, 'InscricaoEstadual' )
 			oCliente:cINSCRM  := GetValTag( oXml, 'InscricaoMunicipal' )
 			oCliente:cXORGPUB := If( GetValTag( oXml, 'IsOrgaoPublico' ) == 'true', '1', '2' )
+			oCliente:cXSEXO   := '0'
 
 			Exit
 
@@ -419,6 +420,7 @@ Static Function GetOrgPubl( oCliente, oXml )
 					oCliente:cINSCR   := GetValTag( oXml, 'InscricaoEstadual' )
 					oCliente:cINSCRM  := GetValTag( oXml, 'InscricaoMunicipal' )
 					oCliente:cXORGPUB := If( GetValTag( oXml, 'IsOrgaoPublico' ) == 'true', '1', '2' )
+					oCliente:cXSEXO   := '0'
 
 					Exit
 
@@ -795,18 +797,21 @@ Static Function EnviaErro( aArrStrut, cUuid )
 
 		If oCliente:lErroAuto
 
-			cMsg += Replicate( '-', 150 ) + '<br/>'
-			cMsg += 'Erro no cadastro do Cliente : ' + '<br/>'
-			cMsg += oCliente:cCOD + ' - ' + '<br/>'
-			cMsg += oCliente:cNOME + '<br/>'
+			//cMsg += Replicate( '-', 50 ) + '<br/>'
+			cMsg += 'Erro no cadastro do Cliente : '
+			cMsg += oCliente:cCOD + ' - '
 			cMsg += oCliente:cNOME + '<br/>'
 			cMsg += Replace( oCliente:cErroMsg, Chr( 13 ) + Chr( 10 ), '<br/>' )
-			cMsg += Replicate( '-', 150 ) + '<br/>'
+			//cMsg += Replicate( '-', 50 ) + '<br/>'
 
 		End If
 
 	Next nX
 
-	U_IOEXCPT( cUuid, cMsg )
+	If ! Empty( cMsg )
+
+		U_IOEXCPT( cUuid, cMsg )
+
+	End If
 
 Return

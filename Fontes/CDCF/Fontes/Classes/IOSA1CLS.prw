@@ -79,7 +79,6 @@ Class IOSA1CLS
 
 	Data cEMAIL
 	Data cXDHCDCF
-	Data mXCONTAC
 
 	// Atributos da classe que não tem campo correspondente no dicionário
 	Data lErroAuto
@@ -164,6 +163,8 @@ Method Grava() Class IOSA1CLS
 	Private	lMsHelpAuto    := .T.
 	Private	lAutoErrNoFile := .T.
 
+	// Percorre lista de contatos, verifica quem recebe email da nf-e e
+	// preenche o campo do cadastro do cliente com o email.
 	For nX := 1 To Len( Self:aContatos )
 
 		oContato := Self:aContatos[ nX ]
@@ -185,8 +186,6 @@ Method Grava() Class IOSA1CLS
 		End If
 
 	Next nX
-
-	Self:mXCONTAC := FWJsonSerialize( Self:aContatos )
 
 	aAtributos := ClassDataArr( Self, .F. )
 
@@ -245,7 +244,6 @@ Method Grava() Class IOSA1CLS
 
 		For nX := 1 To Len( aErro )
 
-			//Self:cErroMsg += _NoTags( aErro[ nX ] ) + Chr(13) + Chr(10)
 			Self:cErroMsg += aErro[ nX ] + Chr(13) + Chr(10)
 
 		Next nX
