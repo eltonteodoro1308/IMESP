@@ -20,13 +20,24 @@ User Function IOCDCF( cXml, cError, cWarning, cParams, oFwEai )
 	Local cUuid     := ''
 
 	oXml:Parse( oFwEai:cXml )
+
 	cUuid := oXml:XPathGetNodeValue( '/TOTVSIntegrator/DocIdentifier' )
 
-	cXmlCDCF := GetExemplo()//GetXmlCDCF( @cXmlCDCF, cUuid )
+	GetXmlCDCF( @cXmlCDCF, cUuid )
 
 	MontaStrut( @aArrStrut, cXmlCDCF, cUuid )
 
 	GravClient( @aArrStrut )
+
+	DelVincCnt( @aArrStrut )
+
+	DelContato( @aArrStrut )
+
+	GravContat( @aArrStrut )
+
+	VincContato( @aArrStrut )
+
+	ConfInteg( @aArrStrut )
 
 	EnviaErro( @aArrStrut, cUuid )
 
@@ -131,8 +142,6 @@ Static Function GetXmlCDCF( cXml, cUuid )
 		U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
 
 		UserException( cMsg )
-
-		lOk := .F.
 
 	End If
 
@@ -753,34 +762,352 @@ Static Function GravClient( aArrStrut )
 
 Return
 
-Static Function GetExemplo()
+/*/{Protheus.doc} DelVincCnt
+//Deleta o Vinculo dos Clientes incluidos/atualizados com sucesso com seus contatos correspondentes
+@author Elton Teodoro Alves
+@since 17/08/2017
+@version 12.1.017
+@param aArrStrut, array, Array com a carga de dados dos clientes
+/*/
+Static Function DelVincCnt( aArrStrut )
 
-	Local cRet := ''
-	Local nHandle := FT_FUse( '\xml\exemplo.xml' )
+	Local aArea    := GetArea()
+	Local nX       := 0
+	Local oCliente := Nil
+	Local cSeek    := ''
 
-	If nHandle = -1
+	DbSelectArea( 'AC8' )
+	DbSetOrder( 2 ) // AC8_FILIAL + AC8_ENTIDA + AC8_FILENT + AC8_CODENT + AC8_CODCON
 
-		return cRet
+	For nX := 1 To Len( aArrStrut )
+
+		oCliente := aArrStrut[ nX ]
+
+		If ! oCliente:lErroAuto
+
+			cSeek += FwxFilial( 'AC8' )
+			cSeek += 'SA1'
+			cSeek += FwxFilial( 'SA1' )
+			cSeek += PadR( oCliente:cCOD, GetSx3Cache( 'A1_COD', 'X3_TAMANHO' ) )
+			cSeek += oCliente:cLoja
+
+			If DbSeek( cSeek )
+
+				Do While !Eof() .And. AllTrim( cSeek ) == AC8->( AllTrim( AC8_FILIAL + AC8_ENTIDA + AC8_FILENT + AC8_CODENT ) )
+
+					RecLock( 'AC8', .F. )
+
+					DbDelete()
+
+					MsUnlock()
+
+					DbSkip()
+
+				End Do
+
+			End If
+
+			cSeek := ''
+
+		End If
+
+	Next nX
+
+	RestArea( aArea )
+
+Return
+
+/*/{Protheus.doc} GravContat
+//Exclui os contatos dos clientes do array com a carga de dados
+@author Elton Teodoro Alves
+@since 17/08/2017
+@version 12.1.017
+@param aArrStrut, array, Array com a carga de dados dos clientes
+/*/
+Static Function DelContato( aArrStrut )
+
+	Local nX       := 0
+	Local nY       := 0
+	Local aErro    := {}
+	Local cErro    := ''
+	Local aArea    := GetArea()
+	Local oCliente := Nil
+	Local oContato := Nil
+	Local aContatos:= {}
+	Local aContato := {}
+
+	Private	lMsErroAuto    := .F.
+	Private	lMsHelpAuto    := .T.
+	Private	lAutoErrNoFile := .T.
+
+	For nX := 1 To Len( aArrStrut )
+
+		oCliente := aArrStrut[ nX ]
+
+		For nY := 1 To Len( oCliente:aContatos )
+
+			oContato := oCliente:aContatos[ nY ]
+
+			aAdd( aContatos, oContato:cCODCONT )
+
+		Next nY
+
+	Next nX
+
+	For nX := 1 To Len( aContatos )
+
+		DbSelectArea( 'SU5' )
+		DbSetOrder( 1 )
+
+		If DbSeek( FwxFilial( 'SU5' ) + aContatos[ nX ] )
+
+			aAdd( aContato, { 'U5_CODCONT', SU5->U5_CODCONT, Nil } )
+			aAdd( aContato, { 'U5_CONTAT' , SU5->U5_CONTAT , Nil } )
+
+			MSExecAuto( { | X , Y, Z, A, B | TMKA070( X , Y, Z, A, B ) }, aContato, 5, {}, {}, .F. )
+
+			If lMsErroAuto
+
+				aErro := aClone( GetAutoGRLog() )
+
+				For nY := 1 To Len( aErro )
+
+					cErro += aErro[ nY ] + Chr(13) + Chr(10)
+
+				Next nY
+
+				ConOut( cErro )
+
+				lMsErroAuto := .F.
+
+			End If
+
+			aSize( aContato, 0 )
+
+		End If
 
 	End If
 
-	FT_FGoTop()
+	RestArea( aArea )
 
-	While ! FT_FEOF()
+Return
 
-		cRet += FT_FReadLn()
+/*/{Protheus.doc} GravContat
+//Grava Contatos do Cliente
+@author Elton Teodoro Alves
+@since 17/08/2017
+@version 12.1.017
+@param aArrStrut, array, Array  com a carga de dados dos clientes
+/*/
+Static Function GravContat( aArrStrut )
 
-		FT_FSKIP()
+	Local nX         := 0
+	Local nY         := 0
+	Local oCliente   := Nil
+	Local oContato   := Nil
 
-	End
+	For nX := 1 To len( aArrStrut )
 
-	FT_FUSE()
+		oCliente := aArrStrut[ nX ]
 
-Return cRet
+		If ! oCliente:lErroAuto
+
+			For nY := 1 To Len( oCliente:aContatos )
+
+				oContato := oCliente:aContatos[ nY ]
+
+				oContato:Grava()
+
+			Next nY
+
+		End If
+
+	Next nX
+
+Return
+
+/*/{Protheus.doc} GravContat
+//Grava vinculo do Contatos com o Cliente
+@author Elton Teodoro Alves
+@since 17/08/2017
+@version 12.1.017
+@param aArrStrut, array, Array  com a carga de dados dos clientes
+/*/
+Static Function VincContato( aArrStrut )
+
+	Local nX         := 0
+	Local oCliente   := Nil
+
+	For nX := 1 To len( aArrStrut )
+
+		oCliente := aArrStrut[ nX ]
+
+		If ! oCliente:lErroAuto
+
+			oCliente:VincContat()
+
+		End If
+
+	Next nX
+
+Return
+
+/*/{Protheus.doc} ConfInteg
+//Confirma a integração dos Clientes que tiveram seu cadastro e de seus contatos incluído/atualizado com sucesso
+@author Elton Teodoro Alves
+@since 17/08/2017
+@version 12.1.017
+@param aArrStrut, array, Array  com a carga de dados dos clientes
+/*/
+Static Function ConfInteg( aArrStrut )
+
+	Local cWSDLUrl := GetMv( 'IO_CDCFWSD' ) // URL do WSDL do WebService do CDCF
+	Local cIDSist  := GetMv( 'IO_CDCFIDS' ) // ID do Sistema Protheus no CDCF
+	Local cIdCons  := GetMv( 'IO_CDCFIDC' ) // ID da Consulta no CDCF
+	Local oWSDL    := TWsdlManager():New()
+	Local aOps     := {}
+	Local aComplex := {}
+	Local aSimple  := {}
+	Local cMsg     := ''
+	Local nX       := 0
+	Local oCliente := 0
+	Local aCliConf := {}
+
+	For nX := 1 To Len( aArrStrut )
+
+		oCliente := aArrStrut[ nX ]
+
+		If ! oCliente:lErroAuto .And. aScan( oCliente:aContatos, { | oContato | oContato:lErroAuto } ) == 0
+
+			aAdd( aCliConf, oCliente )
+
+		End If
+
+	Next nX
+
+	For nX := 1 To Len( aCliConf )
+
+		oCliente := aCliConf[ nX ]
+
+		// Define que a validacao da resposta do WebService do CDCF nao sera processada
+		oWsdl:lProcResp := .F.
+
+		// Efetua o parse do WSDL do WebService
+		If ! oWsdl:ParseUrl( cWSDLUrl )
+
+			U_IOEXCPT( cUuid, cMsg := 'Erro no Parse da URL do WSDL do WebService: ' + oWsdl:cError )
+
+			UserException( cMsg )
+
+		End If
+
+		// Atribui a variavel array com as operacoes do WebService
+		aOps := aClone( oWsdl:ListOperations() )
+
+		If Len( aOps ) == 0
+
+			U_IOEXCPT( cUuid, cMsg := 'Não foi disponibilizada nenhuma operação pelo WebService através do documento WSDL: ' + oWsdl:cError )
+
+			UserException( cMsg )
+
+		End If
+
+		// Seta a operacao a ser executada
+		If ! oWsdl:SetOperation( aOps[ aScan( aOps, { | X | X[ 1 ] == 'ConfirmaIntegracaoCliente'} ), 1 ] )
+
+			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o método ConfirmaIntegracaoCliente como a operação a ser realizada: ' + oWsdl:cError )
+
+			UserException( cMsg )
+
+		End If
+
+		// Atribui a variavel os tipos complexos da operacao
+		//aComplex := oWsdl:NextComplex()
+
+		//If Len( aComplex ) == 0
+
+			//U_IOEXCPT( cUuid, cMsg := 'Nenhum Elemeto do Tipo Complexo foi Localizado: ' + oWsdl:cError )
+
+			//UserException( cMsg )
+
+		//End If
+
+		// Atribui a variavel os tipos simples da operacao
+		aSimple  := oWsdl:SimpleInput()
+
+		If Len( aSimple ) == 0
+
+			U_IOEXCPT( cUuid, cMsg := 'Nenhum Elemeto do Tipo Simples foi Localizado: ' + oWsdl:cError )
+
+			UserException( cMsg )
+
+		End If
+
+		// Define o numero de ocorrencias do tipo complexo
+		//		If ! oWsdl:SetComplexOccurs( aComplex[ 1 ], 1 )
+		//
+		//			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o número de vezes do Tipo Complexo: ' + oWsdl:cError )
+		//
+		//			UserException( cMsg )
+		//
+		//		End IF
+
+		// Seta o valor do tipo simples correspondente ao ID do Sistema Protheus no CDCF
+		If ! oWsdl:SetValue( aSimple[1][1], cIDSist )
+
+			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o valor da variável ' + aSimple[1][2] + ': ' + oWsdl:cError )
+
+			UserException( cMsg )
+
+		End If
+
+		// Seta o valor do tipo simples correspondente ao ID da Consulta no CDCF
+		If  ! oWsdl:SetValue( aSimple[2][1], cIdCons  )
+
+			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
+
+			UserException( cMsg )
+
+		End If
+
+
+		// Seta o valor do tipo simples correspondente ao ID do cliente no CDCF
+		If  ! oWsdl:SetValue( aSimple[3][1], oCliente:cXCDCDCF  )
+
+			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
+
+			UserException( cMsg )
+
+		End If
+
+		// Seta o valor do tipo simples correspondente ao Data Hora de alteração do cliente no CDCF
+		If  ! oWsdl:SetValue( aSimple[4][1], oCliente:cXDHCDCF  )
+
+			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
+
+			UserException( cMsg )
+
+		End If
+
+		// Efetua comunicacao com WebService do CDCF
+		If ! oWsdl:SendSoapMsg()
+
+			U_IOEXCPT( cUuid, cMsg := 'Não foi possível o envio do documento SOAP gerado ao endereço definido: ' + oWsdl:cError )
+
+			UserException( cMsg )
+
+		End If
+
+		// Atribui a Variável o retorno do WebService
+		ConOut( oWsdl:GetSoapResponse() )
+
+	Next nX
+
+Return
 
 /*/{Protheus.doc} EnviaErro
 //Envia E-Mail com os clientes que tiveram erro na gravação
-@author elton.alves
+@author Elton Teodoro Alves
 @since 10/08/2017
 @version 12.1.017
 @param aArrStrut, array, Array  com a carga de dados dos clientes
@@ -788,7 +1115,9 @@ Return cRet
 Static Function EnviaErro( aArrStrut, cUuid )
 
 	Local nX       := 0
+	Local nY       := 0
 	Local oCliente := Nil
+	Local oContato := Nil
 	Local cMsg     := ''
 
 	For nX := 1 To len( aArrStrut )
@@ -797,12 +1126,29 @@ Static Function EnviaErro( aArrStrut, cUuid )
 
 		If oCliente:lErroAuto
 
-			//cMsg += Replicate( '-', 50 ) + '<br/>'
 			cMsg += 'Erro no cadastro do Cliente : '
 			cMsg += oCliente:cCOD + ' - '
 			cMsg += oCliente:cNOME + '<br/>'
 			cMsg += Replace( oCliente:cErroMsg, Chr( 13 ) + Chr( 10 ), '<br/>' )
-			//cMsg += Replicate( '-', 50 ) + '<br/>'
+
+		Else
+
+			For nY := 1 To Len( oCliente:aContatos )
+
+				oContato := oCliente:aContatos[ nY ]
+
+				If oContato:lErroAuto
+
+					cMsg += 'Erro no cadastro do Contato do Cliente : '
+					cMsg += oCliente:cCOD + ' - '
+					cMsg += oCliente:cNOME + '<br/>'
+					cMsg += oContato:cCODCONT + ' - '
+					cMsg += oContato:cCONTAT + '<br/>'
+					cMsg += Replace( oContato:cErroMsg, Chr( 13 ) + Chr( 10 ), '<br/>' )
+
+				End If
+
+			Next nX
 
 		End If
 

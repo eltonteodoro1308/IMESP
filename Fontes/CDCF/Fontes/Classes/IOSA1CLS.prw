@@ -87,6 +87,7 @@ Class IOSA1CLS
 
 	Method New() Constructor
 	Method Grava()
+	Method VincContat()
 
 End Class
 
@@ -95,6 +96,7 @@ End Class
 @author Elton Teodoro Alves
 @since 04/08/2017
 @version 12.1.017
+@return return, Instância de objeto da classe IOSA1CLS
 /*/
 Method New() Class IOSA1CLS
 
@@ -133,12 +135,11 @@ Method New() Class IOSA1CLS
 
 	Self:cLoja   := '01'
 	Self:cTipo    := 'R'
-	Self:cErroMsg := ''
 
 Return Self
 
 /*/{Protheus.doc} Grava
-//Método Contrutor da Classe Cliente
+//Grava o objeto no banco via execauto
 @author Elton Teodoro Alves
 @since 04/08/2017
 @version 12.1.017
@@ -249,6 +250,43 @@ Method Grava() Class IOSA1CLS
 		Next nX
 
 	End If
+
+	RestArea( aArea )
+
+Return
+
+/*/{Protheus.doc} VincContat
+//Vincula o Cliente aos seus contatos correspondentes
+@author Elton Teodoro Alves
+@since 17/08/2017
+@version 12.1.017
+/*/
+Method VincContat() Class IOSA1CLS
+
+	Local nX       := 0
+	Local oContato := Nil
+	Local aArea    := GetArea()
+
+	For nX := 1 To Len( Self:aContatos )
+
+		oContato := Self:aContatos[ nX ]
+
+		If ! oContato:lErroAuto
+
+			DbSelectArea( 'AC8' )
+			DbSetOrder( 1 )
+
+			RecLock( 'AC8', .T. )
+
+			AC8->AC8_ENTIDA := 'SA1'
+			AC8->AC8_CODENT := PadR( Self:cCOD, GetSx3Cache( 'A1_COD', 'X3_TAMANHO' ) ) + Self:cLoja
+			AC8->AC8_CODCON := oContato:cCODCONT
+
+			MsUnlock()
+
+		End If
+
+	Next nX
 
 	RestArea( aArea )
 

@@ -195,7 +195,8 @@
 						<IdClienteContato>198699</IdClienteContato>
 						<IdPessoaFisica>0</IdPessoaFisica>
 						<IdCliente>279921</IdCliente>
-						<Funcao xsi:nil="true" />
+						<NomeContato>Contato</NomeContato>
+						<Funcao />
 						<DonoConta>true</DonoConta>
 						<CotacaoCompras>false</CotacaoCompras>
 						<FaturaPublicacao>true</FaturaPublicacao>
@@ -214,11 +215,11 @@
 						</PerfilClienteContato>
 						<ControleRegistro>
 							<IdSistemaCriacao>3</IdSistemaCriacao>
-							<IdSistemaAlteracao xsi:nil="true" />
+							<IdSistemaAlteracao>8</IdSistemaAlteracao>
 							<IdUsuarioCriacao xsi:nil="true" />
 							<IdUsuarioAlteracao xsi:nil="true" />
 							<DataHoraCriacao>2012-01-07T02:42:32.587</DataHoraCriacao>
-							<DataHoraAlteracao xsi:nil="true" />
+							<DataHoraAlteracao>2017-08-17T18:37:43.263</DataHoraAlteracao>
 						</ControleRegistro>
 						<CPF xsi:nil="true" />
 						<DataNascimento xsi:nil="true" />
@@ -228,17 +229,17 @@
 							<DDI xsi:nil="true" />
 							<DDD>11</DDD>
 							<Telefone>47481732</Telefone>
-							<Ramal xsi:nil="true" />
+							<Ramal />
 							<Email xsi:nil="true" />
 							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
 							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
 							<ControleRegistro>
-								<IdSistemaCriacao>3</IdSistemaCriacao>
-								<IdSistemaAlteracao xsi:nil="true" />
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
 								<IdUsuarioCriacao xsi:nil="true" />
 								<IdUsuarioAlteracao xsi:nil="true" />
-								<DataHoraCriacao>2012-01-07T02:42:32.59</DataHoraCriacao>
-								<DataHoraAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-17T18:37:43.28</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-17T18:37:43.28</DataHoraAlteracao>
 							</ControleRegistro>
 							<EmailHtml>false</EmailHtml>
 						</MeioComunicacao>
@@ -253,12 +254,12 @@
 							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
 							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
 							<ControleRegistro>
-								<IdSistemaCriacao>3</IdSistemaCriacao>
-								<IdSistemaAlteracao xsi:nil="true" />
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
 								<IdUsuarioCriacao xsi:nil="true" />
 								<IdUsuarioAlteracao xsi:nil="true" />
-								<DataHoraCriacao>2012-01-07T02:42:32.59</DataHoraCriacao>
-								<DataHoraAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-17T18:37:43.28</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-17T18:37:43.28</DataHoraAlteracao>
 							</ControleRegistro>
 							<EmailHtml>false</EmailHtml>
 						</MeioComunicacao>
@@ -273,12 +274,12 @@
 							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
 							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
 							<ControleRegistro>
-								<IdSistemaCriacao>3</IdSistemaCriacao>
-								<IdSistemaAlteracao xsi:nil="true" />
+								<IdSistemaCriacao>8</IdSistemaCriacao>
+								<IdSistemaAlteracao>8</IdSistemaAlteracao>
 								<IdUsuarioCriacao xsi:nil="true" />
 								<IdUsuarioAlteracao xsi:nil="true" />
-								<DataHoraCriacao>2012-01-07T02:42:32.59</DataHoraCriacao>
-								<DataHoraAlteracao xsi:nil="true" />
+								<DataHoraCriacao>2017-08-17T18:37:43.28</DataHoraCriacao>
+								<DataHoraAlteracao>2017-08-17T18:37:43.28</DataHoraAlteracao>
 							</ControleRegistro>
 							<EmailHtml>false</EmailHtml>
 						</MeioComunicacao>
@@ -301,8 +302,8 @@
 							<IdSistemaAlteracao>8</IdSistemaAlteracao>
 							<IdUsuarioCriacao xsi:nil="true" />
 							<IdUsuarioAlteracao xsi:nil="true" />
-							<DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
+							<DataHoraCriacao>2017-08-17T18:38:30.327</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-17T18:38:30.327</DataHoraAlteracao>
 						</ControleRegistro>
 						<EmailHtml>true</EmailHtml>
 					</MeioComunicacao>
@@ -321,8 +322,8 @@
 							<IdSistemaAlteracao>8</IdSistemaAlteracao>
 							<IdUsuarioCriacao xsi:nil="true" />
 							<IdUsuarioAlteracao xsi:nil="true" />
-							<DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
+							<DataHoraCriacao>2017-08-17T18:38:30.327</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-17T18:38:30.327</DataHoraAlteracao>
 						</ControleRegistro>
 						<EmailHtml>true</EmailHtml>
 					</MeioComunicacao>
@@ -341,8 +342,8 @@
 							<IdSistemaAlteracao>8</IdSistemaAlteracao>
 							<IdUsuarioCriacao xsi:nil="true" />
 							<IdUsuarioAlteracao xsi:nil="true" />
-							<DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
+							<DataHoraCriacao>2017-08-17T18:38:30.327</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-17T18:38:30.327</DataHoraAlteracao>
 						</ControleRegistro>
 						<EmailHtml>true</EmailHtml>
 					</MeioComunicacao>
@@ -361,8 +362,8 @@
 							<IdSistemaAlteracao>8</IdSistemaAlteracao>
 							<IdUsuarioCriacao xsi:nil="true" />
 							<IdUsuarioAlteracao xsi:nil="true" />
-							<DataHoraCriacao>2017-08-07T17:56:50.03</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-07T17:56:50.03</DataHoraAlteracao>
+							<DataHoraCriacao>2017-08-17T18:38:30.327</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-17T18:38:30.327</DataHoraAlteracao>
 						</ControleRegistro>
 						<EmailHtml>false</EmailHtml>
 					</MeioComunicacao>
@@ -372,7 +373,7 @@
 						<IdUsuarioCriacao xsi:nil="true" />
 						<IdUsuarioAlteracao xsi:nil="true" />
 						<DataHoraCriacao>2012-01-07T00:37:53.39</DataHoraCriacao>
-						<DataHoraAlteracao>2017-08-07T17:56:49.983</DataHoraAlteracao>
+						<DataHoraAlteracao>2017-08-17T18:38:30.297</DataHoraAlteracao>
 					</ControleRegistro>
 					<Endereco>
 						<IdEndereco>427178</IdEndereco>
@@ -394,8 +395,8 @@
 							<IdSistemaAlteracao>8</IdSistemaAlteracao>
 							<IdUsuarioCriacao xsi:nil="true" />
 							<IdUsuarioAlteracao xsi:nil="true" />
-							<DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
+							<DataHoraCriacao>2017-08-17T18:38:30.313</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-17T18:38:30.313</DataHoraAlteracao>
 						</ControleRegistro>
 						<ApelidoEndereco xsi:nil="true" />
 						<AceitaComunicacaoCorrespondendia>true
@@ -422,8 +423,8 @@
 							<IdSistemaAlteracao>8</IdSistemaAlteracao>
 							<IdUsuarioCriacao xsi:nil="true" />
 							<IdUsuarioAlteracao xsi:nil="true" />
-							<DataHoraCriacao>2017-08-07T17:56:50.017</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-07T17:56:50.017</DataHoraAlteracao>
+							<DataHoraCriacao>2017-08-17T18:38:30.313</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-17T18:38:30.313</DataHoraAlteracao>
 						</ControleRegistro>
 						<ApelidoEndereco xsi:nil="true" />
 						<AceitaComunicacaoCorrespondendia>true
@@ -450,8 +451,8 @@
 							<IdSistemaAlteracao>8</IdSistemaAlteracao>
 							<IdUsuarioCriacao xsi:nil="true" />
 							<IdUsuarioAlteracao xsi:nil="true" />
-							<DataHoraCriacao>2017-08-07T17:56:50</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-07T17:56:50</DataHoraAlteracao>
+							<DataHoraCriacao>2017-08-17T18:38:30.313</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-17T18:38:30.313</DataHoraAlteracao>
 						</ControleRegistro>
 						<ApelidoEndereco />
 						<AceitaComunicacaoCorrespondendia>true
@@ -478,8 +479,8 @@
 							<IdSistemaAlteracao>8</IdSistemaAlteracao>
 							<IdUsuarioCriacao xsi:nil="true" />
 							<IdUsuarioAlteracao xsi:nil="true" />
-							<DataHoraCriacao>2017-08-07T17:56:50</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-07T17:56:50</DataHoraAlteracao>
+							<DataHoraCriacao>2017-08-17T18:38:30.313</DataHoraCriacao>
+							<DataHoraAlteracao>2017-08-17T18:38:30.313</DataHoraAlteracao>
 						</ControleRegistro>
 						<ApelidoEndereco />
 						<AceitaComunicacaoCorrespondendia>true
@@ -500,7 +501,7 @@
 							<IdUsuarioCriacao xsi:nil="true" />
 							<IdUsuarioAlteracao xsi:nil="true" />
 							<DataHoraCriacao>2012-01-07T00:37:53.39</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-07T17:56:49.983</DataHoraAlteracao>
+							<DataHoraAlteracao>2017-08-17T18:38:30.297</DataHoraAlteracao>
 						</ControleRegistro>
 						<PessoaJuridica>
 							<IdPessoaJuridica>93566</IdPessoaJuridica>
@@ -1009,142 +1010,6 @@
 						<BoletinsEletronicos>false</BoletinsEletronicos>
 						<IdTemp>0</IdTemp>
 					</ClienteContato>
-					<ClienteContato>
-						<IdClienteContato>300663</IdClienteContato>
-						<IdPessoaFisica>215363</IdPessoaFisica>
-						<IdCliente>310975</IdCliente>
-						<NomeContato>Contato 002</NomeContato>
-						<Funcao />
-						<DonoConta>false</DonoConta>
-						<CotacaoCompras>true</CotacaoCompras>
-						<FaturaPublicacao>true</FaturaPublicacao>
-						<Financeiro>true</Financeiro>
-						<NotaFiscalEletronica>true</NotaFiscalEletronica>
-						<ServicosGraficos>true</ServicosGraficos>
-						<ClienteContatoAtivo>true</ClienteContatoAtivo>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>1</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>2</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>3</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>4</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>5</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>6</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>7</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<ControleRegistro>
-							<IdSistemaCriacao>8</IdSistemaCriacao>
-							<IdSistemaAlteracao>8</IdSistemaAlteracao>
-							<IdUsuarioCriacao xsi:nil="true" />
-							<IdUsuarioAlteracao xsi:nil="true" />
-							<DataHoraCriacao>2017-08-08T11:45:50.507</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-08T11:46:26.4</DataHoraAlteracao>
-						</ControleRegistro>
-						<CPF>27597407068</CPF>
-						<DataNascimento xsi:nil="true" />
-						<MeioComunicacao>
-							<IdMeioComunicacao>0</IdMeioComunicacao>
-							<IdTipoContato>0</IdTipoContato>
-							<DDI xsi:nil="true" />
-							<DDD xsi:nil="true" />
-							<Telefone xsi:nil="true" />
-							<Ramal xsi:nil="true" />
-							<Email xsi:nil="true" />
-							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-							<ControleRegistro>
-								<IdSistemaCriacao>0</IdSistemaCriacao>
-								<IdSistemaAlteracao xsi:nil="true" />
-								<IdUsuarioCriacao xsi:nil="true" />
-								<IdUsuarioAlteracao xsi:nil="true" />
-								<DataHoraCriacao>0001-01-01T00:00:00</DataHoraCriacao>
-								<DataHoraAlteracao xsi:nil="true" />
-							</ControleRegistro>
-							<EmailHtml>false</EmailHtml>
-						</MeioComunicacao>
-						<DataCadastro>2017-08-08T11:46:00</DataCadastro>
-						<BoletinsEletronicos>false</BoletinsEletronicos>
-						<IdTemp>0</IdTemp>
-					</ClienteContato>
-					<ClienteContato>
-						<IdClienteContato>300664</IdClienteContato>
-						<IdPessoaFisica>215363</IdPessoaFisica>
-						<IdCliente>310975</IdCliente>
-						<NomeContato>Contato 002</NomeContato>
-						<Funcao />
-						<DonoConta>false</DonoConta>
-						<CotacaoCompras>true</CotacaoCompras>
-						<FaturaPublicacao>true</FaturaPublicacao>
-						<Financeiro>true</Financeiro>
-						<NotaFiscalEletronica>true</NotaFiscalEletronica>
-						<ServicosGraficos>true</ServicosGraficos>
-						<ClienteContatoAtivo>true</ClienteContatoAtivo>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>1</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>2</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>3</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>4</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>5</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>6</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<PerfilClienteContato>
-							<IdTipoClienteContato>7</IdTipoClienteContato>
-						</PerfilClienteContato>
-						<ControleRegistro>
-							<IdSistemaCriacao>8</IdSistemaCriacao>
-							<IdSistemaAlteracao>8</IdSistemaAlteracao>
-							<IdUsuarioCriacao xsi:nil="true" />
-							<IdUsuarioAlteracao xsi:nil="true" />
-							<DataHoraCriacao>2017-08-08T11:45:50.507</DataHoraCriacao>
-							<DataHoraAlteracao>2017-08-08T11:46:26.4</DataHoraAlteracao>
-						</ControleRegistro>
-						<CPF>27597407068</CPF>
-						<DataNascimento xsi:nil="true" />
-						<MeioComunicacao>
-							<IdMeioComunicacao>0</IdMeioComunicacao>
-							<IdTipoContato>0</IdTipoContato>
-							<DDI xsi:nil="true" />
-							<DDD xsi:nil="true" />
-							<Telefone xsi:nil="true" />
-							<Ramal xsi:nil="true" />
-							<Email xsi:nil="true" />
-							<AceitaComunicacaoEmail>false</AceitaComunicacaoEmail>
-							<AceitaComunicacaoSms>false</AceitaComunicacaoSms>
-							<ControleRegistro>
-								<IdSistemaCriacao>0</IdSistemaCriacao>
-								<IdSistemaAlteracao xsi:nil="true" />
-								<IdUsuarioCriacao xsi:nil="true" />
-								<IdUsuarioAlteracao xsi:nil="true" />
-								<DataHoraCriacao>0001-01-01T00:00:00</DataHoraCriacao>
-								<DataHoraAlteracao xsi:nil="true" />
-							</ControleRegistro>
-							<EmailHtml>false</EmailHtml>
-						</MeioComunicacao>
-						<DataCadastro>2017-08-08T11:46:00</DataCadastro>
-						<BoletinsEletronicos>false</BoletinsEletronicos>
-						<IdTemp>0</IdTemp>
-					</ClienteContato>
 					<MeioComunicacao>
 						<IdMeioComunicacao>1285528</IdMeioComunicacao>
 						<IdTipoContato>1</IdTipoContato>
@@ -1191,7 +1056,7 @@
 						<IdUsuarioCriacao xsi:nil="true" />
 						<IdUsuarioAlteracao xsi:nil="true" />
 						<DataHoraCriacao>2017-08-07T16:02:27.617</DataHoraCriacao>
-						<DataHoraAlteracao>2017-08-08T11:46:46.787</DataHoraAlteracao>
+						<DataHoraAlteracao>2017-08-17T18:42:34.587</DataHoraAlteracao>
 					</ControleRegistro>
 					<Endereco>
 						<IdEndereco>471829</IdEndereco>
@@ -1706,7 +1571,7 @@
 					<CodigoERP>62.42.718.00</CodigoERP>
 					<DocumentoCliente>62823257019039</DocumentoCliente>
 					<IdTipoEsfera>2</IdTipoEsfera>
-					<DataHoraAlteracao>2017-08-07T17:56:49</DataHoraAlteracao>
+					<DataHoraAlteracao>2017-08-17T18:38:30</DataHoraAlteracao>
 				</IntegracaoClientes>
 				<IntegracaoClientes>
 					<IdCliente>310976</IdCliente>
@@ -1720,7 +1585,7 @@
 					<CodigoERP>50.01.001.01</CodigoERP>
 					<DocumentoCliente>83535910000104</DocumentoCliente>
 					<IdTipoEsfera>5</IdTipoEsfera>
-					<DataHoraAlteracao>2017-08-08T11:46:46</DataHoraAlteracao>
+					<DataHoraAlteracao>2017-08-17T18:42:34</DataHoraAlteracao>
 				</IntegracaoClientes>
 				<IntegracaoClientes>
 					<IdCliente>310974</IdCliente>

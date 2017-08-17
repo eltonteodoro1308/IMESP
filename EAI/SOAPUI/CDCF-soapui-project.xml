@@ -1107,19 +1107,24 @@
       <http:address location="http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx"/>
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint></con:endpoints><con:operation id="cecd57b5-35ec-4619-bc60-63eb73ede282" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracao" name="ConfirmaIntegracao" bindingOperationName="ConfirmaIntegracao" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="65800b24-9cb7-4cb2-8cd1-8ac7b1133a3c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint></con:endpoints><con:operation id="cecd57b5-35ec-4619-bc60-63eb73ede282" isOneWay="false" action="http://servicos.imprensaoficial.com.br/Clientes/ConfirmaIntegracao" name="ConfirmaIntegracao" bindingOperationName="ConfirmaIntegracao" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="65800b24-9cb7-4cb2-8cd1-8ac7b1133a3c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://servicos20.imprensaoficial.com.br/Clientes/clientes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cli="http://servicos.imprensaoficial.com.br/Clientes/">\r
    <soap:Header/>\r
    <soap:Body>\r
       <cli:ConfirmaIntegracao>\r
          <!--Optional:-->\r
          <cli:parametros>\r
-            <cli:IdSistema>?</cli:IdSistema>\r
-            <cli:IdConsulta>?</cli:IdConsulta>\r
+            <cli:IdSistema>11</cli:IdSistema>\r
+            <cli:IdConsulta>0</cli:IdConsulta>\r
             <!--Zero or more repetitions:-->\r
             <cli:ClientesIntegracao>\r
-               <cli:IdCliente>?</cli:IdCliente>\r
-               <cli:DataHoraAlteracao>?</cli:DataHoraAlteracao>\r
+               <cli:IdCliente>310977</cli:IdCliente>\r
+               <cli:DataHoraAlteracao>2017-08-10T18:02:19</cli:DataHoraAlteracao>\r
             </cli:ClientesIntegracao>\r
+                        <cli:ClientesIntegracao>
+               <cli:IdCliente>310976</cli:IdCliente>
+               <cli:DataHoraAlteracao>2017-08-10T18:02:19</cli:DataHoraAlteracao>
+            </cli:ClientesIntegracao>
+
          </cli:parametros>\r
       </cli:ConfirmaIntegracao>\r
    </soap:Body>\r
