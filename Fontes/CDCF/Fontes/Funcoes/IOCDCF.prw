@@ -18,6 +18,7 @@ User Function IOCDCF( cXml, cError, cWarning, cParams, oFwEai )
 	Local aArrStrut := {}
 	Local oXml      := TXmlManager():New()
 	Local cUuid     := ''
+	Local aContatos := {}
 
 	oXml:Parse( oFwEai:cXml )
 
@@ -29,15 +30,15 @@ User Function IOCDCF( cXml, cError, cWarning, cParams, oFwEai )
 
 	GravClient( @aArrStrut )
 
-	DelVincCnt( @aArrStrut )
+	DelVincCnt( @aArrStrut, @aContatos )
 
-	DelContato( @aArrStrut )
+	DelContato( @aContatos )
 
 	GravContat( @aArrStrut )
 
 	VincContato( @aArrStrut )
 
-	ConfInteg( @aArrStrut )
+	//ConfInteg( @aArrStrut )
 
 	EnviaErro( @aArrStrut, cUuid )
 
@@ -768,8 +769,9 @@ Return
 @since 17/08/2017
 @version 12.1.017
 @param aArrStrut, array, Array com a carga de dados dos clientes
+@param aContatos, array, Lista de Contatos a serem excluídos
 /*/
-Static Function DelVincCnt( aArrStrut )
+Static Function DelVincCnt( aArrStrut, aContatos )
 
 	Local aArea    := GetArea()
 	Local nX       := 0
@@ -794,6 +796,8 @@ Static Function DelVincCnt( aArrStrut )
 			If DbSeek( cSeek )
 
 				Do While !Eof() .And. AllTrim( cSeek ) == AC8->( AllTrim( AC8_FILIAL + AC8_ENTIDA + AC8_FILENT + AC8_CODENT ) )
+
+					aAdd( aContatos, AC8->AC8_CODCON )
 
 					RecLock( 'AC8', .F. )
 
@@ -822,37 +826,20 @@ Return
 @author Elton Teodoro Alves
 @since 17/08/2017
 @version 12.1.017
-@param aArrStrut, array, Array com a carga de dados dos clientes
+@param aContatos, array, Lista de Contatos a serem excluídos
 /*/
-Static Function DelContato( aArrStrut )
+Static Function DelContato( aContatos )
 
 	Local nX       := 0
 	Local nY       := 0
 	Local aErro    := {}
 	Local cErro    := ''
 	Local aArea    := GetArea()
-	Local oCliente := Nil
-	Local oContato := Nil
-	Local aContatos:= {}
 	Local aContato := {}
 
 	Private	lMsErroAuto    := .F.
 	Private	lMsHelpAuto    := .T.
 	Private	lAutoErrNoFile := .T.
-
-	For nX := 1 To Len( aArrStrut )
-
-		oCliente := aArrStrut[ nX ]
-
-		For nY := 1 To Len( oCliente:aContatos )
-
-			oContato := oCliente:aContatos[ nY ]
-
-			aAdd( aContatos, oContato:cCODCONT )
-
-		Next nY
-
-	Next nX
 
 	For nX := 1 To Len( aContatos )
 
@@ -1026,9 +1013,9 @@ Static Function ConfInteg( aArrStrut )
 
 		//If Len( aComplex ) == 0
 
-			//U_IOEXCPT( cUuid, cMsg := 'Nenhum Elemeto do Tipo Complexo foi Localizado: ' + oWsdl:cError )
+		//U_IOEXCPT( cUuid, cMsg := 'Nenhum Elemeto do Tipo Complexo foi Localizado: ' + oWsdl:cError )
 
-			//UserException( cMsg )
+		//UserException( cMsg )
 
 		//End If
 

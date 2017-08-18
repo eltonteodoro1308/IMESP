@@ -6,30 +6,3 @@ IO_EAIURL
 IO_CDCFWSD
 IO_CDCFIDS
 IO_CDCFIDC
-
-
-
-Static Function GetExemplo()
-
-	Local cRet := ''
-	Local nHandle := FT_FUse( '\xml\exemplo.xml' )
-
-	If nHandle = -1
-
-		return cRet
-
-	End If
-
-	FT_FGoTop()
-
-	While ! FT_FEOF()
-
-		cRet += FT_FReadLn()
-
-		FT_FSKIP()
-
-	End
-
-	FT_FUSE()
-
-Return cRet
