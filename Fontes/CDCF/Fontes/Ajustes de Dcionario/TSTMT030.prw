@@ -8,9 +8,9 @@ user function TSTMT030()
 	Private	lMsHelpAuto    := .T.
 	Private	lAutoErrNoFile := .T.
 
-	aAdd( aCliente, { 'A1_COD'   , '9999'  , Nil} )
+	aAdd( aCliente, { 'A1_COD'   , '999999'  , Nil} )
 	aAdd( aCliente, { 'A1_LOJA'  , '01'            , Nil} )
-	aAdd( aCliente, { 'A1_NOME'  , 'NOME'          , Nil} )
+	aAdd( aCliente, { 'A1_NOME'  , 'NOME 999999'          , Nil} )
 	aAdd( aCliente, { 'A1_NREDUZ', 'NOME REDUZIDO' , Nil} )
 	aAdd( aCliente, { 'A1_END'   , 'ENDERECO'      , Nil} )
 	aAdd( aCliente, { 'A1_TIPO'  , 'R'             , Nil} )
@@ -19,7 +19,7 @@ user function TSTMT030()
 
 	RpcSetEnv( '99', '01' )
 
-	MSExecAuto( { | X, Y | MATA030( X, Y ) }, aCliente, 3 )
+	//MSExecAuto( { | X, Y | MATA030( X, Y ) }, aCliente, 3 )
 
 	If lMsErroAuto
 
@@ -30,6 +30,18 @@ user function TSTMT030()
 		ConOut( 'OK !!!!' )
 
 	End If
+
+//	DbSelectArea( 'SA1' )
+//	DbSetOrder( 1 )
+//	DbSeek( xFilial( 'SA1' ) + '9999' )
+//
+//	aSize( aCliente, 0 )
+//
+//	For nX := 1 To FCount()
+//
+//		aAdd( aCliente, { FieldName( nX ), SA1->&( FieldName( nX ) ), Nil } )
+//
+//	Next nX
 
 	MSExecAuto( { | X, Y | MATA030( X, Y ) }, aCliente, 4 )
 

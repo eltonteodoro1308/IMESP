@@ -402,7 +402,7 @@ aAdd( aSX3, { ;
 	'A'																		, ; //X3_VISUAL
 	'R'																		, ; //X3_CONTEXT
 	''																		, ; //X3_OBRIGAT
-	"Pertence('/1/2/3/4/5/6/7/8/9/10/11/12/').Or.Vazio()"					, ; //X3_VLDUSER
+	"Pertence('/1 /2 /3 /4 /5 /6 /7 /8 /9 /10/11/12/').Or.Vazio()"					, ; //X3_VLDUSER
 	'#U_IOAGBTIP()'															, ; //X3_CBOX
 	'#U_IOAGBTIP()'															, ; //X3_CBOXSPA
 	'#U_IOAGBTIP()'															, ; //X3_CBOXENG

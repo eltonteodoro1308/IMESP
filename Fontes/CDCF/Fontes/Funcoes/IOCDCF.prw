@@ -24,7 +24,8 @@ User Function IOCDCF( cXml, cError, cWarning, cParams, oFwEai )
 
 	cUuid := oXml:XPathGetNodeValue( '/TOTVSIntegrator/DocIdentifier' )
 
-	GetXmlCDCF( @cXmlCDCF, cUuid )
+	//GetXmlCDCF( @cXmlCDCF, cUuid )
+	U_GetExemplo( @cXmlCDCF )
 
 	MontaStrut( @aArrStrut, cXmlCDCF, cUuid )
 

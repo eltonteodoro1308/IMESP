@@ -164,6 +164,8 @@ Method Grava() Class IOSA1CLS
 	Private	lMsHelpAuto    := .T.
 	Private	lAutoErrNoFile := .T.
 
+	Self:cCod  := PadR( Self:cCod, GetSx3Cache( 'A1_COD', 'X3_TAMANHO' ) )
+
 	// Percorre lista de contatos, verifica quem recebe email da nf-e e
 	// preenche o campo do cadastro do cliente com o email.
 	For nX := 1 To Len( Self:aContatos )
@@ -223,15 +225,7 @@ Method Grava() Class IOSA1CLS
 
 	If DbSeek( xFilial( 'SA1' ) + aCliente[ nPos, 2 ] )
 
-		RecLock( 'SA1', .F. )
-
-		For nX := 1 To Len( aCliente )
-
-			SA1->&( aCliente[ nX, 1 ] ) := aCliente[ nX, 2 ]
-
-		Next nX
-
-		MsUnlock()
+		MSExecAuto( { | X, Y | MATA030( X, Y ) }, aCliente, 4 )
 
 	Else
 
