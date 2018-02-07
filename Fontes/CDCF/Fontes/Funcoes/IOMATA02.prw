@@ -87,7 +87,7 @@ Static Function GerXml( aParam )
 	cRet += '<DocBranch>'  + aParam[ 2 ] + '</DocBranch>'
 	cRet += '<DocName/>'
 	cRet += '<DocFederalID />'
-	cRet += '<DocType>1</DocType>'
+	cRet += '<DocType>2</DocType>'
 	cRet += '<Message>'
 	cRet += '<Layouts>'
 	cRet += '<Version>1.000</Version>'

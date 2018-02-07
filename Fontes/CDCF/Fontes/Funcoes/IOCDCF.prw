@@ -24,22 +24,22 @@ User Function IOCDCF( cXml, cError, cWarning, cParams, oFwEai )
 
 	cUuid := oXml:XPathGetNodeValue( '/TOTVSIntegrator/DocIdentifier' )
 
-	//GetXmlCDCF( @cXmlCDCF, cUuid )
-	U_GetExemplo( @cXmlCDCF )
+	GetXmlCDCF( @cXmlCDCF, cUuid )
+	//U_GetExemplo( @cXmlCDCF )
 
 	MontaStrut( @aArrStrut, cXmlCDCF, cUuid )
 
 	GravClient( @aArrStrut )
 
-	DelVincCnt( @aArrStrut, @aContatos )
+	DelVincCnt( @aArrStrut )
 
-	DelContato( @aContatos )
+	DelContato( @aArrStrut )
 
 	GravContat( @aArrStrut )
 
 	VincContato( @aArrStrut )
 
-	//ConfInteg( @aArrStrut )
+	ConfInteg( @aArrStrut )
 
 	EnviaErro( @aArrStrut, cUuid )
 
@@ -68,6 +68,8 @@ Static Function GetXmlCDCF( cXml, cUuid )
 
 	// Define que a validacao da resposta do WebService do CDCF nao sera processada
 	oWsdl:lProcResp := .F.
+	
+	oWsdl:SetProxy( 'px.imprensaoficial.sp', 80 )
 
 	// Efetua o parse do WSDL do WebService
 	If ! oWsdl:ParseUrl( cWSDLUrl )
@@ -772,53 +774,18 @@ Return
 @param aArrStrut, array, Array com a carga de dados dos clientes
 @param aContatos, array, Lista de Contatos a serem excluídos
 /*/
-Static Function DelVincCnt( aArrStrut, aContatos )
+Static Function DelVincCnt( aArrStrut )
 
-	Local aArea    := GetArea()
 	Local nX       := 0
 	Local oCliente := Nil
-	Local cSeek    := ''
-
-	DbSelectArea( 'AC8' )
-	DbSetOrder( 2 ) // AC8_FILIAL + AC8_ENTIDA + AC8_FILENT + AC8_CODENT + AC8_CODCON
 
 	For nX := 1 To Len( aArrStrut )
 
 		oCliente := aArrStrut[ nX ]
 
-		If ! oCliente:lErroAuto
+		oCliente:DelVincCnt()
 
-			cSeek += FwxFilial( 'AC8' )
-			cSeek += 'SA1'
-			cSeek += FwxFilial( 'SA1' )
-			cSeek += PadR( oCliente:cCOD, GetSx3Cache( 'A1_COD', 'X3_TAMANHO' ) )
-			cSeek += oCliente:cLoja
-
-			If DbSeek( cSeek )
-
-				Do While !Eof() .And. AllTrim( cSeek ) == AC8->( AllTrim( AC8_FILIAL + AC8_ENTIDA + AC8_FILENT + AC8_CODENT ) )
-
-					aAdd( aContatos, AC8->AC8_CODCON )
-
-					RecLock( 'AC8', .F. )
-
-					DbDelete()
-
-					MsUnlock()
-
-					DbSkip()
-
-				End Do
-
-			End If
-
-			cSeek := ''
-
-		End If
-
-	Next nX
-
-	RestArea( aArea )
+	Next nX	
 
 Return
 
@@ -829,54 +796,18 @@ Return
 @version 12.1.017
 @param aContatos, array, Lista de Contatos a serem excluídos
 /*/
-Static Function DelContato( aContatos )
+Static Function DelContato( aArrStrut )
 
 	Local nX       := 0
-	Local nY       := 0
-	Local aErro    := {}
-	Local cErro    := ''
-	Local aArea    := GetArea()
-	Local aContato := {}
+	Local oCliente := Nil
 
-	Private	lMsErroAuto    := .F.
-	Private	lMsHelpAuto    := .T.
-	Private	lAutoErrNoFile := .T.
+	For nX := 1 To Len( aArrStrut )
 
-	For nX := 1 To Len( aContatos )
+		oCliente := aArrStrut[ nX ]
 
-		DbSelectArea( 'SU5' )
-		DbSetOrder( 1 )
+		oCliente:DelContato()
 
-		If DbSeek( FwxFilial( 'SU5' ) + aContatos[ nX ] )
-
-			aAdd( aContato, { 'U5_CODCONT', SU5->U5_CODCONT, Nil } )
-			aAdd( aContato, { 'U5_CONTAT' , SU5->U5_CONTAT , Nil } )
-
-			MSExecAuto( { | X , Y, Z, A, B | TMKA070( X , Y, Z, A, B ) }, aContato, 5, {}, {}, .F. )
-
-			If lMsErroAuto
-
-				aErro := aClone( GetAutoGRLog() )
-
-				For nY := 1 To Len( aErro )
-
-					cErro += aErro[ nY ] + Chr(13) + Chr(10)
-
-				Next nY
-
-				ConOut( cErro )
-
-				lMsErroAuto := .F.
-
-			End If
-
-			aSize( aContato, 0 )
-
-		End If
-
-	End If
-
-	RestArea( aArea )
+	Next nX	
 
 Return
 
@@ -979,13 +910,17 @@ Static Function ConfInteg( aArrStrut )
 
 		// Define que a validacao da resposta do WebService do CDCF nao sera processada
 		oWsdl:lProcResp := .F.
+		
+		oWsdl:SetProxy( 'px.imprensaoficial.sp', 80 )
 
 		// Efetua o parse do WSDL do WebService
 		If ! oWsdl:ParseUrl( cWSDLUrl )
 
-			U_IOEXCPT( cUuid, cMsg := 'Erro no Parse da URL do WSDL do WebService: ' + oWsdl:cError )
+			oCliente:lErroAuto := .T.
 
-			UserException( cMsg )
+			oCliente:cErroMsg := 'Erro no Parse da URL do WSDL do WebService: ' + oWsdl:cError
+
+			Return
 
 		End If
 
@@ -994,67 +929,57 @@ Static Function ConfInteg( aArrStrut )
 
 		If Len( aOps ) == 0
 
-			U_IOEXCPT( cUuid, cMsg := 'Não foi disponibilizada nenhuma operação pelo WebService através do documento WSDL: ' + oWsdl:cError )
+			oCliente:lErroAuto := .T.
 
-			UserException( cMsg )
+			oCliente:cErroMsg := 'Não foi disponibilizada nenhuma operação pelo WebService através do documento WSDL: ' + oWsdl:cError 
+
+			Return
 
 		End If
 
 		// Seta a operacao a ser executada
 		If ! oWsdl:SetOperation( aOps[ aScan( aOps, { | X | X[ 1 ] == 'ConfirmaIntegracaoCliente'} ), 1 ] )
 
-			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o método ConfirmaIntegracaoCliente como a operação a ser realizada: ' + oWsdl:cError )
+			oCliente:lErroAuto := .T.
 
-			UserException( cMsg )
+			oCliente:cErroMsg := 'Não foi possível definir o método ConfirmaIntegracaoCliente como a operação a ser realizada: ' + oWsdl:cError
+
+			Return
 
 		End If
-
-		// Atribui a variavel os tipos complexos da operacao
-		//aComplex := oWsdl:NextComplex()
-
-		//If Len( aComplex ) == 0
-
-		//U_IOEXCPT( cUuid, cMsg := 'Nenhum Elemeto do Tipo Complexo foi Localizado: ' + oWsdl:cError )
-
-		//UserException( cMsg )
-
-		//End If
 
 		// Atribui a variavel os tipos simples da operacao
 		aSimple  := oWsdl:SimpleInput()
 
 		If Len( aSimple ) == 0
 
-			U_IOEXCPT( cUuid, cMsg := 'Nenhum Elemeto do Tipo Simples foi Localizado: ' + oWsdl:cError )
+			oCliente:lErroAuto := .T.
 
-			UserException( cMsg )
+			oCliente:cErroMsg := 'Nenhum Elemeto do Tipo Simples foi Localizado: ' + oWsdl:cError 
+
+			Return
 
 		End If
-
-		// Define o numero de ocorrencias do tipo complexo
-		//		If ! oWsdl:SetComplexOccurs( aComplex[ 1 ], 1 )
-		//
-		//			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o número de vezes do Tipo Complexo: ' + oWsdl:cError )
-		//
-		//			UserException( cMsg )
-		//
-		//		End IF
 
 		// Seta o valor do tipo simples correspondente ao ID do Sistema Protheus no CDCF
 		If ! oWsdl:SetValue( aSimple[1][1], cIDSist )
 
-			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o valor da variável ' + aSimple[1][2] + ': ' + oWsdl:cError )
+			oCliente:lErroAuto := .T.
 
-			UserException( cMsg )
+			oCliente:cErroMsg := 'Não foi possível definir o valor da variável ' + aSimple[1][2] + ': ' + oWsdl:cError 
+
+			Return
 
 		End If
 
 		// Seta o valor do tipo simples correspondente ao ID da Consulta no CDCF
 		If  ! oWsdl:SetValue( aSimple[2][1], cIdCons  )
 
-			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
+			oCliente:lErroAuto := .T.
 
-			UserException( cMsg )
+			oCliente:cErroMsg := 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError 
+
+			Return
 
 		End If
 
@@ -1062,31 +987,37 @@ Static Function ConfInteg( aArrStrut )
 		// Seta o valor do tipo simples correspondente ao ID do cliente no CDCF
 		If  ! oWsdl:SetValue( aSimple[3][1], oCliente:cXCDCDCF  )
 
-			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
+			oCliente:lErroAuto := .T.
 
-			UserException( cMsg )
+			oCliente:cErroMsg := 'Não foi possível definir o valor da variável ' + aSimple[3][2] + ': ' + oWsdl:cError 
+
+			Return
 
 		End If
 
 		// Seta o valor do tipo simples correspondente ao Data Hora de alteração do cliente no CDCF
 		If  ! oWsdl:SetValue( aSimple[4][1], oCliente:cXDHCDCF  )
 
-			U_IOEXCPT( cUuid, cMsg := 'Não foi possível definir o valor da variável ' + aSimple[2][2] + ': ' + oWsdl:cError )
+			oCliente:lErroAuto := .T.
 
-			UserException( cMsg )
+			oCliente:cErroMsg := 'Não foi possível definir o valor da variável ' + aSimple[4][2] + ': ' + oWsdl:cError 
+
+			Return
 
 		End If
 
 		// Efetua comunicacao com WebService do CDCF
 		If ! oWsdl:SendSoapMsg()
 
-			U_IOEXCPT( cUuid, cMsg := 'Não foi possível o envio do documento SOAP gerado ao endereço definido: ' + oWsdl:cError )
+			oCliente:lErroAuto := .T.
 
-			UserException( cMsg )
+			oCliente:cErroMsg := 'Não foi possível o envio do documento SOAP gerado ao endereço definido: ' + oWsdl:cError 
+
+			Return
 
 		End If
 
-		// Atribui a Variável o retorno do WebService
+		// Retorno do WebService
 		ConOut( oWsdl:GetSoapResponse() )
 
 	Next nX
@@ -1141,6 +1072,8 @@ Static Function EnviaErro( aArrStrut, cUuid )
 		End If
 
 	Next nX
+	
+	ConOut( cMsg )
 
 	If ! Empty( cMsg )
 

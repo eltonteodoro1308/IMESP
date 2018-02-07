@@ -84,10 +84,13 @@ Class IOSA1CLS
 	Data lErroAuto
 	Data cErroMsg
 	Data aContatos
+	Data aContDelet
 
 	Method New() Constructor
 	Method Grava()
-	Method VincContat()
+	Method VincContat()	
+	Method DelContato()
+	Method DelVincCnt()
 
 End Class
 
@@ -281,6 +284,111 @@ Method VincContat() Class IOSA1CLS
 		End If
 
 	Next nX
+
+	RestArea( aArea )
+
+Return
+
+/*/{Protheus.doc} VincContat
+//Deleta os vinculos dos Contatos do cliente
+@author Elton Teodoro Alves
+@since 22/08/2017
+@version 12.1.017
+/*/
+Method DelVincCnt() Class IOSA1CLS
+
+	Local aArea    := GetArea()
+	Local cSeek    := ''
+
+	DbSelectArea( 'AC8' )
+	DbSetOrder( 2 ) // AC8_FILIAL + AC8_ENTIDA + AC8_FILENT + AC8_CODENT + AC8_CODCON
+
+	If ! Self:lErroAuto
+
+		cSeek += FwxFilial( 'AC8' )
+		cSeek += 'SA1'
+		cSeek += FwxFilial( 'SA1' )
+		cSeek += PadR( Self:cCOD, GetSx3Cache( 'A1_COD', 'X3_TAMANHO' ) )
+		cSeek += Self:cLoja
+
+		If DbSeek( cSeek )
+
+			Do While !Eof() .And. AllTrim( cSeek ) == AC8->( AllTrim( AC8_FILIAL + AC8_ENTIDA + AC8_FILENT + AC8_CODENT ) )
+
+				aAdd( Self:aContDelet, AC8->AC8_CODCON )
+
+				RecLock( 'AC8', .F. )
+
+				DbDelete()
+
+				MsUnlock()
+
+				DbSkip()
+
+			End Do
+
+		End If
+
+		cSeek := ''
+
+	End If
+
+	RestArea( aArea )
+
+Return
+
+/*/{Protheus.doc} VincContat
+//Deleta os Contatos Vinculados ao cliente
+@author Elton Teodoro Alves
+@since 22/08/2017
+@version 12.1.017
+/*/
+Method DelContato() Class IOSA1CLS
+
+	Local nX       := 0
+	Local nY       := 0
+	Local aErro    := {}
+	Local cErro    := ''
+	Local aArea    := GetArea()
+	Local aContato := {}
+
+	Private	lMsErroAuto    := .F.
+	Private	lMsHelpAuto    := .T.
+	Private	lAutoErrNoFile := .T.
+
+	For nX := 1 To Len( Self:aContDelet )
+
+		DbSelectArea( 'SU5' )
+		DbSetOrder( 1 )
+
+		If DbSeek( FwxFilial( 'SU5' ) + Self:aContDelet[ nX ] )
+
+			aAdd( aContato, { 'U5_CODCONT', SU5->U5_CODCONT, Nil } )
+			aAdd( aContato, { 'U5_CONTAT' , SU5->U5_CONTAT , Nil } )
+
+			MSExecAuto( { | X , Y, Z, A, B | TMKA070( X , Y, Z, A, B ) }, aContato, 5, {}, {}, .F. )
+
+			If lMsErroAuto
+
+				aErro := aClone( GetAutoGRLog() )
+
+				For nY := 1 To Len( aErro )
+
+					cErro += aErro[ nY ] + Chr(13) + Chr(10)
+
+				Next nY
+
+				ConOut( cErro )
+
+				lMsErroAuto := .F.
+
+			End If
+
+			aSize( aContato, 0 )
+
+		End If
+
+	End If
 
 	RestArea( aArea )
 
